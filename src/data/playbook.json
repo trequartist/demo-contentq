@@ -1,0 +1,53 @@
+{
+  "playbook": {
+    "id": "playbook-1",
+    "title": "Deepgram Voice AI Authority: Technical Excellence Playbook",
+    "description": "This comprehensive playbook addresses Deepgram's critical content gaps while leveraging their strong technical foundation to establish market-leading authority in Voice AI. With expert-level positioning in Voice AI agents (18 posts, E-E-A-T score 73.7) but severe retention gaps (1/129 posts) and structural deficiencies (29.4% adoption), this playbook provides a strategic roadmap to compete against AWS Transcribe (95 AI visibility), Google Speech-to-Text (79.8), and OpenAI Whisper while capturing the $13.34B projected market by 2032. The five selected plays directly address competitive vulnerabilities: missing technical implementation guides that Google dominates, absent migration content while 30-40% of customers consider switching, lack of integration authority despite API-first positioning, compliance gaps in regulated markets, and insufficient use case guidance for diverse buyer personas.",
+    "status": "Active",
+    "timeline": "3-6 months",
+    "progress": "On track"
+  },
+  "stats": {
+    "totalInitiatives": 5,
+    "activeStrategies": 5,
+    "completedPlays": 0,
+    "inProgressPlays": 5
+  },
+  "plays": [
+    {
+      "id": "play-1",
+      "name": "Play 1",
+      "description": "Strategic initiative",
+      "status": "active",
+      "priority": "high"
+    },
+    {
+      "id": "play-2",
+      "name": "Play 2",
+      "description": "Strategic initiative",
+      "status": "active",
+      "priority": "high"
+    },
+    {
+      "id": "play-3",
+      "name": "Play 3",
+      "description": "Strategic initiative",
+      "status": "active",
+      "priority": "medium"
+    },
+    {
+      "id": "play-4",
+      "name": "Play 4",
+      "description": "Strategic initiative",
+      "status": "active",
+      "priority": "medium"
+    },
+    {
+      "id": "play-5",
+      "name": "Play 5",
+      "description": "Strategic initiative",
+      "status": "active",
+      "priority": "medium"
+    }
+  ]
+}

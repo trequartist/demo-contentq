@@ -1,0 +1,154 @@
+{
+  "researchFeed": {
+    "items": [
+      {
+        "id": "1",
+        "type": "trend",
+        "title": "Voice AI adoption surges 45% in enterprise",
+        "source": "Gartner Research",
+        "time": "2 hours ago",
+        "relevance": 95,
+        "summary": "Enterprise adoption of voice AI technologies has increased by 45% YoY, with customer service and sales automation leading use cases.",
+        "tags": ["Voice AI", "Enterprise", "Automation"]
+      },
+      {
+        "id": "2",
+        "type": "competitor",
+        "title": "Competitor launches new conversational AI platform",
+        "source": "TechCrunch",
+        "time": "4 hours ago",
+        "relevance": 88,
+        "summary": "Major competitor announces new platform with advanced NLU capabilities and multi-language support.",
+        "tags": ["Competition", "Product Launch", "AI Platform"]
+      },
+      {
+        "id": "3",
+        "type": "insight",
+        "title": "Customer service automation ROI reaches 300%",
+        "source": "Forrester",
+        "time": "6 hours ago",
+        "relevance": 92,
+        "summary": "New study shows companies implementing voice AI in customer service see average ROI of 300% within 18 months.",
+        "tags": ["ROI", "Customer Service", "Research"]
+      },
+      {
+        "id": "4",
+        "type": "market",
+        "title": "Voice assistant market to reach $15.7B by 2025",
+        "source": "Markets & Markets",
+        "time": "1 day ago",
+        "relevance": 85,
+        "summary": "Global voice assistant market projected to grow at 25.4% CAGR, driven by increasing demand for contactless interactions.",
+        "tags": ["Market Size", "Growth", "Forecast"]
+      }
+    ]
+  },
+  "knowledgeHub": {
+    "stats": {
+      "totalInsights": 347,
+      "weeklyGrowth": 12,
+      "topCategory": "Technical Implementation",
+      "healthScore": 87
+    },
+    "categories": [
+      {
+        "id": "1",
+        "name": "Technical Guides",
+        "count": 89,
+        "trending": true,
+        "icon": "code"
+      },
+      {
+        "id": "2",
+        "name": "Case Studies",
+        "count": 67,
+        "trending": false,
+        "icon": "briefcase"
+      },
+      {
+        "id": "3",
+        "name": "Industry Reports",
+        "count": 54,
+        "trending": true,
+        "icon": "chart"
+      },
+      {
+        "id": "4",
+        "name": "Best Practices",
+        "count": 78,
+        "trending": false,
+        "icon": "star"
+      },
+      {
+        "id": "5",
+        "name": "Competitive Analysis",
+        "count": 59,
+        "trending": true,
+        "icon": "target"
+      }
+    ],
+    "recentItems": [
+      {
+        "id": "1",
+        "title": "Voice AI Implementation Checklist",
+        "type": "guide",
+        "views": 1234,
+        "saves": 89,
+        "lastUpdated": "2 days ago"
+      },
+      {
+        "id": "2",
+        "title": "Enterprise Security Best Practices",
+        "type": "whitepaper",
+        "views": 987,
+        "saves": 67,
+        "lastUpdated": "3 days ago"
+      },
+      {
+        "id": "3",
+        "title": "ROI Calculator Template",
+        "type": "tool",
+        "views": 2341,
+        "saves": 234,
+        "lastUpdated": "1 week ago"
+      }
+    ]
+  },
+  "aiAssistant": {
+    "suggestions": [
+      {
+        "id": "1",
+        "type": "content",
+        "priority": "high",
+        "title": "Create comparison guide: Voice AI vs Traditional IVR",
+        "reason": "High search volume (2.3K/month) with low competition",
+        "impact": "Estimated 5K organic visitors/month",
+        "effort": "Medium"
+      },
+      {
+        "id": "2",
+        "type": "optimization",
+        "priority": "medium",
+        "title": "Update 'Getting Started' guide with new API changes",
+        "reason": "Documentation outdated by 3 months",
+        "impact": "Improve developer experience",
+        "effort": "Low"
+      },
+      {
+        "id": "3",
+        "type": "strategy",
+        "priority": "high",
+        "title": "Target 'voice AI for healthcare' keyword cluster",
+        "reason": "Growing 45% MoM, competitors not targeting",
+        "impact": "Capture emerging market segment",
+        "effort": "High"
+      }
+    ],
+    "metrics": {
+      "contentGaps": 23,
+      "opportunities": 15,
+      "competitorMoves": 8,
+      "trendingTopics": 12
+    }
+  }
+}

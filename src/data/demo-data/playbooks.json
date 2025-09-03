@@ -1,0 +1,409 @@
+{
+  "playbooks": [
+    {
+      "id": "playbook_blog_001",
+      "assetId": "asset_blog_001",
+      "assetName": "TechCorp Blog",
+      "platform": "blog",
+      "status": "active",
+      "createdAt": "2024-02-20T11:00:00Z",
+      "updatedAt": "2024-03-01T14:00:00Z",
+      "version": 2,
+      "plays": [
+        {
+          "id": "play_001",
+          "name": "Thought Leadership Series",
+          "category": "content",
+          "status": "in_progress",
+          "priority": "high",
+          "description": "Establish authority through executive insights and industry predictions",
+          "objectives": [
+            "Position CEO as industry thought leader",
+            "Increase share of voice in AI/ML discussions",
+            "Drive 40% more executive-level engagement"
+          ],
+          "tactics": [
+            "Weekly CEO blog posts on industry trends",
+            "Monthly podcast appearances",
+            "Quarterly industry report publication"
+          ],
+          "metrics": {
+            "target": {
+              "posts": 12,
+              "reach": 100000,
+              "engagement": 8
+            },
+            "current": {
+              "posts": 4,
+              "reach": 42000,
+              "engagement": 7.2
+            }
+          },
+          "timeline": "Q1-Q2 2024",
+          "owner": "Sarah Chen"
+        },
+        {
+          "id": "play_002",
+          "name": "SEO Content Clusters",
+          "category": "seo",
+          "status": "planned",
+          "priority": "high",
+          "description": "Build topical authority through comprehensive content clusters",
+          "objectives": [
+            "Dominate 'project management software' SERP",
+            "Increase organic traffic by 50%",
+            "Improve domain authority to 70+"
+          ],
+          "tactics": [
+            "Create pillar pages for core topics",
+            "Develop 50+ supporting articles",
+            "Internal linking optimization"
+          ],
+          "clusters": [
+            {
+              "topic": "Project Management Fundamentals",
+              "pillar": "Complete Guide to Project Management",
+              "supporting_content": [
+                "What is Agile Project Management?",
+                "Scrum vs Kanban: Complete Comparison",
+                "Project Management Certifications Guide",
+                "Risk Management in Projects"
+              ]
+            },
+            {
+              "topic": "Remote Work",
+              "pillar": "Ultimate Remote Work Guide",
+              "supporting_content": [
+                "Remote Team Communication",
+                "Time Zone Management",
+                "Remote Team Building Activities",
+                "Async Collaboration Tools"
+              ]
+            }
+          ],
+          "timeline": "Q1-Q3 2024",
+          "owner": "Content Team"
+        },
+        {
+          "id": "play_003",
+          "name": "Customer Success Stories",
+          "category": "social_proof",
+          "status": "active",
+          "priority": "medium",
+          "description": "Leverage customer wins to build trust and drive conversions",
+          "objectives": [
+            "Publish 20 case studies",
+            "Increase conversion rate by 25%",
+            "Build industry-specific proof points"
+          ],
+          "tactics": [
+            "Monthly customer spotlight blog",
+            "Video testimonials",
+            "ROI calculator based on real data"
+          ],
+          "progress": {
+            "case_studies_published": 7,
+            "video_testimonials": 3,
+            "industries_covered": ["SaaS", "Healthcare", "Finance", "Retail"]
+          },
+          "timeline": "Ongoing",
+          "owner": "Customer Success Team"
+        },
+        {
+          "id": "play_004",
+          "name": "Interactive Content Hub",
+          "category": "engagement",
+          "status": "planned",
+          "priority": "medium",
+          "description": "Create interactive tools and assessments to drive engagement",
+          "objectives": [
+            "Launch 5 interactive tools",
+            "Generate 10,000 qualified leads",
+            "Increase time on site by 40%"
+          ],
+          "tools": [
+            {
+              "name": "Project Management Maturity Assessment",
+              "status": "in_development",
+              "launch_date": "2024-04-01"
+            },
+            {
+              "name": "ROI Calculator",
+              "status": "live",
+              "performance": "2,500 uses/month"
+            },
+            {
+              "name": "Team Productivity Quiz",
+              "status": "planned",
+              "launch_date": "2024-05-01"
+            }
+          ],
+          "timeline": "Q2-Q3 2024",
+          "owner": "Product Marketing"
+        },
+        {
+          "id": "play_005",
+          "name": "Community Building Initiative",
+          "category": "community",
+          "status": "active",
+          "priority": "high",
+          "description": "Build an engaged community of project management professionals",
+          "objectives": [
+            "Grow community to 5,000 members",
+            "Host monthly virtual events",
+            "Create user-generated content program"
+          ],
+          "channels": [
+            {
+              "platform": "Slack Community",
+              "members": 1850,
+              "engagement_rate": 42
+            },
+            {
+              "platform": "LinkedIn Group",
+              "members": 3200,
+              "engagement_rate": 28
+            },
+            {
+              "platform": "Monthly Webinars",
+              "avg_attendance": 350,
+              "satisfaction_score": 4.6
+            }
+          ],
+          "timeline": "Ongoing",
+          "owner": "Community Manager"
+        }
+      ],
+      "playbook": {
+        "vision": "Become the definitive voice in modern project management through valuable, actionable content that drives real business outcomes",
+        "mission": "Empower project teams with insights, tools, and strategies to excel in the digital age",
+        "strategy": {
+          "content_mix": {
+            "educational": 40,
+            "thought_leadership": 25,
+            "product": 15,
+            "customer_stories": 20
+          },
+          "channel_focus": {
+            "blog": 40,
+            "linkedin": 30,
+            "email": 20,
+            "webinars": 10
+          },
+          "audience_segments": [
+            {
+              "segment": "Enterprise PMs",
+              "percentage": 35,
+              "content_focus": "Scale, compliance, integration"
+            },
+            {
+              "segment": "Startup Leaders",
+              "percentage": 30,
+              "content_focus": "Agility, growth, efficiency"
+            },
+            {
+              "segment": "Individual Contributors",
+              "percentage": 35,
+              "content_focus": "Skills, tools, career growth"
+            }
+          ]
+        },
+        "kpis": [
+          {
+            "metric": "Organic Traffic",
+            "current": 45320,
+            "target": 75000,
+            "timeline": "Q2 2024"
+          },
+          {
+            "metric": "MQLs from Content",
+            "current": 850,
+            "target": 1500,
+            "timeline": "Q2 2024"
+          },
+          {
+            "metric": "Brand Awareness",
+            "current": 12,
+            "target": 25,
+            "timeline": "Q3 2024"
+          }
+        ],
+        "resources": {
+          "team": [
+            "1 Content Manager",
+            "2 Content Writers",
+            "1 SEO Specialist",
+            "1 Designer"
+          ],
+          "budget": {
+            "monthly": 15000,
+            "allocation": {
+              "content_creation": 60,
+              "promotion": 25,
+              "tools": 15
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "playbook_linkedin_001",
+      "assetId": "asset_linkedin_001",
+      "assetName": "Sarah Chen - LinkedIn",
+      "platform": "linkedin",
+      "status": "active",
+      "createdAt": "2024-02-25T13:00:00Z",
+      "plays": [
+        {
+          "id": "play_li_001",
+          "name": "Executive Thought Leadership",
+          "category": "personal_brand",
+          "status": "active",
+          "priority": "high",
+          "description": "Position as a leading voice in project management innovation",
+          "objectives": [
+            "Grow followers to 15,000",
+            "Average 20,000 impressions per post",
+            "Speaking opportunities at 3 major conferences"
+          ],
+          "content_pillars": [
+            {
+              "pillar": "Future of Work",
+              "topics": ["AI in PM", "Remote Leadership", "Async Collaboration"],
+              "frequency": "Weekly"
+            },
+            {
+              "pillar": "Leadership Insights",
+              "topics": ["Team Building", "Decision Making", "Crisis Management"],
+              "frequency": "Bi-weekly"
+            },
+            {
+              "pillar": "Industry Trends",
+              "topics": ["Tool Reviews", "Method Comparisons", "Case Studies"],
+              "frequency": "Weekly"
+            }
+          ],
+          "progress": {
+            "followers": 8420,
+            "avg_impressions": 12500,
+            "speaking_invites": 1
+          }
+        },
+        {
+          "id": "play_li_002",
+          "name": "LinkedIn Live Series",
+          "category": "video",
+          "status": "planned",
+          "priority": "high",
+          "description": "Weekly live discussions with industry leaders",
+          "objectives": [
+            "Host 12 LinkedIn Live events",
+            "Average 500 live viewers",
+            "Generate 100 qualified leads per event"
+          ],
+          "format": {
+            "duration": "30 minutes",
+            "structure": "15 min interview + 15 min Q&A",
+            "frequency": "Bi-weekly starting April"
+          },
+          "upcoming_events": [
+            {
+              "title": "The Future of Hybrid Work",
+              "guest": "Michael Torres, VP at TechGiant",
+              "date": "2024-04-02"
+            },
+            {
+              "title": "Building High-Performance Remote Teams",
+              "guest": "Lisa Park, Author & Consultant",
+              "date": "2024-04-16"
+            }
+          ]
+        },
+        {
+          "id": "play_li_003",
+          "name": "Employee Advocacy Program",
+          "category": "amplification",
+          "status": "active",
+          "priority": "medium",
+          "description": "Leverage team network for content amplification",
+          "objectives": [
+            "50 active employee advocates",
+            "3x content reach",
+            "Employee-generated content"
+          ],
+          "program_details": {
+            "participants": 28,
+            "avg_shares_per_post": 12,
+            "reach_multiplier": 2.1
+          }
+        }
+      ],
+      "playbook": {
+        "personal_brand": {
+          "positioning": "Innovative project management leader bridging technology and human potential",
+          "key_messages": [
+            "AI augments, not replaces, human leadership",
+            "Remote work is the future of collaboration",
+            "Continuous learning drives career success"
+          ],
+          "voice_tone": "Professional yet approachable, data-driven but empathetic"
+        },
+        "content_strategy": {
+          "post_types": {
+            "insights": 40,
+            "stories": 30,
+            "tips": 20,
+            "company_updates": 10
+          },
+          "engagement_tactics": [
+            "Ask provocative questions",
+            "Share contrarian views",
+            "Respond to all comments within 24h",
+            "Create polls for engagement"
+          ]
+        },
+        "growth_targets": {
+          "q1_2024": {
+            "followers": 10000,
+            "engagement_rate": 6,
+            "profile_views": 4000
+          },
+          "q2_2024": {
+            "followers": 15000,
+            "engagement_rate": 7,
+            "profile_views": 6000
+          }
+        }
+      }
+    }
+  ],
+  "playbook_performance": {
+    "overall_progress": 68,
+    "active_plays": 8,
+    "completed_plays": 3,
+    "upcoming_plays": 5,
+    "roi": {
+      "content_investment": 45000,
+      "attributed_revenue": 285000,
+      "roi_percentage": 533
+    }
+  },
+  "recommendations": [
+    {
+      "type": "new_play",
+      "title": "Podcast Launch",
+      "reasoning": "Competitors gaining traction with audio content",
+      "estimated_impact": "25% increase in thought leadership score",
+      "effort": "medium",
+      "priority": "consider"
+    },
+    {
+      "type": "optimization",
+      "title": "Increase video content",
+      "reasoning": "Video posts show 3x higher engagement",
+      "estimated_impact": "Double current engagement rates",
+      "effort": "low",
+      "priority": "high"
+    }
+  ]
+}

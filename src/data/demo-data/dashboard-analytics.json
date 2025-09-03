@@ -1,0 +1,394 @@
+{
+  "dashboard": {
+    "overview": {
+      "dateRange": "Last 30 days",
+      "comparedTo": "Previous 30 days",
+      "highlights": [
+        {
+          "metric": "Content Published",
+          "value": 47,
+          "change": 23.5,
+          "trend": "up",
+          "icon": "📝"
+        },
+        {
+          "metric": "Total Reach",
+          "value": 285420,
+          "change": 18.2,
+          "trend": "up",
+          "icon": "👥"
+        },
+        {
+          "metric": "Engagement Rate",
+          "value": 5.8,
+          "change": 0.9,
+          "trend": "up",
+          "icon": "💬"
+        },
+        {
+          "metric": "Leads Generated",
+          "value": 892,
+          "change": -5.2,
+          "trend": "down",
+          "icon": "🎯"
+        }
+      ]
+    },
+    "contentPerformance": {
+      "summary": {
+        "totalContent": 159,
+        "published": 124,
+        "drafts": 23,
+        "scheduled": 12,
+        "avgPerformanceScore": 78
+      },
+      "topContent": [
+        {
+          "title": "The Complete Guide to OKRs for Remote Engineering Teams",
+          "platform": "blog",
+          "publishedDate": "2024-03-08",
+          "views": 12840,
+          "engagement": 6.2,
+          "shares": 234,
+          "leadGenerated": 45
+        },
+        {
+          "title": "AI Won't Replace Project Managers—It Will Supercharge Them",
+          "platform": "linkedin",
+          "publishedDate": "2024-03-05",
+          "views": 48000,
+          "engagement": 8.2,
+          "shares": 456,
+          "leadGenerated": 78
+        },
+        {
+          "title": "10 Essential Metrics Every SaaS Company Should Track",
+          "platform": "blog",
+          "publishedDate": "2024-03-01",
+          "views": 8420,
+          "engagement": 4.8,
+          "shares": 123,
+          "leadGenerated": 32
+        }
+      ],
+      "contentByType": {
+        "blog": {
+          "published": 47,
+          "avgViews": 4250,
+          "avgEngagement": 4.2,
+          "topCategory": "Best Practices"
+        },
+        "linkedin": {
+          "published": 89,
+          "avgViews": 12500,
+          "avgEngagement": 5.8,
+          "topFormat": "Text with Image"
+        }
+      },
+      "publishingTrends": [
+        { "date": "2024-02-11", "blog": 2, "linkedin": 3 },
+        { "date": "2024-02-18", "blog": 3, "linkedin": 4 },
+        { "date": "2024-02-25", "blog": 2, "linkedin": 3 },
+        { "date": "2024-03-03", "blog": 4, "linkedin": 5 },
+        { "date": "2024-03-10", "blog": 3, "linkedin": 4 }
+      ]
+    },
+    "audienceAnalytics": {
+      "growth": {
+        "total": 11620,
+        "new": 3840,
+        "returning": 7780,
+        "growthRate": 12.5
+      },
+      "demographics": {
+        "roles": [
+          { "role": "Project Manager", "percentage": 28 },
+          { "role": "Engineering Lead", "percentage": 22 },
+          { "role": "Product Manager", "percentage": 18 },
+          { "role": "C-Suite Executive", "percentage": 15 },
+          { "role": "Marketing Manager", "percentage": 10 },
+          { "role": "Other", "percentage": 7 }
+        ],
+        "industries": [
+          { "industry": "Technology", "percentage": 45 },
+          { "industry": "Finance", "percentage": 18 },
+          { "industry": "Healthcare", "percentage": 12 },
+          { "industry": "Retail", "percentage": 10 },
+          { "industry": "Manufacturing", "percentage": 8 },
+          { "industry": "Other", "percentage": 7 }
+        ],
+        "companies": {
+          "enterprise": 35,
+          "midMarket": 40,
+          "smb": 25
+        }
+      },
+      "engagement": {
+        "avgSessionDuration": "3:42",
+        "pagesPerSession": 2.8,
+        "bounceRate": 42,
+        "returnVisitorRate": 67,
+        "socialShares": 1234,
+        "comments": 456
+      },
+      "geographics": {
+        "topCountries": [
+          { "country": "United States", "percentage": 42 },
+          { "country": "United Kingdom", "percentage": 18 },
+          { "country": "Canada", "percentage": 12 },
+          { "country": "Germany", "percentage": 8 },
+          { "country": "Australia", "percentage": 6 }
+        ],
+        "topCities": [
+          "New York", "San Francisco", "London", "Toronto", "Berlin"
+        ]
+      }
+    },
+    "conversionMetrics": {
+      "funnel": {
+        "visitors": 45320,
+        "engaged": 28900,
+        "leads": 892,
+        "opportunities": 234,
+        "customers": 45
+      },
+      "conversionRates": {
+        "visitorToLead": 1.97,
+        "leadToOpportunity": 26.2,
+        "opportunityToCustomer": 19.2,
+        "overallConversion": 0.099
+      },
+      "leadSources": [
+        { "source": "Blog", "leads": 445, "percentage": 49.9 },
+        { "source": "LinkedIn", "leads": 312, "percentage": 35 },
+        { "source": "Webinar", "leads": 89, "percentage": 10 },
+        { "source": "Other", "leads": 46, "percentage": 5.1 }
+      ],
+      "contentAttribution": {
+        "firstTouch": [
+          { "content": "OKR Guide", "attribution": 123 },
+          { "content": "AI in PM Post", "attribution": 98 },
+          { "content": "SaaS Metrics", "attribution": 76 }
+        ],
+        "lastTouch": [
+          { "content": "ROI Calculator", "attribution": 156 },
+          { "content": "Case Study", "attribution": 134 },
+          { "content": "Demo Request", "attribution": 89 }
+        ]
+      }
+    },
+    "seoMetrics": {
+      "organic": {
+        "traffic": 28900,
+        "growthRate": 22,
+        "avgPosition": 12.5,
+        "clickThroughRate": 3.2
+      },
+      "keywords": {
+        "ranking": 1420,
+        "topTen": 234,
+        "featured": 18,
+        "trending": [
+          { "keyword": "project management software", "position": 8, "volume": 12000 },
+          { "keyword": "remote team tools", "position": 5, "volume": 8900 },
+          { "keyword": "agile methodology", "position": 11, "volume": 6700 }
+        ]
+      },
+      "backlinks": {
+        "total": 3456,
+        "newThisMonth": 234,
+        "domainAuthority": 58,
+        "referringDomains": 892
+      },
+      "technicalHealth": {
+        "score": 76,
+        "issues": {
+          "critical": 2,
+          "warning": 12,
+          "notice": 34
+        },
+        "coreWebVitals": {
+          "lcp": 2.1,
+          "fid": 85,
+          "cls": 0.08
+        }
+      }
+    },
+    "socialMetrics": {
+      "platforms": {
+        "linkedin": {
+          "followers": 8420,
+          "engagement": 5.8,
+          "reach": 125000,
+          "impressions": 285000
+        },
+        "twitter": {
+          "followers": 3240,
+          "engagement": 2.1,
+          "reach": 45000,
+          "impressions": 98000
+        },
+        "facebook": {
+          "followers": 1850,
+          "engagement": 1.8,
+          "reach": 28000,
+          "impressions": 56000
+        }
+      },
+      "topPosts": [
+        {
+          "platform": "LinkedIn",
+          "content": "AI Won't Replace Project Managers...",
+          "engagement": 8.2,
+          "shares": 456,
+          "comments": 124
+        },
+        {
+          "platform": "Twitter",
+          "content": "Thread: 10 productivity tips...",
+          "engagement": 4.5,
+          "retweets": 234,
+          "likes": 567
+        }
+      ],
+      "sentiment": {
+        "positive": 72,
+        "neutral": 23,
+        "negative": 5
+      }
+    },
+    "goals": {
+      "quarterly": [
+        {
+          "goal": "Increase organic traffic",
+          "target": 50000,
+          "current": 45320,
+          "progress": 90.6,
+          "status": "on_track",
+          "dueDate": "2024-03-31"
+        },
+        {
+          "goal": "Generate MQLs from content",
+          "target": 1000,
+          "current": 892,
+          "progress": 89.2,
+          "status": "on_track",
+          "dueDate": "2024-03-31"
+        },
+        {
+          "goal": "Improve engagement rate",
+          "target": 6,
+          "current": 5.8,
+          "progress": 96.7,
+          "status": "on_track",
+          "dueDate": "2024-03-31"
+        },
+        {
+          "goal": "Publish thought leadership pieces",
+          "target": 12,
+          "current": 8,
+          "progress": 66.7,
+          "status": "at_risk",
+          "dueDate": "2024-03-31"
+        }
+      ],
+      "annual": {
+        "revenue_influenced": {
+          "target": 2000000,
+          "current": 485000,
+          "progress": 24.25
+        },
+        "brand_awareness": {
+          "target": 25,
+          "current": 12,
+          "progress": 48
+        },
+        "content_library": {
+          "target": 500,
+          "current": 159,
+          "progress": 31.8
+        }
+      }
+    },
+    "recommendations": {
+      "immediate": [
+        {
+          "title": "Optimize underperforming content",
+          "description": "15 blog posts have engagement below 2%. Update or consolidate.",
+          "impact": "high",
+          "effort": "low"
+        },
+        {
+          "title": "Increase video content",
+          "description": "Video posts show 3x higher engagement. Current mix is only 5%.",
+          "impact": "high",
+          "effort": "medium"
+        }
+      ],
+      "strategic": [
+        {
+          "title": "Launch podcast series",
+          "description": "Competitors seeing 40% growth from audio content.",
+          "impact": "high",
+          "effort": "high"
+        },
+        {
+          "title": "Implement content personalization",
+          "description": "Serve different content based on visitor segment.",
+          "impact": "medium",
+          "effort": "high"
+        }
+      ]
+    },
+    "alerts": [
+      {
+        "type": "opportunity",
+        "message": "Blog traffic up 45% this week - capitalize with related content",
+        "timestamp": "2024-03-10T14:00:00Z",
+        "priority": "high"
+      },
+      {
+        "type": "warning",
+        "message": "LinkedIn engagement dropping - review posting schedule",
+        "timestamp": "2024-03-09T10:00:00Z",
+        "priority": "medium"
+      },
+      {
+        "type": "info",
+        "message": "New competitor content detected on 'AI in PM' topic",
+        "timestamp": "2024-03-08T16:00:00Z",
+        "priority": "low"
+      }
+    ],
+    "recentActivity": [
+      {
+        "action": "Content published",
+        "details": "OKR Guide for Remote Teams",
+        "platform": "blog",
+        "timestamp": "2024-03-10T14:00:00Z",
+        "user": "Sarah Chen"
+      },
+      {
+        "action": "Diagnostic completed",
+        "details": "TechCorp Blog monthly analysis",
+        "result": "Score: 78/100",
+        "timestamp": "2024-03-10T08:00:00Z",
+        "user": "System"
+      },
+      {
+        "action": "Playbook updated",
+        "details": "Added LinkedIn Live series play",
+        "impact": "Expected 3x engagement",
+        "timestamp": "2024-03-09T16:00:00Z",
+        "user": "Sarah Chen"
+      },
+      {
+        "action": "Goal achieved",
+        "details": "Q1 LinkedIn follower target",
+        "achievement": "8420/8000 followers",
+        "timestamp": "2024-03-08T12:00:00Z",
+        "user": "System"
+      }
+    ]
+  }
+}

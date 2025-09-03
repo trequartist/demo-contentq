@@ -1,0 +1,194 @@
+{
+  "demo": {
+    "name": "KiwiQ Enterprise Demo",
+    "version": "1.0.0",
+    "environment": "static",
+    "created": "2024-03-10",
+    "features": {
+      "contentStudio": {
+        "enabled": true,
+        "workflows": ["create", "improve", "linkedinCreate"],
+        "aiEnabled": true,
+        "autoSave": true,
+        "collaborativeEditing": false
+      },
+      "diagnostics": {
+        "enabled": true,
+        "autoRun": false,
+        "reportTypes": ["blog", "linkedin"],
+        "realTimeUpdates": true
+      },
+      "playbook": {
+        "enabled": true,
+        "aiRecommendations": true,
+        "customPlays": true,
+        "strategyGeneration": true
+      },
+      "assets": {
+        "enabled": true,
+        "maxAssets": 10,
+        "types": ["blog", "linkedin"],
+        "documentUpdate": true
+      },
+      "analytics": {
+        "enabled": true,
+        "realTime": false,
+        "historicalData": true,
+        "exportEnabled": true
+      },
+      "calendar": {
+        "enabled": true,
+        "aiSuggestions": true,
+        "dragDrop": true,
+        "multiPlatform": true
+      }
+    },
+    "users": {
+      "demo_user": {
+        "email": "demo@kiwiq.com",
+        "password": "DemoUser2024!",
+        "role": "admin",
+        "organization": "Demo Company"
+      }
+    },
+    "data": {
+      "sources": [
+        "demo-data/user-profile.json",
+        "demo-data/assets.json",
+        "demo-data/content-studio-workflows.json",
+        "demo-data/diagnostics-reports.json",
+        "demo-data/playbooks.json",
+        "demo-data/dashboard-analytics.json"
+      ],
+      "refreshInterval": null,
+      "cacheEnabled": true
+    },
+    "ui": {
+      "theme": "light",
+      "animations": true,
+      "tooltips": true,
+      "guidedTours": true,
+      "mockLatency": {
+        "enabled": true,
+        "min": 200,
+        "max": 800
+      }
+    },
+    "api": {
+      "mockResponses": true,
+      "baseUrl": "/api/v1/mock",
+      "headers": {
+        "X-Demo-Mode": "true",
+        "X-Demo-Version": "1.0.0"
+      },
+      "endpoints": {
+        "auth": {
+          "login": "/auth/login",
+          "logout": "/auth/logout",
+          "refresh": "/auth/refresh"
+        },
+        "assets": {
+          "list": "/assets",
+          "create": "/assets",
+          "update": "/assets/:id",
+          "delete": "/assets/:id"
+        },
+        "content": {
+          "workflows": "/content/workflows",
+          "documents": "/content/documents",
+          "calendar": "/content/calendar"
+        },
+        "diagnostics": {
+          "reports": "/diagnostics/reports",
+          "run": "/diagnostics/run",
+          "status": "/diagnostics/status/:runId"
+        },
+        "playbook": {
+          "list": "/playbook",
+          "generate": "/playbook/generate",
+          "update": "/playbook/:id"
+        },
+        "analytics": {
+          "dashboard": "/analytics/dashboard",
+          "metrics": "/analytics/metrics",
+          "export": "/analytics/export"
+        }
+      }
+    },
+    "scenarios": {
+      "available": [
+        {
+          "id": "new_user",
+          "name": "New User Onboarding",
+          "description": "Experience the complete onboarding flow",
+          "steps": [
+            "Create organization",
+            "Add first asset",
+            "Complete document update",
+            "Run diagnostics",
+            "Generate playbook",
+            "Create first content"
+          ]
+        },
+        {
+          "id": "content_creation",
+          "name": "Content Creation Workflow",
+          "description": "Create blog and LinkedIn content",
+          "steps": [
+            "Select asset",
+            "Choose workflow type",
+            "Input requirements",
+            "Select topic",
+            "Review brief",
+            "Edit draft",
+            "Publish content"
+          ]
+        },
+        {
+          "id": "performance_analysis",
+          "name": "Performance Analysis",
+          "description": "Analyze content performance with diagnostics",
+          "steps": [
+            "View dashboard",
+            "Run diagnostic report",
+            "Review recommendations",
+            "Identify opportunities",
+            "Create improvement plan"
+          ]
+        },
+        {
+          "id": "strategic_planning",
+          "name": "Strategic Planning",
+          "description": "Create and execute content strategy",
+          "steps": [
+            "Generate playbook",
+            "Review plays",
+            "Customize strategy",
+            "Set goals",
+            "Track progress"
+          ]
+        }
+      ],
+      "default": "content_creation"
+    },
+    "limitations": {
+      "note": "This is a static demo with mock data",
+      "features": [
+        "Real-time collaboration is simulated",
+        "AI responses are pre-generated",
+        "Analytics show sample data only",
+        "External integrations are mocked",
+        "File uploads are simulated"
+      ]
+    },
+    "support": {
+      "documentation": "https://docs.kiwiq.com",
+      "helpCenter": "https://help.kiwiq.com",
+      "contact": "support@kiwiq.com",
+      "chat": {
+        "enabled": true,
+        "botOnly": true
+      }
+    }
+  }
+}

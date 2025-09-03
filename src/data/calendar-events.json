@@ -1,0 +1,64 @@
+{
+  "events": [
+    {
+      "id": "event-1",
+      "date": 3,
+      "month": 8,
+      "year": 2025,
+      "title": "The Ultimate Guide to Migrating from AWS/Google/OpenAI Whisper to Deepgram: Playbooks, Feature Mapping, and Migration Pitfall Avoidance",
+      "shortTitle": "The Ultimate Guide to M...",
+      "status": "complete",
+      "type": "blog",
+      "ideas": 4,
+      "articles": [
+        {
+          "title": "Feature Parity vs. Differentiation: The 2025 Voice AI Migration Matrix (AWS, Google, Whisper)",
+          "description": "An up-to-date, visual feature comparison of Deepgram versus AWS Transcribe, Google...",
+          "tags": ["CTOs", "technical architects", "compliance leads", "technical product managers"]
+        },
+        {
+          "title": "Zero-Downtime Migration: Strategies for Seamless Cutover in Real-Time Voice AI Applications",
+          "description": "Guides readers through proven blueprints for migrating high-availability or live apps (conta...",
+          "tags": ["Platform engineers", "SREs", "ops leaders", "solution architects"]
+        },
+        {
+          "title": "Open-Source Data Migration Toolkit: Extract, Transform, and Move Everything (Scripts + Edge Cases)",
+          "description": "Announces and deep-dives into Deepgram's official, open-source migration toolkit for...",
+          "tags": ["Data engineers", "ML ops teams", "automation-focused voice AI engineers"]
+        },
+        {
+          "title": "Migration War Stories: Real Lessons from Failed and Successful Voice AI Switches",
+          "description": "A candid collection of anonymized case studies highlighting both success and failure...",
+          "tags": ["Technical and business stakeholders", "risk management", "change leadership"]
+        }
+      ]
+    },
+    {
+      "id": "event-2",
+      "date": 11,
+      "month": 8,
+      "year": 2025,
+      "title": "Transparent, reproducible benchmarking for real-time STT: Methodology, open-source harness, and multi-vendor performance comparison",
+      "shortTitle": "Transparent, reproducti...",
+      "status": "complete",
+      "type": "blog",
+      "ideas": 4
+    },
+    {
+      "id": "event-3",
+      "date": 18,
+      "month": 8,
+      "year": 2025,
+      "title": "Deepgram Integration Blueprints: End-to-End Implementation Guides for Top Ecosystem Platforms (Twilio, Salesforce, MS Teams, Epic EHR)",
+      "shortTitle": "Deepgram Integration B...",
+      "status": "complete",
+      "type": "blog",
+      "ideas": 4
+    }
+  ],
+  "summary": {
+    "totalEntries": 4,
+    "contentIdeas": 16,
+    "thisMonth": 3
+  }
+}

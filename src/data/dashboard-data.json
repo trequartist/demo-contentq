@@ -1,0 +1,122 @@
+{
+  "metrics": {
+    "totalContent": {
+      "value": 102,
+      "label": "Total content",
+      "sublabel": "46 blog • 56 linkedin"
+    },
+    "published": {
+      "value": 47,
+      "label": "Published"
+    },
+    "inProgress": {
+      "value": 30,
+      "label": "In progress"
+    }
+  },
+  "quickActions": [
+    {
+      "id": "create-content",
+      "icon": "✨",
+      "title": "Create Content That Converts",
+      "description": "AI-powered content creation",
+      "action": "/demo/content-studio/create",
+      "primary": true
+    },
+    {
+      "id": "see-gaps",
+      "icon": "📊",
+      "title": "See Performance Gaps",
+      "description": "Latest diagnostic with actionable insights",
+      "action": "/demo/diagnostics",
+      "primary": false
+    },
+    {
+      "id": "schedule-content",
+      "icon": "📅",
+      "title": "Schedule Strategic Content",
+      "description": "Calendar with performance-based timing",
+      "action": "/demo/calendar",
+      "primary": false
+    }
+  ],
+  "assets": [
+    {
+      "id": "asset-blog",
+      "type": "blog",
+      "name": "Gumloop Blog",
+      "status": "active",
+      "health": 65.8,
+      "posts": 37,
+      "nextAction": "Create migration guide",
+      "icon": "📝",
+      "url": "https://blog.gumloop.com",
+      "metrics": {
+        "monthlyViews": "24,387",
+        "avgEngagement": "5:23",
+        "conversionRate": "4.7%"
+      }
+    },
+    {
+      "id": "asset-linkedin",
+      "type": "linkedin",
+      "name": "LinkedIn Profile",
+      "status": "not_configured",
+      "icon": "🔗",
+      "preview": {
+        "title": "Expand Your Reach",
+        "description": "Create LinkedIn content that drives 3.2x more engagement",
+        "benefits": [
+          "Direct access to decision makers",
+          "Personal thought leadership", 
+          "Higher shareability than blog posts"
+        ],
+        "setupTime": "5 minutes",
+        "stats": {
+          "avgReach": "2,400 professionals",
+          "engagement": "3.2x higher than blog",
+          "leadGen": "+45% qualified leads"
+        }
+      }
+    }
+  ],
+  "recentActivity": [
+    {
+      "id": "activity-1",
+      "type": "linkedin",
+      "title": "LinkedIn Post Draft",
+      "status": "Post",
+      "platform": "LinkedIn",
+      "time": "2h ago"
+    },
+    {
+      "id": "activity-2",
+      "type": "blog",
+      "title": "Using Data-Driven Inclusion Strategies to Build Inclusive Leadership — Why It Matters for L...",
+      "status": "Brief",
+      "platform": "LinkedIn",
+      "time": "2h ago"
+    },
+    {
+      "id": "activity-3",
+      "type": "linkedin",
+      "title": "LinkedIn Post Draft",
+      "status": "draft",
+      "platform": "LinkedIn",
+      "time": "2h ago"
+    },
+    {
+      "id": "activity-4",
+      "type": "blog",
+      "title": "Building Scalable, Data-Driven Inclusive Cultures on LinkedIn",
+      "status": "Post",
+      "platform": "LinkedIn",
+      "time": "4h ago"
+    }
+  ],
+  "greeting": {
+    "morning": "Good morning, Max. Let's build content that actually converts.",
+    "afternoon": "Good afternoon, Max. Your content is gaining momentum.",
+    "evening": "Good evening, Max. Time to review today's performance."
+  }
+}

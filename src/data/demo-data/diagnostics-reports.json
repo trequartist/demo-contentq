@@ -1,0 +1,401 @@
+{
+  "reports": [
+    {
+      "id": "diag_blog_001",
+      "assetId": "asset_blog_001",
+      "assetType": "blog",
+      "assetName": "TechCorp Blog",
+      "status": "completed",
+      "createdAt": "2024-02-15T14:00:00Z",
+      "completedAt": "2024-02-15T14:15:00Z",
+      "runId": "run_diag_blog_20240215",
+      "metrics": {
+        "overallScore": 78,
+        "contentQuality": 82,
+        "seoScore": 75,
+        "engagement": 71,
+        "performance": 79,
+        "healthScore": 80,
+        "technicalScore": 76
+      },
+      "ai_visibility_overview": {
+        "current_score": 75,
+        "trend": "up",
+        "monthly_change": 8,
+        "ranking_keywords": 142,
+        "top_performing_content": [
+          {
+            "title": "10 Essential Metrics Every SaaS Company Should Track",
+            "url": "https://blog.techcorp.com/essential-saas-metrics",
+            "ai_visibility_score": 92,
+            "monthly_views": 8420
+          },
+          {
+            "title": "Remote Team Collaboration Best Practices",
+            "url": "https://blog.techcorp.com/remote-collaboration",
+            "ai_visibility_score": 88,
+            "monthly_views": 6750
+          }
+        ],
+        "improvement_areas": [
+          "Increase content freshness frequency",
+          "Optimize for featured snippets",
+          "Improve mobile page speed"
+        ]
+      },
+      "blog_performance_health": {
+        "traffic_metrics": {
+          "monthly_visitors": 45320,
+          "unique_visitors": 28900,
+          "page_views": 89400,
+          "avg_session_duration": "3:42",
+          "bounce_rate": 42,
+          "trend": "up"
+        },
+        "engagement_metrics": {
+          "avg_time_on_page": "2:28",
+          "pages_per_session": 2.8,
+          "comment_rate": 3.2,
+          "share_rate": 5.1,
+          "subscriber_growth_rate": 12
+        },
+        "conversion_metrics": {
+          "visitor_to_lead": 2.8,
+          "lead_to_customer": 0.9,
+          "content_roi": 312
+        }
+      },
+      "technical_seo_foundation": {
+        "overall_score": 76,
+        "issues": [
+          {
+            "severity": "high",
+            "type": "Missing meta descriptions",
+            "affected_pages": 12,
+            "impact": "Reduced CTR from search results"
+          },
+          {
+            "severity": "medium",
+            "type": "Slow page load speed",
+            "affected_pages": 8,
+            "impact": "Higher bounce rate, lower rankings"
+          },
+          {
+            "severity": "low",
+            "type": "Missing alt text",
+            "affected_pages": 23,
+            "impact": "Accessibility and image SEO"
+          }
+        ],
+        "opportunities": [
+          "Implement structured data for articles",
+          "Optimize Core Web Vitals",
+          "Create XML sitemap for better crawling"
+        ],
+        "mobile_score": 72,
+        "desktop_score": 85,
+        "indexability": 94
+      },
+      "competitive_intelligence": {
+        "market_position": 3,
+        "total_competitors_analyzed": 8,
+        "competitors": [
+          {
+            "name": "CompetitorA Blog",
+            "domain_authority": 68,
+            "content_velocity": 12,
+            "ai_visibility": 82,
+            "strengths": ["Content depth", "Video content"],
+            "weaknesses": ["Update frequency", "Mobile experience"]
+          },
+          {
+            "name": "CompetitorB Hub",
+            "domain_authority": 71,
+            "content_velocity": 8,
+            "ai_visibility": 79,
+            "strengths": ["Brand authority", "Backlink profile"],
+            "weaknesses": ["Content freshness", "Technical SEO"]
+          }
+        ],
+        "competitive_gaps": [
+          "Lack of video content",
+          "Lower publishing frequency",
+          "Missing content clusters on emerging topics"
+        ],
+        "competitive_advantages": [
+          "Better user engagement metrics",
+          "Stronger technical documentation",
+          "More comprehensive guides"
+        ]
+      },
+      "content_gap_analysis": {
+        "missing_topics": [
+          {
+            "topic": "AI/ML in Project Management",
+            "search_volume": 8900,
+            "competition": "medium",
+            "priority": "high"
+          },
+          {
+            "topic": "Remote Team Mental Health",
+            "search_volume": 6200,
+            "competition": "low",
+            "priority": "high"
+          },
+          {
+            "topic": "Hybrid Work Models",
+            "search_volume": 12000,
+            "competition": "high",
+            "priority": "medium"
+          }
+        ],
+        "underperforming_categories": [
+          "Case Studies",
+          "Video Tutorials",
+          "Interactive Tools"
+        ],
+        "content_opportunities": [
+          {
+            "type": "Content Series",
+            "title": "The Future of Work Series",
+            "estimated_impact": "15-20% traffic increase",
+            "effort": "medium"
+          },
+          {
+            "type": "Content Upgrade",
+            "title": "Interactive ROI Calculator",
+            "estimated_impact": "30% higher conversion",
+            "effort": "low"
+          }
+        ]
+      },
+      "strategic_opportunities": [
+        {
+          "opportunity": "Launch video content strategy",
+          "impact": "high",
+          "effort": "high",
+          "timeline": "3-6 months",
+          "expected_outcome": "40% increase in engagement"
+        },
+        {
+          "opportunity": "Implement topic clusters",
+          "impact": "high",
+          "effort": "medium",
+          "timeline": "1-2 months",
+          "expected_outcome": "25% improvement in organic traffic"
+        },
+        {
+          "opportunity": "Optimize for voice search",
+          "impact": "medium",
+          "effort": "low",
+          "timeline": "2-4 weeks",
+          "expected_outcome": "Capture emerging search traffic"
+        }
+      ],
+      "executive_summary": {
+        "key_findings": [
+          "Blog performance is strong with 78/100 overall score",
+          "Content quality exceeds industry benchmarks",
+          "Technical SEO needs immediate attention",
+          "Significant opportunity in video content"
+        ],
+        "immediate_actions": [
+          "Fix high-priority technical SEO issues",
+          "Launch content series on missing topics",
+          "Improve page load speeds"
+        ],
+        "quarterly_goals": [
+          "Achieve 85+ overall diagnostic score",
+          "Increase organic traffic by 30%",
+          "Launch 2 new content formats"
+        ]
+      }
+    },
+    {
+      "id": "diag_linkedin_001",
+      "assetId": "asset_linkedin_001",
+      "assetType": "linkedin",
+      "assetName": "Sarah Chen - LinkedIn",
+      "status": "completed",
+      "createdAt": "2024-02-18T10:00:00Z",
+      "completedAt": "2024-02-18T10:12:00Z",
+      "runId": "run_diag_linkedin_20240218",
+      "metrics": {
+        "overallScore": 84,
+        "contentQuality": 88,
+        "engagement": 85,
+        "performance": 82,
+        "healthScore": 83
+      },
+      "linkedin_visibility_assessment": {
+        "profile_metrics": {
+          "followers": 8420,
+          "connections": 2150,
+          "profile_views_monthly": 3200,
+          "search_appearances_monthly": 4800,
+          "post_impressions_avg": 12500,
+          "engagement_rate": 5.8
+        },
+        "content_reach": {
+          "avg_post_reach": 12500,
+          "viral_posts_count": 5,
+          "max_post_reach": 48000,
+          "reach_growth_rate": 22
+        },
+        "audience_quality": {
+          "relevant_followers_percentage": 78,
+          "decision_makers_percentage": 42,
+          "target_industry_percentage": 65
+        }
+      },
+      "content_performance_analysis": {
+        "top_performing_posts": [
+          {
+            "content": "The fear of AI replacing project managers is overblown...",
+            "date": "2024-02-10",
+            "impressions": 48000,
+            "engagement_rate": 8.2,
+            "comments": 124,
+            "shares": 89
+          },
+          {
+            "content": "3 lessons from scaling a remote team to 100+...",
+            "date": "2024-02-05",
+            "impressions": 35000,
+            "engagement_rate": 7.1,
+            "comments": 98,
+            "shares": 67
+          }
+        ],
+        "content_type_performance": {
+          "text_only": { "avg_engagement": 4.2, "avg_reach": 8000 },
+          "text_with_image": { "avg_engagement": 6.1, "avg_reach": 14000 },
+          "native_video": { "avg_engagement": 8.3, "avg_reach": 22000 },
+          "polls": { "avg_engagement": 9.1, "avg_reach": 18000 }
+        },
+        "posting_analysis": {
+          "optimal_times": ["Tuesday 9 AM", "Wednesday 12 PM", "Friday 10 AM"],
+          "optimal_frequency": "3-4 posts per week",
+          "hashtag_performance": {
+            "top_hashtags": ["#ProjectManagement", "#RemoteWork", "#Leadership"],
+            "optimal_count": "3-5 per post"
+          }
+        }
+      },
+      "competitive_linkedin_intelligence": {
+        "competitor_profiles": [
+          {
+            "name": "John Competitor",
+            "followers": 12000,
+            "engagement_rate": 4.5,
+            "posting_frequency": "Daily",
+            "content_themes": ["Tech trends", "Leadership"]
+          },
+          {
+            "name": "Jane Leader",
+            "followers": 25000,
+            "engagement_rate": 6.2,
+            "posting_frequency": "3x per week",
+            "content_themes": ["Innovation", "Team building"]
+          }
+        ],
+        "industry_benchmarks": {
+          "avg_engagement_rate": 4.2,
+          "avg_follower_growth": 15,
+          "avg_post_reach": 8000
+        },
+        "competitive_advantages": [
+          "Higher engagement rate than industry average",
+          "Strong thought leadership positioning",
+          "Consistent posting schedule"
+        ],
+        "improvement_areas": [
+          "Lower follower count than key competitors",
+          "Limited video content",
+          "Narrow content themes"
+        ]
+      },
+      "content_strategy_gaps": [
+        {
+          "gap": "Lack of video content",
+          "impact": "Missing 40% higher engagement opportunity",
+          "recommendation": "Create 1 native video per week"
+        },
+        {
+          "gap": "Limited employee advocacy",
+          "impact": "Reduced organic reach",
+          "recommendation": "Implement employee sharing program"
+        },
+        {
+          "gap": "No newsletter integration",
+          "impact": "Missing lead generation opportunity",
+          "recommendation": "Launch LinkedIn newsletter"
+        }
+      ],
+      "strategic_linkedin_recommendations": [
+        {
+          "recommendation": "Launch LinkedIn Live series",
+          "priority": "high",
+          "expected_impact": "3x engagement, 50% follower growth",
+          "timeline": "Start within 2 weeks"
+        },
+        {
+          "recommendation": "Create content pillars strategy",
+          "priority": "medium",
+          "expected_impact": "Better content consistency",
+          "timeline": "Implement this month"
+        },
+        {
+          "recommendation": "Collaborate with industry influencers",
+          "priority": "medium",
+          "expected_impact": "Expand reach by 200%",
+          "timeline": "Q2 2024"
+        }
+      ],
+      "executive_summary": {
+        "strengths": [
+          "Excellent engagement rate (5.8% vs 4.2% industry avg)",
+          "Strong thought leadership content",
+          "Consistent posting schedule"
+        ],
+        "opportunities": [
+          "Video content can triple engagement",
+          "LinkedIn Live for authority building",
+          "Newsletter for lead generation"
+        ],
+        "30_day_plan": [
+          "Week 1: Launch video content pilot",
+          "Week 2-3: Set up LinkedIn newsletter",
+          "Week 4: Plan first LinkedIn Live event"
+        ]
+      }
+    }
+  ],
+  "diagnosticsQueue": [
+    {
+      "assetId": "asset_blog_002",
+      "assetName": "Product Updates Blog",
+      "scheduledFor": "2024-03-15T10:00:00Z",
+      "priority": "high",
+      "estimatedDuration": "15 minutes"
+    }
+  ],
+  "diagnosticsHistory": {
+    "totalRun": 24,
+    "lastRunDate": "2024-03-10T08:00:00Z",
+    "averageScore": 79,
+    "scoreImprovement": 12,
+    "topImprovements": [
+      {
+        "asset": "TechCorp Blog",
+        "improvement": 15,
+        "timeframe": "Last 30 days"
+      },
+      {
+        "asset": "Sarah Chen - LinkedIn",
+        "improvement": 18,
+        "timeframe": "Last 30 days"
+      }
+    ]
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "assets": [
+    {
+      "id": "asset-001",
+      "name": "Tech Innovation Blog",
+      "type": "blog",
+      "platform": "WordPress",
+      "url": "https://blog.techcompany.com",
+      "status": "active",
+      "company": "TechCompany Inc.",
+      "configuration": {
+        "apiKey": "wp_key_xxxxx",
+        "endpoint": "https://blog.techcompany.com/wp-json/wp/v2",
+        "webhookUrl": "https://api.kiwiq.ai/webhooks/asset-001",
+        "syncEnabled": true,
+        "autoPublish": false
+      },
+      "onboarding": {
+        "status": "completed",
+        "completedSteps": 7,
+        "totalSteps": 7,
+        "steps": {
+          "connection": true,
+          "authentication": true,
+          "contentMapping": true,
+          "seoSetup": true,
+          "analytics": true,
+          "workflow": true,
+          "testing": true
+        },
+        "completedDate": "2024-01-05T14:30:00Z"
+      },
+      "metrics": {
+        "totalPosts": 127,
+        "publishedPosts": 98,
+        "draftPosts": 29,
+        "monthlyViews": 45678,
+        "avgEngagement": 4.2,
+        "seoScore": 87
+      },
+      "integration": {
+        "lastSync": "2024-01-15T10:00:00Z",
+        "syncFrequency": "hourly",
+        "errors": 0,
+        "warnings": 2
+      },
+      "diagnostics": {
+        "lastRun": "2024-01-15T09:00:00Z",
+        "overallScore": 85,
+        "issues": 3,
+        "recommendations": 8
+      }
+    },
+    {
+      "id": "asset-002",
+      "name": "LinkedIn Company Page",
+      "type": "linkedin",
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/company/techcompany",
+      "status": "active",
+      "company": "TechCompany Inc.",
+      "configuration": {
+        "accessToken": "li_token_xxxxx",
+        "pageId": "12345678",
+        "organizationId": "87654321",
+        "syncEnabled": true,
+        "autoPublish": true,
+        "postingSchedule": {
+          "enabled": true,
+          "timezone": "America/New_York",
+          "slots": [
+            { "day": "Tuesday", "time": "10:00" },
+            { "day": "Thursday", "time": "14:00" }
+          ]
+        }
+      },
+      "onboarding": {
+        "status": "completed",
+        "completedSteps": 5,
+        "totalSteps": 5,
+        "steps": {
+          "connection": true,
+          "authentication": true,
+          "pageSetup": true,
+          "audienceConfig": true,
+          "testing": true
+        },
+        "completedDate": "2024-01-08T11:20:00Z"
+      },
+      "metrics": {
+        "followers": 12567,
+        "posts": 234,
+        "impressions": 234567,
+        "engagementRate": 5.8,
+        "clickRate": 3.2
+      },
+      "integration": {
+        "lastSync": "2024-01-15T14:30:00Z",
+        "syncFrequency": "real-time",
+        "errors": 0,
+        "warnings": 0
+      },
+      "diagnostics": {
+        "lastRun": "2024-01-14T14:00:00Z",
+        "overallScore": 73,
+        "issues": 5,
+        "recommendations": 12
+      }
+    },
+    {
+      "id": "asset-003",
+      "name": "Developer Portal",
+      "type": "documentation",
+      "platform": "Custom",
+      "url": "https://docs.techcompany.com",
+      "status": "setup",
+      "company": "TechCompany Inc.",
+      "configuration": {
+        "apiEndpoint": null,
+        "authMethod": "oauth",
+        "syncEnabled": false,
+        "autoPublish": false
+      },
+      "onboarding": {
+        "status": "in-progress",
+        "completedSteps": 3,
+        "totalSteps": 8,
+        "steps": {
+          "connection": true,
+          "authentication": true,
+          "contentMapping": true,
+          "seoSetup": false,
+          "analytics": false,
+          "workflow": false,
+          "versioning": false,
+          "testing": false
+        },
+        "startedDate": "2024-01-12T09:00:00Z"
+      },
+      "metrics": {
+        "pages": 0,
+        "categories": 0,
+        "monthlyViews": 0,
+        "avgTimeOnPage": 0,
+        "searchQueries": 0
+      },
+      "integration": {
+        "lastSync": null,
+        "syncFrequency": "manual",
+        "errors": 0,
+        "warnings": 1
+      },
+      "diagnostics": {
+        "lastRun": null,
+        "overallScore": 0,
+        "issues": 0,
+        "recommendations": 0
+      }
+    }
+  ],
+  "templates": {
+    "onboarding": [
+      {
+        "id": "onboard-blog",
+        "type": "blog",
+        "name": "Blog Onboarding",
+        "steps": [
+          { "id": "connection", "title": "Connect Platform", "required": true },
+          { "id": "authentication", "title": "Authenticate", "required": true },
+          { "id": "contentMapping", "title": "Map Content Fields", "required": true },
+          { "id": "seoSetup", "title": "Configure SEO", "required": false },
+          { "id": "analytics", "title": "Setup Analytics", "required": false },
+          { "id": "workflow", "title": "Configure Workflow", "required": false },
+          { "id": "testing", "title": "Test Integration", "required": true }
+        ]
+      },
+      {
+        "id": "onboard-linkedin",
+        "type": "linkedin",
+        "name": "LinkedIn Onboarding",
+        "steps": [
+          { "id": "connection", "title": "Connect LinkedIn", "required": true },
+          { "id": "authentication", "title": "Authorize Access", "required": true },
+          { "id": "pageSetup", "title": "Select Company Page", "required": true },
+          { "id": "audienceConfig", "title": "Configure Audience", "required": false },
+          { "id": "testing", "title": "Test Posting", "required": true }
+        ]
+      }
+    ]
+  },
+  "integrations": {
+    "available": [
+      { "platform": "WordPress", "type": "blog", "icon": "wordpress" },
+      { "platform": "Webflow", "type": "blog", "icon": "webflow" },
+      { "platform": "LinkedIn", "type": "social", "icon": "linkedin" },
+      { "platform": "Twitter", "type": "social", "icon": "twitter" },
+      { "platform": "Medium", "type": "blog", "icon": "medium" },
+      { "platform": "Ghost", "type": "blog", "icon": "ghost" },
+      { "platform": "Custom API", "type": "custom", "icon": "api" }
+    ],
+    "comingSoon": [
+      { "platform": "YouTube", "type": "video", "eta": "Q2 2024" },
+      { "platform": "Instagram", "type": "social", "eta": "Q2 2024" },
+      { "platform": "TikTok", "type": "social", "eta": "Q3 2024" }
+    ]
+  },
+  "summary": {
+    "totalAssets": 3,
+    "activeAssets": 2,
+    "setupAssets": 1,
+    "totalSyncs": 456,
+    "failedSyncs": 2,
+    "avgDiagnosticScore": 79,
+    "lastGlobalSync": "2024-01-15T15:00:00Z"
+  }
+}

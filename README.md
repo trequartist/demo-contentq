@@ -1,36 +1,134 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KiwiQ Demo - AI Content Platform
 
-## Getting Started
+A pixel-perfect static demo of the KiwiQ content creation and management platform, built with Next.js 15 and TypeScript.
 
-First, run the development server:
+## 🎯 Overview
+
+This is a fully functional demo showcasing KiwiQ's enterprise content creation platform. All features are static/mocked for demonstration purposes.
+
+## 🚀 Getting Started
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000/demo/dashboard](http://localhost:3000/demo/dashboard) to view the demo.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📱 Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Dashboard
+- **Metrics Overview**: Total content, published, and in-progress statistics
+- **Quick Actions**: Fast access to content creation, calendar, and documents
+- **Recent Activity**: Track latest content updates
+- **Tips & Recommendations**: Contextual guidance
 
-## Learn More
+### Content Studio
+- **Create Content**: 5-stage AI-powered workflow (Input → Topics → Brief → Draft → Complete)
+- **My Documents**: Grid view of all content with filtering by status
+- **Content Calendar**: Monthly view with scheduled content
+- **Platform Support**: Blog and LinkedIn content types
 
-To learn more about Next.js, take a look at the following resources:
+### Assets Management
+- **Multi-Asset Support**: Blog and LinkedIn profiles
+- **Progress Tracking**: Document update, diagnostics, and playbook completion
+- **Statistics**: Content count and publishing metrics
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Additional Modules
+- **Diagnostics**: Performance analysis and recommendations
+- **Playbook**: Strategic content planning and campaigns
+- **Settings**: Profile, notifications, security, billing, team, and API management
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎨 Design Standards
 
-## Deploy on Vercel
+The demo strictly follows KiwiQ's UI/UX standards:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Typography**: Inter font family
+- **Colors**: Gray-based palette with semantic colors
+- **Spacing**: 4px grid system
+- **Components**: Consistent button, card, and form patterns
+- **Layout**: Fixed sidebar navigation with content area
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📂 Project Structure
+
+```
+src/
+├── app/demo/           # Demo pages
+│   ├── dashboard/      # Main dashboard
+│   ├── content-studio/ # Content creation workflows
+│   ├── assets/         # Asset management
+│   ├── diagnostics/    # Performance analysis
+│   ├── playbook/       # Strategic planning
+│   └── settings/       # User settings
+├── components/
+│   └── layout/         # Layout components
+├── data/
+│   ├── demo-data/      # Static JSON data
+│   ├── *.md            # Documentation and standards
+│   └── *.json          # Demo configuration
+└── lib/demo/           # Demo utilities
+```
+
+## 🔧 Technologies
+
+- **Framework**: Next.js 15.5.2
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **Font**: Inter (Google Fonts)
+
+## 📝 Key Components
+
+### Layout System
+- Responsive sidebar navigation
+- User profile section
+- Content area with max-width constraints
+
+### Content Creation Workflow
+1. **Input Stage**: Company details and requirements
+2. **Topics Stage**: AI-generated topic suggestions
+3. **Brief Stage**: Structured content outline
+4. **Draft Stage**: Full content generation
+5. **Complete Stage**: Publishing confirmation
+
+### Data Structure
+All demo data is stored in JSON files:
+- User profiles and organizations
+- Content items and workflows
+- Analytics and metrics
+- Diagnostic reports
+- Playbook strategies
+
+## 🚦 Demo Limitations
+
+- Static data only (no real API calls)
+- AI responses are pre-generated
+- File uploads are simulated
+- Real-time features use timers
+- External integrations show sample data
+
+## 🎯 Use Cases
+
+Perfect for:
+- Product demonstrations
+- Sales presentations
+- Feature walkthroughs
+- User training
+- Design reviews
+
+## 📄 License
+
+© 2024 KiwiQ. All rights reserved.
+
+---
+
+Built with attention to detail following KiwiQ's product and design standards.

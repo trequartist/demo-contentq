@@ -1,0 +1,195 @@
+{
+  "workflows": {
+    "create": {
+      "stages": ["Input", "Angles", "Brief", "Draft", "Refine"],
+      "currentWorkflow": null
+    },
+    "improve": {
+      "stages": ["Import", "Analysis", "Enhancement", "Regeneration", "Polish"],
+      "currentWorkflow": null
+    }
+  },
+  "angles": [
+    {
+      "id": "angle-hidden-costs",
+      "angle": "The Hidden Costs Angle",
+      "description": "Focus on expenses beyond subscription: maintenance time, error handling, scaling limits",
+      "uniqueValue": "Reveals true TCO most buyers miss",
+      "targetAudience": "CFOs and Finance teams",
+      "estimatedImpact": "High",
+      "selected": false
+    },
+    {
+      "id": "angle-success-story",
+      "angle": "The 3-Week Migration Success Story",
+      "description": "Step-by-step journey of TechCorp's migration with specific timelines and milestones",
+      "uniqueValue": "Concrete proof with real numbers",
+      "targetAudience": "Operations managers planning migration",
+      "estimatedImpact": "Very High",
+      "selected": false
+    },
+    {
+      "id": "angle-technical",
+      "angle": "The Technical Superiority Deep-Dive",
+      "description": "Architectural comparison showing why AI-native beats bolt-on automation",
+      "uniqueValue": "Positions Gumloop as next-generation",
+      "targetAudience": "Technical decision makers",
+      "estimatedImpact": "Medium",
+      "selected": false
+    },
+    {
+      "id": "angle-monday-crisis",
+      "angle": "The Monday Morning Crisis",
+      "description": "Start with relatable scenario of broken workflows ruining Monday",
+      "hook": "Picture this: It's 8AM Monday, and your sales director is pinging you...",
+      "estimatedImpact": "Very High",
+      "selected": false
+    },
+    {
+      "id": "angle-60-40",
+      "angle": "The 60/40 Rule",
+      "description": "Educational approach explaining what automation can and can't do",
+      "hook": "After analyzing thousands of workflows, we discovered a pattern...",
+      "estimatedImpact": "High",
+      "selected": false
+    }
+  ],
+  "briefs": {
+    "migration": {
+      "title": "From $2,400 to $650: TechCorp's 3-Week Zapier Migration Success Story",
+      "targetAudience": {
+        "primary": "Operations Managers (1-5 years experience)",
+        "secondary": "RevOps Leaders",
+        "painPoints": ["High automation costs", "Vendor lock-in fears", "Migration complexity"]
+      },
+      "outline": [
+        {
+          "section": "The Breaking Point",
+          "points": ["Monthly costs exceeding budget", "Performance degradation at scale", "Limited AI capabilities"],
+          "wordCount": 250
+        },
+        {
+          "section": "The Migration Decision Framework",
+          "points": ["Cost-benefit analysis", "Risk assessment", "Platform comparison"],
+          "wordCount": 400
+        },
+        {
+          "section": "Week-by-Week Migration Timeline",
+          "points": ["Week 1: Assessment and planning", "Week 2: Core workflow migration", "Week 3: Testing and optimization"],
+          "wordCount": 600
+        },
+        {
+          "section": "Results and ROI",
+          "points": ["73% cost reduction", "35% efficiency gain", "Zero downtime achieved"],
+          "wordCount": 350
+        }
+      ],
+      "seoOptimization": {
+        "primaryKeyword": "Zapier to Gumloop migration",
+        "secondaryKeywords": ["automation cost reduction", "Zapier alternative", "migration guide"],
+        "metaDescription": "Learn how TechCorp cut automation costs by 73% in just 3 weeks by migrating from Zapier to Gumloop. Step-by-step guide included."
+      },
+      "estimatedReadTime": "7 minutes",
+      "callToAction": "Get your free migration assessment"
+    },
+    "rulesBreak": {
+      "title": "When Rules Break: How AI Handles the 40% of Workflows Traditional Automation Can't",
+      "publishTime": "Friday, Nov 15, 10:00 AM EST",
+      "estimatedReach": "1,200-1,500 RevOps professionals",
+      "structure": {
+        "hook": "Monday morning crisis scenario",
+        "problem": "The 40% of workflows that break rules",
+        "solution": "AI's pattern recognition vs rule matching",
+        "proof": "Three customer transformations",
+        "cta": "Audit your broken workflows checklist"
+      },
+      "competitivePositioning": "Directly addresses Zapier's weakness in complex conditionals",
+      "expectedMetrics": {
+        "views": "450-600 in first 48 hours",
+        "mqls": "12-15 from RevOps segment",
+        "shareRate": "Above average (pain point content)"
+      }
+    }
+  },
+  "drafts": {
+    "migration": {
+      "title": "From $2,400 to $650: TechCorp's 3-Week Zapier Migration Success Story",
+      "opening": "When TechCorp's automation bill hit $2,400 per month last quarter, Sarah Chen, their Head of Operations, knew something had to change. 'We were paying more for automation than for our entire sales tech stack,' she recalls. 'And the worst part? We were still manually fixing workflows every day.'",
+      "wordCount": 1650,
+      "readabilityScore": 72,
+      "gradeLevel": 10,
+      "sections": [
+        {
+          "heading": "The Breaking Point",
+          "content": "TechCorp's journey to Gumloop started with a single failed workflow that cost them $50,000 in lost sales. Their Zapier automations, built over three years, had become a tangled web of workarounds and patches..."
+        },
+        {
+          "heading": "Week 1: Assessment and Planning",
+          "content": "Sarah's team began by mapping every workflow, documenting dependencies, and identifying critical paths. The discovery was shocking: only 47% of their automations were actually necessary..."
+        },
+        {
+          "heading": "Week 2: Core Migration",
+          "content": "With Gumloop's migration tools, the team moved their critical workflows in just 5 days. The AI-powered mapping reduced manual work by 80%..."
+        },
+        {
+          "heading": "Results That Speak",
+          "content": "Three weeks after starting the migration, TechCorp's results exceeded all expectations: 73% cost reduction, 35% faster workflow execution, zero downtime during transition..."
+        }
+      ]
+    }
+  },
+  "improvements": {
+    "analysis": {
+      "currentScore": 42,
+      "potentialScore": 87,
+      "strengths": [
+        "Clear structure with headers",
+        "Beginner-friendly language"
+      ],
+      "criticalIssues": [
+        {
+          "issue": "Generic title with low search volume",
+          "current": "Understanding Workflow Automation",
+          "suggested": "The Hidden 40%: Workflows Your Current Automation Can't Handle",
+          "impact": "+156% CTR"
+        },
+        {
+          "issue": "No concrete examples or data",
+          "finding": "Zero proof points to build trust",
+          "solution": "Add 3 real scenarios with actual metrics",
+          "impact": "+89% engagement"
+        },
+        {
+          "issue": "Weak competitive positioning",
+          "finding": "Doesn't address why choose Gumloop over alternatives",
+          "solution": "Add comparison section highlighting AI advantages",
+          "impact": "+34% conversion"
+        },
+        {
+          "issue": "Missing search optimization",
+          "finding": "No coverage of high-volume keywords",
+          "gaps": ["Zapier alternative", "automation cost", "AI workflows"],
+          "impact": "+230% organic traffic potential"
+        }
+      ],
+      "recommendations": {
+        "priority1": "Rewrite opening with Monday Morning problem hook",
+        "priority2": "Add TechCorp case study with 73% cost reduction",
+        "priority3": "Include 60/40 automation split framework",
+        "priority4": "Add interactive ROI calculator embed"
+      }
+    }
+  },
+  "calendar": {
+    "suggestions": [
+      {
+        "date": "Friday, Nov 15",
+        "slot": "10:00 AM",
+        "status": "empty",
+        "recommendation": "High-opportunity slot for thought leadership",
+        "suggestedTopic": "When Rules Break: How AI Handles the 40% of Workflows Traditional Automation Can't",
+        "reason": "RevOps managers most active Fridays 10-11 AM"
+      }
+    ]
+  }
+}

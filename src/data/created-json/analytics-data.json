@@ -1,0 +1,171 @@
+{
+  "summary": {
+    "timeRange": "Last 30 days",
+    "compareTo": "Previous period",
+    "metrics": [
+      {
+        "label": "Blog Traffic",
+        "current": "24,387",
+        "change": "+47%",
+        "spark": [14250, 15800, 18200, 20100, 22400, 23200, 24387],
+        "source": "Google Search Console"
+      },
+      {
+        "label": "AI Visibility",
+        "current": "78.5%",
+        "change": "+12.3%",
+        "detail": "Mentioned in 23% of relevant queries",
+        "source": "ContentQ Intelligence"
+      },
+      {
+        "label": "Conversion Rate",
+        "current": "4.7%",
+        "change": "+1.2%",
+        "detail": "Blog → Trial signup",
+        "source": "Webflow Analytics"
+      },
+      {
+        "label": "Authority Score",
+        "current": "65.8",
+        "change": "+8.2",
+        "detail": "Industry percentile: 73rd",
+        "source": "ContentQ Analysis"
+      }
+    ]
+  },
+  "contentPerformance": {
+    "topPerformers": [
+      {
+        "id": "content-1",
+        "title": "When Rules Break: AI Handles 40% of Workflows",
+        "published": "Nov 8, 2024",
+        "metrics": {
+          "views": 3847,
+          "avgTime": "5:23",
+          "conversionRate": "7.2%",
+          "aiMentions": 14,
+          "ranking": "#4 for 'automation limits'"
+        },
+        "trend": "up",
+        "insights": "Overperforming by 234% - RevOps audience resonating strongly"
+      },
+      {
+        "id": "content-2",
+        "title": "Zapier to Gumloop: 3-Week Migration Guide",
+        "published": "Nov 4, 2024",
+        "metrics": {
+          "views": 2956,
+          "avgTime": "8:47",
+          "conversionRate": "12.3%",
+          "aiMentions": 8,
+          "ranking": "#2 for 'migrate from Zapier'"
+        },
+        "trend": "up",
+        "insights": "Highest converting content - bottom funnel working"
+      },
+      {
+        "id": "content-3",
+        "title": "The Real Cost of Automation",
+        "published": "Oct 28, 2024",
+        "metrics": {
+          "views": 1245,
+          "avgTime": "3:12",
+          "conversionRate": "2.1%",
+          "aiMentions": 3,
+          "ranking": "#18 for 'automation cost'"
+        },
+        "trend": "stable",
+        "insights": "Needs optimization - title not specific enough"
+      }
+    ],
+    "contentHealth": {
+      "totalPosts": 37,
+      "avgPerformance": 1847,
+      "growthRate": "+34%",
+      "contentGaps": ["Technical deep-dives", "Video content", "Comparison guides"]
+    }
+  },
+  "seoPerformance": {
+    "rankings": {
+      "topKeywords": [
+        { "keyword": "Zapier alternative", "position": 7, "change": "+3", "volume": 8100 },
+        { "keyword": "AI automation platform", "position": 4, "change": "+5", "volume": 4400 },
+        { "keyword": "No-code AI workflows", "position": 12, "change": "+8", "volume": 2800 },
+        { "keyword": "Automation cost calculator", "position": 23, "change": "NEW", "volume": 2100 }
+      ],
+      "totalKeywords": 147,
+      "page1Keywords": 23,
+      "featuredSnippets": 2
+    },
+    "technicalHealth": {
+      "score": 72,
+      "issues": [
+        { "type": "Missing H1s", "pages": 12, "impact": "High" },
+        { "type": "No meta descriptions", "pages": 8, "impact": "Medium" },
+        { "type": "Slow load time", "pages": 3, "impact": "High" }
+      ]
+    }
+  },
+  "aiOptimization": {
+    "llmVisibility": {
+      "platforms": [
+        {
+          "name": "ChatGPT",
+          "visibility": "23%",
+          "change": "+8%",
+          "citations": 47,
+          "topContent": "RevOps automation guides",
+          "recommendation": "Strong technical content helping"
+        },
+        {
+          "name": "Claude",
+          "visibility": "18%",
+          "change": "+5%",
+          "citations": 31,
+          "topContent": "Migration guides",
+          "recommendation": "Case studies resonating"
+        },
+        {
+          "name": "Perplexity",
+          "visibility": "31%",
+          "change": "+11%",
+          "citations": 68,
+          "topContent": "Comparison content",
+          "recommendation": "Keep creating versus content"
+        }
+      ],
+      "overallScore": 78.5,
+      "competitorComparison": {
+        "you": 78.5,
+        "zapier": 94.2,
+        "make": 67.3,
+        "n8n": 45.8
+      }
+    },
+    "optimization": {
+      "structured": "19% (Need FAQ, HowTo schemas)",
+      "contextDensity": "Good (72/100)",
+      "citationTriggers": "Medium (47/100)",
+      "recommendations": [
+        "Add FAQ sections to top posts",
+        "Include more quantifiable metrics",
+        "Create definition-style content"
+      ]
+    }
+  },
+  "chartData": {
+    "trafficTrend": {
+      "labels": ["Oct 15", "Oct 22", "Oct 29", "Nov 5", "Nov 12"],
+      "data": [14250, 15800, 18200, 20100, 24387]
+    },
+    "conversionFunnel": {
+      "stages": ["Views", "Engaged", "Click", "Trial", "Customer"],
+      "values": [24387, 14632, 3658, 1146, 127]
+    },
+    "aiVisibilityRadar": {
+      "labels": ["ChatGPT", "Claude", "Perplexity", "Gemini", "Bing"],
+      "yourValues": [23, 18, 31, 12, 8],
+      "industryBenchmark": [45, 40, 42, 35, 30]
+    }
+  }
+}

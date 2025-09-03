@@ -1,0 +1,101 @@
+{
+  "documents": [
+    {
+      "id": "doc-1",
+      "title": "Achieving Enterprise-Grade Speech Recognition: Deepgram's Nova-3 Model Benchmarking in...",
+      "description": "# Achieving Enterprise-Grade Speech Recognition: Deepgram's Nova-3 Model Benchmarking in...",
+      "status": "Draft",
+      "date": "03/09/2025",
+      "wordCount": 719,
+      "type": "blog"
+    },
+    {
+      "id": "doc-2",
+      "title": "Achieving Enterprise-Grade Speech Recognition...",
+      "description": "Establish Deepgram as a technological leader by demonstrating Nova-3's superior...",
+      "status": "Post",
+      "date": "03/09/2025",
+      "wordCount": 33,
+      "type": "blog"
+    },
+    {
+      "id": "doc-3",
+      "title": "Setting the Standard: Deepgram's Reproducible Benchmarking for Speech-to-Text Excellence",
+      "description": "# Setting the Standard: Deepgram's Reproducible Benchmarking for Speech-to-...",
+      "status": "Draft",
+      "date": "03/09/2025",
+      "wordCount": 603,
+      "type": "blog"
+    },
+    {
+      "id": "doc-4",
+      "title": "Setting the Standard: Deepgram's Reproducible...",
+      "description": "Establish Deepgram as the authoritative source for high-performance, transparent...",
+      "status": "Post",
+      "date": "03/09/2025",
+      "wordCount": 30,
+      "type": "blog"
+    },
+    {
+      "id": "doc-5",
+      "title": "Advanced Speech-to-Text Benchmarking and Compliance Strategies for Enterprise Voice...",
+      "description": "# Advanced Speech-to-Text Benchmarking and Compliance Strategies for Enterprise Voice...",
+      "status": "Draft",
+      "date": "03/09/2025",
+      "wordCount": 703,
+      "type": "blog"
+    },
+    {
+      "id": "doc-6",
+      "title": "Advanced Speech-to-Text Benchmarking and...",
+      "description": "Establish Deepgram as the authoritative source in real-time speech recognition performance...",
+      "status": "Post",
+      "date": "03/09/2025",
+      "wordCount": 26,
+      "type": "blog"
+    },
+    {
+      "id": "doc-7",
+      "title": "Achieving Industry-Leading Speech Recognition: Deepgram's Benchmarking and Insights In...",
+      "description": "# Achieving Industry-Leading Speech Recognition: Deepgram's Benchmarking and Insights In...",
+      "status": "Draft",
+      "date": "03/09/2025",
+      "wordCount": 678,
+      "type": "blog"
+    },
+    {
+      "id": "doc-8",
+      "title": "Achieving Industry-Leading Speech Recognition: Deepgram Nova-3's Performance in Noisy...",
+      "description": "# Achieving Industry-Leading Speech Recognition: Deepgram Nova-3's Performance in Noisy...",
+      "status": "Draft",
+      "date": "03/09/2025",
+      "wordCount": 787,
+      "type": "blog"
+    },
+    {
+      "id": "doc-9",
+      "title": "Achieving Industry-Leading Speech Recognition...",
+      "description": "Establish Deepgram as a technical authority by transparently showcasing Nova...",
+      "status": "Post",
+      "date": "03/09/2025",
+      "wordCount": 21,
+      "type": "blog"
+    },
+    {
+      "id": "doc-10",
+      "title": "Achieving Industry-Leading Speech Recognition...",
+      "description": "Establish Deepgram as the top provider of accurate, real-time, multilingual voice transcription...",
+      "status": "Post",
+      "date": "03/09/2025",
+      "wordCount": 28,
+      "type": "blog"
+    }
+  ],
+  "stats": {
+    "total": 46,
+    "briefs": 25,
+    "drafts": 13,
+    "published": 4,
+    "ideas": 4
+  }
+}

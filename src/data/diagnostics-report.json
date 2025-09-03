@@ -1,0 +1,205 @@
+{
+  "reports": [
+    {
+      "id": "report-001",
+      "assetId": "asset-blog-001",
+      "assetName": "Tech Blog",
+      "assetType": "blog",
+      "runDate": "2024-01-15T10:30:00Z",
+      "status": "completed",
+      "overallScore": 85,
+      "metrics": {
+        "visibility": {
+          "score": 78,
+          "trend": "up",
+          "change": 5.2,
+          "issues": 3,
+          "improvements": 8
+        },
+        "content": {
+          "score": 92,
+          "trend": "stable",
+          "change": 0.5,
+          "issues": 1,
+          "improvements": 4
+        },
+        "technical": {
+          "score": 88,
+          "trend": "up",
+          "change": 3.1,
+          "issues": 2,
+          "improvements": 6
+        },
+        "engagement": {
+          "score": 81,
+          "trend": "down",
+          "change": -2.3,
+          "issues": 4,
+          "improvements": 5
+        }
+      },
+      "diagnostics": {
+        "seo": {
+          "title": "SEO Analysis",
+          "status": "good",
+          "score": 85,
+          "findings": [
+            {
+              "type": "success",
+              "title": "Meta descriptions optimized",
+              "description": "All pages have unique, keyword-rich meta descriptions"
+            },
+            {
+              "type": "warning",
+              "title": "Missing alt text",
+              "description": "12 images lack descriptive alt text"
+            },
+            {
+              "type": "error",
+              "title": "Broken internal links",
+              "description": "3 internal links return 404 errors"
+            }
+          ]
+        },
+        "performance": {
+          "title": "Performance Metrics",
+          "status": "needs-work",
+          "score": 72,
+          "findings": [
+            {
+              "type": "warning",
+              "title": "Large page size",
+              "description": "Average page size is 2.3MB, should be under 1MB"
+            },
+            {
+              "type": "success",
+              "title": "Fast server response",
+              "description": "TTFB under 200ms consistently"
+            }
+          ]
+        },
+        "content": {
+          "title": "Content Quality",
+          "status": "excellent",
+          "score": 94,
+          "findings": [
+            {
+              "type": "success",
+              "title": "High readability score",
+              "description": "Flesch reading ease score of 65"
+            },
+            {
+              "type": "success",
+              "title": "Comprehensive coverage",
+              "description": "Topics thoroughly covered with examples"
+            }
+          ]
+        },
+        "accessibility": {
+          "title": "Accessibility Check",
+          "status": "good",
+          "score": 87,
+          "findings": [
+            {
+              "type": "success",
+              "title": "WCAG 2.1 AA compliant",
+              "description": "Meets most accessibility standards"
+            },
+            {
+              "type": "warning",
+              "title": "Low contrast elements",
+              "description": "3 text elements have insufficient contrast"
+            }
+          ]
+        }
+      },
+      "recommendations": [
+        {
+          "priority": "high",
+          "category": "seo",
+          "title": "Fix broken internal links",
+          "impact": "Improves user experience and SEO",
+          "effort": "low",
+          "timeEstimate": "30 minutes"
+        },
+        {
+          "priority": "high",
+          "category": "performance",
+          "title": "Optimize images",
+          "impact": "50% reduction in page load time",
+          "effort": "medium",
+          "timeEstimate": "2 hours"
+        },
+        {
+          "priority": "medium",
+          "category": "accessibility",
+          "title": "Add missing alt text",
+          "impact": "Better accessibility and SEO",
+          "effort": "low",
+          "timeEstimate": "1 hour"
+        },
+        {
+          "priority": "low",
+          "category": "content",
+          "title": "Update outdated statistics",
+          "impact": "Improved credibility",
+          "effort": "medium",
+          "timeEstimate": "1.5 hours"
+        }
+      ],
+      "historicalData": [
+        { "date": "2024-01-01", "score": 78 },
+        { "date": "2024-01-05", "score": 80 },
+        { "date": "2024-01-10", "score": 83 },
+        { "date": "2024-01-15", "score": 85 }
+      ]
+    },
+    {
+      "id": "report-002",
+      "assetId": "asset-linkedin-001",
+      "assetName": "LinkedIn Company Page",
+      "assetType": "linkedin",
+      "runDate": "2024-01-14T14:20:00Z",
+      "status": "completed",
+      "overallScore": 73,
+      "metrics": {
+        "visibility": {
+          "score": 68,
+          "trend": "down",
+          "change": -3.4,
+          "issues": 5,
+          "improvements": 3
+        },
+        "content": {
+          "score": 75,
+          "trend": "up",
+          "change": 2.1,
+          "issues": 3,
+          "improvements": 6
+        },
+        "technical": {
+          "score": 71,
+          "trend": "stable",
+          "change": 0.2,
+          "issues": 4,
+          "improvements": 4
+        },
+        "engagement": {
+          "score": 78,
+          "trend": "up",
+          "change": 4.5,
+          "issues": 2,
+          "improvements": 7
+        }
+      }
+    }
+  ],
+  "summary": {
+    "totalReports": 47,
+    "completedReports": 45,
+    "pendingReports": 2,
+    "averageScore": 82.3,
+    "lastRunDate": "2024-01-15T10:30:00Z",
+    "nextScheduledRun": "2024-01-22T10:30:00Z"
+  }
+}
