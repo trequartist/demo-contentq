@@ -4,7 +4,7 @@ A pixel-perfect static demo of the KiwiQ content creation and management platfor
 
 ## 🎯 Overview
 
-This is a fully functional demo showcasing KiwiQ's enterprise content creation platform. All features are static/mocked for demonstration purposes.
+This is a  functional demo showcasing KiwiQ's enterprise content creation platform. All features are static/mocked for demonstration purposes.
 
 ## 🚀 Getting Started
 
