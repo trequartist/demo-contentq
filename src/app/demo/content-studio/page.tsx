@@ -302,7 +302,7 @@ export default function ContentStudioPage() {
                             <div>
                               <p className="font-medium text-black line-clamp-1">{doc.title}</p>
                               <p className="text-sm text-black/40">
-                                {doc.type} • Modified {new Date(doc.dates.modified).toLocaleDateString()}
+                                {doc.type} • Modified {new Date(doc.dates.modified).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })}
                               </p>
                             </div>
                           </div>

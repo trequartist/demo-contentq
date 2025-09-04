@@ -117,7 +117,7 @@ export default function DocumentPage() {
                 <div>
                   <h1 className="text-lg font-semibold text-gray-900">{document.title}</h1>
                   <p className="text-sm text-gray-600">
-                    {document.type} • Created {new Date(document.dates?.created || new Date()).toLocaleDateString()}
+                    {document.type} • Created {new Date(document.dates?.created || new Date()).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })}
                   </p>
                 </div>
               </div>
@@ -378,7 +378,7 @@ export default function DocumentPage() {
                       {doc.content?.excerpt || 'No excerpt available'}
                     </p>
                     <p className="text-xs text-gray-500">
-                      {doc.type} • {new Date(doc.dates?.created || new Date()).toLocaleDateString()}
+                      {doc.type} • {new Date(doc.dates?.created || new Date()).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })}
                     </p>
                   </div>
                 ))}

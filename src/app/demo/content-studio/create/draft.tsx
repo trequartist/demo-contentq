@@ -3,6 +3,9 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button, Badge } from '@/components/ui';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import {
     Bold,
     Italic,
@@ -39,7 +42,9 @@ import {
 } from 'lucide-react';
 
 // Import the actual content from the markdown file
-const ACTUAL_CONTENT = `# When Rules Break: How AI Handles the 40% of Workflows Traditional Automation Can't
+const ACTUAL_CONTENT = `![Image](https://beta.kiwiq.ai/generated_903847.png)
+
+# When Rules Break: How AI Handles the 40% of Workflows Traditional Automation Can't
 
 ## Quick Playbook
 
@@ -558,19 +563,38 @@ export default function DraftEditorPage() {
                     <div className="flex-1 overflow-y-auto">
                         <div className="max-w-4xl mx-auto px-8 py-6">
                             {viewMode === 'preview' ? (
-                                <div
-                                    className="prose prose-lg max-w-none"
-                                    dangerouslySetInnerHTML={{
-                                        __html: content
-                                            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-                                            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-                                            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-                                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                                            .replace(/\*(.*?)\*/g, '<em>$1</em>')
-                                            .replace(/\n\n/g, '</p><p>')
-                                            .replace(/^(.*)$/gm, '<p>$1</p>')
-                                    }}
-                                />
+                                <div className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-strong:text-gray-900 prose-code:text-gray-800 prose-pre:bg-gray-100 prose-blockquote:text-gray-700 prose-blockquote:border-gray-300">
+                                    <ReactMarkdown
+                                        remarkPlugins={[remarkGfm]}
+                                        rehypePlugins={[rehypeRaw]}
+                                        components={{
+                                            h1: ({children}) => <h1 className="text-3xl font-bold mb-4 text-gray-900">{children}</h1>,
+                                            h2: ({children}) => <h2 className="text-2xl font-semibold mb-3 mt-6 text-gray-900">{children}</h2>,
+                                            h3: ({children}) => <h3 className="text-xl font-medium mb-2 mt-4 text-gray-800">{children}</h3>,
+                                            p: ({children}) => <p className="mb-4 text-gray-700 leading-relaxed">{children}</p>,
+                                            ul: ({children}) => <ul className="list-disc pl-6 mb-4 text-gray-700">{children}</ul>,
+                                            ol: ({children}) => <ol className="list-decimal pl-6 mb-4 text-gray-700">{children}</ol>,
+                                            li: ({children}) => <li className="mb-1">{children}</li>,
+                                            blockquote: ({children}) => <blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-700 my-4">{children}</blockquote>,
+                                            code: ({node, inline, className, children, ...props}: any) => 
+                                                inline ? 
+                                                <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm text-gray-800" {...props}>{children}</code> :
+                                                <pre className="bg-gray-100 p-4 rounded overflow-x-auto"><code className="text-sm text-gray-800" {...props}>{children}</code></pre>,
+                                            table: ({children}) => <table className="w-full border-collapse my-4">{children}</table>,
+                                            thead: ({children}) => <thead className="border-b-2 border-gray-300">{children}</thead>,
+                                            tbody: ({children}) => <tbody>{children}</tbody>,
+                                            tr: ({children}) => <tr className="border-b border-gray-200">{children}</tr>,
+                                            th: ({children}) => <th className="text-left py-2 px-3 font-semibold text-gray-900">{children}</th>,
+                                            td: ({children}) => <td className="py-2 px-3 text-gray-700">{children}</td>,
+                                            a: ({children, href}) => <a href={href} className="text-blue-600 hover:text-blue-800 underline">{children}</a>,
+                                            hr: () => <hr className="my-6 border-gray-300" />,
+                                            strong: ({children}) => <strong className="font-semibold text-gray-900">{children}</strong>,
+                                            em: ({children}) => <em className="italic">{children}</em>,
+                                        }}
+                                    >
+                                        {content}
+                                    </ReactMarkdown>
+                                </div>
                             ) : (
                                 <textarea
                                     value={content}
@@ -626,19 +650,38 @@ export default function DraftEditorPage() {
                         </div>
                         <div className="flex-1 overflow-y-auto bg-white">
                             <div className="max-w-4xl mx-auto px-8 py-6">
-                                <div
-                                    className="prose prose-lg max-w-none"
-                                    dangerouslySetInnerHTML={{
-                                        __html: content
-                                            .replace(/^# (.*$)/gim, '<h1 class="text-3xl font-bold mb-4">$1</h1>')
-                                            .replace(/^## (.*$)/gim, '<h2 class="text-2xl font-semibold mb-3 mt-6">$1</h2>')
-                                            .replace(/^### (.*$)/gim, '<h3 class="text-xl font-medium mb-2 mt-4">$1</h3>')
-                                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                                            .replace(/\*(.*?)\*/g, '<em>$1</em>')
-                                            .replace(/\n\n/g, '</p><p class="mb-4">')
-                                            .replace(/^(?!<[h|p])(.*?)$/gm, '<p class="mb-4">$1</p>')
-                                    }}
-                                />
+                                <div className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-strong:text-gray-900 prose-code:text-gray-800 prose-pre:bg-gray-100 prose-blockquote:text-gray-700 prose-blockquote:border-gray-300">
+                                    <ReactMarkdown
+                                        remarkPlugins={[remarkGfm]}
+                                        rehypePlugins={[rehypeRaw]}
+                                        components={{
+                                            h1: ({children}) => <h1 className="text-3xl font-bold mb-4 text-gray-900">{children}</h1>,
+                                            h2: ({children}) => <h2 className="text-2xl font-semibold mb-3 mt-6 text-gray-900">{children}</h2>,
+                                            h3: ({children}) => <h3 className="text-xl font-medium mb-2 mt-4 text-gray-800">{children}</h3>,
+                                            p: ({children}) => <p className="mb-4 text-gray-700 leading-relaxed">{children}</p>,
+                                            ul: ({children}) => <ul className="list-disc pl-6 mb-4 text-gray-700">{children}</ul>,
+                                            ol: ({children}) => <ol className="list-decimal pl-6 mb-4 text-gray-700">{children}</ol>,
+                                            li: ({children}) => <li className="mb-1">{children}</li>,
+                                            blockquote: ({children}) => <blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-700 my-4">{children}</blockquote>,
+                                            code: ({node, inline, className, children, ...props}: any) => 
+                                                inline ? 
+                                                <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm text-gray-800" {...props}>{children}</code> :
+                                                <pre className="bg-gray-100 p-4 rounded overflow-x-auto"><code className="text-sm text-gray-800" {...props}>{children}</code></pre>,
+                                            table: ({children}) => <table className="w-full border-collapse my-4">{children}</table>,
+                                            thead: ({children}) => <thead className="border-b-2 border-gray-300">{children}</thead>,
+                                            tbody: ({children}) => <tbody>{children}</tbody>,
+                                            tr: ({children}) => <tr className="border-b border-gray-200">{children}</tr>,
+                                            th: ({children}) => <th className="text-left py-2 px-3 font-semibold text-gray-900">{children}</th>,
+                                            td: ({children}) => <td className="py-2 px-3 text-gray-700">{children}</td>,
+                                            a: ({children, href}) => <a href={href} className="text-blue-600 hover:text-blue-800 underline">{children}</a>,
+                                            hr: () => <hr className="my-6 border-gray-300" />,
+                                            strong: ({children}) => <strong className="font-semibold text-gray-900">{children}</strong>,
+                                            em: ({children}) => <em className="italic">{children}</em>,
+                                        }}
+                                    >
+                                        {content}
+                                    </ReactMarkdown>
+                                </div>
                             </div>
                         </div>
                     </div>

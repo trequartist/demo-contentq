@@ -29,6 +29,7 @@ import {
   Send
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import AiAssistant from '@/components/demo/AiAssistant';
 
 export default function PlaybookPage() {
   const router = useRouter();
@@ -207,7 +208,7 @@ export default function PlaybookPage() {
             <div>
               <h1 className="text-2xl font-light text-black">{playbookData.playbook_title}</h1>
               <p className="mt-1 text-sm text-black/40">
-                {playbookData.posts_per_week} posts per week • Last updated: {new Date(playbookData.updated_at).toLocaleDateString()}
+                {playbookData.posts_per_week} posts per week • Last updated: {new Date(playbookData.updated_at).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })}
               </p>
             </div>
             <div className="flex items-center gap-3">
@@ -832,6 +833,25 @@ export default function PlaybookPage() {
           </div>
         </div>
       )}
+      
+      {/* AI Assistant */}
+      <AiAssistant 
+        context="playbook" 
+        onAction={(action, data) => {
+          console.log('AI Assistant action:', action, data);
+          // Handle specific actions
+          if (action === 'create_playbook') {
+            // Could open a modal or navigate to creation page
+            setShowImplementationModal(true);
+          } else if (action === 'generate_ideas') {
+            // Could populate content ideas
+            router.push('/demo/content-studio/create');
+          } else if (action === 'optimize_timeline') {
+            // Could adjust the timeline view
+            setExpandedTimeline(playbookData?.content_plays?.[0]?.play_name || null);
+          }
+        }}
+      />
     </div>
   );
 }

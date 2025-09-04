@@ -28,8 +28,11 @@ import {
 import { Card, CardContent, Button, Badge } from '@/components/ui';
 import analyticsData from '@/usableclientdata/data/analytics/analytics-performance.json';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import AiAssistant from '@/components/demo/AiAssistant';
 
 export default function AnalyticsPage() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<'overview' | 'content' | 'seo' | 'ai' | 'funnel'>('overview');
   const [timeRange, setTimeRange] = useState('30d');
   const [selectedContent, setSelectedContent] = useState<any>(null);
@@ -216,7 +219,7 @@ export default function AnalyticsPage() {
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex-1">
                         <h4 className="font-medium text-black mb-1">{content.title}</h4>
-                        <p className="text-sm text-black/60">Published {new Date(content.published).toLocaleDateString()}</p>
+                        <p className="text-sm text-black/60">Published {new Date(content.published).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })}</p>
                       </div>
                       <Badge className={`${
                         content.trend === 'up' ? 'bg-black text-white' : 'bg-black/10 text-black/60'
@@ -590,7 +593,7 @@ export default function AnalyticsPage() {
             <div className="p-6 space-y-6">
               <div>
                 <h3 className="font-medium text-black mb-2">{selectedContent.title}</h3>
-                <p className="text-sm text-black/60">Published {new Date(selectedContent.published).toLocaleDateString()}</p>
+                <p className="text-sm text-black/60">Published {new Date(selectedContent.published).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })}</p>
               </div>
 
               {selectedContent.hourlyTraffic && (
@@ -645,6 +648,21 @@ export default function AnalyticsPage() {
           </div>
         </div>
       )}
+      
+      {/* AI Assistant */}
+      <AiAssistant 
+        context="analytics" 
+        onAction={(action) => {
+          console.log('AI Assistant action:', action);
+          // Handle specific actions
+          if (action === 'export_report') {
+            // Trigger export functionality
+            console.log('Exporting analytics report...');
+          } else if (action === 'get_optimizations') {
+            router.push('/demo/insights');
+          }
+        }}
+      />
     </div>
   );
 }

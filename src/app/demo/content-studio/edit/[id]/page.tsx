@@ -206,13 +206,13 @@ export default function EditDocumentPage() {
                 <div className="flex items-center justify-between">
                   <span className="text-gray-600">Created</span>
                   <span className="text-gray-900">
-                    {new Date(document.dates.created).toLocaleDateString()}
+                    {new Date(document.dates.created).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-600">Modified</span>
                   <span className="text-gray-900">
-                    {new Date(document.dates.modified).toLocaleDateString()}
+                    {new Date(document.dates.modified).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
