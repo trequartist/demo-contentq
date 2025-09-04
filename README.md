@@ -104,7 +104,7 @@ src/
 All demo data is stored in JSON files:
 - User profiles and organizations
 - Content items and workflows
-- Analytics and metrics
+- Analytics
 - Diagnostic reports
 - Playbook strategies
 
