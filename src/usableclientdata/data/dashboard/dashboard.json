@@ -1,358 +1,177 @@
 {
   "overview": {
-    "lastUpdated": "2024-01-15T10:00:00Z",
+    "lastUpdated": "2025-09-04T10:00:00Z",
     "greeting": {
-      "morning": "Good morning! 270 users searched 'Zapier too expensive' while you slept. Let's capture them.",
-      "afternoon": "Good afternoon! Your migration content is converting at 12.3% - 6x industry average.",
-      "evening": "Good evening! Time to review today's wins and plan tomorrow's content."
+      "morning": "Good morning",
+      "afternoon": "Good afternoon",
+      "evening": "Good evening"
     },
-    "highlights": {
-      "primaryMetric": {
-        "label": "Content Authority",
-        "value": 65.8,
-        "change": 8.2,
-        "trend": "up",
-        "target": 85,
-        "insight": "18.2% behind industry average"
-      },
-      "urgentOpportunity": {
-        "value": "$75K",
-        "label": "Monthly MRR Gap",
-        "description": "From missing purchase-stage content",
-        "action": "Create 10+ bottom-funnel assets"
-      }
-    }
-  },
-  
-  "metrics": {
-    "contentInventory": {
-      "total": {
-        "value": 37,
-        "label": "Total Content",
-        "sublabel": "12 AI • 8 RevOps • 5 Migration • 12 Other",
-        "growth": "+8 this month"
+    "userName": "Max",
+    "stats": {
+      "totalContent": {
+        "value": 103,
+        "label": "Total content",
+        "breakdown": "47 blog • 56 linkedin"
       },
       "published": {
-        "value": 34,
-        "label": "Published",
-        "recent": "When Rules Break (Today)"
-      },
-      "scheduled": {
-        "value": 3,
-        "label": "Scheduled",
-        "next": "Cost Analysis (Jan 22)"
+        "value": 47,
+        "label": "Published"
       },
       "inProgress": {
-        "value": 5,
-        "label": "In Progress",
-        "priority": "Migration guides"
+        "value": 31,
+        "label": "In progress"
       }
-    },
-    "performance": {
-      "traffic": {
-        "value": "24,387",
-        "label": "Monthly Visitors",
-        "change": 47,
-        "trend": "up",
-        "source": "67% organic"
-      },
-      "conversion": {
-        "value": "4.7%",
-        "label": "Blog → Trial",
-        "change": 1.2,
-        "trend": "up",
-        "benchmark": "2x industry avg"
-      },
-      "authority": {
-        "value": "78.5%",
-        "label": "AI Visibility",
-        "change": 12.3,
-        "trend": "up",
-        "context": "In AI automation queries"
-      },
-      "revenue": {
-        "value": "$58K",
-        "label": "Content-Driven MRR",
-        "change": 23,
-        "trend": "up",
-        "attribution": "Last-touch"
-      }
-    },
-    "funnel": {
-      "visitors": 24387,
-      "engaged": 14632,
-      "ctaClicks": 3658,
-      "trials": 1146,
-      "customers": 127,
-      "conversionPath": "Blog → Migration Guide → Trial"
     }
   },
 
-  "quickActions": [
-    {
-      "id": "urgent-zapier",
-      "icon": "🚨",
-      "title": "Capture 'Zapier Too Expensive' Traffic",
-      "description": "8,100 monthly searches with ZERO presence",
-      "action": "/demo/content-studio/create?template=zapier-alternative",
-      "primary": true,
-      "urgency": "CRITICAL",
-      "impact": "$50K MRR potential"
-    },
-    {
-      "id": "create-migration",
-      "icon": "🚀",
-      "title": "Create Migration Guide",
-      "description": "12.3% conversion rate - highest performing content",
-      "action": "/demo/content-studio/create?type=migration",
-      "primary": true,
-      "stats": "6x conversion rate"
-    },
-    {
-      "id": "fix-seo",
-      "icon": "🔧",
-      "title": "Fix Critical SEO Issues",
-      "description": "80% pages missing schema markup",
-      "action": "/demo/diagnostics?tab=technical",
-      "primary": false,
-      "effort": "8 hours",
-      "impact": "+40% CTR"
-    },
-    {
-      "id": "view-playbook",
-      "icon": "📘",
-      "title": "Execute 90-Day Playbook",
-      "description": "$125K MRR growth roadmap",
-      "action": "/demo/playbook",
-      "primary": false,
-      "progress": "Week 1 of 12"
-    }
-  ],
-
-  "assets": [
-    {
-      "id": "gumloop-blog",
-      "type": "blog",
-      "name": "Gumloop Blog",
-      "status": "active",
-      "health": 65.8,
-      "healthTrend": "improving",
-      "posts": 37,
-      "monthlyPosts": 3,
-      "targetPosts": 15,
-      "nextAction": "Create 'Zapier too expensive' page",
-      "icon": "📝",
-      "url": "https://gumloop.com/blog",
-      "metrics": {
-        "monthlyViews": "24,387",
-        "avgEngagement": "5:23",
-        "conversionRate": "4.7%",
-        "topPost": "When Rules Break (3,847 views)"
-      },
-      "opportunities": [
-        "Missing 8,100 searches for pricing content",
-        "Need 5 more migration guides",
-        "Add schema markup to all posts"
-      ]
-    },
-    {
-      "id": "linkedin-company",
-      "type": "linkedin",
-      "name": "LinkedIn Company",
-      "status": "underutilized",
-      "health": 45,
-      "posts": 12,
-      "followers": 1234,
-      "engagement": "2.3%",
-      "icon": "🏢",
-      "url": "https://linkedin.com/company/gumloop",
-      "metrics": {
-        "monthlyReach": "8,900",
-        "avgEngagement": "2.3%",
-        "followerGrowth": "+12%"
-      },
-      "opportunities": [
-        "Post 3x per week minimum",
-        "Share customer success stories",
-        "Engage in RevOps discussions"
-      ]
-    },
-    {
-      "id": "linkedin-founder",
-      "type": "linkedin",
-      "name": "Founder LinkedIn",
-      "status": "not_configured",
-      "icon": "👤",
-      "preview": {
-        "title": "Activate Founder-Led Growth",
-        "description": "Personal accounts get 10x more reach than company pages",
-        "benefits": [
-          "561% more reach than company posts",
-          "Direct access to decision makers",
-          "Builds trust and authority",
-          "Higher conversion rates"
-        ],
-        "setupTime": "5 minutes",
-        "stats": {
-          "avgReach": "15,000+ professionals",
-          "engagement": "5-8% vs 1-2% company",
-          "leadGen": "+67% qualified leads"
-        }
-      }
-    },
-    {
-      "id": "reddit-presence",
-      "type": "community",
-      "name": "Reddit Presence",
-      "status": "not_started",
-      "icon": "💬",
-      "preview": {
-        "title": "Join the Automation Conversation",
-        "description": "Where 60% of Zapier defectors discover alternatives",
-        "benefits": [
-          "Direct access to switchers",
-          "Authentic peer recommendations",
-          "11.2% conversion from Reddit traffic"
-        ],
-        "targetSubs": ["r/automation", "r/SaaS", "r/revops"],
-        "competitorActivity": {
-          "make": "45 mentions/month",
-          "n8n": "38 mentions/month",
-          "gumloop": "0 mentions/month"
-        }
-      }
-    }
-  ],
+  "availableAssets": ["Blog", "LinkedIn"],
 
   "recentActivity": [
     {
-      "id": "activity-1",
-      "type": "blog",
-      "title": "When Rules Break: AI Handles 40% of Workflows",
-      "status": "published",
-      "platform": "Blog",
-      "time": "2 hours ago",
-      "metrics": {
-        "views": 234,
-        "engagement": "5:45",
-        "conversions": 3
-      }
-    },
-    {
-      "id": "activity-2",
-      "type": "blog",
-      "title": "Gumloop vs Zapier Migration Guide",
-      "status": "in_review",
-      "platform": "Blog",
-      "time": "4 hours ago",
-      "reviewer": "Alex Thompson",
-      "scheduledDate": "Jan 18"
-    },
-    {
       "id": "activity-3",
       "type": "linkedin",
-      "title": "5 Signs Your Automation is Killing Deals",
-      "status": "scheduled",
+      "title": "LinkedIn Post Draft",
+      "status": "post",
       "platform": "LinkedIn",
-      "time": "Scheduled for tomorrow 2PM",
-      "expectedReach": "2,400"
+      "time": "1d ago"
     },
     {
       "id": "activity-4",
-      "type": "analytics",
-      "title": "Migration content converts at 12.3%",
-      "status": "insight",
-      "platform": "Analytics",
-      "time": "1 day ago",
-      "action": "Create more migration content"
+      "type": "linkedin",
+      "title": "Using Data-Driven Inclusion Strategies to Build Inclusive Leadership — Why It Matters for ...",
+      "status": "brief",
+      "platform": "LinkedIn",
+      "time": "1d ago"
+    },
+    {
+      "id": "activity-5",
+      "type": "blog",
+      "title": "When Rules Break: AI Handles 40% of Complex Workflows",
+      "status": "published",
+      "platform": "Blog",
+      "time": "2d ago"
+    },
+    {
+      "id": "activity-6",
+      "type": "blog",
+      "title": "Gumloop vs Zapier: The Complete Migration Guide",
+      "status": "draft",
+      "platform": "Blog",
+      "time": "3d ago"
+    },
+    {
+      "id": "activity-7",
+      "type": "linkedin",
+      "title": "Why AI-Native Automation is the Future",
+      "status": "scheduled",
+      "platform": "LinkedIn",
+      "time": "Scheduled for tomorrow"
+    },
+    {
+      "id": "activity-8",
+      "type": "blog",
+      "title": "The True Cost of Task-Based Pricing: A Zapier Analysis",
+      "status": "review",
+      "platform": "Blog",
+      "time": "4d ago"
     }
   ],
 
-  "criticalAlerts": [
+  "quickActions": [
     {
-      "id": "alert-1",
-      "severity": "critical",
-      "title": "Missing $75K MRR from content gaps",
-      "description": "Only 2 purchase-stage posts vs 15-20 industry standard",
-      "action": "Create 10+ bottom-funnel assets",
-      "timeframe": "Next 30 days"
+      "id": "blog-post",
+      "title": "Blog Post",
+      "action": "/demo/content-studio"
     },
     {
-      "id": "alert-2",
-      "severity": "high",
-      "title": "Zero visibility for 'Zapier too expensive'",
-      "description": "8,100 monthly searches going to competitors",
-      "action": "Create dedicated landing page",
-      "timeframe": "This week"
+      "id": "linkedin-post",
+      "title": "LinkedIn Post",
+      "action": "/demo/content-studio"
     },
     {
-      "id": "alert-3",
-      "severity": "high",
-      "title": "10x content velocity disadvantage",
-      "description": "Publishing 3 posts/month vs Zapier's 32",
-      "action": "Scale to 15+ posts/month",
-      "timeframe": "Next 60 days"
+      "id": "improve-content",
+      "title": "Improve Content",
+      "action": "/demo/content-studio"
     }
   ],
 
-  "weeklyFocus": {
+  "metrics": {
+    "aiVisibility": {
+      "value": "78.5%",
+      "label": "AI Automation Visibility",
+      "change": "+12.3%",
+      "context": "In AI automation queries"
+    },
+    "migrationTraffic": {
+      "value": "8,100",
+      "label": "Monthly 'Zapier too expensive' searches",
+      "status": "ZERO presence",
+      "opportunity": "$50K MRR potential"
+    },
+    "conversionRate": {
+      "value": "12.3%",
+      "label": "Migration content conversion",
+      "benchmark": "6x industry average"
+    },
+    "contentGap": {
+      "value": "$75K",
+      "label": "Monthly MRR Gap",
+      "reason": "Missing purchase-stage content"
+    }
+  },
+
+  "playbook": {
     "current": "Week 1: Emergency Response",
-    "theme": "Capture immediate opportunities",
+    "focus": "Capture 'Zapier too expensive' traffic",
+    "postsPerWeek": 4,
     "priorities": [
       "Create Zapier comparison page",
+      "Launch pricing calculator",
       "Fix technical SEO issues",
-      "Launch pricing calculator"
+      "Add FAQ sections to top posts"
     ],
-    "progress": {
-      "completed": 0,
-      "total": 4,
-      "onTrack": false
-    },
     "nextWeek": "Migration Offensive"
   },
 
-  "competitorWatch": {
-    "summary": "Behind on all fronts except AI authority",
-    "competitors": [
-      {
-        "name": "Zapier",
-        "threat": "critical",
-        "contentVelocity": 32,
-        "marketShare": 85,
-        "weakness": "Expensive, no native AI"
-      },
-      {
-        "name": "Make",
-        "threat": "high",
-        "contentVelocity": 18,
-        "marketShare": 12,
-        "weakness": "Complex UI, weak AI"
-      },
-      {
-        "name": "n8n",
-        "threat": "medium",
-        "contentVelocity": 10,
-        "marketShare": 8,
-        "weakness": "Too technical"
-      }
-    ]
-  },
+  "competitors": [
+    {
+      "name": "Zapier",
+      "contentVelocity": 32,
+      "marketShare": "85%",
+      "weakness": "Expensive, no native AI"
+    },
+    {
+      "name": "Make",
+      "contentVelocity": 18,
+      "marketShare": "12%",
+      "weakness": "Complex UI, weak AI"
+    },
+    {
+      "name": "n8n",
+      "contentVelocity": 10,
+      "marketShare": "8%",
+      "weakness": "Too technical"
+    }
+  ],
 
-  "recommendations": {
-    "today": [
-      "Create 'Zapier too expensive' landing page (4 hrs)",
-      "Add FAQ sections to top 10 posts (2 hrs)",
-      "Fix missing H1 tags (2 hrs)"
-    ],
-    "thisWeek": [
-      "Publish first migration guide",
-      "Launch pricing calculator",
-      "Start Reddit engagement"
-    ],
-    "thisMonth": [
-      "Scale to 8 posts published",
-      "Complete schema markup implementation",
-      "Launch Zapier Refugee Resource Center"
-    ]
-  }
+  "tips": [
+    {
+      "id": "tip-1",
+      "title": "Complete your 31 drafts",
+      "description": "Complete your 31 drafts before starting new content.",
+      "icon": "sparkles"
+    },
+    {
+      "id": "tip-2",
+      "title": "Migration content converts 6x",
+      "description": "Focus on Zapier migration guides - they convert at 12.3% vs 2% average.",
+      "icon": "trending"
+    },
+    {
+      "id": "tip-3",
+      "title": "AI Authority opportunity",
+      "description": "You have 78.5% visibility in AI automation but <1% in general automation.",
+      "icon": "brain"
+    }
+  ]
 }

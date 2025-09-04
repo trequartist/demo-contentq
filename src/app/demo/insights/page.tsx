@@ -1,406 +1,410 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, Button, Badge } from '@/components/ui';
 import { 
-  Brain, 
-  TrendingUp, 
-  AlertCircle, 
-  Target,
-  Sparkles,
-  FileText,
-  BarChart3,
-  Search,
-  RefreshCw,
-  ArrowRight,
-  Clock,
-  CheckCircle,
-  XCircle,
-  Zap,
-  DollarSign,
-  Users,
-  MessageSquare,
+  TrendingUp,
   TrendingDown,
   Lightbulb,
-  AlertTriangle
+  Target,
+  AlertCircle,
+  Clock,
+  ArrowRight,
+  CheckCircle,
+  ChevronRight,
+  BarChart3,
+  Eye,
+  Users,
+  MousePointer,
+  Brain,
+  Sparkles
 } from 'lucide-react';
-import insightsData from '@/usableclientdata/data/insights/insights-hub.json';
+import { Card, CardContent, Button, Badge } from '@/components/ui';
+import { useRouter } from 'next/navigation';
+
+interface Insight {
+  id: string;
+  category: 'opportunity' | 'issue' | 'trend' | 'recommendation';
+  priority: 'critical' | 'high' | 'medium' | 'low';
+  title: string;
+  description: string;
+  impact: string;
+  action: string;
+  metrics?: {
+    current: number | string;
+    potential: number | string;
+    change?: number;
+  };
+  timeframe: string;
+}
+
+const INSIGHTS: Insight[] = [
+  {
+    id: '1',
+    category: 'opportunity',
+    priority: 'critical',
+    title: 'Zero visibility for "Zapier too expensive"',
+    description: '8,100 monthly searches with no presence. Competitors capture this high-intent traffic.',
+    impact: '$50K MRR potential',
+    action: 'Create comparison page',
+    metrics: {
+      current: 0,
+      potential: 8100,
+      change: 0
+    },
+    timeframe: 'This week'
+  },
+  {
+    id: '2',
+    category: 'trend',
+    priority: 'high',
+    title: 'Migration content converts at 12.3%',
+    description: 'Your migration guides convert 6x better than industry average. Double down on this content type.',
+    impact: '6x conversion rate',
+    action: 'Create 5 more migration guides',
+    metrics: {
+      current: '12.3%',
+      potential: '15%',
+      change: 520
+    },
+    timeframe: 'This month'
+  },
+  {
+    id: '3',
+    category: 'issue',
+    priority: 'high',
+    title: '80% of pages missing schema markup',
+    description: 'Missing structured data hurts AI visibility and rich snippets.',
+    impact: '+40% CTR potential',
+    action: 'Add schema markup',
+    metrics: {
+      current: '20%',
+      potential: '100%',
+      change: -80
+    },
+    timeframe: 'This week'
+  },
+  {
+    id: '4',
+    category: 'opportunity',
+    priority: 'medium',
+    title: 'AI visibility at 78.5% but general automation <1%',
+    description: 'Strong in AI-specific searches but missing broader automation market.',
+    impact: '10x market opportunity',
+    action: 'Expand content focus',
+    metrics: {
+      current: '78.5%',
+      potential: '45%',
+      change: 12.3
+    },
+    timeframe: 'Next 30 days'
+  },
+  {
+    id: '5',
+    category: 'recommendation',
+    priority: 'high',
+    title: 'LinkedIn personal account drives 10x reach',
+    description: 'Founder-led content gets 561% more engagement than company pages.',
+    impact: '15K+ reach per post',
+    action: 'Connect founder account',
+    metrics: {
+      current: '1.2K',
+      potential: '15K',
+      change: 1150
+    },
+    timeframe: '5 minutes'
+  },
+  {
+    id: '6',
+    category: 'issue',
+    priority: 'critical',
+    title: 'Publishing 3 posts/month vs competitors\' 32',
+    description: 'Content velocity 10x behind Zapier, limiting market share growth.',
+    impact: 'Losing 270 leads/day',
+    action: 'Scale to 15 posts/month',
+    metrics: {
+      current: 3,
+      potential: 15,
+      change: -90
+    },
+    timeframe: 'Next 60 days'
+  }
+];
 
 export default function InsightsPage() {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [selectedInsight, setSelectedInsight] = useState<any>(null);
-  const data = insightsData;
+  const router = useRouter();
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedPriority, setSelectedPriority] = useState<string>('all');
 
-  const getPriorityColor = (priority: string) => {
+  const filteredInsights = INSIGHTS.filter(insight => {
+    const categoryMatch = selectedCategory === 'all' || insight.category === selectedCategory;
+    const priorityMatch = selectedPriority === 'all' || insight.priority === selectedPriority;
+    return categoryMatch && priorityMatch;
+  });
+
+  const getCategoryIcon = (category: string) => {
+    switch(category) {
+      case 'opportunity': return Lightbulb;
+      case 'issue': return AlertCircle;
+      case 'trend': return TrendingUp;
+      case 'recommendation': return Target;
+      default: return Brain;
+    }
+  };
+
+  const getCategoryColor = (category: string) => {
+    switch(category) {
+      case 'opportunity': return 'text-black';
+      case 'issue': return 'text-black/80';
+      case 'trend': return 'text-black/60';
+      case 'recommendation': return 'text-black/70';
+      default: return 'text-black/50';
+    }
+  };
+
+  const getPriorityBadge = (priority: string) => {
     switch(priority) {
-      case 'critical': return 'text-gray-900 bg-gray-200 border-gray-400';
-      case 'high': return 'text-gray-800 bg-gray-100 border-gray-300';
-      case 'medium': return 'text-gray-700 bg-gray-50 border-gray-200';
-      default: return 'text-gray-600 bg-white border-gray-200';
+      case 'critical':
+        return <Badge className="bg-black text-white border-0">Critical</Badge>;
+      case 'high':
+        return <Badge className="bg-black/80 text-white border-0">High</Badge>;
+      case 'medium':
+        return <Badge className="bg-black/20 text-black border-0">Medium</Badge>;
+      case 'low':
+        return <Badge className="bg-black/10 text-black/60 border-0">Low</Badge>;
+      default:
+        return null;
     }
   };
 
-  const getTypeIcon = (type: string) => {
-    switch(type) {
-      case 'trend': return <TrendingUp className="w-4 h-4" />;
-      case 'competitor': return <Users className="w-4 h-4" />;
-      case 'insight': return <Lightbulb className="w-4 h-4" />;
-      case 'market': return <BarChart3 className="w-4 h-4" />;
-      case 'opportunity': return <Target className="w-4 h-4" />;
-      case 'technical': return <Zap className="w-4 h-4" />;
-      case 'user': return <MessageSquare className="w-4 h-4" />;
-      case 'ai': return <Brain className="w-4 h-4" />;
-      default: return <Brain className="w-4 h-4" />;
-    }
+  const getTrendIcon = (change?: number) => {
+    if (!change) return null;
+    if (change > 0) return <TrendingUp className="w-4 h-4 text-black" />;
+    if (change < 0) return <TrendingDown className="w-4 h-4 text-black/60" />;
+    return null;
   };
-
-  const filteredInsights = selectedCategory === 'all' 
-    ? data.researchFeed.items 
-    : data.researchFeed.items.filter(item => item.type === selectedCategory);
 
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
+      <div className="border-b border-black/10">
+        <div className="px-8 py-6">
+          <div className="flex items-center justify-between mb-6">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Insights Hub</h1>
-              <p className="text-sm text-gray-600 mt-1">AI-powered intelligence for content strategy</p>
+              <h1 className="text-2xl font-light text-black">Insights</h1>
+              <p className="text-sm text-black/60 mt-1">
+                AI-powered recommendations to grow your content performance
+              </p>
             </div>
-            <Button className="bg-gray-900 text-white hover:bg-gray-800">
-              <RefreshCw className="w-4 h-4 mr-2" />
-              Refresh Insights
+            <Button 
+              className="bg-black text-white hover:bg-black/90 border-0"
+              onClick={() => router.push('/demo/playbook')}
+            >
+              View Playbook
+              <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
+          </div>
+
+          {/* Summary Stats */}
+          <div className="grid grid-cols-4 gap-4">
+            <div className="p-4 border border-black/10 rounded-lg">
+              <div className="flex items-center gap-2 mb-2">
+                <Lightbulb className="w-4 h-4 text-black/60" />
+                <span className="text-xs text-black/60">Opportunities</span>
+              </div>
+              <p className="text-2xl font-light text-black">
+                {INSIGHTS.filter(i => i.category === 'opportunity').length}
+              </p>
+              <p className="text-xs text-black/40 mt-1">$125K MRR potential</p>
+            </div>
+            <div className="p-4 border border-black/10 rounded-lg">
+              <div className="flex items-center gap-2 mb-2">
+                <AlertCircle className="w-4 h-4 text-black/60" />
+                <span className="text-xs text-black/60">Issues</span>
+              </div>
+              <p className="text-2xl font-light text-black">
+                {INSIGHTS.filter(i => i.category === 'issue').length}
+              </p>
+              <p className="text-xs text-black/40 mt-1">Impacting growth</p>
+            </div>
+            <div className="p-4 border border-black/10 rounded-lg">
+              <div className="flex items-center gap-2 mb-2">
+                <TrendingUp className="w-4 h-4 text-black/60" />
+                <span className="text-xs text-black/60">Positive Trends</span>
+              </div>
+              <p className="text-2xl font-light text-black">
+                {INSIGHTS.filter(i => i.category === 'trend').length}
+              </p>
+              <p className="text-xs text-black/40 mt-1">To leverage</p>
+            </div>
+            <div className="p-4 border border-black/10 rounded-lg">
+              <div className="flex items-center gap-2 mb-2">
+                <Target className="w-4 h-4 text-black/60" />
+                <span className="text-xs text-black/60">Actions</span>
+              </div>
+              <p className="text-2xl font-light text-black">
+                {INSIGHTS.filter(i => i.priority === 'critical' || i.priority === 'high').length}
+              </p>
+              <p className="text-xs text-black/40 mt-1">High priority</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        {/* Quick Stats */}
-        <div className="grid grid-cols-5 gap-4 mb-8">
-          <Card className="border-gray-200">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Total Insights</p>
-                  <p className="text-2xl font-bold text-gray-900 mt-1">
-                    {data.knowledgeHub.stats.totalInsights}
-                  </p>
-                </div>
-                <Brain className="w-8 h-8 text-gray-400" />
+      {/* Filters */}
+      <div className="border-b border-black/10">
+        <div className="px-8 py-4">
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-black/60">Category:</span>
+              <div className="flex gap-2">
+                {['all', 'opportunity', 'issue', 'trend', 'recommendation'].map(cat => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`px-3 py-1 text-sm rounded-lg transition-all ${
+                      selectedCategory === cat
+                        ? 'bg-black text-white'
+                        : 'bg-white text-black/60 hover:text-black border border-black/10'
+                    }`}
+                  >
+                    {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                  </button>
+                ))}
               </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-gray-200">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Critical Actions</p>
-                  <p className="text-2xl font-bold text-gray-900 mt-1">
-                    {data.knowledgeHub.stats.criticalActions}
-                  </p>
-                </div>
-                <AlertCircle className="w-8 h-8 text-gray-600" />
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-black/60">Priority:</span>
+              <div className="flex gap-2">
+                {['all', 'critical', 'high', 'medium', 'low'].map(priority => (
+                  <button
+                    key={priority}
+                    onClick={() => setSelectedPriority(priority)}
+                    className={`px-3 py-1 text-sm rounded-lg transition-all ${
+                      selectedPriority === priority
+                        ? 'bg-black text-white'
+                        : 'bg-white text-black/60 hover:text-black border border-black/10'
+                    }`}
+                  >
+                    {priority.charAt(0).toUpperCase() + priority.slice(1)}
+                  </button>
+                ))}
               </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-gray-200">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Completed Actions</p>
-                  <p className="text-2xl font-bold text-gray-900 mt-1">
-                    {data.knowledgeHub.stats.completedActions}
-                  </p>
-                </div>
-                <CheckCircle className="w-8 h-8 text-gray-700" />
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-gray-200">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Health Score</p>
-                  <p className="text-2xl font-bold text-gray-900 mt-1">
-                    {data.knowledgeHub.stats.healthScore}
-                  </p>
-                  <p className="text-xs text-gray-500 mt-1">
-                    {data.knowledgeHub.stats.improvementRate}
-                  </p>
-                </div>
-                <TrendingUp className="w-8 h-8 text-gray-400" />
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Critical Alerts */}
-        {data.strategicAlerts && data.strategicAlerts.length > 0 && (
-          <div className="mb-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Strategic Alerts</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-              {data.strategicAlerts.map(alert => (
-                <Card key={alert.id} className={`border ${alert.severity === 'critical' ? 'border-gray-400 bg-gray-100' : 'border-gray-200 bg-gray-50'}`}>
-                  <CardContent className="p-4">
-                    <div className="flex items-start gap-3">
-                      <AlertTriangle className={`w-5 h-5 ${alert.severity === 'critical' ? 'text-gray-900' : 'text-gray-600'} mt-1`} />
-                      <div className="flex-1">
-                        <h3 className="font-medium text-gray-900 mb-1">{alert.title}</h3>
-                        <p className="text-sm text-gray-600 mb-2">{alert.description}</p>
-                        <p className="text-sm font-medium text-gray-900 mb-1">Action: {alert.recommendation}</p>
-                        <div className="flex items-center justify-between mt-2">
-                          <span className="text-xs text-gray-500">{alert.timeframe}</span>
-                          {alert.estimatedImpact && (
-                            <Badge variant="secondary" className="text-xs">
-                              {alert.estimatedImpact}
-                            </Badge>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
             </div>
           </div>
-        )}
+        </div>
+      </div>
 
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-3 gap-6">
-          {/* Research Feed */}
-          <div className="col-span-2">
-            <Card className="border-gray-200">
-              <CardHeader>
-                <CardTitle className="text-lg">Critical Insights Feed</CardTitle>
-                <CardDescription>High-priority market intelligence and opportunities</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {filteredInsights.map((item: any) => (
-                    <div 
-                      key={item.id} 
-                      className="border border-gray-200 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow"
-                      onClick={() => setSelectedInsight(item)}
-                    >
-                      <div className="flex items-start justify-between mb-2">
-                        <div className="flex items-center gap-2">
-                          <div className={`p-1 rounded ${getPriorityColor(item.priority)}`}>
-                            {getTypeIcon(item.type)}
-                          </div>
-                          <Badge 
-                            variant="secondary" 
-                            className={`text-xs ${getPriorityColor(item.priority)}`}
-                          >
-                            {item.priority?.toUpperCase()}
-                          </Badge>
-                          <span className="text-xs text-gray-500">{item.time}</span>
-                        </div>
-                        <span className="text-xs text-gray-500">{item.relevance}% relevant</span>
+      {/* Insights List */}
+      <div className="px-8 py-6">
+        <div className="space-y-4">
+          {filteredInsights.map(insight => {
+            const Icon = getCategoryIcon(insight.category);
+            
+            return (
+              <Card key={insight.id} className="border border-black/10 hover:border-black/20 transition-colors">
+                <CardContent className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-start gap-4">
+                      <div className={`w-10 h-10 bg-black/[0.02] rounded-lg flex items-center justify-center ${getCategoryColor(insight.category)}`}>
+                        <Icon className="w-5 h-5" />
                       </div>
-                      <h3 className="text-sm font-semibold text-gray-900 mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-gray-600 mb-3 line-clamp-2">
-                        {item.summary}
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4 text-xs text-gray-500">
-                          <span>Source: {item.source}</span>
-                          {item.impact && (
-                            <span className="font-medium text-gray-700">Impact: {item.impact}</span>
-                          )}
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          <h3 className="font-medium text-black">{insight.title}</h3>
+                          {getPriorityBadge(insight.priority)}
                         </div>
-                        <Button variant="ghost" size="sm" className="text-xs">
-                          View Details
-                          <ArrowRight className="w-3 h-3 ml-1" />
-                        </Button>
-                      </div>
-                      {item.metrics && (
-                        <div className="mt-3 pt-3 border-t border-gray-100">
-                          <div className="grid grid-cols-3 gap-2 text-xs">
-                            {Object.entries(item.metrics).slice(0, 3).map(([key, value]: [string, any]) => (
-                              <div key={key}>
-                                <span className="text-gray-500">{key.replace(/([A-Z])/g, ' $1').trim()}:</span>
-                                <span className="font-medium text-gray-900 ml-1">
-                                  {value != null ? (typeof value === 'number' ? value.toLocaleString() : String(value)) : 'N/A'}
+                        <p className="text-sm text-black/60 mb-3">{insight.description}</p>
+                        
+                        {/* Metrics */}
+                        {insight.metrics && (
+                          <div className="flex items-center gap-6 mb-3">
+                            <div>
+                              <p className="text-xs text-black/40">Current</p>
+                              <p className="text-lg font-light text-black">{insight.metrics.current}</p>
+                            </div>
+                            <ChevronRight className="w-4 h-4 text-black/20" />
+                            <div>
+                              <p className="text-xs text-black/40">Potential</p>
+                              <p className="text-lg font-light text-black">{insight.metrics.potential}</p>
+                            </div>
+                            {insight.metrics.change && (
+                              <div className="flex items-center gap-1">
+                                {getTrendIcon(insight.metrics.change)}
+                                <span className={`text-sm ${insight.metrics.change > 0 ? 'text-black' : 'text-black/60'}`}>
+                                  {Math.abs(insight.metrics.change)}%
                                 </span>
                               </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Action Items */}
-          <div>
-            <Card className="border-gray-200">
-              <CardHeader>
-                <CardTitle className="text-lg">Action Items</CardTitle>
-                <CardDescription>Priority tasks to execute</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {data.knowledgeHub.actionItems.slice(0, 5).map((action: any) => (
-                    <div key={action.id} className="p-3 border border-gray-200 rounded-lg">
-                      <div className="flex items-start gap-2">
-                        <div className={`w-6 h-6 rounded flex items-center justify-center flex-shrink-0 ${
-                          action.priority === 'critical' ? 'bg-gray-900' :
-                          action.priority === 'high' ? 'bg-gray-600' : 'bg-gray-200'
-                        }`}>
-                          <Zap className={`w-4 h-4 ${
-                            action.priority === 'critical' ? 'text-white' :
-                            action.priority === 'high' ? 'text-white' : 'text-gray-700'
-                          }`} />
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="text-sm font-medium text-gray-900">
-                            {action.title}
-                          </h4>
-                          <div className="flex items-center gap-3 mt-1 text-xs text-gray-500">
-                            <span>{action.effort}</span>
-                            {action.impact && (
-                              <span className="font-medium text-gray-900">{action.impact}</span>
                             )}
                           </div>
-                          {action.status === 'in-progress' && action.progress && (
-                            <div className="mt-2">
-                              <div className="w-full bg-gray-200 rounded-full h-1.5">
-                                <div 
-                                  className="bg-black h-1.5 rounded-full" 
-                                  style={{ width: `${action.progress}%` }}
-                                />
-                              </div>
-                            </div>
-                          )}
-                          <div className="flex items-center justify-between mt-2">
-                            <Badge 
-                              variant="secondary" 
-                              className={`text-xs ${
-                                action.status === 'in-progress' ? 'bg-gray-900 text-white' :
-                                action.status === 'pending' ? 'bg-gray-100 text-gray-700' :
-                                'bg-gray-600 text-white'
-                              }`}
-                            >
-                              {action.status}
-                            </Badge>
-                            {action.dueDate && (
-                              <span className="text-xs text-gray-500">
-                                Due: {new Date(action.dueDate).toLocaleDateString()}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Knowledge Categories */}
-            <Card className="border-gray-200 mt-6">
-              <CardHeader>
-                <CardTitle className="text-lg">Knowledge Categories</CardTitle>
-                <CardDescription>Insight distribution</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  {data.knowledgeHub.categories.map((category: any) => (
-                    <div 
-                      key={category.id}
-                      className={`p-3 rounded-lg border ${
-                        category.priority === 'critical' ? 'border-gray-400 bg-gray-100' :
-                        category.priority === 'high' ? 'border-gray-300 bg-gray-50' :
-                        'border-gray-200 bg-white'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between mb-1">
-                        <div className="flex items-center gap-2">
-                          <span className="text-lg">{category.icon}</span>
-                          <p className="text-sm font-medium text-gray-900">
-                            {category.name}
-                          </p>
-                        </div>
-                        {category.trending && (
-                          <TrendingUp className="w-3 h-3 text-gray-900" />
                         )}
+
+                        {/* Impact and Action */}
+                        <div className="flex items-center gap-6">
+                          <div className="flex items-center gap-2">
+                            <BarChart3 className="w-4 h-4 text-black/40" />
+                            <span className="text-sm text-black/80">Impact: {insight.impact}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Clock className="w-4 h-4 text-black/40" />
+                            <span className="text-sm text-black/80">{insight.timeframe}</span>
+                          </div>
+                        </div>
                       </div>
-                      <p className="text-xs text-gray-600 mb-1">
-                        {category.count} insights • {category.actionItems || 0} actions
-                      </p>
-                      {category.topInsight && (
-                        <p className="text-xs font-medium text-gray-700">
-                          Top: {category.topInsight}
-                        </p>
-                      )}
-                      {category.estimatedValue && (
-                        <Badge variant="secondary" className="text-xs mt-1">
-                          {category.estimatedValue}
-                        </Badge>
-                      )}
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+                    
+                    {/* Action Button */}
+                    <Button 
+                      className="bg-white text-black border border-black/20 hover:bg-black hover:text-white transition-colors"
+                      onClick={() => {
+                        if (insight.action.includes('comparison')) {
+                          router.push('/demo/content-studio');
+                        } else if (insight.action.includes('schema')) {
+                          router.push('/demo/diagnostics');
+                        } else {
+                          router.push('/demo/playbook');
+                        }
+                      }}
+                    >
+                      {insight.action}
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
 
-        {/* Market Intelligence */}
-        <Card className="border-gray-200 mt-6">
-          <CardHeader>
-            <CardTitle className="text-lg">Market Intelligence</CardTitle>
-            <CardDescription>Competitive landscape and market trends</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 gap-6">
-              <div>
-                <h4 className="text-sm font-medium text-gray-900 mb-3">Recent Competitor Moves</h4>
-                <div className="space-y-3">
-                  {data.marketIntelligence.competitorMoves.map((item, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
-                      <div>
-                        <p className="text-sm font-medium text-gray-900">{item.competitor}</p>
-                        <p className="text-xs text-gray-600">{item.move}</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-xs text-gray-500">Weakness:</p>
-                        <p className="text-xs font-medium text-gray-700">{item.weakness}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h4 className="text-sm font-medium text-gray-900 mb-3">Market Trends</h4>
-                <div className="space-y-3">
-                  {data.marketIntelligence.trends.map((trend, index) => (
-                    <div key={index} className="p-3 bg-gray-50 rounded-lg">
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="text-sm font-medium text-gray-900">{trend.trend}</span>
-                        <Badge variant="secondary" className="text-xs bg-gray-100 text-gray-900">
-                          {trend.growth}
-                        </Badge>
-                      </div>
-                      <p className="text-xs text-gray-600 mb-1">{trend.opportunity}</p>
-                      <p className="text-xs font-medium text-gray-700">→ {trend.action}</p>
-                    </div>
-                  ))}
-                </div>
+        {/* AI Insights Summary */}
+        <div className="mt-8 p-6 bg-white rounded-lg border border-black/20">
+          <div className="flex items-start gap-3">
+            <div className="w-8 h-8 bg-black/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <Sparkles className="w-4 h-4 text-black" />
+            </div>
+            <div>
+              <h3 className="text-sm font-medium text-black mb-2">AI Analysis Summary</h3>
+              <p className="text-sm text-black/60 mb-3">
+                Your content strategy is showing strong AI visibility (78.5%) but missing critical high-intent traffic. 
+                Focus on migration content (12.3% conversion) and capture the "Zapier too expensive" searches to unlock $125K MRR potential.
+              </p>
+              <div className="flex items-center gap-4">
+                <Button 
+                  className="bg-black text-white hover:bg-black/90 border-0"
+                  onClick={() => router.push('/demo/playbook')}
+                >
+                  View Full Strategy
+                </Button>
+                <Button 
+                  variant="secondary"
+                  className="bg-white text-black border border-black/20 hover:bg-black/5"
+                  onClick={() => router.push('/demo/diagnostics')}
+                >
+                  Run Diagnostics
+                </Button>
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </div>
   );
