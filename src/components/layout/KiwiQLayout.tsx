@@ -17,9 +17,11 @@ import {
   Zap,
   Layers,
   Activity,
-  Brain
+  Brain,
+  LogOut
 } from 'lucide-react';
 import { DEMO_CONFIG } from '@/lib/demo/demo-config';
+import { useAuth } from '@/lib/auth/auth-context';
 
 interface NavigationItem {
   name: string;
@@ -87,66 +89,67 @@ interface KiwiQLayoutProps {
 export default function KiwiQLayout({ children }: KiwiQLayoutProps) {
   const pathname = usePathname();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const { user, logout } = useAuth();
+
+  // Don't render the layout on the login page
+  if (pathname === '/demo/login') {
+    return <>{children}</>;
+  }
 
   return (
     <div className="min-h-screen bg-white flex">
       {/* Sidebar */}
-      <div className={`${sidebarCollapsed ? 'w-16' : 'w-64'} bg-gray-50 border-r border-gray-200 flex-shrink-0 transition-all duration-300`}>
+      <div className={`${sidebarCollapsed ? 'w-16' : 'w-64'} bg-white border-r border-black/10 flex-shrink-0 transition-all duration-300`}>
         <div className="h-full flex flex-col">
           {/* Logo/Brand */}
-          <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200">
+          <div className="h-16 flex items-center justify-between px-4 border-b border-black/10">
             {!sidebarCollapsed && (
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
                   <Zap className="w-5 h-5 text-white" />
                 </div>
-                <div>
-                  <h1 className="text-lg font-semibold text-gray-900">KiwiQ</h1>
-                  <p className="text-xs text-gray-500">Demo Mode</p>
-                </div>
+                <span className="text-lg font-semibold text-black">KiwiQ</span>
+              </div>
+            )}
+            {sidebarCollapsed && (
+              <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+                <Zap className="w-5 h-5 text-white" />
               </div>
             )}
             <button
               onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-              className="p-1.5 rounded-md hover:bg-gray-200 transition-colors"
-            >
-              {sidebarCollapsed ? (
-                <ChevronRight className="w-4 h-4 text-gray-600" />
-              ) : (
-                <ChevronLeft className="w-4 h-4 text-gray-600" />
-              )}
+              className="p-1 text-black/40 hover:text-black/60 transition-colors">
+              {sidebarCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
             </button>
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 px-3 py-4 space-y-1">
+          <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
             {navigation.map((item) => {
-              const isActive = pathname === item.href || pathname.startsWith(item.href + '/');
+              const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${
-                    isActive
-                      ? 'bg-black text-white shadow-sm'
-                      : 'text-gray-700 hover:bg-gray-200 hover:text-gray-900'
-                  }`}
+                  className={`
+                    flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200
+                    ${isActive
+                      ? 'bg-black text-white'
+                      : 'text-black/70 hover:text-black hover:bg-black/5'
+                    }
+                    ${sidebarCollapsed ? 'justify-center' : ''}
+                  `}
                   title={sidebarCollapsed ? item.name : undefined}
                 >
-                  <item.icon
-                    className={`flex-shrink-0 w-5 h-5 ${
-                      isActive ? 'text-white' : 'text-gray-500 group-hover:text-gray-700'
-                    }`}
-                  />
+                  <item.icon className={`w-5 h-5 ${!sidebarCollapsed && 'mr-3'}`} />
                   {!sidebarCollapsed && (
                     <>
-                      <span className="ml-3 truncate">{item.name}</span>
+                      <span className="flex-1">{item.name}</span>
                       {item.badge && (
-                        <span className={`ml-auto px-2 py-0.5 text-xs font-medium rounded-full ${
-                          isActive 
-                            ? 'bg-white text-black' 
-                            : 'bg-gray-900 text-white'
-                        }`}>
+                        <span className={`
+                          px-2 py-0.5 text-xs rounded-full
+                          ${isActive ? 'bg-white/20' : 'bg-black/10'}
+                        `}>
                           {item.badge}
                         </span>
                       )}
@@ -158,24 +161,24 @@ export default function KiwiQLayout({ children }: KiwiQLayoutProps) {
           </nav>
 
           {/* User Profile */}
-          <div className="p-3 border-t border-gray-200">
-            <div className={`flex items-center ${sidebarCollapsed ? 'justify-center' : 'space-x-3'}`}>
-              <div className="w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center">
-                <User className="w-4 h-4 text-white" />
+          <div className="p-4 border-t border-black/10">
+            <div className="flex items-center">
+              <div className="w-8 h-8 bg-black/10 rounded-full flex items-center justify-center">
+                <User className="w-4 h-4 text-black/60" />
               </div>
               {!sidebarCollapsed && (
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">
-                    {DEMO_CONFIG.USER.name}
+                <div className="ml-3 flex-1">
+                  <p className="text-sm font-medium text-black truncate">
+                    {user?.name || DEMO_CONFIG.USER.name}
                   </p>
-                  <p className="text-xs text-gray-500 truncate">
-                    {DEMO_CONFIG.USER.role}
+                  <p className="text-xs text-black/50 truncate">
+                    {user?.role || DEMO_CONFIG.USER.role}
                   </p>
                 </div>
               )}
             </div>
             {!sidebarCollapsed && (
-              <div className="mt-3 flex items-center justify-between text-xs text-gray-500">
+              <div className="mt-3 flex items-center justify-between text-xs text-black/50">
                 <span>{DEMO_CONFIG.USER.company}</span>
                 <div className="flex items-center space-x-1">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
@@ -190,43 +193,57 @@ export default function KiwiQLayout({ children }: KiwiQLayoutProps) {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Top Bar */}
-        <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
+        <header className="h-16 bg-white border-b border-black/10 flex items-center justify-between px-6">
           <div className="flex items-center space-x-4">
             {/* Search */}
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-black/40" />
               <input
                 type="text"
                 placeholder="Search..."
-                className="pl-10 pr-4 py-2 w-80 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-gray-400 transition-colors"
+                className="pl-10 pr-4 py-2 w-80 border border-black/10 rounded-lg text-sm focus:outline-none focus:border-black/20 transition-colors"
               />
-              <kbd className="absolute right-3 top-1/2 transform -translate-y-1/2 px-2 py-0.5 text-xs text-gray-400 bg-gray-100 rounded">
+              <kbd className="absolute right-3 top-1/2 transform -translate-y-1/2 px-2 py-0.5 text-xs text-black/40 bg-black/5 rounded">
                 ⌘K
               </kbd>
             </div>
           </div>
 
           <div className="flex items-center space-x-4">
+            {/* User Welcome */}
+            <span className="text-sm text-black/60">
+              Welcome, {user?.name || 'Demo User'}
+            </span>
+
             {/* Notifications */}
-            <button className="relative p-2 text-gray-400 hover:text-gray-600 transition-colors">
+            <button className="relative p-2 text-black/40 hover:text-black/60 transition-colors">
               <Bell className="w-5 h-5" />
-              <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+              <span className="absolute top-0 right-0 w-2 h-2 bg-black rounded-full"></span>
             </button>
 
             {/* Settings */}
-            <button className="p-2 text-gray-400 hover:text-gray-600 transition-colors">
+            <button className="p-2 text-black/40 hover:text-black/60 transition-colors">
               <Settings className="w-5 h-5" />
             </button>
 
+            {/* Logout Button */}
+            <button 
+              onClick={logout}
+              className="p-2 text-black/40 hover:text-black/60 transition-colors"
+              title="Logout"
+            >
+              <LogOut className="w-5 h-5" />
+            </button>
+
             {/* Demo Badge */}
-            <div className="px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded-full">
+            <div className="px-3 py-1.5 bg-black text-white text-xs font-medium rounded-full">
               Demo Mode
             </div>
           </div>
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-auto bg-gray-50">
+        <main className="flex-1 overflow-auto bg-white">
           {children}
         </main>
       </div>
