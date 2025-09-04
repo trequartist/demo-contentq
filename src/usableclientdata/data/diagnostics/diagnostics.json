@@ -1,0 +1,180 @@
+{
+  "reports": [
+    {
+      "id": "report-1",
+      "assetName": "When Rules Break: AI Automation Blog",
+      "assetType": "blog",
+      "date": "2024-01-15",
+      "status": "Good",
+      "visibilityScore": 86,
+      "metrics": {
+        "seo": 86,
+        "aeo": 72,
+        "readability": 85,
+        "engagement": 72
+      },
+      "analysis": {
+        "strong": 3,
+        "improving": 2,
+        "needsWork": 2
+      },
+      "recommendations": [
+        "Add structured data markup",
+        "Include 'Questions This Post Answers' section",
+        "Create comparison tables for featured snippets"
+      ],
+      "conversionRate": 7.2,
+      "completed": true
+    },
+    {
+      "id": "report-2",
+      "assetName": "Gumloop vs Zapier Migration Guide",
+      "assetType": "blog",
+      "date": "2024-01-18",
+      "status": "Review",
+      "visibilityScore": 85,
+      "metrics": {
+        "seo": 85,
+        "aeo": 72,
+        "readability": 82,
+        "engagement": 0
+      },
+      "analysis": {
+        "strong": 2,
+        "improving": 3,
+        "needsWork": 1
+      },
+      "expectedConversion": 12.3,
+      "completed": false
+    },
+    {
+      "id": "report-3",
+      "assetName": "5 Signs Your Automation is Killing Deals",
+      "assetType": "linkedin",
+      "date": "2024-01-16",
+      "status": "Scheduled",
+      "visibilityScore": 91,
+      "metrics": {
+        "readability": 91,
+        "engagement": 0,
+        "expectedReach": "High"
+      },
+      "analysis": {
+        "strong": 3,
+        "improving": 0,
+        "needsWork": 0
+      },
+      "completed": false
+    },
+    {
+      "id": "report-4",
+      "assetName": "Content Authority Score",
+      "assetType": "overall",
+      "date": "2024-01-15",
+      "status": "Needs Improvement",
+      "visibilityScore": 65.8,
+      "metrics": {
+        "contentAuthority": 65.8,
+        "aiVisibility": 78.5,
+        "userIntentCoverage": 35,
+        "purchaseContent": 10
+      },
+      "analysis": {
+        "strong": 1,
+        "improving": 1,
+        "needsWork": 4
+      },
+      "criticalGaps": [
+        "Only 2 purchase-stage posts vs 15-20 industry standard",
+        "Zero presence for 'Zapier too expensive' (8,100 searches/mo)",
+        "No migration guides while competitors have 3-5",
+        "Missing structured data on 80% of pages"
+      ],
+      "completed": false
+    }
+  ],
+  "summary": {
+    "totalReports": 4,
+    "blogReports": 2,
+    "linkedInReports": 1,
+    "overallReports": 1,
+    "averageScore": 81.95,
+    "contentAuthority": 65.8,
+    "criticalMetrics": {
+      "aiAutomationVisibility": 78.5,
+      "generalAutomationAwareness": 0.01,
+      "purchaseStageGap": "$75K MRR",
+      "competitorPosition": "Behind"
+    }
+  },
+  "quickActions": [
+    "Add structured data to all posts (8 hour effort, HIGH ROI)",
+    "Create Zapier comparison page (4 hour effort, $50K MRR potential)",
+    "Fix missing H1 tags on 46% of pages (4 hour effort)",
+    "Build migration calculator (16 hour effort, 12% conversion rate)"
+  ],
+  "recentActivity": [
+    {
+      "asset": "When Rules Break Blog",
+      "time": "Published today",
+      "status": "complete",
+      "performance": "7.2% conversion rate"
+    },
+    {
+      "asset": "Migration Guide",
+      "time": "In review",
+      "status": "pending",
+      "scheduledDate": "2024-01-18"
+    },
+    {
+      "asset": "LinkedIn Post",
+      "time": "Scheduled tomorrow",
+      "status": "scheduled"
+    }
+  ],
+  "competitiveAnalysis": {
+    "gumloop": {
+      "position": 4,
+      "contentVelocity": 3,
+      "visibility": 65.8
+    },
+    "zapier": {
+      "position": 1,
+      "contentVelocity": 32,
+      "visibility": 95
+    },
+    "make": {
+      "position": 2,
+      "contentVelocity": 18,
+      "visibility": 82
+    },
+    "n8n": {
+      "position": 3,
+      "contentVelocity": 10,
+      "visibility": 76
+    }
+  },
+  "topOpportunities": [
+    {
+      "opportunity": "Capture 'Zapier too expensive' traffic",
+      "volume": 8100,
+      "difficulty": "Medium",
+      "potentialValue": "$50K MRR",
+      "effort": "40 hours"
+    },
+    {
+      "opportunity": "Build migration content hub",
+      "volume": 17400,
+      "difficulty": "High",
+      "potentialValue": "$75K MRR",
+      "effort": "80 hours"
+    },
+    {
+      "opportunity": "Own 'AI automation' category",
+      "volume": 4400,
+      "difficulty": "Low",
+      "potentialValue": "$30K MRR",
+      "effort": "60 hours"
+    }
+  ]
+}

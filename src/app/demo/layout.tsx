@@ -1,5 +1,6 @@
 import KiwiQLayout from '@/components/layout/KiwiQLayout';
 import { DemoProvider } from '@/lib/demo/demo-context';
+import PresenterProvider from './providers';
 
 export default function DemoLayout({
   children,
@@ -8,9 +9,11 @@ export default function DemoLayout({
 }) {
   return (
     <DemoProvider>
-      <KiwiQLayout>
-        {children}
-      </KiwiQLayout>
+      <PresenterProvider>
+        <KiwiQLayout>
+          {children}
+        </KiwiQLayout>
+      </PresenterProvider>
     </DemoProvider>
   );
 }

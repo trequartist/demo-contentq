@@ -1,0 +1,448 @@
+{
+  "researchFeed": {
+    "lastUpdated": "2024-01-15T10:00:00Z",
+    "items": [
+      {
+        "id": "insight-1",
+        "type": "trend",
+        "priority": "critical",
+        "title": "8,100 monthly searches for 'Zapier too expensive' with zero Gumloop presence",
+        "source": "KiwiQ Market Analysis",
+        "time": "2 hours ago",
+        "relevance": 98,
+        "summary": "Critical opportunity: Users actively searching for Zapier alternatives due to pricing concerns, but Gumloop has zero visibility in these searches worth $50M+ annually.",
+        "impact": "Could capture 30-40% of users hitting Zapier's $299/month wall",
+        "action": "Create dedicated 'Zapier too expensive' landing page immediately",
+        "tags": ["Opportunity", "SEO", "Competitor", "Critical"],
+        "metrics": {
+          "searchVolume": 8100,
+          "difficulty": 32,
+          "currentPosition": null,
+          "potentialTraffic": 2430,
+          "estimatedValue": "$75K MRR"
+        }
+      },
+      {
+        "id": "insight-2",
+        "type": "competitor",
+        "priority": "high",
+        "title": "Zapier publishes 32 posts/month vs Gumloop's 3 - 10x content velocity gap",
+        "source": "Competitive Intelligence",
+        "time": "4 hours ago",
+        "relevance": 94,
+        "summary": "Zapier's content velocity creates self-reinforcing dominance cycle, influencing AI training data and maintaining 85% market share awareness.",
+        "impact": "Losing ground in organic visibility and AI recommendations",
+        "action": "Increase content velocity to 15+ posts/month minimum",
+        "tags": ["Competition", "Content", "Strategy"],
+        "competitorData": {
+          "zapier": 32,
+          "make": 18,
+          "n8n": 10,
+          "gumloop": 3
+        }
+      },
+      {
+        "id": "insight-3",
+        "type": "insight",
+        "priority": "high",
+        "title": "Migration content converts at 12.3% vs 2% average - 6x performance",
+        "source": "Content Analytics",
+        "time": "6 hours ago",
+        "relevance": 96,
+        "summary": "Migration guides show highest conversion rates across all content types, proving bottom-funnel effectiveness for capturing switchers.",
+        "impact": "$50K MRR potential from migration content alone",
+        "action": "Create 5 more migration guides targeting specific use cases",
+        "tags": ["ROI", "Content", "Conversion"],
+        "performance": {
+          "migrationConversion": 12.3,
+          "averageConversion": 2.0,
+          "multiplier": 6.15
+        }
+      },
+      {
+        "id": "insight-4",
+        "type": "market",
+        "priority": "high",
+        "title": "AI automation market growing 23% QoQ - category definition opportunity",
+        "source": "Industry Research",
+        "time": "1 day ago",
+        "relevance": 92,
+        "summary": "AI-native automation category growing rapidly with no clear leader. First-mover advantage available for category definition.",
+        "impact": "Could own 'AI-native automation' narrative before competitors",
+        "action": "Publish AI Automation Manifesto and category definition content",
+        "tags": ["Market", "Growth", "Opportunity"],
+        "marketData": {
+          "growthRate": "23% QoQ",
+          "searchGrowth": "67% YoY",
+          "competitorPositions": "Undefined"
+        }
+      },
+      {
+        "id": "insight-5",
+        "type": "technical",
+        "priority": "critical",
+        "title": "80% of pages missing schema markup - losing 40% potential CTR",
+        "source": "Technical SEO Audit",
+        "time": "1 day ago",
+        "relevance": 89,
+        "summary": "Missing structured data preventing rich snippets and featured snippets, directly impacting visibility and click-through rates.",
+        "impact": "Missing 40% of potential organic traffic",
+        "action": "Implement Article, FAQ, and HowTo schema across all content",
+        "tags": ["Technical", "SEO", "Quick Win"],
+        "technicalGaps": {
+          "schemaMarkup": "19.63% coverage",
+          "canonicalTags": "0% coverage",
+          "h1Tags": "54% coverage"
+        }
+      },
+      {
+        "id": "insight-6",
+        "type": "user",
+        "priority": "high",
+        "title": "Reddit users switching to n8n/Make - never mention Gumloop",
+        "source": "Social Listening",
+        "time": "2 days ago",
+        "relevance": 87,
+        "summary": "Active discussions about Zapier alternatives in r/automation and r/SaaS consistently mention Make and n8n but Gumloop has zero organic mentions.",
+        "impact": "Missing 60% of switchers who go to competitors",
+        "action": "Start Reddit presence with value-first engagement strategy",
+        "tags": ["Social", "Awareness", "Community"],
+        "socialData": {
+          "zapierMentions": 234,
+          "makeMentions": 89,
+          "n8nMentions": 67,
+          "gumloopMentions": 0
+        }
+      },
+      {
+        "id": "insight-7",
+        "type": "ai",
+        "priority": "high",
+        "title": "ChatGPT recommends Zapier 90% of time - AI visibility crisis",
+        "source": "AI Platform Analysis",
+        "time": "3 days ago",
+        "relevance": 91,
+        "summary": "AI assistants consistently recommend Zapier for automation queries, creating self-reinforcing cycle. Gumloop mentioned only 15% for specific AI automation queries.",
+        "impact": "Losing future market as AI becomes primary discovery method",
+        "action": "Create AI-optimized content with structured data and citations",
+        "tags": ["AI", "Visibility", "Strategy"],
+        "aiVisibility": {
+          "chatGPT": 15,
+          "claude": 10,
+          "perplexity": 20,
+          "gemini": 12
+        }
+      }
+    ]
+  },
+  
+  "knowledgeHub": {
+    "stats": {
+      "totalInsights": 147,
+      "weeklyGrowth": 23,
+      "criticalActions": 7,
+      "completedActions": 2,
+      "healthScore": 65.8,
+      "improvementRate": "+8.2%"
+    },
+    "categories": [
+      {
+        "id": "cat-1",
+        "name": "Market Opportunities",
+        "count": 34,
+        "trending": true,
+        "priority": "critical",
+        "icon": "trending-up",
+        "topInsight": "8,100 searches for 'Zapier too expensive'",
+        "estimatedValue": "$125K MRR"
+      },
+      {
+        "id": "cat-2",
+        "name": "Content Strategy",
+        "count": 28,
+        "trending": true,
+        "priority": "high",
+        "icon": "edit",
+        "topInsight": "Migration content converts 6x better",
+        "actionItems": 12
+      },
+      {
+        "id": "cat-3",
+        "name": "Technical SEO",
+        "count": 19,
+        "trending": false,
+        "priority": "high",
+        "icon": "code",
+        "topInsight": "80% pages missing schema markup",
+        "quickWins": 8
+      },
+      {
+        "id": "cat-4",
+        "name": "Competitive Intelligence",
+        "count": 31,
+        "trending": true,
+        "priority": "high",
+        "icon": "target",
+        "topInsight": "10x content velocity disadvantage",
+        "threats": 5
+      },
+      {
+        "id": "cat-5",
+        "name": "AI Visibility",
+        "count": 17,
+        "trending": true,
+        "priority": "critical",
+        "icon": "cpu",
+        "topInsight": "15% mention rate vs 90% for Zapier",
+        "improvement": "+3% monthly"
+      },
+      {
+        "id": "cat-6",
+        "name": "User Behavior",
+        "count": 18,
+        "trending": false,
+        "priority": "medium",
+        "icon": "users",
+        "topInsight": "60% engaged visitors click CTA",
+        "conversionPath": "Optimized"
+      }
+    ],
+    "actionItems": [
+      {
+        "id": "action-1",
+        "title": "Create 'Zapier too expensive' landing page",
+        "priority": "critical",
+        "effort": "4 hours",
+        "impact": "$50K MRR",
+        "status": "pending",
+        "dueDate": "2024-01-17",
+        "owner": "Content Team",
+        "dependencies": []
+      },
+      {
+        "id": "action-2",
+        "title": "Implement schema markup across all pages",
+        "priority": "critical",
+        "effort": "8 hours",
+        "impact": "+40% CTR",
+        "status": "in-progress",
+        "dueDate": "2024-01-20",
+        "owner": "Dev Team",
+        "progress": 20
+      },
+      {
+        "id": "action-3",
+        "title": "Publish 5 migration guides",
+        "priority": "high",
+        "effort": "40 hours",
+        "impact": "150+ leads/month",
+        "status": "pending",
+        "dueDate": "2024-01-30",
+        "owner": "Content Team",
+        "topics": ["Zapier", "Make", "n8n", "Integromat", "IFTTT"]
+      },
+      {
+        "id": "action-4",
+        "title": "Launch interactive ROI calculator",
+        "priority": "high",
+        "effort": "24 hours",
+        "impact": "2x conversion rate",
+        "status": "pending",
+        "dueDate": "2024-01-25",
+        "owner": "Product Team"
+      },
+      {
+        "id": "action-5",
+        "title": "Start Reddit engagement campaign",
+        "priority": "medium",
+        "effort": "Ongoing",
+        "impact": "Brand awareness",
+        "status": "planning",
+        "dueDate": "2024-01-18",
+        "owner": "Marketing Team"
+      }
+    ],
+    "recentWins": [
+      {
+        "id": "win-1",
+        "title": "RevOps content achieves #1 ranking",
+        "metric": "Position 1 for 'RevOps automation'",
+        "impact": "980 searches/month captured",
+        "date": "2024-01-10"
+      },
+      {
+        "id": "win-2",
+        "title": "Migration guide converts at 12.3%",
+        "metric": "6x industry average",
+        "impact": "$15K MRR from single post",
+        "date": "2024-01-08"
+      },
+      {
+        "id": "win-3",
+        "title": "AI visibility increased to 78.5%",
+        "metric": "+12.3% improvement",
+        "impact": "More AI citations",
+        "date": "2024-01-05"
+      }
+    ]
+  },
+
+  "strategicAlerts": [
+    {
+      "id": "alert-1",
+      "type": "opportunity",
+      "severity": "critical",
+      "title": "Zapier pricing backlash creates switching window",
+      "description": "Increased complaints about Zapier pricing in forums. 30-40% actively seeking alternatives.",
+      "recommendation": "Launch aggressive migration campaign now",
+      "timeframe": "Next 30 days",
+      "estimatedImpact": "$75-100K MRR"
+    },
+    {
+      "id": "alert-2",
+      "type": "threat",
+      "severity": "high",
+      "title": "Make gaining market share rapidly",
+      "description": "Make capturing 60% of Zapier defectors with migration content and transparent pricing.",
+      "recommendation": "Create superior migration resources and tools",
+      "timeframe": "Immediate",
+      "competitorGrowth": "+45% QoQ"
+    },
+    {
+      "id": "alert-3",
+      "type": "technical",
+      "severity": "high",
+      "title": "Site performance impacting conversions",
+      "description": "Core Web Vitals below target, potentially losing 10-15% of traffic.",
+      "recommendation": "Optimize LCP and CLS scores",
+      "timeframe": "Next 2 weeks",
+      "currentScore": 72
+    }
+  ],
+
+  "marketIntelligence": {
+    "trends": [
+      {
+        "trend": "AI-native automation adoption",
+        "growth": "+67% YoY",
+        "opportunity": "Category leadership available",
+        "action": "Define category with thought leadership"
+      },
+      {
+        "trend": "Zapier pricing resistance",
+        "growth": "+234% complaint volume",
+        "opportunity": "Capture price-sensitive switchers",
+        "action": "Emphasize 90% cost savings"
+      },
+      {
+        "trend": "No-code AI demand",
+        "growth": "+45% QoQ searches",
+        "opportunity": "Position as no-code AI leader",
+        "action": "Create no-code AI content series"
+      }
+    ],
+    "competitorMoves": [
+      {
+        "competitor": "Zapier",
+        "move": "Launched AI features (bolt-on)",
+        "weakness": "Not native AI, expensive add-on",
+        "counter": "Emphasize native AI architecture"
+      },
+      {
+        "competitor": "Make",
+        "move": "Aggressive migration campaign",
+        "weakness": "Complex UI, steep learning curve",
+        "counter": "Highlight ease of use"
+      },
+      {
+        "competitor": "n8n",
+        "move": "Open-source community growth",
+        "weakness": "Technical expertise required",
+        "counter": "No-code positioning"
+      }
+    ],
+    "userSignals": [
+      {
+        "signal": "Cost complaints increasing",
+        "source": "Reddit, Twitter, Forums",
+        "volume": "+234% mentions",
+        "opportunity": "Cost-focused messaging"
+      },
+      {
+        "signal": "AI automation interest surging",
+        "source": "Search queries",
+        "volume": "+67% YoY",
+        "opportunity": "AI-first positioning"
+      },
+      {
+        "signal": "Migration friction points",
+        "source": "User research",
+        "issues": ["Data loss fears", "Downtime concerns", "Learning curve"],
+        "opportunity": "Risk-free migration promise"
+      }
+    ]
+  },
+
+  "recommendations": {
+    "immediate": [
+      {
+        "action": "Create Zapier comparison page",
+        "impact": "Capture 8,100 monthly searches",
+        "effort": "4 hours",
+        "priority": "CRITICAL"
+      },
+      {
+        "action": "Fix technical SEO issues",
+        "impact": "+40% organic traffic",
+        "effort": "8 hours",
+        "priority": "CRITICAL"
+      },
+      {
+        "action": "Launch pricing calculator",
+        "impact": "2x conversion rate",
+        "effort": "16 hours",
+        "priority": "HIGH"
+      }
+    ],
+    "shortTerm": [
+      {
+        "action": "Publish 5 migration guides",
+        "impact": "$50K MRR potential",
+        "effort": "40 hours",
+        "timeline": "30 days"
+      },
+      {
+        "action": "Create AI automation manifesto",
+        "impact": "Category ownership",
+        "effort": "20 hours",
+        "timeline": "2 weeks"
+      },
+      {
+        "action": "Start Reddit presence",
+        "impact": "Brand awareness",
+        "effort": "Ongoing",
+        "timeline": "Immediate start"
+      }
+    ],
+    "longTerm": [
+      {
+        "action": "Build content velocity to 15+ posts/month",
+        "impact": "Competitive parity",
+        "investment": "$8K/month",
+        "timeline": "90 days"
+      },
+      {
+        "action": "Create interactive tool suite",
+        "impact": "Lead generation engine",
+        "investment": "$15K",
+        "timeline": "60 days"
+      },
+      {
+        "action": "Develop partner ecosystem",
+        "impact": "Market expansion",
+        "investment": "$20K",
+        "timeline": "6 months"
+      }
+    ]
+  }
+}

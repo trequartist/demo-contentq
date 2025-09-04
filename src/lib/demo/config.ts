@@ -79,3 +79,4 @@ export const getConfig = (key: keyof typeof DEMO_CONFIG) => {
 export const getTimingValue = (key: keyof typeof DEMO_CONFIG.timing, speedMultiplier: number = 1) => {
   return DEMO_CONFIG.timing[key] / speedMultiplier;
 };
+

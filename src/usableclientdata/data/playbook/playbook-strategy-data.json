@@ -1,0 +1,656 @@
+{
+  "executiveDashboard": {
+    "opportunity": {
+      "totalValue": "$50M+",
+      "description": "Opportunity trapped behind visibility crisis",
+      "keyMetrics": [
+        {
+          "metric": "Monthly search volume",
+          "value": 8100,
+          "context": "'Zapier too expensive' with ZERO Gumloop presence"
+        },
+        {
+          "metric": "Enterprise ROI proof",
+          "value": "207%",
+          "clients": ["Instacart", "Webflow"]
+        },
+        {
+          "metric": "Zapier defector capture rate",
+          "value": "0%",
+          "context": "60% choose Make/n8n because they don't know Gumloop exists"
+        }
+      ]
+    },
+    "strategicApproach": {
+      "coreThesis": "Don't compete on features. Own the 'AI-native automation' category while capturing high-intent switchers",
+      "positioning": "The AI-powered alternative to expensive, rule-based automation",
+      "differentiator": "Handle the 40% of workflows that break traditional automation"
+    },
+    "quickStats": {
+      "currentState": {
+        "aiAutomationVisibility": 78.5,
+        "generalAutomationAwareness": 0.01,
+        "contentGap": "2 purchase-stage assets vs. 15-20 industry standard",
+        "costImpact": "Missing ~$75K MRR from purchase content gap"
+      }
+    }
+  },
+  "strategicPlays": [
+    {
+      "id": "migration-accelerator",
+      "name": "The Migration Accelerator",
+      "priority": 1,
+      "effortAllocation": 60,
+      "goal": "Capture the 30-40% of users hitting Zapier's $299/month wall",
+      "opportunitySize": {
+        "totalSearchVolume": 17400,
+        "keyQueries": [
+          {
+            "query": "Zapier alternatives cheap",
+            "volume": 8100
+          },
+          {
+            "query": "Zapier pricing alternatives",
+            "volume": 6500
+          },
+          {
+            "query": "Migrate from Zapier",
+            "volume": 2800
+          }
+        ]
+      },
+      "contentPillars": {
+        "migrationEnablement": [
+          {
+            "title": "The Zapier to Gumloop Migration Guide",
+            "type": "guide",
+            "components": ["Technical migration paths", "Data preservation strategies", "Risk mitigation framework"]
+          },
+          {
+            "title": "Zapier Pricing Analysis",
+            "type": "analysis",
+            "components": ["Task calculation methodology", "Hidden cost identification", "Growth projection modeling"]
+          },
+          {
+            "title": "Migration ROI Calculator",
+            "type": "tool",
+            "components": ["Interactive tool", "Sensitivity analysis", "PDF export capability"]
+          },
+          {
+            "title": "Workflow Translation Guide",
+            "type": "guide",
+            "components": ["Feature mapping matrix", "Common pattern translations", "Video walkthroughs"]
+          },
+          {
+            "title": "30-Day Migration Timeline",
+            "type": "timeline",
+            "components": ["Week-by-week breakdown", "Testing protocols", "Rollback procedures"]
+          },
+          {
+            "title": "Data Security During Migration",
+            "type": "checklist",
+            "components": ["Compliance maintenance", "Audit trail preservation", "Security checklist"]
+          },
+          {
+            "title": "Post-Migration Optimization",
+            "type": "guide",
+            "components": ["AI enhancement opportunities", "Performance benchmarking", "Cost optimization"]
+          },
+          {
+            "title": "Migration Case Studies",
+            "type": "case-studies",
+            "components": ["3-5 detailed customer stories", "Metrics and challenges", "6-month assessments"]
+          }
+        ],
+        "competitiveIntelligence": [
+          "Gumloop vs. Zapier: Architectural Differences",
+          "Why Task-Based Pricing Breaks at Scale",
+          "AI Workflows Zapier Can't Match",
+          "Total Cost of Ownership: 3-Year Comparison",
+          "Performance Benchmarks",
+          "Integration Depth vs. Breadth",
+          "Enterprise Readiness Comparison"
+        ]
+      }
+    },
+    {
+      "id": "ai-native-authority",
+      "name": "The AI-Native Authority",
+      "priority": 2,
+      "effortAllocation": 40,
+      "goal": "Define and own the 'AI-native automation' category",
+      "opportunitySize": {
+        "searchVolume": 4400,
+        "growthRate": "23% QoQ",
+        "currentCitation": "15% AI platform citations for Gumloop"
+      },
+      "contentPillars": {
+        "categoryDefinition": [
+          {
+            "title": "AI-Native Automation: Technical Definition",
+            "components": ["Architectural requirements", "Market analysis", "Vendor landscape"]
+          },
+          {
+            "title": "AI Automation Maturity Model",
+            "components": ["Five-stage framework", "Assessment criteria", "Roadmap templates"]
+          },
+          {
+            "title": "From RPA to AI Agents",
+            "components": ["Historical context", "Technical capabilities", "Future predictions"]
+          },
+          {
+            "title": "Economics of AI Automation",
+            "components": ["TCO and ROI modeling", "Industry benchmarks", "Sensitivity analysis"]
+          },
+          {
+            "title": "AI Orchestration Patterns",
+            "components": ["Architectural patterns", "Multi-model strategies", "Error handling"]
+          },
+          {
+            "title": "Build vs. Buy Framework",
+            "components": ["Capability assessment", "Resource requirements", "Risk evaluation"]
+          }
+        ],
+        "implementation": [
+          "Document Intelligence Implementation",
+          "Multi-Model Workflow Design",
+          "AI Agent Design Patterns",
+          "Prompt Engineering at Scale",
+          "Human-in-the-Loop Automation",
+          "Testing AI Workflows",
+          "Cost Optimization Strategies",
+          "Governance and Compliance"
+        ]
+      }
+    },
+    {
+      "id": "transparency-advantage",
+      "name": "The Transparency Advantage",
+      "priority": 3,
+      "effortAllocation": 20,
+      "goal": "Differentiate through radical pricing transparency",
+      "opportunitySize": {
+        "buyerInfluence": "73% influenced by pricing transparency",
+        "salesCycleReduction": "23% faster with transparent pricing",
+        "searchVolume": 2100,
+        "query": "automation ROI calculator"
+      },
+      "contentPillars": {
+        "pricingPhilosophy": [
+          "Our Pricing Philosophy: Execution vs. Tasks",
+          "True Cost of Automation: Industry Decoded",
+          "Building Your Automation Business Case",
+          "Q1 2025 Pricing Transparency Report",
+          "Anti-Vendor Lock-in Promise"
+        ],
+        "valueDemonstrationTools": [
+          {
+            "name": "ROI Calculator",
+            "features": ["Industry-specific templates", "Exportable business cases"]
+          },
+          {
+            "name": "Workflow Cost Comparison",
+            "features": ["Platform comparisons", "Scaling projections"]
+          },
+          {
+            "name": "Migration Savings Estimator",
+            "features": ["Current cost analysis", "Payback timeline"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "use-case-accelerator",
+      "name": "The Use Case Accelerator",
+      "priority": 4,
+      "effortAllocation": 20,
+      "goal": "Provide department and industry-specific implementation guides",
+      "opportunitySize": {
+        "currentCoverage": "35% user intent",
+        "targetCoverage": "70% standard",
+        "conversionMultiplier": 2.3,
+        "buyerDemand": "67% want industry-specific proof"
+      },
+      "contentPillars": {
+        "departmentPlaybooks": [
+          {
+            "department": "RevOps",
+            "focus": ["Lead scoring/routing", "Pipeline automation", "10+ templates"]
+          },
+          {
+            "department": "Finance",
+            "focus": ["Invoice processing", "Reconciliation", "Compliance reporting"]
+          },
+          {
+            "department": "Customer Success",
+            "focus": ["Health scoring", "Renewal prediction", "Onboarding sequences"]
+          },
+          {
+            "department": "Marketing Operations",
+            "focus": ["Lead nurturing", "Personalization", "Attribution modeling"]
+          },
+          {
+            "department": "HR",
+            "focus": ["Onboarding workflows", "Performance reviews", "Recruitment pipeline"]
+          },
+          {
+            "department": "IT Operations",
+            "focus": ["Ticket routing", "Asset management", "Security alerts"]
+          }
+        ],
+        "industryVerticals": [
+          "SaaS Automation Blueprint",
+          "E-commerce Automation Guide",
+          "Professional Services Playbook",
+          "Healthcare Administration Workflows"
+        ]
+      }
+    }
+  ],
+  "executionRoadmap": {
+    "days1to7": {
+      "name": "Emergency Response",
+      "tasks": [
+        {
+          "task": "Add FAQ sections to top 10 posts",
+          "priority": "CRITICAL",
+          "effort": "4 hours"
+        },
+        {
+          "task": "Create Zapier comparison page",
+          "priority": "CRITICAL",
+          "effort": "8 hours"
+        },
+        {
+          "task": "Launch pricing calculator",
+          "priority": "HIGH",
+          "effort": "16 hours"
+        },
+        {
+          "task": "Fix technical SEO issues (H1s, canonicals)",
+          "priority": "HIGH",
+          "effort": "6 hours"
+        }
+      ]
+    },
+    "days8to30": {
+      "name": "Migration Offensive",
+      "tasks": [
+        {
+          "task": "Publish 5 migration guides",
+          "priority": "CRITICAL",
+          "effort": "40 hours"
+        },
+        {
+          "task": "Launch interactive migration calculator",
+          "priority": "HIGH",
+          "effort": "24 hours"
+        },
+        {
+          "task": "Create 'Zapier Refugee Resource Center'",
+          "priority": "HIGH",
+          "effort": "16 hours"
+        },
+        {
+          "task": "Begin Reddit/LinkedIn presence",
+          "priority": "MEDIUM",
+          "effort": "Ongoing"
+        }
+      ]
+    },
+    "days31to60": {
+      "name": "AI Authority",
+      "tasks": [
+        {
+          "task": "Publish AI Automation Manifesto",
+          "priority": "HIGH",
+          "effort": "20 hours"
+        },
+        {
+          "task": "Create category definition content",
+          "priority": "HIGH",
+          "effort": "32 hours"
+        },
+        {
+          "task": "Launch AI workflow templates",
+          "priority": "MEDIUM",
+          "effort": "24 hours"
+        },
+        {
+          "task": "Develop use case libraries",
+          "priority": "MEDIUM",
+          "effort": "40 hours"
+        }
+      ]
+    },
+    "days61to90": {
+      "name": "Scale & Optimize",
+      "tasks": [
+        {
+          "task": "Expand to other competitor migrations",
+          "priority": "MEDIUM",
+          "effort": "32 hours"
+        },
+        {
+          "task": "Build comprehensive academy",
+          "priority": "HIGH",
+          "effort": "60 hours"
+        },
+        {
+          "task": "Launch partner content program",
+          "priority": "MEDIUM",
+          "effort": "20 hours"
+        },
+        {
+          "task": "Implement structured data",
+          "priority": "HIGH",
+          "effort": "16 hours"
+        }
+      ]
+    }
+  },
+  "successMetrics": {
+    "leadingIndicators": {
+      "day30": [
+        {
+          "metric": "Rank page 1 for 'Zapier too expensive'",
+          "target": "Position 1-3",
+          "status": "pending"
+        },
+        {
+          "metric": "Generate MQLs from migration content",
+          "target": "50+",
+          "status": "pending"
+        },
+        {
+          "metric": "Trial signup increase",
+          "target": "25%",
+          "status": "pending"
+        },
+        {
+          "metric": "Purchase-stage posts published",
+          "target": 15,
+          "status": "pending"
+        }
+      ],
+      "day60": [
+        {
+          "metric": "Capture 'Zapier alternative' traffic",
+          "target": "10%",
+          "status": "pending"
+        },
+        {
+          "metric": "First customer from migration content",
+          "target": "Achieved",
+          "status": "pending"
+        },
+        {
+          "metric": "AI visibility for automation queries",
+          "target": "40%",
+          "status": "pending"
+        },
+        {
+          "metric": "Zapier users on email list",
+          "target": 1000,
+          "status": "pending"
+        }
+      ],
+      "day90": [
+        {
+          "metric": "Own 'AI automation platform' search",
+          "target": "Position 1",
+          "status": "pending"
+        },
+        {
+          "metric": "MRR from migration content",
+          "target": "$50K",
+          "status": "pending"
+        },
+        {
+          "metric": "User intent coverage",
+          "target": "50%",
+          "status": "pending"
+        },
+        {
+          "metric": "Cited source in automation discussions",
+          "target": "5+ mentions/week",
+          "status": "pending"
+        }
+      ]
+    },
+    "performanceTracking": {
+      "doubleDownSignals": [
+        "Any content generating >10 MQLs/month",
+        "Keywords jumping from position 11-20 to 4-10",
+        "Content with >50% higher engagement than average",
+        "Topics where sales reports high close rates"
+      ],
+      "iterateSignals": [
+        "High traffic but <0.5% conversion",
+        "Good rankings but <2 min time on page",
+        "High tool starts but <20% completion",
+        "Sales feedback about missing information"
+      ],
+      "discontinueSignals": [
+        "<100 monthly searches + no conversions after 60 days",
+        "Engagement <50% of average",
+        "Channels delivering <5% of traffic after 30 days",
+        "Position 20+ after 90 days"
+      ]
+    }
+  },
+  "distributionStrategy": {
+    "primaryChannels": [
+      {
+        "channel": "SEO Blog",
+        "approach": "Technical schema, optimized for search",
+        "priority": "CRITICAL"
+      },
+      {
+        "channel": "GitHub",
+        "approach": "Migration tools and templates",
+        "priority": "HIGH"
+      },
+      {
+        "channel": "Dev.to",
+        "approach": "Technical deep-dives",
+        "priority": "MEDIUM"
+      },
+      {
+        "channel": "Product Hunt",
+        "approach": "Tool launches",
+        "priority": "MEDIUM"
+      }
+    ],
+    "secondaryChannels": [
+      {
+        "channel": "YouTube",
+        "approach": "Visual workflow tutorials",
+        "priority": "MEDIUM"
+      },
+      {
+        "channel": "Reddit",
+        "approach": "r/automation, r/SaaS participation",
+        "priority": "HIGH"
+      },
+      {
+        "channel": "LinkedIn",
+        "approach": "Founder-led thought leadership",
+        "priority": "HIGH"
+      },
+      {
+        "channel": "Medium",
+        "approach": "Content republishing",
+        "priority": "LOW"
+      }
+    ]
+  },
+  "implementationNotes": {
+    "contentMixFormula": {
+      "education": {
+        "percentage": 30,
+        "purpose": "Capture beginners"
+      },
+      "comparison": {
+        "percentage": 25,
+        "purpose": "Capture evaluators"
+      },
+      "migration": {
+        "percentage": 25,
+        "purpose": "Capture switchers"
+      },
+      "innovation": {
+        "percentage": 20,
+        "purpose": "Build authority"
+      }
+    },
+    "contentTypeBalance": {
+      "externalResearch": {
+        "percentage": 40,
+        "purpose": "Credibility"
+      },
+      "internalDocumentation": {
+        "percentage": 35,
+        "purpose": "Unique insights"
+      },
+      "strategyAligned": {
+        "percentage": 25,
+        "purpose": "Narrative support"
+      }
+    },
+    "writingGuidelines": {
+      "voice": "Expert friend, not corporate robot",
+      "length": "1,200-1,400 words (4-5 min read)",
+      "structure": "Scannable headers, bullet points",
+      "evidence": "Data, examples, screenshots",
+      "cta": "Specific next action, not generic"
+    }
+  },
+  "bottomLine": {
+    "keyMessage": "Stop playing Zapier's game. You'll never win on integration count or brand awareness.",
+    "uniquePosition": "Own the narrative they can't claim: AI-native automation that costs 90% less.",
+    "urgency": "Every day you delay, 270 users search for 'Zapier too expensive' and choose inferior alternatives because you're invisible.",
+    "mission": "Transform technical superiority into market dominance by intercepting users at their Zapier breaking point and showing them the AI-native future."
+  },
+  "quickReference": {
+    "criticalKeywords": [
+      {
+        "keyword": "Zapier alternatives",
+        "volume": 8100,
+        "priority": "CRITICAL"
+      },
+      {
+        "keyword": "Zapier too expensive",
+        "volume": 6500,
+        "priority": "CRITICAL"
+      },
+      {
+        "keyword": "AI automation platform",
+        "volume": 4400,
+        "priority": "HIGH"
+      },
+      {
+        "keyword": "Migrate from Zapier",
+        "volume": 2800,
+        "priority": "HIGH"
+      },
+      {
+        "keyword": "Automation ROI calculator",
+        "volume": 2100,
+        "priority": "MEDIUM"
+      }
+    ],
+    "contentTemplates": [
+      "Migration guide template",
+      "Platform comparison matrix",
+      "ROI calculator framework",
+      "Industry playbook template",
+      "Integration guide format"
+    ],
+    "competitorWeaknesses": {
+      "zapier": "Can't handle complex AI workflows, expensive at scale",
+      "make": "Weak AI integration, confusing pricing",
+      "n8n": "Too technical, self-hosting complexity",
+      "all": "Missing true AI-native architecture"
+    }
+  },
+  "contentCalendar": {
+    "week4": {
+      "theme": "Migration Week",
+      "focus": "Zapier alternatives and migration guides",
+      "deliverables": [
+        "Zapier to Gumloop migration guide",
+        "Cost comparison calculator",
+        "3 customer success stories"
+      ]
+    },
+    "week5": {
+      "theme": "ROI Week",
+      "focus": "Cost analysis and ROI calculators",
+      "deliverables": [
+        "TCO analysis post",
+        "Interactive ROI calculator",
+        "Pricing transparency report"
+      ]
+    },
+    "week6": {
+      "theme": "AI Authority Week",
+      "focus": "AI-native automation thought leadership",
+      "deliverables": [
+        "AI Automation Manifesto",
+        "Category definition post",
+        "AI vs Rules comparison"
+      ]
+    },
+    "week7": {
+      "theme": "Industry Week",
+      "focus": "Vertical-specific playbooks",
+      "deliverables": [
+        "RevOps playbook",
+        "SaaS automation blueprint",
+        "Finance automation guide"
+      ]
+    },
+    "week8": {
+      "theme": "Implementation Week",
+      "focus": "How-to guides and tutorials",
+      "deliverables": [
+        "Getting started guide",
+        "Advanced workflow patterns",
+        "Video tutorial series"
+      ]
+    }
+  },
+  "resources": {
+    "required": {
+      "contentTeam": {
+        "size": "2-3 writers",
+        "skills": ["B2B SaaS", "Technical writing", "SEO optimization"]
+      },
+      "designTeam": {
+        "size": "1 designer",
+        "deliverables": ["Infographics", "Comparison tables", "Calculator UI"]
+      },
+      "developmentTeam": {
+        "size": "1-2 developers",
+        "deliverables": ["Interactive calculators", "Migration tools", "Schema implementation"]
+      },
+      "budget": {
+        "monthly": "$15,000-20,000",
+        "breakdown": {
+          "content": "$8,000",
+          "tools": "$2,000",
+          "promotion": "$5,000",
+          "development": "$5,000"
+        }
+      }
+    },
+    "tools": [
+      "SEMrush or Ahrefs for keyword research",
+      "Clearscope for content optimization",
+      "Hotjar for user behavior",
+      "Google Search Console for performance",
+      "Amplitude for conversion tracking"
+    ]
+  }
+}

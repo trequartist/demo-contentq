@@ -1,0 +1,502 @@
+{
+  "blogWorkflow": {
+    "requirements": {
+      "companyName": "Gumloop",
+      "defaultAudience": "RevOps Managers, Operations Directors, B2B SaaS Leaders",
+      "defaultTone": "Expert but approachable - like a trusted advisor who gets your Monday morning crisis",
+      "defaultKeywords": ["AI automation", "workflow automation", "RevOps", "Gumloop", "Zapier alternative"],
+      "contentPhilosophy": "Show don't tell - use real scenarios, specific metrics, and customer proof",
+      "uniqueAngle": "AI handles the 40% of workflows that break traditional rules"
+    },
+    "topicTemplates": [
+      {
+        "id": "pain-point",
+        "name": "Pain Point Focus",
+        "template": "The Hidden Cost of [PROBLEM]: How [AUDIENCE] Can [SOLUTION]",
+        "example": "The Hidden Cost of Manual Workflow Fixes: How RevOps Teams Can Save 15 Hours Weekly",
+        "keyElements": ["Monday morning scenario", "Quantified pain", "AI solution", "ROI proof"]
+      },
+      {
+        "id": "comparison",
+        "name": "Comparison/Alternative",
+        "template": "[SOLUTION A] vs [SOLUTION B]: The [AUDIENCE] Guide to [OUTCOME]",
+        "example": "Gumloop vs Zapier: The RevOps Guide to Choosing Automation",
+        "keyElements": ["Feature matrix", "Pricing calculator", "Migration path", "Decision framework"]
+      },
+      {
+        "id": "migration",
+        "name": "Migration Guide",
+        "template": "How to Migrate from [PLATFORM] to [SOLUTION] Without [RISK]",
+        "example": "How to Migrate from Zapier to Gumloop Without Losing a Single Workflow",
+        "keyElements": ["Timeline", "Data preservation", "Risk mitigation", "Success metrics"]
+      },
+      {
+        "id": "how-to",
+        "name": "How-To Guide",
+        "template": "How to [ACHIEVE OUTCOME] with [TOOL/METHOD] in [TIMEFRAME]",
+        "example": "How to Automate Complex Workflows with AI in 30 Days",
+        "keyElements": ["Step-by-step", "Screenshots", "Common pitfalls", "Templates"]
+      },
+      {
+        "id": "listicle",
+        "name": "Listicle",
+        "template": "[NUMBER] [THINGS] Every [AUDIENCE] Should [ACTION]",
+        "example": "7 Automation Mistakes Every RevOps Team Should Avoid",
+        "keyElements": ["Numbered list", "Real examples", "Quick fixes", "Prevention tips"]
+      },
+      {
+        "id": "cost-analysis",
+        "name": "ROI/Cost Analysis",
+        "template": "The True Cost of [PROBLEM]: A [TIMEFRAME] Analysis for [AUDIENCE]",
+        "example": "The True Cost of Zapier: A 3-Year TCO Analysis for Growing Teams",
+        "keyElements": ["Cost breakdown", "Hidden fees", "Scaling projections", "Alternative savings"]
+      },
+      {
+        "id": "category-definition",
+        "name": "Category Definition",
+        "template": "What is [CATEGORY]? The [AUDIENCE] Guide to [INNOVATION]",
+        "example": "What is AI-Native Automation? The RevOps Guide to Next-Gen Workflows",
+        "keyElements": ["Clear definition", "Architecture diagram", "Vendor landscape", "Maturity model"]
+      }
+    ],
+    "briefSections": [
+      {
+        "name": "Hook",
+        "guidance": "Start with a relatable Monday morning scenario or shocking statistic",
+        "wordCount": 100,
+        "examples": [
+          "It's 8AM Monday, and your sales director pings on Slack...",
+          "You know that workflow that breaks when...",
+          "Picture this: $500K enterprise deal lost because..."
+        ]
+      },
+      {
+        "name": "Problem Definition",
+        "guidance": "Clearly articulate the pain point with specific examples",
+        "wordCount": 300,
+        "requirements": ["Quantified impact", "Real scenario", "Emotional resonance"]
+      },
+      {
+        "name": "Current State Analysis",
+        "guidance": "Explain why current solutions fail - the 60/40 split",
+        "wordCount": 400,
+        "requirements": ["Status quo limitations", "Edge cases", "Hidden costs"]
+      },
+      {
+        "name": "Solution Introduction",
+        "guidance": "Present the AI-powered alternative with clear differentiation",
+        "wordCount": 500,
+        "requirements": ["How AI differs", "Pattern recognition", "Intent understanding"]
+      },
+      {
+        "name": "Real Examples",
+        "guidance": "Include 2-3 customer success stories with names and metrics",
+        "wordCount": 600,
+        "requirements": ["Named personas", "Before/after metrics", "Specific use cases"]
+      },
+      {
+        "name": "Implementation Guide",
+        "guidance": "Step-by-step actionable advice with timeline",
+        "wordCount": 400,
+        "requirements": ["Clear steps", "Timeline", "Quick wins", "Pitfall warnings"]
+      },
+      {
+        "name": "Results & ROI",
+        "guidance": "Quantify the benefits with specific metrics",
+        "wordCount": 200,
+        "requirements": ["Time savings", "Cost reduction", "Revenue impact", "Efficiency gains"]
+      },
+      {
+        "name": "Questions This Answers",
+        "guidance": "5-7 exact search queries this content addresses",
+        "wordCount": 100,
+        "requirements": ["Voice search format", "Featured snippet targets", "User language"]
+      },
+      {
+        "name": "Key Takeaways",
+        "guidance": "Bullet-point summary for AI extraction",
+        "wordCount": 150,
+        "requirements": ["Scannable format", "Quotable stats", "Action items"]
+      }
+    ],
+    "seoOptimization": {
+      "onPage": {
+        "title": {
+          "length": "50-60 characters",
+          "format": "[Benefit/Problem] + [Solution] + [Qualifier]",
+          "examples": [
+            "Cut Automation Costs 90%: Gumloop vs Zapier Guide",
+            "When Rules Break: How AI Handles Complex Workflows"
+          ]
+        },
+        "metaDescription": {
+          "length": "150-160 characters",
+          "format": "Problem + Solution + Benefit + CTA",
+          "example": "Traditional automation breaks on 40% of workflows. See how AI handles edge cases, saves 15 hrs/week. Migration guide included."
+        },
+        "headers": {
+          "h1": "One per page, includes primary keyword",
+          "h2": "5-8 per post, 30% as questions",
+          "h3": "Supporting points, include LSI keywords"
+        },
+        "keywords": {
+          "density": "1-2% for primary, 0.5-1% for secondary",
+          "placement": "First 100 words, headers, conclusion",
+          "variations": "Use synonyms and related terms"
+        }
+      },
+      "structuredData": {
+        "required": ["Article", "FAQPage", "HowTo", "SoftwareApplication"],
+        "optional": ["Organization", "BreadcrumbList", "VideoObject"],
+        "implementation": "JSON-LD in header"
+      },
+      "contentElements": {
+        "tables": "Comparison matrices for featured snippets",
+        "lists": "Numbered for position zero",
+        "definitions": "Clear boxes for entity extraction",
+        "questions": "H2/H3 format for PAA",
+        "images": "Alt text with keywords, captions"
+      }
+    }
+  },
+  "linkedinWorkflow": {
+    "requirements": {
+      "companyName": "Gumloop",
+      "defaultAudience": "RevOps professionals, B2B SaaS leaders, Operations managers",
+      "defaultTone": "Professional yet conversational - colleague sharing hard-won insights",
+      "defaultHashtags": ["#RevOps", "#Automation", "#AI", "#B2BSaaS", "#Gumloop"],
+      "engagementGoal": "Start conversations, not broadcasts"
+    },
+    "angleTemplates": [
+      {
+        "id": "personal-story",
+        "name": "Personal Story",
+        "hook": "Last week, I learned a $[AMOUNT] lesson about [TOPIC]...",
+        "structure": "Story → Lesson → Question",
+        "example": "Last week, I watched a $500K deal die in our general queue...",
+        "expectedEngagement": "Very High",
+        "bestFor": "Building trust and relatability"
+      },
+      {
+        "id": "monday-crisis",
+        "name": "Monday Morning Crisis",
+        "hook": "It's 8AM Monday. Your [ROLE] just pinged: '[CRISIS]'",
+        "structure": "Scenario → Problem → Solution → Discussion",
+        "example": "It's 8AM Monday. Your sales director just pinged: 'Why didn't the Fortune 500 lead get routed to me?'",
+        "expectedEngagement": "High",
+        "bestFor": "Pain point resonance"
+      },
+      {
+        "id": "industry-insight",
+        "name": "Industry Insight",
+        "hook": "[NUMBER] trends in [INDUSTRY] that nobody talks about:",
+        "structure": "Hook → List → CTA",
+        "example": "3 RevOps automation myths that cost companies millions:",
+        "expectedEngagement": "Medium-High",
+        "bestFor": "Thought leadership"
+      },
+      {
+        "id": "contrarian",
+        "name": "Contrarian View",
+        "hook": "Unpopular opinion: [COMMON BELIEF] is wrong.",
+        "structure": "Statement → Evidence → Alternative",
+        "example": "Unpopular opinion: More automation rules make things worse, not better.",
+        "expectedEngagement": "Very High",
+        "bestFor": "Sparking debate"
+      },
+      {
+        "id": "data-reveal",
+        "name": "Data Revelation",
+        "hook": "We analyzed [NUMBER] [THINGS] and found [SURPRISING STAT]",
+        "structure": "Data → Insight → Implications",
+        "example": "We analyzed 10,000 failed workflows and found 40% couldn't be fixed with more rules",
+        "expectedEngagement": "High",
+        "bestFor": "Authority building"
+      },
+      {
+        "id": "quick-tips",
+        "name": "Quick Tips",
+        "hook": "Save [TIME/MONEY] with these [NUMBER] [TOOL] tips:",
+        "structure": "Hook → Tips → Result",
+        "example": "Save 15 hours weekly with these 3 AI automation tricks:",
+        "expectedEngagement": "Medium",
+        "bestFor": "Value delivery"
+      },
+      {
+        "id": "case-study",
+        "name": "Mini Case Study",
+        "hook": "How [COMPANY/ROLE] [ACHIEVED RESULT] in [TIMEFRAME]:",
+        "structure": "Result → Challenge → Solution → Lesson",
+        "example": "How Sarah's team cut manual fixes by 80% in 30 days:",
+        "expectedEngagement": "High",
+        "bestFor": "Proof and credibility"
+      }
+    ],
+    "postStructure": {
+      "opening": {
+        "lines": 2,
+        "purpose": "Hook with emotion or intrigue",
+        "tips": ["Use 'you' directly", "Start with action", "Create curiosity gap"]
+      },
+      "body": {
+        "format": "Short paragraphs with line breaks",
+        "length": "1000-1300 characters",
+        "elements": ["Story arc", "Specific examples", "Data points", "Visual breaks"]
+      },
+      "closing": {
+        "options": ["Open question", "Call for experiences", "Controversial statement", "Next step"],
+        "avoid": ["Generic CTAs", "Sales pitch", "Link dumping"]
+      }
+    },
+    "formattingRules": {
+      "lineBreaks": "Every 2-3 sentences for mobile readability",
+      "emoji": "Maximum 2-3, only if adds meaning",
+      "capitals": "Sparingly for emphasis",
+      "bullets": "Use for lists of 3-5 items",
+      "hashtags": "3-5 relevant, at the end"
+    }
+  },
+  "improveWorkflow": {
+    "analysisChecklist": [
+      {
+        "category": "SEO",
+        "checks": [
+          "Title optimization (50-60 chars)",
+          "Meta description (150-160 chars)",
+          "Header structure (H1-H3 hierarchy)",
+          "Keyword density (1-2% primary)",
+          "Internal linking (3-5 per post)",
+          "Image alt text and captions",
+          "URL slug optimization",
+          "Canonical tags",
+          "Schema markup implementation"
+        ],
+        "tools": ["Google Search Console", "SEMrush", "Ahrefs"]
+      },
+      {
+        "category": "AEO",
+        "checks": [
+          "Structured data markup (Article, FAQ, HowTo)",
+          "Question-based headers (30% of H2/H3)",
+          "Definition boxes for key terms",
+          "Comparison tables for snippets",
+          "FAQ section (5-7 questions)",
+          "Voice search optimization",
+          "'Questions This Answers' section",
+          "Key takeaways summary",
+          "Entity recognition clarity"
+        ],
+        "priority": "CRITICAL for AI platform visibility"
+      },
+      {
+        "category": "Readability",
+        "checks": [
+          "Sentence length (15-20 words avg)",
+          "Paragraph length (3-4 sentences)",
+          "Transition words usage (25-30%)",
+          "Active voice percentage (80%+)",
+          "Flesch reading score (60-70)",
+          "Scanability (headers, bullets, bold)",
+          "Mobile formatting",
+          "Visual hierarchy"
+        ],
+        "tools": ["Hemingway", "Grammarly", "Yoast"]
+      },
+      {
+        "category": "Engagement",
+        "checks": [
+          "Compelling hook (first 100 words)",
+          "Clear value proposition",
+          "Scannable formatting",
+          "Visual elements (images, tables, charts)",
+          "Strong CTA (specific, not generic)",
+          "Social proof integration",
+          "Interactive elements",
+          "Comment prompts"
+        ],
+        "metrics": ["Time on page", "Bounce rate", "Scroll depth", "Shares"]
+      },
+      {
+        "category": "Conversion",
+        "checks": [
+          "Above-fold value clarity",
+          "Trust signals (customer names, metrics)",
+          "ROI proof points",
+          "Clear next steps",
+          "Objection handling",
+          "Risk mitigation",
+          "Urgency/scarcity",
+          "Multiple CTA options"
+        ],
+        "goals": ["Trial signups", "Demo requests", "Content downloads"]
+      }
+    ],
+    "improvementSuggestions": {
+      "seo": [
+        "Add target keyword to first 100 words",
+        "Include 5-7 keyword variations naturally",
+        "Optimize URL slug (remove stop words)",
+        "Add comprehensive schema markup",
+        "Improve meta description CTR appeal",
+        "Add internal links to related content",
+        "Include external authority links",
+        "Optimize image file names"
+      ],
+      "aeo": [
+        "Add 'Questions This Post Answers' section with 5-7 queries",
+        "Create comparison table for featured snippets",
+        "Add definition boxes for key terms",
+        "Structure content with Q&A format",
+        "Include FAQ section at the end",
+        "Add structured data for all content types",
+        "Optimize for voice search patterns",
+        "Include 'Key Takeaways' summary box"
+      ],
+      "content": [
+        "Add 3 specific customer examples with names",
+        "Include data and statistics with sources",
+        "Break up paragraphs over 4 sentences",
+        "Add subheadings every 300 words",
+        "Include expert quotes or testimonials",
+        "Add visual elements (charts, diagrams)",
+        "Include downloadable resources",
+        "Add interactive calculators or tools"
+      ],
+      "engagement": [
+        "Strengthen opening hook with scenario",
+        "Add compelling visuals every 350 words",
+        "Include interactive elements (calculators)",
+        "Add social proof (logos, testimonials)",
+        "Improve CTA specificity and urgency",
+        "Add progress indicators for long content",
+        "Include shareable quote graphics",
+        "Add comment discussion prompts"
+      ]
+    },
+    "scoringCriteria": {
+      "seo": {
+        "weight": 30,
+        "factors": ["Technical optimization", "Keyword usage", "Link structure", "Meta data"]
+      },
+      "aeo": {
+        "weight": 25,
+        "factors": ["Structured data", "Question optimization", "Entity clarity", "Voice search"]
+      },
+      "readability": {
+        "weight": 20,
+        "factors": ["Sentence structure", "Scanability", "Mobile optimization", "Flow"]
+      },
+      "engagement": {
+        "weight": 15,
+        "factors": ["Hook strength", "Visual appeal", "Interactive elements", "Social signals"]
+      },
+      "conversion": {
+        "weight": 10,
+        "factors": ["CTA clarity", "Trust signals", "Value proposition", "Urgency"]
+      }
+    }
+  },
+  "migrationWorkflow": {
+    "stages": [
+      {
+        "name": "Discovery",
+        "duration": "1-2 days",
+        "activities": [
+          "Audit current Zapier workflows",
+          "Calculate current costs",
+          "Identify pain points",
+          "Document requirements"
+        ],
+        "deliverables": ["Workflow inventory", "Cost analysis", "Requirements doc"]
+      },
+      {
+        "name": "Planning",
+        "duration": "2-3 days",
+        "activities": [
+          "Map Zapier features to Gumloop",
+          "Identify AI enhancement opportunities",
+          "Create migration sequence",
+          "Plan testing approach"
+        ],
+        "deliverables": ["Feature mapping", "Migration timeline", "Test plan"]
+      },
+      {
+        "name": "Preparation",
+        "duration": "3-5 days",
+        "activities": [
+          "Export Zapier data",
+          "Set up Gumloop account",
+          "Configure integrations",
+          "Create templates"
+        ],
+        "deliverables": ["Data backup", "Account setup", "Integration config"]
+      },
+      {
+        "name": "Migration",
+        "duration": "5-10 days",
+        "activities": [
+          "Recreate critical workflows",
+          "Add AI enhancements",
+          "Test extensively",
+          "Run parallel for validation"
+        ],
+        "deliverables": ["Migrated workflows", "Test results", "Validation report"]
+      },
+      {
+        "name": "Optimization",
+        "duration": "Ongoing",
+        "activities": [
+          "Monitor performance",
+          "Optimize AI prompts",
+          "Add new capabilities",
+          "Document savings"
+        ],
+        "deliverables": ["Performance reports", "ROI documentation", "Optimization log"]
+      }
+    ],
+    "riskMitigation": {
+      "dataLoss": {
+        "risk": "Workflow data or history lost",
+        "mitigation": ["Complete export before migration", "Maintain Zapier backup", "Document all workflows"]
+      },
+      "downtime": {
+        "risk": "Critical workflows offline",
+        "mitigation": ["Run parallel systems", "Migrate in phases", "Have rollback plan"]
+      },
+      "adoption": {
+        "risk": "Team resistance to change",
+        "mitigation": ["Training sessions", "Quick wins first", "Champion program"]
+      },
+      "compatibility": {
+        "risk": "Integration gaps",
+        "mitigation": ["Audit integrations first", "Custom API solutions", "Partner support"]
+      }
+    },
+    "successMetrics": {
+      "week1": ["All critical workflows running", "No data loss", "Team trained"],
+      "week2": ["50% cost reduction visible", "AI features in use", "Positive feedback"],
+      "month1": ["Full migration complete", "15+ hours saved", "ROI documented"],
+      "month3": ["Advanced AI workflows built", "60-80% manual reduction", "Expansion planning"]
+    }
+  },
+  "competitorTemplates": {
+    "zapier": {
+      "positioning": "The expensive incumbent with integration breadth but no AI depth",
+      "weaknesses": ["Can't handle complex logic", "Expensive at scale", "No AI reasoning", "Task-based pricing trap"],
+      "migration angle": "When you hit Zapier's $299/month wall, Gumloop offers 90% cost savings with AI power",
+      "proof points": ["8,100 searches for 'Zapier too expensive'", "60% cost reduction average", "Handles edge cases Zapier can't"]
+    },
+    "make": {
+      "positioning": "Visual but complex, cheaper but still rules-based",
+      "weaknesses": ["Steep learning curve", "Weak AI integration", "Confusing operation pricing", "No intent understanding"],
+      "differentiation": "True AI-native vs Make's bolt-on AI features",
+      "proof points": ["Simpler interface", "Better AI integration", "Clearer pricing model"]
+    },
+    "n8n": {
+      "positioning": "Developer-focused and self-hosted complexity",
+      "weaknesses": ["Too technical for ops teams", "Self-hosting overhead", "Limited AI capabilities", "Requires coding"],
+      "differentiation": "No-code AI power vs n8n's code requirements",
+      "proof points": ["No infrastructure needed", "True no-code", "AI-first design"]
+    }
+  }
+}

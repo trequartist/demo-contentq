@@ -47,7 +47,7 @@ const initialState: DemoState = {
   autoProgress: false
 };
 
-export default function DemoProvider({ children }: { children: React.ReactNode }) {
+export default function PresenterProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<DemoState>(initialState);
 
   // Check for presenter mode via URL params or Konami code
@@ -115,17 +115,17 @@ export default function DemoProvider({ children }: { children: React.ReactNode }
   );
 }
 
-export function useDemo() {
+export function usePresenter() {
   const context = useContext(DemoContext);
   if (!context) {
-    throw new Error('useDemo must be used within a DemoProvider');
+    throw new Error('usePresenter must be used within a PresenterProvider');
   }
   return context;
 }
 
 // Presenter Controls Overlay
 function PresenterControls() {
-  const { state, updateStep, toggleAutoProgress, setAnimationSpeed, resetDemo } = useDemo();
+  const { state, updateStep, toggleAutoProgress, setAnimationSpeed, resetDemo } = usePresenter();
 
   return (
     <div className="fixed bottom-4 right-4 z-50 bg-black/90 text-white p-4 rounded-lg backdrop-blur-sm">

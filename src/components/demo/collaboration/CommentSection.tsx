@@ -258,3 +258,4 @@ export default function CommentSection({ documentId }: CommentSectionProps) {
     </div>
   );
 }
+

@@ -1,0 +1,419 @@
+{
+  "summary": {
+    "totalAssets": 4,
+    "activeAssets": 2,
+    "pendingSetup": 2,
+    "healthScore": 65.8,
+    "lastUpdated": "2024-01-15T10:00:00Z",
+    "monthlyReach": "33,287",
+    "conversionValue": "$58K MRR"
+  },
+
+  "assets": [
+    {
+      "id": "gumloop-blog",
+      "name": "Gumloop Blog",
+      "type": "blog",
+      "platform": "Custom CMS",
+      "url": "https://gumloop.com/blog",
+      "status": "active",
+      "priority": "critical",
+      "company": "Gumloop",
+      "configuration": {
+        "apiEndpoint": "https://api.gumloop.com/content",
+        "webhookUrl": "https://api.kiwiq.ai/webhooks/gumloop-blog",
+        "syncEnabled": true,
+        "autoPublish": false,
+        "contentTypes": ["blog", "guide", "case-study"],
+        "seoIntegration": "Yoast",
+        "analyticsIntegration": "GA4"
+      },
+      "onboarding": {
+        "status": "completed",
+        "completedSteps": 7,
+        "totalSteps": 7,
+        "steps": {
+          "connection": true,
+          "authentication": true,
+          "contentMapping": true,
+          "seoSetup": true,
+          "analytics": true,
+          "workflow": true,
+          "testing": true
+        },
+        "completedDate": "2023-11-15T14:30:00Z"
+      },
+      "metrics": {
+        "totalPosts": 37,
+        "publishedPosts": 34,
+        "scheduledPosts": 3,
+        "monthlyViews": 24387,
+        "uniqueVisitors": 18234,
+        "avgEngagement": "5:23",
+        "bounceRate": 32,
+        "conversionRate": 4.7,
+        "seoScore": 86,
+        "aeoScore": 72,
+        "topPost": {
+          "title": "When Rules Break: AI Handles 40% of Workflows",
+          "views": 3847,
+          "conversion": 7.2
+        }
+      },
+      "performance": {
+        "contentVelocity": 3,
+        "targetVelocity": 15,
+        "gap": "12 posts/month behind target",
+        "quality": "High (86/100)",
+        "reach": "Growing +47% MoM"
+      },
+      "integration": {
+        "lastSync": "2024-01-15T10:00:00Z",
+        "syncFrequency": "real-time",
+        "errors": 0,
+        "warnings": 3,
+        "issues": [
+          "80% pages missing schema markup",
+          "46% pages missing H1 tags",
+          "No canonical tags implemented"
+        ]
+      },
+      "diagnostics": {
+        "lastRun": "2024-01-15T09:00:00Z",
+        "overallScore": 65.8,
+        "breakdown": {
+          "technical": 72,
+          "content": 73,
+          "seo": 86,
+          "aeo": 72,
+          "conversion": 89
+        },
+        "criticalIssues": [
+          {
+            "issue": "Missing 'Zapier too expensive' content",
+            "impact": "8,100 searches/month lost",
+            "value": "$50K MRR",
+            "action": "Create comparison page"
+          },
+          {
+            "issue": "Only 2 purchase-stage posts",
+            "impact": "Poor bottom-funnel conversion",
+            "value": "$75K MRR gap",
+            "action": "Create 10+ purchase posts"
+          }
+        ],
+        "opportunities": [
+          "Migration content converts at 12.3%",
+          "AI automation content growing +67% YoY",
+          "RevOps content performs 3.2x better"
+        ]
+      },
+      "contentStrategy": {
+        "focus": "AI-native automation authority",
+        "targetAudience": ["RevOps Managers", "Operations Directors", "B2B SaaS Leaders"],
+        "contentMix": {
+          "education": 30,
+          "comparison": 25,
+          "migration": 25,
+          "innovation": 20
+        },
+        "upcomingThemes": [
+          "Migration Week (Jan 22-28)",
+          "ROI Week (Jan 29-Feb 4)",
+          "AI Authority Week (Feb 5-11)"
+        ]
+      }
+    },
+    {
+      "id": "gumloop-linkedin-company",
+      "name": "Gumloop LinkedIn Company",
+      "type": "linkedin-company",
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/company/gumloop",
+      "status": "active",
+      "priority": "high",
+      "company": "Gumloop",
+      "configuration": {
+        "pageId": "gumloop-ai",
+        "organizationId": "98765432",
+        "syncEnabled": true,
+        "autoPublish": false,
+        "postingSchedule": {
+          "enabled": true,
+          "timezone": "America/New_York",
+          "slots": [
+            { "day": "Tuesday", "time": "08:00" },
+            { "day": "Thursday", "time": "08:00" },
+            { "day": "Friday", "time": "10:00" }
+          ]
+        }
+      },
+      "onboarding": {
+        "status": "completed",
+        "completedSteps": 5,
+        "totalSteps": 5,
+        "completedDate": "2023-12-01T11:20:00Z"
+      },
+      "metrics": {
+        "followers": 1234,
+        "followersGrowth": "+12% MoM",
+        "posts": 12,
+        "monthlyReach": 8900,
+        "impressions": 15600,
+        "engagementRate": 2.3,
+        "clickRate": 1.8,
+        "shareRate": 0.7
+      },
+      "performance": {
+        "postFrequency": "1/week",
+        "targetFrequency": "3/week",
+        "gap": "Underutilized",
+        "topContent": "Migration success stories",
+        "audienceQuality": "High - 67% decision makers"
+      },
+      "integration": {
+        "lastSync": "2024-01-15T14:30:00Z",
+        "syncFrequency": "real-time",
+        "errors": 0,
+        "warnings": 1
+      },
+      "diagnostics": {
+        "overallScore": 45,
+        "issues": [
+          "Posting frequency too low",
+          "Missing video content",
+          "Low engagement rate"
+        ],
+        "opportunities": [
+          "Company posts get 10x less reach than personal",
+          "Tuesday 8AM posts perform best",
+          "Customer stories drive 3x engagement"
+        ]
+      },
+      "contentStrategy": {
+        "themes": ["AI automation", "RevOps tips", "Customer success", "Industry insights"],
+        "bestPerformers": [
+          "Customer success stories",
+          "Migration guides",
+          "Cost savings posts"
+        ],
+        "upcoming": [
+          {
+            "title": "5 Signs Your Automation is Killing Deals",
+            "scheduled": "2024-01-16T14:00:00Z",
+            "expectedReach": 2400
+          }
+        ]
+      }
+    },
+    {
+      "id": "gumloop-founder-linkedin",
+      "name": "Founder LinkedIn (Not Connected)",
+      "type": "linkedin-personal",
+      "platform": "LinkedIn",
+      "status": "not_configured",
+      "priority": "high",
+      "company": "Gumloop",
+      "preview": {
+        "title": "Activate Founder-Led Growth",
+        "description": "Personal LinkedIn accounts drive 10x more reach than company pages",
+        "whyItMatters": [
+          "561% more reach than company posts",
+          "Direct access to C-suite decision makers",
+          "Builds trust through personal brand",
+          "67% higher lead quality"
+        ],
+        "setupTime": "5 minutes",
+        "requirements": [
+          "LinkedIn account with 500+ connections",
+          "Profile optimization (provided)",
+          "Content calendar (automated)"
+        ],
+        "expectedResults": {
+          "reach": "15,000+ professionals per post",
+          "engagement": "5-8% vs 1-2% company average",
+          "leads": "+45 qualified leads/month",
+          "influence": "Thought leader status in 90 days"
+        },
+        "competitorActivity": {
+          "zapier": "CEO posts 2x/week, 50K followers",
+          "make": "Founder posts daily, 25K followers",
+          "n8n": "CTO posts 3x/week, 15K followers"
+        }
+      },
+      "setupSteps": [
+        {
+          "step": 1,
+          "action": "Connect LinkedIn account",
+          "time": "1 minute"
+        },
+        {
+          "step": 2,
+          "action": "Optimize profile with templates",
+          "time": "3 minutes"
+        },
+        {
+          "step": 3,
+          "action": "Set posting preferences",
+          "time": "1 minute"
+        }
+      ],
+      "suggestedContent": [
+        "Monday morning automation failures",
+        "Why we built Gumloop",
+        "Customer success stories",
+        "Industry predictions",
+        "Lessons learned scaling"
+      ]
+    },
+    {
+      "id": "gumloop-reddit",
+      "name": "Reddit Community (Not Started)",
+      "type": "community",
+      "platform": "Reddit",
+      "status": "not_configured",
+      "priority": "high",
+      "company": "Gumloop",
+      "preview": {
+        "title": "Join the Automation Conversation",
+        "description": "60% of Zapier defectors discover alternatives on Reddit",
+        "whyItMatters": [
+          "Direct access to users actively switching",
+          "11.2% conversion from Reddit traffic",
+          "Authentic peer recommendations",
+          "Competitors getting 40+ mentions/month"
+        ],
+        "targetCommunities": [
+          {
+            "subreddit": "r/automation",
+            "members": 125000,
+            "relevance": "Primary target",
+            "activity": "High"
+          },
+          {
+            "subreddit": "r/SaaS",
+            "members": 98000,
+            "relevance": "Secondary target",
+            "activity": "Medium"
+          },
+          {
+            "subreddit": "r/revops",
+            "members": 12000,
+            "relevance": "Niche target",
+            "activity": "Low but engaged"
+          }
+        ],
+        "competitorPresence": {
+          "make": "45 organic mentions/month",
+          "n8n": "38 organic mentions/month",
+          "zapier": "156 mentions/month (mostly negative)",
+          "gumloop": "0 organic mentions"
+        },
+        "strategy": {
+          "approach": "Value-first engagement",
+          "frequency": "3-5 valuable comments/week",
+          "content": [
+            "Answer automation questions",
+            "Share migration tips",
+            "Provide cost comparisons",
+            "Offer free consultations"
+          ],
+          "doNot": [
+            "Direct promotion",
+            "Spam multiple threads",
+            "Argue with competitors"
+          ]
+        }
+      },
+      "expectedResults": {
+        "month1": "5-10 quality engagements",
+        "month2": "First organic mentions",
+        "month3": "10-15 leads from Reddit",
+        "month6": "Recognized community member"
+      }
+    }
+  ],
+
+  "recommendations": {
+    "immediate": [
+      {
+        "asset": "Blog",
+        "action": "Create 'Zapier too expensive' page",
+        "impact": "$50K MRR potential",
+        "effort": "4 hours"
+      },
+      {
+        "asset": "Blog",
+        "action": "Add schema markup to all posts",
+        "impact": "+40% CTR",
+        "effort": "8 hours"
+      }
+    ],
+    "thisWeek": [
+      {
+        "asset": "LinkedIn Company",
+        "action": "Increase posting to 3x/week",
+        "impact": "3x reach",
+        "effort": "Ongoing"
+      },
+      {
+        "asset": "New",
+        "action": "Connect founder LinkedIn",
+        "impact": "10x reach",
+        "effort": "5 minutes"
+      }
+    ],
+    "thisMonth": [
+      {
+        "asset": "New",
+        "action": "Start Reddit presence",
+        "impact": "Access to switchers",
+        "effort": "2 hours/week"
+      },
+      {
+        "asset": "Blog",
+        "action": "Scale to 15 posts/month",
+        "impact": "Competitive parity",
+        "effort": "$8K/month investment"
+      }
+    ]
+  },
+
+  "competitorAssets": {
+    "zapier": {
+      "blog": {
+        "posts": 32,
+        "traffic": "4.5M/month",
+        "advantage": "Volume and breadth"
+      },
+      "social": {
+        "linkedin": "250K followers",
+        "twitter": "180K followers",
+        "advantage": "Established presence"
+      }
+    },
+    "make": {
+      "blog": {
+        "posts": 18,
+        "traffic": "890K/month",
+        "advantage": "Visual content"
+      },
+      "social": {
+        "linkedin": "45K followers",
+        "youtube": "25K subscribers",
+        "advantage": "Video tutorials"
+      }
+    },
+    "gumloop": {
+      "blog": {
+        "posts": 3,
+        "traffic": "24K/month",
+        "advantage": "Higher quality, better conversion"
+      },
+      "social": {
+        "linkedin": "1.2K followers",
+        "advantage": "None yet"
+      }
+    }
+  }
+}

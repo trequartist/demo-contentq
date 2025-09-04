@@ -1,429 +1,355 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useContentStudioStore } from '@/lib/stores/content-studio-store';
+import { contentStudioData } from '@/lib/content-studio-data-loader';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, Button, Badge, Input } from '@/components/ui';
 import { 
-  ArrowLeft,
-  Plus,
-  Search,
-  Filter,
-  MoreVertical,
-  Grid3x3,
-  List,
-  ChevronDown,
-  FileText,
+  FileText, 
   Calendar,
+  FolderOpen, 
+  TrendingUp,
+  Clock,
+  CheckCircle,
+  ArrowRight,
+  ArrowLeft,
   Sparkles,
-  Edit,
-  Trash2,
-  Eye,
-  Copy,
-  Download,
-  Globe
+  Brain,
+  Edit3
 } from 'lucide-react';
-import { useDemo } from '@/lib/demo/demo-context';
+import MyDocumentsViewNew from '@/components/demo/content-studio/MyDocumentsViewNew';
+
+type ViewType = 'workflows' | 'documents';
 
 export default function ContentStudioPage() {
-  const { state, actions } = useDemo();
-  const [activeTab, setActiveTab] = useState('all');
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const router = useRouter();
+  const contentStore = useContentStudioStore();
+  const [currentView, setCurrentView] = useState<ViewType>('workflows');
   const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState('date');
-  const [showActionMenu, setShowActionMenu] = useState<string | null>(null);
-  const [filteredDocuments, setFilteredDocuments] = useState(state.documents);
-
-  const tabs = [
-    { id: 'all', label: 'All', count: state.documents.length },
-    { id: 'briefs', label: 'Briefs', count: state.documents.filter(d => d.status === 'brief').length },
-    { id: 'drafts', label: 'Drafts', count: state.documents.filter(d => d.status === 'draft').length },
-    { id: 'published', label: 'Published', count: state.documents.filter(d => d.status === 'published').length },
-    { id: 'ideas', label: 'Ideas', count: state.documents.filter(d => d.status === 'idea').length }
-  ];
+  const [data, setData] = useState(contentStudioData.getAllData());
 
   useEffect(() => {
-    let filtered = [...state.documents];
-    
-    // Filter by tab
-    if (activeTab !== 'all') {
-      const statusMap: Record<string, string> = {
-        'briefs': 'brief',
-        'drafts': 'draft',
-        'published': 'published',
-        'ideas': 'idea'
-      };
-      const targetStatus = statusMap[activeTab];
-      if (targetStatus) {
-        filtered = filtered.filter(d => d.status === targetStatus);
+    // Refresh data when view changes
+    setData(contentStudioData.getAllData());
+  }, [currentView]);
+
+  const handleStartWorkflow = (type: 'blog-create' | 'linkedin-create' | 'blog-improve') => {
+    contentStore.startWorkflow(type);
+    router.push('/demo/content-studio/create');
+  };
+
+  const workflows = [
+    {
+      id: 'blog-create',
+      title: data.workflows.blogCreate.name,
+      description: data.workflows.blogCreate.description,
+      icon: FileText,
+      color: 'text-black',
+      bgColor: 'bg-black',
+      estimatedTime: data.workflows.blogCreate.estimatedTime,
+      stages: data.workflows.blogCreate.stages.length,
+      features: ['Topic Generation', 'SEO Optimization'],
+      stats: {
+        used: data.workflows.blogCreate.stats.totalCreated,
+        avgCompletion: `${data.workflows.blogCreate.stats.avgCompletionRate}%`,
+        satisfaction: `${data.workflows.blogCreate.stats.satisfaction}/5`
+      }
+    },
+    {
+      id: 'linkedin-create',
+      title: data.workflows.linkedinCreate.name,
+      description: data.workflows.linkedinCreate.description,
+      icon: Brain,
+      color: 'text-black/70',
+      bgColor: 'bg-black/10',
+      estimatedTime: data.workflows.linkedinCreate.estimatedTime,
+      stages: data.workflows.linkedinCreate.stages.length,
+      features: ['Angle Selection', 'Hashtag Optimization'],
+      stats: {
+        used: data.workflows.linkedinCreate.stats.totalCreated,
+        avgCompletion: `${data.workflows.linkedinCreate.stats.avgCompletionRate}%`,
+        satisfaction: `${data.workflows.linkedinCreate.stats.satisfaction}/5`
+      }
+    },
+    {
+      id: 'blog-improve',
+      title: data.workflows.blogImprove.name,
+      description: data.workflows.blogImprove.description,
+      icon: Edit3,
+      color: 'text-black/60',
+      bgColor: 'bg-white border border-black/20',
+      estimatedTime: data.workflows.blogImprove.estimatedTime,
+      stages: data.workflows.blogImprove.stages.length,
+      features: ['Content Analysis', 'Gap Detection'],
+      stats: {
+        used: data.workflows.blogImprove.stats.totalImproved,
+        avgCompletion: `${data.workflows.blogImprove.stats.avgScoreIncrease || 95}%`,
+        satisfaction: `${data.workflows.blogImprove.stats.satisfaction}/5`
       }
     }
-    
-    // Filter by search
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(d => 
-        d.title.toLowerCase().includes(query) ||
-        d.description.toLowerCase().includes(query) ||
-        d.tags?.some(tag => tag.toLowerCase().includes(query))
-      );
-    }
-    
-    // Sort
-    filtered.sort((a, b) => {
-      switch(sortBy) {
-        case 'date':
-          return new Date(b.date).getTime() - new Date(a.date).getTime();
-        case 'title':
-          return a.title.localeCompare(b.title);
-        case 'words':
-          return b.wordCount - a.wordCount;
-        default:
-          return 0;
-      }
-    });
-    
-    setFilteredDocuments(filtered);
-  }, [state.documents, activeTab, searchQuery, sortBy]);
+  ];
 
-  const getStatusColor = (status: string) => {
-    switch(status) {
-      case 'published':
-      case 'post':
-        return 'text-green-600 bg-green-50 border-green-200';
-      case 'draft':
-        return 'text-blue-600 bg-blue-50 border-blue-200';
-      case 'brief':
-        return 'text-purple-600 bg-purple-50 border-purple-200';
-      case 'idea':
-        return 'text-yellow-600 bg-yellow-50 border-yellow-200';
-      default:
-        return 'text-gray-600 bg-gray-50 border-gray-200';
-    }
-  };
-
-  const handleDuplicate = (doc: any) => {
-    actions.createDocument({
-      ...doc,
-      title: `${doc.title} (Copy)`,
-      status: 'draft',
-      id: undefined
-    });
-  };
-
-  const handleDelete = (id: string) => {
-    if (window.confirm('Are you sure you want to delete this document?')) {
-      actions.deleteDocument(id);
-    }
-  };
-
-  const handleExport = (doc: any) => {
-    const content = JSON.stringify(doc, null, 2);
-    const blob = new Blob([content], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${doc.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.json`;
-    a.click();
-  };
+  const recentDocuments = data.documents.slice(0, 5);
+  const upcomingScheduled = contentStudioData.getUpcomingEvents(3);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="px-6 py-4">
+      <div className="bg-white border-b border-black/10">
+        <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <Link href="/demo/assets" className="text-sm text-gray-500 hover:text-gray-700 transition-colors">
-                <ArrowLeft className="w-4 h-4 inline mr-1" />
-                Back to Assets
-              </Link>
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center">
-                  <Globe className="w-4 h-4 text-white" />
-                </div>
-                <div>
-                  <h1 className="text-base font-semibold">{state.selectedAsset || 'deepgram'}</h1>
-                  <p className="text-xs text-gray-500">Blog Content Studio</p>
-                </div>
-              </div>
+            <div>
+              <h1 className="text-xl font-light text-black">Content Studio</h1>
+              <p className="text-sm text-black/40">Create and manage your content</p>
             </div>
-            <div className="flex items-center space-x-3 text-sm">
-              <button className="flex items-center space-x-1 text-green-600 font-medium">
-                <span className="w-2 h-2 bg-green-600 rounded-full"></span>
-                <span>Document</span>
-              </button>
-              <button className="flex items-center space-x-1 text-gray-400 hover:text-gray-600 transition-colors">
-                <span className="w-2 h-2 bg-gray-400 rounded-full"></span>
-                <span>Diagnostics</span>
-              </button>
-              <button className="flex items-center space-x-1 text-gray-400 hover:text-gray-600 transition-colors">
-                <span className="w-2 h-2 bg-gray-400 rounded-full"></span>
-                <span>Playbook</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Sub Navigation */}
-          <div className="flex items-center space-x-6 mt-4">
-            <Link href="/demo/content-studio/create" className="flex items-center space-x-2 text-sm text-gray-600 hover:text-gray-900 transition-colors">
-              <Sparkles className="w-4 h-4" />
-              <span>Create Content</span>
-            </Link>
-            <Link href="/demo/content-studio" className="flex items-center space-x-2 text-sm text-gray-900 font-medium border-b-2 border-gray-900 pb-1">
-              <FileText className="w-4 h-4" />
-              <span>My Documents</span>
-            </Link>
-            <Link href="/demo/content-studio/calendar" className="flex items-center space-x-2 text-sm text-gray-600 hover:text-gray-900 transition-colors">
-              <Calendar className="w-4 h-4" />
-              <span>Content Calendar</span>
-            </Link>
           </div>
         </div>
       </div>
 
-      {/* Content Area */}
-      <div className="p-6">
-        {/* Search and Actions Bar */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="relative flex-1 max-w-xl">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search title, content, today, this week, 500 words..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 text-sm bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-            />
-          </div>
-          <div className="flex items-center space-x-3">
-            <div className="flex items-center bg-white rounded-lg border border-gray-200 p-0.5">
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`p-1.5 rounded transition-all ${viewMode === 'grid' ? 'bg-gray-900 text-white' : 'text-gray-600 hover:text-gray-900'}`}
-              >
-                <Grid3x3 className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => setViewMode('list')}
-                className={`p-1.5 rounded transition-all ${viewMode === 'list' ? 'bg-gray-900 text-white' : 'text-gray-600 hover:text-gray-900'}`}
-              >
-                <List className="w-4 h-4" />
-              </button>
-            </div>
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="px-3 py-1.5 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg focus:outline-none focus:border-blue-500"
-            >
-              <option value="date">Sort by Date</option>
-              <option value="title">Sort by Title</option>
-              <option value="words">Sort by Words</option>
-            </select>
-            <Link
-              href="/demo/content-studio/create"
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
-            >
-              <Plus className="w-4 h-4" />
-              <span>Create New</span>
-            </Link>
-          </div>
-        </div>
-
-        {/* Tabs */}
-        <div className="flex items-center space-x-1 border-b border-gray-200 mb-6">
-          {tabs.map((tab) => (
+      {/* Navigation Tabs */}
+      <div className="bg-white border-b border-black/10">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center gap-8">
             <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 text-sm font-medium transition-colors relative ${
-                activeTab === tab.id
-                  ? 'text-gray-900'
-                  : 'text-gray-500 hover:text-gray-700'
+              onClick={() => setCurrentView('workflows')}
+              className={`py-3 border-b-2 transition-all ${
+                currentView === 'workflows'
+                  ? 'border-black text-black font-medium'
+                  : 'border-transparent text-black/50 hover:text-black/70'
               }`}
             >
-              <div className="flex items-center space-x-2">
-                <span>{tab.label}</span>
-                <span className={`px-2 py-0.5 text-xs rounded-full ${
-                  activeTab === tab.id 
-                    ? 'bg-gray-900 text-white' 
-                    : 'bg-gray-100 text-gray-600'
-                }`}>
-                  {tab.count}
-                </span>
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4" />
+                Workflows
               </div>
-              {activeTab === tab.id && (
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-900" />
-              )}
             </button>
-          ))}
+            <button
+              onClick={() => setCurrentView('documents')}
+              className={`py-3 border-b-2 transition-all ${
+                currentView === 'documents'
+                  ? 'border-black text-black font-medium'
+                  : 'border-transparent text-black/50 hover:text-black/70'
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <FolderOpen className="w-4 h-4" />
+                My Documents
+                <Badge variant="secondary" className="ml-1 bg-black/5 text-black/60 border-0 text-xs">127</Badge>
+              </div>
+            </button>
+            <button
+              onClick={() => router.push('/demo/content-studio/calendar')}
+              className={`py-3 border-b-2 transition-all border-transparent text-black/50 hover:text-black/70`}
+            >
+              <div className="flex items-center gap-2">
+                <Calendar className="w-4 h-4" />
+                Calendar
+                {upcomingScheduled.length > 0 && (
+                  <Badge variant="secondary" className="ml-1 bg-black/5 text-black/60 border-0 text-xs">{upcomingScheduled.length}</Badge>
+                )}
+              </div>
+            </button>
+          </div>
         </div>
+      </div>
 
-        {/* Document Stats */}
-        <div className="flex items-center justify-between mb-4 text-sm text-gray-500">
-          <span className="flex items-center">
-            <FileText className="w-4 h-4 mr-1" />
-            {filteredDocuments.length} of {state.documents.length} documents
-          </span>
-          <span className="flex items-center">
-            <Globe className="w-4 h-4 mr-1" />
-            Blog
-          </span>
-        </div>
-
-        {/* Document Grid/List */}
-        {viewMode === 'grid' ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
-            {filteredDocuments.map((doc) => (
-              <div
-                key={doc.id}
-                className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-lg transition-all group relative"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex items-center space-x-3">
-                    <span className={`px-2.5 py-1 text-xs font-medium rounded border ${getStatusColor(doc.status)}`}>
-                      {doc.status}
-                    </span>
-                    <span className="text-xs text-gray-400">{doc.date}</span>
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        {currentView === 'workflows' && (
+          <div className="space-y-8">
+            {/* Quick Stats */}
+            <div className="grid grid-cols-4 gap-4">
+              <Card className="border border-black/10 shadow-sm">
+                <CardContent className="p-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm text-black/50">Content Created</p>
+                      <p className="text-2xl font-light text-black">
+                        {data.documents.filter(d => d.status === 'published').length}
+                      </p>
+                      <p className="text-xs text-black mt-1">+12% this month</p>
+                    </div>
+                    <TrendingUp className="w-8 h-8 text-black/20" />
                   </div>
-                  <div className="relative">
-                    <button
-                      onClick={() => setShowActionMenu(showActionMenu === doc.id ? null : doc.id)}
-                      className="text-gray-400 hover:text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                </CardContent>
+              </Card>
+              
+              <Card className="border border-black/10 shadow-sm">
+                <CardContent className="p-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm text-black/50">In Progress</p>
+                      <p className="text-2xl font-light text-black">
+                        {data.documents.filter(d => d.status === 'draft' || d.status === 'review').length}
+                      </p>
+                      <p className="text-xs text-black/40 mt-1">Across 3 workflows</p>
+                    </div>
+                    <Clock className="w-8 h-8 text-black/20" />
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card className="border border-black/10 shadow-sm">
+                <CardContent className="p-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm text-black/50">Scheduled</p>
+                      <p className="text-2xl font-light text-black">
+                        {data.documents.filter(d => d.status === 'scheduled').length}
+                      </p>
+                      <p className="text-xs text-black/40 mt-1">Next 30 days</p>
+                    </div>
+                    <Calendar className="w-8 h-8 text-black/20" />
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card className="border border-black/10 shadow-sm">
+                <CardContent className="p-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm text-black/50">Avg. SEO Score</p>
+                      <p className="text-2xl font-light text-black">
+                        {data.analytics.seoMetrics.avgSeoScore}%
+                      </p>
+                      <p className="text-xs text-black mt-1">Above target</p>
+                    </div>
+                    <CheckCircle className="w-8 h-8 text-black/20" />
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Workflow Cards */}
+            <div>
+              <h2 className="text-lg font-medium text-black mb-4">Choose Your Workflow</h2>
+              <div className="grid grid-cols-3 gap-6">
+                {workflows.map((workflow) => {
+                  const Icon = workflow.icon;
+                  return (
+                    <Card 
+                      key={workflow.id} 
+                      className="border border-black/10 hover:border-black/20 transition-all cursor-pointer shadow-sm"
+                      onClick={() => handleStartWorkflow(workflow.id as any)}
                     >
-                      <MoreVertical className="w-4 h-4" />
-                    </button>
-                    {showActionMenu === doc.id && (
-                      <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-10">
-                        <Link
-                          href={`/demo/content-studio/document/${doc.id}`}
-                          className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                        >
-                          <Eye className="w-4 h-4 mr-2" />
-                          View
-                        </Link>
-                        <Link
-                          href={`/demo/content-studio/edit/${doc.id}`}
-                          className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                        >
-                          <Edit className="w-4 h-4 mr-2" />
-                          Edit
-                        </Link>
-                        <button
-                          onClick={() => handleDuplicate(doc)}
-                          className="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                        >
-                          <Copy className="w-4 h-4 mr-2" />
-                          Duplicate
-                        </button>
-                        <button
-                          onClick={() => handleExport(doc)}
-                          className="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                        >
-                          <Download className="w-4 h-4 mr-2" />
-                          Export
-                        </button>
-                        <hr className="my-1" />
-                        <button
-                          onClick={() => handleDelete(doc.id)}
-                          className="w-full flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50"
-                        >
-                          <Trash2 className="w-4 h-4 mr-2" />
-                          Delete
-                        </button>
+                      <CardHeader>
+                        <div className="flex items-start justify-between">
+                          <div className={`w-12 h-12 ${workflow.bgColor} rounded-lg flex items-center justify-center`}>
+                            <Icon className={`w-6 h-6 ${workflow.color === 'text-black' ? 'text-white' : workflow.color}`} />
+                          </div>
+                          <Badge variant="secondary" className="bg-black/5 text-black/60 border-0 text-xs">
+                            <Clock className="w-3 h-3 mr-1" />
+                            {workflow.estimatedTime}
+                          </Badge>
+                        </div>
+                        <CardTitle className="mt-4 font-medium text-black">{workflow.title}</CardTitle>
+                        <CardDescription className="text-black/50 text-sm">{workflow.description}</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-4">
+                          {/* Features */}
+                          <div className="flex flex-wrap gap-2">
+                            {workflow.features.map((feature, idx) => (
+                              <Badge key={idx} variant="secondary" className="text-xs bg-white border border-black/10 text-black/60">
+                                {feature}
+                              </Badge>
+                            ))}
+                          </div>
+                          
+                          {/* Stats */}
+                          <div className="pt-3 border-t border-black/10">
+                            <div className="grid grid-cols-3 gap-2 text-xs">
+                              <div>
+                                <p className="text-black/40">Used</p>
+                                <p className="font-medium text-black">{workflow.stats.used}</p>
+                              </div>
+                              <div>
+                                <p className="text-black/40">Completion</p>
+                                <p className="font-medium text-black">{workflow.stats.avgCompletion}</p>
+                              </div>
+                              <div>
+                                <p className="text-black/40">Rating</p>
+                                <p className="font-medium text-black">{workflow.stats.satisfaction}</p>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          {/* Action */}
+                          <Button className="w-full bg-black text-white hover:bg-black/90">
+                            Start Workflow
+                            <ArrowRight className="w-4 h-4 ml-2" />
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Recent Activity */}
+            <div>
+              <h2 className="text-lg font-medium text-black mb-4">Recent Documents</h2>
+              <Card className="border border-black/10 shadow-sm">
+                <CardContent className="p-0">
+                  <div className="divide-y divide-black/5">
+                    {recentDocuments.length > 0 ? recentDocuments.map((doc) => (
+                      <div key={doc.id} className="p-4 hover:bg-black/[0.02] transition-colors">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <FileText className="w-5 h-5 text-black/30" />
+                            <div>
+                              <p className="font-medium text-black line-clamp-1">{doc.title}</p>
+                              <p className="text-sm text-black/40">
+                                {doc.type} • Modified {new Date(doc.dates.modified).toLocaleDateString()}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Badge 
+                              variant={doc.status === 'published' ? 'default' : 'secondary'}
+                              className={
+                                doc.status === 'published' ? 'bg-black text-white text-xs' :
+                                doc.status === 'draft' ? 'bg-white border border-black/20 text-black/60 text-xs' :
+                                doc.status === 'review' ? 'bg-black/10 text-black text-xs border-0' :
+                                'bg-black/5 text-black/60 text-xs border-0'
+                              }
+                            >
+                              {doc.status}
+                            </Badge>
+                            <Button 
+                              variant="secondary" 
+                              size="sm"
+                              className="bg-white border border-black/20 text-black hover:bg-black/5 text-xs"
+                              onClick={() => {
+                                if (doc.status === 'draft' || doc.status === 'review') {
+                                  router.push(`/demo/content-studio/edit/${doc.id}`);
+                                } else {
+                                  router.push(`/demo/content-studio/document/${doc.id}`);
+                                }
+                              }}
+                            >
+                              {doc.status === 'draft' || doc.status === 'review' ? 'Edit' : 'View'}
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    )) : (
+                      <div className="p-8 text-center text-black/40">
+                        <FileText className="w-12 h-12 text-black/20 mx-auto mb-3" />
+                        <p>No recent documents</p>
+                        <p className="text-sm mt-1">Start a workflow to create your first content</p>
                       </div>
                     )}
                   </div>
-                </div>
-                
-                <Link href={`/demo/content-studio/document/${doc.id}`}>
-                  <h3 className="text-sm font-semibold text-gray-900 mb-2 line-clamp-2 hover:text-blue-600 transition-colors cursor-pointer">
-                    {doc.title}
-                  </h3>
-                </Link>
-                
-                <p className="text-xs text-gray-500 mb-3 line-clamp-2">
-                  {doc.description}
-                </p>
-                
-                <div className="flex items-center justify-between text-xs text-gray-400">
-                  <span className="flex items-center">
-                    <FileText className="w-3 h-3 mr-1" />
-                    {doc.wordCount} words
-                  </span>
-                  {doc.tags && doc.tags.length > 0 && (
-                    <div className="flex items-center space-x-1">
-                      {doc.tags.slice(0, 2).map(tag => (
-                        <span key={tag} className="px-2 py-0.5 bg-gray-100 rounded text-gray-600">
-                          {tag}
-                        </span>
-                      ))}
-                      {doc.tags.length > 2 && (
-                        <span className="text-gray-400">+{doc.tags.length - 2}</span>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="bg-white rounded-lg border border-gray-200">
-            <table className="w-full">
-              <thead className="bg-gray-50 border-b border-gray-200">
-                <tr>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Title</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Type</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Words</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {filteredDocuments.map((doc) => (
-                  <tr key={doc.id} className="hover:bg-gray-50 transition-colors">
-                    <td className="px-4 py-3">
-                      <Link href={`/demo/content-studio/document/${doc.id}`}>
-                        <p className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors cursor-pointer">
-                          {doc.title}
-                        </p>
-                      </Link>
-                    </td>
-                    <td className="px-4 py-3">
-                      <span className={`px-2 py-1 text-xs font-medium rounded border ${getStatusColor(doc.status)}`}>
-                        {doc.status}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3 text-sm text-gray-500">{doc.type}</td>
-                    <td className="px-4 py-3 text-sm text-gray-500">{doc.wordCount}</td>
-                    <td className="px-4 py-3 text-sm text-gray-500">{doc.date}</td>
-                    <td className="px-4 py-3">
-                      <div className="flex items-center space-x-2">
-                        <Link
-                          href={`/demo/content-studio/document/${doc.id}`}
-                          className="text-gray-400 hover:text-gray-600"
-                        >
-                          <Eye className="w-4 h-4" />
-                        </Link>
-                        <Link
-                          href={`/demo/content-studio/edit/${doc.id}`}
-                          className="text-gray-400 hover:text-gray-600"
-                        >
-                          <Edit className="w-4 h-4" />
-                        </Link>
-                        <button
-                          onClick={() => handleDelete(doc.id)}
-                          className="text-gray-400 hover:text-red-600"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         )}
+
+        {currentView === 'documents' && <MyDocumentsViewNew />}
       </div>
     </div>
   );

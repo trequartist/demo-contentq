@@ -1,193 +1,96 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
-
-interface Platform {
-  name: string;
-  percentage: string;
-}
+import React from 'react';
+import { LucideIcon } from 'lucide-react';
 
 interface MetricCardProps {
   title: string;
-  value: string | number;
+  value: number | string;
   previousValue?: number;
-  trend?: string;
-  subtitle?: string;
-  sparkline?: number[];
-  icon?: React.ReactNode;
-  color?: 'blue' | 'purple' | 'yellow' | 'emerald' | 'red';
-  animate?: boolean;
-  platforms?: Platform[];
-  status?: string;
-  highlight?: boolean;
+  trend: 'up' | 'down' | 'stable';
+  change: number;
+  icon: LucideIcon;
+  description: string;
+  animatedValue?: number;
+  suffix?: string;
+  variant?: 'default' | 'highlight';
 }
 
-const MetricCard: React.FC<MetricCardProps> = ({
+export default function MetricCard({
   title,
   value,
   previousValue,
   trend,
-  subtitle,
-  sparkline,
-  icon,
-  color = 'blue',
-  animate = false,
-  platforms,
-  status,
-  highlight = false,
-}) => {
-  const [displayValue, setDisplayValue] = useState(animate ? 0 : value);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  useEffect(() => {
-    if (animate && typeof value === 'number') {
-      setIsAnimating(true);
-      const duration = 1500;
-      const steps = 60;
-      const increment = value / steps;
-      let current = 0;
-      
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= value) {
-          setDisplayValue(value);
-          setIsAnimating(false);
-          clearInterval(timer);
-        } else {
-          setDisplayValue(Math.floor(current * 10) / 10);
-        }
-      }, duration / steps);
-      
-      return () => clearInterval(timer);
+  change,
+  icon: Icon,
+  description,
+  animatedValue,
+  suffix = "",
+  variant = 'default'
+}: MetricCardProps) {
+  const getTrendColor = () => {
+    switch(trend) {
+      case 'up': return 'text-green-600';
+      case 'down': return 'text-red-600';
+      default: return 'text-gray-600';
     }
-  }, [animate, value]);
-
-  const colorClasses = {
-    blue: 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800',
-    purple: 'bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800',
-    yellow: 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-800',
-    emerald: 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800',
-    red: 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800',
-  };
-
-  const iconColorClasses = {
-    blue: 'text-blue-600 dark:text-blue-400',
-    purple: 'text-purple-600 dark:text-purple-400',
-    yellow: 'text-yellow-600 dark:text-yellow-400',
-    emerald: 'text-emerald-600 dark:text-emerald-400',
-    red: 'text-red-600 dark:text-red-400',
   };
 
   const getTrendIcon = () => {
-    if (!trend) return null;
-    const isPositive = trend.startsWith('+');
-    const isNeutral = trend === '0%';
-    
-    if (isNeutral) return <Minus className="w-4 h-4 text-gray-500" />;
-    return isPositive ? (
-      <TrendingUp className="w-4 h-4 text-green-600 dark:text-green-400" />
-    ) : (
-      <TrendingDown className="w-4 h-4 text-red-600 dark:text-red-400" />
-    );
+    switch(trend) {
+      case 'up': return '↗';
+      case 'down': return '↘';
+      default: return '→';
+    }
   };
 
-  const renderSparkline = () => {
-    if (!sparkline) return null;
-    
-    const max = Math.max(...sparkline);
-    const min = Math.min(...sparkline);
-    const range = max - min;
-    const width = 100;
-    const height = 30;
-    
-    const points = sparkline.map((value, index) => {
-      const x = (index / (sparkline.length - 1)) * width;
-      const y = height - ((value - min) / range) * height;
-      return `${x},${y}`;
-    }).join(' ');
-    
+  if (variant === 'highlight') {
     return (
-      <svg width={width} height={height} className="mt-2">
-        <polyline
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          points={points}
-          className={iconColorClasses[color]}
-        />
-      </svg>
+      <div className="bg-black text-white rounded-lg p-6">
+        <div className="flex items-center justify-between mb-4">
+          <div className="p-2 bg-white/10 rounded-lg">
+            <Icon className="w-5 h-5 text-white" />
+          </div>
+          <div className="text-sm font-medium text-green-400">
+            OPPORTUNITY
+          </div>
+        </div>
+        <div className="space-y-2">
+          <h3 className="text-sm font-medium text-gray-300">{title}</h3>
+          <div className="text-3xl font-bold">
+            {animatedValue?.toFixed(1) || value}{suffix}
+          </div>
+          <p className="text-xs text-gray-400">{description}</p>
+        </div>
+      </div>
     );
-  };
+  }
 
   return (
-    <div className={`
-      relative p-6 rounded-xl border transition-all duration-200 hover:shadow-lg
-      ${colorClasses[color]}
-      ${highlight ? 'ring-2 ring-yellow-400 dark:ring-yellow-600' : ''}
-      ${isAnimating ? 'scale-[1.02]' : ''}
-    `}>
-      {highlight && (
-        <div className="absolute -top-2 -right-2 animate-pulse">
-          <div className="w-4 h-4 bg-yellow-400 rounded-full"></div>
+    <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-all duration-200">
+      <div className="flex items-center justify-between mb-4">
+        <div className="p-2 bg-gray-50 rounded-lg">
+          <Icon className="w-5 h-5 text-gray-700" />
         </div>
-      )}
+        <div className={`flex items-center text-sm font-medium ${getTrendColor()}`}>
+          <span className="mr-1">{getTrendIcon()}</span>
+          {change > 0 ? '+' : ''}{change}%
+        </div>
+      </div>
       
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex items-center">
-          {icon && (
-            <div className={`mr-2 ${iconColorClasses[color]}`}>
-              {icon}
-            </div>
-          )}
-          <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400">
-            {title}
-          </h3>
+      <div className="space-y-2">
+        <h3 className="text-sm font-medium text-gray-600">{title}</h3>
+        <div className="text-3xl font-bold text-gray-900">
+          {animatedValue?.toFixed(1) || value}{suffix}
         </div>
-        {trend && (
-          <div className="flex items-center">
-            {getTrendIcon()}
-            <span className={`ml-1 text-sm font-medium ${
-              trend.startsWith('+') ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
-            }`}>
-              {trend}
-            </span>
+        <p className="text-xs text-gray-500">{description}</p>
+        
+        {previousValue && (
+          <div className="text-xs text-gray-400">
+            Previous: {previousValue}{suffix}
           </div>
         )}
       </div>
-      
-      <div className="mb-2">
-        <p className={`text-2xl font-bold text-gray-900 dark:text-white ${
-          isAnimating ? 'animate-pulse' : ''
-        }`}>
-          {animate && typeof value === 'number' ? displayValue : value}
-        </p>
-        {subtitle && (
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-            {subtitle}
-          </p>
-        )}
-        {status && (
-          <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-1 font-medium">
-            {status}
-          </p>
-        )}
-      </div>
-      
-      {sparkline && renderSparkline()}
-      
-      {platforms && (
-        <div className="mt-3 space-y-1">
-          {platforms.map((platform) => (
-            <div key={platform.name} className="flex items-center justify-between text-xs">
-              <span className="text-gray-600 dark:text-gray-400">{platform.name}</span>
-              <span className="font-medium text-gray-900 dark:text-white">{platform.percentage}</span>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
-};
-
-export default MetricCard;
+}

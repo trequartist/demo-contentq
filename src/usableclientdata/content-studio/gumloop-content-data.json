@@ -1,0 +1,684 @@
+{
+  "client": {
+    "name": "Gumloop",
+    "industry": "AI Automation",
+    "tagline": "AI-Native Automation for RevOps Teams",
+    "primaryColor": "#000000",
+    "website": "https://gumloop.com",
+    "targetAudience": ["RevOps Managers", "Operations Directors", "B2B SaaS Leaders"],
+    "competitors": ["Zapier", "Make", "n8n", "Tines"],
+    "uniqueSellingProposition": "AI-powered automation that handles the 40% of workflows traditional rule-based systems can't",
+    "marketPosition": "AI-native automation leader with 207% ROI proof, capturing high-intent switchers from expensive traditional platforms"
+  },
+  "seoMetrics": {
+    "currentScore": 86,
+    "targetScore": 95,
+    "aeoScore": 72,
+    "targetAeoScore": 90,
+    "monthlySearchOpportunity": 50000,
+    "topKeywords": [
+      {"keyword": "Zapier too expensive", "volume": 8100, "difficulty": 45, "currentPosition": null, "targetPosition": 3},
+      {"keyword": "Zapier alternatives cheap", "volume": 8100, "difficulty": 42, "currentPosition": null, "targetPosition": 5},
+      {"keyword": "Zapier pricing alternatives", "volume": 6500, "difficulty": 40, "currentPosition": null, "targetPosition": 5},
+      {"keyword": "AI automation no code", "volume": 4400, "difficulty": 35, "currentPosition": 7, "targetPosition": 1},
+      {"keyword": "Zapier vs Make vs n8n", "volume": 3900, "difficulty": 50, "currentPosition": null, "targetPosition": 5},
+      {"keyword": "workflow automation", "volume": 6500, "difficulty": 65, "currentPosition": 7, "targetPosition": 3},
+      {"keyword": "RevOps automation", "volume": 3200, "difficulty": 25, "currentPosition": 3, "targetPosition": 1},
+      {"keyword": "migrate from Zapier", "volume": 2800, "difficulty": 30, "currentPosition": null, "targetPosition": 3}
+    ],
+    "featuredSnippetOpportunities": [
+      "What is AI-native automation?",
+      "How much does Zapier cost at scale?",
+      "How to migrate from Zapier to alternative?",
+      "What percentage of workflows fail with rules?",
+      "Best Zapier alternatives for RevOps"
+    ]
+  },
+  "contentOptimization": {
+    "highImpact": [
+      {
+        "action": "Add structured data markup",
+        "type": "Article, FAQPage, HowTo schema",
+        "expectedImpact": "HIGH - Direct SERP visibility improvement with rich snippets",
+        "implementation": "Add JSON-LD schema to all blog posts and guides"
+      },
+      {
+        "action": "Add 'Questions This Post Answers' section",
+        "type": "Content structure",
+        "expectedImpact": "HIGH - Targets voice search and featured snippets directly",
+        "implementation": "5-7 exact search queries per post"
+      },
+      {
+        "action": "Create comparison tables",
+        "type": "Content format",
+        "expectedImpact": "HIGH - Tables frequently win featured snippets in B2B SaaS",
+        "implementation": "AI vs Rules-based automation comparison"
+      },
+      {
+        "action": "Add definition boxes",
+        "type": "Content element",
+        "expectedImpact": "HIGH - AI systems prioritize clear entity definitions",
+        "implementation": "Glossary for key terms: rule-based automation, AI automation, RevOps"
+      },
+      {
+        "action": "Create Q&A format sections",
+        "type": "Content structure",
+        "expectedImpact": "HIGH - Perfect format for voice search and AI answer extraction",
+        "implementation": "Question → Direct Answer → Supporting details format"
+      }
+    ],
+    "mediumImpact": [
+      {
+        "action": "Optimize meta title",
+        "type": "Technical SEO",
+        "expectedImpact": "MEDIUM - Incremental CTR improvement",
+        "implementation": "Include percentages and brand name for association"
+      },
+      {
+        "action": "Create internal link cluster",
+        "type": "Site structure",
+        "expectedImpact": "MEDIUM - Builds topical authority",
+        "implementation": "Link to case studies, product pages, related content"
+      },
+      {
+        "action": "Include more specific metrics",
+        "type": "Content depth",
+        "expectedImpact": "MEDIUM - Enhances trust signals",
+        "implementation": "Exact percentages, time savings, cost figures with sources"
+      }
+    ]
+  },
+  "workflows": {
+    "blogCreate": {
+      "id": "blog-create",
+      "name": "Blog Content Creation",
+      "description": "AI-powered blog creation from topic to final draft",
+      "estimatedTime": "45-60 min",
+      "stages": ["requirements", "topics", "brief", "draft", "complete"],
+      "stats": {
+        "totalCreated": 127,
+        "avgCompletionRate": 87,
+        "satisfaction": 4.8,
+        "avgWordCount": 2500,
+        "avgSeoScore": 86,
+        "avgReadingTime": 10
+      },
+      "optimization": {
+        "targetStructure": [
+          "Hook/Problem Statement (100 words)",
+          "The Current Reality (300 words)",
+          "Why Traditional Solutions Fail (400 words)",
+          "The AI Solution (500 words)",
+          "Real-World Examples (600 words)",
+          "Implementation Guide (400 words)",
+          "Results & ROI (200 words)",
+          "Call to Action"
+        ],
+        "seoRequirements": {
+          "titleLength": "50-60 characters",
+          "metaDescription": "150-160 characters",
+          "minHeaders": 5,
+          "keywordDensity": "1-2%",
+          "internalLinks": "3-5 per post",
+          "externalLinks": "2-3 authoritative sources"
+        }
+      }
+    },
+    "linkedinCreate": {
+      "id": "linkedin-create",
+      "name": "LinkedIn Post Creation",
+      "description": "Professional posts optimized for engagement",
+      "estimatedTime": "20-30 min",
+      "stages": ["requirements", "angles", "brief", "post", "complete"],
+      "stats": {
+        "totalCreated": 89,
+        "avgCompletionRate": 92,
+        "satisfaction": 4.9,
+        "avgCharCount": 1300,
+        "avgEngagement": "12.3%"
+      },
+      "bestPractices": {
+        "postTime": "Tuesday-Thursday, 8-10 AM",
+        "structure": [
+          "Hook (First 2 lines)",
+          "Problem/Story",
+          "Key Insights (3-5 points)",
+          "Call to Action/Question"
+        ],
+        "formatting": {
+          "lineBreaks": "Every 2-3 sentences",
+          "emoji": "Sparingly, 2-3 max",
+          "hashtags": "3-5 relevant tags"
+        }
+      }
+    },
+    "blogImprove": {
+      "id": "blog-improve",
+      "name": "Content Improvement",
+      "description": "Enhance existing content with AI",
+      "estimatedTime": "30-45 min",
+      "stages": ["import", "analysis", "suggestions", "editing", "complete"],
+      "stats": {
+        "totalImproved": 64,
+        "avgScoreIncrease": 23,
+        "satisfaction": 4.7
+      },
+      "analysisChecklist": {
+        "seo": [
+          "Title optimization (50-60 chars)",
+          "Meta description (150-160 chars)",
+          "Header structure (H1-H3)",
+          "Keyword density (1-2%)",
+          "Internal linking",
+          "Image alt text",
+          "Schema markup"
+        ],
+        "aeo": [
+          "Structured data markup",
+          "Question-based headers",
+          "Definition boxes",
+          "Comparison tables",
+          "FAQ section",
+          "Voice search optimization"
+        ],
+        "readability": [
+          "Sentence length (15-20 words avg)",
+          "Paragraph length (3-4 sentences)",
+          "Transition words usage",
+          "Active voice percentage",
+          "Flesch reading score (60-70)"
+        ]
+      }
+    }
+  },
+  "documents": [
+    {
+      "id": "doc-001",
+      "title": "When Rules Break: How AI Handles the 40% of Workflows Traditional Automation Can't",
+      "type": "blog",
+      "status": "published",
+      "author": {
+        "name": "Sarah Johnson",
+        "role": "Content Lead",
+        "avatar": null
+      },
+      "content": {
+        "wordCount": 2847,
+        "readingTime": 11,
+        "excerpt": "Unlike traditional rules, AI handles the messy, contextual inputs that break standard workflows.",
+        "keyTakeaways": [
+          "60% of business automation works fine with rules, but 40% requires AI reasoning",
+          "RevOps teams typically reduce manual fixes by 60-80% with AI automation",
+          "Teams recover 15+ hours per week within 60 days of switching",
+          "Traditional rules fail on format variations, edge cases, and context puzzles"
+        ],
+        "targetKeywords": [
+          "AI automation",
+          "workflow automation", 
+          "RevOps automation",
+          "traditional automation limitations",
+          "rule-based vs AI automation"
+        ]
+      },
+      "metadata": {
+        "category": "AI Automation",
+        "tags": ["RevOps", "AI", "Workflow Automation", "Zapier Alternative", "Automation ROI"],
+        "seoScore": 86,
+        "aeoScore": 72,
+        "readabilityScore": 85,
+        "structuredData": {
+          "required": ["Article", "FAQPage", "HowTo"],
+          "implemented": false
+        }
+      },
+      "performance": {
+        "views": 3847,
+        "shares": 234,
+        "comments": 18,
+        "likes": 156,
+        "conversionRate": 7.2,
+        "avgTimeOnPage": "5:23",
+        "bounceRate": 32,
+        "featuredSnippets": 0
+      },
+      "optimizationNeeded": [
+        "Add Questions This Post Answers section",
+        "Create comparison table for AI vs Rules automation",
+        "Add definition boxes for key terms",
+        "Implement Q&A format sections",
+        "Add structured data markup",
+        "Include Key Takeaways summary",
+        "Add internal links to case studies"
+      ],
+      "dates": {
+        "created": "2024-01-10T10:00:00Z",
+        "modified": "2024-01-14T16:30:00Z",
+        "published": "2024-01-15T09:00:00Z"
+      }
+    },
+    {
+      "id": "doc-002",
+      "title": "The $75K Monthly Cost of Bad Automation: A RevOps Reality Check",
+      "type": "blog",
+      "status": "draft",
+      "author": {
+        "name": "Michael Chen",
+        "role": "RevOps Expert",
+        "avatar": null
+      },
+      "content": {
+        "wordCount": 1523,
+        "readingTime": 6,
+        "excerpt": "Calculate the hidden costs of maintaining complex rule-based automation systems.",
+        "targetKeywords": [
+          "automation ROI",
+          "Zapier costs",
+          "automation pricing",
+          "hidden automation costs"
+        ]
+      },
+      "metadata": {
+        "category": "ROI Analysis",
+        "tags": ["ROI", "Cost Analysis", "RevOps", "Automation", "Pricing"],
+        "seoScore": 0,
+        "aeoScore": 0,
+        "readabilityScore": 0
+      },
+      "performance": {
+        "views": 0,
+        "shares": 0,
+        "comments": 0,
+        "likes": 0
+      },
+      "dates": {
+        "created": "2024-01-12T14:20:00Z",
+        "modified": "2024-01-15T11:45:00Z",
+        "published": null,
+        "scheduled": "2024-01-22T10:00:00Z"
+      }
+    },
+    {
+      "id": "doc-003",
+      "title": "5 Signs Your Automation is Killing Deals",
+      "type": "linkedin",
+      "status": "scheduled",
+      "author": {
+        "name": "Lisa Park",
+        "role": "Growth Manager",
+        "avatar": null
+      },
+      "content": {
+        "wordCount": 347,
+        "readingTime": 2,
+        "excerpt": "RevOps leaders: Your Monday morning crisis isn't unique. Here's what's really happening...",
+        "structure": {
+          "hook": "It's 8AM Monday, and your sales director just pinged...",
+          "painPoints": [
+            "Enterprise deal lost in general queue",
+            "Fortune 500 got nurture email instead of fast-track",
+            "Chief Revenue Officer routed wrong",
+            "15+ hours weekly fixing failures",
+            "Hidden revenue leaks"
+          ],
+          "solution": "AI automation understands intent, not just patterns"
+        }
+      },
+      "metadata": {
+        "category": "Social",
+        "tags": ["LinkedIn", "RevOps", "Automation"],
+        "seoScore": 0,
+        "readabilityScore": 91,
+        "hashtags": ["#RevOps", "#Automation", "#AI", "#B2B", "#SaaS"]
+      },
+      "performance": {
+        "expectedEngagement": "High",
+        "views": 0,
+        "shares": 0,
+        "comments": 0,
+        "likes": 0
+      },
+      "dates": {
+        "created": "2024-01-14T13:00:00Z",
+        "modified": "2024-01-15T09:30:00Z",
+        "published": null,
+        "scheduled": "2024-01-16T14:00:00Z"
+      }
+    },
+    {
+      "id": "doc-004",
+      "title": "Gumloop vs Zapier: The RevOps Guide to Migration",
+      "type": "blog",
+      "status": "review",
+      "author": {
+        "name": "Alex Thompson",
+        "role": "Product Marketing",
+        "avatar": null
+      },
+      "content": {
+        "wordCount": 4156,
+        "readingTime": 16,
+        "excerpt": "A comprehensive comparison and migration guide for RevOps teams considering the switch.",
+        "sections": [
+          "Architecture comparison",
+          "Pricing analysis",
+          "Migration timeline",
+          "Risk mitigation",
+          "ROI calculator",
+          "Case studies"
+        ]
+      },
+      "metadata": {
+        "category": "Comparison",
+        "tags": ["Gumloop", "Zapier", "Migration", "Comparison", "Alternative"],
+        "seoScore": 85,
+        "aeoScore": 72,
+        "readabilityScore": 82,
+        "targetKeywords": [
+          "Gumloop vs Zapier",
+          "migrate from Zapier",
+          "Zapier alternative",
+          "Zapier migration guide"
+        ]
+      },
+      "performance": {
+        "views": 0,
+        "shares": 0,
+        "comments": 3,
+        "likes": 0,
+        "expectedConversion": 12.3
+      },
+      "dates": {
+        "created": "2024-01-08T09:15:00Z",
+        "modified": "2024-01-15T14:20:00Z",
+        "published": null,
+        "scheduled": "2024-01-18T10:00:00Z"
+      }
+    }
+  ],
+  "calendar": {
+    "events": [
+      {
+        "id": "evt-001",
+        "title": "Publish: When Rules Break Blog",
+        "type": "publish",
+        "date": "2024-01-15T09:00:00Z",
+        "documentId": "doc-001",
+        "status": "completed"
+      },
+      {
+        "id": "evt-002",
+        "title": "LinkedIn Post: 5 Signs",
+        "type": "publish",
+        "date": "2024-01-16T14:00:00Z",
+        "documentId": "doc-003",
+        "status": "scheduled"
+      },
+      {
+        "id": "evt-003",
+        "title": "Review: Migration Guide",
+        "type": "review",
+        "date": "2024-01-17T10:00:00Z",
+        "documentId": "doc-004",
+        "status": "pending"
+      },
+      {
+        "id": "evt-004",
+        "title": "Publish: Migration Guide",
+        "type": "publish",
+        "date": "2024-01-18T10:00:00Z",
+        "documentId": "doc-004",
+        "status": "scheduled"
+      },
+      {
+        "id": "evt-005",
+        "title": "Content Planning Meeting",
+        "type": "meeting",
+        "date": "2024-01-19T15:00:00Z",
+        "attendees": ["Sarah Johnson", "Michael Chen", "Lisa Park"],
+        "status": "scheduled"
+      },
+      {
+        "id": "evt-006",
+        "title": "Publish: Cost Analysis Blog",
+        "type": "publish",
+        "date": "2024-01-22T10:00:00Z",
+        "documentId": "doc-002",
+        "status": "scheduled"
+      }
+    ]
+  },
+  "templates": {
+    "blog": {
+      "structure": {
+        "sections": [
+          "Hook/Problem Statement",
+          "The Current Reality",
+          "Why Traditional Solutions Fail",
+          "The AI Solution",
+          "Real-World Examples",
+          "Implementation Guide",
+          "Results & ROI",
+          "Questions This Post Answers",
+          "Key Takeaways",
+          "Call to Action"
+        ],
+        "targetWordCount": 2500,
+        "targetReadingTime": 10
+      },
+      "seoGuidelines": {
+        "titleLength": "50-60 chars",
+        "metaDescriptionLength": "150-160 chars",
+        "minHeaders": 5,
+        "keywordDensity": "1-2%",
+        "internalLinks": "3-5 per post",
+        "externalLinks": "2-3 authority sites"
+      },
+      "aeoRequirements": {
+        "structuredData": ["Article", "FAQPage", "HowTo"],
+        "questionHeaders": "30% of H2/H3 tags",
+        "definitionBoxes": "Key terms glossary",
+        "comparisonTables": "For vs content",
+        "faqSection": "5-7 questions minimum"
+      }
+    },
+    "linkedin": {
+      "structure": {
+        "sections": [
+          "Hook (First 2 lines)",
+          "Problem/Story",
+          "Key Insights (3-5 points)",
+          "Call to Action/Question"
+        ],
+        "targetCharCount": 1300,
+        "hashtagCount": "3-5"
+      },
+      "bestPractices": {
+        "postTime": "Tuesday-Thursday, 8-10 AM",
+        "lineBreaks": "Every 2-3 sentences",
+        "emoji": "Sparingly, 2-3 max",
+        "personalization": "Use 'you' and direct address",
+        "storytelling": "Start with relatable scenario"
+      }
+    },
+    "comparison": {
+      "structure": {
+        "sections": [
+          "Executive Summary",
+          "Feature Comparison Table",
+          "Pricing Analysis",
+          "Use Case Scenarios",
+          "Migration Path",
+          "ROI Calculator",
+          "Customer Success Stories",
+          "Decision Framework"
+        ],
+        "requiredElements": [
+          "Comparison matrix",
+          "Cost calculator",
+          "Migration timeline",
+          "Risk assessment"
+        ]
+      }
+    }
+  },
+  "analytics": {
+    "contentPerformance": {
+      "topPerforming": [
+        {
+          "title": "When Rules Break",
+          "metric": "7.2% conversion",
+          "improvement": "+234% vs average",
+          "successFactors": [
+            "Specific problem focus",
+            "Real-world examples",
+            "Quantified benefits"
+          ]
+        },
+        {
+          "title": "Migration Guide",
+          "metric": "12.3% conversion",
+          "improvement": "+515% vs average",
+          "successFactors": [
+            "Step-by-step guidance",
+            "Risk mitigation",
+            "ROI proof"
+          ]
+        }
+      ],
+      "insights": [
+        "RevOps content performs 3.2x better on Mondays",
+        "Migration content converts at 12% vs 2% average",
+        "Technical deep-dives get 45% more shares",
+        "Cost comparison content drives 67% of trials",
+        "Real customer examples increase conversion 3x"
+      ]
+    },
+    "seoMetrics": {
+      "avgSeoScore": 86,
+      "avgAeoScore": 72,
+      "featuredSnippets": 0,
+      "richResults": 2,
+      "topKeywords": [
+        {"keyword": "Zapier too expensive", "volume": 8100, "position": null, "opportunity": "HIGH"},
+        {"keyword": "workflow automation", "volume": 6500, "position": 7, "trend": "↑"},
+        {"keyword": "RevOps automation", "volume": 3200, "position": 3, "trend": "→"},
+        {"keyword": "AI automation platform", "volume": 4400, "position": 7, "trend": "↑"}
+      ],
+      "contentGaps": [
+        "Migration guides (0 vs 5 needed)",
+        "Pricing comparisons (0 vs 3 needed)",
+        "ROI calculators (0 vs 2 needed)",
+        "Industry playbooks (0 vs 6 needed)"
+      ]
+    },
+    "competitiveIntelligence": {
+      "marketShare": {
+        "awareness": "15% vs Zapier 85%",
+        "consideration": "25% vs Make 45%",
+        "purchase": "5% vs n8n 30%"
+      },
+      "contentVelocity": {
+        "gumloop": 3,
+        "zapier": 32,
+        "make": 18,
+        "n8n": 10
+      },
+      "weaknesses": [
+        "No migration content",
+        "Missing pricing transparency",
+        "Weak comparison coverage",
+        "No interactive tools"
+      ]
+    }
+  },
+  "aiAssistant": {
+    "suggestions": {
+      "content": [
+        "Add comparison table for AI vs Rules-based automation",
+        "Include specific ROI metrics from customer examples",
+        "Add FAQ section for featured snippet optimization",
+        "Include definition boxes for key terms",
+        "Create 'Questions This Post Answers' section",
+        "Add internal links to case studies and product pages",
+        "Include structured data markup for all content types",
+        "Add cost calculator tools for migration ROI"
+      ],
+      "seo": [
+        "Target 'Zapier alternative' keyword cluster",
+        "Add structured data markup for articles",
+        "Optimize for voice search queries",
+        "Include more long-tail keywords",
+        "Add internal links to related content",
+        "Fix missing H1 tags on 46% of pages",
+        "Add canonical tags to all pages",
+        "Improve meta descriptions for CTR"
+      ],
+      "strategy": [
+        "Focus on migration content (highest conversion)",
+        "Build interactive ROI calculators",
+        "Create industry-specific playbooks",
+        "Develop Zapier refugee resource center",
+        "Launch pricing transparency campaign"
+      ]
+    },
+    "contextualMemory": [
+      "8,100 monthly searches for 'Zapier too expensive' with zero presence",
+      "Migration content converts at 12% vs 2% average",
+      "Friday RevOps content gets 3.2x engagement",
+      "65.8 authority score needs 30-point improvement",
+      "60% of Zapier defectors choose Make/n8n (never find Gumloop)",
+      "AI assistants recommend Zapier 90% of time for beginners",
+      "$75K MRR lost from purchase stage content gap"
+    ],
+    "priorityActions": [
+      {
+        "action": "Create Zapier comparison page",
+        "urgency": "CRITICAL",
+        "effort": "4 hours",
+        "impact": "$50K MRR potential"
+      },
+      {
+        "action": "Add structured data to all posts",
+        "urgency": "HIGH",
+        "effort": "8 hours", 
+        "impact": "40% CTR increase"
+      },
+      {
+        "action": "Build migration calculator",
+        "urgency": "HIGH",
+        "effort": "16 hours",
+        "impact": "12% conversion rate"
+      },
+      {
+        "action": "Create 5 migration guides",
+        "urgency": "HIGH",
+        "effort": "40 hours",
+        "impact": "Capture 60% of switchers"
+      }
+    ]
+  },
+  "contentCalendar": {
+    "upcomingThemes": [
+      {
+        "week": "2024-W04",
+        "theme": "Migration Week",
+        "focus": "Zapier alternatives and migration guides"
+      },
+      {
+        "week": "2024-W05",
+        "theme": "ROI Week",
+        "focus": "Cost analysis and ROI calculators"
+      },
+      {
+        "week": "2024-W06",
+        "theme": "AI Authority Week",
+        "focus": "AI-native automation thought leadership"
+      },
+      {
+        "week": "2024-W07",
+        "theme": "Industry Week",
+        "focus": "Vertical-specific playbooks"
+      }
+    ]
+  }
+}

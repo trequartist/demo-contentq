@@ -1,0 +1,199 @@
+{
+  "playbook": {
+    "id": "gumloop-growth-2024",
+    "title": "AI-Native Automation Authority: The Gumloop Market Domination Playbook",
+    "description": "This strategic playbook transforms Gumloop from invisible technical leader to dominant AI automation platform by capturing the $50M+ opportunity currently lost to Zapier's market dominance. With strong AI automation authority (78.5% visibility) but near-zero general awareness, this playbook provides a 90-day roadmap to intercept the 30-40% of users hitting Zapier's pricing wall while establishing the 'AI-native automation' category. The four selected plays directly address market gaps: capturing 17,400 monthly searches for Zapier alternatives, defining and owning the AI-native category growing at 23% QoQ, differentiating through radical pricing transparency, and providing industry-specific implementation guides to increase conversion 2.3x.",
+    "status": "Active",
+    "timeline": "90 days",
+    "progress": "Starting",
+    "investment": "$15-20K/month",
+    "expectedROI": "$125K MRR within 90 days"
+  },
+  "stats": {
+    "totalInitiatives": 4,
+    "activeStrategies": 4,
+    "completedPlays": 0,
+    "inProgressPlays": 0,
+    "contentGap": 37,
+    "targetContent": 50
+  },
+  "executiveSummary": {
+    "coreThesis": "Don't compete on features. Own the 'AI-native automation' category while capturing high-intent switchers.",
+    "biggestOpportunity": "8,100 monthly searches for 'Zapier too expensive' with ZERO Gumloop presence",
+    "uniqueAdvantage": "AI handles the 40% of workflows that break traditional rules",
+    "urgency": "Every day delayed = 270 users choosing inferior alternatives"
+  },
+  "plays": [
+    {
+      "id": "migration-accelerator",
+      "name": "The Migration Accelerator",
+      "description": "Capture the 30-40% of users hitting Zapier's $299/month wall with comprehensive migration resources",
+      "status": "priority",
+      "priority": "critical",
+      "effortAllocation": "60%",
+      "targetAudience": "Zapier users experiencing cost shock",
+      "searchVolume": 17400,
+      "expectedOutcome": "$50K MRR from migration content",
+      "keyDeliverables": [
+        "5 migration guides",
+        "Interactive ROI calculator",
+        "Zapier Refugee Resource Center",
+        "3-5 customer success stories"
+      ],
+      "metrics": {
+        "targetConversion": 12,
+        "currentConversion": 0,
+        "targetTraffic": 5000,
+        "currentTraffic": 0
+      },
+      "timeline": "Days 1-30"
+    },
+    {
+      "id": "ai-authority",
+      "name": "The AI-Native Authority",
+      "description": "Define and own the 'AI-native automation' category before competitors catch up",
+      "status": "priority",
+      "priority": "high",
+      "effortAllocation": "40%",
+      "targetAudience": "Technical decision makers seeking AI solutions",
+      "growthRate": "23% QoQ",
+      "expectedOutcome": "Category ownership and thought leadership",
+      "keyDeliverables": [
+        "AI Automation Manifesto",
+        "Category definition content series",
+        "AI workflow templates",
+        "Maturity model framework"
+      ],
+      "metrics": {
+        "targetVisibility": 40,
+        "currentVisibility": 15,
+        "targetCitations": 50,
+        "currentCitations": 5
+      },
+      "timeline": "Days 31-60"
+    },
+    {
+      "id": "transparency-advantage",
+      "name": "The Transparency Advantage",
+      "description": "Differentiate through radical pricing transparency while competitors hide costs",
+      "status": "planned",
+      "priority": "medium",
+      "effortAllocation": "20%",
+      "impact": "23% faster sales cycles",
+      "expectedOutcome": "Trust-based differentiation",
+      "keyDeliverables": [
+        "Public pricing calculator",
+        "TCO comparison tool",
+        "Pricing philosophy content",
+        "Anti-vendor lock-in promise"
+      ],
+      "metrics": {
+        "targetTools": 3,
+        "currentTools": 0,
+        "conversionImpact": "+23%"
+      },
+      "timeline": "Days 31-60"
+    },
+    {
+      "id": "use-case-accelerator",
+      "name": "The Use Case Accelerator",
+      "description": "Provide department and industry-specific implementation guides for 2.3x conversion",
+      "status": "planned",
+      "priority": "medium",
+      "effortAllocation": "20%",
+      "targetCoverage": "70% user intent",
+      "expectedOutcome": "Industry-specific authority",
+      "keyDeliverables": [
+        "6 department playbooks",
+        "4 industry verticals",
+        "20+ workflow templates",
+        "Implementation videos"
+      ],
+      "metrics": {
+        "targetPlaybooks": 10,
+        "currentPlaybooks": 0,
+        "conversionMultiplier": 2.3
+      },
+      "timeline": "Days 61-90"
+    }
+  ],
+  "weeklyFocus": {
+    "week1": {
+      "theme": "Emergency Response",
+      "priority": "Technical fixes and comparison content",
+      "deliverables": ["FAQ sections", "Zapier comparison", "SEO fixes"]
+    },
+    "week2to4": {
+      "theme": "Migration Offensive",
+      "priority": "Capture switchers",
+      "deliverables": ["5 migration guides", "ROI calculator", "Resource center"]
+    },
+    "week5to8": {
+      "theme": "AI Authority Building",
+      "priority": "Category definition",
+      "deliverables": ["AI manifesto", "Category content", "Templates"]
+    },
+    "week9to12": {
+      "theme": "Scale & Optimize",
+      "priority": "Expand coverage",
+      "deliverables": ["Industry playbooks", "Partner program", "Academy"]
+    }
+  },
+  "competitiveStrategy": {
+    "vsZapier": {
+      "theirWeakness": "Can't handle complex AI workflows, expensive at scale",
+      "ourAdvantage": "90% cost savings with AI-native architecture",
+      "keyMessage": "When you hit Zapier's $299 wall, we're the smarter choice"
+    },
+    "vsMake": {
+      "theirWeakness": "Weak AI integration, confusing pricing",
+      "ourAdvantage": "True AI-native, transparent pricing",
+      "keyMessage": "AI-first, not AI-afterthought"
+    },
+    "vsN8n": {
+      "theirWeakness": "Too technical, self-hosting complexity",
+      "ourAdvantage": "No-code AI power",
+      "keyMessage": "Enterprise power without the complexity"
+    }
+  },
+  "successMetrics": {
+    "day30": {
+      "traffic": "Page 1 for 'Zapier too expensive'",
+      "leads": "50+ MQLs from migration content",
+      "trials": "25% increase in signups",
+      "content": "15 purchase-stage posts"
+    },
+    "day60": {
+      "marketShare": "10% of 'Zapier alternative' traffic",
+      "revenue": "First migration customer closed",
+      "visibility": "40% AI automation query coverage",
+      "list": "1,000 Zapier users on email"
+    },
+    "day90": {
+      "position": "Own 'AI automation platform' search",
+      "mrr": "$50K from new content",
+      "coverage": "50% user intent coverage",
+      "authority": "5+ weekly mentions in discussions"
+    }
+  },
+  "resourceRequirements": {
+    "team": {
+      "writers": "2-3 B2B SaaS specialists",
+      "designer": "1 for infographics and tools",
+      "developer": "1-2 for calculators and schema"
+    },
+    "budget": {
+      "monthly": "$15-20K",
+      "content": "$8K",
+      "tools": "$2K",
+      "promotion": "$5K",
+      "development": "$5K"
+    },
+    "tools": [
+      "SEMrush for keyword research",
+      "Clearscope for optimization",
+      "Hotjar for user behavior",
+      "Search Console for performance"
+    ]
+  }
+}

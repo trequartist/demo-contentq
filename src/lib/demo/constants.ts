@@ -128,3 +128,4 @@ export const KEYBOARD_SHORTCUTS = {
   JUMP_TO_ANALYTICS: '4',
   JUMP_TO_CALENDAR: '5',
 } as const;
+

@@ -1,0 +1,371 @@
+{
+  "account": {
+    "company": {
+      "name": "Gumloop",
+      "website": "https://gumloop.com",
+      "industry": "AI Automation",
+      "size": "11-50",
+      "founded": "2022",
+      "headquarters": "San Francisco, CA",
+      "timezone": "America/Los_Angeles"
+    },
+    "branding": {
+      "primaryColor": "#000000",
+      "secondaryColor": "#FFFFFF",
+      "logo": "/assets/gumloop-logo.svg",
+      "tagline": "AI-Native Automation for RevOps Teams",
+      "voiceTone": "Expert but approachable - like a trusted advisor",
+      "styleGuide": "https://brand.gumloop.com"
+    },
+    "team": {
+      "primaryContact": {
+        "name": "Sarah Johnson",
+        "role": "Content Lead",
+        "email": "sarah@gumloop.com"
+      },
+      "users": [
+        {
+          "id": "user-1",
+          "name": "Sarah Johnson",
+          "role": "Content Lead",
+          "permissions": "admin",
+          "lastActive": "2024-01-15T10:00:00Z"
+        },
+        {
+          "id": "user-2",
+          "name": "Michael Chen",
+          "role": "RevOps Expert",
+          "permissions": "editor",
+          "lastActive": "2024-01-15T09:30:00Z"
+        },
+        {
+          "id": "user-3",
+          "name": "Alex Thompson",
+          "role": "Product Marketing",
+          "permissions": "editor",
+          "lastActive": "2024-01-14T16:00:00Z"
+        }
+      ]
+    },
+    "subscription": {
+      "plan": "Professional",
+      "status": "active",
+      "renewal": "2024-12-01",
+      "usage": {
+        "contentCreated": 37,
+        "monthlyLimit": "unlimited",
+        "aiCredits": 45000,
+        "aiCreditsUsed": 12340
+      }
+    }
+  },
+
+  "contentPreferences": {
+    "defaults": {
+      "contentLength": {
+        "blog": "2000-2500 words",
+        "linkedin": "1200-1400 characters",
+        "caseStudy": "3000-4000 words"
+      },
+      "seoSettings": {
+        "titleLength": "50-60 characters",
+        "metaDescriptionLength": "150-160 characters",
+        "keywordDensity": "1-2%",
+        "minHeaders": 5,
+        "targetReadingTime": "8-12 minutes"
+      },
+      "publishing": {
+        "autoPublish": false,
+        "requireApproval": true,
+        "defaultReviewer": "sarah@gumloop.com",
+        "schedulingWindow": "Business hours only"
+      }
+    },
+    "targetAudience": {
+      "primary": ["RevOps Managers", "Operations Directors"],
+      "secondary": ["Sales Leaders", "Marketing Ops", "Customer Success Ops"],
+      "industries": ["B2B SaaS", "Technology", "Professional Services"],
+      "companySize": ["50-500", "500-5000"],
+      "buyerJourney": ["Problem Aware", "Solution Exploring", "Vendor Evaluation"]
+    },
+    "keywords": {
+      "primary": [
+        "AI automation",
+        "workflow automation",
+        "RevOps automation",
+        "Zapier alternative",
+        "Gumloop"
+      ],
+      "secondary": [
+        "no-code automation",
+        "AI workflows",
+        "automation platform",
+        "workflow orchestration",
+        "process automation"
+      ],
+      "negative": [
+        "RPA",
+        "traditional automation",
+        "rule-based only"
+      ]
+    },
+    "competitors": {
+      "track": ["Zapier", "Make", "n8n", "Tines"],
+      "positioning": {
+        "vsZapier": "90% cheaper with AI-native architecture",
+        "vsMake": "Simpler UI with better AI integration",
+        "vsN8n": "No-code friendly, no infrastructure needed"
+      }
+    }
+  },
+
+  "aiSettings": {
+    "contentGeneration": {
+      "model": "GPT-4",
+      "temperature": 0.7,
+      "creativity": "balanced",
+      "factChecking": true,
+      "citationRequired": true,
+      "toneConsistency": true
+    },
+    "optimization": {
+      "autoSEO": true,
+      "autoAEO": true,
+      "schemaGeneration": true,
+      "keywordOptimization": true,
+      "readabilityTarget": "8th grade",
+      "sentimentAnalysis": true
+    },
+    "personalization": {
+      "useCompanyContext": true,
+      "useHistoricalData": true,
+      "adaptToPerformance": true,
+      "learningEnabled": true
+    },
+    "safety": {
+      "factVerification": "strict",
+      "plagiarismCheck": true,
+      "brandCompliance": true,
+      "legalReview": false
+    }
+  },
+
+  "integrations": {
+    "analytics": {
+      "googleAnalytics": {
+        "connected": true,
+        "propertyId": "GA4-123456",
+        "lastSync": "2024-01-15T10:00:00Z"
+      },
+      "searchConsole": {
+        "connected": true,
+        "siteUrl": "https://gumloop.com",
+        "lastSync": "2024-01-15T09:00:00Z"
+      }
+    },
+    "social": {
+      "linkedin": {
+        "company": {
+          "connected": true,
+          "pageId": "gumloop-ai",
+          "lastSync": "2024-01-15T10:00:00Z"
+        },
+        "personal": {
+          "connected": false,
+          "invitePending": true
+        }
+      },
+      "twitter": {
+        "connected": false,
+        "planned": true
+      }
+    },
+    "cms": {
+      "wordpress": {
+        "connected": false
+      },
+      "custom": {
+        "connected": true,
+        "endpoint": "https://api.gumloop.com/content",
+        "apiKey": "***hidden***"
+      }
+    },
+    "crm": {
+      "hubspot": {
+        "connected": true,
+        "accountId": "123456",
+        "syncLeads": true
+      }
+    }
+  },
+
+  "notifications": {
+    "email": {
+      "enabled": true,
+      "frequency": "daily",
+      "recipients": ["sarah@gumloop.com", "team@gumloop.com"],
+      "types": {
+        "performance": true,
+        "publishing": true,
+        "errors": true,
+        "opportunities": true,
+        "competitorAlerts": true
+      }
+    },
+    "slack": {
+      "enabled": false,
+      "webhook": "",
+      "channel": "#content-alerts"
+    },
+    "inApp": {
+      "enabled": true,
+      "showPopups": true,
+      "soundAlerts": false
+    }
+  },
+
+  "automations": {
+    "contentWorkflow": {
+      "autoScheduling": {
+        "enabled": true,
+        "optimalTimes": true,
+        "avoidHolidays": true,
+        "timezone": "America/New_York"
+      },
+      "qualityChecks": {
+        "enabled": true,
+        "minSEOScore": 80,
+        "minReadability": 60,
+        "requireImages": true,
+        "checkLinks": true
+      },
+      "distribution": {
+        "crossPost": true,
+        "socialSharing": true,
+        "emailNewsletter": false,
+        "slackNotification": false
+      }
+    },
+    "monitoring": {
+      "competitorTracking": true,
+      "keywordTracking": true,
+      "brandMentions": true,
+      "performanceAlerts": true,
+      "thresholds": {
+        "trafficDrop": 20,
+        "conversionDrop": 15,
+        "rankingDrop": 5
+      }
+    }
+  },
+
+  "goals": {
+    "monthly": {
+      "traffic": {
+        "target": 50000,
+        "current": 24387,
+        "progress": 48.8
+      },
+      "contentVelocity": {
+        "target": 15,
+        "current": 3,
+        "progress": 20
+      },
+      "conversion": {
+        "target": 5.5,
+        "current": 4.7,
+        "progress": 85.5
+      },
+      "authorityScore": {
+        "target": 85,
+        "current": 65.8,
+        "progress": 77.4
+      }
+    },
+    "quarterly": {
+      "mrr": {
+        "target": "$150K",
+        "current": "$58K",
+        "progress": 38.7
+      },
+      "marketShare": {
+        "target": 15,
+        "current": 8.5,
+        "progress": 56.7
+      }
+    }
+  },
+
+  "billing": {
+    "subscription": {
+      "plan": "Professional",
+      "price": "$299/month",
+      "billingCycle": "monthly",
+      "nextBilling": "2024-02-01",
+      "paymentMethod": "**** 4242"
+    },
+    "usage": {
+      "included": {
+        "content": "unlimited",
+        "users": 10,
+        "aiCredits": 50000,
+        "assets": "unlimited"
+      },
+      "current": {
+        "content": 37,
+        "users": 3,
+        "aiCredits": 12340,
+        "assets": 4
+      }
+    },
+    "invoices": [
+      {
+        "date": "2024-01-01",
+        "amount": "$299",
+        "status": "paid",
+        "invoice": "INV-2024-001"
+      },
+      {
+        "date": "2023-12-01",
+        "amount": "$299",
+        "status": "paid",
+        "invoice": "INV-2023-012"
+      }
+    ]
+  },
+
+  "security": {
+    "twoFactor": {
+      "enabled": true,
+      "method": "authenticator"
+    },
+    "apiKeys": {
+      "active": 2,
+      "lastRotated": "2023-12-15"
+    },
+    "dataRetention": {
+      "content": "indefinite",
+      "analytics": "24 months",
+      "logs": "90 days"
+    },
+    "compliance": {
+      "gdpr": true,
+      "ccpa": true,
+      "soc2": "in-progress"
+    }
+  },
+
+  "experimental": {
+    "features": {
+      "aiContentRewrite": true,
+      "competitorMonitoring": true,
+      "predictiveAnalytics": false,
+      "voiceContent": false,
+      "videoGeneration": false
+    },
+    "betaProgram": {
+      "enrolled": true,
+      "feedbackEnabled": true
+    }
+  }
+}

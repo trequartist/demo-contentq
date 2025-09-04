@@ -1,0 +1,625 @@
+{
+  "executiveDashboard": {
+    "overallHealthScore": 65.8,
+    "maxScore": 100,
+    "competitivePosition": "Behind",
+    "quarterlyTrajectory": "declining",
+    "lastUpdated": "2024-01-15T10:00:00Z",
+    "summary": {
+      "thirtySecondSummary": {
+        "marketReality": "Strong AI automation authority (78.5% visibility) trapped behind Zapier's 85% market dominance in general automation worth $50M+ annually",
+        "biggestWin": "#1 positions for RevOps automation guides with 207% ROI case studies driving 34.6% share in AI automation queries",
+        "criticalThreat": "Only 2 purchase-stage posts vs competitors' 6-12, creating severe conversion bottleneck while Zapier captures 60% of evaluation searches",
+        "userPerceptionGap": "Users don't know Gumloop exists - Reddit shows zero organic mentions in automation discussions where Make/n8n dominate alternative conversations",
+        "ninetyDayImperative": "Build 10+ purchase-stage assets and capture 'Zapier too expensive' traffic (8,100 searches/month) currently going to competitors"
+      },
+      "performanceSnapshot": {
+        "contentAuthority": {
+          "current": 65.8,
+          "vsIndustry": -18.2,
+          "vsZapier": -29.2,
+          "trend": "declining"
+        },
+        "aiVisibility": {
+          "current": 78.5,
+          "vsIndustry": 13.5,
+          "vsZapier": -14.8,
+          "trend": "stable"
+        },
+        "userIntentCoverage": {
+          "current": 35,
+          "vsIdeal": -45,
+          "vsZapier": -55,
+          "trend": "declining"
+        },
+        "purchaseContent": {
+          "current": 2,
+          "ideal": 15,
+          "vsZapier": -83,
+          "trend": "critical"
+        }
+      }
+    }
+  },
+  "marketPosition": {
+    "realityCheck": {
+      "uncomfortableTruth": "You're technically superior but commercially invisible - while you dominate AI automation thought leadership, users discovering automation start with Zapier, get frustrated by cost, then migrate to Make or n8n without ever knowing Gumloop exists",
+      "perceptionVsReality": [
+        {
+          "userThinks": "Never heard of Gumloop",
+          "marketReality": "AI-native leader with 207% ROI proof",
+          "gapCost": "$50M+ SMB opportunity"
+        },
+        {
+          "userThinks": "Zapier = automation",
+          "marketReality": "Zapier struggles with AI workflows",
+          "gapCost": "85% of beginners never find you"
+        },
+        {
+          "userThinks": "Make is the Zapier alternative",
+          "marketReality": "You're superior for AI automation",
+          "gapCost": "60% of switchers go to Make"
+        },
+        {
+          "userThinks": "Automation = connecting apps",
+          "marketReality": "Future is AI-powered workflows",
+          "gapCost": "Missing the narrative shift"
+        }
+      ]
+    },
+    "userJourneyBreakdown": {
+      "discovery": {
+        "coverage": 15,
+        "status": "weak",
+        "gaps": ["No beginner content", "Missing 'what is automation'", "No awareness campaigns"]
+      },
+      "research": {
+        "coverage": 25,
+        "status": "partial",
+        "gaps": ["Limited comparison content", "No interactive tools", "Weak SEO presence"]
+      },
+      "evaluation": {
+        "coverage": 5,
+        "status": "critical",
+        "gaps": ["No migration guides", "Missing ROI calculators", "No pricing transparency"]
+      },
+      "decision": {
+        "coverage": 0,
+        "status": "absent",
+        "gaps": ["No purchase-stage content", "Missing case studies", "No trial resources"]
+      }
+    },
+    "zapierProblem": {
+      "dominance": {
+        "monthlyVisitors": 4500000,
+        "integrations": 7000,
+        "contentVelocity": 32,
+        "marketShare": 85
+      },
+      "yourDisadvantage": {
+        "contentVelocity": 3,
+        "visitorRatio": "1:1500",
+        "integrationGap": "Limited catalog",
+        "brandAwareness": "Near zero"
+      },
+      "redditReality": [
+        {
+          "quote": "My monthly costs dropped from $299 to just $49 for essentially the same automations after switching from Zapier to n8n. Never heard of Gumloop though.",
+          "source": "r/automation",
+          "upvotes": 47,
+          "impact": "Invisible in switcher discussions"
+        },
+        {
+          "quote": "Zapier was roughly $0.026 per task on their starter plan, while Make was about $0.0009 per operation. Anyone know other alternatives?",
+          "source": "r/SaaS",
+          "replies": 23,
+          "gumloopMentions": 0
+        }
+      ],
+      "aiAssistantBias": {
+        "chatGPT": {
+          "recommendsZapier": 90,
+          "mentionsGumloop": 0,
+          "context": "Beginner queries"
+        },
+        "perplexity": {
+          "recommendsZapier": 85,
+          "mentionsGumloop": 20,
+          "context": "Comparison queries only"
+        }
+      }
+    }
+  },
+  "contentPerformance": {
+    "funnelDistribution": {
+      "awareness": {
+        "posts": 18,
+        "percentage": 48.6,
+        "score": 61.92,
+        "status": "underperforming",
+        "problems": [
+          "Thin category pages diluting authority",
+          "Missing beginner tutorials",
+          "No 'What is automation' content"
+        ],
+        "opportunities": [
+          "'Zapier too expensive' - 8,100 searches/month uncaptured",
+          "'Zapier pricing alternatives' - 6,500 searches/month uncaptured"
+        ]
+      },
+      "consideration": {
+        "posts": 14,
+        "percentage": 37.8,
+        "score": 73.65,
+        "status": "performing",
+        "strengths": [
+          "Strong MCP technical content",
+          "Enterprise security depth",
+          "Named customer proof"
+        ],
+        "gaps": [
+          "Only 2 comparison posts vs Make's 7",
+          "0 migration guides vs standard 3-5",
+          "0 interactive tools vs Zapier's 5+"
+        ]
+      },
+      "purchase": {
+        "posts": 2,
+        "percentage": 5.4,
+        "score": 71.43,
+        "status": "critical",
+        "competitorBenchmark": {
+          "zapier": 12,
+          "make": 7,
+          "tines": 6,
+          "industryStandard": "15-20%"
+        },
+        "costOfGap": "$75,000 MRR potential loss",
+        "missingElements": [
+          "Pricing transparency content",
+          "Comparison matrices",
+          "Migration guides",
+          "ROI proof beyond 2 case studies"
+        ]
+      },
+      "retention": {
+        "posts": 3,
+        "percentage": 8.1,
+        "status": "adequate"
+      }
+    },
+    "structuralFailures": {
+      "contentStructureAdoption": 0,
+      "industryAverage": 87,
+      "impact": {
+        "featuredSnippets": "Missing 50+ opportunities",
+        "searchVisibility": "-30% potential",
+        "trafficLoss": "-8,000 visits/month",
+        "leadLoss": "-92 leads/month"
+      },
+      "competitorComparison": {
+        "zapier": {
+          "scanabilityScore": 91,
+          "informationDensity": 92
+        },
+        "make": {
+          "scanabilityScore": 87,
+          "informationDensity": 86
+        },
+        "gumloop": {
+          "scanabilityScore": 0,
+          "structureAdoption": 0
+        }
+      }
+    }
+  },
+  "userIntent": {
+    "topMissedQueries": [
+      {
+        "query": "Zapier alternatives cheap",
+        "monthlyVolume": 8100,
+        "coverage": false,
+        "zapierOwns": true,
+        "opportunity": "HIGH"
+      },
+      {
+        "query": "Zapier too expensive",
+        "monthlyVolume": 6500,
+        "coverage": false,
+        "zapierOwns": true,
+        "opportunity": "HIGH"
+      },
+      {
+        "query": "AI automation no code",
+        "monthlyVolume": 4400,
+        "coverage": "weak",
+        "zapierOwns": false,
+        "opportunity": "HIGH"
+      },
+      {
+        "query": "Zapier vs Make vs n8n",
+        "monthlyVolume": 3900,
+        "coverage": false,
+        "zapierOwns": true,
+        "opportunity": "HIGH"
+      },
+      {
+        "query": "Migrate from Zapier",
+        "monthlyVolume": 2800,
+        "coverage": false,
+        "zapierOwns": "partial",
+        "opportunity": "HIGH"
+      },
+      {
+        "query": "Automation ROI calculator",
+        "monthlyVolume": 2100,
+        "coverage": false,
+        "zapierOwns": true,
+        "opportunity": "MEDIUM"
+      },
+      {
+        "query": "Workflow automation basics",
+        "monthlyVolume": 12000,
+        "coverage": false,
+        "zapierOwns": true,
+        "opportunity": "MEDIUM"
+      },
+      {
+        "query": "ChatGPT automation tools",
+        "monthlyVolume": 1900,
+        "coverage": "weak",
+        "zapierOwns": false,
+        "opportunity": "HIGH"
+      },
+      {
+        "query": "[Salesforce] to [Slack] automation",
+        "monthlyVolume": 50000,
+        "coverage": false,
+        "zapierOwns": true,
+        "opportunity": "MEDIUM"
+      },
+      {
+        "query": "Enterprise automation security",
+        "monthlyVolume": 1200,
+        "coverage": "some",
+        "zapierOwns": "partial",
+        "opportunity": "MEDIUM"
+      }
+    ],
+    "decisionJourney": {
+      "problemAwareness": {
+        "searches": ["automate repetitive tasks", "stop manual data entry"],
+        "yourCoverage": 15,
+        "winner": "Zapier (70% coverage)"
+      },
+      "solutionExploration": {
+        "searches": ["best automation platform", "Zapier vs alternatives"],
+        "yourCoverage": 5,
+        "winner": "Make (45% coverage)"
+      },
+      "costInvestigation": {
+        "searches": ["Zapier pricing too high", "automation platform costs"],
+        "yourCoverage": 0,
+        "winner": "n8n (30% coverage)"
+      },
+      "migrationResearch": {
+        "searches": ["switch from Zapier", "export Zapier workflows"],
+        "yourCoverage": 0,
+        "winner": "Make (60% coverage)"
+      }
+    },
+    "conversionKillers": [
+      {
+        "gap": "Is it worth it?",
+        "userNeed": "ROI calculators with industry benchmarks",
+        "youProvide": "Feature lists and technical specs",
+        "impact": "-40% evaluation completion rate"
+      },
+      {
+        "gap": "Can I switch?",
+        "userNeed": "Step-by-step migration guides with data preservation",
+        "youProvide": "Nothing",
+        "impact": "-60% of Zapier defectors lost to competitors"
+      },
+      {
+        "gap": "Will it work for me?",
+        "userNeed": "Industry-specific templates and playbooks",
+        "youProvide": "Generic AI automation demos",
+        "impact": "-35% trial-to-paid conversion"
+      }
+    ]
+  },
+  "aiPlatformVisibility": {
+    "currentState": {
+      "chatGPT": {
+        "mentionRate": 15,
+        "context": "AI automation only",
+        "rank": "4th-5th",
+        "topRecommendation": "Zapier (90% for beginners)"
+      },
+      "claude": {
+        "mentionRate": 10,
+        "context": "Technical contexts",
+        "rank": "Not in top 5"
+      },
+      "perplexity": {
+        "mentionRate": 20,
+        "context": "Comparison queries",
+        "rank": "3rd-4th"
+      },
+      "gemini": {
+        "mentionRate": 12,
+        "context": "Limited mentions",
+        "rank": "Rarely"
+      }
+    },
+    "whyAiIgnoresYou": [
+      {
+        "reason": "Content volume",
+        "metric": "3 posts/month vs Zapier's 32",
+        "disadvantage": "10x"
+      },
+      {
+        "reason": "Schema markup",
+        "metric": "19.63% implementation vs 80% best practice",
+        "gap": "-60.37%"
+      },
+      {
+        "reason": "Structured data",
+        "missing": ["FAQ schema", "HowTo schema", "SoftwareApplication schema"]
+      },
+      {
+        "reason": "Citation triggers",
+        "missing": ["Quantified case studies", "ROI data", "Benchmark reports"]
+      }
+    ]
+  },
+  "competitiveIntelligence": {
+    "contentRace": [
+      {
+        "competitor": "Zapier",
+        "monthlyOutput": 32,
+        "strategy": "ROI + Simplicity + Scale",
+        "owns": "Easy automation + 85% market",
+        "yourCounter": "AI-first differentiation"
+      },
+      {
+        "competitor": "Make",
+        "monthlyOutput": 18,
+        "strategy": "Visual + Complex + Value",
+        "owns": "Advanced workflows + switchers",
+        "yourCounter": "Better AI integration"
+      },
+      {
+        "competitor": "n8n",
+        "monthlyOutput": 10,
+        "strategy": "Technical + Open + Cheap",
+        "owns": "Developer automation + self-host",
+        "yourCounter": "No-code AI power"
+      },
+      {
+        "competitor": "Tines",
+        "monthlyOutput": 14,
+        "strategy": "Security + Enterprise",
+        "owns": "SOAR automation + compliance",
+        "yourCounter": "Broader use cases"
+      }
+    ],
+    "typicalMigrationPath": {
+      "journey": [
+        "Start with Zapier (6-12 months)",
+        "Hit $200/month cost wall",
+        "Research alternatives (2 weeks)",
+        "Find Make/n8n",
+        "Switch (never discover Gumloop)"
+      ],
+      "redditEvidence": [
+        "Switched from Zapier to n8n, monthly costs dropped from $299 to $49",
+        "Make is 10x cheaper than Zapier for complex workflows",
+        "Anyone tried Gumloop? [0 responses]"
+      ]
+    },
+    "competitiveAdvantages": {
+      "zapier": {
+        "informationDensity": 92,
+        "methodology": "ROC$",
+        "monthlyVisitors": 4500000,
+        "integrations": 7000
+      },
+      "make": {
+        "informationDensity": 86,
+        "strength": "Visual tutorials",
+        "pricing": "Transparent"
+      },
+      "n8n": {
+        "strength": "Self-hosting guides",
+        "appeal": "Developer-friendly",
+        "cost": "Very low"
+      },
+      "gumloop": {
+        "weaknesses": [
+          "Limited competitive content",
+          "No migration guides",
+          "Weak comparison coverage",
+          "Low brand awareness"
+        ]
+      }
+    }
+  },
+  "technicalSeo": {
+    "criticalFailures": [
+      {
+        "issue": "No canonical tags",
+        "affectedPages": "100%",
+        "impact": "-25% indexation",
+        "fixEffort": "2 hours",
+        "roi": "HIGH"
+      },
+      {
+        "issue": "Missing H1s",
+        "affectedPages": "46.01%",
+        "impact": "-30% rankings",
+        "fixEffort": "4 hours",
+        "roi": "HIGH"
+      },
+      {
+        "issue": "No schema markup",
+        "affectedPages": "80.37%",
+        "impact": "-40% CTR",
+        "fixEffort": "8 hours",
+        "roi": "HIGH"
+      },
+      {
+        "issue": "Broken heading hierarchy",
+        "affectedPages": "66.26%",
+        "impact": "-20% relevance",
+        "fixEffort": "6 hours",
+        "roi": "MEDIUM"
+      },
+      {
+        "issue": "Missing meta descriptions",
+        "affectedPages": "26.99%",
+        "impact": "-15% CTR",
+        "fixEffort": "3 hours",
+        "roi": "MEDIUM"
+      }
+    ],
+    "compoundEffect": {
+      "calculation": "Technical Issues + Thin Content + No Structure + Low Velocity",
+      "result": "75% Less Organic Visibility Than Potential",
+      "costEstimate": "$125,000 MRR in lost opportunity"
+    },
+    "technicalAudit": {
+      "pagesAnalyzed": 163,
+      "httpsStatus": "100% (working)",
+      "mobileFriendly": "88.96% (needs improvement)",
+      "avgTitleLength": "3.7 words (too short)",
+      "htmlLanguageAttribute": "54.6% (missing internationalization)"
+    }
+  },
+  "recommendations": {
+    "emergency7Day": [
+      "Add FAQ sections to top 10 posts",
+      "Create Zapier comparison page",
+      "Launch pricing calculator",
+      "Fix technical SEO issues (H1s, canonicals)"
+    ],
+    "critical30Day": [
+      "Publish 5 migration guides",
+      "Launch interactive migration calculator",
+      "Create 'Zapier Refugee Resource Center'",
+      "Begin Reddit/LinkedIn presence",
+      "Add structured data to all posts"
+    ],
+    "strategic60Day": [
+      "Publish AI Automation Manifesto",
+      "Create category definition content",
+      "Launch AI workflow templates",
+      "Develop use case libraries",
+      "Build comprehensive academy"
+    ],
+    "scale90Day": [
+      "Expand to other competitor migrations",
+      "Launch partner content program",
+      "Implement full schema markup",
+      "Create industry playbooks",
+      "Develop interactive tools suite"
+    ]
+  },
+  "metrics": {
+    "leadingIndicators": {
+      "day30": [
+        "Rank page 1 for 'Zapier too expensive'",
+        "Generate 50+ MQLs from migration content",
+        "25% increase in trial signups",
+        "15 purchase-stage posts published"
+      ],
+      "day60": [
+        "Capture 10% of 'Zapier alternative' traffic",
+        "First customer from migration content",
+        "40% AI visibility for automation queries",
+        "1,000 Zapier users on email list"
+      ],
+      "day90": [
+        "Own 'AI automation platform' search",
+        "$50K MRR from migration content",
+        "50% user intent coverage",
+        "Cited source in automation discussions"
+      ]
+    },
+    "performanceTracking": {
+      "doubleDown": [
+        "Content generating >10 MQLs/month",
+        "Keywords jumping from position 11-20 to 4-10",
+        "Content with >50% higher engagement than average",
+        "Topics where sales reports high close rates"
+      ],
+      "iterate": [
+        "High traffic but <0.5% conversion",
+        "Good rankings but <2 min time on page",
+        "High tool starts but <20% completion",
+        "Sales feedback about missing information"
+      ],
+      "discontinue": [
+        "<100 monthly searches + no conversions after 60 days",
+        "Engagement <50% of average",
+        "Channels delivering <5% of traffic after 30 days",
+        "Position 20+ after 90 days"
+      ]
+    }
+  },
+  "quickReference": {
+    "criticalQueries": [
+      "Zapier alternatives (8,100/mo)",
+      "Zapier too expensive (6,500/mo)",
+      "AI automation platform (4,400/mo)",
+      "Zapier vs Make vs n8n (3,900/mo)",
+      "Migrate from Zapier (2,800/mo)",
+      "Automation ROI calculator (2,100/mo)",
+      "ChatGPT automation (1,900/mo)",
+      "No code AI workflows (1,600/mo)",
+      "Enterprise automation security (1,200/mo)",
+      "RevOps automation tools (980/mo)"
+    ],
+    "neededTemplates": [
+      "Migration guide template",
+      "Platform comparison matrix",
+      "ROI calculator framework",
+      "Industry playbook template",
+      "Integration guide format",
+      "Troubleshooting FAQ structure",
+      "Case study template with metrics",
+      "Pricing comparison format",
+      "Security/compliance checklist",
+      "Workflow template library"
+    ],
+    "competitorWeaknesses": {
+      "zapier": "Can't handle complex AI workflows, expensive at scale",
+      "make": "Weak AI integration, confusing operation pricing",
+      "n8n": "Too technical for non-developers, self-hosting complexity",
+      "all": "Missing true AI-native architecture that Gumloop offers"
+    },
+    "userLanguageDictionary": [
+      {
+        "youSay": "AI-powered automation",
+        "usersSearch": "ChatGPT for automation"
+      },
+      {
+        "youSay": "Workflow orchestration",
+        "usersSearch": "Connect my apps"
+      },
+      {
+        "youSay": "Node-based interface",
+        "usersSearch": "Drag and drop automation"
+      },
+      {
+        "youSay": "LLM integration",
+        "usersSearch": "Add AI to workflows"
+      },
+      {
+        "youSay": "Credit-based pricing",
+        "usersSearch": "Pay per automation"
+      }
+    ]
+  }
+}

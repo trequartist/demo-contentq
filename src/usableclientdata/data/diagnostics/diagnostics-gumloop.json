@@ -1,0 +1,1054 @@
+{
+  "data": {
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "ai_visibility_overview": {
+      "visibility_snapshot": {
+        "overall_score": "78.5/100",
+        "score_level": "Good",
+        "industry_position": "Behind leaders",
+        "biggest_win": "#1 positions for RevOps automation guides with 207% ROI case studies driving 34.6% share in AI automation queries",
+        "biggest_threat": "Only 2 purchase-stage posts vs competitors' 6-12, creating severe conversion bottleneck while Zapier captures 60% of evaluation searches",
+        "market_context": "Strong AI automation authority (78.5 visibility) trapped behind Zapier's 85% market dominance in general automation worth $50M+ annually"
+      },
+      "key_metrics": {
+        "ai_search_presence": {
+          "name": "AI Search Presence",
+          "level": "Moderate",
+          "score": "15%",
+          "insight": "ChatGPT mentions you 15% of queries in 'AI automation' context only",
+          "benchmark_comparison": "90% below Zapier's mention rate for beginners"
+        },
+        "content_citation_rate": {
+          "name": "Content Citation Rate",
+          "level": "Low",
+          "score": "10-20%",
+          "insight": "Limited citations across AI platforms, mainly in technical contexts",
+          "top_cited_content": [
+            "RevOps automation guides",
+            "Enterprise security content",
+            "AI workflow tutorials"
+          ]
+        },
+        "query_coverage": {
+          "name": "Query Coverage",
+          "level": "Critical Gap",
+          "score": "35%",
+          "insight": "Missing 65% of user intent queries, especially purchase-stage content",
+          "missing_query_types": [
+            "Zapier alternatives cheap",
+            "Zapier too expensive",
+            "Migrate from Zapier",
+            "Automation ROI calculator"
+          ]
+        },
+        "competitive_share_of_voice": {
+          "name": "Competitive Share of Voice",
+          "level": "Low",
+          "score": "34.6%",
+          "insight": "Strong in AI automation niche but invisible in general automation market",
+          "voice_share_percentage": "34.6%"
+        }
+      },
+      "platform_performance": {
+        "chatgpt": {
+          "platform": "ChatGPT",
+          "score": "15%",
+          "status": "Underperforming",
+          "key_insight": "Only mentioned for 'AI automation' queries, never for beginners",
+          "top_queries_present": [
+            "AI automation platforms",
+            "LLM workflow tools",
+            "AI-powered automation"
+          ],
+          "major_gaps": [
+            "Beginner automation queries",
+            "Pricing comparison content",
+            "Integration troubleshooting"
+          ]
+        },
+        "gemini": {
+          "platform": "Gemini",
+          "score": "12%",
+          "status": "Critical Gap",
+          "key_insight": "Rarely mentioned, limited awareness of Gumloop's existence",
+          "top_queries_present": [
+            "Enterprise AI automation",
+            "Technical workflow design"
+          ],
+          "major_gaps": [
+            "General automation queries",
+            "Cost comparison content",
+            "Migration guides"
+          ]
+        },
+        "perplexity": {
+          "platform": "Perplexity",
+          "score": "20%",
+          "status": "Moderate",
+          "key_insight": "Better performance in comparison queries but still ranks 3rd-4th",
+          "top_queries_present": [
+            "AI automation comparison",
+            "Advanced workflow platforms",
+            "No-code AI tools"
+          ],
+          "major_gaps": [
+            "Beginner content",
+            "Tutorial content",
+            "ROI calculators"
+          ]
+        }
+      },
+      "top_competitors": {
+        "competitor_1": {
+          "name": "Zapier",
+          "ai_visibility_score": "90%",
+          "advantage": "4.5M+ monthly organic visitors and 7,000+ integrations create gravitational pull",
+          "dominant_query_types": [
+            "Easy automation",
+            "Connect apps",
+            "Workflow automation basics"
+          ],
+          "opportunity": "They can't handle complex AI workflows - your differentiation point",
+          "content_strategy_insights": "32 posts/month with 92/100 information density and ROC$ methodology"
+        },
+        "competitor_2": {
+          "name": "Make",
+          "ai_visibility_score": "45%",
+          "advantage": "Captures 60% of Zapier defectors with migration guides",
+          "dominant_query_types": [
+            "Advanced workflows",
+            "Visual automation",
+            "Zapier alternatives"
+          ],
+          "opportunity": "Weak AI integration compared to your AI-native approach",
+          "content_strategy_insights": "18 posts/month with visual tutorials and transparent pricing"
+        },
+        "competitor_3": {
+          "name": "n8n",
+          "ai_visibility_score": "30%",
+          "advantage": "Developer automation and self-hosting options",
+          "dominant_query_types": [
+            "Open source automation",
+            "Self-hosted workflows",
+            "Developer tools"
+          ],
+          "opportunity": "Too technical for non-developers - you offer no-code AI power",
+          "content_strategy_insights": "10 posts/month focusing on cost savings and technical documentation"
+        }
+      },
+      "critical_gaps": {
+        "gap_1": {
+          "area": "Purchase-stage content",
+          "impact": "Missing ~$75K MRR from conversion bottleneck",
+          "current_performance": "2 posts (5.4% of portfolio)",
+          "quick_win": "Create 5 comparison guides and ROI calculators",
+          "long_term_strategy": "Build 15-20 purchase-stage assets matching industry standard"
+        },
+        "gap_2": {
+          "area": "Migration content",
+          "impact": "60% of Zapier defectors choose Make/n8n instead",
+          "current_performance": "0 migration guides",
+          "quick_win": "Publish Zapier migration guide with data preservation",
+          "long_term_strategy": "Create migration center with guides for all major platforms"
+        },
+        "gap_3": {
+          "area": "Pricing transparency",
+          "impact": "73% of B2B buyers influenced by transparent pricing",
+          "current_performance": "No pricing content or calculators",
+          "quick_win": "Launch interactive pricing calculator",
+          "long_term_strategy": "Build comprehensive pricing comparison content"
+        }
+      },
+      "buyer_intent_analysis": {
+        "high_intent_queries": {
+          "queries_missed": [
+            "Zapier alternatives cheap (8,100/mo)",
+            "Zapier too expensive (6,500/mo)",
+            "Migrate from Zapier (2,800/mo)",
+            "Automation ROI calculator (2,100/mo)"
+          ],
+          "competitor_dominance": [
+            "Zapier owns 'easy automation'",
+            "Make captures migration traffic",
+            "n8n dominates cost-conscious searches"
+          ],
+          "revenue_impact": "Missing ~$75,000 MRR from purchase content gap at 2.3% blog-to-customer conversion"
+        },
+        "content_consumption_patterns": {
+          "preferred_content_types": [
+            "Interactive calculators",
+            "Step-by-step migration guides",
+            "Video tutorials",
+            "Comparison matrices"
+          ],
+          "optimal_content_structure": "TOC + FAQ sections for featured snippets (0% current adoption)",
+          "citation_triggers": [
+            "Quantified case studies",
+            "ROI data",
+            "Benchmark reports",
+            "Named customer proof"
+          ]
+        }
+      },
+      "content_optimization_opportunities": {
+        "immediate_optimization": {
+          "existing_content_upgrades": "Add FAQ sections to top 10 posts for featured snippets",
+          "structural_improvements": "Implement TOC on all posts (currently 0% adoption)",
+          "quick_citation_wins": "Add quantified metrics to case studies for AI citation triggers"
+        },
+        "net_new_content_needs": {
+          "missing_topic_areas": "Zapier alternatives, migration guides, ROI calculators, pricing comparisons",
+          "format_gaps": "Interactive tools, video tutorials, comparison matrices, templates",
+          "authority_building_content": "Industry benchmark reports, quantified case studies, thought leadership"
+        }
+      },
+      "priority_recommendations": {
+        "recommendation_1": {
+          "title": "Emergency Purchase-Stage Content Offensive",
+          "priority": "CRITICAL",
+          "problem_citations": "Only 2 purchase-stage posts (5.4%) vs industry standard 15-20%, costing ~$75K MRR",
+          "business_case": "150+ customers/month lost at $500 average contract value",
+          "competitive_context": "Zapier has 12 posts, Make has 7, Tines has 6",
+          "market_opportunity": "8,100 monthly searches for 'Zapier alternatives cheap' with ZERO Gumloop presence",
+          "risk_of_inaction": "Every day = 270 users searching 'Zapier too expensive' choosing competitors"
+        },
+        "recommendation_2": {
+          "title": "Build Migration Content Hub",
+          "priority": "HIGH",
+          "problem_citations": "0 migration guides while 60% of Zapier defectors choose Make/n8n",
+          "business_case": "Capture 2,800 monthly searches for 'Migrate from Zapier'",
+          "competitive_context": "Make captures 60% of switchers with migration guides",
+          "market_opportunity": "30-40% of users hitting Zapier's $299/month wall need alternatives",
+          "risk_of_inaction": "Missing entire switcher market segment worth millions in ARR"
+        },
+        "recommendation_3": {
+          "title": "Fix Technical SEO Foundation",
+          "priority": "HIGH",
+          "problem_citations": "0% canonical tags, 46% missing H1s, 80% missing schema markup",
+          "business_case": "Technical issues causing 75% less organic visibility than potential",
+          "competitive_context": "Competitors average 87-91% scanability scores vs your 0%",
+          "market_opportunity": "Quick fixes could increase organic traffic 30-40%",
+          "risk_of_inaction": "Compound effect costs ~$125,000 MRR in lost opportunity"
+        }
+      }
+    },
+    "blog_performance_health": {
+      "performance_snapshot": {
+        "overall_health_score": "65.8/100",
+        "content_strength": "Strong AI automation thought leadership with 207% ROI case studies",
+        "critical_weakness": "Severe purchase-stage content gap (2 posts vs 15-20 standard)",
+        "portfolio_size": "37 posts analyzed",
+        "quality_distribution": "Awareness: 48.6%, Consideration: 37.8%, Purchase: 5.4%, Retention: 8.1%"
+      },
+      "content_health_alerts": [
+        {
+          "issue": "Purchase funnel crisis",
+          "citations": "Only 2 purchase-stage posts (5.4% of portfolio)",
+          "affected_content_count": "35 posts missing purchase intent",
+          "severity": "CRITICAL"
+        },
+        {
+          "issue": "No content structure",
+          "citations": "0% adoption of TOC/FAQ sections",
+          "affected_content_count": "All 37 posts",
+          "severity": "HIGH"
+        },
+        {
+          "issue": "Missing migration content",
+          "citations": "0 migration guides vs competitor average of 3-5",
+          "affected_content_count": "Critical gap in portfolio",
+          "severity": "HIGH"
+        }
+      ],
+      "funnel_stage_diagnosis": {
+        "awareness_stage": {
+          "content_count": "18 posts (48.6%)",
+          "avg_quality_score": "61.92/100",
+          "content_themes": [
+            "AI automation concepts",
+            "RevOps guides",
+            "Technical tutorials"
+          ],
+          "eeat_strength": "Moderate (missing beginner content)"
+        },
+        "consideration_stage": {
+          "content_count": "14 posts (37.8%)",
+          "avg_quality_score": "73.65/100",
+          "content_themes": [
+            "MCP technical content",
+            "Enterprise security",
+            "Named customer proof"
+          ],
+          "eeat_strength": "Strong (70.52 score)"
+        },
+        "purchase_stage": {
+          "content_count": "2 posts (5.4%)",
+          "avg_quality_score": "71.43/100",
+          "content_themes": [
+            "Limited case studies",
+            "Missing comparisons"
+          ],
+          "eeat_strength": "Critical gap"
+        },
+        "retention_stage": {
+          "content_count": "3 posts (8.1%)",
+          "avg_quality_score": "68.50/100",
+          "content_themes": [
+            "Product updates",
+            "Advanced features"
+          ],
+          "eeat_strength": "Adequate"
+        }
+      },
+      "topic_authority_assessment": [
+        {
+          "topic_name": "AI Automation",
+          "authority_level": "Strong",
+          "content_volume": "12 posts",
+          "funnel_coverage": "Awareness-heavy",
+          "identified_gaps": [
+            "Purchase-stage content",
+            "Comparison guides",
+            "ROI calculators"
+          ]
+        },
+        {
+          "topic_name": "RevOps Automation",
+          "authority_level": "Excellent",
+          "content_volume": "8 posts",
+          "funnel_coverage": "Well-balanced",
+          "identified_gaps": [
+            "Migration guides",
+            "Template libraries"
+          ]
+        },
+        {
+          "topic_name": "Zapier Alternatives",
+          "authority_level": "None",
+          "content_volume": "0 posts",
+          "funnel_coverage": "Critical gap",
+          "identified_gaps": [
+            "All stages missing",
+            "8,100 monthly searches uncaptured"
+          ]
+        }
+      ],
+      "content_quality_breakdown": {
+        "readability_score": "72/100",
+        "clarity_score": "68/100",
+        "depth_score": "75/100",
+        "originality_score": "82/100",
+        "eeat_score": "70.52/100",
+        "structure_adoption": "0%",
+        "quality_patterns": "Strong technical depth but poor structure and scanability"
+      },
+      "structural_content_analysis": {
+        "featured_snippet_readiness": "0% - No FAQ or structured sections",
+        "content_structure_gaps": "Missing TOC, FAQs, comparison tables, definition boxes",
+        "storytelling_effectiveness": "Limited use of case studies and customer stories",
+        "supporting_citations_strength": "Weak - missing quantified metrics and benchmark data"
+      },
+      "funnel_performance_reality": {
+        "stage_investment_distribution": "Awareness: 48.6%, Consideration: 37.8%, Purchase: 5.4%, Retention: 8.1%",
+        "performance_by_stage": "Consideration performs best (73.65), Purchase critically underserved",
+        "conversion_bottlenecks": "Severe bottleneck at purchase stage with only 2 posts",
+        "content_flow_issues": "Users can't find purchase information after consideration"
+      },
+      "strategic_content_findings": [
+        {
+          "finding": "Purchase stage void",
+          "supporting_data": "2 posts vs competitor average of 6-12",
+          "portfolio_impact": "Missing ~$75K MRR opportunity",
+          "urgency_indicator": "CRITICAL - Fix within 30 days"
+        },
+        {
+          "finding": "Zero structure adoption",
+          "supporting_data": "0% TOC/FAQ implementation vs 84-93% industry standard",
+          "portfolio_impact": "Missing 50+ featured snippet opportunities",
+          "urgency_indicator": "HIGH - Fix within 60 days"
+        },
+        {
+          "finding": "Invisible to switchers",
+          "supporting_data": "0 migration guides while competitors have 3-5",
+          "portfolio_impact": "Missing 60% of Zapier defector market",
+          "urgency_indicator": "HIGH - Fix within 45 days"
+        }
+      ],
+      "content_messaging_analysis": {
+        "primary_narratives_consistency": "Inconsistent - technical focus conflicts with no-code positioning",
+        "unique_positioning_strength": "AI-native advantage not clearly communicated",
+        "brand_voice_coherence": "Varies between overly technical and oversimplified",
+        "differentiation_effectiveness": "Weak - advantages not translated to user benefits"
+      },
+      "portfolio_efficiency_assessment": {
+        "high_performing_content_patterns": "RevOps guides with 207% ROI case studies, named enterprise customers",
+        "underperforming_content_areas": "Thin category pages, missing beginner content, no comparison content",
+        "content_redundancy_issues": "Multiple similar technical posts without clear differentiation",
+        "resource_allocation_insights": "Overinvested in awareness, critically underinvested in purchase content"
+      },
+      "immediate_attention_priorities": [
+        {
+          "priority_area": "Purchase-stage content",
+          "current_performance_data": "2 posts generating <5% of conversions",
+          "business_risk_level": "CRITICAL - Revenue bleeding",
+          "citations_of_urgency": "Competitors capturing 95% of purchase-intent traffic"
+        },
+        {
+          "priority_area": "Migration guides",
+          "current_performance_data": "0 guides while 2,800 monthly searches",
+          "business_risk_level": "HIGH - Missing switcher market",
+          "citations_of_urgency": "60% of Zapier defectors choosing competitors"
+        },
+        {
+          "priority_area": "Content structure",
+          "current_performance_data": "0% adoption losing featured snippets",
+          "business_risk_level": "HIGH - SEO disadvantage",
+          "citations_of_urgency": "Competitors dominate SERP features"
+        }
+      ]
+    },
+    "technical_seo_foundation": {
+      "technical_health": {
+        "overall_score": 45.2,
+        "crawlability_score": 54.6,
+        "structure_score": 33.74,
+        "mobile_readiness_score": 88.96,
+        "status_summary": "Critical technical failures causing 75% visibility loss"
+      },
+      "robots_insights": [
+        {
+          "bot_name": "Googlebot",
+          "current_access": "Full access",
+          "recommended_access": "Maintain full access",
+          "seo_impact": "Positive",
+          "action_needed": "None"
+        },
+        {
+          "bot_name": "ChatGPT-User",
+          "current_access": "Not specified",
+          "recommended_access": "Allow with rate limiting",
+          "seo_impact": "High - AI visibility",
+          "action_needed": "Add to robots.txt"
+        }
+      ],
+      "critical_technical_issues": [
+        {
+          "issue": "No canonical tags",
+          "metric_value": "0% implementation",
+          "seo_impact": "-25% indexation efficiency",
+          "severity": "CRITICAL"
+        },
+        {
+          "issue": "Missing H1 tags",
+          "metric_value": "46.01% pages affected",
+          "seo_impact": "-30% ranking potential",
+          "severity": "CRITICAL"
+        },
+        {
+          "issue": "No schema markup",
+          "metric_value": "80.37% missing",
+          "seo_impact": "-40% CTR potential",
+          "severity": "CRITICAL"
+        },
+        {
+          "issue": "Broken heading hierarchy",
+          "metric_value": "66.26% pages affected",
+          "seo_impact": "-20% relevance signals",
+          "severity": "HIGH"
+        }
+      ],
+      "immediate_technical_fixes": [
+        {
+          "action": "Implement canonical tags",
+          "current_metric": "0%",
+          "target_metric": "100%",
+          "expected_impact": "+25% indexation"
+        },
+        {
+          "action": "Add H1 tags",
+          "current_metric": "53.99%",
+          "target_metric": "100%",
+          "expected_impact": "+30% rankings"
+        },
+        {
+          "action": "Deploy schema markup",
+          "current_metric": "19.63%",
+          "target_metric": "90%",
+          "expected_impact": "+40% CTR"
+        }
+      ],
+      "technical_implementation_gaps": [
+        {
+          "gap_area": "Structured data",
+          "current_implementation": "19.63%",
+          "best_practice_target": "90%+",
+          "implementation_priority": "CRITICAL"
+        },
+        {
+          "gap_area": "Meta descriptions",
+          "current_implementation": "73.01%",
+          "best_practice_target": "100%",
+          "implementation_priority": "HIGH"
+        },
+        {
+          "gap_area": "HTML lang attribute",
+          "current_implementation": "54.6%",
+          "best_practice_target": "100%",
+          "implementation_priority": "MEDIUM"
+        }
+      ],
+      "key_metrics": [
+        {
+          "metric_name": "Pages analyzed",
+          "value": "163",
+          "benchmark": "N/A",
+          "status": "Complete"
+        },
+        {
+          "metric_name": "HTTPS adoption",
+          "value": "100%",
+          "benchmark": "100%",
+          "status": "Good"
+        },
+        {
+          "metric_name": "Mobile-friendly",
+          "value": "88.96%",
+          "benchmark": "100%",
+          "status": "Needs improvement"
+        },
+        {
+          "metric_name": "Average title length",
+          "value": "3.7 words",
+          "benchmark": "8-10 words",
+          "status": "Critical"
+        }
+      ],
+      "executive_summary": "Technical SEO failures compound to cause 75% visibility loss worth ~$125K MRR",
+      "pages_analyzed": 163,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    "competitive_intelligence": {
+      "market_position": {
+        "your_position": "4th in general automation, 1st in AI automation niche",
+        "position_citations": "78.5% AI visibility but <1% general automation awareness",
+        "market_leader": "Zapier",
+        "leader_advantage": "4.5M+ monthly visitors, 7,000+ integrations, 85% market dominance",
+        "biggest_threat": "Make (formerly Integromat)",
+        "threat_reasoning": "Captures 60% of Zapier defectors with superior migration content"
+      },
+      "competitor_analysis": [
+        {
+          "competitor_name": "Zapier",
+          "threat_level": "EXTREME",
+          "ai_visibility_score": "90%",
+          "content_velocity": "32 posts/month",
+          "winning_strategy": "ROI + Simplicity + Scale messaging",
+          "strategy_citations": "92/100 information density, ROC$ methodology, beginner focus",
+          "exploitable_weakness": "Can't handle complex AI workflows, expensive at scale",
+          "audience_overlap": "85%",
+          "why_we_should_copy": "Content structure, ROI focus, migration guides"
+        },
+        {
+          "competitor_name": "Make",
+          "threat_level": "HIGH",
+          "ai_visibility_score": "45%",
+          "content_velocity": "18 posts/month",
+          "winning_strategy": "Visual tutorials + transparent pricing + migration focus",
+          "strategy_citations": "86/100 information density, 7 comparison posts",
+          "exploitable_weakness": "Weak AI integration, confusing operation pricing",
+          "audience_overlap": "60%",
+          "why_we_should_copy": "Migration guides, visual content, pricing transparency"
+        },
+        {
+          "competitor_name": "n8n",
+          "threat_level": "MEDIUM",
+          "ai_visibility_score": "30%",
+          "content_velocity": "10 posts/month",
+          "winning_strategy": "Technical depth + open source + cost savings",
+          "strategy_citations": "Developer focus, self-hosting guides",
+          "exploitable_weakness": "Too technical for non-developers",
+          "audience_overlap": "40%",
+          "why_we_should_copy": "Cost comparison content, community building"
+        }
+      ],
+      "critical_gaps": [
+        {
+          "gap_name": "Migration content void",
+          "business_risk": "Missing 60% of switcher market",
+          "competitor_exploiting": "Make",
+          "gap_citations": "0 guides vs Make's 5+ comprehensive guides",
+          "urgency_reasoning": "2,800 monthly searches going to competitors"
+        },
+        {
+          "gap_name": "Pricing transparency",
+          "business_risk": "73% of B2B buyers pass by",
+          "competitor_exploiting": "Make and n8n",
+          "gap_citations": "No pricing pages or calculators",
+          "urgency_reasoning": "23% faster sales cycles with transparency"
+        },
+        {
+          "gap_name": "Beginner content",
+          "business_risk": "85% of new users start elsewhere",
+          "competitor_exploiting": "Zapier",
+          "gap_citations": "Missing 'What is automation' content",
+          "urgency_reasoning": "50K+ monthly beginner searches"
+        }
+      ],
+      "untapped_opportunities": [
+        {
+          "opportunity": "AI-native category ownership",
+          "size_indicator": "4,400 monthly searches growing 23% QoQ",
+          "competitor_weakness": "All competitors weak on AI",
+          "first_mover_advantage": "Define the category before others",
+          "success_reasoning": "Your technical superiority + thought leadership"
+        },
+        {
+          "opportunity": "Zapier refugee capture",
+          "size_indicator": "8,100 searches for 'Zapier too expensive'",
+          "competitor_weakness": "Limited direct Zapier comparison",
+          "first_mover_advantage": "Build the go-to resource",
+          "success_reasoning": "30-40% hit pricing wall monthly"
+        },
+        {
+          "opportunity": "Enterprise AI automation",
+          "size_indicator": "$50M+ enterprise opportunity",
+          "competitor_weakness": "Consumer focus by competitors",
+          "first_mover_advantage": "Own enterprise narrative",
+          "success_reasoning": "207% ROI proof with Instacart/Webflow"
+        }
+      ],
+      "strategic_recommendations": [
+        {
+          "recommendation": "Launch 'Zapier Refugee Resource Center'",
+          "competitive_reasoning": "Intercept 30-40% hitting $299/month wall",
+          "business_impact": "Capture 8,100 monthly high-intent searches",
+          "supporting_citations": "60% currently go to Make due to migration content",
+          "priority_level": "CRITICAL"
+        },
+        {
+          "recommendation": "Build AI-first positioning campaign",
+          "competitive_reasoning": "Competitors can't match AI capabilities",
+          "business_impact": "Own emerging $2B AI automation market",
+          "supporting_citations": "23% QoQ growth in AI automation searches",
+          "priority_level": "HIGH"
+        },
+        {
+          "recommendation": "Create interactive ROI calculators",
+          "competitive_reasoning": "Match Zapier's conversion tools",
+          "business_impact": "2.3x better conversion rates",
+          "supporting_citations": "2,100 monthly calculator searches",
+          "priority_level": "HIGH"
+        }
+      ],
+      "immediate_actions": [
+        "Add FAQ sections to top 10 posts within 7 days",
+        "Create Zapier comparison page this week",
+        "Launch pricing calculator within 14 days",
+        "Fix H1 tags and canonical URLs immediately",
+        "Publish first migration guide within 10 days"
+      ]
+    },
+    "content_gap_analysis": {
+      "executive_overview": {
+        "opportunity_rating": "8/10 - Massive untapped potential",
+        "competitive_position": "Behind in volume, ahead in AI capability",
+        "research_confidence": "High - 163 pages analyzed with competitor benchmarking",
+        "portfolio_health_summary": "Strong thought leadership crippled by purchase-stage void",
+        "urgency_rationale": "Every day = 270 users choosing competitors"
+      },
+      "critical_funnel_imbalances": [
+        {
+          "funnel_stage": "Purchase",
+          "current_post_count": "2",
+          "current_quality_score": "71.43",
+          "imbalance_severity": "CRITICAL",
+          "business_impact_citations": "~$75K MRR loss from 150+ lost customers/month",
+          "competitor_advantage": "Zapier: 12 posts, Make: 7 posts",
+          "content_gap_specifics": "No pricing pages, comparison matrices, or ROI calculators",
+          "audience_journey_disruption": "Users research but can't find purchase information",
+          "why_this_stage_matters": "2.3% blog-to-customer conversion happens here"
+        },
+        {
+          "funnel_stage": "Awareness",
+          "current_post_count": "18",
+          "current_quality_score": "61.92",
+          "imbalance_severity": "HIGH",
+          "business_impact_citations": "Missing 85% of beginners who start with Zapier",
+          "competitor_advantage": "Zapier owns 'easy automation' narrative",
+          "content_gap_specifics": "No beginner tutorials or 'What is' content",
+          "audience_journey_disruption": "New users never discover Gumloop exists",
+          "why_this_stage_matters": "50K+ monthly beginner searches"
+        }
+      ],
+      "topic_authority_vulnerabilities": [
+        {
+          "topic_name": "Zapier Alternatives",
+          "current_post_count": "0",
+          "authority_level": "None",
+          "coverage_gaps": "Complete void - no content exists",
+          "funnel_coverage_weakness": "All stages missing",
+          "competitor_dominance_threat": "Make and n8n own this space",
+          "content_quality_deficit": "N/A - no content",
+          "structural_deficiencies": "N/A - no content",
+          "business_relevance": "8,100 monthly searches worth ~$40K MRR",
+          "market_positioning_risk": "Invisible to highest-intent audience"
+        },
+        {
+          "topic_name": "Migration Guides",
+          "current_post_count": "0",
+          "authority_level": "None",
+          "coverage_gaps": "No guides while competitors have 3-5",
+          "funnel_coverage_weakness": "Critical purchase-stage gap",
+          "competitor_dominance_threat": "Make captures 60% of switchers",
+          "content_quality_deficit": "N/A - no content",
+          "structural_deficiencies": "N/A - no content",
+          "business_relevance": "2,800 monthly searches from switchers",
+          "market_positioning_risk": "Missing entire switcher segment"
+        }
+      ],
+      "content_quality_gaps": [
+        {
+          "quality_dimension": "Structure",
+          "current_score": "0%",
+          "performance_gap": "-84% vs industry standard",
+          "affected_content_percentage": "100%",
+          "seo_visibility_impact": "Missing 50+ featured snippets",
+          "audience_engagement_cost": "-30% time on page",
+          "competitor_quality_advantage": "Zapier: 91% scanability",
+          "credibility_implications": "Appears unprofessional",
+          "content_examples": [
+            "All posts missing TOC",
+            "No FAQ sections",
+            "No structured data"
+          ]
+        },
+        {
+          "quality_dimension": "E-E-A-T",
+          "current_score": "70.52%",
+          "performance_gap": "-20% vs leaders",
+          "affected_content_percentage": "65%",
+          "seo_visibility_impact": "Lower ranking authority",
+          "audience_engagement_cost": "Reduced trust signals",
+          "competitor_quality_advantage": "Zapier's ROC$ methodology",
+          "credibility_implications": "Missing quantified proof",
+          "content_examples": [
+            "Limited case studies",
+            "Few quantified metrics",
+            "Weak author bios"
+          ]
+        }
+      ],
+      "competitor_content_advantages": [
+        {
+          "competitor_name": "Zapier",
+          "their_strength": "Content velocity and beginner focus",
+          "our_current_weakness": "3 posts/month vs their 32",
+          "content_strategy_difference": "They focus on ease, we focus on technical",
+          "audience_appeal_factor": "92% information density and scanability",
+          "market_share_impact": "85% market dominance",
+          "positioning_threat": "Own default automation choice",
+          "content_format_superiority": "Interactive tools and calculators",
+          "our_vulnerable_topics": [
+            "Beginner automation",
+            "App integrations",
+            "Simple workflows"
+          ]
+        },
+        {
+          "competitor_name": "Make",
+          "their_strength": "Migration content and visual tutorials",
+          "our_current_weakness": "0 migration guides vs their 5+",
+          "content_strategy_difference": "They target switchers, we ignore them",
+          "audience_appeal_factor": "Transparent pricing and visual learning",
+          "market_share_impact": "60% of Zapier defectors",
+          "positioning_threat": "Becoming default Zapier alternative",
+          "content_format_superiority": "Step-by-step visual guides",
+          "our_vulnerable_topics": [
+            "Migration guides",
+            "Pricing comparisons",
+            "Visual tutorials"
+          ]
+        }
+      ]
+    },
+    "strategic_opportunities": {
+      "executive_summary": {
+        "rationale": "Transform technical superiority into market dominance",
+        "information_source": "163 pages analyzed with competitor benchmarking",
+        "key_findings_summary": [
+          "Purchase-stage void costing ~$75K MRR",
+          "0% content structure adoption losing featured snippets",
+          "Invisible to 8,100 monthly 'Zapier alternative' searches",
+          "Strong AI capability not translated to user benefits"
+        ],
+        "top_content_priority": "Emergency purchase-stage content offensive",
+        "content_health_status": "Critical gaps overshadowing strong foundation"
+      },
+      "ai_content_priorities": [
+        {
+          "citations_source": "15% ChatGPT visibility vs 90% for Zapier",
+          "content_focus_area": "AI automation tutorials and guides",
+          "competitor_advantage": "Competitors weak on AI integration",
+          "current_ai_visibility": "78.5% in niche, <1% mainstream",
+          "optimization_strategy": "Build 'AI-native automation' category content"
+        },
+        {
+          "citations_source": "4,400 monthly 'AI automation' searches",
+          "content_focus_area": "ChatGPT and LLM workflow content",
+          "competitor_advantage": "First-mover in AI-native space",
+          "current_ai_visibility": "Limited to technical queries",
+          "optimization_strategy": "Create beginner-friendly AI content"
+        }
+      ],
+      "content_quality_fixes": [
+        {
+          "quality_issue": "Zero content structure",
+          "citations_source": "0% TOC/FAQ adoption vs 84% standard",
+          "improvement_method": "Add TOC and FAQ to all posts",
+          "current_performance": "Missing 50+ featured snippets"
+        },
+        {
+          "quality_issue": "Missing schema markup",
+          "citations_source": "80.37% pages without schema",
+          "improvement_method": "Implement FAQ, HowTo, Software schemas",
+          "current_performance": "-40% CTR potential"
+        }
+      ],
+      "content_recommendations": [
+        {
+          "rationale": "Capture high-intent switcher traffic",
+          "priority_level": "CRITICAL",
+          "content_solution": {
+            "rationale": "8,100 monthly searches with purchase intent",
+            "content_volume": "10-15 pieces",
+            "what_to_create": "Zapier comparison pages, migration guides, ROI calculators",
+            "content_approach": "Focus on cost savings and AI advantages",
+            "information_source": "Competitor analysis and search data"
+          },
+          "competitor_context": "Make captures 60% of this market",
+          "recommendation_title": "Build Zapier Alternative Content Hub",
+          "supporting_citations": [
+            {
+              "source_report": "Search analysis",
+              "citations_point": "'Zapier too expensive' - 6,500 searches/month"
+            },
+            {
+              "source_report": "Reddit analysis",
+              "citations_point": "Users save $250/month switching from Zapier"
+            }
+          ],
+          "content_gap_identified": "0 comparison or migration content",
+          "expected_content_outcomes": [
+            "Capture 10% of switcher traffic",
+            "Generate 50+ MQLs/month",
+            "$50K MRR from migration content"
+          ]
+        },
+        {
+          "rationale": "Fix purchase-stage conversion bottleneck",
+          "priority_level": "CRITICAL",
+          "content_solution": {
+            "rationale": "2 posts vs 15-20 industry standard",
+            "content_volume": "15-20 pieces",
+            "what_to_create": "Pricing pages, case studies, comparison matrices, demo content",
+            "content_approach": "Quantified ROI focus with customer proof",
+            "information_source": "Funnel analysis and competitor benchmarks"
+          },
+          "competitor_context": "Zapier has 12, Make has 7 purchase posts",
+          "recommendation_title": "Purchase-Stage Content Offensive",
+          "supporting_citations": [
+            {
+              "source_report": "Funnel analysis",
+              "citations_point": "5.4% purchase content vs 15-20% standard"
+            },
+            {
+              "source_report": "Revenue analysis",
+              "citations_point": "Missing ~$75K MRR from conversion gap"
+            }
+          ],
+          "content_gap_identified": "Critical purchase-stage void",
+          "expected_content_outcomes": [
+            "2.3% blog-to-customer conversion",
+            "150+ additional customers/month",
+            "$75K MRR recovery"
+          ]
+        },
+        {
+          "rationale": "Own the AI-native automation category",
+          "priority_level": "HIGH",
+          "content_solution": {
+            "rationale": "23% QoQ growth in AI automation searches",
+            "content_volume": "20-25 pieces",
+            "what_to_create": "AI workflow guides, ChatGPT tutorials, LLM integration content",
+            "content_approach": "Technical depth with business outcomes",
+            "information_source": "AI visibility audit and market trends"
+          },
+          "competitor_context": "All competitors weak on AI",
+          "recommendation_title": "AI Authority Content Campaign",
+          "supporting_citations": [
+            {
+              "source_report": "AI visibility audit",
+              "citations_point": "15% ChatGPT mentions vs potential"
+            },
+            {
+              "source_report": "Market analysis",
+              "citations_point": "$2B AI automation market emerging"
+            }
+          ],
+          "content_gap_identified": "Limited AI content for beginners",
+          "expected_content_outcomes": [
+            "40% AI visibility improvement",
+            "Category leadership position",
+            "First-mover advantage"
+          ]
+        }
+      ]
+    },
+    "executive_summary": {
+      "content_gap_summary": {
+        "critical_content_gaps": [
+          {
+            "gap_area": "Purchase-stage content",
+            "gap_severity": "CRITICAL",
+            "source_report": "2 posts (5.4%) vs 15-20% standard"
+          },
+          {
+            "gap_area": "Migration guides",
+            "gap_severity": "HIGH",
+            "source_report": "0 guides while competitors have 3-5"
+          },
+          {
+            "gap_area": "Content structure",
+            "gap_severity": "HIGH",
+            "source_report": "0% TOC/FAQ adoption"
+          }
+        ],
+        "content_opportunity_areas": [
+          "Zapier alternative content (8,100 searches/month)",
+          "AI-native automation category (4,400 searches/month)",
+          "Migration and switching guides (2,800 searches/month)"
+        ]
+      },
+      "ai_content_readiness": {
+        "rationale": "Strong AI capability not visible to AI platforms",
+        "ai_content_gaps": [
+          "Beginner AI automation content",
+          "ChatGPT workflow tutorials",
+          "AI ROI calculators"
+        ],
+        "information_source": "15% ChatGPT visibility vs 90% for competitors",
+        "ai_visibility_status": "78.5% in niche but <1% mainstream",
+        "ai_content_opportunities": [
+          "Own 'AI-native automation' category",
+          "First-mover in enterprise AI automation",
+          "ChatGPT integration leadership"
+        ]
+      },
+      "content_priority_actions": [
+        {
+          "rationale": "Immediate revenue impact",
+          "content_action": "Create 10 purchase-stage assets",
+          "priority_level": "CRITICAL - 30 days",
+          "source_insight": "~$75K MRR loss from conversion gap"
+        },
+        {
+          "rationale": "Capture switcher market",
+          "content_action": "Build migration content hub",
+          "priority_level": "HIGH - 45 days",
+          "source_insight": "60% of defectors go to competitors"
+        },
+        {
+          "rationale": "Quick SEO wins",
+          "content_action": "Add structure to existing content",
+          "priority_level": "HIGH - 14 days",
+          "source_insight": "Missing 50+ featured snippets"
+        }
+      ],
+      "technical_content_health": {
+        "technical_content_score": "45.2/100",
+        "critical_technical_content_issues": [
+          {
+            "issue": "No canonical tags",
+            "rationale": "Causing duplicate content issues",
+            "impact_on_content": "-25% indexation efficiency",
+            "information_source": "0% implementation on 163 pages"
+          },
+          {
+            "issue": "Missing H1 tags",
+            "rationale": "Core ranking signal absent",
+            "impact_on_content": "-30% ranking potential",
+            "information_source": "46% of pages affected"
+          },
+          {
+            "issue": "No schema markup",
+            "rationale": "Missing rich snippets opportunity",
+            "impact_on_content": "-40% CTR potential",
+            "information_source": "80% of pages missing schema"
+          }
+        ]
+      },
+      "overall_content_assessment": {
+        "content_health_status": "Critical gaps overshadowing strong foundation",
+        "primary_content_strength": "AI automation thought leadership with 207% ROI proof",
+        "primary_content_weakness": "Severe purchase-stage void and zero structure adoption",
+        "content_competitive_position": "4th overall but 1st in AI-native niche"
+      },
+      "content_performance_summary": {
+        "content_quality_overview": {
+          "quality_strengths": [
+            "Strong technical depth (75/100)",
+            "High originality (82/100)",
+            "Good E-E-A-T (70.52/100)"
+          ],
+          "quality_weaknesses": [
+            "Zero structure adoption",
+            "Poor readability (72/100)",
+            "Weak scanability"
+          ],
+          "overall_quality_score": "65.8/100"
+        },
+        "content_structure_status": {
+          "rationale": "Complete absence of modern content structure",
+          "structural_gaps": [
+            "No table of contents",
+            "Missing FAQ sections",
+            "No comparison tables",
+            "Absent schema markup"
+          ],
+          "information_source": "0% adoption vs 84-93% industry standard",
+          "structural_adoption_rate": "0%"
+        }
+      },
+      "competitive_content_position": {
+        "rationale": "Strong AI capability trapped behind poor discoverability",
+        "information_source": "Competitor analysis across 4 major players",
+        "competitor_content_threats": [
+          {
+            "rationale": "Market gravity and brand recognition",
+            "competitor_name": "Zapier",
+            "information_source": "4.5M monthly visitors, 85% market share",
+            "their_content_advantage": "32 posts/month, beginner focus, ROI messaging"
+          },
+          {
+            "rationale": "Capturing Zapier defectors",
+            "competitor_name": "Make",
+            "information_source": "60% of switchers choose Make",
+            "their_content_advantage": "Migration guides, visual tutorials, transparent pricing"
+          }
+        ],
+        "content_advantages_vs_competitors": [
+          "Superior AI-native capabilities",
+          "207% ROI enterprise proof",
+          "RevOps authority leadership"
+        ],
+        "content_differentiation_opportunities": [
+          "Own AI-native automation category",
+          "Enterprise AI automation leadership",
+          "Technical depth with business outcomes"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "whenRulesBreakWorkflow": {
+    "id": "workflow-when-rules-break",
+    "title": "When Rules Break: How AI Handles the 40% of Workflows Traditional Automation Can't",
+    "type": "blog",
+    "status": "published",
+    "stages": {
+      "input": {
+        "companyName": "Gumloop",
+        "requirements": "Create a comprehensive guide about how AI automation handles complex workflows that break traditional rule-based systems. Focus on the specific pain points RevOps teams face and use real customer examples.",
+        "targetAudience": "RevOps Managers, Operations Directors",
+        "keywords": ["AI automation", "workflow automation", "RevOps", "rule-based automation"],
+        "tone": "Expert but approachable, data-driven"
+      },
+      "topics": {
+        "selectedTopic": "When Rules Break: How AI Handles the 40% of Workflows Traditional Automation Can't",
+        "alternatives": [
+          "The Hidden 40%: Workflows Your Current Automation Can't Handle",
+          "Beyond Rules: Why AI Automation Succeeds Where Traditional Systems Fail",
+          "The Monday Morning Crisis: When Automation Breaks and AI Saves the Day",
+          "From Rules to Reasoning: The Future of Workflow Automation"
+        ],
+        "reasoning": "Addresses pain points from diagnostic report, targets RevOps audience experiencing these exact problems"
+      },
+      "brief": {
+        "title": "When Rules Break: How AI Handles the 40% of Workflows Traditional Automation Can't",
+        "hook": "Picture this: It's 8AM Monday, and you're grabbing coffee when your sales director pings on Slack — \"We just lost that $500K enterprise deal because the prospect never got routed to me—they sat in the general queue for four days while the competition closed them.\"",
+        "targetAudience": {
+          "primary": "RevOps Managers (1-5 years experience)",
+          "secondary": "Operations Directors",
+          "painPoints": ["Broken automation workflows", "Edge cases breaking rules", "Manual fixes eating time"]
+        },
+        "outline": [
+          {
+            "section": "The Monday Morning Gut Punch",
+            "points": [
+              "Real scenario: $500K deal lost to routing failure",
+              "Fortune 500 company sent nurture emails instead of enterprise sales",
+              "The hidden cost: deals you never know you lost"
+            ],
+            "wordCount": 350
+          },
+          {
+            "section": "The 60/40 Split That Changes Everything", 
+            "points": [
+              "60% of automation works perfectly (keep these on traditional)",
+              "40% live in constant chaos (human reasoning problems)",
+              "The restaurant menu analogy: exact orders vs understanding intent"
+            ],
+            "wordCount": 400
+          },
+          {
+            "section": "Where Rules Break Down (And Why It Costs You)",
+            "points": [
+              "Format rebels: phone numbers, company sizes, job titles",
+              "Edge cases multiply: lead score exactly 50, '10-ish' employees",
+              "Context puzzles: 'Enterprise' from 10-person vs Fortune 500"
+            ],
+            "wordCount": 450
+          },
+          {
+            "section": "How AI Automation Solves What Rules Never Could",
+            "points": [
+              "Understanding intent vs exact matches",
+              "Pattern recognition at massive scale",
+              "Learning from collective business experience"
+            ],
+            "wordCount": 400
+          },
+          {
+            "section": "Three Teams That Made the Switch",
+            "points": [
+              "Sarah's Lead Routing: 79% to 94% accuracy",
+              "Abhishek's Deal Prioritization: Million-dollar deals no longer missed",
+              "Lisa's Customer Intelligence: 60% of buying signals now captured"
+            ],
+            "wordCount": 600
+          },
+          {
+            "section": "When Traditional Rules Still Make Sense",
+            "points": [
+              "Simple, high-volume tasks (welcome emails)",
+              "Compliance workflows requiring identical processes",
+              "Hybrid approach: rules for predictable, AI for contextual"
+            ],
+            "wordCount": 300
+          },
+          {
+            "section": "Your Monday Morning Test",
+            "points": [
+              "Pick the workflow that ruins Monday mornings",
+              "Count conditional branches (>10 = AI candidate)",
+              "Manual review queue backup analysis"
+            ],
+            "wordCount": 250
+          },
+          {
+            "section": "The Real Implementation Story",
+            "points": [
+              "Parallel systems for confidence building",
+              "Week 1: edge case improvement",
+              "Month 3: learning your business patterns"
+            ],
+            "wordCount": 300
+          }
+        ],
+        "seoOptimization": {
+          "primaryKeyword": "AI workflow automation",
+          "secondaryKeywords": ["rule-based automation", "workflow failures", "RevOps automation", "AI vs rules"],
+          "metaDescription": "Learn why 40% of workflows break traditional automation and how AI handles the edge cases, format variations, and context puzzles that cost you deals.",
+          "structuredData": ["Article", "HowTo", "FAQPage"],
+          "questionsThisPostAnswers": [
+            "Why do automation workflows break?",
+            "What percentage of workflows need AI vs rules?",
+            "How does AI automation handle edge cases?",
+            "When should you use traditional rules vs AI?",
+            "What are examples of workflows that break rules?"
+          ]
+        },
+        "estimatedReadTime": "11 minutes",
+        "callToAction": "See How Gumloop Handles Your Edge Cases →"
+      },
+      "draft": {
+        "content": "Picture this: It's 8AM Monday, and you're grabbing coffee when your sales director pings on Slack — \"We just lost that $500K enterprise deal because the prospect never got routed to me—they sat in the general queue for four days while the competition closed them.\" The culprit? Their job title was \"Chief Revenue Acceleration Officer\" instead of the expected \"VP Sales,\" so your routing rules didn't recognize them as enterprise-level.\n\nBy 9AM, your CEO is asking why a Fortune 500 company that filled out a demo request got sent a nurture email about \"getting started\" instead of being fast-tracked to enterprise sales. Turns out they described their company size as \"large enterprise\" instead of selecting \"1000+ employees\" from your dropdown.\n\nIf this sounds familiar, you're experiencing the real cost of traditional rule-based automation hitting its limits...",
+        "wordCount": 2847,
+        "readabilityScore": 78,
+        "seoScore": 92,
+        "aiSuggestions": [
+          "Add comparison table showing rule-based vs AI automation",
+          "Include specific ROI metrics from customer examples",
+          "Add FAQ section for featured snippet optimization",
+          "Include definition boxes for key terms"
+        ]
+      }
+    },
+    "performance": {
+      "published": "2024-01-15T09:00:00Z",
+      "views": 3847,
+      "avgTimeOnPage": "5:23",
+      "conversionRate": 7.2,
+      "aiMentions": 14,
+      "ranking": "#4 for 'automation limits'",
+      "insight": "Overperforming by 234% - RevOps audience resonating strongly"
+    }
+  },
+
+  "workflowTemplates": {
+    "blogCreation": {
+      "stages": ["input", "topics", "brief", "draft", "complete"],
+      "estimatedTime": "45-60 minutes",
+      "features": ["AI topic generation", "SEO optimization", "Readability scoring", "Auto-save"]
+    },
+    "contentImprovement": {
+      "stages": ["upload", "analysis", "suggestions", "editing", "complete"],
+      "estimatedTime": "30-45 minutes", 
+      "features": ["Content scoring", "Gap analysis", "AI recommendations", "Side-by-side editing"]
+    },
+    "linkedinCreation": {
+      "stages": ["input", "topics", "brief", "draft", "complete"],
+      "estimatedTime": "20-30 minutes",
+      "features": ["Hashtag optimization", "Engagement prediction", "Character count", "Best posting times"]
+    }
+  },
+
+  "aiAssistantPersonality": {
+    "name": "Q",
+    "role": "Content Intelligence Expert",
+    "personality": {
+      "tone": "Expert content strategist who simplifies complexity",
+      "proactivity": "High - suggests performance improvements based on data",
+      "specificity": "Always ties recommendations to conversion metrics",
+      "awareness": "Knows what content works in which channels and why"
+    },
+    "signaturePhrases": [
+      "This will convert better if...",
+      "Based on performance data...",
+      "Here's what drives engagement...",
+      "This typically increases conversions by..."
+    ],
+    "contextualMemory": [
+      "Tracks 8,100 monthly 'Zapier too expensive' searches",
+      "Knows migration content converts at 12% vs 2% average",
+      "Aware that Friday RevOps content gets 3.2x engagement",
+      "Understands the 65.8 authority score improvement path"
+    ]
+  }
+}

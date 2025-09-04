@@ -1,0 +1,567 @@
+{
+  "dashboard": {
+    "timeRange": "Last 30 days",
+    "comparedTo": "Previous 30 days",
+    "lastUpdated": "2024-01-15T10:00:00Z",
+    "highlights": [
+      {
+        "metric": "Blog Traffic",
+        "current": 24387,
+        "change": 47,
+        "trend": "up",
+        "sparkline": [14250, 15800, 18200, 20100, 24387],
+        "source": "Google Search Console",
+        "insight": "Migration content driving 67% of growth"
+      },
+      {
+        "metric": "AI Visibility", 
+        "current": 78.5,
+        "change": 12.3,
+        "trend": "up",
+        "detail": "Mentioned in 23% of relevant AI automation queries",
+        "source": "KiwiQ Intelligence"
+      },
+      {
+        "metric": "Conversion Rate",
+        "current": 4.7,
+        "change": 1.2,
+        "trend": "up", 
+        "detail": "Blog → Trial signup (Industry avg: 2-3%)",
+        "source": "Analytics"
+      },
+      {
+        "metric": "Authority Score",
+        "current": 65.8,
+        "change": 8.2,
+        "trend": "up",
+        "detail": "Industry percentile: 73rd (Target: 85th)",
+        "source": "KiwiQ Analysis"
+      }
+    ]
+  },
+
+  "contentPerformance": {
+    "topPerformers": [
+      {
+        "title": "When Rules Break: How AI Handles the 40% of Workflows Traditional Automation Can't",
+        "slug": "when-rules-break",
+        "published": "2024-01-15",
+        "author": "Sarah Johnson",
+        "metrics": {
+          "views": 3847,
+          "uniqueViews": 2891,
+          "avgTime": "5:23",
+          "conversionRate": 7.2,
+          "aiMentions": 14,
+          "ranking": "#4 for 'workflow automation limits'",
+          "shares": 234,
+          "comments": 18,
+          "backlinks": 8,
+          "seoScore": 86,
+          "aeoScore": 72
+        },
+        "trend": "up",
+        "insights": "Overperforming by 234% - RevOps pain points resonating strongly",
+        "hourlyTraffic": [45, 52, 78, 123, 156, 189, 234, 278, 312, 289, 267, 245, 223, 198, 176, 154, 132, 118, 98, 87, 76, 65, 58, 51],
+        "sources": {
+          "organic": 67,
+          "direct": 18,
+          "social": 12,
+          "referral": 3
+        },
+        "userFlow": {
+          "bounceRate": 32,
+          "nextPage": "Migration Guide (34%)",
+          "conversion": "Trial signup (7.2%)",
+          "avgScrollDepth": 87
+        }
+      },
+      {
+        "title": "Gumloop vs Zapier: The RevOps Guide to Migration",
+        "slug": "gumloop-vs-zapier",
+        "published": "2024-01-18",
+        "author": "Alex Thompson",
+        "metrics": {
+          "views": 2956,
+          "uniqueViews": 2234,
+          "avgTime": "8:47", 
+          "conversionRate": 12.3,
+          "aiMentions": 8,
+          "ranking": "#2 for 'migrate from Zapier'",
+          "shares": 89,
+          "comments": 31,
+          "backlinks": 12,
+          "seoScore": 85,
+          "aeoScore": 72
+        },
+        "trend": "up",
+        "insights": "Highest converting content - bottom funnel working perfectly",
+        "sources": {
+          "organic": 72,
+          "direct": 15,
+          "social": 8,
+          "referral": 5
+        }
+      },
+      {
+        "title": "The $75K Monthly Cost of Bad Automation",
+        "slug": "cost-of-bad-automation",
+        "published": "2024-01-22",
+        "status": "scheduled",
+        "author": "Michael Chen",
+        "metrics": {
+          "expectedViews": 2500,
+          "targetConversion": 8.5,
+          "targetKeywords": ["automation ROI", "Zapier costs", "automation pricing"],
+          "contentScore": 82
+        },
+        "trend": "new",
+        "insights": "Cost-focused content historically converts at 8.5%"
+      }
+    ],
+    "contentHealth": {
+      "totalPosts": 37,
+      "publishedLast30Days": 8,
+      "avgViewsPerPost": 1847,
+      "avgConversionRate": 4.7,
+      "growthRate": 34,
+      "contentGaps": [
+        "Migration guides (need 3 more)",
+        "Video tutorials (0 currently)",
+        "Comparison matrices (need 5)",
+        "Industry playbooks (need 6)",
+        "Interactive tools (need 3)"
+      ],
+      "topCategories": [
+        { "category": "Migration Guides", "posts": 2, "avgViews": 2901, "avgConversion": 12.3 },
+        { "category": "AI Automation", "posts": 12, "avgViews": 1823, "avgConversion": 6.8 },
+        { "category": "RevOps", "posts": 8, "avgViews": 2156, "avgConversion": 8.1 },
+        { "category": "Technical", "posts": 7, "avgViews": 987, "avgConversion": 4.2 },
+        { "category": "Comparisons", "posts": 3, "avgViews": 2456, "avgConversion": 9.7 }
+      ]
+    }
+  },
+
+  "seoPerformance": {
+    "rankings": {
+      "topKeywords": [
+        { 
+          "keyword": "Zapier alternative", 
+          "position": 7, 
+          "change": 3, 
+          "volume": 8100, 
+          "difficulty": 78,
+          "url": "/blog/gumloop-vs-zapier",
+          "opportunity": "Move to top 3 with schema markup"
+        },
+        { 
+          "keyword": "AI automation platform", 
+          "position": 4, 
+          "change": 5, 
+          "volume": 4400, 
+          "difficulty": 65,
+          "url": "/platform",
+          "opportunity": "Target position 1 with category content"
+        },
+        { 
+          "keyword": "Migrate from Zapier", 
+          "position": 2, 
+          "change": 12, 
+          "volume": 2800, 
+          "difficulty": 43,
+          "url": "/migration-guide",
+          "opportunity": "Maintain with fresh updates"
+        },
+        { 
+          "keyword": "RevOps automation", 
+          "position": 1, 
+          "change": 0, 
+          "volume": 980, 
+          "difficulty": 38,
+          "url": "/revops",
+          "opportunity": "Defend position with more content"
+        },
+        { 
+          "keyword": "Zapier too expensive", 
+          "position": null, 
+          "change": "NEW", 
+          "volume": 6500, 
+          "difficulty": 32,
+          "url": null,
+          "opportunity": "CRITICAL - Create dedicated page immediately"
+        }
+      ],
+      "totalKeywords": 147,
+      "page1Keywords": 23,
+      "page1to3Keywords": 12,
+      "featuredSnippets": 2,
+      "richResults": 1,
+      "avgPosition": 8.4,
+      "clickThroughRate": 3.2
+    },
+    "technicalHealth": {
+      "overallScore": 72,
+      "issues": [
+        { 
+          "type": "Missing H1 tags", 
+          "pages": 75, 
+          "percentage": 46,
+          "impact": "High", 
+          "severity": "error",
+          "solution": "Add unique H1 to each page"
+        },
+        { 
+          "type": "No meta descriptions", 
+          "pages": 44, 
+          "percentage": 27,
+          "impact": "Medium", 
+          "severity": "warning",
+          "solution": "Write compelling 150-160 char descriptions"
+        },
+        { 
+          "type": "Missing schema markup", 
+          "pages": 131, 
+          "percentage": 80,
+          "impact": "High", 
+          "severity": "error",
+          "solution": "Add Article, FAQ, HowTo schemas"
+        },
+        { 
+          "type": "Broken heading hierarchy", 
+          "pages": 108, 
+          "percentage": 66,
+          "impact": "Medium", 
+          "severity": "warning",
+          "solution": "Ensure H1→H2→H3 order"
+        },
+        { 
+          "type": "No canonical tags", 
+          "pages": 163, 
+          "percentage": 100,
+          "impact": "High", 
+          "severity": "error",
+          "solution": "Add canonical tags to all pages"
+        }
+      ],
+      "coreWebVitals": {
+        "lcp": { "value": 2.8, "status": "needs improvement", "target": 2.5 },
+        "fid": { "value": 45, "status": "good", "target": 100 },
+        "cls": { "value": 0.12, "status": "needs improvement", "target": 0.1 }
+      },
+      "mobileFriendly": 88.96,
+      "httpsEnabled": 100
+    },
+    "opportunities": [
+      { 
+        "keyword": "Zapier too expensive", 
+        "volume": 6500, 
+        "difficulty": 32, 
+        "opportunity": "CRITICAL",
+        "estimatedTraffic": 1950,
+        "estimatedConversions": 91
+      },
+      { 
+        "keyword": "Zapier alternatives cheap", 
+        "volume": 8100, 
+        "difficulty": 42, 
+        "opportunity": "HIGH",
+        "estimatedTraffic": 1620,
+        "estimatedConversions": 76
+      },
+      { 
+        "keyword": "Automation ROI calculator", 
+        "volume": 2100, 
+        "difficulty": 28, 
+        "opportunity": "HIGH",
+        "estimatedTraffic": 630,
+        "estimatedConversions": 30
+      },
+      { 
+        "keyword": "AI vs rule-based automation", 
+        "volume": 1800, 
+        "difficulty": 35, 
+        "opportunity": "MEDIUM",
+        "estimatedTraffic": 360,
+        "estimatedConversions": 17
+      }
+    ]
+  },
+
+  "aiOptimization": {
+    "llmVisibility": {
+      "platforms": [
+        {
+          "name": "ChatGPT",
+          "visibility": 15,
+          "change": 3,
+          "citations": 47,
+          "ranking": 4,
+          "topContent": "RevOps automation guides",
+          "recommendation": "Create more technical implementation content",
+          "queries": [
+            "How to automate RevOps workflows?",
+            "Best automation tools for operations teams?",
+            "AI automation vs traditional workflow tools?",
+            "Zapier alternatives for AI workflows?"
+          ]
+        },
+        {
+          "name": "Claude",
+          "visibility": 10,
+          "change": 2,
+          "citations": 31,
+          "ranking": 5,
+          "topContent": "Migration guides", 
+          "recommendation": "Add more quantifiable case studies",
+          "queries": [
+            "Enterprise automation platforms with AI?",
+            "How to migrate from Zapier to AI platform?",
+            "Cost comparison automation platforms?"
+          ]
+        },
+        {
+          "name": "Perplexity",
+          "visibility": 20,
+          "change": 5,
+          "citations": 68,
+          "ranking": 3,
+          "topContent": "Comparison content",
+          "recommendation": "Create more versus content and comparisons",
+          "queries": [
+            "Zapier vs Gumloop detailed comparison",
+            "Best AI automation platform 2024",
+            "Gumloop reviews and pricing"
+          ]
+        },
+        {
+          "name": "Gemini",
+          "visibility": 12,
+          "change": 1,
+          "citations": 18,
+          "ranking": 6,
+          "topContent": "Technical documentation",
+          "recommendation": "Increase technical depth and code examples"
+        }
+      ],
+      "overallScore": 78.5,
+      "targetScore": 95,
+      "competitorComparison": {
+        "gumloop": { "score": 78.5, "rank": 4, "trend": "up" },
+        "zapier": { "score": 94.2, "rank": 1, "trend": "stable" },
+        "make": { "score": 67.3, "rank": 5, "trend": "down" },
+        "n8n": { "score": 45.8, "rank": 7, "trend": "stable" },
+        "tines": { "score": 52.1, "rank": 6, "trend": "up" }
+      }
+    },
+    "aeoOptimization": {
+      "currentScore": 72,
+      "targetScore": 90,
+      "structuredDataCoverage": 19.63,
+      "contextDensity": 72,
+      "citationTriggers": 47,
+      "recommendations": [
+        {
+          "action": "Add 'Questions This Post Answers' sections",
+          "impact": "HIGH - Direct featured snippet potential",
+          "effort": "2 hours per post",
+          "priority": 1
+        },
+        {
+          "action": "Implement FAQ schema on all posts",
+          "impact": "HIGH - AI system recognition",
+          "effort": "8 hours total",
+          "priority": 2
+        },
+        {
+          "action": "Create comparison tables",
+          "impact": "HIGH - Featured snippet wins",
+          "effort": "3 hours per comparison",
+          "priority": 3
+        },
+        {
+          "action": "Add definition boxes for key terms",
+          "impact": "MEDIUM - Entity recognition",
+          "effort": "4 hours total",
+          "priority": 4
+        },
+        {
+          "action": "Include more metrics and data",
+          "impact": "MEDIUM - Citation triggers",
+          "effort": "Ongoing",
+          "priority": 5
+        }
+      ],
+      "quickWins": [
+        { "action": "Add Questions sections to top 10 posts", "impact": "+2 AEO score", "effort": "4 hours" },
+        { "action": "Create AI vs Rules comparison table", "impact": "Featured snippet", "effort": "2 hours" },
+        { "action": "Add glossary/definition boxes", "impact": "Better entity recognition", "effort": "3 hours" }
+      ]
+    }
+  },
+
+  "conversionFunnel": {
+    "stages": [
+      { 
+        "stage": "Visitors", 
+        "count": 24387, 
+        "percentage": 100,
+        "dropoffRate": 0,
+        "avgTimeToNext": "3:24"
+      },
+      { 
+        "stage": "Engaged (>30s)", 
+        "count": 14632, 
+        "percentage": 60,
+        "dropoffRate": 40,
+        "avgTimeToNext": "5:12",
+        "insight": "Strong engagement - content quality validated"
+      },
+      { 
+        "stage": "Clicked CTA", 
+        "count": 3658, 
+        "percentage": 15,
+        "dropoffRate": 75,
+        "avgTimeToNext": "0:45",
+        "insight": "CTA performance 2x industry average"
+      },
+      { 
+        "stage": "Trial Signup", 
+        "count": 1146, 
+        "percentage": 4.7,
+        "dropoffRate": 69,
+        "avgTimeToNext": "2 days",
+        "insight": "Trial conversion 2.3x industry benchmark"
+      },
+      { 
+        "stage": "Activated Trial", 
+        "count": 573, 
+        "percentage": 2.35,
+        "dropoffRate": 50,
+        "avgTimeToNext": "5 days"
+      },
+      { 
+        "stage": "Customer", 
+        "count": 127, 
+        "percentage": 0.52,
+        "dropoffRate": 78,
+        "insight": "Trial-to-paid needs improvement"
+      }
+    ],
+    "insights": [
+      "Content quality driving exceptional engagement (60% vs 35% industry)",
+      "CTA effectiveness 2x industry average - messaging resonating",
+      "Trial signup rate 2.3x benchmark - value prop clear",
+      "Trial-to-customer conversion below target - onboarding friction"
+    ],
+    "recommendations": [
+      {
+        "stage": "Trial → Customer",
+        "action": "Improve onboarding flow",
+        "impact": "Could add 50+ customers/month",
+        "priority": "CRITICAL"
+      },
+      {
+        "stage": "Engaged → CTA",
+        "action": "Test inline CTAs in content",
+        "impact": "Could increase clicks 20%",
+        "priority": "HIGH"
+      },
+      {
+        "stage": "Visitor → Engaged",
+        "action": "Improve page load speed",
+        "impact": "Reduce bounce rate 5-10%",
+        "priority": "MEDIUM"
+      }
+    ]
+  },
+
+  "trafficSources": {
+    "channels": [
+      { 
+        "source": "Organic Search", 
+        "visits": 16471, 
+        "percentage": 67.5, 
+        "change": 52,
+        "conversion": 5.2,
+        "revenue": "$42,891",
+        "topLandingPage": "/blog/when-rules-break"
+      },
+      { 
+        "source": "Direct", 
+        "visits": 4389, 
+        "percentage": 18.0, 
+        "change": 23,
+        "conversion": 3.8,
+        "revenue": "$9,234"
+      },
+      { 
+        "source": "Social Media", 
+        "visits": 2926, 
+        "percentage": 12.0, 
+        "change": 67,
+        "conversion": 2.1,
+        "revenue": "$3,402",
+        "topPlatform": "LinkedIn (67%)"
+      },
+      { 
+        "source": "Referral", 
+        "visits": 610, 
+        "percentage": 2.5, 
+        "change": -12,
+        "conversion": 8.7,
+        "revenue": "$2,934"
+      }
+    ],
+    "topReferrers": [
+      { 
+        "domain": "reddit.com", 
+        "visits": 234, 
+        "conversion": 11.2,
+        "context": "r/automation discussions about Zapier alternatives",
+        "sentiment": "Positive - cost savings focus"
+      },
+      { 
+        "domain": "news.ycombinator.com", 
+        "visits": 189, 
+        "conversion": 9.3,
+        "context": "Technical discussion on AI automation",
+        "sentiment": "Neutral - technical validation"
+      },
+      { 
+        "domain": "linkedin.com", 
+        "visits": 156, 
+        "conversion": 6.8,
+        "context": "RevOps community shares",
+        "sentiment": "Positive - peer recommendations"
+      }
+    ],
+    "socialBreakdown": {
+      "linkedin": { "visits": 1960, "percentage": 67, "engagement": "High" },
+      "twitter": { "visits": 585, "percentage": 20, "engagement": "Medium" },
+      "facebook": { "visits": 234, "percentage": 8, "engagement": "Low" },
+      "youtube": { "visits": 147, "percentage": 5, "engagement": "High" }
+    }
+  },
+
+  "competitorAnalysis": {
+    "contentVelocity": {
+      "gumloop": { "posts": 3, "trend": "stable", "quality": "High" },
+      "zapier": { "posts": 32, "trend": "up", "quality": "Medium" },
+      "make": { "posts": 18, "trend": "up", "quality": "Medium" },
+      "n8n": { "posts": 10, "trend": "stable", "quality": "High" }
+    },
+    "shareOfVoice": {
+      "gumloop": 8.5,
+      "zapier": 54.3,
+      "make": 22.7,
+      "n8n": 9.2,
+      "others": 5.3
+    },
+    "topGaps": [
+      "Migration content (2 vs 7 average)",
+      "Video tutorials (0 vs 15 average)",
+      "Interactive tools (0 vs 5 average)",
+      "Case studies (2 vs 8 average)"
+    ]
+  }
+}

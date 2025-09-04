@@ -1,161 +1,314 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useDemo } from '@/lib/demo/demo-context';
 
-interface Shortcut {
+interface KeyboardShortcut {
   key: string;
-  ctrl?: boolean;
-  shift?: boolean;
-  alt?: boolean;
-  description: string;
+  ctrlKey?: boolean;
+  metaKey?: boolean;
+  shiftKey?: boolean;
   action: () => void;
+  description: string;
 }
 
 export function useKeyboardShortcuts() {
   const router = useRouter();
-  const { actions } = useDemo();
-  const [showHelp, setShowHelp] = useState(false);
 
-  const shortcuts: Shortcut[] = [
-    // Navigation shortcuts
-    { key: 'd', alt: true, description: 'Go to Dashboard', action: () => router.push('/demo/dashboard') },
-    { key: 'c', alt: true, description: 'Go to Content Studio', action: () => router.push('/demo/content-studio') },
-    { key: 'a', alt: true, description: 'Go to Analytics', action: () => router.push('/demo/analytics') },
-    { key: 's', alt: true, description: 'Go to Settings', action: () => router.push('/demo/settings') },
-    
-    // Action shortcuts
-    { key: 'n', ctrl: true, description: 'Create New Content', action: () => router.push('/demo/content-studio/create') },
-    { key: 'k', ctrl: true, description: 'Search', action: () => document.getElementById('global-search')?.focus() },
-    { key: '/', ctrl: true, description: 'Show Keyboard Shortcuts', action: () => setShowHelp(true) },
-    { key: 'Escape', description: 'Close Modal/Dialog', action: () => setShowHelp(false) },
-    
-    // Document actions (when on document pages)
-    { key: 's', ctrl: true, description: 'Save Document', action: () => console.log('Saving document...') },
-    { key: 'e', ctrl: true, description: 'Edit Document', action: () => console.log('Editing document...') },
-    { key: 'p', ctrl: true, shift: true, description: 'Preview Document', action: () => console.log('Preview mode...') },
-    
-    // View shortcuts
-    { key: '1', alt: true, description: 'Grid View', action: () => console.log('Switched to grid view') },
-    { key: '2', alt: true, description: 'List View', action: () => console.log('Switched to list view') },
-    { key: '3', alt: true, description: 'Calendar View', action: () => router.push('/demo/content-studio/calendar') },
+  const shortcuts: KeyboardShortcut[] = [
+    {
+      key: 'k',
+      metaKey: true,
+      action: () => {
+        // Focus search input
+        const searchInput = document.querySelector('input[placeholder*="Search"]') as HTMLInputElement;
+        if (searchInput) {
+          searchInput.focus();
+          searchInput.select();
+        }
+      },
+      description: 'Focus search'
+    },
+    {
+      key: 'n',
+      metaKey: true,
+      action: () => router.push('/demo/content-studio/create'),
+      description: 'New content'
+    },
+    {
+      key: 'd',
+      metaKey: true,
+      action: () => router.push('/demo/dashboard'),
+      description: 'Go to dashboard'
+    },
+    {
+      key: 'c',
+      metaKey: true,
+      action: () => router.push('/demo/content-studio'),
+      description: 'Go to content studio'
+    },
+    {
+      key: 'p',
+      metaKey: true,
+      action: () => router.push('/demo/playbook'),
+      description: 'Go to playbook'
+    },
+    {
+      key: 'a',
+      metaKey: true,
+      action: () => router.push('/demo/analytics'),
+      description: 'Go to analytics'
+    },
+    {
+      key: 'r',
+      metaKey: true,
+      shiftKey: true,
+      action: () => {
+        // Reset demo
+        if (confirm('Reset the entire demo? This will clear all progress.')) {
+          localStorage.clear();
+          router.push('/demo/dashboard');
+          window.location.reload();
+        }
+      },
+      description: 'Reset demo'
+    },
+    {
+      key: '/',
+      metaKey: true,
+      action: () => {
+        // Show keyboard shortcuts help
+        showKeyboardHelp();
+      },
+      description: 'Show keyboard shortcuts'
+    },
+    {
+      key: 'Escape',
+      action: () => {
+        // Close modals, clear selections
+        const modals = document.querySelectorAll('[role="dialog"]');
+        modals.forEach(modal => {
+          const closeButton = modal.querySelector('button[aria-label*="close"], button[aria-label*="Close"]') as HTMLButtonElement;
+          if (closeButton) {
+            closeButton.click();
+          }
+        });
+        
+        // Clear any focused inputs
+        const activeElement = document.activeElement as HTMLElement;
+        if (activeElement && activeElement.blur) {
+          activeElement.blur();
+        }
+      },
+      description: 'Close modals/clear focus'
+    },
+    {
+      key: 'Tab',
+      shiftKey: true,
+      action: () => {
+        // Enhanced tab navigation (handled by browser but we can add custom logic)
+        // This is mainly for documentation
+      },
+      description: 'Navigate backwards'
+    }
   ];
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Skip if user is typing in an input or textarea
-      if (e.target instanceof HTMLInputElement || 
-          e.target instanceof HTMLTextAreaElement || 
-          (e.target as HTMLElement).contentEditable === 'true') {
-        // Allow Escape key even in inputs
-        if (e.key !== 'Escape') return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Skip if user is typing in an input field
+      const activeElement = document.activeElement;
+      const isInputField = activeElement instanceof HTMLInputElement || 
+                          activeElement instanceof HTMLTextAreaElement ||
+                          activeElement instanceof HTMLSelectElement ||
+                          (activeElement && activeElement.getAttribute('contenteditable') === 'true');
+
+      if (isInputField && !event.metaKey && !event.ctrlKey) {
+        return;
       }
 
-      for (const shortcut of shortcuts) {
-        const matchesKey = e.key === shortcut.key || e.key.toLowerCase() === shortcut.key.toLowerCase();
-        const matchesCtrl = shortcut.ctrl ? (e.ctrlKey || e.metaKey) : true;
-        const matchesShift = shortcut.shift ? e.shiftKey : true;
-        const matchesAlt = shortcut.alt ? e.altKey : true;
+      // Find matching shortcut
+      const matchingShortcut = shortcuts.find(shortcut => {
+        return shortcut.key.toLowerCase() === event.key.toLowerCase() &&
+               !!shortcut.metaKey === (event.metaKey || event.ctrlKey) &&
+               !!shortcut.shiftKey === event.shiftKey;
+      });
 
-        if (matchesKey && matchesCtrl && matchesShift && matchesAlt) {
-          e.preventDefault();
-          shortcut.action();
-          break;
-        }
+      if (matchingShortcut) {
+        event.preventDefault();
+        event.stopPropagation();
+        matchingShortcut.action();
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [shortcuts]);
+    // Add keyboard listener
+    document.addEventListener('keydown', handleKeyDown);
 
-  return {
-    shortcuts,
-    showHelp,
-    setShowHelp
-  };
+    // Add keyboard shortcuts help to page
+    addKeyboardShortcutsToPage(shortcuts);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [router]);
+
+  return { shortcuts };
 }
 
-// Keyboard Shortcuts Help Modal Component
-export function KeyboardShortcutsModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  if (!isOpen) return null;
+function showKeyboardHelp() {
+  // Check if help modal already exists
+  if (document.getElementById('keyboard-help-modal')) {
+    return;
+  }
 
-  const shortcuts = [
-    { category: 'Navigation', items: [
-      { keys: ['Alt', 'D'], description: 'Go to Dashboard' },
-      { keys: ['Alt', 'C'], description: 'Go to Content Studio' },
-      { keys: ['Alt', 'A'], description: 'Go to Analytics' },
-      { keys: ['Alt', 'S'], description: 'Go to Settings' },
-    ]},
-    { category: 'Actions', items: [
-      { keys: ['Ctrl', 'N'], description: 'Create New Content' },
-      { keys: ['Ctrl', 'K'], description: 'Search' },
-      { keys: ['Ctrl', '/'], description: 'Show Keyboard Shortcuts' },
-      { keys: ['Esc'], description: 'Close Modal/Dialog' },
-    ]},
-    { category: 'Document', items: [
-      { keys: ['Ctrl', 'S'], description: 'Save Document' },
-      { keys: ['Ctrl', 'E'], description: 'Edit Document' },
-      { keys: ['Ctrl', 'Shift', 'P'], description: 'Preview Document' },
-    ]},
-    { category: 'Views', items: [
-      { keys: ['Alt', '1'], description: 'Grid View' },
-      { keys: ['Alt', '2'], description: 'List View' },
-      { keys: ['Alt', '3'], description: 'Calendar View' },
-    ]},
-  ];
+  const modal = document.createElement('div');
+  modal.id = 'keyboard-help-modal';
+  modal.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4';
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-labelledby', 'keyboard-help-title');
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
-      <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[80vh] overflow-hidden">
-        <div className="border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-          <h2 className="text-xl font-semibold text-black">Keyboard Shortcuts</h2>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-black transition-colors"
-          >
+  modal.innerHTML = `
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
+      <div class="p-6 border-b border-gray-200">
+        <div class="flex items-center justify-between">
+          <h2 id="keyboard-help-title" class="text-lg font-semibold text-gray-900">Keyboard Shortcuts</h2>
+          <button class="p-2 text-gray-400 hover:text-gray-600 transition-colors" aria-label="Close help">
             ×
           </button>
         </div>
-        
-        <div className="px-6 py-4 overflow-y-auto max-h-[60vh]">
-          <div className="grid grid-cols-2 gap-6">
-            {shortcuts.map((section) => (
-              <div key={section.category}>
-                <h3 className="font-semibold text-black mb-3">{section.category}</h3>
-                <div className="space-y-2">
-                  {section.items.map((shortcut, index) => (
-                    <div key={index} className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">{shortcut.description}</span>
-                      <div className="flex items-center space-x-1">
-                        {shortcut.keys.map((key, keyIndex) => (
-                          <React.Fragment key={keyIndex}>
-                            <kbd className="px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded">
-                              {key}
-                            </kbd>
-                            {keyIndex < shortcut.keys.length - 1 && (
-                              <span className="text-gray-400">+</span>
-                            )}
-                          </React.Fragment>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <div className="mt-6 pt-6 border-t border-gray-200">
-            <p className="text-xs text-gray-500">
-              Tip: Press <kbd className="px-1 py-0.5 text-xs bg-gray-100 border border-gray-300 rounded">Ctrl</kbd> + <kbd className="px-1 py-0.5 text-xs bg-gray-100 border border-gray-300 rounded">/</kbd> anytime to view this help
-            </p>
-          </div>
+      </div>
+      <div class="p-6 space-y-3 max-h-96 overflow-y-auto">
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-gray-700">Search</span>
+          <kbd class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">⌘K</kbd>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-gray-700">New content</span>
+          <kbd class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">⌘N</kbd>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-gray-700">Dashboard</span>
+          <kbd class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">⌘D</kbd>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-gray-700">Content Studio</span>
+          <kbd class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">⌘C</kbd>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-gray-700">Playbook</span>
+          <kbd class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">⌘P</kbd>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-gray-700">Analytics</span>
+          <kbd class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">⌘A</kbd>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-gray-700">Close modals</span>
+          <kbd class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Esc</kbd>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-gray-700">Reset demo</span>
+          <kbd class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">⌘⇧R</kbd>
         </div>
       </div>
     </div>
-  );
+  `;
+
+  // Close modal functionality
+  const closeButton = modal.querySelector('button[aria-label*="Close"]');
+  const closeModal = () => {
+    document.body.removeChild(modal);
+  };
+
+  if (closeButton) {
+    closeButton.addEventListener('click', closeModal);
+  }
+
+  // Close on backdrop click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Close on escape
+  const handleEscape = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      closeModal();
+      document.removeEventListener('keydown', handleEscape);
+    }
+  };
+  document.addEventListener('keydown', handleEscape);
+
+  document.body.appendChild(modal);
+
+  // Focus the modal for accessibility
+  modal.focus();
 }
 
-import React from 'react';
+function addKeyboardShortcutsToPage(shortcuts: KeyboardShortcut[]) {
+  // Add screen reader announcement for keyboard shortcuts
+  let announcement = document.getElementById('keyboard-shortcuts-announcement');
+  if (!announcement) {
+    announcement = document.createElement('div');
+    announcement.id = 'keyboard-shortcuts-announcement';
+    announcement.setAttribute('aria-live', 'polite');
+    announcement.setAttribute('aria-atomic', 'true');
+    announcement.className = 'sr-only';
+    document.body.appendChild(announcement);
+  }
+
+  announcement.textContent = `Keyboard shortcuts available. Press Command+/ for help.`;
+}
+
+// Accessibility enhancements
+export function useAccessibilityEnhancements() {
+  useEffect(() => {
+    // Add skip link for screen readers
+    const skipLink = document.createElement('a');
+    skipLink.href = '#main-content';
+    skipLink.textContent = 'Skip to main content';
+    skipLink.className = 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded-lg';
+    
+    if (!document.getElementById('skip-link')) {
+      skipLink.id = 'skip-link';
+      document.body.insertBefore(skipLink, document.body.firstChild);
+    }
+
+    // Enhance focus management
+    const handleFocusVisible = (e: FocusEvent) => {
+      const target = e.target as HTMLElement;
+      if (target && target.matches('button, a, input, textarea, select, [tabindex]')) {
+        target.classList.add('focus-visible');
+      }
+    };
+
+    const handleBlur = (e: FocusEvent) => {
+      const target = e.target as HTMLElement;
+      if (target) {
+        target.classList.remove('focus-visible');
+      }
+    };
+
+    document.addEventListener('focusin', handleFocusVisible);
+    document.addEventListener('focusout', handleBlur);
+
+    // Add ARIA landmarks
+    const main = document.querySelector('main');
+    if (main && !main.getAttribute('role')) {
+      main.setAttribute('role', 'main');
+      main.id = 'main-content';
+    }
+
+    const nav = document.querySelector('nav');
+    if (nav && !nav.getAttribute('role')) {
+      nav.setAttribute('role', 'navigation');
+      nav.setAttribute('aria-label', 'Main navigation');
+    }
+
+    return () => {
+      document.removeEventListener('focusin', handleFocusVisible);
+      document.removeEventListener('focusout', handleBlur);
+    };
+  }, []);
+}
