@@ -1,0 +1,349 @@
+{
+  "scheduledTopics": [
+    {
+      "id": "topic-1",
+      "title": "Ultimate Migration Guide from Traditional Automation",
+      "date": "2025-09-03",
+      "type": "blog",
+      "status": "topic",
+      "description": "Comprehensive guide for teams switching from rule-based to AI automation",
+      "keywords": ["migration", "Zapier alternative", "AI automation", "Gumloop"],
+      "targetAudience": "RevOps Managers evaluating alternatives",
+      "subtopics": [
+        {
+          "id": "sub-1-1",
+          "title": "The Hidden Cost of Zapier: A 3-Year TCO Analysis",
+          "hook": "Why teams are paying $299/month for workflows that still break",
+          "angle": "Cost comparison with real data from 50+ RevOps teams",
+          "keyPoints": ["Task-based pricing trap", "Hidden overage fees", "Manual fix costs", "Scaling nightmares"],
+          "expectedOutcome": "Show 90% cost savings potential"
+        },
+        {
+          "id": "sub-1-2",
+          "title": "Zero-Downtime Migration: From Zapier to Gumloop in 30 Days",
+          "hook": "How Sarah's team migrated 127 workflows without losing a single lead",
+          "angle": "Step-by-step migration playbook with risk mitigation",
+          "keyPoints": ["Parallel running strategy", "Data preservation", "Team training", "Quick wins first"],
+          "expectedOutcome": "Reduce migration fear with proven framework"
+        },
+        {
+          "id": "sub-1-3",
+          "title": "When Rules Break: AI vs Traditional Automation Head-to-Head",
+          "hook": "40% of your workflows can't be fixed with more rules - here's why",
+          "angle": "Technical deep-dive into pattern recognition vs intent understanding",
+          "keyPoints": ["Edge case handling", "Context understanding", "Self-healing workflows", "Real examples"],
+          "expectedOutcome": "Position AI as necessity, not luxury"
+        },
+        {
+          "id": "sub-1-4",
+          "title": "The Monday Morning Test: Is Your Automation Actually Working?",
+          "hook": "5 signs your automation is silently killing deals",
+          "angle": "Diagnostic checklist for RevOps teams",
+          "keyPoints": ["Enterprise lead routing fails", "Context-blind nurturing", "Manual fix hours", "Revenue leakage"],
+          "expectedOutcome": "Create urgency through problem awareness"
+        }
+      ]
+    },
+    {
+      "id": "topic-2",
+      "title": "AI-Powered RevOps Transformation",
+      "date": "2025-09-11",
+      "type": "blog",
+      "status": "topic",
+      "description": "How AI is revolutionizing revenue operations workflows",
+      "keywords": ["RevOps", "AI automation", "revenue operations", "workflow optimization"],
+      "targetAudience": "RevOps Directors and VPs",
+      "subtopics": [
+        {
+          "id": "sub-2-1",
+          "title": "The 60/40 Split: What AI Should and Shouldn't Automate",
+          "hook": "Not everything needs AI - here's how to decide",
+          "angle": "Strategic framework for automation decisions",
+          "keyPoints": ["Rule-based sweet spots", "AI necessity triggers", "ROI calculation", "Implementation priority"],
+          "expectedOutcome": "Clear decision framework for automation strategy"
+        },
+        {
+          "id": "sub-2-2",
+          "title": "15 Hours Saved Weekly: Real RevOps Teams Share Their Wins",
+          "hook": "How 5 RevOps teams got their weekends back",
+          "angle": "Customer success compilation with metrics",
+          "keyPoints": ["Before/after workflows", "Time saved breakdown", "Revenue impact", "Team morale boost"],
+          "expectedOutcome": "Social proof through peer success"
+        },
+        {
+          "id": "sub-2-3",
+          "title": "Complex Lead Routing That Actually Works",
+          "hook": "Stop losing enterprise deals to your general queue",
+          "angle": "Technical implementation guide for intelligent routing",
+          "keyPoints": ["Intent detection", "Context awareness", "Exception handling", "Real-time adaptation"],
+          "expectedOutcome": "Solve #1 RevOps pain point"
+        },
+        {
+          "id": "sub-2-4",
+          "title": "Building Self-Healing Workflows with AI",
+          "hook": "Workflows that fix themselves at 3 AM",
+          "angle": "Future-proofing your automation stack",
+          "keyPoints": ["Error pattern recognition", "Auto-correction logic", "Learning from failures", "Escalation intelligence"],
+          "expectedOutcome": "Reduce manual intervention by 80%"
+        }
+      ]
+    },
+    {
+      "id": "topic-3",
+      "title": "Competitive Intelligence: Automation Platform Deep-Dive",
+      "date": "2025-09-18",
+      "type": "blog",
+      "status": "topic",
+      "description": "Honest comparison of automation platforms for RevOps",
+      "keywords": ["Zapier vs Gumloop", "Make alternative", "n8n comparison", "automation platforms"],
+      "targetAudience": "Technical evaluators and decision makers",
+      "subtopics": [
+        {
+          "id": "sub-3-1",
+          "title": "Zapier vs Make vs n8n vs Gumloop: The No-BS Comparison",
+          "hook": "We tested all four with the same 10 workflows - results will shock you",
+          "angle": "Head-to-head technical comparison with real workflows",
+          "keyPoints": ["Performance metrics", "Cost at scale", "Feature gaps", "Learning curves"],
+          "expectedOutcome": "Position Gumloop as clear winner for complex workflows"
+        },
+        {
+          "id": "sub-3-2",
+          "title": "Why 60% of Zapier Refugees Choose the Wrong Alternative",
+          "hook": "The migration mistake that costs teams 6 months",
+          "angle": "Common pitfalls in platform selection",
+          "keyPoints": ["Same limitations different UI", "Missing the AI opportunity", "Technical debt transfer", "Better alternatives"],
+          "expectedOutcome": "Redirect competitors' traffic to Gumloop"
+        },
+        {
+          "id": "sub-3-3",
+          "title": "The Enterprise Automation Playbook Nobody Talks About",
+          "hook": "What Zapier doesn't want enterprise buyers to know",
+          "angle": "Enterprise-specific requirements and gaps",
+          "keyPoints": ["Security limitations", "Scaling costs", "Support reality", "Compliance gaps"],
+          "expectedOutcome": "Win enterprise evaluations"
+        },
+        {
+          "id": "sub-3-4",
+          "title": "Build vs Buy: When Custom Code Beats No-Code",
+          "hook": "Sometimes Python is the answer - here's how to know",
+          "angle": "Honest assessment of automation boundaries",
+          "keyPoints": ["Custom code triggers", "Hybrid approaches", "Cost-benefit analysis", "Team capabilities"],
+          "expectedOutcome": "Build trust through transparency"
+        }
+      ]
+    },
+    {
+      "id": "topic-4",
+      "title": "AI Content Strategy for B2B SaaS",
+      "date": "2025-09-15",
+      "type": "improve",
+      "status": "topic",
+      "description": "Optimizing content for AI discovery and conversion",
+      "keywords": ["AI SEO", "content optimization", "B2B content", "AEO"],
+      "targetAudience": "Content and marketing leaders",
+      "subtopics": [
+        {
+          "id": "sub-4-1",
+          "title": "Zero to Featured Snippet in 30 Days",
+          "hook": "The exact optimization framework we used on 50 posts",
+          "angle": "Tactical SEO/AEO improvement guide",
+          "keyPoints": ["Schema markup implementation", "Question optimization", "Table formatting", "Quick wins"],
+          "expectedOutcome": "Immediate traffic boost techniques"
+        },
+        {
+          "id": "sub-4-2",
+          "title": "Why ChatGPT Never Mentions Your Product (And How to Fix It)",
+          "hook": "Your competitors own AI mindshare - here's how to compete",
+          "angle": "AI platform optimization strategy",
+          "keyPoints": ["Entity recognition", "Citation building", "Content structure", "Authority signals"],
+          "expectedOutcome": "Improve AI platform visibility"
+        },
+        {
+          "id": "sub-4-3",
+          "title": "The $50K Blog Post: Anatomy of High-Converting Content",
+          "hook": "One post, 12% conversion rate, $50K in pipeline",
+          "angle": "Reverse-engineering successful content",
+          "keyPoints": ["Structure analysis", "Psychology triggers", "CTA placement", "Trust building"],
+          "expectedOutcome": "Replicable content formula"
+        },
+        {
+          "id": "sub-4-4",
+          "title": "Content Velocity: 3 Posts vs 30 Posts Monthly",
+          "hook": "Why we're losing to competitors publishing 10x more",
+          "angle": "Scaling content without sacrificing quality",
+          "keyPoints": ["AI-assisted creation", "Template systems", "Quality gates", "Distribution strategy"],
+          "expectedOutcome": "Practical scaling framework"
+        }
+      ]
+    },
+    {
+      "id": "topic-5",
+      "title": "Customer Success Stories",
+      "date": "2025-09-22",
+      "type": "linkedin",
+      "status": "topic",
+      "description": "Real stories of RevOps transformation with Gumloop",
+      "targetAudience": "RevOps professionals and decision makers",
+      "subtopics": [
+        {
+          "id": "sub-5-1",
+          "title": "How TechCo Reduced Manual Fixes by 80% in 30 Days",
+          "hook": "Monday crisis calls dropped from 5 to zero",
+          "angle": "Day-by-day transformation journey",
+          "keyPoints": ["Week 1 quick wins", "Training approach", "Workflow prioritization", "Results tracking"],
+          "expectedOutcome": "Inspire action through peer success"
+        },
+        {
+          "id": "sub-5-2",
+          "title": "From 15-Hour Weeks to 2: A RevOps Manager's Story",
+          "hook": "Sarah finally took a real vacation after 2 years",
+          "angle": "Personal transformation narrative",
+          "keyPoints": ["Before chaos", "Implementation journey", "Unexpected benefits", "Team impact"],
+          "expectedOutcome": "Emotional connection to outcome"
+        },
+        {
+          "id": "sub-5-3",
+          "title": "$500K Deal Saved: When AI Caught What Rules Missed",
+          "hook": "The Fortune 500 lead that almost went to spam",
+          "angle": "High-stakes success story",
+          "keyPoints": ["The near-miss", "How AI detected intent", "Revenue impact", "Lessons learned"],
+          "expectedOutcome": "Create urgency through risk awareness"
+        },
+        {
+          "id": "sub-5-4",
+          "title": "Small Team, Big Win: 3-Person Startup Competes with Enterprise",
+          "hook": "How a tiny team automated like a 50-person department",
+          "angle": "David vs Goliath automation story",
+          "keyPoints": ["Resource constraints", "Strategic automation", "Competing up-market", "Growth unlocked"],
+          "expectedOutcome": "Appeal to resource-constrained teams"
+        }
+      ]
+    },
+    {
+      "id": "topic-6",
+      "title": "Future of AI Automation",
+      "date": "2025-09-25",
+      "type": "blog",
+      "status": "topic",
+      "description": "Predictions and preparations for next-gen automation",
+      "keywords": ["future of automation", "AI trends", "automation strategy", "2026 predictions"],
+      "targetAudience": "Innovation leaders and strategists",
+      "subtopics": [
+        {
+          "id": "sub-6-1",
+          "title": "2026 Automation Predictions: What's Real vs Hype",
+          "hook": "5 trends that will actually matter (and 5 that won't)",
+          "angle": "Pragmatic future-casting based on current trajectories",
+          "keyPoints": ["Agentic automation", "Voice-first workflows", "Predictive operations", "Reality checks"],
+          "expectedOutcome": "Position as thought leader"
+        },
+        {
+          "id": "sub-6-2",
+          "title": "Preparing Your Stack for GPT-5 and Beyond",
+          "hook": "Future-proof your automation before the next AI leap",
+          "angle": "Technical preparation guide",
+          "keyPoints": ["Architecture considerations", "Data readiness", "Skill requirements", "Investment priorities"],
+          "expectedOutcome": "Create upgrade urgency"
+        },
+        {
+          "id": "sub-6-3",
+          "title": "When Workflows Become Autonomous Agents",
+          "hook": "Your automation will soon make decisions you didn't program",
+          "angle": "Evolution from automation to autonomous systems",
+          "keyPoints": ["Current capabilities", "Near-term evolution", "Control mechanisms", "Ethical considerations"],
+          "expectedOutcome": "Establish innovation authority"
+        },
+        {
+          "id": "sub-6-4",
+          "title": "The Last Mile Problem in Revenue Automation",
+          "hook": "Why the final 10% of automation is worth 90% of the value",
+          "angle": "Solving the hardest automation challenges",
+          "keyPoints": ["Current limitations", "Emerging solutions", "ROI of completion", "Implementation roadmap"],
+          "expectedOutcome": "Drive advanced use case adoption"
+        }
+      ]
+    },
+    {
+      "id": "topic-7",
+      "title": "Technical Deep-Dives",
+      "date": "2025-09-28",
+      "type": "blog",
+      "status": "topic",
+      "description": "Advanced implementation guides for technical teams",
+      "keywords": ["API integration", "technical guide", "implementation", "architecture"],
+      "targetAudience": "Technical implementers and architects",
+      "subtopics": [
+        {
+          "id": "sub-7-1",
+          "title": "Building Bulletproof Error Handling with AI",
+          "hook": "Errors that fix themselves before you wake up",
+          "angle": "Technical implementation of self-healing systems",
+          "keyPoints": ["Error classification", "Pattern detection", "Auto-remediation", "Escalation logic"],
+          "expectedOutcome": "Enable advanced implementations"
+        },
+        {
+          "id": "sub-7-2",
+          "title": "API Orchestra: Managing 50+ Integrations Without Chaos",
+          "hook": "How to handle when Salesforce, HubSpot, and Slack all fail at once",
+          "angle": "Enterprise integration architecture",
+          "keyPoints": ["Dependency mapping", "Failure isolation", "Recovery strategies", "Performance optimization"],
+          "expectedOutcome": "Solve enterprise complexity"
+        },
+        {
+          "id": "sub-7-3",
+          "title": "Real-Time Data Transformation at Scale",
+          "hook": "Processing 1M events per hour without breaking a sweat",
+          "angle": "Performance optimization guide",
+          "keyPoints": ["Stream processing", "Caching strategies", "Parallel execution", "Cost optimization"],
+          "expectedOutcome": "Enable high-volume use cases"
+        },
+        {
+          "id": "sub-7-4",
+          "title": "Custom AI Models for Industry-Specific Workflows",
+          "hook": "When generic AI isn't enough for your weird industry",
+          "angle": "Advanced customization techniques",
+          "keyPoints": ["Model training basics", "Industry examples", "Integration patterns", "ROI calculation"],
+          "expectedOutcome": "Unlock specialized use cases"
+        }
+      ]
+    }
+  ],
+  "topicMetadata": {
+    "defaultBriefStructure": {
+      "sections": [
+        "Hook & Problem Statement",
+        "Current Reality Analysis",
+        "Solution Introduction",
+        "Implementation Details",
+        "Real Examples & Proof",
+        "Results & ROI",
+        "Key Takeaways",
+        "Next Steps"
+      ],
+      "targetWordCount": {
+        "blog": 2500,
+        "linkedin": 1300,
+        "improve": 2000
+      }
+    },
+    "contentRequirements": {
+      "blog": {
+        "minSections": 8,
+        "includeElements": ["Comparison table", "FAQ section", "Questions answered", "Schema markup"],
+        "seoTargets": {
+          "titleLength": "50-60 chars",
+          "metaDescription": "150-160 chars",
+          "keywordDensity": "1-2%"
+        }
+      },
+      "linkedin": {
+        "structure": ["Hook", "Story/Problem", "Key Insights", "CTA/Question"],
+        "formatting": {
+          "lineBreaks": "Every 2-3 sentences",
+          "hashtags": "3-5 relevant",
+          "emoji": "2-3 maximum"
+        }
+      }
+    }
+  }
+}
