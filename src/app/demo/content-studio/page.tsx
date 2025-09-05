@@ -192,7 +192,7 @@ export default function ContentStudioPage() {
       <div className="max-w-7xl mx-auto px-6 py-8">
         {currentView === 'workflows' && (
           <div className="space-y-8">
-            {/* Quick Stats */}
+            {/* Quick Stats
             <div className="grid grid-cols-4 gap-4">
               <Card className="border border-black/10 shadow-sm">
                 <CardContent className="p-4">
@@ -253,7 +253,7 @@ export default function ContentStudioPage() {
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            </div> */}
 
             {/* Workflow Cards */}
             <div>
