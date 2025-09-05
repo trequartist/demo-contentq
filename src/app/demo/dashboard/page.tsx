@@ -58,7 +58,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Key Metrics */}
-          <div className="grid grid-cols-3 gap-8 mb-12">
+          {/* <div className="grid grid-cols-3 gap-8 mb-12">
             <div>
               <p className="text-5xl font-light text-black">{data.overview.stats.totalContent.value}</p>
               <p className="text-sm text-black/60 mt-1">{data.overview.stats.totalContent.label}</p>
@@ -72,7 +72,7 @@ export default function DashboardPage() {
               <p className="text-5xl font-light text-black">{data.overview.stats.inProgress.value}</p>
               <p className="text-sm text-black/60 mt-1">{data.overview.stats.inProgress.label}</p>
             </div>
-          </div>
+          </div> */}
 
           {/* Main Cards */}
           <div className="grid grid-cols-3 gap-6 mb-12">
@@ -218,7 +218,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Playbook Progress */}
-          {data.playbook && (
+          {/* {data.playbook && (
             <div className="mt-8 p-6 border border-black/10 rounded-lg">
               <div className="flex items-start justify-between mb-4">
                 <div>
@@ -243,10 +243,10 @@ export default function DashboardPage() {
                 </p>
               </div>
             </div>
-          )}
+          )} */}
 
           {/* Competitor Watch */}
-          {data.competitors && (
+          {/* {data.competitors && (
             <div className="mt-8">
               <h2 className="text-sm font-medium text-black mb-4">Competitor Watch</h2>
               <div className="grid grid-cols-3 gap-4">
@@ -270,7 +270,7 @@ export default function DashboardPage() {
                 ))}
               </div>
             </div>
-          )}
+          )} */}
 
           {/* Tip Section */}
           <div className="mt-8 p-4 bg-black/[0.02] rounded-lg flex items-start gap-3">
