@@ -140,7 +140,7 @@
       "critical_gaps": {
         "gap_1": {
           "area": "Purchase-stage content",
-          "impact": "Missing ~$75K MRR from conversion bottleneck",
+          "impact": "Missing ~30% potential growth from conversion bottleneck",
           "current_performance": "2 posts (5.4% of portfolio)",
           "quick_win": "Create 5 comparison guides and ROI calculators",
           "long_term_strategy": "Build 15-20 purchase-stage assets matching industry standard"
@@ -173,7 +173,7 @@
             "Make captures migration traffic",
             "n8n dominates cost-conscious searches"
           ],
-          "revenue_impact": "Missing ~$75,000 MRR from purchase content gap at 2.3% blog-to-customer conversion"
+          "revenue_impact": "Missing ~30% potential growth from purchase content gap at 2.3% blog-to-customer conversion"
         },
         "content_consumption_patterns": {
           "preferred_content_types": [
@@ -207,7 +207,7 @@
         "recommendation_1": {
           "title": "Emergency Purchase-Stage Content Offensive",
           "priority": "CRITICAL",
-          "problem_citations": "Only 2 purchase-stage posts (5.4%) vs industry standard 15-20%, costing ~$75K MRR",
+          "problem_citations": "Only 2 purchase-stage posts (5.4%) vs industry standard 15-20%, costing ~30% potential growth",
           "business_case": "150+ customers/month lost at $500 average contract value",
           "competitive_context": "Zapier has 12 posts, Make has 7, Tines has 6",
           "market_opportunity": "8,100 monthly searches for 'Zapier alternatives cheap' with ZERO Gumloop presence",
@@ -229,7 +229,7 @@
           "business_case": "Technical issues causing 75% less organic visibility than potential",
           "competitive_context": "Competitors average 87-91% scanability scores vs your 0%",
           "market_opportunity": "Quick fixes could increase organic traffic 30-40%",
-          "risk_of_inaction": "Compound effect costs ~$125,000 MRR in lost opportunity"
+          "risk_of_inaction": "Compound effect costs ~30% potential growth in lost opportunity"
         }
       }
     },
@@ -359,7 +359,7 @@
         {
           "finding": "Purchase stage void",
           "supporting_data": "2 posts vs competitor average of 6-12",
-          "portfolio_impact": "Missing ~$75K MRR opportunity",
+          "portfolio_impact": "Missing ~30% potential growth opportunity",
           "urgency_indicator": "CRITICAL - Fix within 30 days"
         },
         {
@@ -524,7 +524,7 @@
           "status": "Critical"
         }
       ],
-      "executive_summary": "Technical SEO failures compound to cause 75% visibility loss worth ~$125K MRR",
+      "executive_summary": "Technical SEO failures compound to cause 75% visibility loss worth ~30% potential growth",
       "pages_analyzed": 163,
       "created_at": "2024-01-15T10:00:00Z",
       "updated_at": "2024-01-15T10:00:00Z"
@@ -664,7 +664,7 @@
           "current_post_count": "2",
           "current_quality_score": "71.43",
           "imbalance_severity": "CRITICAL",
-          "business_impact_citations": "~$75K MRR loss from 150+ lost customers/month",
+          "business_impact_citations": "30% potential growth loss from 150+ lost customers/month",
           "competitor_advantage": "Zapier: 12 posts, Make: 7 posts",
           "content_gap_specifics": "No pricing pages, comparison matrices, or ROI calculators",
           "audience_journey_disruption": "Users research but can't find purchase information",
@@ -692,7 +692,7 @@
           "competitor_dominance_threat": "Make and n8n own this space",
           "content_quality_deficit": "N/A - no content",
           "structural_deficiencies": "N/A - no content",
-          "business_relevance": "8,100 monthly searches worth ~$40K MRR",
+          "business_relevance": "8,100 monthly searches worth ~30% potential growth",
           "market_positioning_risk": "Invisible to highest-intent audience"
         },
         {
@@ -778,7 +778,7 @@
         "rationale": "Transform technical superiority into market dominance",
         "information_source": "163 pages analyzed with competitor benchmarking",
         "key_findings_summary": [
-          "Purchase-stage void costing ~$75K MRR",
+          "Purchase-stage void costing ~30% potential growth",
           "0% content structure adoption losing featured snippets",
           "Invisible to 8,100 monthly 'Zapier alternative' searches",
           "Strong AI capability not translated to user benefits"
@@ -865,15 +865,15 @@
             },
             {
               "source_report": "Revenue analysis",
-              "citations_point": "Missing ~$75K MRR from conversion gap"
+              "citations_point": "Missing ~30% potential growth from conversion gap"
             }
           ],
           "content_gap_identified": "Critical purchase-stage void",
           "expected_content_outcomes": [
             "2.3% blog-to-customer conversion",
             "150+ additional customers/month",
-            "$75K MRR recovery"
-          ]
+            "30% potential growth"
+          ] 
         },
         {
           "rationale": "Own the AI-native automation category",
@@ -951,7 +951,7 @@
           "rationale": "Immediate revenue impact",
           "content_action": "Create 10 purchase-stage assets",
           "priority_level": "CRITICAL - 30 days",
-          "source_insight": "~$75K MRR loss from conversion gap"
+          "source_insight": "30% potential growth from conversion gap"
         },
         {
           "rationale": "Capture switcher market",

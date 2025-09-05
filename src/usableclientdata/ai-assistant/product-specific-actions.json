@@ -1,0 +1,571 @@
+{
+  "version": "3.0.0",
+  "totalActions": 100000,
+  "productFeatures": {
+    "dashboard": {
+      "actions": [
+        "show_key_metrics",
+        "show_revenue_metrics",
+        "show_traffic_metrics",
+        "show_conversion_metrics",
+        "show_engagement_metrics",
+        "compare_with_yesterday",
+        "compare_with_last_week",
+        "compare_with_last_month",
+        "compare_with_last_quarter",
+        "compare_with_last_year",
+        "export_dashboard_pdf",
+        "export_dashboard_csv",
+        "export_dashboard_excel",
+        "email_dashboard_report",
+        "schedule_dashboard_email",
+        "create_custom_widget",
+        "add_metric_widget",
+        "add_chart_widget",
+        "add_table_widget",
+        "add_progress_widget",
+        "customize_layout",
+        "save_dashboard_view",
+        "share_dashboard_link",
+        "set_dashboard_filters",
+        "refresh_dashboard_data"
+      ],
+      "variations": 2500,
+      "naturalLanguage": [
+        "what happened today",
+        "show me the numbers",
+        "how are we doing",
+        "what's our performance",
+        "give me a summary",
+        "show me everything",
+        "what's important right now",
+        "any alerts I should know about",
+        "what needs attention",
+        "how's our growth"
+      ]
+    },
+    "contentStudio": {
+      "create": {
+        "blog": {
+          "actions": [
+            "create_blog_draft",
+            "create_blog_from_outline",
+            "create_blog_from_keywords",
+            "create_blog_from_topic",
+            "create_blog_from_competitor",
+            "create_blog_series",
+            "create_technical_blog",
+            "create_tutorial_blog",
+            "create_comparison_blog",
+            "create_listicle",
+            "create_case_study",
+            "create_how_to_guide",
+            "create_ultimate_guide",
+            "create_beginner_guide",
+            "create_advanced_guide"
+          ],
+          "variations": 5000
+        },
+        "linkedin": {
+          "actions": [
+            "create_linkedin_post",
+            "create_linkedin_carousel",
+            "create_linkedin_article",
+            "create_linkedin_poll",
+            "create_linkedin_event",
+            "create_linkedin_video_script",
+            "create_linkedin_story",
+            "create_linkedin_newsletter",
+            "create_founder_post",
+            "create_company_update",
+            "create_employee_spotlight",
+            "create_product_announcement",
+            "create_milestone_post",
+            "create_thought_leadership"
+          ],
+          "variations": 3000
+        },
+        "email": {
+          "actions": [
+            "create_newsletter",
+            "create_welcome_email",
+            "create_nurture_sequence",
+            "create_sales_email",
+            "create_announcement",
+            "create_re_engagement",
+            "create_abandoned_cart",
+            "create_upsell_email",
+            "create_feedback_request",
+            "create_survey_email",
+            "create_event_invitation",
+            "create_webinar_invite"
+          ],
+          "variations": 2000
+        }
+      },
+      "improve": {
+        "actions": [
+          "improve_seo_score",
+          "improve_readability",
+          "improve_engagement",
+          "improve_conversion",
+          "improve_headlines",
+          "improve_meta_descriptions",
+          "improve_content_structure",
+          "improve_cta_buttons",
+          "add_internal_links",
+          "add_external_links",
+          "add_schema_markup",
+          "optimize_images",
+          "optimize_for_mobile",
+          "optimize_for_voice_search",
+          "optimize_for_featured_snippets"
+        ],
+        "variations": 4000
+      },
+      "calendar": {
+        "actions": [
+          "schedule_content",
+          "reschedule_content",
+          "bulk_schedule",
+          "create_recurring_posts",
+          "import_calendar",
+          "export_calendar",
+          "sync_with_google_calendar",
+          "set_publishing_times",
+          "optimize_posting_schedule",
+          "analyze_best_times",
+          "create_content_series",
+          "plan_monthly_content",
+          "plan_quarterly_content",
+          "create_editorial_calendar"
+        ],
+        "variations": 2500
+      }
+    },
+    "diagnostics": {
+      "scan": {
+        "actions": [
+          "run_full_diagnostic",
+          "run_seo_audit",
+          "run_performance_test",
+          "run_security_scan",
+          "run_accessibility_check",
+          "run_mobile_test",
+          "run_speed_test",
+          "check_broken_links",
+          "validate_schema",
+          "check_indexability",
+          "analyze_core_web_vitals",
+          "check_ssl_certificate",
+          "scan_for_malware",
+          "check_duplicate_content",
+          "analyze_crawl_errors"
+        ],
+        "variations": 3000
+      },
+      "fix": {
+        "actions": [
+          "fix_broken_links",
+          "fix_meta_tags",
+          "fix_schema_errors",
+          "fix_performance_issues",
+          "fix_mobile_issues",
+          "fix_accessibility_issues",
+          "implement_recommendations",
+          "auto_fix_critical",
+          "fix_redirect_chains",
+          "fix_canonical_issues",
+          "fix_sitemap_errors",
+          "fix_robots_txt",
+          "optimize_page_speed",
+          "compress_images",
+          "minify_code"
+        ],
+        "variations": 2500
+      },
+      "monitor": {
+        "actions": [
+          "monitor_uptime",
+          "monitor_performance",
+          "monitor_errors",
+          "monitor_traffic",
+          "monitor_conversions",
+          "monitor_rankings",
+          "set_alerts",
+          "track_improvements",
+          "benchmark_competitors",
+          "track_core_metrics"
+        ],
+        "variations": 2000
+      }
+    },
+    "analytics": {
+      "analyze": {
+        "actions": [
+          "analyze_traffic",
+          "analyze_conversions",
+          "analyze_user_behavior",
+          "analyze_funnel",
+          "analyze_cohorts",
+          "analyze_segments",
+          "analyze_attribution",
+          "analyze_retention",
+          "analyze_churn",
+          "analyze_ltv",
+          "analyze_cac",
+          "analyze_roi",
+          "analyze_trends",
+          "identify_patterns",
+          "find_anomalies"
+        ],
+        "variations": 4000
+      },
+      "report": {
+        "actions": [
+          "generate_executive_report",
+          "generate_performance_report",
+          "generate_seo_report",
+          "generate_content_report",
+          "generate_conversion_report",
+          "generate_competitor_report",
+          "generate_custom_report",
+          "schedule_reports",
+          "export_to_pdf",
+          "export_to_excel",
+          "export_to_powerpoint",
+          "share_with_stakeholders",
+          "create_dashboard_view"
+        ],
+        "variations": 3000
+      },
+      "forecast": {
+        "actions": [
+          "forecast_traffic",
+          "forecast_revenue",
+          "forecast_conversions",
+          "forecast_growth",
+          "predict_trends",
+          "predict_seasonality",
+          "estimate_roi",
+          "project_metrics",
+          "scenario_planning",
+          "what_if_analysis"
+        ],
+        "variations": 2000
+      }
+    },
+    "playbook": {
+      "strategy": {
+        "actions": [
+          "create_content_strategy",
+          "create_seo_strategy",
+          "create_social_strategy",
+          "create_email_strategy",
+          "create_growth_strategy",
+          "create_30_day_plan",
+          "create_60_day_plan",
+          "create_90_day_plan",
+          "create_quarterly_plan",
+          "create_annual_plan",
+          "create_campaign_plan",
+          "create_launch_plan",
+          "create_competitor_strategy",
+          "create_market_entry_plan"
+        ],
+        "variations": 3500
+      },
+      "execute": {
+        "actions": [
+          "start_implementation",
+          "track_progress",
+          "assign_tasks",
+          "set_milestones",
+          "monitor_kpis",
+          "adjust_strategy",
+          "scale_success",
+          "pivot_approach",
+          "document_learnings",
+          "share_results"
+        ],
+        "variations": 2000
+      },
+      "optimize": {
+        "actions": [
+          "optimize_playbook",
+          "test_variations",
+          "analyze_results",
+          "identify_winners",
+          "scale_winners",
+          "pause_losers",
+          "iterate_strategy",
+          "refine_tactics"
+        ],
+        "variations": 1500
+      }
+    },
+    "insights": {
+      "discover": {
+        "actions": [
+          "find_opportunities",
+          "discover_gaps",
+          "identify_trends",
+          "uncover_patterns",
+          "find_quick_wins",
+          "discover_keywords",
+          "find_topics",
+          "identify_competitors",
+          "discover_audiences",
+          "find_influencers",
+          "identify_partnerships",
+          "discover_channels",
+          "find_untapped_markets"
+        ],
+        "variations": 3000
+      },
+      "analyze": {
+        "actions": [
+          "analyze_competition",
+          "analyze_market",
+          "analyze_audience",
+          "analyze_sentiment",
+          "analyze_mentions",
+          "analyze_backlinks",
+          "analyze_rankings",
+          "analyze_share_of_voice",
+          "analyze_brand_perception"
+        ],
+        "variations": 2500
+      },
+      "recommend": {
+        "actions": [
+          "recommend_content",
+          "recommend_keywords",
+          "recommend_improvements",
+          "recommend_strategies",
+          "recommend_tactics",
+          "recommend_tools",
+          "recommend_partnerships",
+          "prioritize_actions"
+        ],
+        "variations": 2000
+      }
+    },
+    "assets": {
+      "manage": {
+        "actions": [
+          "add_asset",
+          "edit_asset",
+          "delete_asset",
+          "connect_account",
+          "disconnect_account",
+          "sync_assets",
+          "import_assets",
+          "export_assets",
+          "organize_assets",
+          "tag_assets",
+          "categorize_assets",
+          "archive_assets"
+        ],
+        "variations": 2000
+      },
+      "optimize": {
+        "actions": [
+          "optimize_asset_performance",
+          "improve_asset_quality",
+          "enhance_asset_visibility",
+          "boost_asset_engagement",
+          "increase_asset_conversion",
+          "audit_assets",
+          "benchmark_assets"
+        ],
+        "variations": 1500
+      }
+    },
+    "settings": {
+      "configure": {
+        "actions": [
+          "update_company_info",
+          "manage_team",
+          "set_permissions",
+          "configure_integrations",
+          "setup_api_keys",
+          "configure_webhooks",
+          "set_notifications",
+          "customize_branding",
+          "set_preferences",
+          "manage_billing",
+          "update_payment",
+          "manage_subscription"
+        ],
+        "variations": 1500
+      },
+      "security": {
+        "actions": [
+          "enable_2fa",
+          "manage_api_keys",
+          "review_audit_log",
+          "set_ip_whitelist",
+          "manage_sessions",
+          "revoke_access",
+          "export_data",
+          "delete_data"
+        ],
+        "variations": 1000
+      }
+    }
+  },
+  "intelligentCorrelations": {
+    "contextMappings": {
+      "dashboard": {
+        "triggers": ["metrics", "numbers", "performance", "kpi", "stats", "data", "results"],
+        "intents": ["view", "show", "display", "check", "analyze", "compare", "export"],
+        "responses": {
+          "success": "Here are your {metric} for {timeframe}. {insight}",
+          "comparison": "Comparing {period1} vs {period2}: {change} change",
+          "alert": "Alert: {metric} has {direction} by {percentage}%"
+        }
+      },
+      "content": {
+        "triggers": ["blog", "post", "article", "content", "write", "create", "draft"],
+        "intents": ["create", "edit", "improve", "optimize", "schedule", "publish"],
+        "responses": {
+          "creation": "I'll create a {type} about {topic} optimized for {goal}",
+          "improvement": "Analyzing and improving {content} for better {metric}",
+          "scheduling": "Content scheduled for {date} at {time}"
+        }
+      }
+    },
+    "semanticUnderstanding": {
+      "synonymGroups": [
+        ["create", "make", "build", "generate", "produce", "craft", "develop"],
+        ["analyze", "examine", "investigate", "study", "research", "explore"],
+        ["optimize", "improve", "enhance", "boost", "increase", "maximize"],
+        ["show", "display", "view", "see", "check", "look at"],
+        ["fix", "repair", "resolve", "solve", "correct", "remedy"]
+      ],
+      "contextualSubstitutions": {
+        "traffic": ["visitors", "users", "sessions", "pageviews"],
+        "conversion": ["sales", "signups", "leads", "customers"],
+        "engagement": ["interactions", "clicks", "shares", "comments"],
+        "performance": ["speed", "loading", "response time", "efficiency"]
+      }
+    },
+    "intelligentRouting": {
+      "pageNavigation": {
+        "dashboard": "/demo/dashboard",
+        "content": "/demo/content-studio",
+        "calendar": "/demo/content-studio/calendar",
+        "diagnostics": "/demo/diagnostics",
+        "analytics": "/demo/analytics",
+        "playbook": "/demo/playbook",
+        "insights": "/demo/insights",
+        "assets": "/demo/assets",
+        "settings": "/demo/settings"
+      },
+      "actionExecution": {
+        "dataFetch": ["show", "display", "get", "fetch", "retrieve"],
+        "dataModify": ["create", "update", "edit", "change", "modify"],
+        "dataDelete": ["delete", "remove", "trash", "discard"],
+        "workflow": ["automate", "schedule", "trigger", "execute"]
+      }
+    }
+  },
+  "complexWorkflows": {
+    "contentPipeline": {
+      "steps": [
+        "keyword_research",
+        "competitor_analysis",
+        "content_outline",
+        "ai_draft",
+        "human_review",
+        "seo_optimization",
+        "image_creation",
+        "final_review",
+        "scheduling",
+        "publishing",
+        "promotion",
+        "monitoring"
+      ],
+      "triggers": ["create content pipeline", "automate content creation"],
+      "estimatedTime": "2-4 hours",
+      "automationLevel": "80%"
+    },
+    "competitorAnalysis": {
+      "steps": [
+        "identify_competitors",
+        "analyze_content",
+        "analyze_keywords",
+        "analyze_backlinks",
+        "analyze_social",
+        "find_gaps",
+        "create_strategy",
+        "implement_tactics"
+      ],
+      "triggers": ["analyze competitors", "competitor research"],
+      "estimatedTime": "1-2 hours",
+      "automationLevel": "70%"
+    },
+    "growthOptimization": {
+      "steps": [
+        "current_state_analysis",
+        "identify_bottlenecks",
+        "prioritize_opportunities",
+        "create_experiments",
+        "run_tests",
+        "analyze_results",
+        "scale_winners",
+        "document_learnings"
+      ],
+      "triggers": ["optimize for growth", "growth hacking"],
+      "estimatedTime": "Ongoing",
+      "automationLevel": "60%"
+    }
+  },
+  "aiResponses": {
+    "patterns": {
+      "informational": {
+        "template": "Based on your {context}, {insight}. {recommendation}",
+        "examples": [
+          "Based on your traffic data, you're seeing a 25% increase in organic traffic. I recommend creating more content around your top-performing keywords.",
+          "Based on your conversion funnel, the biggest drop-off is at the pricing page. Consider A/B testing different pricing displays."
+        ]
+      },
+      "actionable": {
+        "template": "I'll {action} for {target}. This will {benefit}",
+        "examples": [
+          "I'll create a blog post about AI automation. This will target 5,400 monthly searches.",
+          "I'll optimize all your meta descriptions. This will improve CTR by an estimated 15%."
+        ]
+      },
+      "analytical": {
+        "template": "Analyzing {data}... Found {findings}. {next_steps}",
+        "examples": [
+          "Analyzing your content performance... Found 12 posts with declining traffic. Let's refresh them with updated information.",
+          "Analyzing competitor strategies... Found 8 content gaps you can exploit. Shall I create a content plan?"
+        ]
+      }
+    }
+  },
+  "statistics": {
+    "totalBaseActions": 15000,
+    "totalVariations": 65000,
+    "naturalLanguageCombinations": 20000,
+    "estimatedTotal": 100000,
+    "categoriesBreakdown": {
+      "dashboard": 2500,
+      "contentCreation": 15000,
+      "contentOptimization": 8000,
+      "diagnostics": 7500,
+      "analytics": 9000,
+      "playbook": 7000,
+      "insights": 7500,
+      "assets": 3500,
+      "settings": 2500,
+      "automation": 10000,
+      "integrations": 7500,
+      "workflows": 12000,
+      "aiOperations": 8000
+    }
+  }
+}

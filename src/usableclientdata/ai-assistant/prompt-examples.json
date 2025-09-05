@@ -1,0 +1,275 @@
+{
+  "categories": {
+    "navigation": {
+      "title": "🧭 Navigation",
+      "description": "Move around the product",
+      "examples": [
+        "go to dashboard",
+        "open content studio",
+        "show me analytics",
+        "take me to insights",
+        "navigate to calendar",
+        "bring me to settings",
+        "switch to playbook",
+        "move to diagnostics",
+        "jump to assets",
+        "head to the homepage"
+      ]
+    },
+    "content_creation": {
+      "title": "✍️ Content Creation",
+      "description": "Create any type of content",
+      "examples": [
+        "create a blog post",
+        "write article about AI",
+        "make linkedin post",
+        "draft email newsletter",
+        "compose social media content",
+        "generate blog about machine learning",
+        "build a case study",
+        "develop tutorial content",
+        "start new campaign",
+        "produce marketing copy"
+      ]
+    },
+    "quick_actions": {
+      "title": "⚡ Quick Actions",
+      "description": "Common tasks and shortcuts",
+      "examples": [
+        "fix all issues",
+        "export to PDF",
+        "download CSV report",
+        "refresh data",
+        "save changes",
+        "publish content",
+        "schedule for tomorrow",
+        "send to team",
+        "share with stakeholders",
+        "duplicate this"
+      ]
+    },
+    "analysis": {
+      "title": "📊 Analysis & Reports",
+      "description": "Get insights and data",
+      "examples": [
+        "show today's metrics",
+        "analyze last week performance",
+        "what's trending",
+        "compare this month to last",
+        "generate monthly report",
+        "show conversion funnel",
+        "display traffic sources",
+        "check engagement rates",
+        "review content performance",
+        "benchmark against competitors"
+      ]
+    },
+    "workflow": {
+      "title": "🔄 Workflows & Automation",
+      "description": "Automate complex tasks",
+      "examples": [
+        "start content pipeline",
+        "run full diagnostic",
+        "automate social posting",
+        "set up email sequence",
+        "create recurring task",
+        "schedule weekly reports",
+        "trigger campaign",
+        "execute playbook",
+        "launch optimization",
+        "begin A/B test"
+      ]
+    },
+    "management": {
+      "title": "📁 Content Management",
+      "description": "Organize and manage content",
+      "examples": [
+        "show my documents",
+        "find blog posts",
+        "search for AI content",
+        "filter by status",
+        "sort by date",
+        "archive old content",
+        "restore deleted items",
+        "bulk edit tags",
+        "organize by category",
+        "clean up drafts"
+      ]
+    },
+    "optimization": {
+      "title": "🚀 Optimization",
+      "description": "Improve and optimize",
+      "examples": [
+        "optimize for SEO",
+        "improve page speed",
+        "enhance mobile experience",
+        "boost conversion rate",
+        "fix broken links",
+        "add schema markup",
+        "compress images",
+        "minify code",
+        "improve accessibility",
+        "maximize engagement"
+      ]
+    },
+    "calendar": {
+      "title": "📅 Scheduling",
+      "description": "Plan and schedule content",
+      "examples": [
+        "schedule post for 2pm",
+        "plan next week content",
+        "set recurring posts",
+        "show calendar view",
+        "reschedule to Monday",
+        "find best posting time",
+        "queue content",
+        "delay publication",
+        "advance schedule",
+        "bulk schedule posts"
+      ]
+    },
+    "modals": {
+      "title": "🪟 Modals & Dialogs",
+      "description": "Open specific interfaces",
+      "examples": [
+        "open fix modal",
+        "show implementation options",
+        "display export menu",
+        "close all dialogs",
+        "open settings panel",
+        "show help dialog",
+        "display shortcuts",
+        "open preview",
+        "show details",
+        "expand options"
+      ]
+    },
+    "search": {
+      "title": "🔍 Search & Find",
+      "description": "Locate information",
+      "examples": [
+        "search for keywords",
+        "find content gaps",
+        "discover opportunities",
+        "locate broken links",
+        "identify issues",
+        "spot trends",
+        "uncover insights",
+        "detect anomalies",
+        "find duplicate content",
+        "search competitors"
+      ]
+    },
+    "complex": {
+      "title": "🎯 Complex Commands",
+      "description": "Multi-step operations",
+      "examples": [
+        "go to diagnostics and fix all SEO issues",
+        "create blog about AI and optimize for SEO",
+        "analyze competitors and create counter strategy",
+        "export all reports and send to team",
+        "schedule all drafts for next week",
+        "find trending topics and create content",
+        "run diagnostics then implement fixes",
+        "generate report and email to stakeholders",
+        "optimize all pages for mobile",
+        "analyze performance and suggest improvements"
+      ]
+    },
+    "casual": {
+      "title": "💬 Casual Language",
+      "description": "Natural conversational commands",
+      "examples": [
+        "what's new",
+        "how are we doing",
+        "gimme the stats",
+        "make it better",
+        "fix this mess",
+        "show me everything",
+        "what's broken",
+        "help me out",
+        "do the thing",
+        "make it happen"
+      ]
+    },
+    "questions": {
+      "title": "❓ Questions",
+      "description": "Ask about anything",
+      "examples": [
+        "what can I do here?",
+        "how do I create content?",
+        "where are my drafts?",
+        "when should I post?",
+        "why is traffic down?",
+        "who are my top competitors?",
+        "what's the best time to publish?",
+        "how can I improve SEO?",
+        "where do I find analytics?",
+        "what needs attention?"
+      ]
+    },
+    "typos_work": {
+      "title": "🤖 Typo Tolerance",
+      "description": "Don't worry about spelling!",
+      "examples": [
+        "craete blog post → create blog post",
+        "naviagte to dashbaord → navigate to dashboard",
+        "anayltics report → analytics report",
+        "shcedule for tomorow → schedule for tomorrow",
+        "exprot as PDF → export as PDF",
+        "diagnositcs check → diagnostics check",
+        "insigths page → insights page",
+        "calender view → calendar view",
+        "playboko strategy → playbook strategy",
+        "optimze SEO → optimize SEO"
+      ]
+    },
+    "emoji": {
+      "title": "😊 Emoji Commands",
+      "description": "Use emojis as shortcuts",
+      "examples": [
+        "📝 → create content",
+        "📊 → show analytics",
+        "📅 → open calendar",
+        "🔍 → search",
+        "💾 → save",
+        "📤 → export",
+        "🗑️ → delete",
+        "⚙️ → settings",
+        "🏠 → dashboard",
+        "✅ → complete task"
+      ]
+    }
+  },
+  "quickTips": [
+    "💡 You can use natural language - just type what you want to do!",
+    "⚡ Press Enter to execute, Tab to autocomplete",
+    "🎯 Commands work even with typos and spelling mistakes",
+    "🔄 Use 'and' to chain multiple actions together",
+    "📝 Start typing and see suggestions appear",
+    "🌟 The more you use it, the smarter it gets",
+    "🚀 Combine commands for complex workflows"
+  ],
+  "popularCommands": [
+    "create blog post",
+    "go to dashboard",
+    "show analytics",
+    "fix all issues",
+    "export report",
+    "schedule content",
+    "open calendar",
+    "analyze performance",
+    "optimize SEO",
+    "generate insights"
+  ],
+  "powerUserCommands": [
+    "create blog about {topic} and optimize for SEO then schedule for best time",
+    "analyze all competitors, find gaps, and create content strategy",
+    "run full diagnostic, fix critical issues, and generate report",
+    "export all data from last month and email to team@company.com",
+    "find underperforming content, generate improvements, and republish",
+    "create linkedin carousel from top blog posts and schedule for next week",
+    "benchmark against top 3 competitors and create action plan",
+    "analyze user behavior, identify drop-offs, and optimize funnel"
+  ]
+}

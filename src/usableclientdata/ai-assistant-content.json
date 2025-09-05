@@ -1,0 +1,77 @@
+{
+  "contexts": {
+    "insights": {
+      "welcomeMessage": "I'm here to help you understand your insights and create actionable strategies. What would you like to explore?",
+      "title": "Insights Helper",
+      "suggestions": [
+        { "label": "Analyze top opportunities", "action": "analyze_opportunities", "icon": "Lightbulb" },
+        { "label": "Generate action plan", "action": "generate_action_plan", "icon": "Target" },
+        { "label": "Compare with competitors", "action": "compare_competitors", "icon": "TrendingUp" },
+        { "label": "Find content gaps", "action": "find_gaps", "icon": "Brain" }
+      ]
+    },
+    "analytics": {
+      "welcomeMessage": "Let me help you understand your analytics data and identify optimization opportunities. What metrics interest you?",
+      "title": "Analytics Expert",
+      "suggestions": [
+        { "label": "Explain metrics", "action": "explain_metrics", "icon": "BarChart3" },
+        { "label": "Identify trends", "action": "identify_trends", "icon": "TrendingUp" },
+        { "label": "Optimization suggestions", "action": "get_optimizations", "icon": "Zap" },
+        { "label": "Export report", "action": "export_report", "icon": "FileText" }
+      ]
+    },
+    "playbook": {
+      "welcomeMessage": "I can help you create and refine playbooks, generate content ideas, and optimize your strategy. How can I assist?",
+      "title": "Strategy Builder",
+      "suggestions": [
+        { "label": "Create new playbook", "action": "create_playbook", "icon": "Plus" },
+        { "label": "Refine strategy", "action": "refine_strategy", "icon": "RefreshCw" },
+        { "label": "Generate content ideas", "action": "generate_ideas", "icon": "Lightbulb" },
+        { "label": "Timeline optimization", "action": "optimize_timeline", "icon": "Target" }
+      ]
+    }
+  },
+  "prompts": {
+    "analyze_opportunities": "Analyze my top opportunities",
+    "generate_action_plan": "Generate an action plan based on insights",
+    "compare_competitors": "Compare my performance with competitors",
+    "find_gaps": "Find content gaps I should address",
+    "explain_metrics": "Explain my current metrics",
+    "identify_trends": "Identify trends in my data",
+    "get_optimizations": "Suggest optimizations",
+    "export_report": "Export analytics report",
+    "create_playbook": "Create a new playbook",
+    "refine_strategy": "Refine my current strategy",
+    "generate_ideas": "Generate content ideas",
+    "optimize_timeline": "Optimize my content timeline"
+  },
+  "responses": {
+    "analyze_opportunities": "Based on your data, here are your top 3 opportunities:\n\n1. **Zero visibility for \"Zapier too expensive\"** - 8,100 monthly searches\n   • Potential impact: $50K MRR\n   • Action: Create comparison page immediately\n   \n2. **Migration content opportunity** - 12.3% conversion rate\n   • 6x better than average content\n   • Action: Create 5 migration guides this month\n   \n3. **LinkedIn personal account** - 10x reach potential\n   • 561% more engagement than company pages\n   • Action: Connect founder account today",
+    
+    "generate_action_plan": "Here's your prioritized 30-day action plan:\n\n**Week 1: Quick Wins**\n• Add structured data to all existing posts (8 hours)\n• Create \"Zapier too expensive\" comparison page (4 hours)\n• Connect founder LinkedIn account (30 minutes)\n\n**Week 2-3: Content Creation**\n• Develop 3 migration guides\n• Launch weekly LinkedIn posts from founder\n• Update top 5 performing posts with AI optimization\n\n**Week 4: Scale & Measure**\n• Implement content velocity increase to 15 posts/month\n• Set up tracking for all new initiatives\n• Review metrics and adjust strategy",
+    
+    "create_playbook": "I'll help you create a new playbook. Let's start with your goals:\n\n**Playbook Framework:**\n1. Define your primary objective\n2. Identify target audience segments\n3. Map content themes to buyer journey\n4. Set measurable KPIs\n5. Create timeline and milestones\n\nWhat's your main business goal for this playbook?\n• Increase brand awareness?\n• Drive conversions?\n• Establish thought leadership?\n• Generate qualified leads?",
+    
+    "explain_metrics": "Here's what your metrics tell us:\n\n**Traffic Growth: +127%** \nYour organic traffic has more than doubled, primarily from long-tail keywords. This indicates strong content-market fit.\n\n**AI Visibility: 78.5%**\nYou're appearing in most AI-powered search results for your category, but competitors still dominate for high-volume terms.\n\n**Conversion Rate: 7.2%**\n3x industry average! Your content effectively converts visitors, especially migration guides (12.3%).\n\n**Content Gap: 40%**\nYou're missing critical comparison and pricing content that drives bottom-funnel conversions.",
+    
+    "identify_trends": "I've identified 3 significant trends in your data:\n\n📈 **Positive Trends:**\n• Migration content consistently outperforms (12.3% conversion)\n• AI visibility growing 12% month-over-month\n• Long-form content gets 3x more engagement\n\n📉 **Concerning Patterns:**\n• Publishing velocity declining (3 posts vs competitors' 32)\n• Social engagement dropped 40% last month\n• Missing high-intent search traffic\n\n💡 **Opportunities:**\n• Friday posts get 3.2x engagement\n• Video content showing 450% growth potential\n• Competitor weaknesses in technical content",
+    
+    "refine_strategy": "Based on your current playbook performance, here are refinements:\n\n**What's Working (Keep):**\n• Migration-focused content strategy\n• Technical deep-dives for developers\n• Friday publishing schedule\n\n**What to Adjust:**\n• Increase velocity from 3 to 15 posts/month\n• Add comparison content (missing entirely)\n• Implement founder-led LinkedIn strategy\n\n**What to Stop:**\n• Generic industry news posts (0.5% engagement)\n• Unfocused social media presence\n• Ignoring high-intent keywords\n\n**New Additions:**\n• Interactive ROI calculators\n• Weekly competitor analysis posts\n• Customer success story series",
+    
+    "default": "I'm processing your request. Here's what I found..."
+  },
+  "followUpActions": {
+    "analyze_opportunities": [
+      { "label": "Create action plan", "action": "generate_action_plan", "icon": "Target" },
+      { "label": "View detailed metrics", "action": "view_metrics", "icon": "BarChart3" }
+    ],
+    "create_playbook": [
+      { "label": "Use AI template", "action": "use_template", "icon": "FileText" },
+      { "label": "Start from scratch", "action": "start_blank", "icon": "Plus" }
+    ],
+    "identify_trends": [
+      { "label": "Get recommendations", "action": "get_recommendations", "icon": "Lightbulb" },
+      { "label": "Export findings", "action": "export_trends", "icon": "FileText" }
+    ]
+  }
+}

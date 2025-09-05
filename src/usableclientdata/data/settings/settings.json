@@ -1,4 +1,13 @@
 {
+  "tabs": [
+    { "id": "general", "name": "Company", "icon": "Settings" },
+    { "id": "account", "name": "Team", "icon": "User" },
+    { "id": "content", "name": "Content", "icon": "Brain" },
+    { "id": "integrations", "name": "Integrations", "icon": "Zap" },
+    { "id": "ai", "name": "AI Settings", "icon": "Brain" },
+    { "id": "billing", "name": "Billing", "icon": "CreditCard" },
+    { "id": "security", "name": "Security", "icon": "Shield" }
+  ],
   "account": {
     "company": {
       "name": "Gumloop",

@@ -1,0 +1,53 @@
+{
+  "navigation": [
+    {
+      "name": "Dashboard",
+      "href": "/demo/dashboard",
+      "icon": "LayoutDashboard",
+      "description": "Overview and key metrics",
+      "badge": null
+    },
+    {
+      "name": "Content Studio",
+      "href": "/demo/content-studio",
+      "icon": "FileText",
+      "description": "Create and manage content",
+      "badge": null
+    },
+    {
+      "name": "Diagnostics",
+      "href": "/demo/diagnostics",
+      "icon": "Activity",
+      "description": "Performance analysis",
+      "badge": null
+    },
+    {
+      "name": "Playbook",
+      "href": "/demo/playbook",
+      "icon": "BookOpen",
+      "description": "Strategic content planning",
+      "badge": null
+    },
+    {
+      "name": "Insights",
+      "href": "/demo/insights",
+      "icon": "Brain",
+      "description": "AI-powered insights",
+      "badge": null
+    },
+    {
+      "name": "Analytics",
+      "href": "/demo/analytics",
+      "icon": "BarChart3",
+      "description": "Performance tracking",
+      "badge": null
+    },
+    {
+      "name": "Settings",
+      "href": "/demo/settings",
+      "icon": "Settings",
+      "description": "System configuration",
+      "badge": null
+    }
+  ]
+}

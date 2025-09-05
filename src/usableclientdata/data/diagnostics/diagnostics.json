@@ -103,13 +103,13 @@
     "criticalMetrics": {
       "aiAutomationVisibility": 78.5,
       "generalAutomationAwareness": 0.01,
-      "purchaseStageGap": "$75K MRR",
+      "purchaseStageGap": "30% potential growth",
       "competitorPosition": "Behind"
     }
   },
   "quickActions": [
     "Add structured data to all posts (8 hour effort, HIGH ROI)",
-    "Create Zapier comparison page (4 hour effort, $50K MRR potential)",
+    "Create Zapier comparison page (4 hour effort, 30% potential growth)",
     "Fix missing H1 tags on 46% of pages (4 hour effort)",
     "Build migration calculator (16 hour effort, 12% conversion rate)"
   ],
@@ -159,21 +159,21 @@
       "opportunity": "Capture 'Zapier too expensive' traffic",
       "volume": 8100,
       "difficulty": "Medium",
-      "potentialValue": "$50K MRR",
+      "potentialValue": "30% potential growth",
       "effort": "40 hours"
-    },
+    },  
     {
       "opportunity": "Build migration content hub",
       "volume": 17400,
       "difficulty": "High",
-      "potentialValue": "$75K MRR",
+      "potentialValue": "30% potential growth",
       "effort": "80 hours"
     },
     {
       "opportunity": "Own 'AI automation' category",
       "volume": 4400,
       "difficulty": "Low",
-      "potentialValue": "$30K MRR",
+      "potentialValue": "30% potential growth",
       "effort": "60 hours"
     }
   ]

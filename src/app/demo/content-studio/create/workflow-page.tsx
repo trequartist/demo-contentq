@@ -65,7 +65,7 @@ export default function WorkflowPage() {
           relevance: 95,
           searchVolume: '8,100/mo',
           competition: 'Low',
-          opportunity: '$50K MRR potential',
+          opportunity: '30% potential growth',
           keywords: ['AI automation', 'workflow failures', 'RevOps']
         },
         ...workflowContent.stages.topics.alternatives.slice(0, 2).map((alt, idx) => ({
@@ -75,7 +75,7 @@ export default function WorkflowPage() {
           relevance: 85 - (idx * 5),
           searchVolume: `${6500 - (idx * 1000)}/mo`,
           competition: idx === 0 ? 'Medium' : 'Low',
-          opportunity: `$${35 - (idx * 10)}K MRR potential`,
+          opportunity: `${100 - (idx * 10)}% time saved potential`,
           keywords: ['automation', 'workflows', 'business']
         }))
       ];
@@ -271,8 +271,8 @@ export default function WorkflowPage() {
                       </p>
                       <div className="mt-2 space-y-1">
                         <div className="flex items-center justify-between text-xs">
-                          <span className="text-yellow-700">Potential MRR</span>
-                          <span className="font-medium text-yellow-900">$50K</span>
+                          <span className="text-yellow-700">Potential growth</span>
+                          <span className="font-medium text-yellow-900">30%</span>
                         </div>
                         <div className="flex items-center justify-between text-xs">
                           <span className="text-yellow-700">Competition</span>
@@ -610,10 +610,10 @@ export default function WorkflowPage() {
                   <DollarSign className="w-8 h-8 text-purple-500 mx-auto mb-2" />
                   <h3 className="font-semibold text-gray-900">Revenue Impact</h3>
                   <p className="text-2xl font-bold text-gray-900 mt-2">$25-50K</p>
-                  <p className="text-sm text-gray-600">Potential MRR</p>
+                  <p className="text-sm text-gray-600">Potential growth</p>
                 </CardContent>
               </Card>
-            </div>
+            </div>    
 
             {/* Performance Insights */}
             {workflowContent.performance && (

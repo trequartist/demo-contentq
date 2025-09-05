@@ -93,7 +93,7 @@ export default function AssetsPage() {
           </div>
           <div className="p-4 border border-black/10 rounded-lg">
             <p className="text-2xl font-light text-black">{assetsData.summary.conversionValue}</p>
-            <p className="text-sm text-black/60">MRR from Content</p>
+            <p className="text-sm text-black/60">Conversion from Content</p>
           </div>
         </div>
 

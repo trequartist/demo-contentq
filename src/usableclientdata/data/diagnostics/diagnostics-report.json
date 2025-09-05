@@ -174,7 +174,7 @@
           "tines": 6,
           "industryStandard": "15-20%"
         },
-        "costOfGap": "$75,000 MRR potential loss",
+        "costOfGap": "30% potential growth",
         "missingElements": [
           "Pricing transparency content",
           "Comparison matrices",
@@ -487,7 +487,7 @@
     "compoundEffect": {
       "calculation": "Technical Issues + Thin Content + No Structure + Low Velocity",
       "result": "75% Less Organic Visibility Than Potential",
-      "costEstimate": "$125,000 MRR in lost opportunity"
+      "costEstimate": "30% potential growth"
     },
     "technicalAudit": {
       "pagesAnalyzed": 163,

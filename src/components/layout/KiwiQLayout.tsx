@@ -3,84 +3,18 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import {
-  LayoutDashboard,
-  FileText,
-  BarChart3,
-  BookOpen,
-  Settings,
-  Search,
-  Bell,
-  User,
-  ChevronLeft,
-  ChevronRight,
-  Zap,
-  Layers,
-  Activity,
-  Brain,
-  LogOut
-} from 'lucide-react';
+import * as Icons from 'lucide-react';
 import { DEMO_CONFIG } from '@/lib/demo/demo-config';
 import { useAuth } from '@/lib/auth/auth-context';
+import navigationData from '@/usableclientdata/navigation.json';
 
 interface NavigationItem {
   name: string;
   href: string;
-  icon: React.ComponentType<any>;
-  badge?: string | number;
+  icon: string;
+  badge?: string | number | null;
   description?: string;
 }
-
-const navigation: NavigationItem[] = [
-  {
-    name: 'Dashboard',
-    href: '/demo/dashboard',
-    icon: LayoutDashboard,
-    description: 'Overview and key metrics'
-  },
-  {
-    name: 'Content Studio',
-    href: '/demo/content-studio',
-    icon: FileText,
-    description: 'Create and manage content'
-  },
-  {
-    name: 'Diagnostics',
-    href: '/demo/diagnostics', 
-    icon: Activity,
-    description: 'Performance analysis'
-  },
-  {
-    name: 'Playbook',
-    href: '/demo/playbook',
-    icon: BookOpen,
-    description: 'Strategic content planning'
-  },
-  {
-    name: 'Insights',
-    href: '/demo/insights',
-    icon: Brain,
-    description: 'AI-powered insights'
-  },
-  {
-    name: 'Analytics',
-    href: '/demo/analytics',
-    icon: BarChart3,
-    description: 'Performance tracking'
-  },
-  {
-    name: 'Assets',
-    href: '/demo/assets',
-    icon: Layers,
-    description: 'Manage content channels'
-  },
-  {
-    name: 'Settings',
-    href: '/demo/settings',
-    icon: Settings,
-    description: 'System configuration'
-  },
-];
 
 interface KiwiQLayoutProps {
   children: React.ReactNode;
@@ -90,6 +24,7 @@ export default function KiwiQLayout({ children }: KiwiQLayoutProps) {
   const pathname = usePathname();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const { user, logout } = useAuth();
+  const navigation = navigationData.navigation;
 
   // Don't render the layout on the login page
   if (pathname === '/demo/login') {
@@ -106,20 +41,20 @@ export default function KiwiQLayout({ children }: KiwiQLayoutProps) {
             {!sidebarCollapsed && (
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-                  <Zap className="w-5 h-5 text-white" />
+                  <Icons.Zap className="w-5 h-5 text-white" />
                 </div>
                 <span className="text-lg font-semibold text-black">KiwiQ</span>
               </div>
             )}
             {sidebarCollapsed && (
               <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-                <Zap className="w-5 h-5 text-white" />
+                <Icons.Zap className="w-5 h-5 text-white" />
               </div>
             )}
             <button
               onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
               className="p-1 text-black/40 hover:text-black/60 transition-colors">
-              {sidebarCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+              {sidebarCollapsed ? <Icons.ChevronRight className="w-4 h-4" /> : <Icons.ChevronLeft className="w-4 h-4" />}
             </button>
           </div>
 
@@ -127,6 +62,7 @@ export default function KiwiQLayout({ children }: KiwiQLayoutProps) {
           <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
             {navigation.map((item) => {
               const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+              const Icon = Icons[item.icon as keyof typeof Icons] as React.ComponentType<any>;
               return (
                 <Link
                   key={item.name}
@@ -141,7 +77,7 @@ export default function KiwiQLayout({ children }: KiwiQLayoutProps) {
                   `}
                   title={sidebarCollapsed ? item.name : undefined}
                 >
-                  <item.icon className={`w-5 h-5 ${!sidebarCollapsed && 'mr-3'}`} />
+                  <Icon className={`w-5 h-5 ${!sidebarCollapsed && 'mr-3'}`} />
                   {!sidebarCollapsed && (
                     <>
                       <span className="flex-1">{item.name}</span>
@@ -164,7 +100,7 @@ export default function KiwiQLayout({ children }: KiwiQLayoutProps) {
           <div className="p-4 border-t border-black/10">
             <div className="flex items-center">
               <div className="w-8 h-8 bg-black/10 rounded-full flex items-center justify-center">
-                <User className="w-4 h-4 text-black/60" />
+                <Icons.User className="w-4 h-4 text-black/60" />
               </div>
               {!sidebarCollapsed && (
                 <div className="ml-3 flex-1">
@@ -197,7 +133,7 @@ export default function KiwiQLayout({ children }: KiwiQLayoutProps) {
           <div className="flex items-center space-x-4">
             {/* Search */}
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-black/40" />
+              <Icons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-black/40" />
               <input
                 type="text"
                 placeholder="Search..."
@@ -217,13 +153,13 @@ export default function KiwiQLayout({ children }: KiwiQLayoutProps) {
 
             {/* Notifications */}
             <button className="relative p-2 text-black/40 hover:text-black/60 transition-colors">
-              <Bell className="w-5 h-5" />
+              <Icons.Bell className="w-5 h-5" />
               <span className="absolute top-0 right-0 w-2 h-2 bg-black rounded-full"></span>
             </button>
 
             {/* Settings */}
             <button className="p-2 text-black/40 hover:text-black/60 transition-colors">
-              <Settings className="w-5 h-5" />
+              <Icons.Settings className="w-5 h-5" />
             </button>
 
             {/* Logout Button */}
@@ -232,7 +168,7 @@ export default function KiwiQLayout({ children }: KiwiQLayoutProps) {
               className="p-2 text-black/40 hover:text-black/60 transition-colors"
               title="Logout"
             >
-              <LogOut className="w-5 h-5" />
+              <Icons.LogOut className="w-5 h-5" />
             </button>
 
             {/* Demo Badge */}

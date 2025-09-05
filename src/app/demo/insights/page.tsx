@@ -48,14 +48,15 @@ interface Insight {
   timeframe: string;
 }
 
-const INSIGHTS: Insight[] = [
+// Static insights removed - using data from insights-hub.json instead
+const STATIC_INSIGHTS: Insight[] = [
   {
     id: '1',
     category: 'opportunity',
     priority: 'critical',
     title: 'Zero visibility for "Zapier too expensive"',
     description: '8,100 monthly searches with no presence. Competitors capture this high-intent traffic.',
-    impact: '$50K MRR potential',
+    impact: '30% potential growth',
     action: 'Create comparison page',
     metrics: {
       current: 0,
@@ -139,7 +140,7 @@ const INSIGHTS: Insight[] = [
     },
     timeframe: 'Next 60 days'
   }
-];
+]; // Kept for reference but not used
 
 export default function InsightsPage() {
   const router = useRouter();
@@ -148,12 +149,12 @@ export default function InsightsPage() {
   const [showAdditionalInsights, setShowAdditionalInsights] = useState(false);
   const [selectedInsight, setSelectedInsight] = useState<any>(null);
 
-  // Combine static insights with dynamic ones from JSON
-  const allInsights = [...INSIGHTS];
+  // Use insights from JSON data
+  const allInsights = [];
   
-  // Add insights from JSON data if available
-  if (showAdditionalInsights && insightsHubData?.researchFeed?.items) {
-    const jsonInsights = insightsHubData.researchFeed.items.slice(0, 3).map((item: any) => ({
+  // Get insights from JSON data
+  if (insightsHubData?.researchFeed?.items) {
+    const jsonInsights = insightsHubData.researchFeed.items.map((item: any) => ({
       id: item.id,
       category: (item.type === 'trend' ? 'trend' : item.type === 'competitor' ? 'issue' : 'opportunity') as Insight['category'],
       priority: (item.priority || 'high') as Insight['priority'],
@@ -248,17 +249,16 @@ export default function InsightsPage() {
                 <span className="text-xs text-black/60">Opportunities</span>
               </div>
               <p className="text-2xl font-light text-black">
-                {INSIGHTS.filter(i => i.category === 'opportunity').length}
+                {filteredInsights.filter(i => i.category === 'opportunity').length}
               </p>
-              <p className="text-xs text-black/40 mt-1">$125K MRR potential</p>
+              <p className="text-xs text-black/40 mt-1">30% potential growth</p>
             </div>
-            <div className="p-4 border border-black/10 rounded-lg">
+            < div className="p-4 border border-black/10 rounded-lg">
               <div className="flex items-center gap-2 mb-2">
-                <AlertCircle className="w-4 h-4 text-black/60" />
                 <span className="text-xs text-black/60">Issues</span>
               </div>
               <p className="text-2xl font-light text-black">
-                {INSIGHTS.filter(i => i.category === 'issue').length}
+                {filteredInsights.filter(i => i.category === 'issue').length}
               </p>
               <p className="text-xs text-black/40 mt-1">Impacting growth</p>
             </div>
@@ -268,7 +268,7 @@ export default function InsightsPage() {
                 <span className="text-xs text-black/60">Positive Trends</span>
               </div>
               <p className="text-2xl font-light text-black">
-                {INSIGHTS.filter(i => i.category === 'trend').length}
+                {filteredInsights.filter(i => i.category === 'trend').length}
               </p>
               <p className="text-xs text-black/40 mt-1">To leverage</p>
             </div>
@@ -278,7 +278,7 @@ export default function InsightsPage() {
                 <span className="text-xs text-black/60">Actions</span>
               </div>
               <p className="text-2xl font-light text-black">
-                {INSIGHTS.filter(i => i.priority === 'critical' || i.priority === 'high').length}
+                {filteredInsights.filter(i => i.priority === 'critical' || i.priority === 'high').length}
               </p>
               <p className="text-xs text-black/40 mt-1">High priority</p>
             </div>
@@ -569,7 +569,7 @@ export default function InsightsPage() {
               <h3 className="text-sm font-medium text-black mb-2">AI Analysis Summary</h3>
               <p className="text-sm text-black/60 mb-3">
                 Your content strategy is showing strong AI visibility (78.5%) but missing critical high-intent traffic. 
-                Focus on migration content (12.3% conversion) and capture the "Zapier too expensive" searches to unlock $125K MRR potential.
+                Focus on migration content (12.3% conversion) and capture the "Zapier too expensive" searches to unlock 30% potential growth.
               </p>
               <div className="flex items-center gap-4">
                 <Button 

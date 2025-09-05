@@ -26,6 +26,7 @@ import {
   CheckSquare
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useRegisterUIState } from '@/hooks/useRegisterUIState';
 
 export default function DiagnosticsPage() {
   const router = useRouter();
@@ -37,6 +38,15 @@ export default function DiagnosticsPage() {
   const [showImplementationModal, setShowImplementationModal] = useState(false);
   const [exportFormat, setExportFormat] = useState<'json' | 'csv' | null>(null);
   const [actionProgress, setActionProgress] = useState<Record<string, boolean>>({});
+  
+  // Register state setters with UI controller for AI control
+  useRegisterUIState({
+    setShowFixModal,
+    setShowImplementationModal,
+    setExportFormat,
+    setSelectedSection,
+    setExpandedCard
+  });
   
   useEffect(() => {
     const loadData = async () => {
@@ -263,6 +273,7 @@ export default function DiagnosticsPage() {
               <Button 
                 className="bg-black text-white hover:bg-black/90 text-sm font-medium"
                 onClick={() => setShowFixModal(true)}
+                data-button-id="diagnostics.startFixing"
               >
                 Start Fixing Issues
               </Button>
@@ -1071,7 +1082,7 @@ export default function DiagnosticsPage() {
                       <TrendingUp className="w-4 h-4 text-black/50 mt-0.5" />
                       <div>
                         <p className="text-sm text-black/70">Complete funnel optimization</p>
-                        <p className="text-xs text-black/40">Est. impact: +$75K MRR recovery</p>
+                      <p className="text-xs text-black/40">Est. impact: +30% potential growth</p>
                       </div>
                     </div>
                   </div>
@@ -1085,7 +1096,7 @@ export default function DiagnosticsPage() {
                     <p className="text-xs text-white/70 mt-0.5">After 90 days of implementation</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-xl font-light">+$125K MRR</p>
+                    <p className="text-xl font-light">+30% potential growth</p>
                     <p className="text-xs text-white/70">85% visibility score</p>
                   </div>
                 </div>
@@ -1098,7 +1109,7 @@ export default function DiagnosticsPage() {
                   variant="secondary"
                   className="bg-white border border-black/20 text-black hover:bg-black/5"
                   onClick={() => {
-                    const plan = "30-60-90 Day Implementation Plan\n\nFirst 30 Days:\n- Fix critical technical SEO issues\n- Optimize top 10 performing pages\n- Launch AI visibility campaign\n\n60 Days:\n- Implement content refresh program\n- Launch competitive content strategy\n\n90 Days:\n- Full AI-optimized content pipeline\n- Complete funnel optimization\n\nExpected Impact: +$125K MRR";
+                    const plan = "30-60-90 Day Implementation Plan\n\nFirst 30 Days:\n- Fix critical technical SEO issues\n- Optimize top 10 performing pages\n- Launch AI visibility campaign\n\n60 Days:\n- Implement content refresh program\n- Launch competitive content strategy\n\n90 Days:\n- Full AI-optimized content pipeline\n- Complete funnel optimization\n\nExpected Impact: +30% potential growth";
                     const dataUri = 'data:text/plain;charset=utf-8,'+ encodeURIComponent(plan);
                     const linkElement = document.createElement('a');
                     linkElement.setAttribute('href', dataUri);

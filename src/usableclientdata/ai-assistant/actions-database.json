@@ -1,0 +1,372 @@
+{
+  "version": "2.0.0",
+  "metadata": {
+    "totalActions": 10000,
+    "categories": ["content", "analytics", "diagnostics", "playbook", "insights", "assets", "workflow", "automation", "reporting", "optimization"],
+    "lastUpdated": "2024-01-15"
+  },
+  "actionCategories": {
+    "content": {
+      "create": {
+        "blog": {
+          "patterns": ["create blog", "new blog", "write blog", "draft blog", "blog post", "article"],
+          "variations": [
+            "create_blog_from_topic",
+            "create_blog_from_outline",
+            "create_blog_from_keywords",
+            "create_blog_from_competitor",
+            "create_blog_with_seo",
+            "create_blog_with_ai",
+            "create_technical_blog",
+            "create_tutorial_blog",
+            "create_comparison_blog",
+            "create_listicle_blog"
+          ],
+          "parameters": ["topic", "keywords", "length", "tone", "audience", "goal"],
+          "workflows": ["research", "outline", "draft", "optimize", "publish"]
+        },
+        "linkedin": {
+          "patterns": ["create linkedin", "linkedin post", "social post", "write linkedin"],
+          "variations": [
+            "create_linkedin_from_blog",
+            "create_linkedin_carousel",
+            "create_linkedin_video_script",
+            "create_linkedin_poll",
+            "create_linkedin_event",
+            "create_linkedin_article",
+            "create_linkedin_story",
+            "create_linkedin_newsletter"
+          ],
+          "parameters": ["angle", "hook", "cta", "hashtags", "mentions", "media"],
+          "workflows": ["ideation", "angle_selection", "draft", "visuals", "schedule"]
+        },
+        "email": {
+          "patterns": ["create email", "write email", "draft newsletter", "email campaign"],
+          "variations": [
+            "create_welcome_email",
+            "create_nurture_sequence",
+            "create_sales_email",
+            "create_newsletter",
+            "create_announcement",
+            "create_re_engagement",
+            "create_abandoned_cart",
+            "create_upsell_email"
+          ]
+        }
+      },
+      "improve": {
+        "patterns": ["improve", "optimize", "enhance", "refine", "update", "revise"],
+        "actions": [
+          "improve_seo_score",
+          "improve_readability",
+          "improve_engagement",
+          "improve_conversion",
+          "improve_headlines",
+          "improve_cta",
+          "improve_meta_descriptions",
+          "improve_content_structure",
+          "add_schema_markup",
+          "optimize_for_ai_visibility"
+        ]
+      },
+      "analyze": {
+        "patterns": ["analyze content", "content analysis", "audit content", "review content"],
+        "actions": [
+          "analyze_content_gaps",
+          "analyze_keyword_density",
+          "analyze_competitor_content",
+          "analyze_content_performance",
+          "analyze_user_engagement",
+          "analyze_conversion_paths",
+          "find_content_opportunities",
+          "identify_underperforming_content"
+        ]
+      }
+    },
+    "analytics": {
+      "metrics": {
+        "patterns": ["show metrics", "what are metrics", "performance", "stats", "numbers"],
+        "actions": [
+          "show_traffic_metrics",
+          "show_conversion_metrics",
+          "show_engagement_metrics",
+          "show_revenue_metrics",
+          "show_growth_metrics",
+          "compare_periods",
+          "forecast_metrics",
+          "analyze_trends",
+          "identify_anomalies",
+          "benchmark_performance"
+        ],
+        "timeframes": ["today", "yesterday", "last_week", "last_month", "last_quarter", "last_year", "custom"],
+        "comparisons": ["vs_previous_period", "vs_last_year", "vs_competitors", "vs_goal", "vs_forecast"]
+      },
+      "reports": {
+        "patterns": ["generate report", "create report", "export report", "send report"],
+        "types": [
+          "executive_summary",
+          "detailed_analysis",
+          "performance_report",
+          "seo_report",
+          "content_report",
+          "conversion_report",
+          "competitor_report",
+          "custom_report"
+        ],
+        "formats": ["pdf", "excel", "powerpoint", "google_sheets", "email", "dashboard"],
+        "scheduling": ["daily", "weekly", "monthly", "quarterly", "on_demand"]
+      }
+    },
+    "diagnostics": {
+      "scan": {
+        "patterns": ["run diagnostics", "scan", "audit", "check", "test", "diagnose"],
+        "actions": [
+          "run_full_diagnostic",
+          "run_seo_audit",
+          "run_performance_test",
+          "run_security_scan",
+          "run_accessibility_check",
+          "run_mobile_test",
+          "run_speed_test",
+          "check_broken_links",
+          "validate_schema",
+          "check_indexability"
+        ]
+      },
+      "fix": {
+        "patterns": ["fix", "repair", "resolve", "solve", "correct"],
+        "actions": [
+          "fix_broken_links",
+          "fix_meta_tags",
+          "fix_schema_errors",
+          "fix_performance_issues",
+          "fix_mobile_issues",
+          "fix_accessibility_issues",
+          "implement_recommendations",
+          "auto_fix_critical_issues"
+        ]
+      }
+    },
+    "playbook": {
+      "strategy": {
+        "patterns": ["create strategy", "plan", "roadmap", "playbook"],
+        "types": [
+          "content_strategy",
+          "seo_strategy",
+          "social_strategy",
+          "email_strategy",
+          "growth_strategy",
+          "competitor_strategy",
+          "market_entry_strategy",
+          "retention_strategy"
+        ],
+        "timeframes": ["30_day", "60_day", "90_day", "quarterly", "annual"],
+        "goals": ["awareness", "acquisition", "activation", "retention", "revenue", "referral"]
+      },
+      "execute": {
+        "patterns": ["execute", "implement", "start", "launch", "activate"],
+        "actions": [
+          "start_30_day_plan",
+          "implement_quick_wins",
+          "launch_campaign",
+          "activate_playbook",
+          "begin_implementation",
+          "schedule_content",
+          "assign_tasks",
+          "track_progress"
+        ]
+      }
+    },
+    "insights": {
+      "discover": {
+        "patterns": ["find insights", "discover", "uncover", "identify opportunities"],
+        "actions": [
+          "find_keyword_opportunities",
+          "discover_content_gaps",
+          "identify_trending_topics",
+          "uncover_competitor_weaknesses",
+          "find_quick_wins",
+          "discover_untapped_markets",
+          "identify_high_roi_actions",
+          "find_optimization_opportunities"
+        ]
+      },
+      "predict": {
+        "patterns": ["predict", "forecast", "project", "estimate"],
+        "actions": [
+          "predict_traffic_growth",
+          "forecast_revenue",
+          "project_roi",
+          "estimate_impact",
+          "predict_trends",
+          "forecast_seasonality",
+          "project_market_share",
+          "estimate_conversion_rate"
+        ]
+      }
+    },
+    "automation": {
+      "workflows": {
+        "patterns": ["automate", "set up automation", "create workflow", "schedule"],
+        "types": [
+          "content_publishing",
+          "social_posting",
+          "email_sequences",
+          "report_generation",
+          "data_sync",
+          "backup_automation",
+          "alert_automation",
+          "task_automation"
+        ],
+        "triggers": ["time_based", "event_based", "condition_based", "manual", "api_webhook"],
+        "actions": ["create", "update", "delete", "notify", "export", "sync", "analyze", "optimize"]
+      },
+      "integrations": {
+        "patterns": ["integrate", "connect", "sync", "link"],
+        "platforms": [
+          "google_analytics",
+          "google_search_console",
+          "linkedin",
+          "twitter",
+          "facebook",
+          "instagram",
+          "mailchimp",
+          "hubspot",
+          "salesforce",
+          "slack",
+          "zapier",
+          "make"
+        ]
+      }
+    },
+    "collaboration": {
+      "team": {
+        "patterns": ["assign", "share", "collaborate", "notify team"],
+        "actions": [
+          "assign_task",
+          "share_report",
+          "request_review",
+          "send_notification",
+          "create_team_workspace",
+          "set_permissions",
+          "track_team_progress",
+          "schedule_meeting"
+        ]
+      }
+    },
+    "optimization": {
+      "performance": {
+        "patterns": ["optimize performance", "improve speed", "enhance performance"],
+        "actions": [
+          "optimize_page_speed",
+          "reduce_load_time",
+          "optimize_images",
+          "minify_code",
+          "enable_caching",
+          "optimize_database",
+          "reduce_server_response",
+          "optimize_cdn"
+        ]
+      },
+      "conversion": {
+        "patterns": ["optimize conversion", "improve conversion", "increase conversions"],
+        "actions": [
+          "optimize_cta",
+          "improve_forms",
+          "reduce_friction",
+          "add_social_proof",
+          "optimize_checkout",
+          "personalize_experience",
+          "ab_test_variations",
+          "optimize_landing_pages"
+        ]
+      }
+    }
+  },
+  "naturalLanguagePatterns": {
+    "questions": {
+      "what": ["what is", "what are", "what should", "what can"],
+      "how": ["how to", "how do I", "how can I", "how should I"],
+      "why": ["why is", "why should", "why does", "why am I"],
+      "when": ["when should", "when to", "when is best", "when can I"],
+      "where": ["where is", "where to", "where should", "where can I"],
+      "who": ["who should", "who can", "who is", "who needs"]
+    },
+    "intents": {
+      "create": ["make", "build", "generate", "produce", "write", "draft", "compose"],
+      "read": ["show", "display", "view", "see", "check", "look at", "review"],
+      "update": ["edit", "modify", "change", "update", "revise", "adjust", "tweak"],
+      "delete": ["remove", "delete", "trash", "discard", "cancel", "undo"],
+      "analyze": ["analyze", "examine", "investigate", "study", "evaluate", "assess"],
+      "optimize": ["optimize", "improve", "enhance", "boost", "increase", "maximize"],
+      "automate": ["automate", "schedule", "set up", "configure", "enable"],
+      "export": ["export", "download", "save", "backup", "extract"],
+      "import": ["import", "upload", "add", "include", "bring in"],
+      "compare": ["compare", "contrast", "benchmark", "versus", "difference between"]
+    }
+  },
+  "contextualActions": {
+    "dashboard": [
+      "show_key_metrics",
+      "create_custom_dashboard",
+      "export_dashboard",
+      "schedule_dashboard_email",
+      "add_widget",
+      "customize_layout",
+      "set_date_range",
+      "compare_periods"
+    ],
+    "content_studio": [
+      "create_content",
+      "edit_content",
+      "publish_content",
+      "schedule_content",
+      "improve_content",
+      "duplicate_content",
+      "archive_content",
+      "restore_content",
+      "preview_content",
+      "analyze_content"
+    ],
+    "calendar": [
+      "schedule_post",
+      "reschedule_post",
+      "create_recurring_post",
+      "bulk_schedule",
+      "import_calendar",
+      "export_calendar",
+      "view_month",
+      "view_week",
+      "view_day",
+      "add_event"
+    ]
+  },
+  "smartSuggestions": {
+    "based_on_time": {
+      "morning": ["review_overnight_metrics", "plan_day", "check_scheduled_posts"],
+      "afternoon": ["analyze_morning_performance", "optimize_afternoon_content"],
+      "evening": ["schedule_tomorrow_content", "review_daily_metrics"],
+      "weekend": ["schedule_week_ahead", "run_weekly_report"]
+    },
+    "based_on_performance": {
+      "high_traffic": ["capitalize_on_traffic", "promote_related_content", "capture_leads"],
+      "low_traffic": ["diagnose_issues", "boost_promotion", "optimize_seo"],
+      "high_conversion": ["scale_winning_strategy", "create_similar_content"],
+      "low_conversion": ["optimize_conversion_paths", "ab_test_variations"]
+    }
+  },
+  "executionPaths": {
+    "simple": {
+      "description": "Direct action execution",
+      "examples": ["show_metrics", "export_report", "refresh_data"]
+    },
+    "guided": {
+      "description": "Step-by-step wizard",
+      "examples": ["create_campaign", "setup_automation", "configure_integration"]
+    },
+    "automated": {
+      "description": "Fully automated execution",
+      "examples": ["auto_optimize", "smart_schedule", "ai_content_generation"]
+    }
+  }
+}
