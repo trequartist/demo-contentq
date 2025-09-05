@@ -1,6 +1,6 @@
 # KiwiQ Demo - AI Platform
 
-A static demo of the KiwiQ content creation and management platform, built with Next.js 15 and TypeScript.
+A static demo of the  content creation and management platform, built with Next.js 15 and TypeScript.
 
 ## 🎯 Overview
 
