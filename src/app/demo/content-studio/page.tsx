@@ -28,6 +28,7 @@ export default function ContentStudioPage() {
   const [currentView, setCurrentView] = useState<ViewType>('workflows');
   const [searchQuery, setSearchQuery] = useState('');
   const [data, setData] = useState(contentStudioData.getAllData());
+  const [selectedChannel, setSelectedChannel] = useState<'blog' | 'linkedin'>('blog');
 
   useEffect(() => {
     // Refresh data when view changes
@@ -102,6 +103,39 @@ export default function ContentStudioPage() {
             <div>
               <h1 className="text-xl font-light text-black">Content Studio</h1>
               <p className="text-sm text-black/40">Create and manage your content</p>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-black/50">Channel</span>
+              <div className="inline-flex rounded-lg border border-black/10 overflow-hidden" role="group" aria-label="Content channel">
+                <button
+                  onClick={() => setSelectedChannel('blog')}
+                  className={`px-3 py-1.5 text-sm transition-colors ${
+                    selectedChannel === 'blog'
+                      ? 'bg-black text-white'
+                      : 'bg-white text-black/60 hover:text-black'
+                  }`}
+                  data-button-id="contentStudio.toggle.blog"
+                  data-toggle="channel"
+                  data-value="blog"
+                  aria-pressed={selectedChannel === 'blog'}
+                >
+                  Blog
+                </button>
+                <button
+                  onClick={() => setSelectedChannel('linkedin')}
+                  className={`px-3 py-1.5 text-sm border-l border-black/10 transition-colors ${
+                    selectedChannel === 'linkedin'
+                      ? 'bg-black text-white'
+                      : 'bg-white text-black/60 hover:text-black'
+                  }`}
+                  data-button-id="contentStudio.toggle.linkedin"
+                  data-toggle="channel"
+                  data-value="linkedin"
+                  aria-pressed={selectedChannel === 'linkedin'}
+                >
+                  LinkedIn
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -225,7 +259,9 @@ export default function ContentStudioPage() {
             <div>
               <h2 className="text-lg font-medium text-black mb-4">Choose Your Workflow</h2>
               <div className="grid grid-cols-3 gap-6">
-                {workflows.map((workflow) => {
+                {workflows
+                  .filter(w => selectedChannel === 'blog' ? w.id.startsWith('blog') : w.id.startsWith('linkedin'))
+                  .map((workflow) => {
                   const Icon = workflow.icon;
                   return (
                     <Card 
