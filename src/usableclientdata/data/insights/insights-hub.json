@@ -1,4 +1,57 @@
 {
+  "hero": {
+    "title": "Insights Hub — Actionable Intelligence",
+    "subtitle": "AI-powered signals, prioritized actions, and market intelligence in one place.",
+    "highlights": [
+      { "label": "Total Insights", "value": 147 },
+      { "label": "Critical Actions", "value": 7 },
+      { "label": "Win Rate", "value": "+8.2%" }
+    ],
+    "cta": [
+      { "label": "View Playbook", "href": "/demo/playbook" },
+      { "label": "Run Diagnostics", "href": "/demo/diagnostics" }
+    ]
+  },
+  "kpis": [
+    { "id": "kpi-visibility", "label": "AI Visibility", "value": "78.5%", "delta": "+12.3%" },
+    { "id": "kpi-opportunities", "label": "Opportunities", "value": 34, "delta": "+6" },
+    { "id": "kpi-issues", "label": "Critical Issues", "value": 7, "delta": "-2" },
+    { "id": "kpi-velocity", "label": "Content Velocity", "value": "3 → 15/mo", "delta": "+5x" }
+  ],
+  "spotlight": {
+    "headline": "Capture the 'Zapier too expensive' demand now",
+    "description": "8,100 monthly searches with near-zero presence. Launch a dedicated landing page and supporting content to capture high-intent switchers.",
+    "actions": [
+      { "label": "Create Landing Page", "href": "/demo/content-studio/create" },
+      { "label": "Open Playbook", "href": "/demo/playbook" }
+    ],
+    "illustration": "ai-visibility"
+  },
+  "timeline": {
+    "quarters": [
+      {
+        "title": "Now",
+        "items": [
+          { "title": "Fix Technical SEO (Schema, Canonicals)", "impact": "+40% CTR", "status": "urgent", "link": "/demo/diagnostics" },
+          { "title": "Create 'Zapier too expensive' page", "impact": "$75K MRR", "status": "critical", "link": "/demo/content-studio/create" }
+        ]
+      },
+      {
+        "title": "30 Days",
+        "items": [
+          { "title": "Publish 5 Migration Guides", "impact": "$50K MRR", "status": "planned", "link": "/demo/playbook" },
+          { "title": "Launch Pricing Calculator", "impact": "2x conversion", "status": "planned", "link": "/demo/playbook" }
+        ]
+      },
+      {
+        "title": "Quarter",
+        "items": [
+          { "title": "Reach 15+/mo Content Velocity", "impact": "Competitive parity", "status": "goal", "link": "/demo/content-studio" },
+          { "title": "Own 'AI-native automation' narrative", "impact": "Category leadership", "status": "strategic", "link": "/demo/playbook" }
+        ]
+      }
+    ]
+  },
   "researchFeed": {
     "lastUpdated": "2024-01-15T10:00:00Z",
     "items": [
