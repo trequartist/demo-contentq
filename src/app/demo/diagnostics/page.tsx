@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Button, Badge } from '@/components/ui';
+import { Button } from '@/components/ui';
 import { 
   Download,
   ChevronLeft,
@@ -13,10 +13,14 @@ import {
   Users as UsersIcon,
   BarChart3,
   Target,
-  Database
+  Database,
+  FileText,
+  Calendar,
+  ArrowLeft
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useRegisterUIState } from '@/hooks/useRegisterUIState';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Import all section components
 import ExecutiveSummary from '@/components/demo/diagnostics/ExecutiveSummary';
@@ -29,14 +33,54 @@ import ActionableIntelligence from '@/components/demo/diagnostics/ActionableInte
 import DataTransparency from '@/components/demo/diagnostics/DataTransparency';
 
 const sections = [
-  { id: 'executive', name: 'Executive Summary', icon: Home },
-  { id: 'search', name: 'Search Intelligence', icon: Search },
-  { id: 'ai', name: 'AI Engine Optimization', icon: Brain },
-  { id: 'leverage', name: 'Strategic Leverage', icon: Sliders },
-  { id: 'competitive', name: 'Competitive Intelligence', icon: UsersIcon },
-  { id: 'market', name: 'Market Intelligence', icon: BarChart3 },
-  { id: 'actionable', name: 'Actionable Intelligence', icon: Target },
-  { id: 'transparency', name: 'Data Transparency', icon: Database }
+  { 
+    id: 'executive', 
+    name: 'Executive Summary', 
+    icon: Home,
+    description: 'High-level insights and key findings'
+  },
+  { 
+    id: 'search', 
+    name: 'Search Intelligence', 
+    icon: Search,
+    description: 'SEO analysis and search behavior patterns'
+  },
+  { 
+    id: 'ai', 
+    name: 'AI Engine Optimization', 
+    icon: Brain,
+    description: 'LLM visibility and citation analysis'
+  },
+  { 
+    id: 'leverage', 
+    name: 'Strategic Leverage', 
+    icon: Sliders,
+    description: 'Interactive strategy modeling'
+  },
+  { 
+    id: 'competitive', 
+    name: 'Competitive Intelligence', 
+    icon: UsersIcon,
+    description: 'Market positioning and competitor analysis'
+  },
+  { 
+    id: 'market', 
+    name: 'Market Intelligence', 
+    icon: BarChart3,
+    description: 'User behavior and market trends'
+  },
+  { 
+    id: 'actionable', 
+    name: 'Actionable Intelligence', 
+    icon: Target,
+    description: 'Strategic recommendations and next steps'
+  },
+  { 
+    id: 'transparency', 
+    name: 'Data & Methodology', 
+    icon: Database,
+    description: 'Data sources and confidence levels'
+  }
 ];
 
 export default function DiagnosticsPage() {
@@ -70,16 +114,15 @@ export default function DiagnosticsPage() {
   const handleExportReport = (format: string) => {
     if (!diagnosticsData) return;
     
-    if (format === 'json') {
-      const dataStr = JSON.stringify(diagnosticsData, null, 2);
-      const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-      const exportFileDefaultName = `gumloop-diagnostic-report-${new Date().toISOString().split('T')[0]}.json`;
-      
-      const linkElement = document.createElement('a');
-      linkElement.setAttribute('href', dataUri);
-      linkElement.setAttribute('download', exportFileDefaultName);
-      linkElement.click();
-    }
+    const dataStr = JSON.stringify(diagnosticsData, null, 2);
+    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+    const filename = `gumloop-intelligence-report-${new Date().toISOString().split('T')[0]}.${format}`;
+    
+    const linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', filename);
+    linkElement.click();
+    
     setShowExportMenu(false);
   };
 
@@ -91,12 +134,25 @@ export default function DiagnosticsPage() {
     }
   };
 
+  const handleKeyPress = (e: KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') navigateSection('prev');
+    if (e.key === 'ArrowRight') navigateSection('next');
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [currentSection]);
+
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 via-blue-50 to-white">
+      <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA]">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-3 border-purple-200 border-t-purple-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600 text-sm">Loading comprehensive diagnostic report...</p>
+          <div className="relative w-16 h-16 mx-auto">
+            <div className="absolute inset-0 border-4 border-purple-100 rounded-full"></div>
+            <div className="absolute inset-0 border-4 border-transparent border-t-purple-600 rounded-full animate-spin"></div>
+          </div>
+          <p className="mt-6 text-gray-600 font-light">Analyzing your content ecosystem...</p>
         </div>
       </div>
     );
@@ -104,8 +160,9 @@ export default function DiagnosticsPage() {
 
   if (!diagnosticsData) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 via-blue-50 to-white">
+      <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA]">
         <div className="text-center">
+          <FileText className="w-12 h-12 text-gray-300 mx-auto mb-4" />
           <p className="text-gray-500">No diagnostic data available</p>
         </div>
       </div>
@@ -113,170 +170,207 @@ export default function DiagnosticsPage() {
   }
 
   const renderSection = () => {
-    switch (sections[currentSection].id) {
-      case 'executive':
-        return <ExecutiveSummary data={diagnosticsData} />;
-      case 'search':
-        return <SearchIntelligence data={diagnosticsData} />;
-      case 'ai':
-        return <AIEngineOptimization data={diagnosticsData} />;
-      case 'leverage':
-        return <StrategicLeverage data={diagnosticsData} />;
-      case 'competitive':
-        return <CompetitiveIntelligence data={diagnosticsData} />;
-      case 'market':
-        return <MarketIntelligence data={diagnosticsData} />;
-      case 'actionable':
-        return <ActionableIntelligence data={diagnosticsData} />;
-      case 'transparency':
-        return <DataTransparency data={diagnosticsData} />;
-      default:
-        return <ExecutiveSummary data={diagnosticsData} />;
-    }
+    const components = {
+      executive: ExecutiveSummary,
+      search: SearchIntelligence,
+      ai: AIEngineOptimization,
+      leverage: StrategicLeverage,
+      competitive: CompetitiveIntelligence,
+      market: MarketIntelligence,
+      actionable: ActionableIntelligence,
+      transparency: DataTransparency
+    };
+    
+    const Component = components[sections[currentSection].id as keyof typeof components];
+    return <Component data={diagnosticsData} />;
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Button
-                variant="secondary"
-                size="sm"
+    <div className="min-h-screen bg-[#FAFAFA]">
+      {/* Premium Header */}
+      <header className="bg-white border-b border-gray-200">
+        <div className="px-8 py-6">
+          <div className="flex items-center justify-between max-w-[1400px] mx-auto">
+            <div className="flex items-center gap-6">
+              <button
                 onClick={() => router.push('/demo/dashboard')}
-                className="text-gray-600 hover:text-gray-900"
+                className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
               >
-                <ChevronLeft className="w-4 h-4 mr-1" />
-                Back to Dashboard
-              </Button>
-              <div>
-                <h1 className="text-2xl font-light text-gray-900">Content Intelligence Report</h1>
-                <p className="text-sm text-gray-500">
-                  Analysis period: {diagnosticsData.analysis_period.start} to {diagnosticsData.analysis_period.end}
-                </p>
+                <ArrowLeft className="w-5 h-5" />
+                <span className="text-sm font-medium">Dashboard</span>
+              </button>
+              
+              <div className="border-l border-gray-200 pl-6">
+                <h1 className="text-2xl font-light text-gray-900">
+                  Content Intelligence Report
+                </h1>
+                <div className="flex items-center gap-2 mt-1 text-sm text-gray-500">
+                  <Calendar className="w-4 h-4" />
+                  <span>Analysis period: {diagnosticsData.analysis_period.start} to {diagnosticsData.analysis_period.end}</span>
+                </div>
               </div>
             </div>
+
+            {/* Export Menu */}
             <div className="relative">
               <Button 
                 variant="secondary"
-                className="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
+                className="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 text-sm font-medium transition-all"
                 onClick={() => setShowExportMenu(!showExportMenu)}
               >
                 <Download className="w-4 h-4 mr-2" />
                 Export Report
               </Button>
-              {showExportMenu && (
-                <div className="absolute top-full mt-2 right-0 bg-white border border-gray-200 rounded-lg shadow-lg p-2 z-10 min-w-[200px]">
-                  {diagnosticsData.export_options.map((option: any, idx: number) => (
-                    <button
-                      key={idx}
-                      onClick={() => handleExportReport(option.format.toLowerCase().includes('json') ? 'json' : 'other')}
-                      className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors"
-                    >
-                      {option.format}
-                      <span className="block text-xs text-gray-500">{option.description}</span>
-                    </button>
-                  ))}
-                </div>
-              )}
+              
+              <AnimatePresence>
+                {showExportMenu && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="absolute top-full mt-2 right-0 bg-white border border-gray-200 rounded-lg shadow-xl p-1 z-50 min-w-[240px]"
+                  >
+                    {diagnosticsData.export_options.map((option: any, idx: number) => (
+                      <button
+                        key={idx}
+                        onClick={() => handleExportReport(option.format.toLowerCase().includes('json') ? 'json' : option.format.toLowerCase())}
+                        className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors group"
+                      >
+                        <div className="font-medium group-hover:text-gray-900">{option.format}</div>
+                        <div className="text-xs text-gray-500 mt-0.5">{option.description}</div>
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Section Navigation */}
-      <div className="sticky top-[73px] z-40 bg-gray-50 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 py-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 overflow-x-auto">
+        {/* Premium Navigation */}
+        <nav className="px-8 bg-gray-50 border-t border-gray-100">
+          <div className="max-w-[1400px] mx-auto">
+            <div className="flex items-center gap-1 py-1 overflow-x-auto scrollbar-hide">
               {sections.map((section, idx) => {
                 const Icon = section.icon;
+                const isActive = currentSection === idx;
+                
                 return (
-                  <Button
+                  <button
                     key={section.id}
-                    variant={currentSection === idx ? 'primary' : 'secondary'}
-                    size="sm"
                     onClick={() => setCurrentSection(idx)}
-                    className={currentSection === idx 
-                      ? 'bg-gray-900 text-white' 
-                      : 'bg-white text-gray-600 border border-gray-300 hover:bg-gray-50'}
+                    className={`
+                      flex items-center gap-3 px-6 py-4 rounded-lg transition-all duration-200
+                      ${isActive 
+                        ? 'bg-white text-gray-900 shadow-sm border border-gray-200' 
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-white/50'
+                      }
+                    `}
                   >
-                    <Icon className="w-4 h-4 mr-2" />
-                    {section.name}
-                  </Button>
+                    <Icon className={`w-5 h-5 ${isActive ? 'text-purple-600' : 'text-gray-400'}`} />
+                    <div className="text-left">
+                      <div className="font-medium text-sm whitespace-nowrap">{section.name}</div>
+                      {isActive && (
+                        <div className="text-xs text-gray-500 mt-0.5">{section.description}</div>
+                      )}
+                    </div>
+                  </button>
                 );
               })}
             </div>
-            <div className="flex items-center gap-2 ml-4">
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={() => navigateSection('prev')}
-                disabled={currentSection === 0}
-                className="p-2"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </Button>
-              <span className="text-sm text-gray-600 px-2">
-                {currentSection + 1} / {sections.length}
-              </span>
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={() => navigateSection('next')}
-                disabled={currentSection === sections.length - 1}
-                className="p-2"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </Button>
+            
+            {/* Progress Bar */}
+            <div className="relative h-1 bg-gray-200 -mx-8 mt-1">
+              <motion.div 
+                className="absolute h-full bg-gradient-to-r from-purple-500 to-purple-600"
+                initial={{ width: 0 }}
+                animate={{ width: `${((currentSection + 1) / sections.length) * 100}%` }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              />
             </div>
           </div>
-        </div>
-      </div>
+        </nav>
+      </header>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        {renderSection()}
-      </div>
+      {/* Main Content Area */}
+      <main className="flex-1">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSection}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className="max-w-[1400px] mx-auto px-8 py-12"
+          >
+            {renderSection()}
+          </motion.div>
+        </AnimatePresence>
+      </main>
 
-      {/* Footer Navigation */}
-      <div className="sticky bottom-0 bg-white border-t border-gray-200 shadow-lg">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+      {/* Elegant Footer Navigation */}
+      <footer className="bg-white border-t border-gray-200 mt-16">
+        <div className="max-w-[1400px] mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
-            <Button
-              variant="secondary"
+            <button
               onClick={() => navigateSection('prev')}
               disabled={currentSection === 0}
-              className="flex items-center gap-2"
+              className={`
+                flex items-center gap-3 px-6 py-3 rounded-lg transition-all
+                ${currentSection === 0 
+                  ? 'text-gray-400 cursor-not-allowed' 
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                }
+              `}
             >
-              <ChevronLeft className="w-4 h-4" />
-              {currentSection > 0 && sections[currentSection - 1].name}
-            </Button>
+              <ChevronLeft className="w-5 h-5" />
+              <div className="text-left">
+                <div className="text-xs text-gray-500">Previous</div>
+                {currentSection > 0 && (
+                  <div className="font-medium text-sm">{sections[currentSection - 1].name}</div>
+                )}
+              </div>
+            </button>
             
-            <div className="flex items-center gap-2">
+            {/* Section Dots */}
+            <div className="flex items-center gap-3">
               {sections.map((_, idx) => (
-                <div
+                <button
                   key={idx}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    idx === currentSection ? 'bg-gray-900' : 'bg-gray-300'
-                  }`}
+                  onClick={() => setCurrentSection(idx)}
+                  className={`
+                    w-2 h-2 rounded-full transition-all duration-300
+                    ${idx === currentSection 
+                      ? 'w-8 bg-purple-600' 
+                      : 'bg-gray-300 hover:bg-gray-400'
+                    }
+                  `}
                 />
               ))}
             </div>
             
-            <Button
+            <button
               onClick={() => navigateSection('next')}
               disabled={currentSection === sections.length - 1}
-              className="flex items-center gap-2 bg-gray-900 text-white hover:bg-gray-800"
+              className={`
+                flex items-center gap-3 px-6 py-3 rounded-lg transition-all
+                ${currentSection === sections.length - 1 
+                  ? 'text-gray-400 cursor-not-allowed' 
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                }
+              `}
             >
-              {currentSection < sections.length - 1 && sections[currentSection + 1].name}
-              <ChevronRight className="w-4 h-4" />
-            </Button>
+              <div className="text-right">
+                <div className="text-xs text-gray-500">Next</div>
+                {currentSection < sections.length - 1 && (
+                  <div className="font-medium text-sm">{sections[currentSection + 1].name}</div>
+                )}
+              </div>
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
-      </div>
+      </footer>
     </div>
   );
 }
