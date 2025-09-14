@@ -1,0 +1,1002 @@
+{
+  "data": {
+    "created_at": "2025-01-20T10:00:00Z",
+    "updated_at": "2025-01-27T10:00:00Z",
+    "analysis_period": {
+      "start": "2025-01-20",
+      "end": "2025-01-27",
+      "description": "Comprehensive analysis from January 20-27, 2025"
+    },
+    "data_sources": [
+      {
+        "source": "Google Search Console",
+        "icon": "📊",
+        "description": "47 pages analyzed"
+      },
+      {
+        "source": "SEMrush API",
+        "icon": "🔍",
+        "description": "6 competitor domains"
+      },
+      {
+        "source": "LLM Testing Suite",
+        "icon": "🤖",
+        "description": "4 platforms, 127 queries"
+      },
+      {
+        "source": "Google Trends",
+        "icon": "📈",
+        "description": "12-month historical"
+      },
+      {
+        "source": "Reddit API",
+        "icon": "💬",
+        "description": "3 subreddits, 500+ posts"
+      },
+      {
+        "source": "Ahrefs Backlink Data",
+        "icon": "🌐",
+        "description": "2,341 referring domains analyzed"
+      },
+      {
+        "source": "Content Audit",
+        "icon": "📝",
+        "description": "47 Gumloop pieces, 4,293 competitor pieces"
+      }
+    ],
+    "executive_summary": {
+      "headline": "Your Content Intelligence Report",
+      "subheadline": "Comprehensive analysis from January 20-27, 2025",
+      "key_finding": "Your content shows strong technical expertise but limited market reach. While competitors dominate traditional search (Zapier: 2.3M monthly organic), emerging AI-driven discovery channels remain largely unclaimed. The data suggests multiple paths to authority, each with distinct trade-offs.",
+      "performance_snapshot": {
+        "search_visibility": {
+          "score": 42,
+          "max": 100,
+          "label": "Growing but subscale"
+        },
+        "ai_discoverability": {
+          "score": 23,
+          "max": 100,
+          "label": "Early-stage presence"
+        },
+        "technical_excellence": {
+          "score": 78,
+          "max": 100,
+          "label": "Strong foundation"
+        },
+        "market_penetration": {
+          "score": 8,
+          "unit": "%",
+          "label": "Of addressable audience"
+        }
+      }
+    },
+    "search_intelligence": {
+      "section_header": "How Users Search for Solutions Like Yours",
+      "section_subheader": "Based on 12 months of search data across 1,247 relevant queries",
+      "data_sources": ["Google Search Console", "Ahrefs", "SEMrush", "Google Keyword Planner"],
+      "search_landscape": {
+        "query_classification": {
+          "problem_aware": {
+            "percentage": 47,
+            "examples": [
+              {
+                "query": "workflow keeps breaking",
+                "volume": 8900,
+                "unit": "/mo"
+              },
+              {
+                "query": "automation failed notification",
+                "volume": 6200,
+                "unit": "/mo"
+              },
+              {
+                "query": "fix zapier errors",
+                "volume": 4100,
+                "unit": "/mo"
+              },
+              {
+                "query": "api rate limit handling",
+                "volume": 3800,
+                "unit": "/mo"
+              }
+            ],
+            "pattern": "Users experiencing acute pain"
+          },
+          "solution_aware": {
+            "percentage": 31,
+            "examples": [
+              {
+                "query": "workflow automation tools",
+                "volume": 22000,
+                "unit": "/mo"
+              },
+              {
+                "query": "zapier alternatives",
+                "volume": 14500,
+                "unit": "/mo"
+              },
+              {
+                "query": "no-code automation platform",
+                "volume": 9200,
+                "unit": "/mo"
+              }
+            ],
+            "pattern": "Users comparing options"
+          },
+          "feature_specific": {
+            "percentage": 22,
+            "examples": [
+              {
+                "query": "webhook automation",
+                "volume": 5600,
+                "unit": "/mo"
+              },
+              {
+                "query": "schedule automated workflows",
+                "volume": 3200,
+                "unit": "/mo"
+              },
+              {
+                "query": "conditional logic automation",
+                "volume": 2900,
+                "unit": "/mo"
+              }
+            ],
+            "pattern": "Users with specific requirements"
+          }
+        },
+        "insight": "Problem-aware searches show 3.2x higher conversion intent but 67% lower competition. Your current content targets solution-aware queries where Zapier has 10-year advantage."
+      },
+      "technical_seo_audit": {
+        "gumloop_health": {
+          "overall_score": 71,
+          "max_score": 100,
+          "core_web_vitals": {
+            "lcp": {
+              "value": 2.8,
+              "unit": "s",
+              "status": "Needs improvement"
+            },
+            "fid": {
+              "value": 95,
+              "unit": "ms",
+              "status": "Good"
+            },
+            "cls": {
+              "value": 0.08,
+              "status": "Good"
+            },
+            "mobile_score": 67,
+            "desktop_score": 84
+          },
+          "crawlability": {
+            "pages_indexed": {
+              "current": 43,
+              "total": 47,
+              "percentage": 91
+            },
+            "orphan_pages": 4,
+            "crawl_errors": {
+              "soft_404s": 12
+            },
+            "sitemap": {
+              "present": true,
+              "last_updated": "3 days ago"
+            },
+            "robots_txt": {
+              "configured": true
+            }
+          },
+          "on_page": {
+            "title_tags": {
+              "optimized": 34,
+              "total": 47,
+              "percentage": 73
+            },
+            "meta_descriptions": {
+              "present": 24,
+              "total": 47,
+              "percentage": 51
+            },
+            "h1_usage": {
+              "proper": 42,
+              "total": 47,
+              "percentage": 89
+            },
+            "image_alt_text": {
+              "percentage": 34
+            },
+            "internal_linking": {
+              "avg_per_page": 2.3,
+              "status": "low"
+            }
+          }
+        },
+        "competitive_comparison": [
+          {
+            "competitor": "Zapier",
+            "score": 94,
+            "advantages": ["47ms server response (CDN advantage)"]
+          },
+          {
+            "competitor": "Make",
+            "score": 82,
+            "advantages": ["Rich snippets on 73% of pages"]
+          },
+          {
+            "competitor": "n8n",
+            "score": 77,
+            "advantages": ["Open graph optimization (social sharing)"]
+          },
+          {
+            "competitor": "Workato",
+            "score": 76,
+            "advantages": []
+          },
+          {
+            "competitor": "Gumloop",
+            "score": 71,
+            "advantages": []
+          },
+          {
+            "competitor": "Integromat",
+            "score": 68,
+            "advantages": []
+          }
+        ]
+      },
+      "search_intent_alignment": {
+        "well_aligned": [
+          "Getting started with automation",
+          "Basic workflow setup",
+          "Connect apps tutorial"
+        ],
+        "misaligned_opportunities": [
+          {
+            "type": "High search, no content",
+            "example": "troubleshooting guides"
+          },
+          {
+            "type": "High intent, weak content",
+            "example": "enterprise use cases"
+          },
+          {
+            "type": "Trending, unaddressed",
+            "example": "AI-enhanced workflows"
+          }
+        ],
+        "query_refinement_pattern": {
+          "flow": ["automation", "workflow automation", "workflow automation errors", "fix workflow automation errors zapier"],
+          "insight": "This pattern suggests users need more specific, problem-solving content"
+        }
+      },
+      "serp_features": {
+        "missing_features": [
+          {
+            "feature": "Featured Snippets",
+            "capture_rate": 0,
+            "competitor_rate": 31,
+            "competitor": "Zapier"
+          },
+          {
+            "feature": "People Also Ask",
+            "status": "Not triggering expansion"
+          },
+          {
+            "feature": "Video Carousel",
+            "status": "No YouTube presence"
+          },
+          {
+            "feature": "Knowledge Panel",
+            "status": "No entity recognition"
+          }
+        ],
+        "actionable_insight": "47% of your target queries show People Also Ask boxes. Competitors answer an average of 2.7 questions per page. You average 0.4."
+      }
+    },
+    "ai_engine_optimization": {
+      "section_header": "Beyond Visibility: How AI Understands Your Category",
+      "section_subheader": "Analysis of 500+ LLM responses across 4 platforms",
+      "data_sources": ["OpenAI API", "Anthropic Claude", "Perplexity API", "Google Bard API", "Manual testing"],
+      "category_comprehension": {
+        "concept_associations": {
+          "primary": [
+            {
+              "concept": "Zapier",
+              "mention_rate": 87,
+              "category": "primary"
+            },
+            {
+              "concept": "Connect apps",
+              "mention_rate": 84,
+              "category": "primary"
+            },
+            {
+              "concept": "No-code",
+              "mention_rate": 79,
+              "category": "primary"
+            },
+            {
+              "concept": "Integration",
+              "mention_rate": 76,
+              "category": "primary"
+            }
+          ],
+          "secondary": [
+            {
+              "concept": "Business process",
+              "mention_rate": 67,
+              "category": "secondary"
+            },
+            {
+              "concept": "Make/Integromat",
+              "mention_rate": 53,
+              "category": "secondary"
+            },
+            {
+              "concept": "API",
+              "mention_rate": 48,
+              "category": "secondary"
+            },
+            {
+              "concept": "Trigger-action",
+              "mention_rate": 41,
+              "category": "secondary"
+            }
+          ],
+          "tertiary": [
+            {
+              "concept": "Gumloop",
+              "mention_rate": 4,
+              "category": "tertiary",
+              "status": "critical gap"
+            },
+            {
+              "concept": "AI-powered",
+              "mention_rate": 23,
+              "category": "tertiary",
+              "status": "emerging"
+            },
+            {
+              "concept": "Debugging",
+              "mention_rate": 11,
+              "category": "tertiary",
+              "status": "underserved"
+            }
+          ]
+        },
+        "key_finding": "LLMs have crystallized around Zapier as the category archetype. Alternative positioning requires either sub-category creation or explicit differentiation narrative."
+      },
+      "citation_patterns": {
+        "high_probability": {
+          "threshold": 70,
+          "factors": [
+            "Comprehensive guides (2,000+ words)",
+            "Numbered lists/frameworks",
+            "Recent publication (<6 months)",
+            "Author credentials visible",
+            "Multiple examples/case studies"
+          ]
+        },
+        "medium_probability": {
+          "threshold_min": 30,
+          "threshold_max": 70,
+          "factors": [
+            "Tutorial content",
+            "Comparison articles",
+            "Tool reviews",
+            "Industry reports"
+          ]
+        },
+        "low_probability": {
+          "threshold": 30,
+          "factors": [
+            "Product pages",
+            "Short blog posts",
+            "Promotional content",
+            "Outdated information (>1 year)"
+          ]
+        },
+        "your_content_analysis": {
+          "high_probability": 8,
+          "medium_probability": 34,
+          "low_probability": 58
+        }
+      },
+      "knowledge_graph_position": {
+        "zapier_position": {
+          "connections": 2847,
+          "linked_concepts": ["automation", "integration", "productivity"],
+          "query_relevance": 94
+        },
+        "gumloop_position": {
+          "connections": 37,
+          "status": "Peripheral node with weak category links",
+          "query_relevance": 12
+        },
+        "path_to_centrality": [
+          {
+            "path": "Sub-category ownership",
+            "example": "intelligent automation"
+          },
+          {
+            "path": "Use-case dominance",
+            "example": "RevOps automation"
+          },
+          {
+            "path": "Problem-space authority",
+            "example": "workflow reliability"
+          }
+        ]
+      },
+      "prompt_insights": {
+        "testing_methodology": "500 prompts tested across personas (developer, marketer, operations)",
+        "where_you_appear": [
+          {
+            "prompt": "New automation tools 2024",
+            "mentions": 1
+          },
+          {
+            "prompt": "Alternatives to expensive automation",
+            "mentions": 1
+          },
+          {
+            "prompt": "Simple automation platforms",
+            "mentions": 0
+          }
+        ],
+        "where_you_should_appear": [
+          {
+            "prompt": "Fix broken automations",
+            "mentions": 0,
+            "competition": "low"
+          },
+          {
+            "prompt": "Automation for RevOps",
+            "mentions": 0,
+            "opportunity": "niche"
+          },
+          {
+            "prompt": "AI workflow tools",
+            "mentions": 0,
+            "category": "emerging"
+          }
+        ]
+      }
+    },
+    "strategic_leverage": {
+      "section_header": "Five Levers for Building Authority",
+      "section_subheader": "Each lever impacts different metrics. Choose based on your resources and timeline.",
+      "levers": [
+        {
+          "id": "depth_vs_breadth",
+          "name": "Depth vs. Breadth",
+          "current_position": {
+            "breadth": 70,
+            "depth": 30
+          },
+          "if_pull_toward_depth": {
+            "impact": {
+              "ai_citations": "+45%",
+              "dwell_time": "+67%"
+            },
+            "tradeoff": {
+              "total_traffic": "-30% initially"
+            },
+            "timeline": "60-90 days to impact",
+            "resource_need": "Subject matter expertise",
+            "detailed_analysis": "Deep, comprehensive guides (3,000+ words) receive 3.4x more backlinks and 5.2x more AI citations than shorter posts. Zapier's top 50 pages average 3,847 words. Yours average 1,243.",
+            "examples": [
+              "Ultimate guides",
+              "Technical documentation",
+              "Research reports",
+              "Framework definitions"
+            ]
+          }
+        },
+        {
+          "id": "problem_vs_solution",
+          "name": "Problem vs. Solution Focus",
+          "current_position": {
+            "problem": 20,
+            "solution": 80
+          },
+          "if_pull_toward_problems": {
+            "impact": {
+              "conversion_rate": "+156%",
+              "engagement": "+89%"
+            },
+            "tradeoff": "Smaller initial audience",
+            "timeline": "30-45 days to impact",
+            "resource_need": "Customer research access",
+            "detailed_analysis": "Problem-focused content shows 3.2x higher purchase intent. Search data reveals 73,000 monthly searches for automation problems vs. 156,000 for solutions, but competition is 78% lower for problems."
+          }
+        },
+        {
+          "id": "velocity_vs_quality",
+          "name": "Velocity vs. Quality",
+          "current_position": {
+            "quality": 7.8,
+            "velocity": 2.3,
+            "velocity_unit": "/month"
+          },
+          "if_increase_velocity": {
+            "impact": {
+              "indexation_rate": "+200%",
+              "topic_coverage": "faster"
+            },
+            "tradeoff": {
+              "quality_score": "-15%"
+            },
+            "timeline": "Immediate impact",
+            "resource_need": "Content team scaling"
+          },
+          "if_maximize_quality": {
+            "impact": {
+              "backlinks": "+120%",
+              "shares": "+89%"
+            },
+            "tradeoff": "Slower market coverage",
+            "timeline": "90-120 days to compound",
+            "resource_need": "Senior writers/editors"
+          }
+        },
+        {
+          "id": "original_vs_curated",
+          "name": "Original Research vs. Curation",
+          "current_position": {
+            "original": 15,
+            "curated": 85
+          },
+          "if_increase_original": {
+            "impact": {
+              "media_mentions": "+340%",
+              "backlinks": "+200%"
+            },
+            "tradeoff": "Higher production cost",
+            "timeline": "6-month compound effect",
+            "resource_need": "Data access, analysis capability",
+            "research_opportunities": [
+              "Automation failure rate study",
+              "ROI analysis across industries",
+              "Workflow complexity index",
+              "AI adoption in automation"
+            ]
+          }
+        },
+        {
+          "id": "niche_vs_broad",
+          "name": "Niche Domination vs. Broad Appeal",
+          "current_position": "Attempting broad appeal",
+          "if_niche_down": {
+            "impact": {
+              "category_authority": "+400%",
+              "conversion": "+250%"
+            },
+            "tradeoff": {
+              "total_addressable_market": "-60%"
+            },
+            "timeline": "90 days to ownership",
+            "resource_need": "Deep vertical expertise",
+            "niche_options": [
+              {
+                "niche": "RevOps Automation",
+                "searches": "34K",
+                "competition": "low"
+              },
+              {
+                "niche": "E-commerce Automation",
+                "searches": "67K",
+                "competition": "medium"
+              },
+              {
+                "niche": "Healthcare Workflows",
+                "searches": "12K",
+                "value": "high"
+              },
+              {
+                "niche": "Developer Automation",
+                "searches": "89K",
+                "audience": "technical"
+              }
+            ]
+          }
+        }
+      ],
+      "scenarios": [
+        {
+          "name": "Fast Authority",
+          "description": "High velocity, niche focus"
+        },
+        {
+          "name": "Premium Position",
+          "description": "Maximum quality, deep content"
+        },
+        {
+          "name": "Balanced Growth",
+          "description": "Moderate all levers"
+        },
+        {
+          "name": "Problem Solver",
+          "description": "Problem focus, original research"
+        }
+      ]
+    },
+    "competitive_intelligence": {
+      "section_header": "Understanding the Competitive Landscape",
+      "section_subheader": "Not just who they are, but how they got there",
+      "content_archaeology": {
+        "zapier_playbook": {
+          "phase1": {
+            "years": "2012-2015",
+            "strategy": "Integration pages at scale",
+            "tactics": [
+              "Created 2,000+ app combination pages",
+              "Programmatic SEO strategy",
+              "Thin but comprehensive coverage"
+            ]
+          },
+          "phase2": {
+            "years": "2016-2019",
+            "strategy": "Authority content layer",
+            "tactics": [
+              "Added tutorials and guides",
+              "Built 'Zapier University'",
+              "User-generated content program"
+            ]
+          },
+          "phase3": {
+            "years": "2020-Present",
+            "strategy": "Thought leadership",
+            "tactics": [
+              "Remote work content hub",
+              "Productivity research",
+              "Category expansion"
+            ]
+          },
+          "key_learning": "Zapier built breadth first, then added depth. This secured search dominance before competitors emerged."
+        }
+      },
+      "competitive_blind_spots": {
+        "technical_gaps": [
+          {
+            "gap": "Error handling patterns",
+            "status": "Nobody owns"
+          },
+          {
+            "gap": "Performance optimization",
+            "status": "Weak coverage"
+          },
+          {
+            "gap": "Security best practices",
+            "status": "Minimal content"
+          },
+          {
+            "gap": "Debugging strategies",
+            "status": "Opportunity"
+          }
+        ],
+        "use_case_gaps": [
+          "Healthcare compliance workflows",
+          "Financial services automation",
+          "Government/public sector",
+          "Educational institutions"
+        ],
+        "emerging_topics": [
+          {
+            "topic": "AI-enhanced automation",
+            "advantage": "first-mover"
+          },
+          {
+            "topic": "Predictive workflow management",
+            "advantage": "first-mover"
+          },
+          {
+            "topic": "Automation observability",
+            "advantage": "first-mover"
+          },
+          {
+            "topic": "Workflow analytics",
+            "advantage": "first-mover"
+          }
+        ]
+      },
+      "backlink_analysis": {
+        "link_velocity": [
+          {
+            "competitor": "Zapier",
+            "new_domains_per_month": 2847
+          },
+          {
+            "competitor": "Make",
+            "new_domains_per_month": 423
+          },
+          {
+            "competitor": "n8n",
+            "new_domains_per_month": 234
+          },
+          {
+            "competitor": "Gumloop",
+            "new_domains_per_month": 12
+          }
+        ],
+        "link_quality": {
+          "your_avg_dr": 42,
+          "zapier_avg_dr": 67,
+          "your_relevancy": 0.73,
+          "zapier_relevancy": 0.61,
+          "insight": "Your average referring domain DR: 42. Zapier's average: 67. But your link relevancy score is higher (0.73 vs 0.61)"
+        }
+      }
+    },
+    "market_intelligence": {
+      "section_header": "What Your Market Actually Needs",
+      "section_subheader": "Synthesis of user research, search behavior, and community analysis",
+      "user_journey": {
+        "typical_paths": [
+          {
+            "source": "Search 'workflow automation'",
+            "percentage": 2
+          },
+          {
+            "source": "Search 'zapier alternatives'",
+            "percentage": 8
+          },
+          {
+            "source": "Direct brand search",
+            "percentage": 11
+          },
+          {
+            "source": "Referral from dev community",
+            "percentage": 47
+          },
+          {
+            "source": "Product Hunt / launch",
+            "percentage": 32
+          }
+        ],
+        "journey_insight": "79% of your traffic comes from non-search sources, indicating weak organic presence but strong word-of-mouth potential."
+      },
+      "community_intelligence": {
+        "data_sources": ["Reddit API", "Stack Overflow", "Discord servers"],
+        "sentiment_evolution": [
+          {
+            "topic": "Frustration with pricing",
+            "trend": "+234%",
+            "period": "6 months"
+          },
+          {
+            "topic": "Seeking alternatives",
+            "trend": "+156%",
+            "period": "6 months"
+          },
+          {
+            "topic": "Debugging questions",
+            "trend": "+189%",
+            "period": "6 months"
+          },
+          {
+            "topic": "AI integration interest",
+            "trend": "+567%",
+            "period": "6 months"
+          }
+        ],
+        "verbatim_quotes": [
+          "Zapier is too expensive for what it does",
+          "Why isn't there a tool that shows me WHY my workflow failed?",
+          "I need something that can handle complex logic without code",
+          "Looking for automation that learns from failures"
+        ]
+      },
+      "search_query_evolution": {
+        "2023_queries": [
+          "connect apps",
+          "automate tasks",
+          "integration platform"
+        ],
+        "2024_queries": [
+          "workflow automation",
+          "no-code automation",
+          "zapier alternatives"
+        ],
+        "2025_emerging": [
+          "AI automation tools",
+          "intelligent workflows",
+          "self-healing automation",
+          "workflow observability"
+        ],
+        "predictive_insight": "Based on query evolution patterns, we project 'intelligent automation' and 'workflow reliability' will see 300%+ growth in 2025."
+      }
+    },
+    "actionable_intelligence": {
+      "section_header": "Paths Forward: Choose Your Strategy",
+      "section_subheader": "Three strategic paths based on your resources and goals",
+      "strategic_paths": [
+        {
+          "id": "depth_builder",
+          "name": "The Depth Builder",
+          "philosophy": "Own fewer topics completely",
+          "metrics_impact": {
+            "authority_score": {
+              "change": "+67%",
+              "timeline": "6 months"
+            },
+            "traffic": {
+              "change": "+45%",
+              "timeline": "9 months"
+            },
+            "conversions": {
+              "change": "+234%",
+              "timeline": "6 months"
+            }
+          },
+          "resource_requirements": [
+            "1 senior technical writer",
+            "20 hours/week commitment",
+            "Subject matter expert access"
+          ],
+          "success_indicators": [
+            "Featured snippets captured",
+            "Backlink velocity increase",
+            "AI citation frequency",
+            "Dwell time improvement"
+          ]
+        },
+        {
+          "id": "problem_solver",
+          "name": "The Problem Solver",
+          "philosophy": "Be where pain is acute",
+          "metrics_impact": {
+            "relevance_score": {
+              "change": "+123%",
+              "timeline": "3 months"
+            },
+            "qualified_traffic": {
+              "change": "+89%",
+              "timeline": "6 months"
+            },
+            "brand_searches": {
+              "change": "+200%",
+              "timeline": "9 months"
+            }
+          },
+          "resource_requirements": [
+            "Customer interview access",
+            "Support ticket analysis",
+            "Community management",
+            "Rapid content iteration"
+          ]
+        },
+        {
+          "id": "category_creator",
+          "name": "The Category Creator",
+          "philosophy": "Define new space",
+          "metrics_impact": {
+            "thought_leadership": {
+              "position": "Top 3",
+              "timeline": "12 months"
+            },
+            "media_mentions": {
+              "change": "+400%",
+              "timeline": "9 months"
+            },
+            "premium_positioning": {
+              "achieved": true,
+              "timeline": "6 months"
+            }
+          },
+          "resource_requirements": [
+            "Original research capability",
+            "PR/media relationships",
+            "Conference speaking",
+            "Executive thought leadership"
+          ]
+        }
+      ],
+      "success_tracking": {
+        "primary_kpis": {
+          "depth_builder": ["word count", "comprehensiveness score"],
+          "problem_solver": ["query match", "pain point coverage"],
+          "category_creator": ["new term rankings", "media mentions"]
+        },
+        "secondary_kpis": [
+          "AI platform visibility",
+          "Search ranking improvements",
+          "Engagement metrics",
+          "Conversion indicators"
+        ],
+        "leading_indicators": [
+          "Content production velocity",
+          "Keyword ranking movements",
+          "Backlink acquisition rate",
+          "Social signal growth",
+          "AI citation frequency"
+        ]
+      }
+    },
+    "data_transparency": {
+      "section_header": "How We Analyzed Your Content Ecosystem",
+      "section_subheader": "Complete transparency on data sources and methods",
+      "collection_timeline": {
+        "primary": "January 20-27, 2025",
+        "frequency": {
+          "daily": "Search console, rankings",
+          "weekly": "AI platform testing",
+          "historical": "12 months retrospective"
+        }
+      },
+      "sources_and_samples": {
+        "seo_data": {
+          "search_console": "90 days, all queries",
+          "ahrefs": "12 months historical, 6 competitors",
+          "semrush": "Current rankings for 1,247 keywords",
+          "pagespeed": "All 47 pages tested"
+        },
+        "ai_testing": {
+          "chatgpt": "127 category-relevant queries",
+          "claude": "127 matched queries",
+          "perplexity": "50 high-intent queries",
+          "bard": "50 matched queries"
+        },
+        "market_intelligence": {
+          "reddit": "500 posts, 3,000 comments analyzed",
+          "google_trends": "12-month data, 50 search terms",
+          "stack_overflow": "200 relevant questions",
+          "industry_reports": "12 recent publications"
+        }
+      },
+      "confidence_levels": {
+        "high_confidence": {
+          "threshold": ">90% certainty",
+          "includes": [
+            "Search volume data",
+            "Technical SEO metrics",
+            "Current rankings",
+            "Backlink data"
+          ]
+        },
+        "medium_confidence": {
+          "threshold": "70-90% certainty",
+          "includes": [
+            "AI citation patterns",
+            "User intent classification",
+            "Competitive strategies",
+            "Trend projections"
+          ]
+        },
+        "exploratory": {
+          "threshold": "50-70% certainty",
+          "includes": [
+            "Future predictions",
+            "Category evolution",
+            "Emerging opportunities",
+            "Strategic recommendations"
+          ]
+        }
+      }
+    },
+    "export_options": [
+      {
+        "format": "Strategic Summary",
+        "description": "3-page executive brief"
+      },
+      {
+        "format": "Full Analysis",
+        "description": "Complete 47-page report"
+      },
+      {
+        "format": "Action Workbook",
+        "description": "Interactive Excel with models"
+      },
+      {
+        "format": "Presentation Deck",
+        "description": "20-slide stakeholder version"
+      },
+      {
+        "format": "API Access",
+        "description": "JSON data for integration"
+      }
+    ]
+  }
+}
