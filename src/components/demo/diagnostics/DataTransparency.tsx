@@ -599,7 +599,7 @@ export default function DataTransparency({ data }: DataTransparencyProps) {
                       transition={{ delay: idx * 0.1 }}
                       className="flex items-start gap-3 p-4 bg-white/50 rounded-lg hover:bg-white transition-colors"
                     >
-                      <div className="p-2 bg-indigo-100 rounded-lg text-indigo-600">
+                      <div className="p-2 bg-gray-100 rounded-lg text-gray-600">
                         {feature.icon}
                       </div>
                       <div>
@@ -652,7 +652,7 @@ export default function DataTransparency({ data }: DataTransparencyProps) {
                       transition={{ delay: idx * 0.1 }}
                       className="flex items-start gap-3 p-4 bg-white/50 rounded-lg hover:bg-white transition-colors"
                     >
-                      <div className="p-2 bg-purple-100 rounded-lg text-purple-600">
+                      <div className="p-2 bg-gray-100 rounded-lg text-gray-600">
                         {feature.icon}
                       </div>
                       <div>
@@ -693,7 +693,7 @@ export default function DataTransparency({ data }: DataTransparencyProps) {
       </section>
       
       {/* Bottom CTA */}
-      <Card className="bg-gradient-to-r from-gray-900 to-gray-800 text-white">
+      <Card className="bg-gray-900 text-white border-gray-900">
         <div className="p-8">
           <h3 className="text-xl font-medium mb-3">Ready to Take Action?</h3>
           <p className="text-gray-300 mb-6">

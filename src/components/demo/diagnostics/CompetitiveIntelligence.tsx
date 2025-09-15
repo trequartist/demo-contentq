@@ -46,12 +46,10 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
         </p>
         
         {/* Executive Insight Box */}
-        <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-0">
+        <Card className="bg-gray-50 border-gray-200">
           <div className="p-8">
             <div className="flex items-start gap-4">
-              <div className="p-3 bg-white rounded-lg shadow-sm">
-                <Users className="w-6 h-6 text-blue-600" />
-              </div>
+              <div className="w-1 bg-gray-900 self-stretch" />
               <div>
                 <h3 className="text-lg font-medium text-gray-900 mb-2">Competitive Reality Check</h3>
                 <p className="text-gray-700 leading-relaxed">
@@ -97,8 +95,8 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
                       className={`
                         relative z-10 w-20 h-20 rounded-full transition-all duration-300
                         ${isSelected 
-                          ? 'bg-gradient-to-br from-blue-500 to-indigo-600 shadow-xl scale-110' 
-                          : 'bg-white border-2 border-gray-300 hover:border-blue-400'
+                          ? 'bg-gray-900 shadow-xl scale-110' 
+                          : 'bg-white border-2 border-gray-300 hover:border-gray-400'
                         }
                       `}
                     >
@@ -111,7 +109,7 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
                     
                     {/* Phase Label */}
                     <div className="mt-4 text-center">
-                      <p className={`text-sm font-medium ${isSelected ? 'text-blue-600' : 'text-gray-700'}`}>
+                      <p className={`text-sm font-medium ${isSelected ? 'text-gray-900' : 'text-gray-700'}`}>
                         {phaseData.years}
                       </p>
                       <p className="text-xs text-gray-500 mt-1 max-w-[120px]">
@@ -126,7 +124,7 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
                       <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="absolute -bottom-16 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-blue-600"
+                        className="absolute -bottom-16 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-gray-900"
                       />
                     )}
                   </motion.div>
@@ -146,7 +144,7 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
               transition={{ duration: 0.3 }}
             >
               <Card className="overflow-hidden">
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8">
+                <div className="bg-gray-50 border-b border-gray-200 p-8">
                   <div className="max-w-4xl mx-auto">
                     <h3 className="text-2xl font-light text-gray-900 mb-2">
                       {competitive_intelligence.content_archaeology.zapier_playbook[selectedPhase].strategy}
@@ -169,9 +167,9 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
                       >
                         <div className="flex items-start gap-3">
                           <div className="p-2 bg-white rounded-lg shadow-sm">
-                            {idx === 0 && <Zap className="w-4 h-4 text-blue-600" />}
-                            {idx === 1 && <Target className="w-4 h-4 text-indigo-600" />}
-                            {idx === 2 && <TrendingUp className="w-4 h-4 text-purple-600" />}
+                            {idx === 0 && <Zap className="w-4 h-4 text-gray-600" />}
+                            {idx === 1 && <Target className="w-4 h-4 text-gray-600" />}
+                            {idx === 2 && <TrendingUp className="w-4 h-4 text-gray-600" />}
                           </div>
                           <p className="text-sm text-gray-700 leading-relaxed">{tactic}</p>
                         </div>
@@ -191,12 +189,10 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
           transition={{ delay: 0.5 }}
           className="mt-8"
         >
-          <Card className="bg-gradient-to-r from-amber-50 to-orange-50 border-amber-200">
+          <Card className="bg-gray-50 border-gray-200">
             <div className="p-6">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-white rounded-lg shadow-sm">
-                  <Lightbulb className="w-6 h-6 text-amber-600" />
-                </div>
+                <div className="w-1 bg-gray-900 self-stretch" />
                 <div>
                   <h4 className="font-medium text-gray-900 mb-2">Strategic Insight</h4>
                   <p className="text-gray-700 leading-relaxed">
@@ -471,20 +467,20 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
                       transition={{ delay: idx * 0.1 }}
                       onMouseEnter={() => setHoveredVelocity(comp.competitor)}
                       onMouseLeave={() => setHoveredVelocity(null)}
-                      className={`relative ${isGumloop ? 'ring-2 ring-indigo-500 rounded-lg p-1' : ''}`}
+                      className={`relative ${isGumloop ? 'ring-2 ring-gray-400 rounded-lg p-1' : ''}`}
                     >
                       <div className={`p-4 rounded-lg ${
-                        isGumloop ? 'bg-indigo-50' : 'bg-gray-50'
+                        isGumloop ? 'bg-gray-100' : 'bg-gray-50'
                       } hover:shadow-md transition-all`}>
                         <div className="flex items-center justify-between mb-3">
                           <span className={`font-medium ${
-                            isGumloop ? 'text-indigo-700' : 'text-gray-900'
+                            isGumloop ? 'text-gray-900' : 'text-gray-900'
                           }`}>
                             {comp.competitor}
                           </span>
                           <div className="text-right">
                             <span className={`text-xl font-light ${
-                              isGumloop ? 'text-indigo-600' : 'text-gray-900'
+                              isGumloop ? 'text-gray-900' : 'text-gray-900'
                             }`}>
                               +{comp.new_domains_per_month.toLocaleString()}
                             </span>
