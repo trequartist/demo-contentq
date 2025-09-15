@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
     // your project has type errors.
     ignoreBuildErrors: true,
   },
+  // Force fresh builds
+  generateBuildId: async () => {
+    return Date.now().toString();
+  },
 };
 
 export default nextConfig;
