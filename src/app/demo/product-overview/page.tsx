@@ -3,388 +3,360 @@
 import React, { useState } from 'react';
 import { Card } from '@/components/ui';
 import { 
-  Target,
   Search,
   FileText,
   BarChart3,
-  Brain,
-  Users,
-  Plus,
-  Check,
   Edit3,
+  Target,
+  Check,
   RefreshCw,
-  TrendingUp,
-  Calendar,
-  MessageSquare,
-  AlertCircle,
+  Brain,
   Activity,
-  Zap,
-  BookOpen,
   Database,
-  ChevronRight,
+  ArrowRight,
   Sparkles,
-  User
+  User,
+  Zap,
+  GitBranch,
+  Layers
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface AgentCardProps {
+interface AgentData {
+  id: string;
   icon: React.ReactNode;
   title: string;
-  description: string;
-  touchpoint: string;
-  details: string[];
-  expanded: boolean;
-  onToggle: () => void;
+  subtitle: string;
+  capabilities: string[];
+  color: string;
 }
 
-const AgentCard: React.FC<AgentCardProps> = ({ 
-  icon, 
-  title, 
-  description, 
-  touchpoint, 
-  details, 
-  expanded, 
-  onToggle 
-}) => {
-  return (
-    <motion.div
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.2 }}
-    >
-      <Card 
-        className="relative overflow-hidden cursor-pointer border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300"
-        onClick={onToggle}
-      >
-        <div className="p-6">
-          {/* Expand Indicator */}
-          <div className="absolute top-6 right-6">
-            <motion.div
-              animate={{ rotate: expanded ? 45 : 0 }}
-              transition={{ duration: 0.2 }}
-              className="text-gray-400"
-            >
-              <Plus className="w-5 h-5" />
-            </motion.div>
-          </div>
-          
-          {/* Icon */}
-          <div className="w-12 h-12 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg flex items-center justify-center mb-4">
-            <div className="text-purple-600">
-              {icon}
-            </div>
-          </div>
-          
-          {/* Title & Description */}
-          <h3 className="text-lg font-medium text-gray-900 mb-2">{title}</h3>
-          <p className="text-sm text-gray-600 mb-4">{description}</p>
-          
-          {/* Human Touchpoint Badge */}
-          <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-3 py-1">
-            <User className="w-3 h-3 text-amber-600" />
-            <span className="text-xs font-medium text-amber-700">{touchpoint}</span>
-          </div>
-          
-          {/* Expanded Details */}
-          <AnimatePresence>
-            {expanded && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="mt-6 pt-6 border-t border-gray-100"
-              >
-                <ul className="space-y-3">
-                  {details.map((detail, idx) => (
-                    <motion.li
-                      key={idx}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.05 }}
-                      className="flex items-start gap-2 text-sm text-gray-600"
-                    >
-                      <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span>{detail}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </Card>
-    </motion.div>
-  );
-};
-
 export default function ProductOverviewPage() {
-  const [expandedCard, setExpandedCard] = useState<string | null>(null);
-  const [activeStatus, setActiveStatus] = useState<'active' | 'processing' | 'waiting'>('active');
+  const [hoveredAgent, setHoveredAgent] = useState<string | null>(null);
+  const [selectedFlow, setSelectedFlow] = useState<number>(0);
 
-  const agents = [
+  const agents: AgentData[] = [
     {
       id: 'research',
-      icon: <Search className="w-6 h-6" />,
-      title: 'Research Agent',
-      description: 'Market intelligence & opportunity detection',
-      touchpoint: 'Validate findings',
-      details: [
-        'Monitors competitor content daily',
-        'Tracks trending topics in your industry',
-        'Identifies content gaps to fill',
-        'Alerts on time-sensitive opportunities'
-      ]
+      icon: <Search className="w-5 h-5" />,
+      title: 'Research',
+      subtitle: 'Market Intelligence',
+      capabilities: ['Competitor Analysis', 'Trend Detection', 'Gap Identification'],
+      color: 'purple'
     },
     {
       id: 'strategy',
-      icon: <FileText className="w-6 h-6" />,
-      title: 'Strategy Agent',
-      description: 'Dynamic playbooks & content planning',
-      touchpoint: 'Approve strategy',
-      details: [
-        'Generates targeted content plays',
-        'Plans optimal publishing calendar',
-        'Adapts based on performance data',
-        'Defines measurable success metrics'
-      ]
+      icon: <FileText className="w-5 h-5" />,
+      title: 'Strategy',
+      subtitle: 'Content Planning',
+      capabilities: ['Dynamic Playbooks', 'Calendar Planning', 'Success Metrics'],
+      color: 'blue'
     },
     {
       id: 'creation',
-      icon: <Edit3 className="w-6 h-6" />,
-      title: 'Creation Agent',
-      description: 'Content generation & optimization',
-      touchpoint: 'Edit & approve',
-      details: [
-        'Writes authority-building content',
-        'Matches your unique brand voice',
-        'Optimizes for each platform',
-        'Improves existing content'
-      ]
+      icon: <Edit3 className="w-5 h-5" />,
+      title: 'Creation',
+      subtitle: 'Content Generation',
+      capabilities: ['Brand Voice Match', 'Multi-Platform', 'SEO Optimization'],
+      color: 'green'
     },
     {
       id: 'analytics',
-      icon: <BarChart3 className="w-6 h-6" />,
-      title: 'Analytics Agent',
-      description: 'Performance tracking & insights',
-      touchpoint: 'Review insights',
-      details: [
-        'Measures authority growth',
-        'Tracks AI system citations',
-        'Calculates content ROI',
-        'Identifies winning patterns'
-      ]
+      icon: <BarChart3 className="w-5 h-5" />,
+      title: 'Analytics',
+      subtitle: 'Performance Tracking',
+      capabilities: ['Authority Growth', 'ROI Calculation', 'Pattern Recognition'],
+      color: 'orange'
     }
   ];
 
-  const humanInteractions = [
-    {
-      icon: <Target className="w-5 h-5" />,
-      label: 'Strategic Input',
-      description: 'Set goals & priorities'
-    },
-    {
-      icon: <Check className="w-5 h-5" />,
-      label: 'Quality Gates',
-      description: 'Approve at key stages'
-    },
-    {
-      icon: <Edit3 className="w-5 h-5" />,
-      label: 'Expert Editing',
-      description: 'Add unique insights'
-    },
-    {
-      icon: <RefreshCw className="w-5 h-5" />,
-      label: 'Feedback Loops',
-      description: 'Train the system'
-    }
+  const humanTouchpoints = [
+    { icon: <Target className="w-4 h-4" />, label: 'Set Goals' },
+    { icon: <Check className="w-4 h-4" />, label: 'Approve' },
+    { icon: <Edit3 className="w-4 h-4" />, label: 'Refine' },
+    { icon: <RefreshCw className="w-4 h-4" />, label: 'Iterate' }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="text-center">
-            <h1 className="text-4xl font-light text-gray-900 mb-4">
-              ContentQ
-            </h1>
-            <p className="text-xl text-gray-600">
-              Multi-Agent System for B2B Authority Building
-            </p>
+    <div className="min-h-screen bg-gray-50 overflow-hidden">
+      <div className="h-screen flex flex-col">
+        {/* Compact Header */}
+        <div className="bg-white border-b border-gray-200 px-8 py-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-center justify-between">
+              <div>
+                <h1 className="text-2xl font-light text-gray-900 flex items-center gap-3">
+                  <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+                    <Sparkles className="w-5 h-5 text-white" />
+                  </div>
+                  ContentQ Intelligence System
+                </h1>
+                <p className="text-sm text-gray-600 mt-1">Multi-agent orchestration for B2B authority</p>
+              </div>
+              
+              {/* Live Status */}
+              <div className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-full">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                <span className="text-sm font-medium">System Active</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Status Indicators */}
-      <div className="fixed top-6 right-6 z-50">
-        <div className="bg-white rounded-full shadow-lg px-4 py-2 flex items-center gap-4">
-          {[
-            { status: 'active', label: 'Active', color: 'bg-green-500' },
-            { status: 'processing', label: 'Processing', color: 'bg-yellow-500' },
-            { status: 'waiting', label: 'Waiting', color: 'bg-gray-400' }
-          ].map((item) => (
-            <button
-              key={item.status}
-              onClick={() => setActiveStatus(item.status as any)}
-              className={`flex items-center gap-2 text-xs font-medium transition-opacity ${
-                activeStatus === item.status ? 'opacity-100' : 'opacity-50'
-              }`}
-            >
-              <div className={`w-2 h-2 rounded-full ${item.color}`} />
-              <span className="text-gray-600">{item.label}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        {/* Orchestrator Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-12"
-        >
-          <Card className="bg-gradient-to-br from-gray-900 to-gray-800 text-white max-w-2xl mx-auto">
-            <div className="p-8 text-center">
-              <div className="w-16 h-16 bg-white/10 backdrop-blur rounded-full flex items-center justify-center mx-auto mb-6">
-                <Brain className="w-8 h-8" />
-              </div>
-              <h2 className="text-2xl font-medium mb-3">
-                Intelligent Content System
-              </h2>
-              <p className="text-gray-300 leading-relaxed">
-                ContentQ coordinates specialized AI agents<br />
-                to build your market authority systematically
-              </p>
-            </div>
-          </Card>
-        </motion.div>
-
-        {/* Human Interaction Map */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-12"
-        >
-          <Card className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200">
-            <div className="p-8">
-              <h3 className="text-xl font-medium text-amber-900 text-center mb-8 flex items-center justify-center gap-2">
-                <User className="w-6 h-6" />
-                Human Guidance Throughout
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                {humanInteractions.map((interaction, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 + idx * 0.05 }}
-                    className="text-center"
-                  >
-                    <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mx-auto mb-3 shadow-sm">
-                      <div className="text-amber-600">{interaction.icon}</div>
+        {/* Main Content - No Scroll */}
+        <div className="flex-1 px-8 py-6">
+          <div className="max-w-7xl mx-auto h-full">
+            <div className="grid grid-cols-12 gap-6 h-full">
+              
+              {/* Left Column - Orchestrator & Flow */}
+              <div className="col-span-4 space-y-6">
+                {/* Orchestrator Card */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="h-40"
+                >
+                  <Card className="h-full bg-black text-white relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-blue-600/20" />
+                    <div className="relative p-6 h-full flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="w-10 h-10 bg-white/10 backdrop-blur rounded-lg flex items-center justify-center">
+                            <Brain className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <h3 className="font-medium">AI Orchestrator</h3>
+                            <p className="text-xs text-gray-300">Coordinating agents in real-time</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Mini Flow Visualization */}
+                      <div className="flex items-center justify-between">
+                        {agents.map((agent, idx) => (
+                          <motion.div
+                            key={agent.id}
+                            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                              selectedFlow === idx ? 'bg-white text-black scale-110' : 'bg-white/20'
+                            }`}
+                            animate={{
+                              scale: selectedFlow === idx ? [1, 1.2, 1] : 1,
+                            }}
+                            transition={{ duration: 2, repeat: selectedFlow === idx ? Infinity : 0 }}
+                          >
+                            <div className="w-4 h-4">
+                              {React.cloneElement(agent.icon as React.ReactElement, { className: 'w-4 h-4' })}
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
-                    <h4 className="font-medium text-amber-900 mb-1">{interaction.label}</h4>
-                    <p className="text-xs text-amber-700">{interaction.description}</p>
-                  </motion.div>
-                ))}
+                  </Card>
+                </motion.div>
+
+                {/* Human Integration */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 }}
+                >
+                  <Card className="bg-amber-50 border-amber-200">
+                    <div className="p-4">
+                      <div className="flex items-center gap-2 mb-3">
+                        <User className="w-4 h-4 text-amber-600" />
+                        <h3 className="text-sm font-medium text-amber-900">Human-in-the-Loop</h3>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2">
+                        {humanTouchpoints.map((point, idx) => (
+                          <div key={idx} className="flex items-center gap-2 p-2 bg-white rounded-lg">
+                            <div className="text-amber-600">{point.icon}</div>
+                            <span className="text-xs text-gray-700">{point.label}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </Card>
+                </motion.div>
+
+                {/* System Architecture */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="flex-1"
+                >
+                  <Card className="h-full bg-gradient-to-br from-gray-50 to-gray-100 border-gray-200">
+                    <div className="p-4 h-full">
+                      <h3 className="text-sm font-medium text-gray-700 mb-3">Core Infrastructure</h3>
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
+                          <Activity className="w-4 h-4 text-gray-600" />
+                          <div className="flex-1">
+                            <p className="text-xs font-medium text-gray-700">Diagnostics Engine</p>
+                            <p className="text-xs text-gray-500">Real-time performance analysis</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
+                          <Database className="w-4 h-4 text-gray-600" />
+                          <div className="flex-1">
+                            <p className="text-xs font-medium text-gray-700">Knowledge Base</p>
+                            <p className="text-xs text-gray-500">Self-learning repository</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </motion.div>
+              </div>
+
+              {/* Right Column - Agent Grid */}
+              <div className="col-span-8">
+                <div className="grid grid-cols-2 gap-4 h-full">
+                  {agents.map((agent, idx) => (
+                    <motion.div
+                      key={agent.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 + idx * 0.05 }}
+                      onMouseEnter={() => {
+                        setHoveredAgent(agent.id);
+                        setSelectedFlow(idx);
+                      }}
+                      onMouseLeave={() => {
+                        setHoveredAgent(null);
+                        setSelectedFlow(-1);
+                      }}
+                      className="relative"
+                    >
+                      <Card className={`h-full border-2 transition-all duration-300 cursor-pointer ${
+                        hoveredAgent === agent.id 
+                          ? 'border-gray-900 shadow-xl transform scale-[1.02]' 
+                          : 'border-gray-200 hover:border-gray-300'
+                      }`}>
+                        {/* Agent Header */}
+                        <div className="p-6">
+                          <div className="flex items-start justify-between mb-4">
+                            <div className="flex items-center gap-3">
+                              <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${
+                                hoveredAgent === agent.id
+                                  ? 'bg-gray-900 text-white'
+                                  : 'bg-gray-100 text-gray-600'
+                              }`}>
+                                {agent.icon}
+                              </div>
+                              <div>
+                                <h3 className="font-medium text-gray-900">{agent.title}</h3>
+                                <p className="text-xs text-gray-500">{agent.subtitle}</p>
+                              </div>
+                            </div>
+                            
+                            {/* Status Indicator */}
+                            <div className={`w-2 h-2 rounded-full ${
+                              hoveredAgent === agent.id ? 'bg-green-500' : 'bg-gray-300'
+                            } transition-colors`} />
+                          </div>
+
+                          {/* Capabilities */}
+                          <div className="space-y-2">
+                            {agent.capabilities.map((cap, capIdx) => (
+                              <motion.div
+                                key={capIdx}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ 
+                                  opacity: hoveredAgent === agent.id ? 1 : 0.7,
+                                  x: hoveredAgent === agent.id ? 0 : -10
+                                }}
+                                transition={{ delay: capIdx * 0.05 }}
+                                className="flex items-center gap-2"
+                              >
+                                <div className={`w-1 h-1 rounded-full transition-all ${
+                                  hoveredAgent === agent.id ? 'bg-gray-900' : 'bg-gray-400'
+                                }`} />
+                                <span className="text-sm text-gray-600">{cap}</span>
+                              </motion.div>
+                            ))}
+                          </div>
+
+                          {/* Action Indicator */}
+                          <AnimatePresence>
+                            {hoveredAgent === agent.id && (
+                              <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 10 }}
+                                className="mt-4 pt-4 border-t border-gray-100"
+                              >
+                                <div className="flex items-center justify-between">
+                                  <span className="text-xs text-gray-500">Active processes</span>
+                                  <div className="flex items-center gap-1">
+                                    {[...Array(3)].map((_, i) => (
+                                      <motion.div
+                                        key={i}
+                                        className="w-1.5 h-1.5 bg-gray-900 rounded-full"
+                                        animate={{ opacity: [0.3, 1, 0.3] }}
+                                        transition={{ duration: 1.5, delay: i * 0.2, repeat: Infinity }}
+                                      />
+                                    ))}
+                                  </div>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
-          </Card>
-        </motion.div>
 
-        {/* Agents Grid */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-12"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {agents.map((agent, idx) => (
-              <motion.div
-                key={agent.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + idx * 0.1 }}
-              >
-                <AgentCard
-                  {...agent}
-                  expanded={expandedCard === agent.id}
-                  onToggle={() => setExpandedCard(expandedCard === agent.id ? null : agent.id)}
-                />
-              </motion.div>
-            ))}
+            {/* Bottom Status Bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="mt-6"
+            >
+              <Card className="bg-gradient-to-r from-gray-900 to-gray-800 text-white">
+                <div className="px-6 py-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-6">
+                      <div className="flex items-center gap-2">
+                        <Layers className="w-4 h-4 text-gray-400" />
+                        <span className="text-sm">Workflow Pipeline</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        {agents.map((agent, idx) => (
+                          <React.Fragment key={agent.id}>
+                            <span className={`text-sm transition-all ${
+                              selectedFlow === idx ? 'text-white font-medium' : 'text-gray-400'
+                            }`}>
+                              {agent.title}
+                            </span>
+                            {idx < agents.length - 1 && (
+                              <ArrowRight className="w-3 h-3 text-gray-600" />
+                            )}
+                          </React.Fragment>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-2">
+                        <GitBranch className="w-4 h-4 text-gray-400" />
+                        <span className="text-sm text-gray-300">v2.4.0</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Zap className="w-4 h-4 text-yellow-400" />
+                        <span className="text-sm">High Performance Mode</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
           </div>
-        </motion.div>
-
-        {/* Support Systems */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
-        >
-          <Card className="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200">
-            <div className="p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm">
-                  <Activity className="w-6 h-6 text-gray-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">Diagnostics Engine</h3>
-                  <p className="text-sm text-gray-600">
-                    Comprehensive audits establish your baseline and track progress toward authority goals
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Card>
-
-          <Card className="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200">
-            <div className="p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm">
-                  <Database className="w-6 h-6 text-gray-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">Knowledge Base</h3>
-                  <p className="text-sm text-gray-600">
-                    Living repository that learns from every piece of content and interaction
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </motion.div>
-
-        {/* Workflow Example */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-        >
-          <Card className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200">
-            <div className="p-8 text-center">
-              <h3 className="text-sm font-medium text-purple-600 uppercase tracking-wider mb-4">
-                Continuous Improvement Cycle
-              </h3>
-              <div className="flex items-center justify-center gap-3 text-lg text-gray-700">
-                <span>Research</span>
-                <ChevronRight className="w-5 h-5 text-gray-400" />
-                <span>Strategy</span>
-                <ChevronRight className="w-5 h-5 text-gray-400" />
-                <span>Creation</span>
-                <ChevronRight className="w-5 h-5 text-gray-400" />
-                <span>Analytics</span>
-                <ChevronRight className="w-5 h-5 text-gray-400" />
-                <span>Learn</span>
-              </div>
-            </div>
-          </Card>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
