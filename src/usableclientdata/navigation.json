@@ -1,13 +1,6 @@
 {
   "navigation": [
     {
-      "name": "Product Overview",
-      "href": "/demo/product-overview",
-      "icon": "Sparkles",
-      "description": "Multi-agent system overview",
-      "badge": null
-    },
-    {
       "name": "Dashboard",
       "href": "/demo/dashboard",
       "icon": "LayoutDashboard",
