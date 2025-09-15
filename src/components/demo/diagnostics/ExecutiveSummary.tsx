@@ -19,6 +19,7 @@ interface ExecutiveSummaryProps {
 }
 
 export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
+  // Version: Executive Aesthetic Update v2
   const { executive_summary, data_sources, analysis_period } = data;
 
   const fadeInUp = {
