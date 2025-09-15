@@ -33,7 +33,7 @@ interface LeverPosition {
 }
 
 export default function StrategicLeverage({ data }: StrategicLeverageProps) {
-  const { strategic_leverage } = data;
+  const { strategic_leverage = {} } = data || {};
   const [leverPositions, setLeverPositions] = useState<LeverPosition>({
     depth_vs_breadth: 30,
     problem_vs_solution: 20,
@@ -70,10 +70,10 @@ export default function StrategicLeverage({ data }: StrategicLeverageProps) {
       {/* Executive Header */}
       <div className="bg-white border border-gray-200 rounded-lg p-8">
         <h1 className="text-2xl font-light text-gray-900 mb-2">
-          {strategic_leverage.section_header}
+          {strategic_leverage.section_header || 'Strategic Leverage'}
         </h1>
         <p className="text-gray-600">
-          {strategic_leverage.section_subheader}
+          {strategic_leverage.section_subheader || 'Strategic positioning and growth opportunities'}
         </p>
       </div>
 
@@ -86,7 +86,7 @@ export default function StrategicLeverage({ data }: StrategicLeverageProps) {
               Key Finding
             </h2>
             <p className="text-gray-700 leading-relaxed">
-              {strategic_leverage.executive_briefing}
+              {strategic_leverage.executive_briefing || 'No executive briefing available'}
             </p>
           </div>
         </div>
@@ -104,7 +104,7 @@ export default function StrategicLeverage({ data }: StrategicLeverageProps) {
           </div>
 
           <div className="space-y-6">
-            {strategic_leverage.lever_controls.map((lever: any) => (
+            {(strategic_leverage?.lever_controls || []).map((lever: any) => (
               <motion.div
                 key={lever.id}
                 className="border border-gray-200 rounded-lg p-4"
@@ -186,7 +186,7 @@ export default function StrategicLeverage({ data }: StrategicLeverageProps) {
 
       {/* Strategic Scenarios - Clean Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {strategic_leverage.strategic_scenarios.map((scenario: any) => (
+        {(strategic_leverage?.strategic_scenarios || []).map((scenario: any) => (
           <Card 
             key={scenario.id}
             className={`bg-white border border-gray-200 cursor-pointer transition-all ${
@@ -242,7 +242,7 @@ export default function StrategicLeverage({ data }: StrategicLeverageProps) {
         <div className="p-6">
           <h3 className="text-sm font-medium text-gray-900 mb-4">Impact Projections</h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {strategic_leverage.impact_projections.map((projection: any, idx: number) => (
+            {(strategic_leverage?.impact_projections || []).map((projection: any, idx: number) => (
               <div key={idx} className="text-center p-4 border border-gray-200 rounded-lg">
                 <div className="text-2xl font-light text-gray-900 mb-1">
                   {projection.value}
@@ -273,7 +273,7 @@ export default function StrategicLeverage({ data }: StrategicLeverageProps) {
                 <h4 className="text-sm font-medium text-gray-800">Immediate Actions</h4>
               </div>
               <ul className="space-y-2">
-                {strategic_leverage.recommendations.immediate_actions.map((action: string, idx: number) => (
+                {(strategic_leverage?.recommendations?.immediate_actions || []).map((action: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-2">
                     <ChevronRight className="w-3 h-3 text-gray-400 mt-0.5" />
                     <span className="text-sm text-gray-700">{action}</span>
@@ -287,7 +287,7 @@ export default function StrategicLeverage({ data }: StrategicLeverageProps) {
                 <h4 className="text-sm font-medium text-gray-800">Strategic Shifts</h4>
               </div>
               <ul className="space-y-2">
-                {strategic_leverage.recommendations.strategic_shifts.map((shift: string, idx: number) => (
+                {(strategic_leverage?.recommendations?.strategic_shifts || []).map((shift: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-2">
                     <ChevronRight className="w-3 h-3 text-gray-400 mt-0.5" />
                     <span className="text-sm text-gray-700">{shift}</span>
@@ -301,7 +301,7 @@ export default function StrategicLeverage({ data }: StrategicLeverageProps) {
                 <h4 className="text-sm font-medium text-gray-800">Watch Points</h4>
               </div>
               <ul className="space-y-2">
-                {strategic_leverage.recommendations.watch_points.map((point: string, idx: number) => (
+                {(strategic_leverage?.recommendations?.watch_points || []).map((point: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-2">
                     <ChevronRight className="w-3 h-3 text-gray-400 mt-0.5" />
                     <span className="text-sm text-gray-700">{point}</span>

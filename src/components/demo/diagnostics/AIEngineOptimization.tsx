@@ -20,17 +20,17 @@ interface AIEngineOptimizationProps {
 export default function AIEngineOptimization({ data }: AIEngineOptimizationProps) {
   const [selectedConcept, setSelectedConcept] = useState<string | null>(null);
   const [expandedModel, setExpandedModel] = useState<string | null>(null);
-  const { ai_engine_optimization } = data;
+  const { ai_engine_optimization = {} } = data || {};
 
   return (
     <div className="space-y-8">
       {/* Executive Header */}
       <div className="bg-white border border-gray-200 rounded-lg p-8">
         <h1 className="text-2xl font-light text-gray-900 mb-2">
-          {ai_engine_optimization.section_header}
+          {ai_engine_optimization.section_header || 'AI Engine Optimization'}
         </h1>
         <p className="text-gray-600">
-          {ai_engine_optimization.section_subheader}
+          {ai_engine_optimization.section_subheader || 'Optimizing content for AI discovery and understanding'}
         </p>
       </div>
 
@@ -43,7 +43,7 @@ export default function AIEngineOptimization({ data }: AIEngineOptimizationProps
               Key Finding
             </h2>
             <p className="text-gray-700 leading-relaxed">
-              {ai_engine_optimization.executive_briefing}
+              {ai_engine_optimization.executive_briefing || 'No executive briefing available'}
             </p>
           </div>
         </div>
@@ -51,7 +51,7 @@ export default function AIEngineOptimization({ data }: AIEngineOptimizationProps
 
       {/* Coverage Scores - Clean Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {Object.entries(ai_engine_optimization.coverage_scores).map(([model, score]: [string, any]) => (
+        {Object.entries(ai_engine_optimization?.coverage_scores || {}).map(([model, score]: [string, any]) => (
           <Card key={model} className="bg-white border border-gray-200 p-5">
             <div className="flex items-start justify-between mb-3">
               <div>
@@ -85,7 +85,7 @@ export default function AIEngineOptimization({ data }: AIEngineOptimizationProps
         <div className="p-6">
           <h3 className="text-sm font-medium text-gray-900 mb-4">Concept Coverage Analysis</h3>
           <div className="space-y-4">
-            {ai_engine_optimization.concept_coverage.concepts.map((concept: any, idx: number) => (
+            {(ai_engine_optimization?.concept_coverage?.concepts || []).map((concept: any, idx: number) => (
               <div
                 key={idx}
                 className="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow cursor-pointer"
@@ -133,7 +133,7 @@ export default function AIEngineOptimization({ data }: AIEngineOptimizationProps
                           <div>
                             <p className="text-xs font-medium text-gray-700 mb-2">Gaps Identified:</p>
                             <ul className="space-y-1">
-                              {concept.gaps.map((gap: string, gIdx: number) => (
+                              {(concept?.gaps || []).map((gap: string, gIdx: number) => (
                                 <li key={gIdx} className="flex items-start gap-1">
                                   <span className="text-gray-400 text-xs">•</span>
                                   <span className="text-xs text-gray-600">{gap}</span>
@@ -144,7 +144,7 @@ export default function AIEngineOptimization({ data }: AIEngineOptimizationProps
                           <div>
                             <p className="text-xs font-medium text-gray-700 mb-2">Recommended Actions:</p>
                             <ul className="space-y-1">
-                              {concept.recommendations.map((rec: string, rIdx: number) => (
+                              {(concept?.recommendations || []).map((rec: string, rIdx: number) => (
                                 <li key={rIdx} className="flex items-start gap-1">
                                   <span className="text-gray-400 text-xs">•</span>
                                   <span className="text-xs text-gray-600">{rec}</span>
@@ -168,7 +168,7 @@ export default function AIEngineOptimization({ data }: AIEngineOptimizationProps
         <div className="p-6">
           <h3 className="text-sm font-medium text-gray-900 mb-4">Knowledge Graph Structure</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {Object.entries(ai_engine_optimization.knowledge_graph).map(([key, value]: [string, any]) => (
+            {Object.entries(ai_engine_optimization?.knowledge_graph || {}).map(([key, value]: [string, any]) => (
               <div key={key} className="border border-gray-200 rounded-lg p-4">
                 <div className="flex items-center gap-2 mb-3">
                   <Layers className="w-4 h-4 text-gray-600" />
@@ -201,7 +201,7 @@ export default function AIEngineOptimization({ data }: AIEngineOptimizationProps
         <div className="p-6">
           <h3 className="text-sm font-medium text-gray-900 mb-4">Content Optimization Funnel</h3>
           <div className="space-y-3">
-            {ai_engine_optimization.optimization_funnel.stages.map((stage: any, idx: number) => {
+            {(ai_engine_optimization?.optimization_funnel?.stages || []).map((stage: any, idx: number) => {
               const widthPercent = 100 - (idx * 20);
               return (
                 <div key={idx} className="relative">
@@ -220,7 +220,7 @@ export default function AIEngineOptimization({ data }: AIEngineOptimizationProps
                       </div>
                     </div>
                   </div>
-                  {idx < ai_engine_optimization.optimization_funnel.stages.length - 1 && (
+                  {idx < (ai_engine_optimization?.optimization_funnel?.stages || []).length - 1 && (
                     <div className="flex justify-center my-1">
                       <ArrowRight className="w-4 h-4 text-gray-400 rotate-90" />
                     </div>
@@ -234,7 +234,7 @@ export default function AIEngineOptimization({ data }: AIEngineOptimizationProps
 
       {/* Model-Specific Optimizations - Clean Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {ai_engine_optimization.model_specific_optimizations.map((model: any, idx: number) => (
+        {(ai_engine_optimization?.model_specific_optimizations || []).map((model: any, idx: number) => (
           <Card key={idx} className="bg-white border border-gray-200">
             <div className="p-6">
               <div 
@@ -280,7 +280,7 @@ export default function AIEngineOptimization({ data }: AIEngineOptimizationProps
                     <div className="mt-4 pt-4 border-t border-gray-100">
                       <p className="text-xs font-medium text-gray-700 mb-2">Key Improvements:</p>
                       <ul className="space-y-1">
-                        {model.improvements.map((improvement: string, iIdx: number) => (
+                        {(model?.improvements || []).map((improvement: string, iIdx: number) => (
                           <li key={iIdx} className="flex items-start gap-2">
                             <CheckCircle className="w-3 h-3 text-gray-400 mt-0.5" />
                             <span className="text-xs text-gray-600">{improvement}</span>
@@ -307,7 +307,7 @@ export default function AIEngineOptimization({ data }: AIEngineOptimizationProps
                 <h4 className="text-sm font-medium text-gray-800">Immediate Actions</h4>
               </div>
               <ul className="space-y-2">
-                {ai_engine_optimization.recommendations.immediate.map((action: string, idx: number) => (
+                {(ai_engine_optimization?.recommendations?.immediate || []).map((action: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-2">
                     <ChevronRight className="w-3 h-3 text-gray-400 mt-0.5" />
                     <span className="text-sm text-gray-700">{action}</span>
@@ -321,7 +321,7 @@ export default function AIEngineOptimization({ data }: AIEngineOptimizationProps
                 <h4 className="text-sm font-medium text-gray-800">Enhancement Opportunities</h4>
               </div>
               <ul className="space-y-2">
-                {ai_engine_optimization.recommendations.enhancements.map((enhancement: string, idx: number) => (
+                {(ai_engine_optimization?.recommendations?.enhancements || []).map((enhancement: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-2">
                     <ChevronRight className="w-3 h-3 text-gray-400 mt-0.5" />
                     <span className="text-sm text-gray-700">{enhancement}</span>
@@ -335,7 +335,7 @@ export default function AIEngineOptimization({ data }: AIEngineOptimizationProps
                 <h4 className="text-sm font-medium text-gray-800">Risk Mitigation</h4>
               </div>
               <ul className="space-y-2">
-                {ai_engine_optimization.recommendations.risks.map((risk: string, idx: number) => (
+                {(ai_engine_optimization?.recommendations?.risks || []).map((risk: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-2">
                     <ChevronRight className="w-3 h-3 text-gray-400 mt-0.5" />
                     <span className="text-sm text-gray-700">{risk}</span>

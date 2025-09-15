@@ -24,7 +24,7 @@ interface SearchIntelligenceProps {
 export default function SearchIntelligence({ data }: SearchIntelligenceProps) {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [hoveredQuery, setHoveredQuery] = useState<string | null>(null);
-  const { search_intelligence } = data;
+  const { search_intelligence = {} } = data || {};
 
   const toggleSection = (section: string) => {
     setExpandedSection(expandedSection === section ? null : section);
@@ -35,16 +35,16 @@ export default function SearchIntelligence({ data }: SearchIntelligenceProps) {
       {/* Executive Header */}
       <div className="bg-white border border-gray-200 rounded-lg p-8">
         <h1 className="text-2xl font-light text-gray-900 mb-2">
-          {search_intelligence.section_header}
+          {search_intelligence.section_header || 'Search Intelligence Analysis'}
         </h1>
         <p className="text-gray-600 mb-6">
-          {search_intelligence.section_subheader}
+          {search_intelligence.section_subheader || 'Understanding your search visibility and opportunities'}
         </p>
         
         {/* Data Sources - Minimal */}
         <div className="flex items-center gap-4 text-sm text-gray-500 border-t border-gray-100 pt-4">
           <span className="font-medium">Data sources:</span>
-          {search_intelligence.data_sources.map((source: string, idx: number) => (
+          {(search_intelligence?.data_sources || []).map((source: string, idx: number) => (
             <React.Fragment key={idx}>
               {idx > 0 && <span className="text-gray-300">|</span>}
               <span>{source}</span>
@@ -62,7 +62,7 @@ export default function SearchIntelligence({ data }: SearchIntelligenceProps) {
               Key Finding
             </h2>
             <p className="text-gray-700 leading-relaxed">
-              {search_intelligence.executive_briefing}
+              {search_intelligence.executive_briefing || 'No executive briefing available'}
             </p>
           </div>
         </div>
@@ -70,7 +70,7 @@ export default function SearchIntelligence({ data }: SearchIntelligenceProps) {
 
       {/* Overview Metrics - Clean Grid */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        {Object.entries(search_intelligence.overview_metrics).map(([key, metric]: [string, any]) => (
+        {Object.entries(search_intelligence?.overview_metrics || {}).map(([key, metric]: [string, any]) => (
           <Card key={key} className="bg-white border border-gray-200 p-5">
             <div className="flex items-start justify-between mb-3">
               <div className="w-8 h-8 bg-gray-50 rounded flex items-center justify-center">
@@ -94,7 +94,7 @@ export default function SearchIntelligence({ data }: SearchIntelligenceProps) {
         <div className="p-6">
           <h3 className="text-sm font-medium text-gray-900 mb-4">High-Value Query Opportunities</h3>
           <div className="space-y-3">
-            {search_intelligence.high_value_queries.map((query: any, idx: number) => (
+            {(search_intelligence?.high_value_queries || []).map((query: any, idx: number) => (
               <motion.div
                 key={idx}
                 className="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow cursor-pointer"
@@ -154,7 +154,7 @@ export default function SearchIntelligence({ data }: SearchIntelligenceProps) {
         <div className="p-6">
           <h3 className="text-sm font-medium text-gray-900 mb-4">Technical Health Scores</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {Object.entries(search_intelligence.technical_health).map(([key, item]: [string, any]) => (
+            {Object.entries(search_intelligence?.technical_health || {}).map(([key, item]: [string, any]) => (
               <div key={key} className="border border-gray-200 rounded-lg p-4">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm font-medium text-gray-800">
@@ -196,7 +196,7 @@ export default function SearchIntelligence({ data }: SearchIntelligenceProps) {
                 </tr>
               </thead>
               <tbody>
-                {search_intelligence.competitive_comparison.map((comp: any, idx: number) => (
+                {(search_intelligence?.competitive_comparison || []).map((comp: any, idx: number) => (
                   <tr key={idx} className="border-b border-gray-100">
                     <td className="py-3 text-sm font-medium text-gray-800">{comp.competitor}</td>
                     <td className="py-3">
@@ -232,7 +232,7 @@ export default function SearchIntelligence({ data }: SearchIntelligenceProps) {
               <h3 className="text-sm font-medium text-gray-900">Quick Wins</h3>
             </div>
             <ul className="space-y-2">
-              {search_intelligence.recommendations.quick_wins.map((win: string, idx: number) => (
+              {(search_intelligence?.recommendations?.quick_wins || []).map((win: string, idx: number) => (
                 <li key={idx} className="flex items-start gap-2">
                   <ChevronRight className="w-3 h-3 text-gray-400 mt-0.5" />
                   <span className="text-sm text-gray-700">{win}</span>
@@ -251,7 +251,7 @@ export default function SearchIntelligence({ data }: SearchIntelligenceProps) {
               <h3 className="text-sm font-medium text-gray-900">Strategic Priorities</h3>
             </div>
             <ul className="space-y-2">
-              {search_intelligence.recommendations.strategic_priorities.map((priority: string, idx: number) => (
+              {(search_intelligence?.recommendations?.strategic_priorities || []).map((priority: string, idx: number) => (
                 <li key={idx} className="flex items-start gap-2">
                   <ChevronRight className="w-3 h-3 text-gray-400 mt-0.5" />
                   <span className="text-sm text-gray-700">{priority}</span>
@@ -270,7 +270,7 @@ export default function SearchIntelligence({ data }: SearchIntelligenceProps) {
               <h3 className="text-sm font-medium text-gray-900">Critical Fixes</h3>
             </div>
             <ul className="space-y-2">
-              {search_intelligence.recommendations.critical_fixes.map((fix: string, idx: number) => (
+              {(search_intelligence?.recommendations?.critical_fixes || []).map((fix: string, idx: number) => (
                 <li key={idx} className="flex items-start gap-2">
                   <ChevronRight className="w-3 h-3 text-gray-400 mt-0.5" />
                   <span className="text-sm text-gray-700">{fix}</span>
