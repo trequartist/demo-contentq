@@ -62,7 +62,7 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
 
           {/* Analysis Scope - Minimal */}
           <div className="flex items-center gap-6 text-sm text-gray-500 border-t border-gray-100 pt-4">
-            <span className="font-medium">Analysis Period: {analysis_period}</span>
+            <span className="font-medium">Analysis Period: {analysis_period.start} to {analysis_period.end}</span>
             <span className="text-gray-300">|</span>
             <div className="flex items-center gap-3">
               {data_sources.map((source: any, idx: number) => (
