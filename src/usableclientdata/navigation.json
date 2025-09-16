@@ -1,6 +1,13 @@
 {
   "navigation": [
     {
+      "name": "ContentQ Overview",
+      "href": "/demo/contentq-overview",
+      "icon": "Info",
+      "description": "Educational system overview",
+      "badge": "Learn"
+    },
+    {
       "name": "Dashboard",
       "href": "/demo/dashboard",
       "icon": "LayoutDashboard",
