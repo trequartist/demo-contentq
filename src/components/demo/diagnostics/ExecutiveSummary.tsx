@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card } from '@/components/ui';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   TrendingUp, 
   Search, 
   Brain, 
   Target,
   BarChart3,
-  Calendar,
   AlertCircle,
   ArrowUpRight,
   ArrowDownRight,
-  ChevronRight
+  ChevronRight,
+  Globe,
+  Database,
+  FileText,
+  TrendingDown,
+  Activity
 } from 'lucide-react';
 
 interface ExecutiveSummaryProps {
@@ -19,270 +23,351 @@ interface ExecutiveSummaryProps {
 }
 
 export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
-  // Version: Executive Aesthetic Update v2
-  const { executive_summary, data_sources, analysis_period } = data;
+  const { executive_summary = {}, data_sources = [], analysis_period = {} } = data || {};
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
 
   const fadeInUp = {
-    initial: { opacity: 0, y: 10 },
+    initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.4 }
+    transition: { duration: 0.6, ease: "easeOut" }
   };
 
   const staggerChildren = {
     animate: {
       transition: {
-        staggerChildren: 0.05
+        staggerChildren: 0.2
       }
     }
   };
 
-  const getScoreStatus = (score: number) => {
-    if (score >= 70) return { label: 'Strong', color: 'text-gray-900' };
-    if (score >= 40) return { label: 'Moderate', color: 'text-gray-700' };
-    return { label: 'Needs Attention', color: 'text-gray-600' };
+  const getScoreAnalysis = (score: number) => {
+    if (score >= 70) return { label: 'Strong', description: 'Above industry standard' };
+    if (score >= 40) return { label: 'Moderate', description: 'Room for improvement' };
+    return { label: 'Critical', description: 'Immediate attention needed' };
+  };
+
+  const dataSourceIcons: { [key: string]: any } = {
+    'Google Search Console': <Search className="w-3 h-3" />,
+    'SEMrush': <Globe className="w-3 h-3" />,
+    'LLM Testing Suite': <Brain className="w-3 h-3" />,
+    'Google Trends': <TrendingUp className="w-3 h-3" />,
+    'Reddit Analysis': <FileText className="w-3 h-3" />,
+    'Ahrefs': <Database className="w-3 h-3" />
   };
 
   return (
-    <div className="space-y-8">
-      {/* Executive Header */}
+    <div className="space-y-6">
+      {/* Hero Section with Subtle Animation */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="bg-white border border-gray-200 rounded-lg p-8"
+        transition={{ duration: 0.8 }}
+        className="relative overflow-hidden"
       >
-        <div className="max-w-4xl">
-          <motion.div {...fadeInUp}>
-            <h1 className="text-2xl font-light text-gray-900 mb-2">
-              {executive_summary.headline}
-            </h1>
-            <p className="text-gray-600 mb-6">
-              {executive_summary.subheadline}
-            </p>
-          </motion.div>
+        {/* Subtle gradient mesh background */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200" />
+        </div>
+        
+        <div className="relative bg-white border border-gray-200 rounded-xl p-12">
+          <div className="max-w-5xl">
+            <motion.div {...fadeInUp}>
+              <h1 className="text-5xl font-extralight text-gray-900 mb-4 leading-tight">
+                Your Content Intelligence Report
+              </h1>
+              <div className="w-full h-px bg-gray-200 mb-6" />
+              <p className="text-lg text-gray-600 font-light leading-relaxed mb-8">
+                Comprehensive analysis from {analysis_period.start || 'January 20'} to {analysis_period.end || 'January 27, 2025'}
+              </p>
+              <p className="text-gray-500 leading-relaxed max-w-3xl">
+                We've analyzed your entire content ecosystem across 6 dimensions, examining 1,247 search queries, 
+                testing 127 AI prompts, and reviewing 4,340 pieces of competitive content. This report synthesizes 
+                those insights into actionable intelligence.
+              </p>
+            </motion.div>
 
-          {/* Analysis Scope - Minimal */}
-          <div className="flex items-center gap-6 text-sm text-gray-500 border-t border-gray-100 pt-4">
-            <span className="font-medium">Analysis Period: {analysis_period.start} to {analysis_period.end}</span>
-            <span className="text-gray-300">|</span>
-            <div className="flex items-center gap-3">
+            {/* Data Source Badges - Horizontal scroll */}
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="mt-8 flex items-center gap-3 overflow-x-auto scrollbar-hide"
+            >
               {data_sources.map((source: any, idx: number) => (
-                <span key={idx} className="flex items-center gap-1">
-                  <span className="text-xs">{source.icon}</span>
+                <div key={idx} className="flex items-center gap-2 px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-xs text-gray-600 whitespace-nowrap">
+                  {dataSourceIcons[source.source] || <Database className="w-3 h-3" />}
                   <span>{source.source}</span>
-                </span>
+                </div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </motion.div>
 
-      {/* Executive Briefing */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2 }}
-        className="bg-gray-50 border border-gray-200 rounded-lg p-6"
-      >
-        <div className="flex items-start gap-4">
-          <div className="w-1 h-12 bg-gray-900 rounded-full flex-shrink-0" />
-          <div>
-            <h2 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">
-              Executive Briefing
-            </h2>
-            <p className="text-gray-700 leading-relaxed">
-              {executive_summary.key_finding}
-            </p>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Performance Metrics - Clean Grid */}
+      {/* Executive Summary Cards - Premium Design */}
       <motion.div 
         variants={staggerChildren}
         initial="initial"
         animate="animate"
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
       >
-        {Object.entries(executive_summary.performance_snapshot).map(([key, metric]: [string, any]) => {
-          const status = getScoreStatus(metric.score);
+        {Object.entries(executive_summary.performance_snapshot || {
+          search_visibility: { score: 42, max: 100, trend: 'up', trend_label: 'Growing steadily' },
+          ai_discoverability: { score: 23, max: 100, trend: 'stable', trend_label: 'Minimal presence' },
+          technical_excellence: { score: 78, max: 100, trend: 'up', trend_label: 'Strong foundation' },
+          growth_opportunity: { score: 84, max: 100, trend: 'up', trend_label: 'High potential' }
+        }).map(([key, metric]: [string, any], idx) => {
+          const analysis = getScoreAnalysis(metric.score);
+          const isExpanded = expandedCard === key;
+          
           return (
             <motion.div
               key={key}
               variants={fadeInUp}
-              className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-sm transition-shadow"
+              whileHover={{ y: -2 }}
+              onClick={() => setExpandedCard(isExpanded ? null : key)}
+              className="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:shadow-lg transition-all duration-300"
             >
-              {/* Metric Header */}
-              <div className="flex items-start justify-between mb-3">
-                <div className="w-8 h-8 bg-gray-50 rounded flex items-center justify-center">
-                  {key === 'search_visibility' && <Search className="w-4 h-4 text-gray-600" />}
-                  {key === 'ai_discoverability' && <Brain className="w-4 h-4 text-gray-600" />}
-                  {key === 'technical_excellence' && <BarChart3 className="w-4 h-4 text-gray-600" />}
-                  {key === 'market_penetration' && <Target className="w-4 h-4 text-gray-600" />}
+              {/* Header */}
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center">
+                  {key === 'search_visibility' && <Search className="w-5 h-5 text-gray-600" />}
+                  {key === 'ai_discoverability' && <Brain className="w-5 h-5 text-gray-600" />}
+                  {key === 'technical_excellence' && <BarChart3 className="w-5 h-5 text-gray-600" />}
+                  {key === 'growth_opportunity' && <Target className="w-5 h-5 text-gray-600" />}
                 </div>
-                <span className={`text-xs font-medium ${status.color}`}>
-                  {status.label}
-                </span>
+                <div className="text-right">
+                  <span className="text-xs font-medium text-gray-500">{analysis.label}</span>
+                  <p className="text-xs text-gray-400">{analysis.description}</p>
+                </div>
               </div>
               
-              {/* Score */}
-              <div className="mb-3">
+              {/* Score with Animation */}
+              <div className="mb-4">
                 <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-light text-gray-900">{metric.score}</span>
-                  {metric.max && <span className="text-sm text-gray-500">/{metric.max}</span>}
-                  {metric.unit && <span className="text-sm text-gray-500">{metric.unit}</span>}
+                  <motion.span 
+                    className="text-4xl font-extralight text-gray-900"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.2 + idx * 0.1 }}
+                  >
+                    {metric.score}
+                  </motion.span>
+                  <span className="text-lg font-extralight text-gray-400">/100</span>
                 </div>
-                <p className="text-xs text-gray-600 mt-1">
+                <p className="text-sm text-gray-600 mt-1 font-light">
                   {key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
                 </p>
               </div>
               
-              {/* Progress Indicator - Subtle */}
-              {metric.max && (
-                <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
-                  <motion.div 
-                    className="h-full bg-gray-900"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${(metric.score / metric.max) * 100}%` }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                  />
-                </div>
-              )}
+              {/* Animated Progress Bar */}
+              <div className="h-1 bg-gray-100 rounded-full overflow-hidden mb-3">
+                <motion.div 
+                  className="h-full bg-gradient-to-r from-gray-700 to-gray-900"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${metric.score}%` }}
+                  transition={{ duration: 1, delay: 0.3 + idx * 0.1, ease: "easeOut" }}
+                />
+              </div>
               
-              {/* Trend - Minimal */}
-              {metric.trend && (
-                <div className="flex items-center gap-1 mt-3 text-xs text-gray-500">
+              {/* Trend Indicator */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1.5 text-xs text-gray-500">
                   {metric.trend === 'up' ? (
                     <ArrowUpRight className="w-3 h-3" />
                   ) : metric.trend === 'down' ? (
                     <ArrowDownRight className="w-3 h-3" />
-                  ) : null}
+                  ) : (
+                    <Activity className="w-3 h-3" />
+                  )}
                   <span>{metric.trend_label}</span>
                 </div>
-              )}
+                <ChevronRight className={`w-4 h-4 text-gray-400 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
+              </div>
+
+              {/* Expandable Details */}
+              <AnimatePresence>
+                {isExpanded && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="mt-4 pt-4 border-t border-gray-100 text-xs text-gray-600">
+                      <p className="mb-2">View detailed analysis →</p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           );
         })}
       </motion.div>
 
-      {/* Strategic Insights - Executive Style */}
+      {/* Key Finding - Executive Brief */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+        className="bg-gray-50 border border-gray-200 rounded-xl p-8"
+      >
+        <div className="flex items-start gap-4">
+          <div className="w-1 h-16 bg-gray-900 rounded-full flex-shrink-0" />
+          <div className="flex-1">
+            <h2 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3">
+              Key Finding
+            </h2>
+            <p className="text-lg text-gray-700 leading-relaxed font-light">
+              {executive_summary.key_finding || "47% of searches are problem-focused with 3.2x higher conversion intent but 67% less competition than solution searches. This represents an immediate opportunity to capture high-intent traffic by addressing user pain points directly."}
+            </p>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Strategic Insights Grid - Premium Cards */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.4 }}
+        transition={{ delay: 0.6 }}
         className="grid grid-cols-1 lg:grid-cols-3 gap-4"
       >
         {/* Critical Gaps */}
-        <Card className="bg-white border border-gray-200">
-          <div className="p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 bg-gray-100 rounded flex items-center justify-center">
-                <AlertCircle className="w-4 h-4 text-gray-700" />
+        <Card className="bg-white border border-gray-200 hover:shadow-md transition-shadow duration-300">
+          <div className="p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                <AlertCircle className="w-5 h-5 text-gray-700" />
               </div>
-              <h3 className="text-sm font-medium text-gray-900">Critical Gaps</h3>
+              <h3 className="text-base font-medium text-gray-900">Critical Gaps</h3>
             </div>
-            <div className="space-y-3">
-              <div className="border-l-2 border-gray-300 pl-4">
-                <p className="text-sm font-medium text-gray-800">Purchase-Stage Content</p>
-                <p className="text-xs text-gray-600 mt-0.5">2 posts vs. 15-20 industry standard</p>
-              </div>
-              <div className="border-l-2 border-gray-300 pl-4">
-                <p className="text-sm font-medium text-gray-800">AI Platform Visibility</p>
-                <p className="text-xs text-gray-600 mt-0.5">4% mention rate vs. 87% benchmark</p>
-              </div>
-              <div className="border-l-2 border-gray-300 pl-4">
-                <p className="text-sm font-medium text-gray-800">Migration Content</p>
-                <p className="text-xs text-gray-600 mt-0.5">Missing 60% of switcher market</p>
-              </div>
+            <div className="space-y-4">
+              {[
+                { title: "Purchase-Stage Content", detail: "2 posts vs. 15-20 industry standard", severity: "high" },
+                { title: "AI Platform Visibility", detail: "4% mention rate vs. 87% benchmark", severity: "critical" },
+                { title: "Migration Content", detail: "Missing 60% of switcher market", severity: "medium" }
+              ].map((gap, idx) => (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.7 + idx * 0.1 }}
+                  className="border-l-2 border-gray-300 pl-4 py-1"
+                >
+                  <p className="text-sm font-medium text-gray-800">{gap.title}</p>
+                  <p className="text-xs text-gray-600 mt-0.5">{gap.detail}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </Card>
 
-        {/* Opportunities */}
-        <Card className="bg-white border border-gray-200">
-          <div className="p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 bg-gray-100 rounded flex items-center justify-center">
-                <TrendingUp className="w-4 h-4 text-gray-700" />
+        {/* Major Opportunities */}
+        <Card className="bg-white border border-gray-200 hover:shadow-md transition-shadow duration-300">
+          <div className="p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                <TrendingUp className="w-5 h-5 text-gray-700" />
               </div>
-              <h3 className="text-sm font-medium text-gray-900">Major Opportunities</h3>
+              <h3 className="text-base font-medium text-gray-900">Major Opportunities</h3>
             </div>
-            <div className="space-y-3">
-              <div className="border-l-2 border-gray-900 pl-4">
-                <p className="text-sm font-medium text-gray-800">AI-Native Leadership</p>
-                <p className="text-xs text-gray-600 mt-0.5">4,400 searches/mo (+23% QoQ)</p>
-              </div>
-              <div className="border-l-2 border-gray-900 pl-4">
-                <p className="text-sm font-medium text-gray-800">Competitor Migration</p>
-                <p className="text-xs text-gray-600 mt-0.5">8,100 high-intent searches</p>
-              </div>
-              <div className="border-l-2 border-gray-900 pl-4">
-                <p className="text-sm font-medium text-gray-800">Problem-Space Authority</p>
-                <p className="text-xs text-gray-600 mt-0.5">3.2x intent, 67% less competition</p>
-              </div>
+            <div className="space-y-4">
+              {[
+                { title: "AI-Native Leadership", detail: "4,400 searches/mo (+23% QoQ)" },
+                { title: "Competitor Migration", detail: "8,100 high-intent searches" },
+                { title: "Problem-Space Authority", detail: "3.2x intent, 67% less competition" }
+              ].map((opp, idx) => (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.7 + idx * 0.1 }}
+                  className="border-l-2 border-gray-900 pl-4 py-1"
+                >
+                  <p className="text-sm font-medium text-gray-800">{opp.title}</p>
+                  <p className="text-xs text-gray-600 mt-0.5">{opp.detail}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </Card>
 
         {/* Quick Wins */}
-        <Card className="bg-white border border-gray-200">
-          <div className="p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 bg-gray-100 rounded flex items-center justify-center">
-                <Target className="w-4 h-4 text-gray-700" />
+        <Card className="bg-white border border-gray-200 hover:shadow-md transition-shadow duration-300">
+          <div className="p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                <Target className="w-5 h-5 text-gray-700" />
               </div>
-              <h3 className="text-sm font-medium text-gray-900">30-Day Actions</h3>
+              <h3 className="text-base font-medium text-gray-900">30-Day Actions</h3>
             </div>
-            <div className="space-y-3">
-              <div className="flex items-center gap-2">
-                <ChevronRight className="w-3 h-3 text-gray-400" />
-                <div>
-                  <p className="text-sm font-medium text-gray-800">Add FAQ Sections</p>
-                  <p className="text-xs text-gray-600">50+ featured snippets</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <ChevronRight className="w-3 h-3 text-gray-400" />
-                <div>
-                  <p className="text-sm font-medium text-gray-800">Technical SEO Fixes</p>
-                  <p className="text-xs text-gray-600">+30% ranking potential</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <ChevronRight className="w-3 h-3 text-gray-400" />
-                <div>
-                  <p className="text-sm font-medium text-gray-800">Pricing Calculator</p>
-                  <p className="text-xs text-gray-600">2.3x conversion uplift</p>
-                </div>
-              </div>
+            <div className="space-y-4">
+              {[
+                { title: "Add FAQ Sections", impact: "50+ featured snippets" },
+                { title: "Technical SEO Fixes", impact: "+30% ranking potential" },
+                { title: "Pricing Calculator", impact: "2.3x conversion uplift" }
+              ].map((action, idx) => (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.7 + idx * 0.1 }}
+                  className="flex items-start gap-2"
+                >
+                  <ChevronRight className="w-3 h-3 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm font-medium text-gray-800">{action.title}</p>
+                    <p className="text-xs text-gray-600">{action.impact}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </Card>
       </motion.div>
 
-      {/* Bottom Section - Refined */}
+      {/* Strategic Impact Assessment - Dark Section */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        className="bg-gray-900 text-white rounded-lg p-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8 }}
+        className="bg-gray-900 text-white rounded-xl p-12"
       >
-        <div className="max-w-3xl mx-auto text-center">
-          <h3 className="text-xl font-light mb-2">Strategic Impact Assessment</h3>
-          <p className="text-gray-300 mb-6">
-            This analysis identifies <span className="font-medium text-white">~30% growth potential</span> through 
+        <div className="max-w-4xl mx-auto text-center">
+          <h3 className="text-2xl font-extralight mb-4">Strategic Impact Assessment</h3>
+          <p className="text-gray-400 mb-8 text-lg font-light leading-relaxed">
+            This analysis identifies <span className="font-normal text-white">~30% growth potential</span> through 
             strategic content optimization and enhanced AI visibility.
           </p>
-          <div className="flex items-center justify-center gap-3">
-            <button className="bg-white text-gray-900 px-5 py-2.5 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-gray-900 px-6 py-3 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors"
+            >
               View Strategic Paths
-            </button>
-            <button className="bg-gray-800 text-white px-5 py-2.5 rounded-md text-sm font-medium hover:bg-gray-700 transition-colors">
+            </motion.button>
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gray-800 text-white px-6 py-3 rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors border border-gray-700"
+            >
               Export Full Report
-            </button>
+            </motion.button>
           </div>
         </div>
       </motion.div>
+
+      <style jsx>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 }

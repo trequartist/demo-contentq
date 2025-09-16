@@ -25,6 +25,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Import all section components
 import ExecutiveSummary from '@/components/demo/diagnostics/ExecutiveSummary';
 import SearchIntelligence from '@/components/demo/diagnostics/SearchIntelligence';
+import AIDiscoverability from '@/components/demo/diagnostics/AIDiscoverability';
 import AIEngineOptimization from '@/components/demo/diagnostics/AIEngineOptimization';
 import StrategicLeverage from '@/components/demo/diagnostics/StrategicLeverage';
 import CompetitiveIntelligence from '@/components/demo/diagnostics/CompetitiveIntelligence';
@@ -46,10 +47,16 @@ const sections = [
     description: 'SEO analysis and search behavior patterns'
   },
   { 
+    id: 'ai-discoverability', 
+    name: 'AI Discoverability', 
+    icon: Brain,
+    description: 'LLM visibility and citation analysis'
+  },
+  { 
     id: 'ai', 
     name: 'AI Engine Optimization', 
     icon: Brain,
-    description: 'LLM visibility and citation analysis'
+    description: 'Content optimization for AI understanding'
   },
   { 
     id: 'leverage', 
@@ -173,6 +180,7 @@ export default function DiagnosticsPage() {
     const components = {
       executive: ExecutiveSummary,
       search: SearchIntelligence,
+      'ai-discoverability': AIDiscoverability,
       ai: AIEngineOptimization,
       leverage: StrategicLeverage,
       competitive: CompetitiveIntelligence,
