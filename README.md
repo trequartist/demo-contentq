@@ -1,4 +1,4 @@
-# KiwiQ Demo - AI
+# KiwiQ Demo 
 
 A  demo of the  content and management platform, built with Next.js 15 and TypeScript.
 
