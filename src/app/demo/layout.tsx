@@ -20,7 +20,7 @@ export default function DemoLayout({
               <KiwiQLayout>
                 {children}
               </KiwiQLayout>
-              <GlobalAiAssistant />
+              {/* <GlobalAiAssistant /> */}
             </UIControllerProvider>
           </ProtectedRoute>
         </PresenterProvider>

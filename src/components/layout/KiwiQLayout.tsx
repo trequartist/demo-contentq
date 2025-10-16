@@ -22,9 +22,9 @@ interface KiwiQLayoutProps {
 
 export default function KiwiQLayout({ children }: KiwiQLayoutProps) {
   const pathname = usePathname();
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(true);
   const { user, logout } = useAuth();
-  const navigation = navigationData.navigation;
+  const navigation = navigationData.navigation.filter((item: NavigationItem) => !['Diagnostics', 'Playbook', 'Insights'].includes(item.name));
 
   // Don't render the layout on the login page
   if (pathname === '/demo/login') {
@@ -32,34 +32,47 @@ export default function KiwiQLayout({ children }: KiwiQLayoutProps) {
   }
 
   return (
-    <div className="min-h-screen bg-white flex">
+    <div className="min-h-screen flex bg-[#F7F7F8] text-gray-900">
       {/* Sidebar */}
-      <div className={`${sidebarCollapsed ? 'w-16' : 'w-64'} bg-white border-r border-black/10 flex-shrink-0 transition-all duration-300`}>
-        <div className="h-full flex flex-col">
+      <div
+        className={`relative flex-shrink-0 transition-all duration-300 ease-in-out ${
+          sidebarCollapsed ? 'w-20' : 'w-64'
+        } ${sidebarCollapsed ? 'bg-black' : 'bg-white'}`}
+      >
+        {!sidebarCollapsed && (
+          <div className="absolute inset-y-4 left-0 right-4 rounded-3xl bg-white/90 backdrop-blur border border-white/40 shadow-[0_25px_60px_-25px_rgba(15,23,42,0.25)]" />
+        )}
+
+        <div className="relative h-full flex flex-col px-5 py-6">
           {/* Logo/Brand */}
-          <div className="h-16 flex items-center justify-between px-4 border-b border-black/10">
+          <div className={`flex items-center mb-8 ${sidebarCollapsed ? 'flex-col gap-6' : 'justify-between'}`}>
+            <div
+              className={`flex h-11 w-11 items-center justify-center rounded-2xl ${
+                sidebarCollapsed 
+                  ? 'bg-white' 
+                  : 'bg-black'
+              } ${sidebarCollapsed ? 'mx-auto' : ''}`}
+            >
+              <Icons.Zap className={`h-5 w-5 ${sidebarCollapsed ? 'text-black' : 'text-white'}`} />
+            </div>
             {!sidebarCollapsed && (
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-                  <Icons.Zap className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-lg font-semibold text-black">KiwiQ</span>
-              </div>
-            )}
-            {sidebarCollapsed && (
-              <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-                <Icons.Zap className="w-5 h-5 text-white" />
-              </div>
+              <span className="ml-3 text-lg font-semibold tracking-tight">KiwiQ</span>
             )}
             <button
               onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-              className="p-1 text-black/40 hover:text-black/60 transition-colors">
+              className={`flex h-8 w-8 items-center justify-center rounded-full transition ${
+                sidebarCollapsed 
+                  ? 'bg-white text-black hover:bg-white/90' 
+                  : 'ml-auto bg-gray-100 text-gray-500 hover:text-black'
+              }`}
+              aria-label={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            >
               {sidebarCollapsed ? <Icons.ChevronRight className="w-4 h-4" /> : <Icons.ChevronLeft className="w-4 h-4" />}
             </button>
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+          <nav className={`flex-1 space-y-2 overflow-y-auto ${sidebarCollapsed ? 'pr-0' : 'pr-1'}`}>
             {navigation.map((item) => {
               const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
               const Icon = Icons[item.icon as keyof typeof Icons] as React.ComponentType<any>;
@@ -67,28 +80,44 @@ export default function KiwiQLayout({ children }: KiwiQLayoutProps) {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`
-                    flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200
-                    ${isActive
-                      ? 'bg-black text-white'
-                      : 'text-black/70 hover:text-black hover:bg-black/5'
-                    }
-                    ${sidebarCollapsed ? 'justify-center' : ''}
-                  `}
+                  className={`group flex items-center transition-all ${
+                    sidebarCollapsed 
+                      ? 'justify-center py-3 rounded-xl' 
+                      : 'gap-3 rounded-2xl px-3 py-2'
+                  } ${
+                    sidebarCollapsed
+                      ? isActive
+                        ? 'bg-white'
+                        : 'hover:bg-white/10'
+                      : isActive
+                        ? 'bg-black text-white'
+                        : 'text-gray-600 hover:text-black hover:bg-gray-100'
+                  }`}
                   title={sidebarCollapsed ? item.name : undefined}
                 >
-                  <Icon className={`w-5 h-5 ${!sidebarCollapsed && 'mr-3'}`} />
-                  {!sidebarCollapsed && (
+                  {sidebarCollapsed ? (
+                    <Icon className={`h-5 w-5 ${isActive ? 'text-black' : 'text-white'}`} />
+                  ) : (
                     <>
-                      <span className="flex-1">{item.name}</span>
-                      {item.badge && (
-                        <span className={`
-                          px-2 py-0.5 text-xs rounded-full
-                          ${isActive ? 'bg-white/20' : 'bg-black/10'}
-                        `}>
-                          {item.badge}
-                        </span>
-                      )}
+                      <div
+                        className={`flex h-9 w-9 items-center justify-center rounded-xl ${
+                          isActive
+                            ? 'bg-white/20 text-white'
+                            : 'bg-gray-100 text-gray-500 group-hover:bg-black group-hover:text-white'
+                        }`}
+                      >
+                        <Icon className="h-4.5 w-4.5" />
+                      </div>
+                      <div className="flex flex-1 items-center justify-between">
+                        <span className="font-medium tracking-tight text-sm">{item.name}</span>
+                        {item.badge && (
+                          <span className={`px-2 py-0.5 text-xs rounded-full ${
+                            isActive ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600'
+                          }`}>
+                            {item.badge}
+                          </span>
+                        )}
+                      </div>
                     </>
                   )}
                 </Link>
@@ -96,90 +125,37 @@ export default function KiwiQLayout({ children }: KiwiQLayoutProps) {
             })}
           </nav>
 
-          {/* User Profile */}
-          <div className="p-4 border-t border-black/10">
-            <div className="flex items-center">
-              <div className="w-8 h-8 bg-black/10 rounded-full flex items-center justify-center">
-                <Icons.User className="w-4 h-4 text-black/60" />
-              </div>
-              {!sidebarCollapsed && (
-                <div className="ml-3 flex-1">
-                  <p className="text-sm font-medium text-black truncate">
+          {/* User Profile - Only show when expanded */}
+          {!sidebarCollapsed && (
+            <div className="mt-6 rounded-2xl border border-gray-100 bg-gray-50/70 p-4">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black/5">
+                  <Icons.User className="h-4 w-4 text-gray-600" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-semibold text-gray-900 truncate">
                     {user?.name || DEMO_CONFIG.USER.name}
                   </p>
-                  <p className="text-xs text-black/50 truncate">
+                  <p className="text-xs text-gray-500 truncate">
                     {user?.role || DEMO_CONFIG.USER.role}
                   </p>
                 </div>
-              )}
-            </div>
-            {!sidebarCollapsed && (
-              <div className="mt-3 flex items-center justify-between text-xs text-black/50">
-                <span>{DEMO_CONFIG.USER.company}</span>
-                <div className="flex items-center space-x-1">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              </div>
+              <div className="mt-4 flex items-center justify-between text-xs text-gray-500">
+                <span className="font-medium text-gray-700">{DEMO_CONFIG.USER.company}</span>
+                <div className="flex items-center gap-1">
+                  <span className="block h-2 w-2 rounded-full bg-emerald-500" />
                   <span>Online</span>
                 </div>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Top Bar */}
-        <header className="h-16 bg-white border-b border-black/10 flex items-center justify-between px-6">
-          <div className="flex items-center space-x-4">
-            {/* Search */}
-            <div className="relative">
-              <Icons.Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-black/40" />
-              <input
-                type="text"
-                placeholder="Search..."
-                className="pl-10 pr-4 py-2 w-80 border border-black/10 rounded-lg text-sm focus:outline-none focus:border-black/20 transition-colors"
-              />
-              <kbd className="absolute right-3 top-1/2 transform -translate-y-1/2 px-2 py-0.5 text-xs text-black/40 bg-black/5 rounded">
-                ⌘K
-              </kbd>
-            </div>
-          </div>
-
-          <div className="flex items-center space-x-4">
-            {/* User Welcome */}
-            <span className="text-sm text-black/60">
-              Welcome, {user?.name || 'Demo User'}
-            </span>
-
-            {/* Notifications */}
-            <button className="relative p-2 text-black/40 hover:text-black/60 transition-colors">
-              <Icons.Bell className="w-5 h-5" />
-              <span className="absolute top-0 right-0 w-2 h-2 bg-black rounded-full"></span>
-            </button>
-
-            {/* Settings */}
-            <button className="p-2 text-black/40 hover:text-black/60 transition-colors">
-              <Icons.Settings className="w-5 h-5" />
-            </button>
-
-            {/* Logout Button */}
-            <button 
-              onClick={logout}
-              className="p-2 text-black/40 hover:text-black/60 transition-colors"
-              title="Logout"
-            >
-              <Icons.LogOut className="w-5 h-5" />
-            </button>
-
-            {/* Demo Badge */}
-            <div className="px-3 py-1.5 bg-black text-white text-xs font-medium rounded-full">
-              Demo Mode
-            </div>
-          </div>
-        </header>
-
-        {/* Page Content */}
-        <main className="flex-1 overflow-auto bg-white">
+        <main className="flex-1 overflow-auto">
           {children}
         </main>
       </div>

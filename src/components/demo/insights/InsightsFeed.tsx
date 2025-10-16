@@ -91,7 +91,7 @@ export default function InsightsFeed({ insights, dense, onSelect }: InsightsFeed
 
   return (
     <div className="lg:col-span-2">
-      <ul className="divide-y divide-black/10 bg-white rounded-lg border border-black/10">
+      <ul className="divide-y divide-slate-100">
         {sorted.map((insight) => (
           <InsightListItem key={insight.id} insight={insight} dense={dense} onSelect={onSelect} />
         ))}

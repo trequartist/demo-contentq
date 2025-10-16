@@ -1,4 +1,12 @@
-export type InsightCategory = 'opportunity' | 'issue' | 'trend' | 'recommendation';
+export type InsightCategory =
+  | 'opportunity'
+  | 'issue'
+  | 'trend'
+  | 'recommendation'
+  | 'competitive'
+  | 'market'
+  | 'ai'
+  | 'social';
 
 export type InsightPriority = 'critical' | 'high' | 'medium' | 'low';
 
@@ -6,6 +14,13 @@ export interface InsightMetrics {
   current: number | string | null;
   potential: number | string | null;
   change?: number;
+}
+
+export type InsightEvidenceType = 'contentVelocity' | 'aiVisibility' | 'socialShare' | 'market' | 'technical';
+
+export interface InsightEvidence {
+  type: InsightEvidenceType;
+  stats: Record<string, number | string>;
 }
 
 export interface InsightItem {
@@ -20,6 +35,7 @@ export interface InsightItem {
   timeframe: string;
   tags?: string[];
   relevance?: number;
+  evidence?: InsightEvidence;
 }
 
 // Minimal JSON data shape we consume from insights-hub.json

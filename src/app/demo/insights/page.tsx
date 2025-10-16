@@ -6,11 +6,13 @@ import insightsHubData from '@/usableclientdata/data/insights/insights-hub.json'
 import InsightsHeader from '@/components/demo/insights/InsightsHeader';
 import FiltersBar from '@/components/demo/insights/FiltersBar';
 import InsightsFeed from '@/components/demo/insights/InsightsFeed';
-import InsightsSidebar from '@/components/demo/insights/InsightsSidebar';
-import AiSummary from '@/components/demo/insights/AiSummary';
-import InsightModal from '@/components/demo/insights/InsightModal';
 import { mapResearchFeedItemsToInsights } from '@/lib/demo/insights/map-json';
 import { InsightItem } from '@/lib/demo/insights/types';
+import InsightModal from '@/components/demo/insights/InsightModal';
+import InsightDetailPanel from '@/components/demo/insights/InsightDetailPanel';
+import InsightTrendCards from '@/components/demo/insights/InsightTrendCards';
+import InsightSummaryPanel from '@/components/demo/insights/InsightSummaryPanel';
+import InsightEmptyState from '@/components/demo/insights/InsightEmptyState';
 
 export default function InsightsPage(): React.ReactElement {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -50,12 +52,25 @@ export default function InsightsPage(): React.ReactElement {
         setShowAdditionalInsights={setShowAdditionalInsights}
       />
 
-      <div className="px-4 sm:px-6 lg:px-8 py-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="px-4 sm:px-6 lg:px-8 py-6 max-w-7xl mx-auto space-y-6">
+        <InsightTrendCards data={insightsHubData as any} showAdditionalInsights={showAdditionalInsights} />
+
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           <InsightsFeed insights={filteredInsights} dense={dense} onSelect={setSelectedInsight} />
-          <InsightsSidebar data={insightsHubData as any} showAdditionalInsights={showAdditionalInsights} />
+          <InsightDetailPanel
+            data={insightsHubData as any}
+            selectedInsight={selectedInsight}
+            onSelect={setSelectedInsight}
+            showAdditionalInsights={showAdditionalInsights}
+          />
         </div>
-        <AiSummary />
+
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <InsightSummaryPanel data={insightsHubData as any} />
+          <div className="xl:col-span-2">
+            {filteredInsights.length === 0 && <InsightEmptyState />}
+          </div>
+        </div>
       </div>
 
       <InsightModal insight={selectedInsight} onClose={() => setSelectedInsight(null)} />

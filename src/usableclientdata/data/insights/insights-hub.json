@@ -18,14 +18,14 @@
     { "id": "kpi-issues", "label": "Critical Issues", "value": 7, "delta": "-2" },
     { "id": "kpi-velocity", "label": "Content Velocity", "value": "3 → 15/mo", "delta": "+5x" }
   ],
-  "spotlight": {
-    "headline": "Capture the 'Zapier too expensive' demand now",
-    "description": "8,100 monthly searches with near-zero presence. Launch a dedicated landing page and supporting content to capture high-intent switchers.",
-    "actions": [
-      { "label": "Create Landing Page", "href": "/demo/content-studio/create" },
-      { "label": "Open Playbook", "href": "/demo/playbook" }
-    ],
-    "illustration": "ai-visibility"
+  "analytics": {
+    "sparkline": [64, 67, 72, 75, 78, 82],
+    "aiShare": {
+      "chatgpt": 15,
+      "claude": 10,
+      "perplexity": 20,
+      "gemini": 12
+    }
   },
   "timeline": {
     "quarters": [

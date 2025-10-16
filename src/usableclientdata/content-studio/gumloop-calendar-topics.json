@@ -9,6 +9,8 @@
       "description": "Comprehensive guide for teams switching from rule-based to AI automation",
       "keywords": ["migration", "Zapier alternative", "AI automation", "Gumloop"],
       "targetAudience": "RevOps Managers evaluating alternatives",
+      "aiVisibilityImpact": "high",
+      "estimatedImpact": "+8% AI visibility",
       "subtopics": [
         {
           "id": "sub-1-1",
@@ -53,6 +55,8 @@
       "description": "How AI is revolutionizing revenue operations workflows",
       "keywords": ["RevOps", "AI automation", "revenue operations", "workflow optimization"],
       "targetAudience": "RevOps Directors and VPs",
+      "aiVisibilityImpact": "high",
+      "estimatedImpact": "+6% AI visibility",
       "subtopics": [
         {
           "id": "sub-2-1",
@@ -97,6 +101,8 @@
       "description": "Honest comparison of automation platforms for RevOps",
       "keywords": ["Zapier vs Gumloop", "Make alternative", "n8n comparison", "automation platforms"],
       "targetAudience": "Technical evaluators and decision makers",
+      "aiVisibilityImpact": "critical",
+      "estimatedImpact": "+12% AI visibility",
       "subtopics": [
         {
           "id": "sub-3-1",
@@ -141,6 +147,8 @@
       "description": "Optimizing content for AI discovery and conversion",
       "keywords": ["AI SEO", "content optimization", "B2B content", "AEO"],
       "targetAudience": "Content and marketing leaders",
+      "aiVisibilityImpact": "medium",
+      "estimatedImpact": "+4% AI visibility",
       "subtopics": [
         {
           "id": "sub-4-1",
@@ -184,6 +192,8 @@
       "status": "topic",
       "description": "Real stories of RevOps transformation with Gumloop",
       "targetAudience": "RevOps professionals and decision makers",
+      "aiVisibilityImpact": "low",
+      "estimatedImpact": "+2% AI visibility",
       "subtopics": [
         {
           "id": "sub-5-1",
@@ -228,6 +238,8 @@
       "description": "Predictions and preparations for next-gen automation",
       "keywords": ["future of automation", "AI trends", "automation strategy", "2026 predictions"],
       "targetAudience": "Innovation leaders and strategists",
+      "aiVisibilityImpact": "high",
+      "estimatedImpact": "+7% AI visibility",
       "subtopics": [
         {
           "id": "sub-6-1",
@@ -272,6 +284,8 @@
       "description": "Advanced implementation guides for technical teams",
       "keywords": ["API integration", "technical guide", "implementation", "architecture"],
       "targetAudience": "Technical implementers and architects",
+      "aiVisibilityImpact": "medium",
+      "estimatedImpact": "+5% AI visibility",
       "subtopics": [
         {
           "id": "sub-7-1",

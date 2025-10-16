@@ -15,31 +15,17 @@
       "badge": null
     },
     {
+      "name": "Creator",
+      "href": "/demo/creator",
+      "icon": "Sparkles",
+      "description": "AI-powered creation hub",
+      "badge": "New"
+    },
+    {
       "name": "Content Studio",
-      "href": "/demo/content-studio",
+      "href": "/demo/creator?tab=posts",
       "icon": "FileText",
       "description": "Create and manage content",
-      "badge": null
-    },
-    {
-      "name": "Diagnostics",
-      "href": "/demo/diagnostics",
-      "icon": "Activity",
-      "description": "Performance analysis",
-      "badge": null
-    },
-    {
-      "name": "Playbook",
-      "href": "/demo/playbook",
-      "icon": "BookOpen",
-      "description": "Strategic content planning",
-      "badge": null
-    },
-    {
-      "name": "Insights",
-      "href": "/demo/insights",
-      "icon": "Brain",
-      "description": "AI-powered insights",
       "badge": null
     },
     {
