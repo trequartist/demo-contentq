@@ -15,25 +15,25 @@ export function DiagnosticsEmpty({ onStart }: DiagnosticsEmptyProps) {
   const copy = useMemo(() => {
     if (mode === 'insights') {
       return {
-        title: 'Insights Awaiting Discovery',
-        description: 'Reveal narrative-ready insights and storylines grounded in your diagnostics data.',
-        cta: 'Reveal Insights',
+        title: 'Unlock Hidden Opportunities',
+        description: 'Discover the strategic insights and market opportunities hidden in your data.',
+        cta: 'Reveal Strategic Insights',
         highlights: [
-          { icon: Sparkles, label: 'Narrative Ready', desc: 'Instant storytelling angles' },
-          { icon: Activity, label: 'Signals & Patterns', desc: 'Trend analysis surfaced automatically' },
-          { icon: AlertCircle, label: 'Action Triggers', desc: 'Next moves distilled for teams' },
+          { icon: Sparkles, label: 'Market Intelligence', desc: 'Competitive advantages revealed' },
+          { icon: Activity, label: 'Growth Signals', desc: 'Trends that drive revenue' },
+          { icon: AlertCircle, label: 'Priority Actions', desc: 'What to do next for maximum impact' },
         ],
       };
     }
 
     return {
-      title: 'No Diagnostics Yet',
-      description: 'Get comprehensive insights into your system\'s health, performance, and visibility metrics.',
-      cta: 'Create Diagnostics',
+      title: 'Discover Your AI Visibility Gap',
+      description: 'Find out exactly where you stand in AI visibility and what\'s holding you back from dominating your market.',
+      cta: 'Start AI Visibility Audit',
       highlights: [
-        { icon: Activity, label: 'System Health', desc: 'Real-time monitoring' },
-        { icon: AlertCircle, label: 'Issues', desc: 'Detect problems early' },
-        { icon: Sparkles, label: 'AI Insights', desc: 'Actionable recommendations' },
+        { icon: Activity, label: 'AI Mention Rate', desc: 'How often AI assistants cite you' },
+        { icon: AlertCircle, label: 'Competitive Gaps', desc: 'Where competitors are winning' },
+        { icon: Sparkles, label: 'Growth Opportunities', desc: 'Untapped markets to capture' },
       ],
     };
   }, [mode]);

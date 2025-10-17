@@ -201,8 +201,10 @@ export default function AIDiscoverability({ data }: AIDiscoverabilityProps) {
                     </div>
                     <span className={`text-xs px-3 py-1 rounded-full font-medium ${
                       data.status === 'Critical' 
-                        ? 'bg-gray-200 text-gray-800' 
-                        : 'bg-gray-100 text-gray-600'
+                        ? 'bg-red-50 text-red-700 border border-red-200' 
+                        : data.status === 'Low'
+                        ? 'bg-yellow-50 text-yellow-700 border border-yellow-200'
+                        : 'bg-green-50 text-green-700 border border-green-200'
                     }`}>
                       {data.status}
                     </span>
@@ -219,7 +221,13 @@ export default function AIDiscoverability({ data }: AIDiscoverabilityProps) {
                   
                   <div className="h-2 bg-gray-100 rounded-full overflow-hidden mb-4">
                     <motion.div 
-                      className="h-full bg-gray-700"
+                      className={`h-full ${
+                        data.status === 'Critical' 
+                          ? 'bg-gradient-to-r from-red-500 to-red-600' 
+                          : data.status === 'Low'
+                          ? 'bg-gradient-to-r from-yellow-500 to-yellow-600'
+                          : 'bg-gradient-to-r from-green-500 to-green-600'
+                      }`}
                       initial={{ width: 0 }}
                       animate={{ width: `${(data.mentionRate / data.totalQueries) * 100}%` }}
                       transition={{ duration: 0.8, delay: 0.3 + idx * 0.1 }}
@@ -324,27 +332,59 @@ export default function AIDiscoverability({ data }: AIDiscoverabilityProps) {
                   <tr key={idx} className="border-b border-gray-100">
                     <td className="py-4 text-sm text-gray-700">{query.query}</td>
                     <td className="py-4 text-center">
-                      <div className="flex items-center justify-center gap-2">
-                        <span className="text-sm font-medium text-gray-900">{query.zapier}%</span>
-                        {query.zapier > 0 && <CheckCircle className="w-3 h-3 text-gray-600" />}
+                      <div className="flex flex-col items-center gap-1">
+                        <div className="w-16 h-2 bg-gray-100 rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-blue-500" 
+                            style={{ width: `${query.zapier}%` }}
+                          />
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <span className="text-sm font-medium text-gray-900">{query.zapier}%</span>
+                          {query.zapier > 0 && <CheckCircle className="w-3 h-3 text-green-500" />}
+                        </div>
                       </div>
                     </td>
                     <td className="py-4 text-center">
-                      <div className="flex items-center justify-center gap-2">
-                        <span className="text-sm font-medium text-gray-900">{query.make}%</span>
-                        {query.make > 0 && <CheckCircle className="w-3 h-3 text-gray-600" />}
+                      <div className="flex flex-col items-center gap-1">
+                        <div className="w-16 h-2 bg-gray-100 rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-purple-500" 
+                            style={{ width: `${query.make}%` }}
+                          />
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <span className="text-sm font-medium text-gray-900">{query.make}%</span>
+                          {query.make > 0 && <CheckCircle className="w-3 h-3 text-green-500" />}
+                        </div>
                       </div>
                     </td>
                     <td className="py-4 text-center">
-                      <div className="flex items-center justify-center gap-2">
-                        <span className="text-sm font-medium text-gray-900">{query.n8n}%</span>
-                        {query.n8n > 0 && <CheckCircle className="w-3 h-3 text-gray-600" />}
+                      <div className="flex flex-col items-center gap-1">
+                        <div className="w-16 h-2 bg-gray-100 rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-orange-500" 
+                            style={{ width: `${query.n8n}%` }}
+                          />
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <span className="text-sm font-medium text-gray-900">{query.n8n}%</span>
+                          {query.n8n > 0 && <CheckCircle className="w-3 h-3 text-green-500" />}
+                        </div>
                       </div>
                     </td>
                     <td className="py-4 text-center">
-                      <div className="flex items-center justify-center gap-2">
-                        <span className="text-sm font-medium text-gray-900">{query.gumloop}%</span>
-                        {query.gumloop === 0 && <XCircle className="w-3 h-3 text-gray-400" />}
+                      <div className="flex flex-col items-center gap-1">
+                        <div className="w-16 h-2 bg-gray-100 rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-gray-400" 
+                            style={{ width: `${query.gumloop}%` }}
+                          />
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <span className="text-sm font-medium text-gray-900">{query.gumloop}%</span>
+                          {query.gumloop === 0 && <XCircle className="w-3 h-3 text-red-400" />}
+                        </div>
                       </div>
                     </td>
                   </tr>

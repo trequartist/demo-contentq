@@ -85,6 +85,90 @@ export default function ActionableIntelligence({ data }: ActionableIntelligenceP
         </Card>
       </div>
 
+      {/* Priority Action Matrix */}
+      <section>
+        <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">
+          <Target className="w-6 h-6 text-gray-400" />
+          Priority Action Matrix
+        </h2>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          {/* High Impact Actions */}
+          <Card className="bg-white border border-gray-200">
+            <div className="p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center">
+                  <Zap className="w-4 h-4 text-red-600" />
+                </div>
+                <h3 className="text-lg font-medium text-gray-900">High Impact Actions</h3>
+              </div>
+              
+              <div className="space-y-3">
+                {[
+                  { action: 'Create AI troubleshooting guide', impact: 95, effort: 'Medium', timeline: '2 weeks' },
+                  { action: 'Build error handling content hub', impact: 88, effort: 'High', timeline: '3 weeks' },
+                  { action: 'Launch developer community program', impact: 92, effort: 'Medium', timeline: '4 weeks' }
+                ].map((item, idx) => (
+                  <div key={idx} className="bg-gray-50 rounded-lg p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="text-sm font-medium text-gray-900">{item.action}</h4>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs text-gray-500">{item.timeline}</span>
+                        <Badge className="bg-red-100 text-red-700 text-xs">High Impact</Badge>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4 text-xs text-gray-600">
+                      <span>Impact: {item.impact}%</span>
+                      <span>Effort: {item.effort}</span>
+                    </div>
+                    <div className="w-full h-1 bg-gray-200 rounded-full mt-2">
+                      <div className="h-full bg-red-500 rounded-full" style={{ width: `${item.impact}%` }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Card>
+
+          {/* Quick Wins */}
+          <Card className="bg-white border border-gray-200">
+            <div className="p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center">
+                  <CheckCircle className="w-4 h-4 text-green-600" />
+                </div>
+                <h3 className="text-lg font-medium text-gray-900">Quick Wins</h3>
+              </div>
+              
+              <div className="space-y-3">
+                {[
+                  { action: 'Add FAQ sections to existing posts', impact: 65, effort: 'Low', timeline: '1 week' },
+                  { action: 'Optimize meta descriptions', impact: 45, effort: 'Low', timeline: '3 days' },
+                  { action: 'Create automation checklist', impact: 72, effort: 'Low', timeline: '1 week' }
+                ].map((item, idx) => (
+                  <div key={idx} className="bg-gray-50 rounded-lg p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="text-sm font-medium text-gray-900">{item.action}</h4>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs text-gray-500">{item.timeline}</span>
+                        <Badge className="bg-green-100 text-green-700 text-xs">Quick Win</Badge>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4 text-xs text-gray-600">
+                      <span>Impact: {item.impact}%</span>
+                      <span>Effort: {item.effort}</span>
+                    </div>
+                    <div className="w-full h-1 bg-gray-200 rounded-full mt-2">
+                      <div className="h-full bg-green-500 rounded-full" style={{ width: `${item.impact}%` }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Card>
+        </div>
+      </section>
+
       {/* Strategic Path Cards - Enhanced Interactive Selection */}
       <section>
         <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">

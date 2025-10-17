@@ -40,30 +40,30 @@ const modeOptionsByTab: Record<CreatorTab, ModeOption<any>[]> = {
 };
 
 const diagnosticsModeCopy: Record<DiagnosticsMode, string> = {
-  diagnostics: 'Run a deep diagnostic pulse to benchmark performance.',
-  insights: 'Reveal the stories and insights behind your diagnostics.',
+  diagnostics: 'Discover exactly where you stand in AI visibility and what\'s holding you back.',
+  insights: 'Uncover the hidden opportunities and strategic insights in your data.',
 };
 
 const playbookModeCopy: Record<PlaybookMode, string> = {
-  playbook: 'Design strategic blueprints tailored for your launch.',
-  calendar: 'Orchestrate your go-to-market rhythm across channels.',
+  playbook: 'Get a proven strategic blueprint that accelerates your market authority.',
+  calendar: 'Build a content calendar that maximizes AI visibility and engagement.',
 };
 
 const contentModeCopy: Record<ContentMode, string> = {
-  create: 'Ignite new content ideas and bring them to life fast.',
-  optimize: 'Level up existing assets with upgrades and optimizations.',
+  create: 'Create content that gets cited by AI assistants and drives real business results.',
+  optimize: 'Transform your existing content into AI-magnet pieces that dominate search.',
 };
 
 const diagnosticsActions: Record<DiagnosticsMode, QuickAction[]> = {
   diagnostics: [
-    { label: 'Run Full Analysis', prompt: 'Run comprehensive diagnostics for my system' },
-    { label: 'Quick Check', prompt: 'Run a quick system health check' },
-    { label: 'Performance Review', prompt: 'Analyze performance metrics' },
+    { label: 'Full AI Visibility Audit', prompt: 'Run comprehensive diagnostics for my system' },
+    { label: 'Quick Health Check', prompt: 'Run a quick system health check' },
+    { label: 'SEO & AI Gap Analysis', prompt: 'Analyze performance metrics' },
   ],
   insights: [
-    { label: 'Spot Trends', prompt: 'Reveal key insights from my diagnostics' },
-    { label: 'Insight Highlights', prompt: 'Summarize the most important insights' },
-    { label: 'Action Opportunities', prompt: 'What actions should I take based on these insights?' },
+    { label: 'Hidden Opportunities', prompt: 'Reveal key insights from my diagnostics' },
+    { label: 'Market Intelligence', prompt: 'Summarize the most important insights' },
+    { label: 'Priority Actions', prompt: 'What actions should I take based on these insights?' },
   ],
 };
 

@@ -59,6 +59,52 @@ export default function StrategicLeverage({ data }: StrategicLeverageProps) {
     conversionRate: { current: 2.1, projected: 2.1, change: 0 }
   });
 
+  // Strategic Pillars Data
+  const strategicPillars = [
+    {
+      id: 'technical_authority',
+      title: 'Technical Authority',
+      description: 'Become the go-to resource for complex automation challenges',
+      icon: Target,
+      color: 'blue',
+      roi: '+340%',
+      timeline: '6-12 months',
+      metrics: [
+        { label: 'Technical Backlinks', value: '+180%', trend: 'up' },
+        { label: 'Expert Citations', value: '+95%', trend: 'up' },
+        { label: 'Developer Trust', value: '+67%', trend: 'up' }
+      ]
+    },
+    {
+      id: 'problem_solving',
+      title: 'Problem-Solving Hub',
+      description: 'Own the troubleshooting and error-handling space',
+      icon: Zap,
+      color: 'green',
+      roi: '+280%',
+      timeline: '3-6 months',
+      metrics: [
+        { label: 'High-Intent Traffic', value: '+320%', trend: 'up' },
+        { label: 'Conversion Rate', value: '+45%', trend: 'up' },
+        { label: 'User Engagement', value: '+78%', trend: 'up' }
+      ]
+    },
+    {
+      id: 'ai_native',
+      title: 'AI-Native Leadership',
+      description: 'Lead the conversation on AI-powered automation',
+      icon: Sparkles,
+      color: 'purple',
+      roi: '+420%',
+      timeline: '9-18 months',
+      metrics: [
+        { label: 'AI Citations', value: '+250%', trend: 'up' },
+        { label: 'Thought Leadership', value: '+150%', trend: 'up' },
+        { label: 'Market Position', value: '+200%', trend: 'up' }
+      ]
+    }
+  ];
+
   const leverData = [
     {
       id: 'depth_vs_breadth',
@@ -305,6 +351,53 @@ export default function StrategicLeverage({ data }: StrategicLeverageProps) {
           the optimal combination. Adjust the levers below to model different strategic paths.
         </p>
       </motion.div>
+
+      {/* Strategic Pillars */}
+      <section>
+        <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">
+          <Target className="w-6 h-6 text-gray-400" />
+          Strategic Pillars & ROI Projections
+        </h2>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+          {strategicPillars.map((pillar, idx) => (
+            <Card key={pillar.id} className="bg-white border border-gray-200 hover:shadow-lg transition-shadow">
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-10 h-10 bg-${pillar.color}-50 rounded-lg flex items-center justify-center`}>
+                    <pillar.icon className={`w-5 h-5 text-${pillar.color}-600`} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium text-gray-900">{pillar.title}</h3>
+                    <p className="text-sm text-gray-500">{pillar.timeline}</p>
+                  </div>
+                </div>
+                
+                <p className="text-sm text-gray-600 mb-4">{pillar.description}</p>
+                
+                <div className="space-y-3">
+                  {pillar.metrics.map((metric, mIdx) => (
+                    <div key={mIdx} className="flex items-center justify-between">
+                      <span className="text-sm text-gray-700">{metric.label}</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium text-gray-900">{metric.value}</span>
+                        <TrendingUp className="w-3 h-3 text-green-500" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="mt-4 pt-4 border-t border-gray-200">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-600">Projected ROI</span>
+                    <span className="text-lg font-bold text-green-600">{pillar.roi}</span>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </section>
 
       {/* Interactive Lever Dashboard */}
       <Card className="bg-white border border-gray-200">

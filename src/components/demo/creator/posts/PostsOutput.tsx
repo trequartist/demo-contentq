@@ -64,51 +64,8 @@ export function PostsOutput({ data, mode = 'create' }: PostsOutputProps) {
     );
   }
 
-  if (mode === 'optimize') {
-    return (
-      <div className="h-full overflow-y-auto px-10 py-8 bg-gradient-to-br from-gray-50 via-white to-gray-100">
-        <div className="mx-auto max-w-4xl space-y-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">Optimization Summary</h1>
-              <p className="text-sm text-gray-500 mt-1">Recommendations to elevate this asset</p>
-            </div>
-            <div className="rounded-full bg-white px-4 py-2 text-xs font-medium text-purple-600 border border-purple-100">
-              Elevate Mode
-            </div>
-          </div>
-
-          <div className="rounded-3xl bg-white border border-purple-100/60 shadow-sm p-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Suggested Enhancements</h2>
-            <div className="space-y-4">
-              {optimizationSuggestions.map((suggestion, index) => (
-                <div key={index} className="rounded-2xl border border-gray-100 bg-gray-50/60 p-4">
-                  <p className="text-sm font-semibold text-purple-600 mb-1">{suggestion.category}</p>
-                  <p className="text-sm text-gray-700">{suggestion.recommendation}</p>
-                  {suggestion.example && (
-                    <p className="mt-2 text-xs text-gray-500">Example: {suggestion.example}</p>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-3xl bg-white border border-gray-200 shadow-sm p-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Optimized Draft</h2>
-            <article className="prose prose-lg max-w-none">
-              <h1>{data.draft.title}</h1>
-              {data.draft.sections?.map((section, index) => (
-                <section key={index}>
-                  <h2>{section.heading}</h2>
-                  <p>{section.content}</p>
-                </section>
-              ))}
-            </article>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // For optimize mode, show the same editor UI but with optimization suggestions in the sidebar
+  const isOptimizeMode = mode === 'optimize';
 
   // Convert draft sections to markdown content
   const initialContent = data.draft.sections
@@ -173,6 +130,11 @@ export function PostsOutput({ data, mode = 'create' }: PostsOutputProps) {
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center gap-6">
             <h1 className="text-xl font-semibold text-gray-900">{data.draft?.title || 'Untitled Post'}</h1>
+            {isOptimizeMode && (
+              <div className="rounded-full bg-purple-50 px-3 py-1 text-xs font-medium text-purple-600 border border-purple-200">
+                Optimize Mode
+              </div>
+            )}
           </div>
 
           <div className="flex items-center gap-4">
@@ -371,7 +333,7 @@ export function PostsOutput({ data, mode = 'create' }: PostsOutputProps) {
           </div>
         )}
 
-        {/* Right Sidebar - SEO Panel Only */}
+        {/* Right Sidebar - SEO Panel or Optimization Suggestions */}
         {seoPanelOpen && (
           <div className="w-96 border-l border-white/40 bg-white/70 backdrop-blur flex flex-col">
             {/* Header */}
@@ -379,7 +341,9 @@ export function PostsOutput({ data, mode = 'create' }: PostsOutputProps) {
               <div className="flex items-center justify-between px-4 py-3">
                 <div className="flex items-center gap-2">
                   <TrendingUp className="w-4 h-4 text-gray-900" />
-                  <h3 className="text-sm font-medium text-gray-900">SEO Score</h3>
+                  <h3 className="text-sm font-medium text-gray-900">
+                    {isOptimizeMode ? 'Optimization Suggestions' : 'SEO Score'}
+                  </h3>
                 </div>
                 <button
                   onClick={() => setSeoPanelOpen(false)}
@@ -390,8 +354,26 @@ export function PostsOutput({ data, mode = 'create' }: PostsOutputProps) {
               </div>
             </div>
 
-            {/* SEO Panel Content */}
+            {/* Panel Content */}
             <div className="flex-1 overflow-y-auto p-4">
+              {isOptimizeMode ? (
+                <div className="space-y-4">
+                  <div className="bg-white rounded-lg p-4 shadow-sm">
+                    <h3 className="font-medium text-gray-900 mb-3">Suggested Enhancements</h3>
+                    <div className="space-y-3">
+                      {optimizationSuggestions.map((suggestion, index) => (
+                        <div key={index} className="rounded-lg border border-gray-100 bg-gray-50/60 p-3">
+                          <p className="text-sm font-semibold text-purple-600 mb-1">{suggestion.category}</p>
+                          <p className="text-sm text-gray-700">{suggestion.recommendation}</p>
+                          {suggestion.example && (
+                            <p className="mt-2 text-xs text-gray-500">Example: {suggestion.example}</p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
                 <div className="space-y-4">
                   <div className="bg-white rounded-lg p-4 shadow-sm">
                     <h3 className="font-medium text-gray-900 mb-3">Content Scores</h3>
@@ -444,7 +426,8 @@ export function PostsOutput({ data, mode = 'create' }: PostsOutputProps) {
                     </div>
                   </div>
                 </div>
-              </div>
+              )}
+            </div>
           </div>
         )}
 

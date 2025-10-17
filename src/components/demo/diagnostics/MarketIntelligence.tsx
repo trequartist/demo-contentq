@@ -63,6 +63,120 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
         </Card>
       </div>
 
+      {/* Market Trend Analysis */}
+      <section>
+        <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">
+          <TrendingUp className="w-6 h-6 text-gray-400" />
+          Market Trend Analysis
+        </h2>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          {/* AI Automation Interest Trend */}
+          <Card className="bg-white border border-gray-200">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-medium text-gray-900">AI Automation Interest</h3>
+                <div className="flex items-center gap-2">
+                  <TrendingUp className="w-4 h-4 text-green-500" />
+                  <span className="text-sm font-medium text-green-600">+567% YoY</span>
+                </div>
+              </div>
+              
+              {/* Trend Chart */}
+              <div className="relative h-32 mb-4">
+                <svg className="w-full h-full" viewBox="0 0 200 80" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="trendGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="#10B981" stopOpacity="0.3" />
+                      <stop offset="100%" stopColor="#10B981" stopOpacity="0.05" />
+                    </linearGradient>
+                  </defs>
+                  
+                  {/* Grid lines */}
+                  <line x1="0" y1="20" x2="200" y2="20" stroke="#E5E7EB" strokeWidth="0.5" />
+                  <line x1="0" y1="40" x2="200" y2="40" stroke="#E5E7EB" strokeWidth="0.5" />
+                  <line x1="0" y1="60" x2="200" y2="60" stroke="#E5E7EB" strokeWidth="0.5" />
+                  
+                  {/* Trend line and area */}
+                  <path
+                    d="M0,70 L40,65 L80,55 L120,40 L160,25 L200,15"
+                    fill="url(#trendGradient)"
+                    stroke="none"
+                  />
+                  <path
+                    d="M0,70 L40,65 L80,55 L120,40 L160,25 L200,15 L200,80 L0,80 Z"
+                    fill="url(#trendGradient)"
+                  />
+                  <path
+                    d="M0,70 L40,65 L80,55 L120,40 L160,25 L200,15"
+                    fill="none"
+                    stroke="#10B981"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  
+                  {/* Data points */}
+                  {[
+                    { x: 0, y: 70 }, { x: 40, y: 65 }, { x: 80, y: 55 },
+                    { x: 120, y: 40 }, { x: 160, y: 25 }, { x: 200, y: 15 },
+                  ].map((point, i) => (
+                    <circle key={i} cx={point.x} cy={point.y} r="3" fill="#10B981" />
+                  ))}
+                </svg>
+              </div>
+              
+              <div className="grid grid-cols-3 gap-2 text-xs">
+                <div className="text-center">
+                  <p className="text-gray-400">Q1 2024</p>
+                  <p className="font-semibold text-gray-900">12K</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-gray-400">Q3 2024</p>
+                  <p className="font-semibold text-gray-900">45K</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-gray-400">Q1 2025</p>
+                  <p className="font-semibold text-green-600">80K</p>
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          {/* Market Signal Strength */}
+          <Card className="bg-white border border-gray-200">
+            <div className="p-6">
+              <h3 className="text-lg font-medium text-gray-900 mb-4">Market Signal Strength</h3>
+              
+              <div className="space-y-4">
+                {[
+                  { signal: 'Developer Adoption', strength: 85, trend: 'up', color: 'green' },
+                  { signal: 'Enterprise Interest', strength: 72, trend: 'up', color: 'blue' },
+                  { signal: 'AI Integration', strength: 68, trend: 'up', color: 'purple' },
+                  { signal: 'Community Growth', strength: 91, trend: 'up', color: 'orange' }
+                ].map((item, idx) => (
+                  <div key={idx} className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-medium text-gray-700">{item.signal}</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium text-gray-900">{item.strength}%</span>
+                        <TrendingUp className="w-3 h-3 text-green-500" />
+                      </div>
+                    </div>
+                    <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                      <div 
+                        className={`h-full bg-${item.color}-500 rounded-full transition-all duration-1000`}
+                        style={{ width: `${item.strength}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Card>
+        </div>
+      </section>
+
       {/* User Journey Mapping - Enhanced Flow Visualization */}
       <section>
         <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">

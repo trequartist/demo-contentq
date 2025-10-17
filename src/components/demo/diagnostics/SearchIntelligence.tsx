@@ -171,10 +171,10 @@ export default function SearchIntelligence({ data }: SearchIntelligenceProps) {
                     <p className="text-xs text-gray-600 mb-2">{query.volume}</p>
                     <div className={`text-xs px-2 py-1 rounded inline-block ${
                       query.competition === 'Low' 
-                        ? 'bg-gray-100 text-gray-700' 
+                        ? 'bg-green-50 text-green-700 border border-green-200' 
                         : query.competition === 'Medium'
-                        ? 'bg-gray-200 text-gray-700'
-                        : 'bg-gray-300 text-gray-800'
+                        ? 'bg-yellow-50 text-yellow-700 border border-yellow-200'
+                        : 'bg-red-50 text-red-700 border border-red-200'
                     }`}>
                       {query.competition} Competition
                     </div>
@@ -260,25 +260,37 @@ export default function SearchIntelligence({ data }: SearchIntelligenceProps) {
                       <div className="p-6 space-y-6">
                         {/* Metrics Grid */}
                         <div className="grid grid-cols-4 gap-4">
-                          <div>
+                          <div className="bg-gray-50 rounded-lg p-4">
                             <p className="text-xs text-gray-500 mb-1">Search Volume</p>
                             <p className="text-sm font-medium text-gray-900">{analysis.volume}</p>
-                            <p className="text-xs text-gray-600">{analysis.trend}</p>
+                            <div className="flex items-center gap-1 mt-1">
+                              <TrendingUp className="w-3 h-3 text-green-500" />
+                              <p className="text-xs text-green-600">{analysis.trend}</p>
+                            </div>
                           </div>
-                          <div>
+                          <div className="bg-gray-50 rounded-lg p-4">
                             <p className="text-xs text-gray-500 mb-1">Competition</p>
                             <p className="text-sm font-medium text-gray-900">Low</p>
-                            <p className="text-xs text-gray-600">{analysis.difficulty} difficulty</p>
+                            <div className="w-full h-1 bg-gray-200 rounded-full mt-2">
+                              <div className="h-full bg-green-500 rounded-full" style={{ width: '25%' }} />
+                            </div>
+                            <p className="text-xs text-gray-600 mt-1">{analysis.difficulty} difficulty</p>
                           </div>
-                          <div>
+                          <div className="bg-gray-50 rounded-lg p-4">
                             <p className="text-xs text-gray-500 mb-1">Current Ranking</p>
                             <p className="text-sm font-medium text-gray-900">{analysis.ranking}</p>
-                            <p className="text-xs text-gray-600">(opportunity)</p>
+                            <div className="flex items-center gap-1 mt-1">
+                              <Target className="w-3 h-3 text-blue-500" />
+                              <p className="text-xs text-blue-600">(opportunity)</p>
+                            </div>
                           </div>
-                          <div>
+                          <div className="bg-gray-50 rounded-lg p-4">
                             <p className="text-xs text-gray-500 mb-1">Intent Type</p>
                             <p className="text-sm font-medium text-gray-900">Problem-aware</p>
-                            <p className="text-xs text-gray-600">High conversion</p>
+                            <div className="flex items-center gap-1 mt-1">
+                              <Zap className="w-3 h-3 text-purple-500" />
+                              <p className="text-xs text-purple-600">High conversion</p>
+                            </div>
                           </div>
                         </div>
 

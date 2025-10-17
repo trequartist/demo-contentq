@@ -100,8 +100,8 @@ export default function CreatorPage() {
 
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
+      // For insights mode, ONLY set insights data, no diagnostics
       const insightsOutput = {
-        diagnostics: diagnosticsData.data,
         insightsData: insightsHubData as any,
       };
       setDiagnosticsOutput({ ...insightsOutput, variant: 'insights' });

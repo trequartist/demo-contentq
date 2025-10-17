@@ -209,6 +209,77 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
         </motion.div>
       </section>
 
+      {/* Competitor Comparison Matrix */}
+      <section>
+        <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">
+          <Users className="w-6 h-6 text-gray-400" />
+          Competitor Comparison Matrix
+        </h2>
+        
+        <Card className="bg-white border border-gray-200 overflow-hidden">
+          <div className="p-8">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-gray-200">
+                    <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider pb-3">Metric</th>
+                    <th className="text-center text-xs font-medium text-gray-500 uppercase tracking-wider pb-3">Zapier</th>
+                    <th className="text-center text-xs font-medium text-gray-500 uppercase tracking-wider pb-3">Make</th>
+                    <th className="text-center text-xs font-medium text-gray-500 uppercase tracking-wider pb-3">n8n</th>
+                    <th className="text-center text-xs font-medium text-gray-500 uppercase tracking-wider pb-3">Gumloop</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {[
+                    { metric: 'Organic Traffic', zapier: '2.3M', make: '180K', n8n: '45K', gumloop: '2.1K', unit: '/mo' },
+                    { metric: 'AI Mentions', zapier: '87%', make: '31%', n8n: '12%', gumloop: '4%', unit: 'rate' },
+                    { metric: 'Content Volume', zapier: '1,200', make: '180', n8n: '45', gumloop: '12', unit: 'posts' },
+                    { metric: 'Technical Depth', zapier: 'Medium', make: 'Low', n8n: 'High', gumloop: 'Low', unit: 'score' },
+                    { metric: 'Problem Content', zapier: '15%', make: '8%', n8n: '25%', gumloop: '5%', unit: 'share' }
+                  ].map((row, idx) => (
+                    <tr key={idx} className="hover:bg-gray-50">
+                      <td className="py-4 text-sm font-medium text-gray-900">{row.metric}</td>
+                      <td className="py-4 text-center">
+                        <div className="flex flex-col items-center gap-1">
+                          <div className="w-16 h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div className="h-full bg-blue-500" style={{ width: '100%' }} />
+                          </div>
+                          <span className="text-sm font-medium text-gray-900">{row.zapier}{row.unit}</span>
+                        </div>
+                      </td>
+                      <td className="py-4 text-center">
+                        <div className="flex flex-col items-center gap-1">
+                          <div className="w-16 h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div className="h-full bg-purple-500" style={{ width: '78%' }} />
+                          </div>
+                          <span className="text-sm font-medium text-gray-900">{row.make}{row.unit}</span>
+                        </div>
+                      </td>
+                      <td className="py-4 text-center">
+                        <div className="flex flex-col items-center gap-1">
+                          <div className="w-16 h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div className="h-full bg-orange-500" style={{ width: '20%' }} />
+                          </div>
+                          <span className="text-sm font-medium text-gray-900">{row.n8n}{row.unit}</span>
+                        </div>
+                      </td>
+                      <td className="py-4 text-center">
+                        <div className="flex flex-col items-center gap-1">
+                          <div className="w-16 h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div className="h-full bg-gray-400" style={{ width: '1%' }} />
+                          </div>
+                          <span className="text-sm font-medium text-gray-900">{row.gumloop}{row.unit}</span>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </Card>
+      </section>
+
       {/* Competitive Blind Spots - Enhanced Opportunity Map */}
       <section>
         <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">
