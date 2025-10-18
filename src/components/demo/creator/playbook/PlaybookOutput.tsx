@@ -114,31 +114,27 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
                 <h3 className="text-sm font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition">{topic.title}</h3>
                 <p className="text-xs text-gray-600 line-clamp-2 mb-3">{topic.description}</p>
                 
-                {topic.aiVisibilityImpact && (
+                {topic.impactLevel && (
                   <div className="mb-3 flex items-center gap-2">
                     <div className="flex-1 flex items-center gap-2">
-                      <Zap className={`h-3 w-3 ${
-                        topic.aiVisibilityImpact === 'critical' ? 'text-purple-600' :
-                        topic.aiVisibilityImpact === 'high' ? 'text-blue-600' :
-                        topic.aiVisibilityImpact === 'medium' ? 'text-emerald-500' :
-                        'text-slate-400'
-                      }`} />
-                      <span className={`text-xs font-medium ${
-                        topic.aiVisibilityImpact === 'critical' ? 'text-purple-600' :
-                        topic.aiVisibilityImpact === 'high' ? 'text-blue-600' :
-                        topic.aiVisibilityImpact === 'medium' ? 'text-emerald-500' :
-                        'text-slate-400'
-                      }`}>
-                        {topic.estimatedImpact || `${topic.aiVisibilityImpact} visibility impact`}
+                      <span className="text-sm">
+                        {topic.impactLevel === 'high' ? '🟢' : 
+                         topic.impactLevel === 'medium' ? '🟡' : 
+                         topic.impactLevel === 'low' ? '🔴' : 
+                         topic.impactLevel === 'negative' ? '⛔' : '🟡'}
+                      </span>
+                      <span className="text-xs font-medium text-gray-700">
+                        {topic.expectedPoints || '+2-3'} points expected
                       </span>
                     </div>
                     <span className={`text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-full ${
-                      topic.aiVisibilityImpact === 'critical' ? 'bg-purple-50 text-purple-700 border border-purple-200' :
-                      topic.aiVisibilityImpact === 'high' ? 'bg-blue-50 text-blue-700 border border-blue-200' :
-                      topic.aiVisibilityImpact === 'medium' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' :
-                      'bg-slate-50 text-slate-500 border border-slate-200'
+                      topic.impactLevel === 'high' ? 'bg-green-50 text-green-700 border border-green-200' :
+                      topic.impactLevel === 'medium' ? 'bg-yellow-50 text-yellow-700 border border-yellow-200' :
+                      topic.impactLevel === 'low' ? 'bg-red-50 text-red-700 border border-red-200' :
+                      topic.impactLevel === 'negative' ? 'bg-red-50 text-red-700 border border-red-200' :
+                      'bg-gray-50 text-gray-500 border border-gray-200'
                     }`}>
-                      {topic.aiVisibilityImpact}
+                      {topic.impactLevel} impact
                     </span>
                   </div>
                 )}
@@ -223,11 +219,22 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
 
                     <div className="space-y-1.5">
                       {dayTopics.map((topic: any) => {
-                        const impactColor =
-                          topic.aiVisibilityImpact === 'critical' ? 'bg-purple-100 text-purple-800 hover:bg-purple-200 border-purple-200' :
-                          topic.aiVisibilityImpact === 'high' ? 'bg-blue-100 text-blue-800 hover:bg-blue-200 border-blue-200' :
-                          topic.aiVisibilityImpact === 'medium' ? 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200 border-emerald-200' :
-                          'bg-slate-100 text-slate-800 hover:bg-slate-200 border-slate-200';
+                        const getImpactDisplay = (impactLevel: string) => {
+                          switch (impactLevel) {
+                            case 'high':
+                              return { emoji: '🟢', color: 'bg-green-100 text-green-800 hover:bg-green-200 border-green-200', text: 'High AI Impact' };
+                            case 'medium':
+                              return { emoji: '🟡', color: 'bg-yellow-100 text-yellow-800 hover:bg-yellow-200 border-yellow-200', text: 'Medium AI Impact' };
+                            case 'low':
+                              return { emoji: '🔴', color: 'bg-red-100 text-red-800 hover:bg-red-200 border-red-200', text: 'Low AI Impact' };
+                            case 'negative':
+                              return { emoji: '⛔', color: 'bg-red-100 text-red-800 hover:bg-red-200 border-red-200', text: 'Negative Impact' };
+                            default:
+                              return { emoji: '🟡', color: 'bg-gray-100 text-gray-800 hover:bg-gray-200 border-gray-200', text: 'Medium AI Impact' };
+                          }
+                        };
+                        
+                        const impact = getImpactDisplay(topic.impactLevel);
                         
                         return (
                           <div
@@ -236,13 +243,13 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
                               setSelectedCalendarTopic(topic);
                               setShowAnglesModal(true);
                             }}
-                            className={`relative text-xs px-2 py-1.5 rounded-lg cursor-pointer transition-colors truncate font-medium border ${impactColor}`}
+                            className={`relative text-xs px-2 py-1.5 rounded-lg cursor-pointer transition-colors truncate font-medium border ${impact.color}`}
+                            title={`${impact.text} ${topic.expectedPoints || ''} - ${topic.impactRationale || ''}`}
                           >
                             <div className="flex items-center gap-1">
-                              {topic.aiVisibilityImpact && (
-                                <Zap className="h-2.5 w-2.5 flex-shrink-0" />
-                              )}
+                              <span className="text-xs">{impact.emoji}</span>
                               <span className="truncate">{topic.title}</span>
+                              <span className="text-xs opacity-70">ℹ️</span>
                             </div>
                           </div>
                         );

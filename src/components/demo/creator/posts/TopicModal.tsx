@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { X, ArrowRight, Sparkles } from 'lucide-react';
 import Button from '@/components/ui/Button';
+import AngleSelector from './AngleSelector';
 
 interface Subtopic {
   id: string;
@@ -30,6 +31,7 @@ interface TopicModalProps {
 
 export function TopicModal({ topics, onSelectSubtopic, onClose }: TopicModalProps) {
   const [selectedTopic, setSelectedTopic] = useState<Topic | null>(null);
+  const [showAngleSelector, setShowAngleSelector] = useState(false);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm">
@@ -89,7 +91,24 @@ export function TopicModal({ topics, onSelectSubtopic, onClose }: TopicModalProp
               {selectedTopic.subtopics.map((subtopic) => (
                 <button
                   key={subtopic.id}
-                  onClick={() => onSelectSubtopic(selectedTopic, subtopic)}
+                  onClick={() => {
+                    // Generate angles for the angle selector
+                    const angles = selectedTopic.subtopics.map((subtopic, index) => ({
+                      id: subtopic.id,
+                      name: `Angle ${index + 1}`,
+                      title: subtopic.title,
+                      impactLevel: index === 0 ? 'high' : index === 1 ? 'medium' : 'low',
+                      expectedPoints: index === 0 ? '+4-6' : index === 1 ? '+2-3' : '+0-1',
+                      primaryLLM: index === 0 ? ['ChatGPT', 'Claude'] : index === 1 ? ['Claude'] : ['Perplexity'],
+                      rationale: subtopic.expectedOutcome,
+                      structuralAdvantage: 'Step-by-step guide with clear sections',
+                      audienceMatch: 'Technical audience matches search patterns',
+                      opportunity: 'Query has 3,200/mo volume with minimal competitor coverage',
+                      clusterEffect: 'Aligns with automation authority cluster'
+                    }));
+                    
+                    setShowAngleSelector(true);
+                  }}
                   className="group w-full rounded-2xl border-2 border-gray-100 bg-white p-6 text-left transition-all hover:border-blue-300 hover:shadow-lg"
                 >
                   <div className="flex items-start justify-between gap-4">
@@ -132,6 +151,37 @@ export function TopicModal({ topics, onSelectSubtopic, onClose }: TopicModalProp
           </p>
         </div>
       </div>
+
+      {/* Angle Selector Modal */}
+      {showAngleSelector && selectedTopic && (
+        <AngleSelector
+          topic={{
+            title: selectedTopic.title,
+            description: selectedTopic.description
+          }}
+          angles={selectedTopic.subtopics.map((subtopic, index) => ({
+            id: subtopic.id,
+            name: `Angle ${index + 1}`,
+            title: subtopic.title,
+            impactLevel: selectedTopic.impactLevel || (index === 0 ? 'high' : index === 1 ? 'medium' : 'low'),
+            expectedPoints: selectedTopic.expectedPoints || (index === 0 ? '+4-6' : index === 1 ? '+2-3' : '+0-1'),
+            primaryLLM: selectedTopic.primaryLLM || (index === 0 ? ['ChatGPT', 'Claude'] : index === 1 ? ['Claude'] : ['Perplexity']),
+            rationale: subtopic.expectedOutcome,
+            structuralAdvantage: 'Step-by-step guide with clear sections',
+            audienceMatch: 'Technical audience matches search patterns',
+            opportunity: 'Query has 3,200/mo volume with minimal competitor coverage',
+            clusterEffect: 'Aligns with automation authority cluster'
+          }))}
+          onSelect={(angle) => {
+            const subtopic = selectedTopic.subtopics.find(s => s.id === angle.id);
+            if (subtopic) {
+              onSelectSubtopic(selectedTopic, subtopic);
+            }
+            setShowAngleSelector(false);
+          }}
+          onClose={() => setShowAngleSelector(false)}
+        />
+      )}
     </div>
   );
 }

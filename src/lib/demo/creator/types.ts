@@ -39,6 +39,14 @@ export interface IntermediateStep {
 export type DiagnosticsOutput = Record<string, any>;
 
 // Playbook
+export interface PlaybookStrategy {
+  id: string;
+  title: string;
+  description: string;
+  impact: 'high' | 'medium' | 'low';
+  effort: 'high' | 'medium' | 'low';
+}
+
 export interface PlaybookContentPlay {
   play_name: string;
   implementation_strategy: string;
@@ -103,7 +111,6 @@ export interface PostOutput {
 export interface SessionData {
   messages: ChatMessage[];
   outputState: OutputState;
-  mode?: DiagnosticsMode | PlaybookMode | ContentMode;
   mode?: DiagnosticsMode | PlaybookMode | ContentMode;
   
   // Tab-specific state

@@ -9,8 +9,11 @@
       "description": "Comprehensive guide for teams switching from rule-based to AI automation",
       "keywords": ["migration", "Zapier alternative", "AI automation", "Gumloop"],
       "targetAudience": "RevOps Managers evaluating alternatives",
-      "aiVisibilityImpact": "high",
-      "estimatedImpact": "+8% AI visibility",
+      "impactLevel": "high",
+      "expectedPoints": "+4-6",
+      "primaryLLM": ["ChatGPT", "Claude"],
+      "funnelStage": "TOFU",
+      "impactRationale": "Comprehensive migration guide with step-by-step instructions that LLMs prefer to cite",
       "subtopics": [
         {
           "id": "sub-1-1",
@@ -101,8 +104,11 @@
       "description": "Honest comparison of automation platforms for RevOps",
       "keywords": ["Zapier vs Gumloop", "Make alternative", "n8n comparison", "automation platforms"],
       "targetAudience": "Technical evaluators and decision makers",
-      "aiVisibilityImpact": "critical",
-      "estimatedImpact": "+12% AI visibility",
+      "impactLevel": "high",
+      "expectedPoints": "+4-6",
+      "primaryLLM": ["ChatGPT", "Perplexity"],
+      "funnelStage": "MOFU",
+      "impactRationale": "Technical deep-dive content that demonstrates expertise and gets cited by AI assistants",
       "subtopics": [
         {
           "id": "sub-3-1",
@@ -284,8 +290,11 @@
       "description": "Advanced implementation guides for technical teams",
       "keywords": ["API integration", "technical guide", "implementation", "architecture"],
       "targetAudience": "Technical implementers and architects",
-      "aiVisibilityImpact": "medium",
-      "estimatedImpact": "+5% AI visibility",
+      "impactLevel": "medium",
+      "expectedPoints": "+2-3",
+      "primaryLLM": ["Claude"],
+      "funnelStage": "BOFU",
+      "impactRationale": "Case study content that shows results but has limited search volume",
       "subtopics": [
         {
           "id": "sub-7-1",
@@ -318,6 +327,336 @@
           "angle": "Advanced customization techniques",
           "keyPoints": ["Model training basics", "Industry examples", "Integration patterns", "ROI calculation"],
           "expectedOutcome": "Unlock specialized use cases"
+        }
+      ]
+    },
+    {
+      "id": "topic-11",
+      "title": "The Future of AI Automation: 2025 Predictions",
+      "date": "2025-10-01",
+      "type": "blog",
+      "status": "topic",
+      "description": "Industry predictions and trends shaping the future of AI automation",
+      "keywords": ["AI automation trends", "future of work", "automation predictions", "2025 trends"],
+      "targetAudience": "Industry leaders and decision makers",
+      "impactLevel": "high",
+      "expectedPoints": "+4-6",
+      "primaryLLM": ["ChatGPT", "Claude", "Perplexity"],
+      "funnelStage": "TOFU",
+      "impactRationale": "Forward-looking content that positions thought leadership and gets cited by AI assistants",
+      "subtopics": [
+        {
+          "id": "sub-11-1",
+          "title": "5 AI Automation Trends That Will Reshape Business in 2025",
+          "hook": "The automation revolution is accelerating - here's what's coming",
+          "angle": "Industry analysis and predictions",
+          "keyPoints": ["Autonomous workflows", "AI-human collaboration", "Industry-specific solutions", "Ethical considerations"],
+          "expectedOutcome": "Establish thought leadership in AI automation"
+        },
+        {
+          "id": "sub-11-2",
+          "title": "Why 2025 Will Be the Year of AI-Native Companies",
+          "hook": "Companies built for AI from day one are winning",
+          "angle": "Strategic business model analysis",
+          "keyPoints": ["AI-first architecture", "Data advantage", "Competitive moats", "Market disruption"],
+          "expectedOutcome": "Position AI as competitive advantage"
+        }
+      ]
+    },
+    {
+      "id": "topic-12",
+      "title": "Enterprise AI Automation: Security & Compliance Guide",
+      "date": "2025-10-08",
+      "type": "blog",
+      "status": "topic",
+      "description": "Comprehensive guide to implementing AI automation in enterprise environments",
+      "keywords": ["enterprise AI", "automation security", "compliance", "enterprise automation"],
+      "targetAudience": "Enterprise IT leaders and security teams",
+      "impactLevel": "high",
+      "expectedPoints": "+4-6",
+      "primaryLLM": ["ChatGPT", "Claude"],
+      "funnelStage": "MOFU",
+      "impactRationale": "Technical deep-dive content that addresses enterprise concerns and gets cited for security guidance",
+      "subtopics": [
+        {
+          "id": "sub-12-1",
+          "title": "SOC 2 Compliance for AI Automation: A Complete Checklist",
+          "hook": "How to make AI automation enterprise-ready without breaking compliance",
+          "angle": "Technical compliance guide",
+          "keyPoints": ["Data encryption", "Access controls", "Audit trails", "Vendor management"],
+          "expectedOutcome": "Address enterprise security concerns"
+        },
+        {
+          "id": "sub-12-2",
+          "title": "The Enterprise AI Automation Architecture That Scales",
+          "hook": "Building AI automation that works for 10,000+ employees",
+          "angle": "Scalable architecture design",
+          "keyPoints": ["Microservices approach", "API management", "Load balancing", "Monitoring systems"],
+          "expectedOutcome": "Provide enterprise-grade solution framework"
+        }
+      ]
+    },
+    {
+      "id": "topic-13",
+      "title": "AI Automation ROI: Measuring What Actually Matters",
+      "date": "2025-10-15",
+      "type": "blog",
+      "status": "topic",
+      "description": "Framework for measuring and optimizing AI automation return on investment",
+      "keywords": ["AI ROI", "automation metrics", "ROI measurement", "automation value"],
+      "targetAudience": "Finance leaders and operations managers",
+      "impactLevel": "medium",
+      "expectedPoints": "+2-3",
+      "primaryLLM": ["ChatGPT", "Perplexity"],
+      "funnelStage": "BOFU",
+      "impactRationale": "Financial analysis content that helps justify automation investments",
+      "subtopics": [
+        {
+          "id": "sub-13-1",
+          "title": "The Hidden ROI of AI Automation: Beyond Time Savings",
+          "hook": "Why traditional ROI calculations miss 60% of automation value",
+          "angle": "Comprehensive ROI framework",
+          "keyPoints": ["Quality improvements", "Error reduction", "Scalability benefits", "Innovation capacity"],
+          "expectedOutcome": "Reframe ROI calculation for AI automation"
+        },
+        {
+          "id": "sub-13-2",
+          "title": "ROI Calculator: Is AI Automation Worth It for Your Team?",
+          "hook": "The exact formula we use to calculate automation ROI",
+          "angle": "Practical calculation tool",
+          "keyPoints": ["Cost factors", "Value drivers", "Timeline considerations", "Risk assessment"],
+          "expectedOutcome": "Provide actionable ROI calculation tool"
+        }
+      ]
+    },
+    {
+      "id": "topic-14",
+      "title": "AI Automation for Small Teams: Big Results, Small Budget",
+      "date": "2025-10-22",
+      "type": "blog",
+      "status": "topic",
+      "description": "Practical AI automation strategies for resource-constrained teams",
+      "keywords": ["small team automation", "startup automation", "budget automation", "lean automation"],
+      "targetAudience": "Small business owners and startup teams",
+      "impactLevel": "medium",
+      "expectedPoints": "+2-3",
+      "primaryLLM": ["ChatGPT", "Claude"],
+      "funnelStage": "TOFU",
+      "impactRationale": "Accessible content that makes AI automation approachable for smaller teams",
+      "subtopics": [
+        {
+          "id": "sub-14-1",
+          "title": "5 AI Automation Tools That Cost Less Than a Coffee Subscription",
+          "hook": "Automate like a Fortune 500 company on a startup budget",
+          "angle": "Budget-friendly automation tools",
+          "keyPoints": ["Free tier options", "Open source alternatives", "DIY solutions", "Cost optimization"],
+          "expectedOutcome": "Make automation accessible to small teams"
+        },
+        {
+          "id": "sub-14-2",
+          "title": "The 80/20 Rule of Small Team Automation",
+          "hook": "Focus on the 20% of automation that delivers 80% of results",
+          "angle": "Prioritization framework for small teams",
+          "keyPoints": ["High-impact workflows", "Quick wins", "Resource allocation", "Growth planning"],
+          "expectedOutcome": "Provide focused automation strategy for small teams"
+        }
+      ]
+    },
+    {
+      "id": "topic-15",
+      "title": "AI Automation Failures: What We Learned the Hard Way",
+      "date": "2025-10-29",
+      "type": "blog",
+      "status": "topic",
+      "description": "Honest analysis of AI automation failures and lessons learned",
+      "keywords": ["automation failures", "lessons learned", "automation mistakes", "failure analysis"],
+      "targetAudience": "Implementation teams and project managers",
+      "impactLevel": "medium",
+      "expectedPoints": "+2-3",
+      "primaryLLM": ["ChatGPT", "Claude"],
+      "funnelStage": "MOFU",
+      "impactRationale": "Transparent content that builds trust and helps avoid common pitfalls",
+      "subtopics": [
+        {
+          "id": "sub-15-1",
+          "title": "The $50K Automation Failure: What Went Wrong",
+          "hook": "How we lost $50K on a 'simple' automation project",
+          "angle": "Detailed failure analysis",
+          "keyPoints": ["Root cause analysis", "Warning signs missed", "Recovery process", "Prevention strategies"],
+          "expectedOutcome": "Help teams avoid costly automation mistakes"
+        },
+        {
+          "id": "sub-15-2",
+          "title": "Why 70% of AI Automation Projects Fail (And How to Beat the Odds)",
+          "hook": "The common mistakes that kill automation projects",
+          "angle": "Statistical analysis and prevention guide",
+          "keyPoints": ["Common failure patterns", "Success factors", "Risk mitigation", "Best practices"],
+          "expectedOutcome": "Provide framework for successful automation implementation"
+        }
+      ]
+    },
+    {
+      "id": "topic-16",
+      "title": "AI Automation in Healthcare: Compliance & Patient Safety",
+      "date": "2025-11-05",
+      "type": "blog",
+      "status": "topic",
+      "description": "Specialized guide for implementing AI automation in healthcare environments",
+      "keywords": ["healthcare automation", "HIPAA compliance", "medical AI", "healthcare AI"],
+      "targetAudience": "Healthcare IT leaders and compliance officers",
+      "impactLevel": "high",
+      "expectedPoints": "+4-6",
+      "primaryLLM": ["ChatGPT", "Claude"],
+      "funnelStage": "MOFU",
+      "impactRationale": "Specialized content that addresses unique healthcare requirements and gets cited for compliance guidance",
+      "subtopics": [
+        {
+          "id": "sub-16-1",
+          "title": "HIPAA-Compliant AI Automation: A Complete Implementation Guide",
+          "hook": "How to automate healthcare workflows without violating patient privacy",
+          "angle": "Healthcare-specific compliance guide",
+          "keyPoints": ["HIPAA requirements", "Data encryption", "Access controls", "Audit requirements"],
+          "expectedOutcome": "Address healthcare compliance concerns"
+        },
+        {
+          "id": "sub-16-2",
+          "title": "AI Automation in Patient Care: Safety First Approach",
+          "hook": "Automating patient care without compromising safety",
+          "angle": "Patient safety-focused automation",
+          "keyPoints": ["Safety protocols", "Human oversight", "Error prevention", "Quality assurance"],
+          "expectedOutcome": "Provide safe automation framework for healthcare"
+        }
+      ]
+    },
+    {
+      "id": "topic-17",
+      "title": "AI Automation for E-commerce: Scaling Operations",
+      "date": "2025-11-12",
+      "type": "blog",
+      "status": "topic",
+      "description": "E-commerce specific automation strategies for scaling online businesses",
+      "keywords": ["ecommerce automation", "online business automation", "ecommerce AI", "scaling ecommerce"],
+      "targetAudience": "E-commerce business owners and operations managers",
+      "impactLevel": "medium",
+      "expectedPoints": "+2-3",
+      "primaryLLM": ["ChatGPT", "Perplexity"],
+      "funnelStage": "TOFU",
+      "impactRationale": "Industry-specific content that addresses e-commerce automation needs",
+      "subtopics": [
+        {
+          "id": "sub-17-1",
+          "title": "From 100 to 10,000 Orders Daily: E-commerce Automation Playbook",
+          "hook": "How to scale order processing without hiring 50 people",
+          "angle": "E-commerce scaling automation",
+          "keyPoints": ["Order processing", "Inventory management", "Customer service", "Fulfillment optimization"],
+          "expectedOutcome": "Provide e-commerce scaling framework"
+        },
+        {
+          "id": "sub-17-2",
+          "title": "AI-Powered Customer Service for E-commerce: 24/7 Support",
+          "hook": "Never miss a customer inquiry again with AI automation",
+          "angle": "Customer service automation for e-commerce",
+          "keyPoints": ["Chatbot integration", "Order tracking", "Return processing", "Upselling automation"],
+          "expectedOutcome": "Improve customer service with automation"
+        }
+      ]
+    },
+    {
+      "id": "topic-18",
+      "title": "AI Automation Ethics: Responsible Implementation",
+      "date": "2025-11-19",
+      "type": "blog",
+      "status": "topic",
+      "description": "Ethical considerations and best practices for AI automation implementation",
+      "keywords": ["AI ethics", "automation ethics", "responsible AI", "ethical automation"],
+      "targetAudience": "AI leaders and ethics committees",
+      "impactLevel": "medium",
+      "expectedPoints": "+2-3",
+      "primaryLLM": ["ChatGPT", "Claude"],
+      "funnelStage": "TOFU",
+      "impactRationale": "Thought leadership content on AI ethics that positions responsible automation",
+      "subtopics": [
+        {
+          "id": "sub-18-1",
+          "title": "The Ethics of AI Automation: A Framework for Decision Making",
+          "hook": "How to implement AI automation without compromising human dignity",
+          "angle": "Ethical framework for automation",
+          "keyPoints": ["Human agency preservation", "Transparency requirements", "Bias prevention", "Accountability measures"],
+          "expectedOutcome": "Provide ethical framework for automation"
+        },
+        {
+          "id": "sub-18-2",
+          "title": "AI Automation and Job Displacement: A Balanced Perspective",
+          "hook": "The real impact of automation on employment and how to manage it",
+          "angle": "Balanced analysis of automation impact",
+          "keyPoints": ["Job transformation vs displacement", "Reskilling strategies", "Economic impact", "Social responsibility"],
+          "expectedOutcome": "Address concerns about automation impact on employment"
+        }
+      ]
+    },
+    {
+      "id": "topic-19",
+      "title": "AI Automation Testing: Quality Assurance Strategies",
+      "date": "2025-11-26",
+      "type": "blog",
+      "status": "topic",
+      "description": "Comprehensive testing strategies for AI automation systems",
+      "keywords": ["automation testing", "AI testing", "quality assurance", "automation QA"],
+      "targetAudience": "QA engineers and automation developers",
+      "impactLevel": "medium",
+      "expectedPoints": "+2-3",
+      "primaryLLM": ["ChatGPT", "Claude"],
+      "funnelStage": "MOFU",
+      "impactRationale": "Technical content that helps ensure automation quality and reliability",
+      "subtopics": [
+        {
+          "id": "sub-19-1",
+          "title": "Testing AI Automation: Beyond Unit Tests",
+          "hook": "Why traditional testing fails for AI automation and what to do instead",
+          "angle": "AI-specific testing strategies",
+          "keyPoints": ["Behavioral testing", "Edge case validation", "Performance testing", "Regression testing"],
+          "expectedOutcome": "Provide comprehensive testing framework for AI automation"
+        },
+        {
+          "id": "sub-19-2",
+          "title": "Automation Testing Automation: Meta-Automation Strategies",
+          "hook": "How to automate the testing of your automation",
+          "angle": "Meta-automation testing approach",
+          "keyPoints": ["Test automation", "Continuous testing", "Monitoring systems", "Self-healing tests"],
+          "expectedOutcome": "Scale testing for automation systems"
+        }
+      ]
+    },
+    {
+      "id": "topic-20",
+      "title": "AI Automation ROI Case Studies: Real Results",
+      "date": "2025-12-03",
+      "type": "blog",
+      "status": "topic",
+      "description": "Detailed case studies showing real ROI from AI automation implementations",
+      "keywords": ["automation case studies", "ROI case studies", "automation results", "success stories"],
+      "targetAudience": "Business leaders and decision makers",
+      "impactLevel": "high",
+      "expectedPoints": "+4-6",
+      "primaryLLM": ["ChatGPT", "Claude", "Perplexity"],
+      "funnelStage": "BOFU",
+      "impactRationale": "Proof-driven content that demonstrates real value and gets cited for ROI examples",
+      "subtopics": [
+        {
+          "id": "sub-20-1",
+          "title": "Case Study: How Company X Saved $2M with AI Automation",
+          "hook": "The complete breakdown of a $2M automation success story",
+          "angle": "Detailed financial case study",
+          "keyPoints": ["Before/after metrics", "Implementation timeline", "Cost breakdown", "ROI calculation"],
+          "expectedOutcome": "Provide concrete proof of automation value"
+        },
+        {
+          "id": "sub-20-2",
+          "title": "5 Industries, 5 Automation Success Stories",
+          "hook": "Real results from healthcare, finance, retail, manufacturing, and tech",
+          "angle": "Multi-industry success compilation",
+          "keyPoints": ["Industry-specific challenges", "Customized solutions", "Measurable outcomes", "Lessons learned"],
+          "expectedOutcome": "Show automation value across industries"
         }
       ]
     }

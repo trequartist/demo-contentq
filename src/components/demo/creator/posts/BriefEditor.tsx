@@ -99,6 +99,65 @@ export function BriefEditor({ brief: initialBrief, onConfirm }: BriefEditorProps
           </ol>
         </div>
 
+        {/* SEO Strategy */}
+        <div className="border-t border-blue-200 pt-4">
+          <h4 className="text-sm font-semibold text-gray-900 mb-3">═══ SEO STRATEGY ═══</h4>
+          <div className="space-y-3">
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">Primary Keyword</label>
+              <p className="text-sm text-gray-900">"Zapier alternative" (3,200/mo volume)</p>
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">Secondary Keywords</label>
+              <div className="flex flex-wrap gap-1">
+                {["AI automation", "workflow automation", "no-code tools"].map((kw, idx) => (
+                  <span key={idx} className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700">
+                    {kw}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">Difficulty</label>
+              <span className="text-sm text-orange-600 font-medium">Medium</span>
+            </div>
+          </div>
+        </div>
+
+        {/* AEO Strategy */}
+        <div className="border-t border-blue-200 pt-4">
+          <div className="flex items-center gap-2 mb-3">
+            <h4 className="text-sm font-semibold text-gray-900">═══ AEO STRATEGY ═══</h4>
+            <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">🟢 High Impact</span>
+          </div>
+          <div className="space-y-3">
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-2">Entity Optimization:</label>
+              <ul className="space-y-1 text-sm text-gray-700">
+                <li>• Reference "Gartner" → +authority signal</li>
+                <li>• Cite "McKinsey automation report" → +credibility</li>
+                <li>• Include "Forrester data" → +usefulness</li>
+              </ul>
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-2">Structure for AI:</label>
+              <ul className="space-y-1 text-sm text-gray-700">
+                <li>✓ Step-by-step numbered lists</li>
+                <li>✓ Clear section headers (H2, H3)</li>
+                <li>✓ Data tables and comparisons</li>
+              </ul>
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-2">LLM Citation Patterns:</label>
+              <ul className="space-y-1 text-sm text-gray-700">
+                <li>• 78% of similar content cited in ChatGPT</li>
+                <li>• Claude prefers technical depth and examples</li>
+                <li>• Perplexity looks for data and statistics</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         {(brief as any).seoKeywords && (
           <div>
             <label className="block text-xs font-medium text-gray-700 mb-2">SEO Keywords</label>

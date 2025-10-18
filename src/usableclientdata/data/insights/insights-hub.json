@@ -1,53 +1,111 @@
 {
   "hero": {
-    "title": "Insights Hub — Actionable Intelligence",
-    "subtitle": "AI-powered signals, prioritized actions, and market intelligence in one place.",
+    "title": "AI Authority Intelligence Dashboard",
+    "subtitle": "Real-time AI visibility metrics, competitive intelligence, and prioritized actions.",
     "highlights": [
-      { "label": "Total Insights", "value": 147 },
-      { "label": "Critical Actions", "value": 7 },
-      { "label": "Win Rate", "value": "+8.2%" }
+      { "label": "AI Authority Score", "value": "67/100", "target": "80", "uplift": "+12 points", "description": "Blended visibility across all LLMs" },
+      { "label": "Competitive Rank", "value": "#3", "change": "+0", "description": "Position vs key competitors in AI citations" },
+      { "label": "Topical Clusters", "value": "5", "change": "+2", "description": "Authority clusters with ranking data" }
     ],
     "cta": [
       { "label": "View Playbook", "href": "/demo/playbook" },
       { "label": "Run Diagnostics", "href": "/demo/diagnostics" }
     ]
   },
+  "aiAuthority": {
+    "score": 67,
+    "previousScore": 55,
+    "change": "+12",
+    "changePercent": "+21.8%",
+    "description": "AI Authority Score across all platforms",
+    "llmBreakdown": {
+      "chatgptBrowse": 72,
+      "chatgptNoBrowse": 58,
+      "claude": 71,
+      "perplexity": 65
+    },
+    "llmWeights": {
+      "chatgptBrowse": 40,
+      "chatgptNoBrowse": 20,
+      "claude": 25,
+      "perplexity": 15
+    }
+  },
+  "competitiveMetrics": {
+    "rank": 3,
+    "previousRank": 3,
+    "change": "+0",
+    "totalMentions": 127,
+    "competitors": [
+      { "name": "Zapier", "aiCitations": 89, "aiScore": 82, "percentage": 15.2, "trend": "up", "gap": "15 points behind" },
+      { "name": "Make", "aiCitations": 67, "aiScore": 75, "percentage": 12.8, "trend": "up", "gap": "8 points behind" },
+      { "name": "Gumloop", "aiCitations": 45, "aiScore": 67, "percentage": 10.8, "isCurrent": true, "trend": "up", "gap": "You are here" },
+      { "name": "n8n", "aiCitations": 38, "aiScore": 58, "percentage": 9.4, "trend": "down", "gap": "9 points ahead" },
+      { "name": "Integromat", "aiCitations": 22, "aiScore": 45, "percentage": 7.4, "trend": "down", "gap": "22 points ahead" }
+    ]
+  },
+  "topicalClusters": [
+    { "topic": "AI Automation & Workflow", "rank": 3, "percentage": 28, "queries": "AI automation tools, workflow automation, no-code AI", "aiImpact": "high", "expectedLift": "+4-6 points" },
+    { "topic": "Zapier Alternatives & Migration", "rank": 1, "percentage": 22, "queries": "Zapier alternative, migration from Zapier, better automation", "aiImpact": "high", "expectedLift": "+5-7 points" },
+    { "topic": "Enterprise Automation", "rank": 4, "percentage": 18, "queries": "Enterprise automation, business process automation, workflow management", "aiImpact": "medium", "expectedLift": "+2-3 points" },
+    { "topic": "AI-Native Development", "rank": 2, "percentage": 15, "queries": "AI-first development, generative AI tools, AI-powered workflows", "aiImpact": "high", "expectedLift": "+4-6 points" },
+    { "topic": "No-Code & Low-Code", "rank": 5, "percentage": 12, "queries": "No-code platforms, low-code development, visual programming", "aiImpact": "medium", "expectedLift": "+2-3 points" },
+    { "topic": "API Integration", "rank": 6, "percentage": 5, "queries": "API integration tools, webhook automation, data synchronization", "aiImpact": "low", "expectedLift": "+0-1 points" }
+  ],
+  "actionableInsights": {
+    "critical": [
+      { "title": "Create 'Zapier Migration' Content Cluster", "score": 9.5, "description": "Build comprehensive migration guides to capture 3,200+ monthly searches and establish authority in this high-impact cluster.", "expectedLift": "+5-7 points", "timeline": "30 days" },
+      { "title": "Develop AI-Native Workflow Examples", "score": 9.0, "description": "Create step-by-step AI automation tutorials that LLMs prefer to cite, focusing on practical implementation guides.", "expectedLift": "+4-6 points", "timeline": "45 days" },
+      { "title": "Build Third-Party Authority Citations", "score": 8.8, "description": "Get featured in G2, Capterra, and industry reports to increase external authority signals that AI assistants trust.", "expectedLift": "+3-5 points", "timeline": "60 days" },
+      { "title": "Optimize for ChatGPT Browse Mode", "score": 8.0, "description": "Structure content with clear headers, numbered lists, and data tables that ChatGPT Browse mode prefers to cite.", "expectedLift": "+2-4 points", "timeline": "14 days" }
+    ],
+    "high": [
+      { "title": "Create Enterprise Automation Case Studies", "score": 7.5, "description": "Develop detailed case studies showing ROI and implementation success to build credibility in enterprise segment.", "expectedLift": "+3-4 points", "timeline": "30 days" },
+      { "title": "Build Developer Community Presence", "score": 7.0, "description": "Engage in GitHub discussions, Stack Overflow, and developer forums to increase technical authority signals.", "expectedLift": "+2-3 points", "timeline": "45 days" },
+      { "title": "Optimize Content for Claude Citations", "score": 6.5, "description": "Focus on technical depth and comprehensive explanations that Claude's longer context window prefers.", "expectedLift": "+2-3 points", "timeline": "21 days" },
+      { "title": "Create Perplexity-Optimized Content", "score": 6.0, "description": "Develop data-rich, research-backed content with specific statistics that Perplexity's research focus values.", "expectedLift": "+1-2 points", "timeline": "30 days" }
+    ]
+  },
   "kpis": [
-    { "id": "kpi-visibility", "label": "AI Visibility", "value": "78.5%", "delta": "+12.3%" },
-    { "id": "kpi-opportunities", "label": "Opportunities", "value": 34, "delta": "+6" },
-    { "id": "kpi-issues", "label": "Critical Issues", "value": 7, "delta": "-2" },
-    { "id": "kpi-velocity", "label": "Content Velocity", "value": "3 → 15/mo", "delta": "+5x" }
+    { "id": "kpi-authority", "label": "AI Authority Score", "value": "67/100", "delta": "+12 points", "description": "Blended visibility across all LLMs" },
+    { "id": "kpi-citations", "label": "AI Citations", "value": "127", "delta": "+23", "description": "Total mentions across AI platforms" },
+    { "id": "kpi-opportunities", "label": "High-Impact Actions", "value": "8", "delta": "+3", "description": "Critical opportunities identified" },
+    { "id": "kpi-clusters", "label": "Authority Clusters", "value": "6", "delta": "+2", "description": "Topical clusters with ranking data" }
   ],
   "analytics": {
-    "sparkline": [64, 67, 72, 75, 78, 82],
-    "aiShare": {
-      "chatgpt": 15,
-      "claude": 10,
-      "perplexity": 20,
-      "gemini": 12
-    }
+    "authorityTrend": [55, 58, 62, 65, 67, 70],
+    "llmPerformance": {
+      "chatgptBrowse": { "citations": 45, "trend": "up", "change": "+8" },
+      "claude": { "citations": 32, "trend": "up", "change": "+5" },
+      "perplexity": { "citations": 28, "trend": "up", "change": "+3" },
+      "chatgptNoBrowse": { "citations": 22, "trend": "flat", "change": "+1" }
+    },
+    "competitiveGaps": [
+      { "competitor": "Zapier", "gap": "15 points", "primaryAdvantage": "Third-party reviews" },
+      { "competitor": "Make", "gap": "8 points", "primaryAdvantage": "Developer community" }
+    ]
   },
   "timeline": {
     "quarters": [
       {
         "title": "Now",
         "items": [
-          { "title": "Fix Technical SEO (Schema, Canonicals)", "impact": "+40% CTR", "status": "urgent", "link": "/demo/diagnostics" },
-          { "title": "Create 'Zapier too expensive' page", "impact": "$75K MRR", "status": "critical", "link": "/demo/content-studio/create" }
+          { "title": "Optimize Content for ChatGPT Browse Mode", "impact": "+2-4 points", "status": "urgent", "link": "/demo/diagnostics", "description": "Structure existing content with clear headers and data tables" },
+          { "title": "Create 'Zapier Migration' Content Cluster", "impact": "+5-7 points", "status": "critical", "link": "/demo/content-studio/create", "description": "Build comprehensive migration guides for 3,200+ monthly searches" }
         ]
       },
       {
         "title": "30 Days",
         "items": [
-          { "title": "Publish 5 Migration Guides", "impact": "$50K MRR", "status": "planned", "link": "/demo/playbook" },
-          { "title": "Launch Pricing Calculator", "impact": "2x conversion", "status": "planned", "link": "/demo/playbook" }
+          { "title": "Develop AI-Native Workflow Examples", "impact": "+4-6 points", "status": "planned", "link": "/demo/playbook", "description": "Create step-by-step tutorials that LLMs prefer to cite" },
+          { "title": "Build Third-Party Authority Citations", "impact": "+3-5 points", "status": "planned", "link": "/demo/playbook", "description": "Get featured in G2, Capterra, and industry reports" }
         ]
       },
       {
         "title": "Quarter",
         "items": [
-          { "title": "Reach 15+/mo Content Velocity", "impact": "Competitive parity", "status": "goal", "link": "/demo/content-studio" },
-          { "title": "Own 'AI-native automation' narrative", "impact": "Category leadership", "status": "strategic", "link": "/demo/playbook" }
+          { "title": "Reach 80+ AI Authority Score", "impact": "Competitive parity", "status": "goal", "link": "/demo/content-studio", "description": "Close the gap with top competitors through strategic content" },
+          { "title": "Own 'AI-Native Automation' Narrative", "impact": "Category leadership", "status": "strategic", "link": "/demo/playbook", "description": "Establish thought leadership in AI-first automation" }
         ]
       }
     ]

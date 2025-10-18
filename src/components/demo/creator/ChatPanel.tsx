@@ -69,14 +69,15 @@ const diagnosticsActions: Record<DiagnosticsMode, QuickAction[]> = {
 
 const playbookActions: Record<PlaybookMode, QuickAction[]> = {
   playbook: [
-    { label: 'Launch Strategy', prompt: 'Create a go-to-market launch playbook' },
-    { label: 'Growth Blueprint', prompt: 'Design a growth acceleration playbook' },
-    { label: 'Activation Plan', prompt: 'Outline a customer activation playbook' },
+    { label: 'Adjust Timeline', prompt: 'Adjust the timeline for the AI-Native Content Strategy to 4 months' },
+    { label: 'Add More Strategies', prompt: 'Add a social media strategy to the playbook' },
+    { label: 'Focus on Specific Channel', prompt: 'Add more detail about email marketing in the competitive positioning section' },
+    { label: 'Export Playbook', prompt: 'Export this playbook as a PDF document' },
   ],
   calendar: [
-    { label: 'Campaign Calendar', prompt: 'Draft a 4-week marketing calendar' },
-    { label: 'Event Rhythm', prompt: 'Plan a cadence for launch events' },
-    { label: 'Channel Mix', prompt: 'Build a channel-by-channel calendar' },
+    { label: 'Add More Topics', prompt: 'Add 5 more content topics for next month' },
+    { label: 'Adjust Schedule', prompt: 'Move the technical SEO content to next week' },
+    { label: 'Focus on High-Impact', prompt: 'Prioritize topics with highest AI visibility impact' },
   ],
 };
 

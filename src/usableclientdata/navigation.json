@@ -36,6 +36,13 @@
       "badge": null
     },
     {
+      "name": "Tracker",
+      "href": "/demo/tracker",
+      "icon": "Activity",
+      "description": "AI visibility impact tracking",
+      "badge": null
+    },
+    {
       "name": "Settings",
       "href": "/demo/settings",
       "icon": "Settings",

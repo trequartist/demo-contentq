@@ -43,13 +43,96 @@ export default function CreatorPage() {
     setIntermediateSteps,
   } = useCreatorStore();
 
-  // Handle tab from URL
+  // Handle tab from URL and auto-load content
   useEffect(() => {
     const tabParam = searchParams?.get('tab') as CreatorTab | null;
     if (tabParam && ['diagnostics', 'playbook', 'posts'].includes(tabParam)) {
       setActiveTab(tabParam);
     }
   }, [searchParams, setActiveTab]);
+
+  // Auto-load pre-generated content for specific tabs
+  useEffect(() => {
+    if (activeTab === 'diagnostics') {
+      const mode = modes.diagnostics;
+      if (mode === 'insights') {
+        // Auto-load insights data
+        const insightsOutput = {
+          insightsData: insightsHubData as any,
+        };
+        setDiagnosticsOutput({ ...insightsOutput, variant: 'insights' });
+        setOutputState('diagnostics', 'complete');
+      } else {
+        // Auto-load diagnostics data
+        setDiagnosticsOutput(diagnosticsData.data);
+        setOutputState('diagnostics', 'complete');
+      }
+    } else if (activeTab === 'playbook') {
+      // Auto-load playbook data with complete playbook
+      const playbookOutput = {
+        ...playbookData.data,
+        selectedStrategies: ['s1', 's2', 's3'], // Pre-select some strategies
+        generated_playbook: playbookData.data.generated_playbook || [
+          {
+            playbook_title: "AI-Native Content Strategy",
+            playbook_description: "Develop content that gets cited by AI assistants and dominates search results",
+            playbook_timeline: "3 months",
+            playbook_goals: [
+              "Increase AI visibility score by 40%",
+              "Generate 15+ high-quality posts per month",
+              "Capture 3 new topic clusters"
+            ],
+            playbook_tasks: [
+              {
+                task_title: "Technical SEO Foundation",
+                task_description: "Implement schema markup, optimize site structure, and improve page speed",
+                task_timeline: "2 weeks",
+                task_priority: "High"
+              },
+              {
+                task_title: "Content Calendar Development",
+                task_description: "Create comprehensive content calendar targeting high-value keywords",
+                task_timeline: "1 week",
+                task_priority: "High"
+              },
+              {
+                task_title: "AI Optimization Training",
+                task_description: "Train team on AI-friendly content creation techniques",
+                task_timeline: "1 week",
+                task_priority: "Medium"
+              }
+            ]
+          },
+          {
+            playbook_title: "Competitive Intelligence & Positioning",
+            playbook_description: "Outmaneuver competitors and establish market leadership",
+            playbook_timeline: "2 months",
+            playbook_goals: [
+              "Surpass 2 key competitors in AI citations",
+              "Own 5 high-value topic clusters",
+              "Increase market share by 25%"
+            ],
+            playbook_tasks: [
+              {
+                task_title: "Competitor Analysis Deep Dive",
+                task_description: "Analyze top 5 competitors' content strategies and identify gaps",
+                task_timeline: "1 week",
+                task_priority: "High"
+              },
+              {
+                task_title: "Unique Value Proposition Refinement",
+                task_description: "Develop differentiated messaging that resonates with AI assistants",
+                task_timeline: "2 weeks",
+                task_priority: "High"
+              }
+            ]
+          }
+        ]
+      };
+      setPlaybookOutput(playbookOutput);
+      setOutputState('playbook', 'complete');
+    }
+  }, [activeTab, modes.diagnostics, setDiagnosticsOutput, setPlaybookOutput, setOutputState]);
 
   const handleTabChange = (tab: CreatorTab) => {
     setActiveTab(tab);
@@ -66,6 +149,9 @@ export default function CreatorPage() {
       text,
       timestamp,
     });
+
+    // Immediately set to streaming to show activity
+    setOutputState(activeTab, 'streaming');
 
     // Route to appropriate workflow
     if (activeTab === 'diagnostics') {
@@ -86,6 +172,7 @@ export default function CreatorPage() {
     if (session.outputState === 'complete') {
       setIntermediateSteps('diagnostics', []);
       setDiagnosticsOutput(undefined as any);
+      setOutputState('diagnostics', 'streaming');
     }
 
     if (mode === 'insights') {
@@ -153,6 +240,7 @@ export default function CreatorPage() {
       setPlaybookStrategies(undefined as any);
       setPlaybookOutput(undefined as any);
       setSelectedStrategies(undefined as any);
+      setOutputState('playbook', 'streaming');
     }
 
     // CALENDAR MODE: Skip strategies, go straight to calendar view
@@ -287,6 +375,7 @@ export default function CreatorPage() {
     if (session.outputState === 'complete') {
       setIntermediateSteps('posts', []);
       setPostOutput(undefined as any);
+      setOutputState('posts', 'streaming');
     }
 
     // Step 1: Generate topics (right panel)

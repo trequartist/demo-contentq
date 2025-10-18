@@ -28,7 +28,8 @@ import {
   Search,
   Lightbulb,
   Shield,
-  ArrowUpRight
+  ArrowUpRight,
+  RefreshCw
 } from 'lucide-react';
 import { Card } from '@/components/ui';
 import Link from 'next/link';
@@ -56,7 +57,7 @@ export default function ContentQOverviewPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50">
         <div className="max-w-7xl mx-auto px-6 py-20">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -138,7 +139,7 @@ export default function ContentQOverviewPage() {
       {/* The Challenge */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <motion.div
+        <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -147,12 +148,12 @@ export default function ContentQOverviewPage() {
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
               The AI Citation Gap
-            </h2>
+          </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               While your competitors dominate search results, AI assistants are becoming the new discovery channel. 
               Most brands are invisible to AI systems.
-            </p>
-          </motion.div>
+          </p>
+        </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -253,7 +254,7 @@ export default function ContentQOverviewPage() {
                   </div>
                 </div>
               </Card>
-            </motion.div>
+        </motion.div>
 
             {/* Step 2 */}
             <motion.div
@@ -426,8 +427,8 @@ export default function ContentQOverviewPage() {
                     <Brain className="w-6 h-6 text-blue-600" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900">AI Handles</h3>
-                </div>
-                
+        </div>
+
                 <div className="space-y-4">
                   {[
                     'Research & data analysis',
@@ -526,8 +527,8 @@ export default function ContentQOverviewPage() {
                   {idx < 4 && (
                     <div className="hidden md:block absolute top-8 left-full w-8 h-0.5 bg-gray-300 transform translate-x-4" />
                   )}
-                </motion.div>
-              ))}
+            </motion.div>
+          ))}
             </div>
           </div>
         </div>
@@ -536,7 +537,7 @@ export default function ContentQOverviewPage() {
       {/* Results Timeline */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
-          <motion.div
+        <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -549,7 +550,7 @@ export default function ContentQOverviewPage() {
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Your journey to AI visibility with measurable milestones
             </p>
-          </motion.div>
+        </motion.div>
 
           <div className="relative">
             {/* Timeline Line */}
@@ -615,7 +616,7 @@ export default function ContentQOverviewPage() {
       {/* CTA Section */}
       <section className="py-20 bg-gray-900 text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <motion.div
+        <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -648,8 +649,8 @@ export default function ContentQOverviewPage() {
                 Watch Demo
               </motion.button>
             </div>
-          </motion.div>
-        </div>
+        </motion.div>
+      </div>
       </section>
     </div>
   );

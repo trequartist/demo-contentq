@@ -1,0 +1,62 @@
+{
+  "suggestions": [
+    {
+      "category": "Narrative Strength",
+      "recommendation": "Add a punchier hook in the introduction that highlights a bold insight from your data.",
+      "example": "Lead with a stat like \"Teams using AI in content production ship 5x faster.\"",
+      "impact": "medium",
+      "expectedLift": "+2-3 points"
+    },
+    {
+      "category": "SEO Signal",
+      "recommendation": "Increase the frequency of the phrase \"AI content workflow\" in the piece and add an internal link to your toolkit blog.",
+      "example": "Include 3-5 mentions of primary keywords throughout the content",
+      "impact": "high",
+      "expectedLift": "+4-6 points"
+    },
+    {
+      "category": "Reader Engagement",
+      "recommendation": "Break longer paragraphs into scannable bullets and add a CTA at the end of each section.",
+      "example": "Use bullet points for key insights and include \"Learn more\" buttons",
+      "impact": "medium",
+      "expectedLift": "+2-3 points"
+    },
+    {
+      "category": "Authority Building",
+      "recommendation": "Add 2-3 citations from industry reports or research studies to strengthen credibility.",
+      "example": "Reference Gartner, McKinsey, or Forrester data points",
+      "impact": "high",
+      "expectedLift": "+4-6 points"
+    },
+    {
+      "category": "Structure Optimization",
+      "recommendation": "Add more numbered lists and clear section headers for better AI parsing.",
+      "example": "Use H2/H3 headers and step-by-step numbered instructions",
+      "impact": "medium",
+      "expectedLift": "+2-3 points"
+    }
+  ],
+  "aeoOptimization": {
+    "score": 78,
+    "status": "Good (can improve)",
+    "strengths": [
+      "Clear section headers (H2, H3) - 8 found",
+      "Step-by-step numbered lists - 3 found",
+      "Data tables and comparisons - 2 found"
+    ],
+    "improvements": [
+      {
+        "impact": "medium",
+        "title": "Add more authority citations",
+        "why": "Only 2 external sources cited",
+        "expectedLift": "+3 points"
+      },
+      {
+        "impact": "medium", 
+        "title": "Include more specific data points",
+        "why": "LLMs prefer quantified insights",
+        "expectedLift": "+2 points"
+      }
+    ]
+  }
+}

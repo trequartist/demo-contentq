@@ -17,6 +17,7 @@ import {
   TrendingDown,
   Activity
 } from 'lucide-react';
+import LLMDetailView from './LLMDetailView';
 
 interface ExecutiveSummaryProps {
   data: any;
@@ -25,6 +26,7 @@ interface ExecutiveSummaryProps {
 export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
   const { executive_summary = {}, data_sources = [], analysis_period = {} } = data || {};
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [selectedLLM, setSelectedLLM] = useState<string | null>(null);
 
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
@@ -55,6 +57,120 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
     'Ahrefs': <Database className="w-3 h-3" />
   };
 
+  const llmData = {
+    'ChatGPT (Browse: ON)': {
+      name: 'ChatGPT (Browse: ON)',
+      score: 72,
+      previousScore: 68,
+      change: 4,
+      weight: 40,
+      citationAnalysis: {
+        mentionedIn: 8,
+        totalQueries: 10,
+        averagePosition: 3,
+        citationContext: 'automation/technical authority'
+      },
+      whatsWorking: [
+        'Migration guide cited 5x in automation queries',
+        'Strong technical depth in step-by-step content',
+        'Clear structure with numbered lists preferred'
+      ],
+      gapsAndOpportunities: [
+        'Not appearing for "workflow comparison" queries',
+        'Zapier cited 3x more for integration topics',
+        'Missing structured data markup for better discovery'
+      ],
+      recommendedActions: [
+        'Add more comparison tables to migration content',
+        'Include specific integration examples with code',
+        'Implement Article schema markup on all guides'
+      ]
+    },
+    'ChatGPT (Browse: OFF)': {
+      name: 'ChatGPT (Browse: OFF)',
+      score: 58,
+      previousScore: 55,
+      change: 3,
+      weight: 20,
+      citationAnalysis: {
+        mentionedIn: 5,
+        totalQueries: 10,
+        averagePosition: 5,
+        citationContext: 'general automation knowledge'
+      },
+      whatsWorking: [
+        'Basic automation concepts well covered',
+        'Simple explanations get cited for beginner queries'
+      ],
+      gapsAndOpportunities: [
+        'Not appearing for advanced technical queries',
+        'Missing recent updates and trends',
+        'Competitors have more current examples'
+      ],
+      recommendedActions: [
+        'Update content with 2024 automation trends',
+        'Add more recent case studies and examples',
+        'Focus on practical implementation details'
+      ]
+    },
+    'Claude': {
+      name: 'Claude',
+      score: 71,
+      previousScore: 69,
+      change: 2,
+      weight: 25,
+      citationAnalysis: {
+        mentionedIn: 7,
+        totalQueries: 10,
+        averagePosition: 2,
+        citationContext: 'technical depth/analysis'
+      },
+      whatsWorking: [
+        'Technical deep-dives highly cited',
+        'Code examples and implementation details preferred',
+        'Analytical approach resonates well'
+      ],
+      gapsAndOpportunities: [
+        'Not appearing for business strategy queries',
+        'Missing industry-specific use cases',
+        'Could use more data-driven insights'
+      ],
+      recommendedActions: [
+        'Add more technical implementation guides',
+        'Include industry-specific automation examples',
+        'Provide more quantitative analysis and metrics'
+      ]
+    },
+    'Perplexity': {
+      name: 'Perplexity',
+      score: 65,
+      previousScore: 63,
+      change: 2,
+      weight: 15,
+      citationAnalysis: {
+        mentionedIn: 6,
+        totalQueries: 10,
+        averagePosition: 4,
+        citationContext: 'research/analysis authority'
+      },
+      whatsWorking: [
+        'Research-backed content gets cited',
+        'Multiple source references preferred',
+        'Comprehensive coverage of topics'
+      ],
+      gapsAndOpportunities: [
+        'Not appearing for real-time queries',
+        'Missing recent news and updates',
+        'Could use more primary research'
+      ],
+      recommendedActions: [
+        'Add more recent research and studies',
+        'Include primary data and surveys',
+        'Focus on comprehensive topic coverage'
+      ]
+    }
+  };
+
   return (
     <div className="space-y-6">
       {/* Hero Section with Subtle Animation */}
@@ -79,6 +195,80 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
               <p className="text-lg text-gray-600 font-light leading-relaxed mb-8">
                 Comprehensive analysis from {analysis_period.start || 'January 20'} to {analysis_period.end || 'January 27, 2025'}
               </p>
+              
+              {/* AI Authority Score Section */}
+              <div className="mb-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-2xl font-semibold text-gray-900">YOUR AI AUTHORITY SCORE</h2>
+                  <div className="text-right">
+                    <div className="text-4xl font-bold text-gray-900">67/100</div>
+                    <div className="flex items-center gap-1 text-green-600 text-sm font-medium">
+                      <ArrowUpRight className="w-4 h-4" />
+                      +12 from last week
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mb-4">
+                  <h3 className="text-sm font-medium text-gray-700 mb-3">BREAKDOWN BY LLM:</h3>
+                  <div className="space-y-2">
+                    <button 
+                      onClick={() => setSelectedLLM('ChatGPT (Browse: ON)')}
+                      className="flex items-center justify-between w-full hover:bg-blue-50 rounded-lg p-2 transition-colors"
+                    >
+                      <span className="text-sm text-gray-600">ChatGPT (Browse: ON)</span>
+                      <div className="flex items-center gap-3">
+                        <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div className="h-full bg-blue-500 rounded-full" style={{ width: '72%' }} />
+                        </div>
+                        <span className="text-sm font-medium text-gray-900 w-8">72</span>
+                        <span className="text-xs text-gray-500 w-8">40%</span>
+                      </div>
+                    </button>
+                    <button 
+                      onClick={() => setSelectedLLM('ChatGPT (Browse: OFF)')}
+                      className="flex items-center justify-between w-full hover:bg-blue-50 rounded-lg p-2 transition-colors"
+                    >
+                      <span className="text-sm text-gray-600">ChatGPT (Browse: OFF)</span>
+                      <div className="flex items-center gap-3">
+                        <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div className="h-full bg-blue-500 rounded-full" style={{ width: '58%' }} />
+                        </div>
+                        <span className="text-sm font-medium text-gray-900 w-8">58</span>
+                        <span className="text-xs text-gray-500 w-8">20%</span>
+                      </div>
+                    </button>
+                    <button 
+                      onClick={() => setSelectedLLM('Claude')}
+                      className="flex items-center justify-between w-full hover:bg-blue-50 rounded-lg p-2 transition-colors"
+                    >
+                      <span className="text-sm text-gray-600">Claude</span>
+                      <div className="flex items-center gap-3">
+                        <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div className="h-full bg-blue-500 rounded-full" style={{ width: '71%' }} />
+                        </div>
+                        <span className="text-sm font-medium text-gray-900 w-8">71</span>
+                        <span className="text-xs text-gray-500 w-8">25%</span>
+                      </div>
+                    </button>
+                    <button 
+                      onClick={() => setSelectedLLM('Perplexity')}
+                      className="flex items-center justify-between w-full hover:bg-blue-50 rounded-lg p-2 transition-colors"
+                    >
+                      <span className="text-sm text-gray-600">Perplexity</span>
+                      <div className="flex items-center gap-3">
+                        <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div className="h-full bg-blue-500 rounded-full" style={{ width: '65%' }} />
+                        </div>
+                        <span className="text-sm font-medium text-gray-900 w-8">65</span>
+                        <span className="text-xs text-gray-500 w-8">15%</span>
+                      </div>
+                    </button>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-2">Percentages = weighted by usage</p>
+                </div>
+              </div>
+              
               <p className="text-gray-500 leading-relaxed max-w-3xl">
                 We've analyzed your entire content ecosystem across 6 dimensions, examining 1,247 search queries, 
                 testing 127 AI prompts, and reviewing 4,340 pieces of competitive content. This report synthesizes 
@@ -368,6 +558,14 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
           display: none;
         }
       `}</style>
+
+      {/* LLM Detail View Modal */}
+      {selectedLLM && (
+        <LLMDetailView
+          llmData={llmData[selectedLLM as keyof typeof llmData]}
+          onClose={() => setSelectedLLM(null)}
+        />
+      )}
     </div>
   );
 }

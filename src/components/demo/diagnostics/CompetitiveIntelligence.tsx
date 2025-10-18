@@ -63,6 +63,59 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
         </Card>
       </div>
 
+      {/* Competitive AI Visibility Benchmarking */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">
+          <Users className="w-6 h-6 text-gray-400" />
+          COMPETITIVE AI VISIBILITY
+        </h2>
+        
+        <Card className="p-8">
+          <div className="space-y-6">
+            {/* Your Score */}
+            <div className="text-center mb-8">
+              <div className="text-3xl font-bold text-gray-900 mb-2">YOU: 67/100</div>
+              <div className="w-full max-w-md mx-auto h-3 bg-gray-200 rounded-full overflow-hidden">
+                <div className="h-full bg-blue-500 rounded-full" style={{ width: '67%' }} />
+              </div>
+            </div>
+
+            {/* Competitor Comparison */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-4 bg-red-50 border border-red-200 rounded-lg">
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 bg-red-500 rounded-full" />
+                  <span className="font-semibold text-gray-900">COMPETITOR A: 82/100</span>
+                  <Badge className="bg-red-100 text-red-800">🔴 Leading</Badge>
+                </div>
+                <div className="w-48 h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-full bg-red-500 rounded-full" style={{ width: '82%' }} />
+                </div>
+              </div>
+              <div className="pl-6 text-sm text-gray-600">
+                • Cited 3x more for "automation migration" queries
+                • Gap: They publish 2x/week, you 1x
+              </div>
+
+              <div className="flex items-center justify-between p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 bg-green-500 rounded-full" />
+                  <span className="font-semibold text-gray-900">COMPETITOR B: 58/100</span>
+                  <Badge className="bg-green-100 text-green-800">🟢 Behind</Badge>
+                </div>
+                <div className="w-48 h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-full bg-green-500 rounded-full" style={{ width: '58%' }} />
+                </div>
+              </div>
+              <div className="pl-6 text-sm text-gray-600">
+                • Weaker structure (not LLM-optimized)
+                • Opportunity: Outrank with structured guides
+              </div>
+            </div>
+          </div>
+        </Card>
+      </section>
+
       {/* Content Strategy Archaeology - Enhanced Timeline */}
       <section>
         <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">
