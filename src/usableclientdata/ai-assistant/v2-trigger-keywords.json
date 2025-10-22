@@ -1,0 +1,96 @@
+{
+  "v2TriggerSettings": {
+    "triggerMode": "any_prompt",
+    "description": "V2 generation triggers on ANY user prompt after initial content is loaded",
+    "conditions": {
+      "requiresInitialContent": true,
+      "requiresCompleteState": true,
+      "excludeEmptyPrompts": true,
+      "excludeSystemCommands": true
+    },
+    "fallbackKeywords": [
+      "quick wins",
+      "more aggressive",
+      "focus on",
+      "make it",
+      "different approach",
+      "optimize",
+      "improve",
+      "better",
+      "enhance",
+      "refine"
+    ]
+  },
+  "v2Keywords": {
+    "universal": [
+      "quick wins",
+      "more aggressive",
+      "focus on",
+      "make it",
+      "different approach"
+    ],
+    "diagnostics": [
+      "quick wins",
+      "aggressive analysis",
+      "fast results"
+    ],
+    "playbook": [
+      "social first",
+      "1 month plan",
+      "fast execution"
+    ],
+    "posts": [
+      "viral content",
+      "formal tone",
+      "engagement focused"
+    ],
+    "insights": [
+      "roi focused",
+      "high impact",
+      "priority insights"
+    ],
+    "calendar": [
+      "compressed timeline",
+      "high impact topics",
+      "fast publishing"
+    ]
+  },
+  "streamingMessages": {
+    "diagnostics": {
+      "default": "🔍 Recalculating AI Authority Score with your preferences... Prioritizing actionable insights... Adjusting competitor rankings... Optimizing recommendations for your specific needs...",
+      "quick wins": "🔍 Recalculating AI Authority Score with quick-win optimizations... Prioritizing 14-30 day action items... Adjusting competitor rankings... Filtering for quick-win opportunities...",
+      "aggressive": "🔍 Shifting to aggressive strategy mode... Increasing impact projections... Shortening timelines... Emphasizing high-risk/high-reward tactics..."
+    },
+    "playbook": {
+      "default": "📋 Rebuilding strategy framework with your preferences... Adjusting timelines and priorities... Selecting high-impact strategies... Optimizing execution approach...",
+      "social": "📋 Rebuilding strategy framework with social-first focus... Prioritizing Instagram, LinkedIn, Twitter tactics... Adjusting content formats for social virality...",
+      "quick": "📋 Compressing timeline to 1 month... Selecting high-impact strategies only... Removing long-term initiatives... Optimizing for speed..."
+    },
+    "posts": {
+      "default": "✍️ Reimagining content approach based on your feedback... Adjusting tone and structure... Optimizing for your target audience... Enhancing engagement potential...",
+      "viral": "✍️ Analyzing viral content patterns... Optimizing hooks for engagement... Adjusting structure for shareability... Adding controversy elements...",
+      "formal": "✍️ Elevating tone to executive level... Removing casual language... Adding data-driven arguments... Restructuring for authority..."
+    },
+    "insights": {
+      "default": "📊 Recalculating insights with your priorities... Adjusting impact assessments... Reordering by relevance to your goals... Optimizing recommendations...",
+      "roi": "📊 Reordering insights by ROI potential... Prioritizing high-impact opportunities... Adjusting revenue projections... Focusing on quick wins..."
+    },
+    "calendar": {
+      "default": "📅 Rebuilding content calendar with your focus... Adjusting publication priorities... Optimizing timeline... Selecting topics that align with your goals...",
+      "compressed": "📅 Compressing content timeline... Selecting high-impact topics only... Optimizing publication schedule... Prioritizing quick wins..."
+    }
+  },
+  "completionMessages": {
+    "diagnostics": "✅ Version 2 ready! AI Authority Score optimized to 72/100 with your preferences applied. Toggle above to compare versions.",
+    "playbook": "✅ Version 2 ready! Strategy framework optimized with your focus. Compare versions using toggle above.",
+    "posts": "✅ Version 2 ready! Content approach refined based on your feedback. Toggle to compare approaches.",
+    "insights": "✅ Version 2 ready! Insights reordered and optimized for your priorities. Toggle to compare versions.",
+    "calendar": "✅ Version 2 ready! Content calendar optimized with your focus. Toggle to compare schedules.",
+    "default": "✅ Version 2 generated! Toggle between versions to compare."
+  },
+  "initialMessages": {
+    "analyzing": "🎯 Analyzing your request: \"{instruction}\"...",
+    "processing": "⚡ Processing your optimization request...",
+    "generating": "✨ Generating optimized version with your preferences..."
+  }
+}

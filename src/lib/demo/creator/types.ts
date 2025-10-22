@@ -113,6 +113,12 @@ export interface SessionData {
   outputState: OutputState;
   mode?: DiagnosticsMode | PlaybookMode | ContentMode;
   
+  // Version management
+  activeVersion: 1 | 2;
+  hasV2: boolean;
+  v1Data?: any;
+  v2Data?: any;
+  
   // Tab-specific state
   diagnosticsOutput?: DiagnosticsOutput;
   playbookStrategies?: PlaybookStrategy[];

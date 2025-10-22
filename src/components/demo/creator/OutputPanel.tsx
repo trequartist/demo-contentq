@@ -109,6 +109,52 @@ export function OutputPanel({
       if (outputState === 'empty') {
         return <PostsEmpty onStart={onStartCreation} onBrowseCalendar={onBrowseCalendar} onBrowseDocuments={onBrowseDocuments} />;
       }
+      if (outputState === 'awaiting_input') {
+        return (
+          <div className="h-full overflow-y-auto p-10">
+            <div className="mx-auto max-w-3xl space-y-6">
+              <div className="rounded-3xl bg-white p-8 shadow-xl border border-gray-100">
+                <div className="mb-6">
+                  <h2 className="text-2xl font-bold text-gray-900">What would you like to write about?</h2>
+                  <p className="mt-2 text-sm text-gray-500">
+                    Describe your content idea, target audience, or specific topic you'd like to explore.
+                  </p>
+                </div>
+                <div className="space-y-4">
+                  <textarea
+                    placeholder="e.g., 'Write about AI automation for small businesses' or 'Create a guide on content marketing trends'"
+                    className="w-full p-4 border border-gray-200 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    rows={4}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        const text = (e.target as HTMLTextAreaElement).value.trim();
+                        if (text) {
+                          onStartCreation?.(text);
+                        }
+                      }
+                    }}
+                  />
+                  <div className="flex justify-end">
+                    <button
+                      onClick={() => {
+                        const textarea = document.querySelector('textarea') as HTMLTextAreaElement;
+                        const text = textarea?.value.trim();
+                        if (text) {
+                          onStartCreation?.(text);
+                        }
+                      }}
+                      className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    >
+                      Generate Topics
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
       if (outputState === 'awaiting_topic') {
         if (!session.postOutput?.topics) return null;
         return (

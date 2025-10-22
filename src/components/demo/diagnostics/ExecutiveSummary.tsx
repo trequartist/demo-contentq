@@ -24,7 +24,7 @@ interface ExecutiveSummaryProps {
 }
 
 export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
-  const { executive_summary = {}, data_sources = [], analysis_period = {} } = data || {};
+  const { ai_visibility_overview = {}, data_sources = [], analysis_period = {} } = data || {};
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [selectedLLM, setSelectedLLM] = useState<string | null>(null);
 
@@ -201,7 +201,7 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-2xl font-semibold text-gray-900">YOUR AI AUTHORITY SCORE</h2>
                   <div className="text-right">
-                    <div className="text-4xl font-bold text-gray-900">67/100</div>
+                    <div className="text-4xl font-bold text-gray-900">{ai_visibility_overview?.visibility_snapshot?.overall_score || "67/100"}</div>
                     <div className="flex items-center gap-1 text-green-600 text-sm font-medium">
                       <ArrowUpRight className="w-4 h-4" />
                       +12 from last week
@@ -212,58 +212,22 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
                 <div className="mb-4">
                   <h3 className="text-sm font-medium text-gray-700 mb-3">BREAKDOWN BY LLM:</h3>
                   <div className="space-y-2">
-                    <button 
-                      onClick={() => setSelectedLLM('ChatGPT (Browse: ON)')}
-                      className="flex items-center justify-between w-full hover:bg-blue-50 rounded-lg p-2 transition-colors"
-                    >
-                      <span className="text-sm text-gray-600">ChatGPT (Browse: ON)</span>
-                      <div className="flex items-center gap-3">
-                        <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div className="h-full bg-blue-500 rounded-full" style={{ width: '72%' }} />
+                    {Object.entries(ai_visibility_overview?.platform_performance || {}).map(([key, platform]: [string, any]) => (
+                      <button 
+                        key={key}
+                        onClick={() => setSelectedLLM(platform.platform)}
+                        className="flex items-center justify-between w-full hover:bg-blue-50 rounded-lg p-2 transition-colors"
+                      >
+                        <span className="text-sm text-gray-600">{platform.platform}</span>
+                        <div className="flex items-center gap-3">
+                          <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div className="h-full bg-blue-500 rounded-full" style={{ width: `${parseInt(platform.score) || 0}%` }} />
+                          </div>
+                          <span className="text-sm font-medium text-gray-900 w-8">{platform.score}</span>
+                          <span className="text-xs text-gray-500 w-8">{platform.status}</span>
                         </div>
-                        <span className="text-sm font-medium text-gray-900 w-8">72</span>
-                        <span className="text-xs text-gray-500 w-8">40%</span>
-                      </div>
-                    </button>
-                    <button 
-                      onClick={() => setSelectedLLM('ChatGPT (Browse: OFF)')}
-                      className="flex items-center justify-between w-full hover:bg-blue-50 rounded-lg p-2 transition-colors"
-                    >
-                      <span className="text-sm text-gray-600">ChatGPT (Browse: OFF)</span>
-                      <div className="flex items-center gap-3">
-                        <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div className="h-full bg-blue-500 rounded-full" style={{ width: '58%' }} />
-                        </div>
-                        <span className="text-sm font-medium text-gray-900 w-8">58</span>
-                        <span className="text-xs text-gray-500 w-8">20%</span>
-                      </div>
-                    </button>
-                    <button 
-                      onClick={() => setSelectedLLM('Claude')}
-                      className="flex items-center justify-between w-full hover:bg-blue-50 rounded-lg p-2 transition-colors"
-                    >
-                      <span className="text-sm text-gray-600">Claude</span>
-                      <div className="flex items-center gap-3">
-                        <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div className="h-full bg-blue-500 rounded-full" style={{ width: '71%' }} />
-                        </div>
-                        <span className="text-sm font-medium text-gray-900 w-8">71</span>
-                        <span className="text-xs text-gray-500 w-8">25%</span>
-                      </div>
-                    </button>
-                    <button 
-                      onClick={() => setSelectedLLM('Perplexity')}
-                      className="flex items-center justify-between w-full hover:bg-blue-50 rounded-lg p-2 transition-colors"
-                    >
-                      <span className="text-sm text-gray-600">Perplexity</span>
-                      <div className="flex items-center gap-3">
-                        <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div className="h-full bg-blue-500 rounded-full" style={{ width: '65%' }} />
-                        </div>
-                        <span className="text-sm font-medium text-gray-900 w-8">65</span>
-                        <span className="text-xs text-gray-500 w-8">15%</span>
-                      </div>
-                    </button>
+                      </button>
+                    ))}
                   </div>
                   <p className="text-xs text-gray-500 mt-2">Percentages = weighted by usage</p>
                 </div>
@@ -301,13 +265,14 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
         animate="animate"
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
       >
-        {Object.entries(executive_summary.performance_snapshot || {
-          search_visibility: { score: 42, max: 100, trend: 'up', trend_label: 'Growing steadily' },
-          ai_discoverability: { score: 23, max: 100, trend: 'stable', trend_label: 'Minimal presence' },
-          technical_excellence: { score: 78, max: 100, trend: 'up', trend_label: 'Strong foundation' },
-          growth_opportunity: { score: 84, max: 100, trend: 'up', trend_label: 'High potential' }
+        {Object.entries(ai_visibility_overview.key_metrics || {
+          ai_search_presence: { name: 'AI Search Presence', score: 15, level: 'Moderate' },
+          content_citation_rate: { name: 'Content Citation Rate', score: 10, level: 'Low' },
+          query_coverage: { name: 'Query Coverage', score: 35, level: 'Critical Gap' },
+          competitive_share_of_voice: { name: 'Competitive Share of Voice', score: 34.6, level: 'Low' }
         }).map(([key, metric]: [string, any], idx) => {
-          const analysis = getScoreAnalysis(metric.score);
+          const score = typeof metric.score === 'string' ? parseFloat(metric.score.replace('%', '')) : metric.score;
+          const analysis = getScoreAnalysis(score);
           const isExpanded = expandedCard === key;
           
           return (
@@ -341,7 +306,7 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.2 + idx * 0.1 }}
                   >
-                    {metric.score}
+                    {score}
                   </motion.span>
                   <span className="text-lg font-extralight text-gray-400">/100</span>
                 </div>
@@ -355,7 +320,7 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
                 <motion.div 
                   className="h-full bg-gradient-to-r from-gray-700 to-gray-900"
                   initial={{ width: 0 }}
-                  animate={{ width: `${metric.score}%` }}
+                  animate={{ width: `${score}%` }}
                   transition={{ duration: 1, delay: 0.3 + idx * 0.1, ease: "easeOut" }}
                 />
               </div>
@@ -410,7 +375,7 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
               Key Finding
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed font-light">
-              {executive_summary.key_finding || "47% of searches are problem-focused with 3.2x higher conversion intent but 67% less competition than solution searches. This represents an immediate opportunity to capture high-intent traffic by addressing user pain points directly."}
+              {ai_visibility_overview.visibility_snapshot.biggest_win || "47% of searches are problem-focused with 3.2x higher conversion intent but 67% less competition than solution searches. This represents an immediate opportunity to capture high-intent traffic by addressing user pain points directly."}
             </p>
           </div>
         </div>
@@ -560,7 +525,7 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
       `}</style>
 
       {/* LLM Detail View Modal */}
-      {selectedLLM && (
+      {selectedLLM && llmData[selectedLLM as keyof typeof llmData] && (
         <LLMDetailView
           llmData={llmData[selectedLLM as keyof typeof llmData]}
           onClose={() => setSelectedLLM(null)}

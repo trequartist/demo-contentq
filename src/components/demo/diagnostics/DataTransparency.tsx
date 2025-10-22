@@ -44,7 +44,7 @@ export default function DataTransparency({ data }: DataTransparencyProps) {
   const [selectedConfidence, setSelectedConfidence] = useState<string | null>(null);
   const [hoveredExport, setHoveredExport] = useState<number | null>(null);
   const [showDetails, setShowDetails] = useState<boolean>(false);
-  const { data_transparency, export_options } = data;
+  const { data_transparency = {}, export_options = {} } = data;
 
   const getConfidenceColor = (level: string) => {
     if (level.includes('high')) return 'green';
@@ -76,10 +76,10 @@ export default function DataTransparency({ data }: DataTransparencyProps) {
       {/* Section Header with Executive Briefing */}
       <div className="mb-12">
         <h1 className="text-4xl font-light text-gray-900 mb-3">
-          {data_transparency.section_header}
+          {data_transparency.section_header || 'Data Transparency'}
         </h1>
         <p className="text-xl text-gray-600 font-light mb-8">
-          {data_transparency.section_subheader}
+          {data_transparency.section_subheader || 'Understanding data sources and methodology'}
         </p>
         
         {/* Executive Insight Box */}
@@ -141,7 +141,7 @@ export default function DataTransparency({ data }: DataTransparencyProps) {
                 <div>
                   <h3 className="text-xl font-medium text-gray-900">Primary Analysis Period</h3>
                   <p className="text-2xl font-light text-blue-700 mt-1">
-                    {data_transparency.collection_timeline.primary}
+                    {data_transparency.collection_timeline?.primary || 'Jan 2024 - Present'}
                   </p>
                 </div>
               </div>
@@ -184,7 +184,7 @@ export default function DataTransparency({ data }: DataTransparencyProps) {
             <div className="mt-12">
               <h4 className="font-medium text-gray-900 mb-4">Update Frequency by Data Type</h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {Object.entries(data_transparency.collection_timeline.frequency).map(([freq, desc], idx) => (
+                {Object.entries(data_transparency.collection_timeline?.frequency || {}).map(([freq, desc], idx) => (
                   <motion.div
                     key={freq}
                     initial={{ opacity: 0, y: 20 }}
@@ -241,7 +241,7 @@ export default function DataTransparency({ data }: DataTransparencyProps) {
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {Object.entries(data_transparency.sources_and_samples).map(([category, sources], idx) => {
+          {Object.entries(data_transparency.sources_and_samples || {}).map(([category, sources], idx) => {
             const isExpanded = expandedSource === category;
             const categoryColors = {
               seo_data: 'blue',
@@ -349,7 +349,7 @@ export default function DataTransparency({ data }: DataTransparencyProps) {
         <Card className="overflow-hidden">
           <div className="p-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {Object.entries(data_transparency.confidence_levels).map(([level, data]: [string, any], idx) => {
+              {Object.entries(data_transparency.confidence_levels || {}).map(([level, data]: [string, any], idx) => {
                 const color = getConfidenceColor(level);
                 const isSelected = selectedConfidence === level;
                 
@@ -476,7 +476,7 @@ export default function DataTransparency({ data }: DataTransparencyProps) {
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {export_options.map((option: any, idx: number) => {
+          {Array.isArray(export_options) ? export_options.map((option: any, idx: number) => {
             const color = getExportColor(option.format);
             const isHovered = hoveredExport === idx;
             
@@ -571,7 +571,12 @@ export default function DataTransparency({ data }: DataTransparencyProps) {
                 </Card>
               </motion.div>
             );
-          })}
+          }) : (
+            <div className="col-span-full text-center py-8 text-gray-500">
+              <Download className="w-8 h-8 mx-auto mb-2 text-gray-400" />
+              <p>Export options will be available in Version 2</p>
+            </div>
+          )}
         </div>
       </section>
 

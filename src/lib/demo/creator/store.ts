@@ -20,6 +20,13 @@ const createEmptySession = () => ({
   messages: [] as ChatMessage[],
   outputState: 'empty' as OutputState,
   intermediateSteps: [] as IntermediateStep[],
+  
+  // Version management
+  activeVersion: 1 as 1 | 2,
+  hasV2: false,
+  v1Data: undefined as any,
+  v2Data: undefined as any,
+  
   diagnosticsOutput: undefined as DiagnosticsOutput | undefined,
   playbookStrategies: undefined as PlaybookStrategy[] | undefined,
   selectedStrategies: undefined as string[] | undefined,
@@ -34,6 +41,11 @@ interface CreatorStore extends CreatorState {
   addMessage: (tab: CreatorTab, message: ChatMessage) => void;
   setOutputState: (tab: CreatorTab, state: OutputState) => void;
   removeMessagesByRole: (tab: CreatorTab, role: ChatMessage['role']) => void;
+
+  // Version management
+  setActiveVersion: (tab: CreatorTab, version: 1 | 2) => void;
+  generateV2: (tab: CreatorTab, v2Data: any) => void;
+  storeV1Data: (tab: CreatorTab, v1Data: any) => void;
 
   // Diagnostics
   setDiagnosticsOutput: (output: DiagnosticsOutput) => void;
@@ -196,6 +208,42 @@ const baseStore = create<CreatorStore>((set) => ({
       sessions: {
         ...state.sessions,
         [tab]: createEmptySession(),
+      },
+    })),
+
+  // Version management actions
+  setActiveVersion: (tab, version) =>
+    set((state) => ({
+      sessions: {
+        ...state.sessions,
+        [tab]: {
+          ...state.sessions[tab],
+          activeVersion: version,
+        },
+      },
+    })),
+
+  generateV2: (tab, v2Data) =>
+    set((state) => ({
+      sessions: {
+        ...state.sessions,
+        [tab]: {
+          ...state.sessions[tab],
+          v2Data,
+          hasV2: true,
+          activeVersion: 2, // Auto-switch to V2
+        },
+      },
+    })),
+
+  storeV1Data: (tab, v1Data) =>
+    set((state) => ({
+      sessions: {
+        ...state.sessions,
+        [tab]: {
+          ...state.sessions[tab],
+          v1Data,
+        },
       },
     })),
 }));

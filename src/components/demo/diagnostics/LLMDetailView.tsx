@@ -25,7 +25,25 @@ interface LLMDetailViewProps {
 }
 
 export default function LLMDetailView({ llmData, onClose }: LLMDetailViewProps) {
-  const isPositive = llmData.change > 0;
+  // Safety check - if llmData is undefined, don't render
+  if (!llmData) {
+    return null;
+  }
+  
+  const change = llmData.change || 0;
+  const weight = llmData.weight || 0;
+  const score = llmData.score || 0;
+  const name = llmData.name || llmData.platform || 'Unknown LLM';
+  const citationAnalysis = llmData.citationAnalysis || {
+    mentionedIn: 0,
+    totalQueries: 10,
+    averagePosition: 5,
+    citationContext: 'General queries'
+  };
+  const whatsWorking = llmData.whatsWorking || [];
+  const gapsAndOpportunities = llmData.gapsAndOpportunities || [];
+  const recommendedActions = llmData.recommendedActions || [];
+  const isPositive = change > 0;
   const changeIcon = isPositive ? TrendingUp : TrendingDown;
   const ChangeIcon = changeIcon;
 
@@ -35,13 +53,13 @@ export default function LLMDetailView({ llmData, onClose }: LLMDetailViewProps) 
         {/* Header */}
         <div className="flex items-center justify-between border-b border-gray-200 p-6 bg-gradient-to-r from-blue-50 to-indigo-50">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">{llmData.name} — Score: {llmData.score}/100</h2>
+            <h2 className="text-2xl font-bold text-gray-900">{name} — Score: {score}/100</h2>
             <div className="flex items-center gap-2 mt-1">
               <div className={`flex items-center gap-1 text-sm ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
                 <ChangeIcon className="w-4 h-4" />
-                {isPositive ? '+' : ''}{llmData.change} from previous
+                {isPositive ? '+' : ''}{change} from previous
               </div>
-              <span className="text-sm text-gray-500">({llmData.weight}% weight)</span>
+              <span className="text-sm text-gray-500">({weight}% weight)</span>
             </div>
           </div>
           <button
@@ -62,15 +80,15 @@ export default function LLMDetailView({ llmData, onClose }: LLMDetailViewProps) 
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="text-center p-4 bg-blue-50 rounded-lg">
-                  <div className="text-2xl font-bold text-blue-900">{llmData.citationAnalysis.mentionedIn}</div>
-                  <div className="text-sm text-blue-700">of {llmData.citationAnalysis.totalQueries} test queries</div>
+                  <div className="text-2xl font-bold text-blue-900">{citationAnalysis.mentionedIn}</div>
+                  <div className="text-sm text-blue-700">of {citationAnalysis.totalQueries} test queries</div>
                 </div>
                 <div className="text-center p-4 bg-green-50 rounded-lg">
-                  <div className="text-2xl font-bold text-green-900">{llmData.citationAnalysis.averagePosition}</div>
+                  <div className="text-2xl font-bold text-green-900">{citationAnalysis.averagePosition}</div>
                   <div className="text-sm text-green-700">average position</div>
                 </div>
                 <div className="text-center p-4 bg-purple-50 rounded-lg">
-                  <div className="text-sm font-medium text-purple-900">{llmData.citationAnalysis.citationContext}</div>
+                  <div className="text-sm font-medium text-purple-900">{citationAnalysis.citationContext}</div>
                   <div className="text-xs text-purple-700">citation context</div>
                 </div>
               </div>
@@ -83,7 +101,7 @@ export default function LLMDetailView({ llmData, onClose }: LLMDetailViewProps) 
                 WHAT'S WORKING
               </h3>
               <div className="space-y-3">
-                {llmData.whatsWorking.map((item, index) => (
+                {whatsWorking.map((item, index) => (
                   <div key={index} className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
                     <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
                     <span className="text-sm text-green-800">{item}</span>
@@ -99,7 +117,7 @@ export default function LLMDetailView({ llmData, onClose }: LLMDetailViewProps) 
                 GAPS & OPPORTUNITIES
               </h3>
               <div className="space-y-3">
-                {llmData.gapsAndOpportunities.map((item, index) => (
+                {gapsAndOpportunities.map((item, index) => (
                   <div key={index} className="flex items-start gap-3 p-3 bg-orange-50 rounded-lg">
                     <AlertCircle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
                     <span className="text-sm text-orange-800">{item}</span>
@@ -115,7 +133,7 @@ export default function LLMDetailView({ llmData, onClose }: LLMDetailViewProps) 
                 RECOMMENDED ACTIONS
               </h3>
               <div className="space-y-3">
-                {llmData.recommendedActions.map((action, index) => (
+                {recommendedActions.map((action, index) => (
                   <div key={index} className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
                     <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
                       {index + 1}

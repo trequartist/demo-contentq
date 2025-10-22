@@ -30,17 +30,17 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
   const [selectedPath, setSelectedPath] = useState<string | null>(null);
   const [expandedQuote, setExpandedQuote] = useState<number | null>(null);
   const [hoveredSentiment, setHoveredSentiment] = useState<string | null>(null);
-  const { market_intelligence } = data;
+  const { market_intelligence = {} } = data;
 
   return (
     <div className="space-y-8">
       {/* Section Header with Executive Briefing */}
       <div className="mb-12">
         <h1 className="text-4xl font-light text-gray-900 mb-3">
-          {market_intelligence.section_header}
+          {market_intelligence.section_header || 'Market Intelligence'}
         </h1>
         <p className="text-xl text-gray-600 font-light mb-8">
-          {market_intelligence.section_subheader}
+          {market_intelligence.section_subheader || 'Understanding market dynamics and user behavior patterns'}
         </p>
         
         {/* Executive Insight Box */}
@@ -53,7 +53,7 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
               <div>
                 <h3 className="text-lg font-medium text-gray-900 mb-2">Market Signal Analysis</h3>
                 <p className="text-gray-700 leading-relaxed">
-                  {market_intelligence.user_journey.journey_insight} Meanwhile, community sentiment shows 
+                  {market_intelligence.user_journey?.journey_insight || 'Market analysis shows significant opportunities in AI automation space.'} Meanwhile, community sentiment shows 
                   567% growth in AI automation interest, suggesting a major market shift underway. Your position 
                   at the intersection of developer tools and AI-native automation is strategically valuable.
                 </p>
@@ -201,7 +201,7 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
                 
                 {/* Journey Paths */}
                 <div className="pr-40 space-y-4">
-                  {market_intelligence.user_journey.typical_paths.map((path: any, idx: number) => {
+                  {(market_intelligence.user_journey?.typical_paths || []).map((path: any, idx: number) => {
                     const colors = ['purple', 'blue', 'green', 'orange', 'pink'];
                     const color = colors[idx % colors.length];
                     const isSelected = selectedPath === path.source;
@@ -349,7 +349,7 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
         <div className="flex items-center gap-3 text-sm text-gray-500 mb-6">
           <span className="font-medium">Data sources:</span>
           <div className="flex items-center gap-2">
-            {market_intelligence.community_intelligence.data_sources.map((source: string, idx: number) => (
+            {(market_intelligence.community_intelligence?.data_sources || []).map((source: string, idx: number) => (
               <Badge key={idx} className="bg-gray-100 text-gray-700">
                 {source}
               </Badge>
@@ -363,11 +363,11 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
             <div className="p-6">
               <h3 className="font-medium text-gray-900 mb-6 flex items-center gap-2">
                 <Flame className="w-5 h-5 text-orange-500" />
-                Sentiment Heatmap ({market_intelligence.community_intelligence.sentiment_evolution[0].period})
+                Sentiment Heatmap ({market_intelligence.community_intelligence?.sentiment_evolution?.[0]?.period || 'Current Period'})
               </h3>
               
               <div className="space-y-4">
-                {market_intelligence.community_intelligence.sentiment_evolution.map((sentiment: any, idx: number) => {
+                {(market_intelligence.community_intelligence?.sentiment_evolution || []).map((sentiment: any, idx: number) => {
                   const trendValue = parseInt(sentiment.trend);
                   const isHot = trendValue > 300;
                   const isMedium = trendValue > 200;
@@ -483,7 +483,7 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
               </h3>
               
               <div className="space-y-4">
-                {market_intelligence.community_intelligence.verbatim_quotes.map((quote: string, idx: number) => (
+                {(market_intelligence.community_intelligence?.verbatim_quotes || []).map((quote: string, idx: number) => (
                   <motion.div
                     key={idx}
                     initial={{ opacity: 0, y: 10 }}
@@ -581,7 +581,7 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
                   <div className="flex-1">
                     <h4 className="text-lg font-medium text-gray-900 mb-3">Historical: Generic Discovery</h4>
                     <div className="flex flex-wrap gap-3 mb-4">
-                      {market_intelligence.search_query_evolution['2023_queries'].map((query: string, idx: number) => (
+                      {(market_intelligence.search_query_evolution?.['2023_queries'] || []).map((query: string, idx: number) => (
                         <motion.div
                           key={idx}
                           initial={{ opacity: 0, scale: 0.8 }}
@@ -617,7 +617,7 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
                   <div className="flex-1">
                     <h4 className="text-lg font-medium text-gray-900 mb-3">Current: Solution Awareness</h4>
                     <div className="flex flex-wrap gap-3 mb-4">
-                      {market_intelligence.search_query_evolution['2024_queries'].map((query: string, idx: number) => (
+                      {(market_intelligence.search_query_evolution?.['2024_queries'] || []).map((query: string, idx: number) => (
                         <motion.div
                           key={idx}
                           initial={{ opacity: 0, scale: 0.8 }}
@@ -653,7 +653,7 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
                   <div className="flex-1">
                     <h4 className="text-lg font-medium text-gray-900 mb-3">Emerging: AI-Native Demand</h4>
                     <div className="flex flex-wrap gap-3 mb-4">
-                      {market_intelligence.search_query_evolution['2025_emerging'].map((query: string, idx: number) => (
+                      {(market_intelligence.search_query_evolution?.['2025_emerging'] || []).map((query: string, idx: number) => (
                         <motion.div
                           key={idx}
                           initial={{ opacity: 0, scale: 0.8 }}
@@ -690,7 +690,7 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
                     <div>
                       <h4 className="font-medium text-gray-900 mb-2">Predictive Market Intelligence</h4>
                       <p className="text-gray-700 mb-3">
-                        {market_intelligence.search_query_evolution.predictive_insight}
+                        {market_intelligence.search_query_evolution?.predictive_insight || 'Market trends show significant growth in AI automation adoption, with search queries shifting from basic automation to advanced AI-powered workflows.'}
                       </p>
                       <div className="flex items-center gap-4">
                         <div className="flex items-center gap-2">

@@ -14,7 +14,7 @@ import {
   PlaybookMode,
   ContentMode,
 } from '@/lib/demo/creator/types';
-import diagnosticsData from '@/usableclientdata/data/diagnostics/diagnostics-gumloop-v2.json';
+import diagnosticsData from '@/usableclientdata/data/diagnostics/diagnostics-gumloop.json';
 import playbookData from '@/usableclientdata/data/playbook/playbook-gumloop.json';
 import { CalendarModal } from '@/components/demo/creator/posts/CalendarModal';
 import { DocumentsPanel } from '@/components/demo/creator/posts/DocumentsPanel';
@@ -41,6 +41,9 @@ export default function CreatorPage() {
     setPlaybookOutput,
     setPostOutput,
     setIntermediateSteps,
+    generateV2,
+    storeV1Data,
+    setActiveVersion,
   } = useCreatorStore();
 
   // Handle tab from URL and auto-load content
@@ -53,25 +56,39 @@ export default function CreatorPage() {
 
   // Auto-load pre-generated content for specific tabs
   useEffect(() => {
-    if (activeTab === 'diagnostics') {
-      const mode = modes.diagnostics;
-      if (mode === 'insights') {
-        // Auto-load insights data
-        const insightsOutput = {
-          insightsData: insightsHubData as any,
-        };
-        setDiagnosticsOutput({ ...insightsOutput, variant: 'insights' });
-        setOutputState('diagnostics', 'complete');
-      } else {
-        // Auto-load diagnostics data
-        setDiagnosticsOutput(diagnosticsData.data);
-        setOutputState('diagnostics', 'complete');
-      }
-    } else if (activeTab === 'playbook') {
-      // Auto-load playbook data with complete playbook
-      const playbookOutput = {
-        ...playbookData.data,
-        selectedStrategies: ['s1', 's2', 's3'], // Pre-select some strategies
+    const loadContent = async () => {
+      if (activeTab === 'diagnostics') {
+        const mode = modes.diagnostics;
+        if (mode === 'insights') {
+          // Auto-load insights data (V1)
+          const insightsOutput = {
+            insightsData: insightsHubData as any,
+          };
+          setDiagnosticsOutput({ ...insightsOutput, variant: 'insights' });
+          storeV1Data('diagnostics', insightsHubData);
+          setOutputState('diagnostics', 'complete');
+        } else {
+          // Auto-load diagnostics data (V1)
+          setDiagnosticsOutput(diagnosticsData.data);
+          storeV1Data('diagnostics', diagnosticsData.data);
+          setOutputState('diagnostics', 'complete');
+        }
+      } else if (activeTab === 'playbook') {
+        // Auto-load playbook data with complete playbook
+        const strategyData = await import('@/usableclientdata/data/playbook/playbook-strategy-data.json');
+        const strategies: PlaybookStrategy[] = strategyData.strategicPlays.map((play: any) => ({
+          id: play.id,
+          title: play.name,
+          description: play.goal,
+          impact: play.priority <= 2 ? 'high' : play.priority === 3 ? 'medium' : 'low',
+          effort: play.effortAllocation >= 60 ? 'high' : play.effortAllocation >= 30 ? 'medium' : 'low',
+        }));
+        
+        setPlaybookStrategies(strategies);
+        
+        const playbookOutput = {
+          ...playbookData.data,
+          selectedStrategies: ['migration-accelerator', 'ai-native-authority'], // Pre-select first two strategies
         generated_playbook: playbookData.data.generated_playbook || [
           {
             playbook_title: "AI-Native Content Strategy",
@@ -129,10 +146,196 @@ export default function CreatorPage() {
           }
         ]
       };
-      setPlaybookOutput(playbookOutput);
-      setOutputState('playbook', 'complete');
+        setPlaybookOutput(playbookOutput);
+        // Store V1 data with calendar topics
+        const calendarV1Data = await import('@/usableclientdata/content-studio/gumloop-calendar-topics.json');
+        storeV1Data('playbook', {
+          ...playbookData.data,
+          calendarTopics: calendarV1Data
+        });
+        setOutputState('playbook', 'complete');
+      } else if (activeTab === 'posts') {
+        // Auto-load posts V1 data
+        const postsV1Data = await import('@/usableclientdata/data/posts/posts-data-v1.json');
+        setPostOutput({ topics: postsV1Data.topics });
+        storeV1Data('posts', postsV1Data);
+        setOutputState('posts', 'awaiting_topic');
+      }
+    };
+    
+    loadContent();
+  }, [activeTab, modes.diagnostics, setDiagnosticsOutput, setPlaybookOutput, setOutputState, setPlaybookStrategies]);
+
+  // Helper functions for V2 generation
+  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+  const getDetailedProcessingMessage = (tab: CreatorTab, instruction: string, triggerData?: any): string => {
+    const lower = instruction.toLowerCase();
+    
+    // Use JSON data if available
+    if (triggerData?.streamingMessages?.[tab]) {
+      const tabMessages = triggerData.streamingMessages[tab];
+      
+      // Check for specific keywords first
+      for (const [keyword, message] of Object.entries(tabMessages)) {
+        if (keyword !== 'default' && lower.includes(keyword)) {
+          return message as string;
+        }
+      }
+      
+      // Fall back to default message
+      return tabMessages.default || triggerData.initialMessages?.processing || '⚡ Processing your optimization request...';
     }
-  }, [activeTab, modes.diagnostics, setDiagnosticsOutput, setPlaybookOutput, setOutputState]);
+    
+    if (tab === 'diagnostics') {
+      if (lower.includes('quick win')) {
+        return '🔍 Recalculating AI Authority Score... Prioritizing 14-30 day action items... Adjusting competitor rankings... Filtering for quick-win opportunities...';
+      }
+      if (lower.includes('aggressive') || lower.includes('fast')) {
+        return '🔍 Shifting to aggressive strategy mode... Increasing impact projections... Shortening timelines... Emphasizing high-risk/high-reward tactics...';
+      }
+      return '🔍 Recalculating diagnostics with new parameters... Adjusting recommendations and priorities...';
+    }
+    
+    if (tab === 'playbook') {
+      if (lower.includes('social')) {
+        return '📋 Rebuilding strategy framework with social-first focus... Prioritizing LinkedIn, Twitter tactics... Adjusting content formats for social virality...';
+      }
+      if (lower.includes('quick') || lower.includes('fast') || lower.includes('aggressive')) {
+        return '📋 Compressing timeline to 1 month... Selecting high-impact strategies only... Removing long-term initiatives... Optimizing for speed...';
+      }
+      return '📋 Rebuilding playbook with new strategic focus... Adjusting timelines and priorities...';
+    }
+    
+    if (tab === 'posts') {
+      if (lower.includes('viral') || lower.includes('engagement')) {
+        return '✍️ Analyzing viral content patterns... Optimizing hooks for engagement... Adjusting structure for shareability... Adding controversy elements...';
+      }
+      if (lower.includes('formal') || lower.includes('professional')) {
+        return '✍️ Elevating tone to executive level... Removing casual language... Adding data-driven arguments... Restructuring for authority...';
+      }
+      return '✍️ Reimagining content approach... Adjusting tone and structure...';
+    }
+    
+    return '⚡ Processing your optimization request...';
+  };
+
+  const getCompletionMessage = (tab: CreatorTab, v2Data: any, triggerData?: any): string => {
+    // Use JSON data if available
+    if (triggerData?.completionMessages?.[tab]) {
+      return triggerData.completionMessages[tab];
+    }
+    
+    // Fallback to hardcoded messages
+    if (tab === 'diagnostics') {
+      return `✅ Version 2 ready! AI Authority Score increased to 72/100. Quick wins prioritized with 14-30 day timelines. Toggle above to compare versions.`;
+    }
+    
+    if (tab === 'playbook') {
+      return '✅ Version 2 ready! Streamlined to 2 high-impact strategies with 1-month execution. Social-first focus applied. Compare versions using toggle above.';
+    }
+    
+    if (tab === 'posts') {
+      return '✅ Version 2 ready! Content optimized for viral engagement with action-oriented tone. Toggle to compare approaches.';
+    }
+    
+    return triggerData?.completionMessages?.default || '✅ Version 2 generated! Toggle between versions to compare.';
+  };
+
+  const loadV2Data = async (tab: CreatorTab): Promise<any> => {
+    if (tab === 'diagnostics') {
+      const v2 = await import('@/usableclientdata/data/diagnostics/diagnostics-gumloop-v3.json');
+      const insightsV2 = await import('@/usableclientdata/data/insights/insights-hub-v2.json');
+      return {
+        ...v2.data,
+        insightsData: insightsV2
+      };
+    }
+    if (tab === 'playbook') {
+      const v2 = await import('@/usableclientdata/data/playbook/playbook-gumloop-v2.json');
+      const calendarV2 = await import('@/usableclientdata/content-studio/gumloop-calendar-topics-v2.json');
+      return {
+        ...v2.data,
+        calendarTopics: calendarV2
+      };
+    }
+    if (tab === 'posts') {
+      const v2 = await import('@/usableclientdata/data/posts/posts-data-v2.json');
+      return v2;
+    }
+    return null;
+  };
+
+  const generateV2WithStreaming = async (tab: CreatorTab, instruction: string, triggerData?: any) => {
+    // Set processing state
+    setOutputState(tab, 'processing');
+    
+    // Step 1: Understanding (800ms)
+    const initialMsg = triggerData?.initialMessages?.analyzing?.replace('{instruction}', instruction) || `🎯 Analyzing your request: "${instruction}"...`;
+    addMessage(tab, {
+      id: crypto.randomUUID(),
+      role: 'assistant',
+      text: initialMsg,
+      timestamp: new Date().toISOString(),
+    });
+    await delay(800);
+    
+    // Step 2: Detailed processing (1200ms)
+    const processingMsg = getDetailedProcessingMessage(tab, instruction, triggerData);
+    addMessage(tab, {
+      id: crypto.randomUUID(),
+      role: 'assistant',
+      text: processingMsg,
+      timestamp: new Date().toISOString(),
+    });
+    await delay(1200);
+    
+    // Step 3: Generating (1500ms)
+    const generatingMsg = triggerData?.initialMessages?.generating || '✨ Generating optimized version with your preferences...';
+    addMessage(tab, {
+      id: crypto.randomUUID(),
+      role: 'assistant',
+      text: generatingMsg,
+      timestamp: new Date().toISOString(),
+    });
+    await delay(1500);
+    
+    // Step 4: Load V2 data
+    const v2Data = await loadV2Data(tab);
+    
+    // Step 5: Store V2 and update output based on tab
+    if (tab === 'diagnostics') {
+      generateV2(tab, v2Data);
+    } else if (tab === 'playbook') {
+      generateV2(tab, v2Data);
+    } else if (tab === 'posts') {
+      // For posts, switch topics to V2
+      setPostOutput({ topics: v2Data.topics });
+      generateV2(tab, v2Data);
+      setOutputState(tab, 'awaiting_topic');
+      
+      // Completion message
+      const completionMsg = getCompletionMessage(tab, v2Data);
+      addMessage(tab, {
+        id: crypto.randomUUID(),
+        role: 'assistant',
+        text: completionMsg,
+        timestamp: new Date().toISOString(),
+      });
+      return;
+    }
+    
+    setOutputState(tab, 'complete');
+    
+    // Step 6: Completion message
+    const completionMsg = getCompletionMessage(tab, v2Data, triggerData);
+    addMessage(tab, {
+      id: crypto.randomUUID(),
+      role: 'assistant',
+      text: completionMsg,
+      timestamp: new Date().toISOString(),
+    });
+  };
 
   const handleTabChange = (tab: CreatorTab) => {
     setActiveTab(tab);
@@ -149,6 +352,37 @@ export default function CreatorPage() {
       text,
       timestamp,
     });
+
+    // Load V2 trigger settings from JSON
+    const triggerData = await import('@/usableclientdata/ai-assistant/v2-trigger-keywords.json');
+    const session = sessions[activeTab];
+    
+    // Check if V2 should be generated based on trigger mode
+    let shouldGenerateV2 = false;
+    
+    if (triggerData.v2TriggerSettings.triggerMode === 'any_prompt') {
+      // Trigger on ANY non-empty prompt after initial content is loaded
+      shouldGenerateV2 = !session.hasV2 && 
+                        session.outputState === 'complete' && 
+                        text.trim().length > 0 &&
+                        !text.startsWith('/') && // Exclude system commands
+                        !text.toLowerCase().includes('help') && // Exclude help requests
+                        !text.toLowerCase().includes('reset'); // Exclude reset commands
+    } else {
+      // Fallback to keyword-based triggering
+      const v2Keywords = [
+        ...triggerData.v2Keywords.universal,
+        ...triggerData.v2Keywords[activeTab] || []
+      ];
+      shouldGenerateV2 = v2Keywords.some(kw => 
+        text.toLowerCase().includes(kw)
+      ) && !session.hasV2 && session.outputState === 'complete';
+    }
+    
+    if (shouldGenerateV2) {
+      await generateV2WithStreaming(activeTab, text, triggerData);
+      return;
+    }
 
     // Immediately set to streaming to show activity
     setOutputState(activeTab, 'streaming');
@@ -287,43 +521,15 @@ export default function CreatorPage() {
 
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      const strategies: PlaybookStrategy[] = [
-        {
-          id: 's1',
-          title: 'Market Research & Validation',
-          description: 'Conduct comprehensive market analysis, validate product-market fit, and identify target segments.',
-          impact: 'high',
-          effort: 'medium',
-        },
-        {
-          id: 's2',
-          title: 'Beta Program Strategy',
-          description: 'Design and execute a beta testing program with early adopters to gather feedback and iterate.',
-          impact: 'high',
-          effort: 'medium',
-        },
-        {
-          id: 's3',
-          title: 'Multi-Channel Marketing Campaign',
-          description: 'Launch coordinated marketing across social, content, PR, and paid channels.',
-          impact: 'high',
-          effort: 'high',
-        },
-        {
-          id: 's4',
-          title: 'Partnership & Integration Strategy',
-          description: 'Build strategic partnerships and integrations to expand reach and credibility.',
-          impact: 'medium',
-          effort: 'medium',
-        },
-        {
-          id: 's5',
-          title: 'Community Building',
-          description: 'Create and nurture a community around your product through forums, events, and engagement.',
-          impact: 'medium',
-          effort: 'low',
-        },
-      ];
+      // Load strategies from JSON data
+      const strategyData = await import('@/usableclientdata/data/playbook/playbook-strategy-data.json');
+      const strategies: PlaybookStrategy[] = strategyData.strategicPlays.map((play: any) => ({
+        id: play.id,
+        title: play.name,
+        description: play.goal,
+        impact: play.priority <= 2 ? 'high' : play.priority === 3 ? 'medium' : 'low',
+        effort: play.effortAllocation >= 60 ? 'high' : play.effortAllocation >= 30 ? 'medium' : 'low',
+      }));
 
       setPlaybookStrategies(strategies);
       setOutputState('playbook', 'awaiting_strategy');
@@ -346,7 +552,6 @@ export default function CreatorPage() {
     // Use real playbook data
     const playbookOutput = {
       ...playbookData.data,
-      selectedStrategies: selectedIds,
     };
 
     setPlaybookOutput(playbookOutput);
@@ -375,10 +580,10 @@ export default function CreatorPage() {
     if (session.outputState === 'complete') {
       setIntermediateSteps('posts', []);
       setPostOutput(undefined as any);
-      setOutputState('posts', 'streaming');
+      setOutputState('posts', 'awaiting_input');
     }
 
-    // Step 1: Generate topics (right panel)
+    // Step 1: If no topics yet, generate them based on user input
     if (!session.postOutput?.topics) {
       setOutputState('posts', 'streaming');
 
@@ -386,8 +591,8 @@ export default function CreatorPage() {
 
       const introText =
         mode === 'optimize'
-          ? 'Reviewing your existing asset and identifying upgrade opportunities...'
-          : 'Analyzing your request and generating relevant topics...';
+          ? `Reviewing your request: "${userMessage}" and identifying upgrade opportunities...`
+          : `Analyzing your request: "${userMessage}" and generating relevant topics...`;
 
       addMessage('posts', {
         id: crypto.randomUUID(),
@@ -398,6 +603,7 @@ export default function CreatorPage() {
 
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
+      // Generate topics based on user input
       const topics: PostTopic[] = [
         {
           id: 't1',

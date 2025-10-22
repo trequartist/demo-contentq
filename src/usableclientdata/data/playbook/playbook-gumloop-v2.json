@@ -1,0 +1,90 @@
+{
+  "data": {
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "playbook_title": "Gumloop 30-Day Quick-Win Playbook",
+    "executive_summary": "Aggressive 30-day sprint targeting immediate market capture. Focus on 2 high-impact strategies: comparison content domination (8,100 searches/month with ZERO competition) and social-first virality. Projected 67→72 AI Authority Score lift through concentrated execution.",
+    "overall_recommendations": "Abandon slow-build strategy. Execute rapid comparison content blitz in days 1-7, launch social-viral campaign days 8-14, capture migration leads days 15-30. Trade long-term comprehensiveness for immediate market share. ROI target: $50K MRR in 30 days.",
+    "reasoning_for_recommendations": "Zapier pricing backlash creating unprecedented switching window (8,100/month searches, +234% growth). First-mover advantage available for 30 days before Make/n8n fill the gap. Social algorithms favor controversial positioning right now. Strike while Zapier is defensive.",
+    "posts_per_week": 8,
+    "generated_playbook": [
+      {
+        "playbook_title": "Comparison Content Domination",
+        "executive_summary": "Capture 27,800 monthly comparison searches through aggressive, transparent competitive positioning. Target Zapier's pricing weakness with surgical precision.",
+        "content_plays": [
+          {
+            "play_name": "Zapier Comparison Blitz",
+            "implementation_strategy": "Create 3 high-impact comparison pages in 7 days. Lead with 'Zapier too expensive' (8,100/mo searches), follow with direct comparison (14,500/mo), finish with TCO calculator (5,200/mo). Use controversial but honest positioning.",
+            "content_formats": ["Landing Pages", "Interactive Calculators", "Comparison Tables", "Video Explainers"],
+            "success_metrics": ["Page 1 ranking in 14 days", "150+ leads from comparison content", "10% trial-to-paid conversion"],
+            "timeline": "Days 1-7",
+            "resource_requirements": "1 writer, 1 developer (calculator), Transparent pricing data",
+            "example_topics": [
+              "Why Zapier Is Too Expensive (And What To Do About It)",
+              "Gumloop vs Zapier: The Honest Comparison",
+              "3-Year TCO Calculator: The $18K Difference",
+              "When Zapier's Task Limit Breaks Your Workflows"
+            ]
+          },
+          {
+            "play_name": "Competitor Migration Series",
+            "implementation_strategy": "Fast-track 3 migration guides covering Zapier, Make, and n8n. Focus on zero-downtime promise and cost savings. Use fear-reduction messaging with money-back guarantee.",
+            "content_formats": ["Migration Guides", "Video Walkthroughs", "Risk Checklists"],
+            "success_metrics": ["12.3% conversion rate (proven benchmark)", "$50K MRR from migration content", "50+ migrations started"],
+            "timeline": "Days 8-21",
+            "resource_requirements": "Technical writer, Product team support, Video editor",
+            "example_topics": [
+              "Zapier to Gumloop: Zero-Downtime Migration in 48 Hours",
+              "The Migration Safety Checklist (Never Lose Data)",
+              "Case Study: How TechCo Migrated 127 Workflows in 30 Days"
+            ]
+          }
+        ],
+        "overall_recommendations": "Strike while Zapier is vulnerable. Their pricing complaints are at all-time high. Capture switchers NOW before competitors react.",
+        "next_steps": ["Launch 'Zapier too expensive' page (Day 1)", "Build comparison matrix (Day 3)", "Deploy TCO calculator (Day 5)", "Start migration guides (Day 8)"]
+      },
+      {
+        "playbook_title": "Social-Viral Strategy",
+        "executive_summary": "Leverage controversial positioning for organic social reach. Target 100K impressions in 30 days through provocative but truthful content about automation industry problems.",
+        "content_plays": [
+          {
+            "play_name": "LinkedIn Thought Leadership Bomb",
+            "implementation_strategy": "Post 3x/week with controversial takes on automation pricing, vendor lock-in, and AI-native architecture. Use data to back up bold claims. Engage aggressively with Zapier's audience.",
+            "content_formats": ["LinkedIn Posts", "Thread Storms", "Poll Questions", "Video Rants"],
+            "success_metrics": ["10K post views minimum per post", "500+ new followers in 30 days", "50+ high-quality leads from LinkedIn"],
+            "timeline": "Days 1-30 (continuous)",
+            "resource_requirements": "Executive voice (CEO/CTO), Social media manager, Content calendar",
+            "example_topics": [
+              "Why Every Automation Platform Lies About Pricing",
+              "The $299/Month Zapier Trap (And How It Gets Worse)",
+              "AI-Native vs Bolt-On AI: Why Architecture Matters",
+              "What Zapier Doesn't Want You To Know About Task Limits"
+            ]
+          },
+          {
+            "play_name": "Reddit/Community Infiltration",
+            "implementation_strategy": "Strategic presence in r/automation, r/SaaS, r/entrepreneur with value-first approach. Answer Zapier frustration posts with honest alternatives. Share migration stories.",
+            "content_formats": ["Reddit Posts", "Comment Value-Adds", "AMAs"],
+            "success_metrics": ["Mention in 20+ threads organically", "500+ karma in target subreddits", "25+ direct leads from Reddit"],
+            "timeline": "Days 1-30 (ongoing)",
+            "resource_requirements": "Community manager, Authentic voice",
+            "example_topics": [
+              "I analyzed Zapier's pricing vs 5 alternatives - here's what I found",
+              "Successfully migrated 50 workflows from Zapier - AMA",
+              "Why I'm building an AI-native alternative to Zapier"
+            ]
+          }
+        ],
+        "overall_recommendations": "Be controversial but truthful. Social algorithms reward strong opinions backed by data. Don't be polite—be memorable.",
+        "next_steps": ["CEO LinkedIn post schedule (3x/week)", "Reddit presence strategy", "Controversial content calendar", "Engagement playbook"]
+      }
+    ],
+    "next_steps": [
+      "Day 1: Launch 'Zapier too expensive' page + first LinkedIn post",
+      "Day 3: Publish Zapier comparison + TCO calculator", 
+      "Day 8: Start migration guide series + Reddit presence",
+      "Day 15: Measure and double down on what's working",
+      "Day 30: Evaluate 67→72 score lift and $50K MRR progress"
+    ]
+  }
+}

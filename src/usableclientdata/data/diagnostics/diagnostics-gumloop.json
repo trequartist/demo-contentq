@@ -53,8 +53,8 @@
       "platform_performance": {
         "chatgpt": {
           "platform": "ChatGPT",
-          "score": "15%",
-          "status": "Underperforming",
+          "score": "72",
+          "status": "Moderate",
           "key_insight": "Only mentioned for 'AI automation' queries, never for beginners",
           "top_queries_present": [
             "AI automation platforms",
@@ -69,7 +69,7 @@
         },
         "gemini": {
           "platform": "Gemini",
-          "score": "12%",
+          "score": "58",
           "status": "Critical Gap",
           "key_insight": "Rarely mentioned, limited awareness of Gumloop's existence",
           "top_queries_present": [
@@ -84,7 +84,7 @@
         },
         "perplexity": {
           "platform": "Perplexity",
-          "score": "20%",
+          "score": "65",
           "status": "Moderate",
           "key_insight": "Better performance in comparison queries but still ranks 3rd-4th",
           "top_queries_present": [

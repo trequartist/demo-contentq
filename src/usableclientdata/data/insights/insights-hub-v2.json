@@ -1,0 +1,231 @@
+{
+  "hero": {
+    "title": "Quick-Win Intelligence Dashboard",
+    "subtitle": "Prioritized by ROI and speed-to-impact",
+    "highlights": [
+      { "label": "AI Authority Score", "value": "72/100", "target": "80", "uplift": "+5 points in 30 days", "description": "Quick-win optimizations applied" },
+      { "label": "Competitive Rank", "value": "#2", "change": "+1", "description": "Moved ahead of Make with comparison content" },
+      { "label": "Quick Wins Identified", "value": "12", "change": "+7", "description": "High-ROI, fast-execution opportunities" }
+    ],
+    "cta": [
+      { "label": "View 30-Day Plan", "href": "/demo/playbook" },
+      { "label": "See Quick Wins", "href": "/demo/diagnostics" }
+    ]
+  },
+  "aiAuthority": {
+    "score": 72,
+    "previousScore": 67,
+    "change": "+5",
+    "changePercent": "+7.5%",
+    "description": "AI Authority Score with quick-win optimizations",
+    "llmBreakdown": {
+      "chatgptBrowse": 78,
+      "chatgptNoBrowse": 62,
+      "claude": 76,
+      "perplexity": 71
+    },
+    "llmWeights": {
+      "chatgptBrowse": 40,
+      "chatgptNoBrowse": 20,
+      "claude": 25,
+      "perplexity": 15
+    }
+  },
+  "competitiveMetrics": {
+    "rank": 2,
+    "previousRank": 3,
+    "change": "+1",
+    "totalMentions": 178,
+    "competitors": [
+      { "name": "Zapier", "aiCitations": 89, "aiScore": 82, "percentage": 15.2, "trend": "flat", "gap": "10 points behind" },
+      { "name": "Gumloop", "aiCitations": 68, "aiScore": 72, "percentage": 13.8, "isCurrent": true, "trend": "up", "gap": "You are here" },
+      { "name": "Make", "aiCitations": 67, "aiScore": 75, "percentage": 12.8, "trend": "up", "gap": "3 points behind" },
+      { "name": "n8n", "aiCitations": 38, "aiScore": 58, "percentage": 9.4, "trend": "down", "gap": "14 points ahead" },
+      { "name": "Integromat", "aiCitations": 22, "aiScore": 45, "percentage": 7.4, "trend": "down", "gap": "27 points ahead" }
+    ]
+  },
+  "topicalClusters": [
+    { "topic": "Zapier Alternatives & Migration", "rank": 1, "percentage": 35, "queries": "Zapier too expensive, migration from Zapier, cheaper alternatives", "aiImpact": "critical", "expectedLift": "+8-10 points", "timeToImpact": "7 days" },
+    { "topic": "AI Automation & Workflow", "rank": 2, "percentage": 28, "queries": "AI automation tools, workflow automation, no-code AI", "aiImpact": "high", "expectedLift": "+4-6 points", "timeToImpact": "14 days" },
+    { "topic": "AI-Native Development", "rank": 3, "percentage": 18, "queries": "AI-first development, generative AI tools, AI-powered workflows", "aiImpact": "high", "expectedLift": "+3-5 points", "timeToImpact": "21 days" },
+    { "topic": "Enterprise Automation", "rank": 4, "percentage": 12, "queries": "Enterprise automation, business process automation, workflow management", "aiImpact": "medium", "expectedLift": "+2-3 points", "timeToImpact": "30 days" },
+    { "topic": "No-Code & Low-Code", "rank": 5, "percentage": 5, "queries": "No-code platforms, low-code development, visual programming", "aiImpact": "low", "expectedLift": "+1-2 points", "timeToImpact": "45 days" },
+    { "topic": "API Integration", "rank": 6, "percentage": 2, "queries": "API integration tools, webhook automation, data synchronization", "aiImpact": "low", "expectedLift": "+0-1 points", "timeToImpact": "60 days" }
+  ],
+  "actionableInsights": {
+    "critical": [
+      { "title": "Launch 'Zapier Too Expensive' Landing Page", "score": 10.0, "description": "URGENT: 8,100 monthly searches with ZERO competition. Create transparent comparison page immediately. Projected 150+ leads/month.", "expectedLift": "+3-5 points", "timeline": "2 days", "effort": "4 hours", "roi": "$75K MRR potential" },
+      { "title": "Implement Schema Markup (All Pages)", "score": 9.8, "description": "Technical quick win: Add schema to all 47 pages for rich snippets. Immediate +40% CTR boost.", "expectedLift": "+2-3 points", "timeline": "2 hours", "effort": "2 hours", "roi": "+40% organic traffic" },
+      { "title": "Create Zapier vs Gumloop Comparison", "score": 9.5, "description": "Capture 14,500 monthly 'Zapier alternative' searches with honest, data-driven comparison.", "expectedLift": "+2-4 points", "timeline": "3 days", "effort": "8 hours", "roi": "$50K MRR potential" },
+      { "title": "Build Migration Guide Series (3 Guides)", "score": 9.3, "description": "Migration content converts at 12.3% (vs 2% average). Focus on Zapier, Make, n8n migrations.", "expectedLift": "+2-3 points", "timeline": "14 days", "effort": "40 hours", "roi": "$50K MRR" }
+    ],
+    "high": [
+      { "title": "Add FAQ Sections to Top 10 Pages", "score": 8.5, "description": "Featured snippet opportunity: 47% of target queries show PAA boxes. Quick SEO win.", "expectedLift": "+1-2 points", "timeline": "4 hours", "effort": "4 hours", "roi": "+25% CTR" },
+      { "title": "Launch TCO Calculator", "score": 8.2, "description": "Interactive tool showing 3-year cost savings vs Zapier. Drives 2x conversion rate.", "expectedLift": "+1-2 points", "timeline": "5 days", "effort": "16 hours", "roi": "2x conversion" },
+      { "title": "Create Make Comparison Page", "score": 7.8, "description": "Secondary competitor capture: 4,200 monthly searches, medium competition.", "expectedLift": "+1-2 points", "timeline": "2 days", "effort": "6 hours", "roi": "$15K MRR" },
+      { "title": "Fix Orphan Pages (4 Pages)", "score": 7.5, "description": "100% indexation = +8% crawl coverage. Technical quick fix.", "expectedLift": "+0-1 points", "timeline": "1 hour", "effort": "1 hour", "roi": "Perfect indexation" }
+    ]
+  },
+  "kpis": [
+    { "id": "kpi-authority", "label": "AI Authority Score", "value": "72/100", "delta": "+5 points", "description": "Quick-win optimizations applied" },
+    { "id": "kpi-citations", "label": "AI Citations", "value": "178", "delta": "+51", "description": "Comparison content driving citations" },
+    { "id": "kpi-quick-wins", "label": "Quick Wins", "value": "12", "delta": "+7", "description": "High-ROI opportunities identified" },
+    { "id": "kpi-roi", "label": "Est. MRR Impact", "value": "$125K", "delta": "+$75K", "description": "From quick-win execution" }
+  ],
+  "analytics": {
+    "authorityTrend": [55, 58, 62, 65, 67, 69, 72],
+    "llmPerformance": {
+      "chatgptBrowse": { "citations": 62, "trend": "up", "change": "+17" },
+      "claude": { "citations": 48, "trend": "up", "change": "+16" },
+      "perplexity": { "citations": 38, "trend": "up", "change": "+10" },
+      "chatgptNoBrowse": { "citations": 30, "trend": "up", "change": "+8" }
+    },
+    "competitiveGaps": [
+      { "competitor": "Zapier", "gap": "10 points", "primaryAdvantage": "Brand awareness", "yourStrength": "Pricing transparency" },
+      { "competitor": "Make", "gap": "3 points behind", "primaryAdvantage": "Comparison content", "yourStrength": "AI-native architecture" }
+    ]
+  },
+  "timeline": {
+    "quarters": [
+      {
+        "title": "Week 1",
+        "items": [
+          { "title": "Launch 'Zapier Too Expensive' Page", "impact": "150 leads/month", "status": "critical", "link": "/demo/content-studio/create", "description": "8,100 searches/month, zero competition", "effort": "4 hours", "roi": "$75K MRR" },
+          { "title": "Implement Schema Markup", "impact": "+40% CTR", "status": "critical", "link": "/demo/diagnostics", "description": "Rich snippets for all 47 pages", "effort": "2 hours", "roi": "+40% traffic" }
+        ]
+      },
+      {
+        "title": "Week 2",
+        "items": [
+          { "title": "Create Zapier vs Gumloop Comparison", "impact": "280 leads/month", "status": "critical", "link": "/demo/playbook", "description": "14,500 searches/month captured", "effort": "8 hours", "roi": "$50K MRR" },
+          { "title": "Add FAQ Sections (Top 10 Pages)", "impact": "+25% CTR", "status": "high", "link": "/demo/diagnostics", "description": "Featured snippet capture", "effort": "4 hours", "roi": "Quick win" }
+        ]
+      },
+      {
+        "title": "Week 3-4",
+        "items": [
+          { "title": "Launch Migration Guide Series", "impact": "12.3% conversion", "status": "high", "link": "/demo/content-studio", "description": "Zapier, Make, n8n migrations", "effort": "40 hours", "roi": "$50K MRR" },
+          { "title": "Deploy TCO Calculator", "impact": "2x conversion", "status": "high", "link": "/demo/playbook", "description": "Interactive cost comparison tool", "effort": "16 hours", "roi": "Conversion boost" }
+        ]
+      }
+    ]
+  },
+  "researchFeed": {
+    "lastUpdated": "2024-01-15T10:00:00Z",
+    "items": [
+      {
+        "id": "insight-1",
+        "type": "opportunity",
+        "priority": "critical",
+        "title": "URGENT: 8,100 searches/month for 'Zapier too expensive' - ZERO competition",
+        "source": "KiwiQ Market Analysis",
+        "time": "Just now",
+        "relevance": 100,
+        "summary": "Unprecedented opportunity: Create landing page TODAY to capture price-sensitive switchers worth $75K+ MRR annually.",
+        "impact": "150+ qualified leads/month from single page",
+        "action": "Create 'Zapier too expensive' comparison page immediately",
+        "tags": ["Critical", "Quick Win", "High ROI"],
+        "metrics": {
+          "searchVolume": 8100,
+          "difficulty": 18,
+          "currentPosition": null,
+          "potentialTraffic": 2430,
+          "estimatedValue": "$75K MRR",
+          "timeToRank": "7-14 days",
+          "effort": "4 hours"
+        }
+      },
+      {
+        "id": "insight-2",
+        "type": "technical",
+        "priority": "critical",
+        "title": "Schema markup: 2-hour fix = +40% CTR boost",
+        "source": "Technical SEO Audit",
+        "time": "2 hours ago",
+        "relevance": 98,
+        "summary": "Missing structured data on 80% of pages. Implement schema = rich snippets = +40% click-through rate.",
+        "impact": "Immediate traffic boost with minimal effort",
+        "action": "Implement Article, FAQ, HowTo schema across all content",
+        "tags": ["Quick Win", "Technical", "High ROI"],
+        "technicalGaps": {
+          "schemaMarkup": "19.63% coverage → 100% coverage",
+          "effort": "2 hours total",
+          "impact": "+40% CTR proven"
+        }
+      },
+      {
+        "id": "insight-3",
+        "type": "competitor",
+        "priority": "critical",
+        "title": "Migration content converts 6x better (12.3% vs 2%)",
+        "source": "Content Analytics",
+        "time": "4 hours ago",
+        "relevance": 96,
+        "summary": "Migration guides show highest conversion of ANY content type. Focus here for immediate ROI.",
+        "impact": "$50K MRR potential from migration content",
+        "action": "Create Zapier, Make, n8n migration guides this week",
+        "tags": ["High ROI", "Conversion", "Quick Win"],
+        "performance": {
+          "migrationConversion": 12.3,
+          "averageConversion": 2.0,
+          "multiplier": 6.15,
+          "effort": "40 hours for 3 guides",
+          "roi": "$50K MRR"
+        }
+      }
+    ]
+  },
+  "knowledgeHub": {
+    "stats": {
+      "totalInsights": 147,
+      "weeklyGrowth": 23,
+      "criticalActions": 12,
+      "completedActions": 5,
+      "healthScore": 72,
+      "improvementRate": "+7.5%"
+    },
+    "categories": [
+      {
+        "id": "cat-1",
+        "name": "Quick Wins",
+        "count": 12,
+        "trending": true,
+        "priority": "critical",
+        "icon": "zap",
+        "topInsight": "Zapier comparison content = $125K MRR",
+        "estimatedValue": "$125K MRR",
+        "timeToImpact": "7-30 days"
+      },
+      {
+        "id": "cat-2",
+        "name": "Comparison Content",
+        "count": 8,
+        "trending": true,
+        "priority": "critical",
+        "icon": "trending-up",
+        "topInsight": "8,100 searches, zero competition",
+        "estimatedValue": "$75K MRR"
+      },
+      {
+        "id": "cat-3",
+        "name": "Technical SEO",
+        "count": 6,
+        "trending": false,
+        "priority": "high",
+        "icon": "code",
+        "topInsight": "Schema markup = +40% CTR",
+        "quickWins": 5
+      },
+      {
+        "id": "cat-4",
+        "name": "Migration Guides",
+        "count": 5,
+        "trending": true,
+        "priority": "high",
+        "icon": "target",
+        "topInsight": "12.3% conversion rate",
+        "roi": "$50K MRR"
+      }
+    ]
+  }
+}

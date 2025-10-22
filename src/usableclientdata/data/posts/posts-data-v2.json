@@ -1,0 +1,42 @@
+{
+  "topics": [
+    {
+      "id": "post-v2-1",
+      "title": "Why Every Marketer Who Ignores AI Will Be Irrelevant by 2026",
+      "description": "Controversial take: AI isn't optional anymore. Here's what happens if you wait.",
+      "relevance": 0.98,
+      "tone": "provocative",
+      "angle": "controversial"
+    },
+    {
+      "id": "post-v2-2",
+      "title": "I Replaced My Content Team with AI - Here's What Happened",
+      "description": "Bold experiment: Using AI for 100% of content creation. Shocking results and hard lessons.",
+      "relevance": 0.95,
+      "tone": "personal-story",
+      "angle": "experiential"
+    },
+    {
+      "id": "post-v2-3",
+      "title": "10 Content Hacks That Get 10x Engagement (AI-Powered)",
+      "description": "Viral-optimized tactics using AI tools. These actually work (we tested 1,000+ posts).",
+      "relevance": 0.92,
+      "tone": "listicle",
+      "angle": "tactical"
+    },
+    {
+      "id": "post-v2-4",
+      "title": "The $50K Blog Post: How AI Helped Us Create Content That Converts",
+      "description": "One post generated $50K in pipeline. Here's the exact AI-powered process we used.",
+      "relevance": 0.89,
+      "tone": "case-study",
+      "angle": "results-driven"
+    }
+  ],
+  "metadata": {
+    "version": "viral-optimized",
+    "approach": "aggressive",
+    "targetLength": 1800,
+    "tone": "provocative, action-oriented, data-backed"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "topics": [
+    {
+      "id": "post-v1-1",
+      "title": "The Future of AI in Content Marketing",
+      "description": "Explore how AI is transforming content creation, distribution, and optimization for modern marketers.",
+      "relevance": 0.95,
+      "tone": "balanced",
+      "angle": "educational"
+    },
+    {
+      "id": "post-v1-2",
+      "title": "Building a Content Strategy with AI",
+      "description": "Step-by-step guide to leveraging AI tools for more effective content planning and execution.",
+      "relevance": 0.88,
+      "tone": "instructional",
+      "angle": "practical"
+    },
+    {
+      "id": "post-v1-3",
+      "title": "AI vs Human: The Perfect Content Balance",
+      "description": "Finding the right mix of AI efficiency and human creativity in your content workflow.",
+      "relevance": 0.82,
+      "tone": "thoughtful",
+      "angle": "strategic"
+    },
+    {
+      "id": "post-v1-4",
+      "title": "Scaling Content Production with AI",
+      "description": "How to increase content output 10x while maintaining quality using AI-powered tools.",
+      "relevance": 0.79,
+      "tone": "professional",
+      "angle": "efficiency"
+    }
+  ],
+  "metadata": {
+    "version": "baseline",
+    "approach": "balanced",
+    "targetLength": 2500,
+    "tone": "professional, informative"
+  }
+}

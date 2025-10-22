@@ -12,6 +12,7 @@ interface StrategySelectorProps {
 
 export function StrategySelector({ strategies, onConfirm }: StrategySelectorProps) {
   const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [showOnlySelected, setShowOnlySelected] = useState(false);
 
   const toggleStrategy = (id: string) => {
     setSelected((prev) => {
@@ -24,6 +25,23 @@ export function StrategySelector({ strategies, onConfirm }: StrategySelectorProp
       return next;
     });
   };
+
+  const handleConfirm = () => {
+    if (selected.size > 0) {
+      setShowOnlySelected(true);
+    }
+    onConfirm(Array.from(selected));
+  };
+
+  const resetSelection = () => {
+    setSelected(new Set());
+    setShowOnlySelected(false);
+  };
+
+  // Filter strategies based on selection state
+  const displayStrategies = showOnlySelected 
+    ? strategies.filter(strategy => selected.has(strategy.id))
+    : strategies;
 
   const getImpactColor = (impact: string) => {
     switch (impact) {
@@ -54,31 +72,48 @@ export function StrategySelector({ strategies, onConfirm }: StrategySelectorProp
   return (
     <div className="w-full space-y-4">
       <div className="mb-4">
-        <h3 className="text-sm font-semibold text-gray-900 mb-1">
-          Select Strategies ({selected.size} selected)
-        </h3>
+        <div className="flex items-center justify-between mb-1">
+          <h3 className="text-sm font-semibold text-gray-900">
+            {showOnlySelected ? 'Selected Strategies' : 'Select Strategies'} ({selected.size} selected)
+          </h3>
+          {showOnlySelected && (
+            <button
+              onClick={resetSelection}
+              className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+            >
+              Change Selection
+            </button>
+          )}
+        </div>
         <p className="text-xs text-gray-600">
-          Choose one or more strategies to include in your playbook
+          {showOnlySelected 
+            ? 'These are the strategies that will be included in your playbook'
+            : 'Choose one or more strategies to include in your playbook'
+          }
         </p>
       </div>
 
       <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2">
-        {strategies.map((strategy) => {
+        {displayStrategies.map((strategy) => {
           const isSelected = selected.has(strategy.id);
 
           return (
             <button
               key={strategy.id}
-              onClick={() => toggleStrategy(strategy.id)}
+              onClick={() => !showOnlySelected && toggleStrategy(strategy.id)}
               className={`w-full rounded-xl border-2 p-4 text-left transition-all ${
-                isSelected
+                showOnlySelected
+                  ? 'border-green-500 bg-green-50 shadow-md cursor-default'
+                  : isSelected
                   ? 'border-blue-500 bg-blue-50 shadow-md'
                   : 'border-gray-200 bg-white hover:border-blue-300 hover:shadow-sm'
               }`}
             >
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 mt-1">
-                  {isSelected ? (
+                  {showOnlySelected ? (
+                    <CheckCircle2 className="h-5 w-5 text-green-600" />
+                  ) : isSelected ? (
                     <CheckCircle2 className="h-5 w-5 text-blue-600" />
                   ) : (
                     <Circle className="h-5 w-5 text-gray-400" />
@@ -107,12 +142,15 @@ export function StrategySelector({ strategies, onConfirm }: StrategySelectorProp
       </div>
 
       <Button
-        onClick={() => onConfirm(Array.from(selected))}
+        onClick={handleConfirm}
         disabled={selected.size === 0}
         variant="primary"
         className="w-full rounded-xl bg-black py-3 hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Generate Playbook ({selected.size} {selected.size === 1 ? 'strategy' : 'strategies'})
+        {showOnlySelected 
+          ? `Generate Playbook with ${selected.size} ${selected.size === 1 ? 'strategy' : 'strategies'}`
+          : `Generate Playbook (${selected.size} ${selected.size === 1 ? 'strategy' : 'strategies'})`
+        }
       </Button>
     </div>
   );

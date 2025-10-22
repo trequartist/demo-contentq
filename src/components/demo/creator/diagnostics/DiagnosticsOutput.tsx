@@ -12,6 +12,7 @@ import StrategicLeverage from '@/components/demo/diagnostics/StrategicLeverage';
 import { InsightsDashboard } from '@/components/demo/creator/insights/InsightsDashboard';
 import insightsHubData from '@/usableclientdata/data/insights/insights-hub.json';
 import { BarChart3, Brain, Search, Trophy, TrendingUp, Database, Target, Zap } from 'lucide-react';
+import { useCreatorStore } from '@/lib/demo/creator/store';
 
 interface DiagnosticsOutputProps {
   data: any;
@@ -41,14 +42,26 @@ const sections = [
 
 export function DiagnosticsOutput({ data, variant = 'default' }: DiagnosticsOutputProps) {
   const [activeSection, setActiveSection] = useState<DiagnosticsSection>('executive');
+  
+  // Get version state from store
+  const session = useCreatorStore(state => state.sessions.diagnostics);
+  const setActiveVersion = useCreatorStore(state => state.setActiveVersion);
+  
+  const activeVersion = session.activeVersion || 1;
+  const hasV2 = session.hasV2 || false;
 
-  const diagnosticsPayload = data?.diagnostics ?? data;
+  // Use v1Data or v2Data based on activeVersion
+  const versionData = activeVersion === 2 && session.v2Data 
+    ? session.v2Data 
+    : (session.v1Data || data);
+
+  const diagnosticsPayload = versionData;
 
   // Only load insights data when in insights mode
   const insightsData = useMemo(() => {
     if (variant !== 'insights') return null;
-    return data?.insightsData ?? insightsHubData;
-  }, [variant, data]);
+    return versionData?.insightsData ?? insightsHubData;
+  }, [variant, versionData]);
 
   const renderSection = () => {
     switch (activeSection) {
@@ -79,6 +92,37 @@ export function DiagnosticsOutput({ data, variant = 'default' }: DiagnosticsOutp
 
   return (
     <div className="h-full flex flex-col bg-[#F7F7F8]">
+      {/* VERSION TOGGLE - Only show if V2 exists */}
+      {hasV2 && (
+        <div className="flex-shrink-0 bg-white border-b border-gray-100 px-6 py-3">
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-gray-500 font-medium">Compare Versions:</span>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setActiveVersion('diagnostics', 1)}
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                  activeVersion === 1
+                    ? 'bg-black text-white'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+              >
+                Version 1 (Original)
+              </button>
+              <button
+                onClick={() => setActiveVersion('diagnostics', 2)}
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                  activeVersion === 2
+                    ? 'bg-black text-white'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+              >
+                Version 2 (Optimized) ✨
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      
       <div className="flex-shrink-0 sticky top-0 z-20 bg-[#F7F7F8]/95 backdrop-blur border-b border-white/40">
         <div className="px-6 pt-4 pb-3">
           <div className="flex items-center gap-2 overflow-x-auto">

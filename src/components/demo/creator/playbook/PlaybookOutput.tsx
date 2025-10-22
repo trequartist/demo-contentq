@@ -3,7 +3,9 @@
 import { useMemo, useState } from 'react';
 import { PlaybookOutput as PlaybookData, PlaybookMode } from '@/lib/demo/creator/types';
 import { FileText, Target, TrendingUp, Calendar, Clock, BarChart3, Flag, Zap, X, ChevronLeft, ChevronRight } from 'lucide-react';
-import calendarTopics from '@/usableclientdata/content-studio/gumloop-calendar-topics.json';
+import calendarTopicsV1 from '@/usableclientdata/content-studio/gumloop-calendar-topics.json';
+import calendarTopicsV2 from '@/usableclientdata/content-studio/gumloop-calendar-topics-v2.json';
+import { useCreatorStore } from '@/lib/demo/creator/store';
 
 interface PlaybookOutputProps {
   data: PlaybookData;
@@ -13,14 +15,62 @@ interface PlaybookOutputProps {
 
 export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: PlaybookOutputProps) {
   const [activeSection, setActiveSection] = useState<number>(0);
-  const scheduledTopics = useMemo(() => (calendarTopics as any).scheduledTopics || [], []);
   const [selectedCalendarTopic, setSelectedCalendarTopic] = useState<any>(null);
   const [showAnglesModal, setShowAnglesModal] = useState(false);
   const [currentCalendarDate, setCurrentCalendarDate] = useState<Date>(new Date());
+  
+  // Get version state from store
+  const session = useCreatorStore(state => state.sessions.playbook);
+  const setActiveVersion = useCreatorStore(state => state.setActiveVersion);
+  const setOutputState = useCreatorStore(state => state.setOutputState);
+  
+  const activeVersion = session.activeVersion || 1;
+  const hasV2 = session.hasV2 || false;
+
+  // Use version data for calendar topics
+  const calendarData = activeVersion === 2 && session.v2Data?.calendarTopics
+    ? session.v2Data.calendarTopics
+    : (session.v1Data?.calendarTopics || calendarTopicsV1);
+  
+  const scheduledTopics = useMemo(() => (calendarData as any).scheduledTopics || [], [calendarData]);
+
+  // Use v1Data or v2Data based on activeVersion
+  const versionData = activeVersion === 2 && session.v2Data 
+    ? { ...data, ...session.v2Data }
+    : (session.v1Data ? { ...data, ...session.v1Data } : data);
+
+  // Get selected strategies from session state (preserved across versions)
+  const selectedStrategies = session.selectedStrategies || [];
+
+  // Filter sections based on selected strategies
+  const filteredPlaybook = useMemo(() => {
+    if (!selectedStrategies || selectedStrategies.length === 0) {
+      return versionData.generated_playbook || [];
+    }
+    
+    // Map selected strategy IDs to their corresponding playbook sections
+    const selectedStrategyNames = selectedStrategies.map((id: string) => {
+      // Map strategy IDs to their display names for both V1 and V2
+      const strategyMap: Record<string, string[]> = {
+        'migration-accelerator': ['The Migration Accelerator'],
+        'ai-native-authority': ['The AI-Native Authority'], 
+        'transparency-advantage': ['The Transparency Advantage'],
+        'use-case-accelerator': ['The Use Case Accelerator'],
+        'comparison-content-domination': ['Comparison Content Domination'],
+        'social-viral-strategy': ['Social-Viral Strategy']
+      };
+      return strategyMap[id] || [id];
+    }).flat();
+    
+    // Filter playbook sections to only include selected strategies
+    return (versionData.generated_playbook || []).filter((section: any) => 
+      selectedStrategyNames.includes(section.playbook_title)
+    );
+  }, [selectedStrategies, versionData.generated_playbook]);
 
   const sections = [
     { id: 'overview', label: 'Overview', icon: FileText },
-    ...(data.generated_playbook || []).map((section, idx) => ({
+    ...filteredPlaybook.map((section: any, idx: number) => ({
       id: `section-${idx}`,
       label: section.playbook_title,
       icon: Target,
@@ -333,6 +383,69 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
 
   return (
     <div className="h-full flex flex-col bg-[#F7F7F8]">
+      {/* VERSION TOGGLE - Only show if V2 exists */}
+      {hasV2 && (
+        <div className="flex-shrink-0 bg-white border-b border-gray-100 px-6 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-gray-500 font-medium">Compare Versions:</span>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setActiveVersion('playbook', 1)}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                    activeVersion === 1
+                      ? 'bg-black text-white'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  }`}
+                >
+                  Version 1 (Original)
+                </button>
+                <button
+                  onClick={() => setActiveVersion('playbook', 2)}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                    activeVersion === 2
+                      ? 'bg-black text-white'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  }`}
+                >
+                  Version 2 (Optimized) ✨
+                </button>
+              </div>
+            </div>
+            <button
+              onClick={() => {
+                // Reset to strategy selection
+                setOutputState('playbook', 'awaiting_strategy');
+              }}
+              className="px-3 py-1.5 text-xs font-medium text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition-all"
+            >
+              Change Strategies
+            </button>
+          </div>
+        </div>
+      )}
+      
+      {/* Strategy Selection Button - Show when no V2 but strategies are selected */}
+      {!hasV2 && selectedStrategies.length > 0 && (
+        <div className="flex-shrink-0 bg-white border-b border-gray-100 px-6 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-gray-500 font-medium">Selected Strategies:</span>
+              <span className="text-sm font-medium text-gray-900">{selectedStrategies.length} strategies</span>
+            </div>
+            <button
+              onClick={() => {
+                // Reset to strategy selection
+                setOutputState('playbook', 'awaiting_strategy');
+              }}
+              className="px-3 py-1.5 text-xs font-medium text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition-all"
+            >
+              Change Strategies
+            </button>
+          </div>
+        </div>
+      )}
+      
       {/* Section Tabs */}
       <div className="flex-shrink-0 sticky top-0 z-20 bg-[#F7F7F8]/95 backdrop-blur border-b border-white/40">
         <div className="px-6 pt-4 pb-3">
@@ -366,41 +479,41 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
             // Overview Section
             <div className="mx-auto max-w-4xl space-y-8">
               <div className="rounded-3xl bg-white border border-white/60 shadow-sm p-8">
-                <h1 className="text-3xl font-bold text-gray-900 mb-4">{data.playbook_title}</h1>
-                <p className="text-lg text-gray-700 mb-6">{data.executive_summary}</p>
+                <h1 className="text-3xl font-bold text-gray-900 mb-4">{versionData.playbook_title}</h1>
+                <p className="text-lg text-gray-700 mb-6">{versionData.executive_summary}</p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                   <div className="rounded-2xl border border-gray-100 bg-gray-50/60 p-4">
                     <div className="text-xs uppercase tracking-wide text-gray-500">Posts per Week</div>
-                    <div className="mt-2 text-2xl font-semibold text-gray-900">{data.posts_per_week}</div>
+                    <div className="mt-2 text-2xl font-semibold text-gray-900">{versionData.posts_per_week}</div>
                   </div>
                   <div className="rounded-2xl border border-gray-100 bg-gray-50/60 p-4">
                     <div className="text-xs uppercase tracking-wide text-gray-500">Selected Strategies</div>
-                    <div className="mt-2 text-2xl font-semibold text-gray-900">{data.selectedStrategies?.length || 0}</div>
+                    <div className="mt-2 text-2xl font-semibold text-gray-900">{versionData.selectedStrategies?.length || 0}</div>
                   </div>
                   <div className="rounded-2xl border border-gray-100 bg-gray-50/60 p-4">
                     <div className="text-xs uppercase tracking-wide text-gray-500">Playbook Sections</div>
-                    <div className="mt-2 text-2xl font-semibold text-gray-900">{data.generated_playbook?.length || 0}</div>
+                    <div className="mt-2 text-2xl font-semibold text-gray-900">{filteredPlaybook.length}</div>
                   </div>
                 </div>
               </div>
 
               <div className="rounded-3xl border border-white/60 bg-white shadow-sm p-8">
                 <h2 className="text-xl font-bold text-gray-900 mb-4">Overall Recommendations</h2>
-                <p className="text-gray-700 leading-relaxed mb-4">{data.overall_recommendations}</p>
+                <p className="text-gray-700 leading-relaxed mb-4">{versionData.overall_recommendations}</p>
                 <div className="rounded-xl border border-gray-100 bg-gray-50/80 p-4">
                   <h3 className="font-semibold text-gray-900 mb-2">Reasoning</h3>
-                  <p className="text-sm text-gray-600">{data.reasoning_for_recommendations}</p>
+                  <p className="text-sm text-gray-600">{versionData.reasoning_for_recommendations}</p>
                 </div>
               </div>
             </div>
           )}
 
-          {activeSection > 0 && activeSection <= (data.generated_playbook?.length || 0) && data.generated_playbook && (
+          {activeSection > 0 && activeSection <= filteredPlaybook.length && filteredPlaybook.length > 0 && (
             // Individual Playbook Section
             <div className="mx-auto max-w-4xl">
               {(() => {
-                const section = data.generated_playbook[activeSection - 1];
+                const section = filteredPlaybook[activeSection - 1];
                 return (
                   <div className="space-y-6">
                     <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
@@ -419,7 +532,7 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
                       <div className="p-8">
                         <h3 className="text-lg font-semibold text-gray-900 mb-6">Content Plays</h3>
                         <div className="space-y-6">
-                          {section.content_plays?.map((play, playIndex) => (
+                          {section.content_plays?.map((play: any, playIndex: number) => (
                             <div key={playIndex} className="border border-gray-200 rounded-xl p-6">
                               <h4 className="text-lg font-semibold text-gray-900 mb-3">{play.play_name}</h4>
                               <p className="text-gray-700 mb-4">{play.implementation_strategy}</p>
@@ -428,7 +541,7 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
                                 <div>
                                   <h5 className="font-semibold text-gray-900 mb-2">Content Formats</h5>
                                   <div className="flex flex-wrap gap-2">
-                                    {play.content_formats?.map((format, idx) => (
+                                    {play.content_formats?.map((format: string, idx: number) => (
                                       <span key={idx} className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">
                                         {format}
                                       </span>
@@ -444,7 +557,7 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
                               <div className="mb-4">
                                 <h5 className="font-semibold text-gray-900 mb-2">Success Metrics</h5>
                                 <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
-                                  {play.success_metrics?.map((metric, idx) => (
+                                  {play.success_metrics?.map((metric: string, idx: number) => (
                                     <li key={idx}>{metric}</li>
                                   ))}
                                 </ul>
@@ -453,7 +566,7 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
                               <div>
                                 <h5 className="font-semibold text-gray-900 mb-2">Example Topics</h5>
                                 <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
-                                  {play.example_topics?.map((topic, idx) => (
+                                  {play.example_topics?.map((topic: string, idx: number) => (
                                     <li key={idx}>{topic}</li>
                                   ))}
                                 </ul>

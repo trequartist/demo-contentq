@@ -1,0 +1,292 @@
+{
+  "scheduledTopics": [
+    {
+      "id": "topic-quick-1",
+      "title": "Why Zapier Is Too Expensive (And What To Do)",
+      "date": "2025-09-02",
+      "type": "landing-page",
+      "status": "topic",
+      "description": "Direct response to 8,100 monthly searches with transparent pricing comparison",
+      "keywords": ["zapier too expensive", "zapier pricing", "cheaper alternative"],
+      "targetAudience": "Price-sensitive switchers ready to act NOW",
+      "impactLevel": "critical",
+      "expectedPoints": "+3-5",
+      "primaryLLM": ["ChatGPT", "Perplexity"],
+      "funnelStage": "BOFU",
+      "impactRationale": "Zero competition, high intent, 12.3% conversion rate for migration content",
+      "subtopics": [
+        {
+          "id": "sub-quick-1-1",
+          "title": "The $18K Zapier Trap: 3-Year TCO Breakdown",
+          "hook": "How task-based pricing costs you 5x more than advertised",
+          "angle": "Transparent cost comparison with real customer data",
+          "keyPoints": ["Hidden overage fees", "Task limit nightmares", "True 3-year cost", "Gumloop alternative"],
+          "expectedOutcome": "Show 90% cost savings potential"
+        },
+        {
+          "id": "sub-quick-1-2",
+          "title": "Zapier vs Gumloop: The Honest Comparison",
+          "hook": "What Zapier doesn't want you to know",
+          "angle": "Feature-by-feature comparison with no BS",
+          "keyPoints": ["Pricing transparency", "AI-native vs bolt-on", "Support quality", "Migration ease"],
+          "expectedOutcome": "Position Gumloop as obvious choice"
+        }
+      ]
+    },
+    {
+      "id": "topic-quick-2",
+      "title": "Zero-Downtime Zapier Migration in 48 Hours",
+      "date": "2025-09-05",
+      "type": "blog",
+      "status": "topic",
+      "description": "Fast-track migration guide for urgent switchers",
+      "keywords": ["migrate from zapier", "zapier alternative setup", "workflow migration"],
+      "targetAudience": "Teams that need to switch THIS WEEK",
+      "impactLevel": "critical",
+      "expectedPoints": "+2-4",
+      "primaryLLM": ["ChatGPT", "Claude"],
+      "funnelStage": "MOFU",
+      "impactRationale": "Migration guides have 12.3% conversion vs 2% average",
+      "subtopics": [
+        {
+          "id": "sub-quick-2-1",
+          "title": "48-Hour Migration: Step-by-Step Playbook",
+          "hook": "Sarah migrated 127 workflows in 2 days - here's how",
+          "angle": "Tactical implementation guide with timeline",
+          "keyPoints": ["Hour-by-hour plan", "Parallel running", "Zero data loss", "Team training"],
+          "expectedOutcome": "Reduce switching friction"
+        },
+        {
+          "id": "sub-quick-2-2",
+          "title": "Migration Risk Checklist: Never Lose Data",
+          "hook": "The 12 things that can go wrong (and how to prevent them)",
+          "angle": "Risk mitigation framework",
+          "keyPoints": ["Data backup strategy", "Workflow testing", "Rollback plan", "Success metrics"],
+          "expectedOutcome": "Eliminate migration fear"
+        }
+      ]
+    },
+    {
+      "id": "topic-quick-3",
+      "title": "TCO Calculator: Zapier vs Gumloop",
+      "date": "2025-09-08",
+      "type": "interactive-tool",
+      "status": "topic",
+      "description": "Interactive calculator showing 3-year cost comparison",
+      "keywords": ["zapier pricing calculator", "automation cost comparison", "TCO"],
+      "targetAudience": "Finance-conscious decision makers",
+      "impactLevel": "high",
+      "expectedPoints": "+2-3",
+      "primaryLLM": ["ChatGPT"],
+      "funnelStage": "MOFU",
+      "impactRationale": "Interactive tools drive 2x conversion rate",
+      "subtopics": [
+        {
+          "id": "sub-quick-3-1",
+          "title": "The Real Cost of Zapier at Scale",
+          "hook": "Why 'starting at $20/month' becomes $2,400/year",
+          "angle": "Cost modeling with real usage patterns",
+          "keyPoints": ["Task creep reality", "Overage frequency", "Hidden fees", "Support costs"],
+          "expectedOutcome": "Justify switching decision"
+        }
+      ]
+    },
+    {
+      "id": "topic-quick-4",
+      "title": "Make vs Gumloop: Technical Comparison",
+      "date": "2025-09-12",
+      "type": "blog",
+      "status": "topic",
+      "description": "Secondary competitor capture",
+      "keywords": ["make alternative", "integromat alternative", "make vs gumloop"],
+      "targetAudience": "Make users hitting complexity limits",
+      "impactLevel": "high",
+      "expectedPoints": "+1-2",
+      "primaryLLM": ["Claude"],
+      "funnelStage": "MOFU",
+      "impactRationale": "4,200 searches/month, medium competition",
+      "subtopics": [
+        {
+          "id": "sub-quick-4-1",
+          "title": "When Make's Complexity Becomes a Problem",
+          "hook": "UI designed for engineers, not ops teams",
+          "angle": "Usability comparison with examples",
+          "keyPoints": ["Learning curve", "Error handling", "AI capabilities", "Gumloop simplicity"],
+          "expectedOutcome": "Position Gumloop as easier alternative"
+        }
+      ]
+    },
+    {
+      "id": "topic-quick-5",
+      "title": "AI-Native vs Bolt-On AI: Architecture Matters",
+      "date": "2025-09-15",
+      "type": "blog",
+      "status": "topic",
+      "description": "Technical differentiation content",
+      "keywords": ["ai native automation", "ai architecture", "intelligent workflows"],
+      "targetAudience": "Technical evaluators and architects",
+      "impactLevel": "high",
+      "expectedPoints": "+2-3",
+      "primaryLLM": ["Claude", "ChatGPT"],
+      "funnelStage": "TOFU",
+      "impactRationale": "Technical deep-dive content that Claude prefers",
+      "subtopics": [
+        {
+          "id": "sub-quick-5-1",
+          "title": "Why Zapier's AI Features Don't Actually Work",
+          "hook": "Bolt-on AI can't solve architecture problems",
+          "angle": "Technical analysis of AI implementation approaches",
+          "keyPoints": ["Architecture limitations", "Training data", "Context understanding", "Native advantage"],
+          "expectedOutcome": "Establish technical superiority"
+        }
+      ]
+    },
+    {
+      "id": "topic-quick-6",
+      "title": "Automation Troubleshooting Hub",
+      "date": "2025-09-18",
+      "type": "resource-hub",
+      "status": "topic",
+      "description": "Problem-solving content cluster",
+      "keywords": ["fix automation errors", "workflow debugging", "troubleshooting"],
+      "targetAudience": "Users struggling with broken workflows",
+      "impactLevel": "medium",
+      "expectedPoints": "+1-2",
+      "primaryLLM": ["ChatGPT", "Perplexity"],
+      "funnelStage": "TOFU",
+      "impactRationale": "High search volume for problem-solving queries",
+      "subtopics": [
+        {
+          "id": "sub-quick-6-1",
+          "title": "Why Your Workflows Keep Breaking (And How To Fix It)",
+          "hook": "The 5 most common automation failures",
+          "angle": "Diagnostic framework with solutions",
+          "keyPoints": ["Error patterns", "Root causes", "Prevention strategies", "Self-healing approach"],
+          "expectedOutcome": "Position as problem-solver authority"
+        }
+      ]
+    },
+    {
+      "id": "topic-quick-7",
+      "title": "LinkedIn: Zapier Pricing Is Broken",
+      "date": "2025-09-10",
+      "type": "linkedin",
+      "status": "topic",
+      "description": "Controversial social post",
+      "keywords": ["zapier pricing", "automation costs", "industry commentary"],
+      "targetAudience": "LinkedIn automation community",
+      "impactLevel": "medium",
+      "expectedPoints": "+1-2",
+      "primaryLLM": ["ChatGPT"],
+      "funnelStage": "TOFU",
+      "impactRationale": "Viral potential for controversial positioning",
+      "subtopics": [
+        {
+          "id": "sub-quick-7-1",
+          "title": "Why Every Automation Platform Lies About Pricing",
+          "hook": "Let's talk about task-based pricing honestly",
+          "angle": "Industry critique with transparent alternative",
+          "keyPoints": ["Pricing deception", "Hidden costs", "Transparent model", "Call to action"],
+          "expectedOutcome": "Viral engagement + brand awareness"
+        }
+      ]
+    },
+    {
+      "id": "topic-quick-8",
+      "title": "Reddit AMA: Automationhell Refugee",
+      "date": "2025-09-17",
+      "type": "reddit",
+      "status": "topic",
+      "description": "Community engagement",
+      "keywords": ["automation", "zapier alternative", "workflow optimization"],
+      "targetAudience": "r/automation, r/SaaS communities",
+      "impactLevel": "medium",
+      "expectedPoints": "+1",
+      "primaryLLM": ["ChatGPT"],
+      "funnelStage": "TOFU",
+      "impactRationale": "Community presence builds organic mentions",
+      "subtopics": [
+        {
+          "id": "sub-quick-8-1",
+          "title": "I Migrated 200+ Workflows from Zapier - AMA",
+          "hook": "Here's what worked and what didn't",
+          "angle": "Authentic community engagement",
+          "keyPoints": ["Migration lessons", "Cost savings", "Common issues", "Recommendations"],
+          "expectedOutcome": "Build community trust + organic backlinks"
+        }
+      ]
+    },
+    {
+      "id": "topic-quick-9",
+      "title": "Case Study: TechCo's $120K/Year Savings",
+      "date": "2025-09-22",
+      "type": "case-study",
+      "status": "topic",
+      "description": "ROI proof point",
+      "keywords": ["automation roi", "cost savings case study", "zapier migration success"],
+      "targetAudience": "Enterprise decision makers",
+      "impactLevel": "high",
+      "expectedPoints": "+2-3",
+      "primaryLLM": ["ChatGPT", "Claude"],
+      "funnelStage": "BOFU",
+      "impactRationale": "Case studies build credibility for AI citations",
+      "subtopics": [
+        {
+          "id": "sub-quick-9-1",
+          "title": "From $15K/Month Zapier Bill to $1.2K with Gumloop",
+          "hook": "How enterprise saved $165K in year one",
+          "angle": "Financial case study with detailed metrics",
+          "keyPoints": ["Cost breakdown", "Migration timeline", "Team impact", "ROI calculation"],
+          "expectedOutcome": "Justify enterprise switching decision"
+        }
+      ]
+    },
+    {
+      "id": "topic-quick-10",
+      "title": "FAQ Hub: Switching from Zapier",
+      "date": "2025-09-25",
+      "type": "faq-page",
+      "status": "topic",
+      "description": "Featured snippet optimization",
+      "keywords": ["zapier switch", "migration questions", "zapier alternative faq"],
+      "targetAudience": "Researchers in evaluation phase",
+      "impactLevel": "medium",
+      "expectedPoints": "+1-2",
+      "primaryLLM": ["ChatGPT", "Perplexity"],
+      "funnelStage": "MOFU",
+      "impactRationale": "FAQ format perfect for featured snippets",
+      "subtopics": [
+        {
+          "id": "sub-quick-10-1",
+          "title": "50 Questions About Switching from Zapier",
+          "hook": "Everything you need to know before migrating",
+          "angle": "Comprehensive FAQ with schema markup",
+          "keyPoints": ["Pricing questions", "Technical concerns", "Migration process", "Support details"],
+          "expectedOutcome": "Capture featured snippets + build trust"
+        }
+      ]
+    }
+  ],
+  "topicMetadata": {
+    "defaultBriefStructure": {
+      "sections": [
+        "Hook & Problem",
+        "Quick Solution",
+        "Proof/Data",
+        "Implementation",
+        "CTA"
+      ],
+      "targetWordCount": {
+        "blog": 1500,
+        "linkedin": 800,
+        "landing-page": 2000,
+        "case-study": 2500
+      }
+    },
+    "quickWinStrategy": {
+      "focus": "Comparison + Migration content",
+      "timeline": "30 days compressed",
+      "priority": "ROI over comprehensiveness"
+    }
+  }
+}

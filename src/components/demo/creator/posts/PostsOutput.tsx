@@ -8,6 +8,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import optimizationSuggestionsData from '@/usableclientdata/data/posts/optimization-suggestions.json';
+import { useCreatorStore } from '@/lib/demo/creator/store';
 import {
   Bold,
   Italic,

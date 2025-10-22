@@ -34,7 +34,7 @@ export default function ActionableIntelligence({ data }: ActionableIntelligenceP
   const [selectedPath, setSelectedPath] = useState<string>('depth_builder');
   const [expandedKPI, setExpandedKPI] = useState<string | null>(null);
   const [hoveredPath, setHoveredPath] = useState<string | null>(null);
-  const { actionable_intelligence } = data;
+  const { actionable_intelligence = {} } = data;
 
   const getPathIcon = (pathId: string) => {
     const icons: { [key: string]: JSX.Element } = {
@@ -59,10 +59,10 @@ export default function ActionableIntelligence({ data }: ActionableIntelligenceP
       {/* Section Header with Executive Briefing */}
       <div className="mb-12">
         <h1 className="text-4xl font-light text-gray-900 mb-3">
-          {actionable_intelligence.section_header}
+          {actionable_intelligence.section_header || 'Actionable Intelligence'}
         </h1>
         <p className="text-xl text-gray-600 font-light mb-8">
-          {actionable_intelligence.section_subheader}
+          {actionable_intelligence.section_subheader || 'Strategic paths to market authority'}
         </p>
         
         {/* Executive Insight Box */}
@@ -177,7 +177,7 @@ export default function ActionableIntelligence({ data }: ActionableIntelligenceP
         </h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {actionable_intelligence.strategic_paths.map((path: any) => {
+          {(actionable_intelligence.strategic_paths || []).map((path: any) => {
             const color = getPathColor(path.id);
             const isSelected = selectedPath === path.id;
             const isHovered = hoveredPath === path.id;
@@ -346,7 +346,7 @@ export default function ActionableIntelligence({ data }: ActionableIntelligenceP
               Implementation Roadmap
             </h2>
             
-            {actionable_intelligence.strategic_paths.map((path: any) => {
+            {(actionable_intelligence.strategic_paths || []).map((path: any) => {
               if (path.id !== selectedPath) return null;
               const color = getPathColor(path.id);
               
@@ -560,10 +560,10 @@ export default function ActionableIntelligence({ data }: ActionableIntelligenceP
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.3 }}
                     >
-                      {actionable_intelligence.strategic_paths.map((path: any) => {
+                      {(actionable_intelligence.strategic_paths || []).map((path: any) => {
                         if (path.id !== selectedPath) return null;
                         const color = getPathColor(path.id);
-                        const kpis = actionable_intelligence.success_tracking.primary_kpis[path.id] || [];
+                        const kpis = actionable_intelligence.success_tracking?.primary_kpis?.[path.id] || [];
                         
                         return (
                           <div key={path.id}>
@@ -730,7 +730,7 @@ export default function ActionableIntelligence({ data }: ActionableIntelligenceP
                     Track these regardless of your chosen strategy:
                   </p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {actionable_intelligence.success_tracking.secondary_kpis.map((kpi: string, idx: number) => (
+                    {(actionable_intelligence.success_tracking?.secondary_kpis || []).map((kpi: string, idx: number) => (
                       <motion.div
                         key={idx}
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -769,7 +769,7 @@ export default function ActionableIntelligence({ data }: ActionableIntelligenceP
                       Weekly tracking metrics that predict future success:
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                      {actionable_intelligence.success_tracking.leading_indicators.map((indicator: string, idx: number) => {
+                      {(actionable_intelligence.success_tracking?.leading_indicators || []).map((indicator: string, idx: number) => {
                         const trends = ['+12%', '+23%', '-5%', '+34%', '+8%'];
                         const isPositive = !trends[idx].includes('-');
                         

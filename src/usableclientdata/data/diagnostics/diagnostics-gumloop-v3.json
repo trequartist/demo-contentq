@@ -1,0 +1,642 @@
+{
+  "data": {
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z",
+    "ai_visibility_overview": {
+      "visibility_snapshot": {
+        "overall_score": "82/100",
+        "score_level": "Good",
+        "industry_position": "Rapidly climbing",
+        "biggest_win": "Quick-win strategy targeting 8,100 monthly 'Zapier too expensive' searches with ZERO competition, projected 150+ leads/month",
+        "biggest_threat": "30-day window before competitors react to pricing backlash - must execute comparison content immediately",
+        "market_context": "Unprecedented switching window: 8,100 searches/month for 'Zapier too expensive' with zero competitive content. Quick-win focus can capture $75K+ MRR in 30 days."
+      },
+      "key_metrics": {
+        "ai_search_presence": {
+          "name": "AI Search Presence",
+          "level": "High",
+          "score": "28%",
+          "insight": "Quick-win comparison content drives 2x higher citation rates in purchase-intent queries",
+          "benchmark_comparison": "85% improvement over baseline with comparison content"
+        },
+        "content_citation_rate": {
+          "name": "Content Citation Rate",
+          "level": "High",
+          "score": "45-60%",
+          "insight": "Comparison content shows 12.3% conversion vs 2% average - highest performing content type",
+          "top_cited_content": [
+            "Zapier comparison guides",
+            "Migration tutorials", 
+            "Pricing transparency content",
+            "Quick-win calculators"
+          ]
+        },
+        "query_coverage": {
+          "name": "Query Coverage",
+          "level": "High",
+          "score": "78%",
+          "insight": "Quick-win strategy captures 78% of high-intent purchase queries within 30 days",
+          "captured_query_types": [
+            "Zapier too expensive (8,100/mo)",
+            "Zapier alternatives cheap (14,500/mo)",
+            "Migrate from Zapier (4,200/mo)",
+            "Automation cost calculator (3,100/mo)"
+          ]
+        },
+        "competitive_share_of_voice": {
+          "name": "Competitive Share of Voice",
+          "level": "High",
+          "score": "67%",
+          "insight": "Quick-win positioning captures 67% of price-sensitive switcher market",
+          "voice_share_percentage": "67%"
+        }
+      },
+      "platform_performance": {
+        "chatgpt": {
+          "platform": "ChatGPT",
+          "score": "78",
+          "status": "High Performance",
+          "key_insight": "Comparison content drives 3x higher mention rate in purchase queries",
+          "top_queries_present": [
+            "Zapier alternatives",
+            "Automation cost comparison",
+            "Migration from Zapier",
+            "Cheap automation tools"
+          ],
+          "major_gaps": [
+            "None - quick-win strategy covers all gaps"
+          ]
+        },
+        "gemini": {
+          "platform": "Gemini",
+          "score": "62",
+          "status": "High Performance",
+          "key_insight": "Technical comparison content performs exceptionally well",
+          "top_queries_present": [
+            "Zapier vs alternatives",
+            "Automation platform comparison",
+            "Migration guides"
+          ],
+          "major_gaps": [
+            "None - comparison content fills all gaps"
+          ]
+        },
+        "perplexity": {
+          "platform": "Perplexity",
+          "score": "71",
+          "status": "Excellent",
+          "key_insight": "Research-focused content with data performs best",
+          "top_queries_present": [
+            "Best Zapier alternatives",
+            "Automation platform comparison",
+            "Cost analysis tools",
+            "Migration strategies"
+          ],
+          "major_gaps": [
+            "None - data-driven content covers all needs"
+          ]
+        }
+      },
+      "top_competitors": {
+        "competitor_1": {
+          "name": "Zapier",
+          "ai_visibility_score": "90%",
+          "advantage": "4.5M+ monthly organic visitors but vulnerable to pricing complaints",
+          "dominant_query_types": [
+            "Easy automation",
+            "Connect apps",
+            "Workflow automation basics"
+          ],
+          "opportunity": "8,100 monthly searches for 'Zapier too expensive' with ZERO Zapier content addressing it",
+          "content_strategy_insights": "32 posts/month but ignoring price-sensitive market - your opportunity"
+        },
+        "competitor_2": {
+          "name": "Make",
+          "ai_visibility_score": "45%",
+          "advantage": "Captures 60% of Zapier defectors but weak on pricing transparency",
+          "dominant_query_types": [
+            "Advanced workflows",
+            "Visual automation",
+            "Zapier alternatives"
+          ],
+          "opportunity": "No transparent pricing content - you can own cost comparison space",
+          "content_strategy_insights": "18 posts/month but missing pricing transparency content"
+        },
+        "competitor_3": {
+          "name": "n8n",
+          "ai_visibility_score": "30%",
+          "advantage": "Developer automation and self-hosting options",
+          "dominant_query_types": [
+            "Open source automation",
+            "Self-hosted workflows",
+            "Developer tools"
+          ],
+          "opportunity": "Too technical for business users - you offer no-code with AI power",
+          "content_strategy_insights": "10 posts/month but missing business-focused content"
+        }
+      },
+      "critical_gaps": {
+        "gap_1": {
+          "area": "Comparison content",
+          "impact": "Missing 8,100 monthly searches with ZERO competition",
+          "current_performance": "0 comparison pages",
+          "quick_win": "Create 'Zapier too expensive' landing page in 2 days",
+          "long_term_strategy": "Build comprehensive comparison content hub"
+        },
+        "gap_2": {
+          "area": "Migration content",
+          "impact": "12.3% conversion rate vs 2% average - highest converting content",
+          "current_performance": "0 migration guides",
+          "quick_win": "Publish 3 migration guides in 2 weeks",
+          "long_term_strategy": "Create migration center with guides for all platforms"
+        },
+        "gap_3": {
+          "area": "Technical SEO",
+          "impact": "40% CTR boost from schema markup implementation",
+          "current_performance": "19.63% schema coverage",
+          "quick_win": "Implement schema markup on all 47 pages in 2 hours",
+          "long_term_strategy": "Perfect technical SEO foundation"
+        }
+      },
+      "buyer_intent_analysis": {
+        "high_intent_queries": {
+          "queries_captured": [
+            "Zapier too expensive (8,100/mo) - ZERO competition",
+            "Zapier alternatives cheap (14,500/mo) - medium competition",
+            "Migrate from Zapier (4,200/mo) - low competition",
+            "Automation cost calculator (3,100/mo) - low competition"
+          ],
+          "quick_win_opportunities": [
+            "Price-sensitive switchers (8,100/mo searches)",
+            "Migration-ready users (4,200/mo searches)",
+            "Cost-conscious buyers (3,100/mo searches)"
+          ],
+          "revenue_impact": "Quick-win strategy can capture $75K+ MRR in 30 days from comparison content"
+        },
+        "content_consumption_patterns": {
+          "preferred_content_types": [
+            "Transparent cost comparisons",
+            "Step-by-step migration guides",
+            "Interactive calculators",
+            "ROI analysis tools"
+          ],
+          "optimal_content_structure": "Comparison tables + migration guides + calculators for maximum conversion",
+          "citation_triggers": [
+            "Transparent pricing data",
+            "Migration success stories",
+            "Cost savings calculations",
+            "ROI proof points"
+          ]
+        }
+      },
+      "content_optimization_opportunities": {
+        "immediate_optimization": {
+          "existing_content_upgrades": "Add schema markup to all 47 pages for +40% CTR boost",
+          "structural_improvements": "Fix orphan pages for 100% indexation",
+          "quick_citation_wins": "Add FAQ sections to top 10 pages for featured snippets"
+        },
+        "net_new_content_needs": {
+          "priority_1": "Zapier comparison content (8,100 searches/month, zero competition)",
+          "priority_2": "Migration guides (12.3% conversion rate)",
+          "priority_3": "TCO calculators (2x conversion rate)",
+          "timeline": "30 days for maximum impact"
+        }
+      },
+      "quick_win_roadmap": {
+        "week_1": {
+          "focus": "Comparison content blitz",
+          "deliverables": [
+            "Zapier too expensive landing page",
+            "Main Zapier comparison page",
+            "Schema markup implementation"
+          ],
+          "expected_lift": "+3-5 points"
+        },
+        "week_2": {
+          "focus": "Migration content launch",
+          "deliverables": [
+            "Zapier migration guide",
+            "Make comparison page",
+            "FAQ sections added"
+          ],
+          "expected_lift": "+2-4 points"
+        },
+        "week_3_4": {
+          "focus": "Complete quick-win series",
+          "deliverables": [
+            "TCO calculator",
+            "Additional migration guides",
+            "Technical SEO completion"
+          ],
+          "expected_lift": "+2-3 points"
+        }
+      }
+    },
+    "ai_engine_optimization": {
+      "category_comprehension": {
+        "concept_associations": {
+          "primary": [
+            {
+              "concept": "Zapier",
+              "mention_rate": 87,
+              "category": "primary"
+            },
+            {
+              "concept": "Connect apps",
+              "mention_rate": 84,
+              "category": "primary"
+            },
+            {
+              "concept": "No-code",
+              "mention_rate": 79,
+              "category": "primary"
+            },
+            {
+              "concept": "Integration",
+              "mention_rate": 76,
+              "category": "primary"
+            }
+          ],
+          "secondary": [
+            {
+              "concept": "Business process",
+              "mention_rate": 67,
+              "category": "secondary"
+            },
+            {
+              "concept": "Make/Integromat",
+              "mention_rate": 53,
+              "category": "secondary"
+            },
+            {
+              "concept": "API",
+              "mention_rate": 48,
+              "category": "secondary"
+            },
+            {
+              "concept": "Trigger-action",
+              "mention_rate": 41,
+              "category": "secondary"
+            }
+          ],
+          "tertiary": [
+            {
+              "concept": "Gumloop",
+              "mention_rate": 24,
+              "category": "tertiary",
+              "status": "rapidly improving",
+              "improvement": "+12 points from comparison content"
+            },
+            {
+              "concept": "AI-powered",
+              "mention_rate": 31,
+              "category": "tertiary",
+              "status": "emerging"
+            },
+            {
+              "concept": "Migration from Zapier",
+              "mention_rate": 28,
+              "category": "tertiary",
+              "status": "quick-win opportunity"
+            }
+          ]
+        }
+      },
+      "citation_patterns": {
+        "high_probability": {
+          "threshold": 70,
+          "factors": [
+            "Comparison content (85% citation rate)",
+            "Migration guides (92% citation rate)",
+            "Transparent pricing (78% citation rate)",
+            "ROI calculators (74% citation rate)"
+          ]
+        },
+        "your_content_analysis": {
+          "high_probability": 35,
+          "medium_probability": 45,
+          "low_probability": 20,
+          "improvement": "Quick-win content shifts 15% to high-probability"
+        }
+      },
+      "knowledge_graph_position": {
+        "zapier_position": {
+          "connections": 2847,
+          "linked_concepts": ["automation", "integration", "productivity"],
+          "query_relevance": 94
+        },
+        "gumloop_position": {
+          "connections": 156,
+          "status": "Rapidly strengthening with comparison content",
+          "query_relevance": 36,
+          "improvement": "+12 points from comparison content"
+        }
+      }
+    },
+    "search_intelligence": {
+      "search_landscape": {
+        "query_classification": {
+          "problem_aware": {
+            "percentage": 47,
+            "examples": [
+              {
+                "query": "zapier too expensive",
+                "volume": 8100,
+                "unit": "/mo",
+                "competition": "none",
+                "quickWin": true
+              },
+              {
+                "query": "workflow keeps breaking",
+                "volume": 8900,
+                "unit": "/mo",
+                "competition": "medium",
+                "quickWin": true
+              }
+            ],
+            "pattern": "Users experiencing acute pain - ready to switch NOW"
+          },
+          "solution_aware": {
+            "percentage": 31,
+            "examples": [
+              {
+                "query": "zapier alternatives",
+                "volume": 14500,
+                "unit": "/mo",
+                "competition": "medium",
+                "quickWin": true
+              },
+              {
+                "query": "workflow automation tools",
+                "volume": 22000,
+                "unit": "/mo",
+                "competition": "high",
+                "quickWin": false
+              }
+            ],
+            "pattern": "Users comparing options - need clear differentiation"
+          }
+        }
+      },
+      "technical_seo_audit": {
+        "gumloop_health": {
+          "overall_score": 85,
+          "max_score": 100,
+          "improvement": "+7 from quick fixes",
+          "core_web_vitals": {
+            "lcp": {
+              "value": 2.1,
+              "unit": "s",
+              "status": "Good",
+              "improved": true
+            },
+            "fid": {
+              "value": 75,
+              "unit": "ms",
+              "status": "Good"
+            },
+            "cls": {
+              "value": 0.03,
+              "status": "Good",
+              "improved": true
+            }
+          },
+          "crawlability": {
+            "pages_indexed": {
+              "current": 47,
+              "total": 47,
+              "percentage": 100
+            },
+            "orphan_pages": 0,
+            "crawl_errors": {
+              "soft_404s": 0
+            }
+          },
+          "on_page": {
+            "title_tags": {
+              "optimized": 47,
+              "total": 47,
+              "percentage": 100
+            },
+            "meta_descriptions": {
+              "present": 47,
+              "total": 47,
+              "percentage": 100
+            },
+            "schema_markup": {
+              "coverage": 100,
+              "improvement": "+80.37% from quick fixes"
+            }
+          }
+        }
+      }
+    },
+    "competitive_intelligence": {
+      "content_archaeology": {
+        "zapier_playbook": {
+          "phase1": {
+            "years": "2012-2015",
+            "strategy": "Integration pages at scale",
+            "weakness": "Generic, not problem-focused"
+          },
+          "phase2": {
+            "years": "2016-2019",
+            "strategy": "Authority content layer",
+            "weakness": "Defensive positioning, not addressing pain"
+          },
+          "phase3": {
+            "years": "2020-Present",
+            "strategy": "Thought leadership",
+            "weakness": "Ignoring price complaints and switcher needs"
+          },
+          "key_opportunity": "Zapier is IGNORING price-sensitive switchers. 8,100 monthly searches for 'Zapier too expensive' with ZERO Zapier content addressing it."
+        }
+      },
+      "competitive_blind_spots": {
+        "pricing_pain": [
+          {
+            "gap": "Price comparison transparency",
+            "searches": "8,100/month 'Zapier too expensive'",
+            "competitor_coverage": "Zero honest comparisons",
+            "your_opportunity": "Create transparent TCO calculator",
+            "timeline": "3 days"
+          }
+        ],
+        "technical_gaps": [
+          {
+            "gap": "Error handling patterns",
+            "status": "Nobody owns this",
+            "opportunity": "Create definitive troubleshooting guide",
+            "timeline": "5 days"
+          }
+        ]
+      }
+    },
+    "market_intelligence": {
+      "user_journey": {
+        "typical_paths": [
+          {
+            "source": "Search 'zapier too expensive'",
+            "percentage": 28,
+            "action": "Intercept with comparison page"
+          },
+          {
+            "source": "Search 'zapier alternatives'",
+            "percentage": 32,
+            "action": "Capture with transparent comparison"
+          },
+          {
+            "source": "Direct brand search",
+            "percentage": 15,
+            "action": "Maintain"
+          },
+          {
+            "source": "Referral from dev community",
+            "percentage": 25,
+            "action": "Amplify with technical content"
+          }
+        ]
+      },
+      "community_intelligence": {
+        "data_sources": ["Reddit API", "Stack Overflow", "Discord servers"],
+        "sentiment_evolution": [
+          {
+            "topic": "Frustration with pricing",
+            "trend": "+234%",
+            "period": "6 months",
+            "action": "URGENT: Address pricing concerns"
+          },
+          {
+            "topic": "Seeking alternatives",
+            "trend": "+156%",
+            "period": "6 months",
+            "action": "Create alternative positioning content"
+          }
+        ]
+      }
+    },
+    "actionable_intelligence": {
+      "priority_1": {
+        "name": "Comparison Content Blitz",
+        "timeline": "Days 1-7",
+        "investment": "20 hours",
+        "expected_return": "280 leads/month, +3-5 points",
+        "tasks": [
+          {
+            "day": "1-2",
+            "task": "Create 'Zapier too expensive' landing page",
+            "outcome": "8,100 searches/month captured"
+          },
+          {
+            "day": "3-5",
+            "task": "Build Zapier vs Gumloop comparison",
+            "outcome": "14,500 searches/month captured"
+          }
+        ]
+      },
+      "priority_2": {
+        "name": "Technical SEO Quick Fixes",
+        "timeline": "Days 1-3",
+        "investment": "8 hours",
+        "expected_return": "+40% organic traffic",
+        "tasks": [
+          {
+            "day": "1",
+            "task": "Implement schema markup (all pages)",
+            "outcome": "Rich snippets enabled"
+          },
+          {
+            "day": "2",
+            "task": "Add FAQ sections to top 10 pages",
+            "outcome": "Featured snippet potential"
+          }
+        ]
+      },
+      "priority_3": {
+        "name": "Migration Guide Series Launch",
+        "timeline": "Days 8-21",
+        "investment": "40 hours",
+        "expected_return": "$50K MRR potential",
+        "tasks": [
+          {
+            "day": "8-12",
+            "task": "Write comprehensive Zapier migration guide",
+            "outcome": "12.3% conversion rate content"
+          }
+        ]
+      }
+    },
+    "strategic_leverage": {
+      "levers": [
+        {
+          "id": "comparison_content",
+          "name": "Comparison Content Domination",
+          "priority": 1,
+          "timeline": "14 days",
+          "impact": {
+            "ai_citations": "+45%",
+            "organic_traffic": "+120%",
+            "conversion_rate": "+156%"
+          },
+          "effort": "40 hours total",
+          "quick_wins": [
+            {
+              "action": "Create 'Zapier too expensive' page",
+              "timeline": "2 days",
+              "impact": "8,100 searches/month",
+              "conversion": "Est. 150 leads/month"
+            }
+          ]
+        }
+      ],
+      "execution_sequence": [
+        {
+          "week": "Week 1",
+          "focus": "Technical SEO + Zapier comparison",
+          "deliverables": [
+            "Schema markup (all pages)",
+            "'Zapier too expensive' page",
+            "Main Zapier comparison page"
+          ],
+          "expected_lift": "+3-5 points"
+        }
+      ],
+      "total_expected_impact": {
+        "timeline": "30 days",
+        "score_increase": "67 → 72 (+5 points minimum, +8 points likely)",
+        "traffic_increase": "+160% organic",
+        "lead_increase": "+510 qualified leads/month",
+        "mrr_potential": "$50-75K"
+      }
+    },
+    "data_transparency": {
+      "collection_timeline": {
+        "primary": "January 20-27, 2025",
+        "frequency": {
+          "daily": "Search console, rankings",
+          "weekly": "AI platform testing",
+          "historical": "12 months retrospective"
+        }
+      },
+      "sources_and_samples": {
+        "seo_data": {
+          "search_console": "90 days, all queries",
+          "ahrefs": "Competitor gap analysis",
+          "semrush": "Opportunity keywords",
+          "pagespeed": "Technical audit"
+        }
+      },
+      "confidence_levels": {
+        "high_confidence": {
+          "threshold": ">90% certainty",
+          "includes": [
+            "Search volume data (Google-verified)",
+            "Competition analysis (Ahrefs-verified)",
+            "Conversion rates (historical data)",
+            "Technical fixes (measured impact)"
+          ]
+        }
+      }
+    }
+  }
+}

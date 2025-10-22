@@ -130,7 +130,7 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
           
           {/* Timeline Phases */}
           <div className="relative flex justify-between items-center">
-            {Object.entries(competitive_intelligence.content_archaeology.zapier_playbook)
+            {Object.entries(competitive_intelligence.content_archaeology?.zapier_playbook || {})
               .filter(([phase]) => phase !== 'key_learning')
               .map(([phase, data]: [string, any], idx) => {
                 const isSelected = selectedPhase === phase;
@@ -188,7 +188,7 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
         
         {/* Phase Details Card */}
         <AnimatePresence mode="wait">
-          {selectedPhase && competitive_intelligence.content_archaeology.zapier_playbook[selectedPhase] && (
+          {selectedPhase && competitive_intelligence.content_archaeology?.zapier_playbook?.[selectedPhase] && (
             <motion.div
               key={selectedPhase}
               initial={{ opacity: 0, y: 20 }}
@@ -200,17 +200,17 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
                 <div className="bg-gray-50 border-b border-gray-200 p-8">
                   <div className="max-w-4xl mx-auto">
                     <h3 className="text-2xl font-light text-gray-900 mb-2">
-                      {competitive_intelligence.content_archaeology.zapier_playbook[selectedPhase].strategy}
+                      {competitive_intelligence.content_archaeology?.zapier_playbook?.[selectedPhase]?.strategy}
                     </h3>
                     <p className="text-gray-600">
-                      Phase {selectedPhase.replace('phase', '')} • {competitive_intelligence.content_archaeology.zapier_playbook[selectedPhase].years}
+                      Phase {selectedPhase.replace('phase', '')} • {competitive_intelligence.content_archaeology?.zapier_playbook?.[selectedPhase]?.years}
                     </p>
                   </div>
                 </div>
                 
                 <div className="p-8">
                   <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {competitive_intelligence.content_archaeology.zapier_playbook[selectedPhase].tactics.map((tactic: string, idx: number) => (
+                    {competitive_intelligence.content_archaeology?.zapier_playbook?.[selectedPhase]?.tactics?.map((tactic: string, idx: number) => (
                       <motion.div
                         key={idx}
                         initial={{ opacity: 0, x: -20 }}
@@ -249,7 +249,7 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
                 <div>
                   <h4 className="font-medium text-gray-900 mb-2">Strategic Insight</h4>
                   <p className="text-gray-700 leading-relaxed">
-                    {competitive_intelligence.content_archaeology.zapier_playbook.key_learning}
+                    {competitive_intelligence.content_archaeology?.zapier_playbook?.key_learning}
                   </p>
                   <p className="text-sm text-gray-600 mt-3">
                     <strong>Your Opportunity:</strong> Skip phases 1-2 by focusing on high-intent problem content 
@@ -353,7 +353,7 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
               </div>
               
               <div className="space-y-3">
-                {competitive_intelligence.competitive_blind_spots.technical_gaps.map((gap: any, idx: number) => (
+                {competitive_intelligence.competitive_blind_spots?.technical_gaps?.map((gap: any, idx: number) => (
                   <motion.div
                     key={idx}
                     initial={{ opacity: 0, x: -20 }}
@@ -431,7 +431,7 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
               </div>
               
               <div className="space-y-3">
-                {competitive_intelligence.competitive_blind_spots.use_case_gaps.map((gap: string, idx: number) => (
+                {competitive_intelligence.competitive_blind_spots?.use_case_gaps?.map((gap: string, idx: number) => (
                   <motion.div
                     key={idx}
                     initial={{ opacity: 0, x: -20 }}
@@ -508,7 +508,7 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
               </div>
               
               <div className="space-y-3">
-                {competitive_intelligence.competitive_blind_spots.emerging_topics.map((topic: any, idx: number) => (
+                {competitive_intelligence.competitive_blind_spots?.emerging_topics?.map((topic: any, idx: number) => (
                   <motion.div
                     key={idx}
                     initial={{ opacity: 0, x: -20 }}
@@ -578,9 +578,9 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
               </h3>
               
               <div className="space-y-4">
-                {competitive_intelligence.backlink_analysis.link_velocity.map((comp: any, idx: number) => {
+                {competitive_intelligence.backlink_analysis?.link_velocity?.map((comp: any, idx: number) => {
                   const isGumloop = comp.competitor === 'Gumloop';
-                  const maxVelocity = Math.max(...competitive_intelligence.backlink_analysis.link_velocity.map((c: any) => c.new_domains_per_month));
+                  const maxVelocity = Math.max(...(competitive_intelligence.backlink_analysis?.link_velocity || []).map((c: any) => c.new_domains_per_month));
                   const percentage = (comp.new_domains_per_month / maxVelocity) * 100;
                   
                   return (
@@ -680,7 +680,7 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
                   <div>
                     <p className="text-sm font-medium text-gray-900 mb-2">Quality vs. Quantity Trade-off</p>
                     <p className="text-sm text-gray-700">
-                      {competitive_intelligence.backlink_analysis.link_quality.insight}
+                      {competitive_intelligence.backlink_analysis?.link_quality?.insight}
                     </p>
                   </div>
                 </div>
@@ -694,10 +694,10 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
                     <CheckCircle className="w-4 h-4 text-green-500" />
                   </div>
                   <p className="text-2xl font-light text-gray-900">
-                    {competitive_intelligence.backlink_analysis.link_quality.your_avg_dr}
+                    {competitive_intelligence.backlink_analysis?.link_quality?.your_avg_dr}
                   </p>
                   <p className="text-xs text-gray-500 mt-1">
-                    vs. Zapier's {competitive_intelligence.backlink_analysis.link_quality.zapier_avg_dr}
+                    vs. Zapier's {competitive_intelligence.backlink_analysis?.link_quality?.zapier_avg_dr}
                   </p>
                 </div>
                 
@@ -707,10 +707,10 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
                     <CheckCircle className="w-4 h-4 text-green-500" />
                   </div>
                   <p className="text-2xl font-light text-gray-900">
-                    {competitive_intelligence.backlink_analysis.link_quality.your_relevancy}
+                    {competitive_intelligence.backlink_analysis?.link_quality?.your_relevancy}
                   </p>
                   <p className="text-xs text-gray-500 mt-1">
-                    vs. Zapier's {competitive_intelligence.backlink_analysis.link_quality.zapier_relevancy}
+                    vs. Zapier's {competitive_intelligence.backlink_analysis?.link_quality?.zapier_relevancy}
                   </p>
                 </div>
               </div>
