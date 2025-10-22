@@ -317,7 +317,7 @@ export default function CreatorPage() {
       };
     } else if (tab === 'posts') {
       // Import posts V1 data
-      const postTopicsV1 = await import('@/usableclientdata/data/posts/posts-data.json');
+      const postTopicsV1 = await import('@/usableclientdata/data/posts/posts-data-v1.json');
       v1DataToStore = {
         topics: postTopicsV1.topics
       };
