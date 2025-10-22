@@ -393,7 +393,12 @@ export default function CreatorPage() {
     } else if (activeTab === 'playbook') {
       await handlePlaybookFlow(text);
     } else if (activeTab === 'posts') {
-      await handlePostsFlow(text);
+      // If posts is in awaiting_input state, generate topics based on user input
+      if (sessions.posts.outputState === 'awaiting_input') {
+        await handlePostsFlow(text);
+      } else {
+        await handlePostsFlow(text);
+      }
     }
   };
 
@@ -874,12 +879,8 @@ The most successful implementations we've seen treat AI adoption as a continuous
                   : 'I want to create a playbook for product launch';
               handleSendMessage(prompt);
             } else if (activeTab === 'posts') {
-              const mode = modes.posts;
-              const prompt =
-                mode === 'optimize'
-                  ? 'Help me improve our existing flagship blog post'
-                  : 'I want to write a blog post about AI in content marketing';
-              handleSendMessage(prompt);
+              // For posts, show input field first instead of immediately starting
+              setOutputState('posts', 'awaiting_input');
             }
           }}
           onStrategyConfirm={handleStrategySelection}
