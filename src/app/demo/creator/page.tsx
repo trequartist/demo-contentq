@@ -301,15 +301,39 @@ export default function CreatorPage() {
     });
     await delay(1500);
     
-    // Step 4: Load V2 data
+    // Step 4: Store V1 data before generating V2
+    const currentSession = sessions[tab];
+    let v1DataToStore = {};
+    
+    if (tab === 'diagnostics') {
+      v1DataToStore = data;
+    } else if (tab === 'playbook') {
+      // Import calendar V1 data
+      const calendarV1Data = await import('@/usableclientdata/content-studio/gumloop-calendar-topics.json');
+      v1DataToStore = {
+        ...playbookData.data,
+        calendarTopics: calendarV1Data,
+        selectedStrategies: currentSession.selectedStrategies || []
+      };
+    } else if (tab === 'posts') {
+      // Import posts V1 data
+      const postTopicsV1 = await import('@/usableclientdata/data/posts/posts-data.json');
+      v1DataToStore = {
+        topics: postTopicsV1.topics
+      };
+    }
+    
+    // Store V1 data
+    storeV1Data(tab, v1DataToStore);
+    
+    // Step 5: Load V2 data
     const v2Data = await loadV2Data(tab);
     
-    // Step 5: Store V2 and update output based on tab
+    // Step 6: Store V2 and update output based on tab
     if (tab === 'diagnostics') {
       generateV2(tab, v2Data);
     } else if (tab === 'playbook') {
       // For playbook V2, update the playbook output with V2 data
-      const currentSession = sessions[tab];
       const playbookOutput = {
         ...playbookData.data,
         ...v2Data,
@@ -336,7 +360,7 @@ export default function CreatorPage() {
     
     setOutputState(tab, 'complete');
     
-    // Step 6: Completion message
+    // Step 7: Completion message
     const completionMsg = getCompletionMessage(tab, v2Data, triggerData);
     addMessage(tab, {
       id: crypto.randomUUID(),

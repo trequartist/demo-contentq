@@ -231,7 +231,7 @@ const baseStore = create<CreatorStore>((set) => ({
           ...state.sessions[tab],
           v2Data,
           hasV2: true,
-          activeVersion: 2, // Auto-switch to V2
+          activeVersion: 2, // Auto-switch to V2 for initial view
         },
       },
     })),
