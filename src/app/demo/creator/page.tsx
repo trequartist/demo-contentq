@@ -86,10 +86,14 @@ export default function CreatorPage() {
         
         setPlaybookStrategies(strategies);
         
+        // Pre-select first two strategies
+        const selectedStrategies = ['migration-accelerator', 'ai-native-authority'];
+        setSelectedStrategies(selectedStrategies);
+        
         const playbookOutput = {
           ...playbookData.data,
-          selectedStrategies: ['migration-accelerator', 'ai-native-authority'], // Pre-select first two strategies
-        generated_playbook: playbookData.data.generated_playbook || [
+          selectedStrategies: selectedStrategies,
+          generated_playbook: playbookData.data.generated_playbook || [
           {
             playbook_title: "AI-Native Content Strategy",
             playbook_description: "Develop content that gets cited by AI assistants and dominates search results",
@@ -155,11 +159,8 @@ export default function CreatorPage() {
         });
         setOutputState('playbook', 'complete');
       } else if (activeTab === 'posts') {
-        // Auto-load posts V1 data
-        const postsV1Data = await import('@/usableclientdata/data/posts/posts-data-v1.json');
-        setPostOutput({ topics: postsV1Data.topics });
-        storeV1Data('posts', postsV1Data);
-        setOutputState('posts', 'awaiting_topic');
+        // For posts, start with input field instead of auto-loading topics
+        setOutputState('posts', 'awaiting_input');
       }
     };
     
@@ -307,6 +308,14 @@ export default function CreatorPage() {
     if (tab === 'diagnostics') {
       generateV2(tab, v2Data);
     } else if (tab === 'playbook') {
+      // For playbook V2, update the playbook output with V2 data
+      const currentSession = sessions[tab];
+      const playbookOutput = {
+        ...playbookData.data,
+        ...v2Data,
+        selectedStrategies: currentSession.selectedStrategies || []
+      };
+      setPlaybookOutput(playbookOutput);
       generateV2(tab, v2Data);
     } else if (tab === 'posts') {
       // For posts, switch topics to V2
@@ -384,21 +393,17 @@ export default function CreatorPage() {
       return;
     }
 
-    // Immediately set to streaming to show activity
-    setOutputState(activeTab, 'streaming');
-
     // Route to appropriate workflow
     if (activeTab === 'diagnostics') {
+      // Immediately set to streaming to show activity
+      setOutputState(activeTab, 'streaming');
       await handleDiagnosticsFlow(text);
     } else if (activeTab === 'playbook') {
       await handlePlaybookFlow(text);
     } else if (activeTab === 'posts') {
-      // If posts is in awaiting_input state, generate topics based on user input
-      if (sessions.posts.outputState === 'awaiting_input') {
-        await handlePostsFlow(text);
-      } else {
-        await handlePostsFlow(text);
-      }
+      // Immediately set to streaming to show activity
+      setOutputState(activeTab, 'streaming');
+      await handlePostsFlow(text);
     }
   };
 
@@ -470,13 +475,11 @@ export default function CreatorPage() {
 
   // PLAYBOOK WORKFLOW
   const handlePlaybookFlow = async (userMessage: string) => {
-    const session = sessions.playbook;
     const mode = modes.playbook;
 
     // If already complete, reset and regenerate
-    if (session.outputState === 'complete') {
+    if (sessions.playbook.outputState === 'complete') {
       setIntermediateSteps('playbook', []);
-      setPlaybookStrategies(undefined as any);
       setPlaybookOutput(undefined as any);
       setSelectedStrategies(undefined as any);
       setOutputState('playbook', 'streaming');
@@ -513,20 +516,20 @@ export default function CreatorPage() {
       return;
     }
 
-    // PLAYBOOK MODE: Show strategies first
-    if (!session.playbookStrategies) {
-      setOutputState('playbook', 'streaming');
+    // PLAYBOOK MODE: Always show strategy selection when user types something
+    setOutputState('playbook', 'streaming');
 
-      addMessage('playbook', {
-        id: crypto.randomUUID(),
-        role: 'assistant',
-        text: 'Great! Let me suggest some strategies for your playbook...',
-        timestamp: new Date().toISOString(),
-      });
+    addMessage('playbook', {
+      id: crypto.randomUUID(),
+      role: 'assistant',
+      text: 'Great! Let me suggest some strategies for your playbook...',
+      timestamp: new Date().toISOString(),
+    });
 
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      // Load strategies from JSON data
+    // Load strategies from JSON data if not already loaded
+    if (!sessions.playbook.playbookStrategies) {
       const strategyData = await import('@/usableclientdata/data/playbook/playbook-strategy-data.json');
       const strategies: PlaybookStrategy[] = strategyData.strategicPlays.map((play: any) => ({
         id: play.id,
@@ -537,8 +540,9 @@ export default function CreatorPage() {
       }));
 
       setPlaybookStrategies(strategies);
-      setOutputState('playbook', 'awaiting_strategy');
     }
+
+    setOutputState('playbook', 'awaiting_strategy');
   };
 
   const handleStrategySelection = async (selectedIds: string[]) => {
@@ -586,59 +590,58 @@ export default function CreatorPage() {
       setIntermediateSteps('posts', []);
       setPostOutput(undefined as any);
       setOutputState('posts', 'awaiting_input');
+      return;
     }
 
-    // Step 1: If no topics yet, generate them based on user input
-    if (!session.postOutput?.topics) {
-      setOutputState('posts', 'streaming');
+    // Step 1: Generate topics based on user input
+    setOutputState('posts', 'streaming');
 
-      const mode = modes.posts;
+    const mode = modes.posts;
 
-      const introText =
-        mode === 'optimize'
-          ? `Reviewing your request: "${userMessage}" and identifying upgrade opportunities...`
-          : `Analyzing your request: "${userMessage}" and generating relevant topics...`;
+    const introText =
+      mode === 'optimize'
+        ? `Reviewing your request: "${userMessage}" and identifying upgrade opportunities...`
+        : `Analyzing your request: "${userMessage}" and generating relevant topics...`;
 
-      addMessage('posts', {
-        id: crypto.randomUUID(),
-        role: 'assistant',
-        text: introText,
-        timestamp: new Date().toISOString(),
-      });
+    addMessage('posts', {
+      id: crypto.randomUUID(),
+      role: 'assistant',
+      text: introText,
+      timestamp: new Date().toISOString(),
+    });
 
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      // Generate topics based on user input
-      const topics: PostTopic[] = [
-        {
-          id: 't1',
-          title: 'The Future of AI in Content Marketing',
-          description: 'Explore how AI is transforming content creation, distribution, and optimization for modern marketers.',
-          relevance: 0.95,
-        },
-        {
-          id: 't2',
-          title: 'Building a Content Strategy with AI',
-          description: 'Step-by-step guide to leveraging AI tools for more effective content planning and execution.',
-          relevance: 0.88,
-        },
-        {
-          id: 't3',
-          title: 'AI vs Human: The Perfect Content Balance',
-          description: 'Finding the right mix of AI efficiency and human creativity in your content workflow.',
-          relevance: 0.82,
-        },
-        {
-          id: 't4',
-          title: 'Scaling Content Production with AI',
-          description: 'How to increase content output 10x while maintaining quality using AI-powered tools.',
-          relevance: 0.79,
-        },
-      ];
+    // Generate topics based on user input
+    const topics: PostTopic[] = [
+      {
+        id: 't1',
+        title: 'The Future of AI in Content Marketing',
+        description: 'Explore how AI is transforming content creation, distribution, and optimization for modern marketers.',
+        relevance: 0.95,
+      },
+      {
+        id: 't2',
+        title: 'Building a Content Strategy with AI',
+        description: 'Step-by-step guide to leveraging AI tools for more effective content planning and execution.',
+        relevance: 0.88,
+      },
+      {
+        id: 't3',
+        title: 'AI vs Human: The Perfect Content Balance',
+        description: 'Finding the right mix of AI efficiency and human creativity in your content workflow.',
+        relevance: 0.82,
+      },
+      {
+        id: 't4',
+        title: 'Scaling Content Production with AI',
+        description: 'How to increase content output 10x while maintaining quality using AI-powered tools.',
+        relevance: 0.79,
+      },
+    ];
 
-      setPostOutput({ topics });
-      setOutputState('posts', 'awaiting_topic');
-    }
+    setPostOutput({ topics });
+    setOutputState('posts', 'awaiting_topic');
   };
 
   const handleTopicSelection = async (topic: PostTopic) => {
@@ -863,7 +866,7 @@ The most successful implementations we've seen treat AI adoption as a continuous
         <OutputPanel
           activeTab={activeTab}
           session={currentSession}
-          onStartCreation={() => {
+          onStartCreation={(text?: string) => {
             if (activeTab === 'diagnostics') {
               const mode = modes.diagnostics;
               const prompt =
@@ -879,8 +882,10 @@ The most successful implementations we've seen treat AI adoption as a continuous
                   : 'I want to create a playbook for product launch';
               handleSendMessage(prompt);
             } else if (activeTab === 'posts') {
-              // For posts, show input field first instead of immediately starting
-              setOutputState('posts', 'awaiting_input');
+              // For posts, process the user's input to generate topics
+              if (text && text.trim()) {
+                handleSendMessage(text);
+              }
             }
           }}
           onStrategyConfirm={handleStrategySelection}

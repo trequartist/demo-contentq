@@ -65,6 +65,8 @@ export function PostsOutput({ data, mode = 'create' }: PostsOutputProps) {
   const [seoPanelOpen, setSeoPanelOpen] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [lastSaved, setLastSaved] = useState(new Date());
+  const [isPublishing, setIsPublishing] = useState(false);
+  const [isPublished, setIsPublished] = useState(false);
 
   const wordCount = content.split(/\s+/).filter((w) => w.length > 0).length;
   const targetWords = 1500;
@@ -115,6 +117,14 @@ export function PostsOutput({ data, mode = 'create' }: PostsOutputProps) {
     <div className="h-full flex flex-col bg-[#F7F7F8]">
       {/* Header */}
       <div className="border-b border-white/50 bg-white/80 backdrop-blur flex-shrink-0">
+        {isPublished && (
+          <div className="bg-green-50 border-b border-green-200 px-6 py-3">
+            <div className="flex items-center gap-2 text-green-700">
+              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span className="text-sm font-medium">Post published successfully! 🎉</span>
+            </div>
+          </div>
+        )}
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center gap-6">
             <h1 className="text-xl font-semibold text-gray-900">{data.draft?.title || 'Untitled Post'}</h1>
@@ -150,9 +160,21 @@ export function PostsOutput({ data, mode = 'create' }: PostsOutputProps) {
               {isSaving ? 'Saving...' : 'Save Draft'}
             </Button>
 
-            <Button className="bg-gray-900 text-white hover:bg-gray-800" disabled={isSaving}>
+            <Button 
+              className="bg-gray-900 text-white hover:bg-gray-800" 
+              disabled={isSaving || isPublishing}
+              onClick={async () => {
+                setIsPublishing(true);
+                // Simulate publishing
+                await new Promise((resolve) => setTimeout(resolve, 2000));
+                setIsPublishing(false);
+                setIsPublished(true);
+                // Hide success message after 3 seconds
+                setTimeout(() => setIsPublished(false), 3000);
+              }}
+            >
               <Send className="w-4 h-4 mr-2" />
-              Publish
+              {isPublishing ? 'Publishing...' : isPublished ? 'Published!' : 'Publish'}
             </Button>
           </div>
         </div>

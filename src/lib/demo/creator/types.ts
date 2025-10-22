@@ -13,6 +13,7 @@ export interface CreatorModes {
 }
 export type OutputState =
   | 'empty'
+  | 'awaiting_input'
   | 'awaiting_strategy'
   | 'awaiting_topic'
   | 'awaiting_brief'

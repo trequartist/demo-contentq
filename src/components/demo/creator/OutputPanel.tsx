@@ -26,7 +26,7 @@ import Button from '@/components/ui/Button';
 interface OutputPanelProps {
   activeTab: CreatorTab;
   session: SessionData;
-  onStartCreation: () => void;
+  onStartCreation: (text?: string) => void;
   onStrategyConfirm?: (ids: string[]) => void;
   onTopicSelect?: (topicId: string) => void;
   onTopicConfirm?: (topicId: string) => void;
@@ -111,7 +111,7 @@ export function OutputPanel({
       }
       if (outputState === 'awaiting_input') {
         return (
-          <div className="h-full overflow-y-auto p-10">
+          <div className="h-screen overflow-y-auto p-10">
             <div className="mx-auto max-w-3xl space-y-6">
               <div className="rounded-3xl bg-white p-8 shadow-xl border border-gray-100">
                 <div className="mb-6">

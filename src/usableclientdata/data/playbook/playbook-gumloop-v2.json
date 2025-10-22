@@ -7,9 +7,13 @@
     "overall_recommendations": "Abandon slow-build strategy. Execute rapid comparison content blitz in days 1-7, launch social-viral campaign days 8-14, capture migration leads days 15-30. Trade long-term comprehensiveness for immediate market share. ROI target: $50K MRR in 30 days.",
     "reasoning_for_recommendations": "Zapier pricing backlash creating unprecedented switching window (8,100/month searches, +234% growth). First-mover advantage available for 30 days before Make/n8n fill the gap. Social algorithms favor controversial positioning right now. Strike while Zapier is defensive.",
     "posts_per_week": 8,
+    "selected_strategies": ["migration-accelerator", "ai-native-authority"],
+    "new_recommended_strategies": ["comparison-content-domination", "social-viral-strategy"],
     "generated_playbook": [
       {
         "playbook_title": "Comparison Content Domination",
+        "strategy_id": "comparison-content-domination",
+        "strategy_type": "new_recommended",
         "executive_summary": "Capture 27,800 monthly comparison searches through aggressive, transparent competitive positioning. Target Zapier's pricing weakness with surgical precision.",
         "content_plays": [
           {
@@ -45,6 +49,8 @@
       },
       {
         "playbook_title": "Social-Viral Strategy",
+        "strategy_id": "social-viral-strategy",
+        "strategy_type": "new_recommended",
         "executive_summary": "Leverage controversial positioning for organic social reach. Target 100K impressions in 30 days through provocative but truthful content about automation industry problems.",
         "content_plays": [
           {
@@ -77,6 +83,42 @@
         ],
         "overall_recommendations": "Be controversial but truthful. Social algorithms reward strong opinions backed by data. Don't be polite—be memorable.",
         "next_steps": ["CEO LinkedIn post schedule (3x/week)", "Reddit presence strategy", "Controversial content calendar", "Engagement playbook"]
+      },
+      {
+        "playbook_title": "The Migration Accelerator",
+        "strategy_id": "migration-accelerator",
+        "strategy_type": "original_selected",
+        "executive_summary": "Accelerate customer migration from competitors by providing seamless, risk-free transition paths with proven migration frameworks.",
+        "content_plays": [
+          {
+            "play_name": "Migration Playbook Creation",
+            "implementation_strategy": "Develop comprehensive migration guides for top 3 competitors with step-by-step processes, risk mitigation strategies, and success metrics.",
+            "content_formats": ["Migration Guides", "Video Tutorials", "Checklists", "Case Studies"],
+            "success_metrics": ["15% increase in migration inquiries", "40% reduction in migration time", "90% customer satisfaction"],
+            "timeline": "Days 1-14",
+            "resource_requirements": "Technical writer, Customer success team, Video production"
+          }
+        ],
+        "overall_recommendations": "Focus on reducing friction and risk perception in migration process.",
+        "next_steps": ["Audit current migration process", "Create competitor-specific guides", "Develop migration calculator"]
+      },
+      {
+        "playbook_title": "The AI-Native Authority",
+        "strategy_id": "ai-native-authority",
+        "strategy_type": "original_selected",
+        "executive_summary": "Establish thought leadership in AI-native automation by creating authoritative content that gets cited by AI assistants and dominates search results.",
+        "content_plays": [
+          {
+            "play_name": "AI Citation Strategy",
+            "implementation_strategy": "Create content specifically designed to be cited by AI assistants, focusing on definitive guides and comprehensive resources.",
+            "content_formats": ["Comprehensive Guides", "Technical Documentation", "Research Reports", "Tool Comparisons"],
+            "success_metrics": ["50+ AI citations per month", "Top 3 ranking for target keywords", "200+ backlinks"],
+            "timeline": "Days 1-30",
+            "resource_requirements": "Technical content team, SEO specialist, Research analyst"
+          }
+        ],
+        "overall_recommendations": "Position as the definitive source for AI-native automation knowledge.",
+        "next_steps": ["Conduct AI citation research", "Create comprehensive guides", "Optimize for AI training data"]
       }
     ],
     "next_steps": [

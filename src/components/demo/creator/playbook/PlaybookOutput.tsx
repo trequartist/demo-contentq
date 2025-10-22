@@ -44,29 +44,43 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
 
   // Filter sections based on selected strategies
   const filteredPlaybook = useMemo(() => {
+    const allSections = versionData.generated_playbook || [];
+    
+    // If no strategies selected, show all sections
     if (!selectedStrategies || selectedStrategies.length === 0) {
-      return versionData.generated_playbook || [];
+      return allSections;
     }
     
-    // Map selected strategy IDs to their corresponding playbook sections
-    const selectedStrategyNames = selectedStrategies.map((id: string) => {
-      // Map strategy IDs to their display names for both V1 and V2
-      const strategyMap: Record<string, string[]> = {
-        'migration-accelerator': ['The Migration Accelerator'],
-        'ai-native-authority': ['The AI-Native Authority'], 
-        'transparency-advantage': ['The Transparency Advantage'],
-        'use-case-accelerator': ['The Use Case Accelerator'],
-        'comparison-content-domination': ['Comparison Content Domination'],
-        'social-viral-strategy': ['Social-Viral Strategy']
-      };
-      return strategyMap[id] || [id];
-    }).flat();
+    // For V1: Show only selected strategies
+    if (activeVersion === 1) {
+      return allSections.filter((section: any) => {
+        // Map strategy IDs to section titles for V1
+        const strategyMap: Record<string, string[]> = {
+          'migration-accelerator': ['The Migration Accelerator'],
+          'ai-native-authority': ['The AI-Native Authority'], 
+          'transparency-advantage': ['The Transparency Advantage'],
+          'use-case-accelerator': ['The Use Case Accelerator']
+        };
+        
+        const selectedStrategyNames = selectedStrategies.map((id: string) => 
+          strategyMap[id] || [id]
+        ).flat();
+        
+        return selectedStrategyNames.includes(section.playbook_title);
+      });
+    }
     
-    // Filter playbook sections to only include selected strategies
-    return (versionData.generated_playbook || []).filter((section: any) => 
-      selectedStrategyNames.includes(section.playbook_title)
-    );
-  }, [selectedStrategies, versionData.generated_playbook]);
+    // For V2: Show both original selected strategies AND new recommended strategies
+    if (activeVersion === 2) {
+      return allSections.filter((section: any) => {
+        // Show sections that are either original selected or new recommended
+        return section.strategy_type === 'original_selected' || 
+               section.strategy_type === 'new_recommended';
+      });
+    }
+    
+    return allSections;
+  }, [selectedStrategies, versionData.generated_playbook, activeVersion]);
 
   const sections = [
     { id: 'overview', label: 'Overview', icon: FileText },
@@ -489,7 +503,7 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
                   </div>
                   <div className="rounded-2xl border border-gray-100 bg-gray-50/60 p-4">
                     <div className="text-xs uppercase tracking-wide text-gray-500">Selected Strategies</div>
-                    <div className="mt-2 text-2xl font-semibold text-gray-900">{versionData.selectedStrategies?.length || 0}</div>
+                    <div className="mt-2 text-2xl font-semibold text-gray-900">{selectedStrategies.length}</div>
                   </div>
                   <div className="rounded-2xl border border-gray-100 bg-gray-50/60 p-4">
                     <div className="text-xs uppercase tracking-wide text-gray-500">Playbook Sections</div>
@@ -498,13 +512,58 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-white/60 bg-white shadow-sm p-8">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">Overall Recommendations</h2>
-                <p className="text-gray-700 leading-relaxed mb-4">{versionData.overall_recommendations}</p>
-                <div className="rounded-xl border border-gray-100 bg-gray-50/80 p-4">
-                  <h3 className="font-semibold text-gray-900 mb-2">Reasoning</h3>
-                  <p className="text-sm text-gray-600">{versionData.reasoning_for_recommendations}</p>
-                </div>
+              {/* Playbook Sections Overview */}
+              <div className="space-y-6">
+                {filteredPlaybook.map((section: any, sectionIndex: number) => (
+                  <div key={sectionIndex} className="rounded-3xl border border-white/60 bg-white shadow-sm p-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      <h2 className="text-xl font-bold text-gray-900">{section.playbook_title}</h2>
+                      {section.strategy_type && (
+                        <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                          section.strategy_type === 'original_selected' 
+                            ? 'bg-blue-100 text-blue-700' 
+                            : 'bg-green-100 text-green-700'
+                        }`}>
+                          {section.strategy_type === 'original_selected' ? 'Your Selection' : 'AI Recommended'}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-gray-700 leading-relaxed mb-6">{section.executive_summary}</p>
+                    
+                    {section.overall_recommendations && (
+                      <div className="bg-blue-50 rounded-lg p-4 mb-4">
+                        <h3 className="font-semibold text-gray-900 mb-2">Recommendations</h3>
+                        <p className="text-sm text-gray-700">{section.overall_recommendations}</p>
+                      </div>
+                    )}
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {section.content_plays?.slice(0, 2).map((play: any, playIndex: number) => (
+                        <div key={playIndex} className="border border-gray-200 rounded-xl p-4">
+                          <h4 className="font-semibold text-gray-900 mb-2">{play.play_name}</h4>
+                          <p className="text-sm text-gray-600 mb-3">{play.implementation_strategy}</p>
+                          <div className="text-xs text-gray-500">
+                            <strong>Timeline:</strong> {play.timeline}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {section.next_steps && section.next_steps.length > 0 && (
+                      <div className="mt-4">
+                        <h3 className="font-semibold text-gray-900 mb-2">Next Steps</h3>
+                        <ul className="text-sm text-gray-600 space-y-1">
+                          {section.next_steps.slice(0, 3).map((step: string, stepIndex: number) => (
+                            <li key={stepIndex} className="flex items-start">
+                              <span className="text-blue-500 mr-2">•</span>
+                              {step}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           )}

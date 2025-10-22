@@ -10,6 +10,8 @@
     "generated_playbook": [
       {
         "playbook_title": "The Migration Accelerator",
+        "strategy_id": "migration-accelerator",
+        "strategy_type": "original_selected",
         "executive_summary": "Capture the 30-40% of users hitting Zapier's $299/month wall through comprehensive migration enablement content.",
         "content_plays": [
           {
@@ -47,6 +49,8 @@
       },
       {
         "playbook_title": "The AI-Native Authority",
+        "strategy_id": "ai-native-authority",
+        "strategy_type": "original_selected",
         "executive_summary": "Define and own the 'AI-native automation' category through thought leadership and technical content.",
         "content_plays": [
           {
@@ -84,6 +88,8 @@
       },
       {
         "playbook_title": "The Transparency Advantage",
+        "strategy_id": "transparency-advantage",
+        "strategy_type": "original_selected",
         "executive_summary": "Differentiate through radical pricing transparency to capture the 73% of B2B buyers influenced by transparent pricing.",
         "content_plays": [
           {
@@ -119,6 +125,8 @@
       },
       {
         "playbook_title": "The Use Case Accelerator",
+        "strategy_id": "use-case-accelerator",
+        "strategy_type": "original_selected",
         "executive_summary": "Provide department and industry-specific implementation guides to achieve 2.3x better conversion through vertical content.",
         "content_plays": [
           {
