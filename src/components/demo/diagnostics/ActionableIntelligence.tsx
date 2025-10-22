@@ -85,87 +85,215 @@ export default function ActionableIntelligence({ data }: ActionableIntelligenceP
         </Card>
       </div>
 
-      {/* Priority Action Matrix */}
-      <section>
+      {/* Start Here - Quick Win Section */}
+      <section className="mb-8">
+        <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+              <Zap className="w-5 h-5 text-green-600" />
+            </div>
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900">Start Here - Quick Wins</h2>
+              <p className="text-sm text-gray-600">These actions can be completed in 1-2 weeks with immediate impact</p>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {[
+              { 
+                action: 'Create "Zapier too expensive" landing page', 
+                priority: 'P0', 
+                effort: 'Medium', 
+                impact: 'High',
+                timeline: '3 days',
+                resources: '1 writer, 1 developer',
+                expected_result: 'Capture 8,100 monthly searches with zero competition'
+              },
+              { 
+                action: 'Add FAQ sections to top 10 posts', 
+                priority: 'P1', 
+                effort: 'Low', 
+                impact: 'Medium',
+                timeline: '1 week',
+                resources: '1 writer',
+                expected_result: '+40% CTR boost from featured snippets'
+              },
+              { 
+                action: 'Implement Article schema markup', 
+                priority: 'P1', 
+                effort: 'Low', 
+                impact: 'Medium',
+                timeline: '2 days',
+                resources: '1 developer',
+                expected_result: 'Rich snippets in search results'
+              },
+              { 
+                action: 'Create pricing comparison calculator', 
+                priority: 'P0', 
+                effort: 'High', 
+                impact: 'High',
+                timeline: '1 week',
+                resources: '1 developer, 1 designer',
+                expected_result: '12.3% conversion rate, 150+ leads/month'
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                <div className="flex items-start justify-between mb-4">
+                  <h4 className="text-base font-semibold text-gray-900 flex-1 leading-tight">{item.action}</h4>
+                  <div className="flex items-center gap-2 ml-4">
+                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                      item.priority === 'P0' ? 'bg-red-100 text-red-700 border border-red-200' : 'bg-yellow-100 text-yellow-700 border border-yellow-200'
+                    }`}>
+                      {item.priority}
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between text-sm text-gray-600">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-gray-400" />
+                      <span>{item.timeline}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users className="w-4 h-4 text-gray-400" />
+                      <span>{item.resources}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-6 text-sm">
+                    <div className="flex items-center gap-2">
+                      <span className="text-gray-500">Impact:</span>
+                      <span className={`font-semibold px-2 py-1 rounded text-xs ${
+                        item.impact === 'High' ? 'bg-red-100 text-red-700' : 
+                        item.impact === 'Medium' ? 'bg-yellow-100 text-yellow-700' : 'bg-green-100 text-green-700'
+                      }`}>
+                        {item.impact}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-gray-500">Effort:</span>
+                      <span className={`font-semibold px-2 py-1 rounded text-xs ${
+                        item.effort === 'High' ? 'bg-red-100 text-red-700' : 
+                        item.effort === 'Medium' ? 'bg-yellow-100 text-yellow-700' : 'bg-green-100 text-green-700'
+                      }`}>
+                        {item.effort}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div className="text-sm text-gray-700 bg-gray-50 rounded-lg p-3 border-l-4 border-blue-200">
+                    <div className="font-medium text-gray-900 mb-1">Expected Result:</div>
+                    <div>{item.expected_result}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Effort vs Impact Matrix */}
+      <section className="mb-8">
         <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">
           <Target className="w-6 h-6 text-gray-400" />
-          Priority Action Matrix
+          Effort vs Impact Matrix
         </h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          {/* High Impact Actions */}
-          <Card className="bg-white border border-gray-200">
-            <div className="p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center">
-                  <Zap className="w-4 h-4 text-red-600" />
-                </div>
-                <h3 className="text-lg font-medium text-gray-900">High Impact Actions</h3>
+        <div className="bg-white border border-gray-200 rounded-xl p-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {/* High Impact, Low Effort - Quick Wins */}
+            <div className="bg-green-50 border border-green-200 rounded-lg p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                <h3 className="text-sm font-semibold text-green-800">Quick Wins</h3>
               </div>
-              
-              <div className="space-y-3">
-                {[
-                  { action: 'Create AI troubleshooting guide', impact: 95, effort: 'Medium', timeline: '2 weeks' },
-                  { action: 'Build error handling content hub', impact: 88, effort: 'High', timeline: '3 weeks' },
-                  { action: 'Launch developer community program', impact: 92, effort: 'Medium', timeline: '4 weeks' }
-                ].map((item, idx) => (
-                  <div key={idx} className="bg-gray-50 rounded-lg p-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-sm font-medium text-gray-900">{item.action}</h4>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs text-gray-500">{item.timeline}</span>
-                        <Badge className="bg-red-100 text-red-700 text-xs">High Impact</Badge>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4 text-xs text-gray-600">
-                      <span>Impact: {item.impact}%</span>
-                      <span>Effort: {item.effort}</span>
-                    </div>
-                    <div className="w-full h-1 bg-gray-200 rounded-full mt-2">
-                      <div className="h-full bg-red-500 rounded-full" style={{ width: `${item.impact}%` }} />
-                    </div>
-                  </div>
-                ))}
+              <p className="text-xs text-green-700 mb-4">High Impact, Low Effort</p>
+              <div className="space-y-2">
+                <div className="text-xs text-green-600 flex items-center gap-2">
+                  <div className="w-1 h-1 bg-green-500 rounded-full"></div>
+                  FAQ sections
+                </div>
+                <div className="text-xs text-green-600 flex items-center gap-2">
+                  <div className="w-1 h-1 bg-green-500 rounded-full"></div>
+                  Schema markup
+                </div>
+                <div className="text-xs text-green-600 flex items-center gap-2">
+                  <div className="w-1 h-1 bg-green-500 rounded-full"></div>
+                  Meta descriptions
+                </div>
               </div>
             </div>
-          </Card>
-
-          {/* Quick Wins */}
-          <Card className="bg-white border border-gray-200">
-            <div className="p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
-                </div>
-                <h3 className="text-lg font-medium text-gray-900">Quick Wins</h3>
+            
+            {/* High Impact, High Effort - Major Projects */}
+            <div className="bg-red-50 border border-red-200 rounded-lg p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                <h3 className="text-sm font-semibold text-red-800">Major Projects</h3>
               </div>
-              
-              <div className="space-y-3">
-                {[
-                  { action: 'Add FAQ sections to existing posts', impact: 65, effort: 'Low', timeline: '1 week' },
-                  { action: 'Optimize meta descriptions', impact: 45, effort: 'Low', timeline: '3 days' },
-                  { action: 'Create automation checklist', impact: 72, effort: 'Low', timeline: '1 week' }
-                ].map((item, idx) => (
-                  <div key={idx} className="bg-gray-50 rounded-lg p-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-sm font-medium text-gray-900">{item.action}</h4>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs text-gray-500">{item.timeline}</span>
-                        <Badge className="bg-green-100 text-green-700 text-xs">Quick Win</Badge>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4 text-xs text-gray-600">
-                      <span>Impact: {item.impact}%</span>
-                      <span>Effort: {item.effort}</span>
-                    </div>
-                    <div className="w-full h-1 bg-gray-200 rounded-full mt-2">
-                      <div className="h-full bg-green-500 rounded-full" style={{ width: `${item.impact}%` }} />
-                    </div>
-                  </div>
-                ))}
+              <p className="text-xs text-red-700 mb-4">High Impact, High Effort</p>
+              <div className="space-y-2">
+                <div className="text-xs text-red-600 flex items-center gap-2">
+                  <div className="w-1 h-1 bg-red-500 rounded-full"></div>
+                  TCO calculator
+                </div>
+                <div className="text-xs text-red-600 flex items-center gap-2">
+                  <div className="w-1 h-1 bg-red-500 rounded-full"></div>
+                  Migration guides
+                </div>
+                <div className="text-xs text-red-600 flex items-center gap-2">
+                  <div className="w-1 h-1 bg-red-500 rounded-full"></div>
+                  Community program
+                </div>
               </div>
             </div>
-          </Card>
+            
+            {/* Low Impact, Low Effort - Fill-ins */}
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                <h3 className="text-sm font-semibold text-yellow-800">Fill-ins</h3>
+              </div>
+              <p className="text-xs text-yellow-700 mb-4">Low Impact, Low Effort</p>
+              <div className="space-y-2">
+                <div className="text-xs text-yellow-600 flex items-center gap-2">
+                  <div className="w-1 h-1 bg-yellow-500 rounded-full"></div>
+                  Image optimization
+                </div>
+                <div className="text-xs text-yellow-600 flex items-center gap-2">
+                  <div className="w-1 h-1 bg-yellow-500 rounded-full"></div>
+                  Internal linking
+                </div>
+                <div className="text-xs text-yellow-600 flex items-center gap-2">
+                  <div className="w-1 h-1 bg-yellow-500 rounded-full"></div>
+                  Content updates
+                </div>
+              </div>
+            </div>
+            
+            {/* Low Impact, High Effort - Questionable */}
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
+                <h3 className="text-sm font-semibold text-gray-800">Questionable</h3>
+              </div>
+              <p className="text-xs text-gray-700 mb-4">Low Impact, High Effort</p>
+              <div className="space-y-2">
+                <div className="text-xs text-gray-600 flex items-center gap-2">
+                  <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
+                  Complex integrations
+                </div>
+                <div className="text-xs text-gray-600 flex items-center gap-2">
+                  <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
+                  Custom tools
+                </div>
+                <div className="text-xs text-gray-600 flex items-center gap-2">
+                  <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
+                  Over-engineering
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

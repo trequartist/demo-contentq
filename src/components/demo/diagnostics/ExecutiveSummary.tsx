@@ -196,12 +196,15 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
                 Comprehensive analysis from {analysis_period.start || 'January 20'} to {analysis_period.end || 'January 27, 2025'}
               </p>
               
-              {/* AI Authority Score Section */}
-              <div className="mb-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl">
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-2xl font-semibold text-gray-900">YOUR AI AUTHORITY SCORE</h2>
+              {/* AI Authority Score Section - Simplified */}
+              <div className="mb-8 p-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-2xl font-semibold text-gray-900 mb-2">AI Authority Score</h2>
+                    <p className="text-sm text-gray-600">How well AI assistants recognize and cite your content</p>
+                  </div>
                   <div className="text-right">
-                    <div className="text-4xl font-bold text-gray-900">{ai_visibility_overview?.visibility_snapshot?.overall_score || "67/100"}</div>
+                    <div className="text-5xl font-bold text-gray-900 mb-1">{ai_visibility_overview?.visibility_snapshot?.overall_score || "67/100"}</div>
                     <div className="flex items-center gap-1 text-green-600 text-sm font-medium">
                       <ArrowUpRight className="w-4 h-4" />
                       +12 from last week
@@ -209,27 +212,44 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
                   </div>
                 </div>
                 
-                <div className="mb-4">
-                  <h3 className="text-sm font-medium text-gray-700 mb-3">BREAKDOWN BY LLM:</h3>
+                {/* Top 3 Priorities Callout */}
+                <div className="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                  <h3 className="text-sm font-semibold text-gray-900 mb-3">Top 3 Priorities</h3>
                   <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-sm">
+                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                      <span className="text-gray-700">Create comparison content for "Zapier alternatives" (14,500 monthly searches)</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                      <span className="text-gray-700">Add pricing transparency content to capture cost-conscious buyers</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <span className="text-gray-700">Implement schema markup for +40% CTR boost</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mb-4">
+                  <h3 className="text-sm font-medium text-gray-700 mb-3">Platform Performance</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                     {Object.entries(ai_visibility_overview?.platform_performance || {}).map(([key, platform]: [string, any]) => (
                       <button 
                         key={key}
                         onClick={() => setSelectedLLM(platform.platform)}
-                        className="flex items-center justify-between w-full hover:bg-blue-50 rounded-lg p-2 transition-colors"
+                        className="flex items-center justify-between p-3 hover:bg-blue-50 rounded-lg transition-colors border border-gray-200"
                       >
-                        <span className="text-sm text-gray-600">{platform.platform}</span>
-                        <div className="flex items-center gap-3">
-                          <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <span className="text-sm font-medium text-gray-700">{platform.platform}</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-16 h-2 bg-gray-200 rounded-full overflow-hidden">
                             <div className="h-full bg-blue-500 rounded-full" style={{ width: `${parseInt(platform.score) || 0}%` }} />
                           </div>
-                          <span className="text-sm font-medium text-gray-900 w-8">{platform.score}</span>
-                          <span className="text-xs text-gray-500 w-8">{platform.status}</span>
+                          <span className="text-sm font-bold text-gray-900">{platform.score}</span>
                         </div>
                       </button>
                     ))}
                   </div>
-                  <p className="text-xs text-gray-500 mt-2">Percentages = weighted by usage</p>
                 </div>
               </div>
               
@@ -258,12 +278,12 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
         </div>
       </motion.div>
 
-      {/* Executive Summary Cards - Premium Design */}
+      {/* Key Metrics - Simplified Cards */}
       <motion.div 
         variants={staggerChildren}
         initial="initial"
         animate="animate"
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
       >
         {Object.entries(ai_visibility_overview.key_metrics || {
           ai_search_presence: { name: 'AI Search Presence', score: 15, level: 'Moderate' },
@@ -275,68 +295,63 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
           const analysis = getScoreAnalysis(score);
           const isExpanded = expandedCard === key;
           
+          // Color coding based on score
+          const getScoreColor = (score: number) => {
+            if (score >= 70) return 'text-green-600 bg-green-50';
+            if (score >= 40) return 'text-yellow-600 bg-yellow-50';
+            return 'text-red-600 bg-red-50';
+          };
+          
           return (
             <motion.div
               key={key}
               variants={fadeInUp}
               whileHover={{ y: -2 }}
               onClick={() => setExpandedCard(isExpanded ? null : key)}
-              className="bg-white border border-gray-200 rounded-lg p-6 cursor-pointer hover:shadow-lg transition-all duration-300"
+              className="bg-white border border-gray-200 rounded-xl p-6 cursor-pointer hover:shadow-lg transition-all duration-300"
             >
-              {/* Header */}
-              <div className="flex items-start justify-between mb-4">
-                <div className="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center">
-                  {key === 'search_visibility' && <Search className="w-5 h-5 text-gray-600" />}
-                  {key === 'ai_discoverability' && <Brain className="w-5 h-5 text-gray-600" />}
-                  {key === 'technical_excellence' && <BarChart3 className="w-5 h-5 text-gray-600" />}
-                  {key === 'growth_opportunity' && <Target className="w-5 h-5 text-gray-600" />}
+              {/* Header with Icon and Score */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                    {key === 'ai_search_presence' && <Brain className="w-4 h-4 text-gray-600" />}
+                    {key === 'content_citation_rate' && <Target className="w-4 h-4 text-gray-600" />}
+                    {key === 'query_coverage' && <Search className="w-4 h-4 text-gray-600" />}
+                    {key === 'competitive_share_of_voice' && <BarChart3 className="w-4 h-4 text-gray-600" />}
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-medium text-gray-900">{metric.name}</h3>
+                    <p className="text-xs text-gray-500">{analysis.label}</p>
+                  </div>
                 </div>
-                <div className="text-right">
-                  <span className="text-xs font-medium text-gray-500">{analysis.label}</span>
-                  <p className="text-xs text-gray-400">{analysis.description}</p>
+                <div className={`px-3 py-1 rounded-full text-sm font-bold ${getScoreColor(score)}`}>
+                  {score}
                 </div>
               </div>
               
-              {/* Score with Animation */}
+              {/* Progress Bar */}
               <div className="mb-4">
-                <div className="flex items-baseline gap-1">
-                  <motion.span 
-                    className="text-4xl font-extralight text-gray-900"
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.2 + idx * 0.1 }}
-                  >
-                    {score}
-                  </motion.span>
-                  <span className="text-lg font-extralight text-gray-400">/100</span>
+                <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                  <motion.div 
+                    className={`h-full rounded-full ${
+                      score >= 70 ? 'bg-green-500' : 
+                      score >= 40 ? 'bg-yellow-500' : 'bg-red-500'
+                    }`}
+                    initial={{ width: 0 }}
+                    animate={{ width: `${score}%` }}
+                    transition={{ duration: 1, delay: 0.3 + idx * 0.1, ease: "easeOut" }}
+                  />
                 </div>
-                <p className="text-sm text-gray-600 mt-1 font-light">
-                  {key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                </p>
               </div>
               
-              {/* Animated Progress Bar */}
-              <div className="h-1 bg-gray-100 rounded-full overflow-hidden mb-3">
-                <motion.div 
-                  className="h-full bg-gradient-to-r from-gray-700 to-gray-900"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${score}%` }}
-                  transition={{ duration: 1, delay: 0.3 + idx * 0.1, ease: "easeOut" }}
-                />
+              {/* Action Required */}
+              <div className="text-xs text-gray-600 mb-3">
+                {metric.action_required || metric.insight || 'No specific action required'}
               </div>
               
-              {/* Trend Indicator */}
+              {/* Expand Button */}
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                  {metric.trend === 'up' ? (
-                    <ArrowUpRight className="w-3 h-3" />
-                  ) : metric.trend === 'down' ? (
-                    <ArrowDownRight className="w-3 h-3" />
-                  ) : (
-                    <Activity className="w-3 h-3" />
-                  )}
-                  <span>{metric.trend_label}</span>
-                </div>
+                <span className="text-xs text-gray-500">{metric.priority || 'P2 - Monitor'}</span>
                 <ChevronRight className={`w-4 h-4 text-gray-400 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
               </div>
 

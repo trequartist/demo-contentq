@@ -27,708 +27,279 @@ interface MarketIntelligenceProps {
 }
 
 export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
-  const [selectedPath, setSelectedPath] = useState<string | null>(null);
-  const [expandedQuote, setExpandedQuote] = useState<number | null>(null);
-  const [hoveredSentiment, setHoveredSentiment] = useState<string | null>(null);
+  const [selectedSegment, setSelectedSegment] = useState<string>('overview');
+  const [expandedInsight, setExpandedInsight] = useState<number | null>(null);
   const { market_intelligence = {} } = data;
+
+  const marketSegments = [
+    { id: 'overview', label: 'Market Overview', icon: BarChart3 },
+    { id: 'buyers', label: 'Buyer Personas', icon: Users },
+    { id: 'trends', label: 'Trends & Signals', icon: TrendingUp },
+    { id: 'opportunities', label: 'Opportunities', icon: Target }
+  ];
 
   return (
     <div className="space-y-8">
-      {/* Section Header with Executive Briefing */}
-      <div className="mb-12">
-        <h1 className="text-4xl font-light text-gray-900 mb-3">
-          {market_intelligence.section_header || 'Market Intelligence'}
-        </h1>
-        <p className="text-xl text-gray-600 font-light mb-8">
-          {market_intelligence.section_subheader || 'Understanding market dynamics and user behavior patterns'}
-        </p>
-        
-        {/* Executive Insight Box */}
-        <Card className="bg-gradient-to-r from-purple-50 to-pink-50 border-0">
-          <div className="p-8">
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-white rounded-lg shadow-sm">
-                <BarChart3 className="w-6 h-6 text-purple-600" />
+      {/* Section Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-semibold text-gray-900 mb-3">Market Intelligence</h1>
+        <p className="text-lg text-gray-600">Market dynamics, buyer insights, and strategic opportunities</p>
+      </div>
+
+      {/* Market Overview Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
+          <div className="p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                <TrendingUp className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h3 className="text-lg font-medium text-gray-900 mb-2">Market Signal Analysis</h3>
-                <p className="text-gray-700 leading-relaxed">
-                  {market_intelligence.user_journey?.journey_insight || 'Market analysis shows significant opportunities in AI automation space.'} Meanwhile, community sentiment shows 
-                  567% growth in AI automation interest, suggesting a major market shift underway. Your position 
-                  at the intersection of developer tools and AI-native automation is strategically valuable.
-                </p>
+                <h3 className="text-lg font-semibold text-gray-900">Market Growth</h3>
+                <p className="text-sm text-gray-600">AI Automation</p>
               </div>
             </div>
+            <div className="text-3xl font-bold text-blue-700 mb-2">+567%</div>
+            <p className="text-sm text-gray-600">Year-over-year growth in search interest</p>
+          </div>
+        </Card>
+
+        <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200">
+          <div className="p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center">
+                <Users className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">Search Volume</h3>
+                <p className="text-sm text-gray-600">AI Automation Queries</p>
+              </div>
+            </div>
+            <div className="text-3xl font-bold text-green-700 mb-2">2.4M</div>
+            <p className="text-sm text-gray-600">Monthly searches for automation-related queries</p>
+          </div>
+        </Card>
+
+        <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
+          <div className="p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center">
+                <Target className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">Market Share</h3>
+                <p className="text-sm text-gray-600">Current Position</p>
+              </div>
+            </div>
+            <div className="text-3xl font-bold text-purple-700 mb-2">2.3%</div>
+            <p className="text-sm text-gray-600">Share of voice in automation discussions</p>
           </div>
         </Card>
       </div>
 
-      {/* Market Trend Analysis */}
-      <section>
-        <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">
-          <TrendingUp className="w-6 h-6 text-gray-400" />
-          Market Trend Analysis
+      {/* Buyer Personas */}
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
+          <Users className="w-6 h-6 text-gray-600" />
+          Key Buyer Personas
         </h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          {/* AI Automation Interest Trend */}
-          <Card className="bg-white border border-gray-200">
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-medium text-gray-900">AI Automation Interest</h3>
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="w-4 h-4 text-green-500" />
-                  <span className="text-sm font-medium text-green-600">+567% YoY</span>
-                </div>
-              </div>
-              
-              {/* Trend Chart */}
-              <div className="relative h-32 mb-4">
-                <svg className="w-full h-full" viewBox="0 0 200 80" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="trendGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#10B981" stopOpacity="0.3" />
-                      <stop offset="100%" stopColor="#10B981" stopOpacity="0.05" />
-                    </linearGradient>
-                  </defs>
-                  
-                  {/* Grid lines */}
-                  <line x1="0" y1="20" x2="200" y2="20" stroke="#E5E7EB" strokeWidth="0.5" />
-                  <line x1="0" y1="40" x2="200" y2="40" stroke="#E5E7EB" strokeWidth="0.5" />
-                  <line x1="0" y1="60" x2="200" y2="60" stroke="#E5E7EB" strokeWidth="0.5" />
-                  
-                  {/* Trend line and area */}
-                  <path
-                    d="M0,70 L40,65 L80,55 L120,40 L160,25 L200,15"
-                    fill="url(#trendGradient)"
-                    stroke="none"
-                  />
-                  <path
-                    d="M0,70 L40,65 L80,55 L120,40 L160,25 L200,15 L200,80 L0,80 Z"
-                    fill="url(#trendGradient)"
-                  />
-                  <path
-                    d="M0,70 L40,65 L80,55 L120,40 L160,25 L200,15"
-                    fill="none"
-                    stroke="#10B981"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  
-                  {/* Data points */}
-                  {[
-                    { x: 0, y: 70 }, { x: 40, y: 65 }, { x: 80, y: 55 },
-                    { x: 120, y: 40 }, { x: 160, y: 25 }, { x: 200, y: 15 },
-                  ].map((point, i) => (
-                    <circle key={i} cx={point.x} cy={point.y} r="3" fill="#10B981" />
-                  ))}
-                </svg>
-              </div>
-              
-              <div className="grid grid-cols-3 gap-2 text-xs">
-                <div className="text-center">
-                  <p className="text-gray-400">Q1 2024</p>
-                  <p className="font-semibold text-gray-900">12K</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-gray-400">Q3 2024</p>
-                  <p className="font-semibold text-gray-900">45K</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-gray-400">Q1 2025</p>
-                  <p className="font-semibold text-green-600">80K</p>
-                </div>
-              </div>
-            </div>
-          </Card>
-
-          {/* Market Signal Strength */}
-          <Card className="bg-white border border-gray-200">
-            <div className="p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Market Signal Strength</h3>
-              
-              <div className="space-y-4">
-                {[
-                  { signal: 'Developer Adoption', strength: 85, trend: 'up', color: 'green' },
-                  { signal: 'Enterprise Interest', strength: 72, trend: 'up', color: 'blue' },
-                  { signal: 'AI Integration', strength: 68, trend: 'up', color: 'purple' },
-                  { signal: 'Community Growth', strength: 91, trend: 'up', color: 'orange' }
-                ].map((item, idx) => (
-                  <div key={idx} className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-gray-700">{item.signal}</span>
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-medium text-gray-900">{item.strength}%</span>
-                        <TrendingUp className="w-3 h-3 text-green-500" />
-                      </div>
-                    </div>
-                    <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-                      <div 
-                        className={`h-full bg-${item.color}-500 rounded-full transition-all duration-1000`}
-                        style={{ width: `${item.strength}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Card>
-        </div>
-      </section>
-
-      {/* User Journey Mapping - Enhanced Flow Visualization */}
-      <section>
-        <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">
-          <Users className="w-6 h-6 text-gray-400" />
-          How Users Find You: Journey Analysis
-        </h2>
-        
-        <Card className="overflow-hidden">
-          <div className="bg-gradient-to-r from-gray-50 to-blue-50 p-8">
-            <div className="max-w-5xl mx-auto">
-              {/* Journey Paths Visualization */}
-              <div className="relative">
-                {/* Central Target */}
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 z-20">
-                  <div className="w-32 h-32 bg-white rounded-full shadow-lg flex items-center justify-center">
-                    <div className="text-center">
-                      <Target className="w-8 h-8 text-purple-600 mx-auto mb-1" />
-                      <span className="text-sm font-medium text-gray-900">Gumloop</span>
-                    </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            {
+              name: 'Technical Decision Makers',
+              percentage: '35%',
+              description: 'CTOs, Engineering Directors, DevOps Leads',
+              painPoints: ['Integration complexity', 'Scalability concerns', 'Technical implementation'],
+              aiImpact: 'High',
+              influence: 'High',
+              color: 'blue'
+            },
+            {
+              name: 'Business Process Owners',
+              percentage: '28%',
+              description: 'Operations Managers, Business Analysts',
+              painPoints: ['Manual processes', 'Data silos', 'Compliance requirements'],
+              aiImpact: 'Medium',
+              influence: 'Medium',
+              color: 'green'
+            },
+            {
+              name: 'Startup Founders',
+              percentage: '22%',
+              description: 'Early-stage entrepreneurs, Technical Co-founders',
+              painPoints: ['Limited resources', 'Rapid scaling needs', 'Quick implementation'],
+              aiImpact: 'High',
+              influence: 'High',
+              color: 'purple'
+            },
+            {
+              name: 'Enterprise Architects',
+              percentage: '15%',
+              description: 'Solution Architects, Integration Specialists',
+              painPoints: ['Legacy system integration', 'Security requirements', 'Governance'],
+              aiImpact: 'Very High',
+              influence: 'Very High',
+              color: 'red'
+            }
+          ].map((persona, idx) => (
+            <Card key={idx} className="bg-white border border-gray-200 hover:shadow-lg transition-shadow">
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900">{persona.name}</h3>
+                  <div className={`px-3 py-1 rounded-full text-sm font-bold ${
+                    persona.color === 'blue' ? 'bg-blue-100 text-blue-700' :
+                    persona.color === 'green' ? 'bg-green-100 text-green-700' :
+                    persona.color === 'purple' ? 'bg-purple-100 text-purple-700' :
+                    'bg-red-100 text-red-700'
+                  }`}>
+                    {persona.percentage}
                   </div>
                 </div>
                 
-                {/* Journey Paths */}
-                <div className="pr-40 space-y-4">
-                  {(market_intelligence.user_journey?.typical_paths || []).map((path: any, idx: number) => {
-                    const colors = ['purple', 'blue', 'green', 'orange', 'pink'];
-                    const color = colors[idx % colors.length];
-                    const isSelected = selectedPath === path.source;
-                    
-                    return (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: idx * 0.1 }}
-                        whileHover={{ scale: 1.02 }}
-                        onClick={() => setSelectedPath(isSelected ? null : path.source)}
-                        className="cursor-pointer"
-                      >
-                        <div className={`
-                          relative flex items-center transition-all
-                          ${isSelected ? 'z-10' : 'z-0'}
-                        `}>
-                          {/* Source Box */}
-                          <div className={`
-                            flex-1 p-6 rounded-lg border-2 transition-all
-                            ${isSelected 
-                              ? `bg-${color}-50 border-${color}-400 shadow-lg` 
-                              : 'bg-white border-gray-200 hover:border-gray-300'
-                            }
-                          `}>
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <h4 className={`font-medium ${isSelected ? `text-${color}-900` : 'text-gray-900'}`}>
-                                  {path.source}
-                                </h4>
-                                {isSelected && (
-                                  <motion.p
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: 'auto' }}
-                                    className="text-sm text-gray-600 mt-2"
-                                  >
-                                    {path.source.includes('Search') && 
-                                      'Low organic visibility means missing high-intent traffic'
-                                    }
-                                    {path.source.includes('Referral') && 
-                                      'Strong signal of developer community trust and word-of-mouth'
-                                    }
-                                    {path.source.includes('Product Hunt') && 
-                                      'Launch spikes are temporary - need sustainable channels'
-                                    }
-                                    {path.source.includes('Direct') && 
-                                      'Brand awareness exists but needs amplification'
-                                    }
-                                  </motion.p>
-                                )}
-                              </div>
-                              <div className="text-right">
-                                <div className={`text-3xl font-light ${
-                                  isSelected ? `text-${color}-600` : 'text-gray-900'
-                                }`}>
-                                  {path.percentage}%
-                                </div>
-                                <div className="text-xs text-gray-500">of traffic</div>
-                              </div>
-                            </div>
-                          </div>
-                          
-                          {/* Flow Line */}
-                          <div className="relative w-32">
-                            <div className={`
-                              absolute inset-y-0 left-0 right-8 flex items-center
-                            `}>
-                              <div className={`
-                                h-2 w-full rounded-full transition-all
-                                ${isSelected 
-                                  ? `bg-gradient-to-r from-${color}-400 to-${color}-600` 
-                                  : 'bg-gray-300'
-                                }
-                              `}
-                                style={{ 
-                                  transform: `scaleY(${path.percentage / 10})`,
-                                  opacity: isSelected ? 1 : 0.6
-                                }}
-                              />
-                            </div>
-                            <div className="absolute right-0 top-1/2 -translate-y-1/2">
-                              <ChevronRight className={`w-6 h-6 ${
-                                isSelected ? `text-${color}-600` : 'text-gray-400'
-                              }`} />
-                            </div>
-                          </div>
+                <p className="text-sm text-gray-600 mb-4">{persona.description}</p>
+                
+                <div className="space-y-3">
+                  <div>
+                    <div className="text-xs text-gray-500 mb-1">AI Impact Potential</div>
+                    <div className={`text-sm font-medium ${
+                      persona.aiImpact === 'Very High' ? 'text-red-600' :
+                      persona.aiImpact === 'High' ? 'text-orange-600' :
+                      'text-yellow-600'
+                    }`}>{persona.aiImpact}</div>
+                  </div>
+                  
+                  <div>
+                    <div className="text-xs text-gray-500 mb-1">Influence Level</div>
+                    <div className="text-sm font-medium text-gray-900">{persona.influence}</div>
+                  </div>
+                  
+                  <div>
+                    <div className="text-xs text-gray-500 mb-2">Key Pain Points</div>
+                    <div className="space-y-1">
+                      {persona.painPoints.map((point, pointIdx) => (
+                        <div key={pointIdx} className="text-xs text-gray-600 flex items-center gap-2">
+                          <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+                          {point}
                         </div>
-                      </motion.div>
-                    );
-                  })}
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
-              
-              {/* Journey Insights */}
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4"
-              >
-                <div className="p-4 bg-red-50 rounded-lg">
-                  <div className="flex items-center gap-2 mb-2">
-                    <AlertCircle className="w-4 h-4 text-red-600" />
-                    <span className="font-medium text-red-900">Organic Gap</span>
-                  </div>
-                  <p className="text-sm text-red-700">
-                    Only 10% from search - missing 90% of category searches
-                  </p>
-                </div>
-                
-                <div className="p-4 bg-green-50 rounded-lg">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Sparkles className="w-4 h-4 text-green-600" />
-                    <span className="font-medium text-green-900">Community Strength</span>
-                  </div>
-                  <p className="text-sm text-green-700">
-                    47% dev referrals shows strong product-market fit
-                  </p>
-                </div>
-                
-                <div className="p-4 bg-blue-50 rounded-lg">
-                  <div className="flex items-center gap-2 mb-2">
-                    <TrendingUp className="w-4 h-4 text-blue-600" />
-                    <span className="font-medium text-blue-900">Growth Path</span>
-                  </div>
-                  <p className="text-sm text-blue-700">
-                    Convert word-of-mouth into scalable content strategy
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </Card>
+            </Card>
+          ))}
+        </div>
       </section>
 
-      {/* Community Intelligence - Enhanced Sentiment Analysis */}
-      <section>
-        <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">
-          <MessageSquare className="w-6 h-6 text-gray-400" />
-          Community Voice: Real-Time Market Signals
+      {/* Market Opportunities */}
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
+          <Target className="w-6 h-6 text-gray-600" />
+          Strategic Opportunities
         </h2>
-        
-        {/* Data Sources Badge */}
-        <div className="flex items-center gap-3 text-sm text-gray-500 mb-6">
-          <span className="font-medium">Data sources:</span>
-          <div className="flex items-center gap-2">
-            {(market_intelligence.community_intelligence?.data_sources || []).map((source: string, idx: number) => (
-              <Badge key={idx} className="bg-gray-100 text-gray-700">
-                {source}
-              </Badge>
-            ))}
-          </div>
-        </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Sentiment Evolution Chart */}
-          <Card className="overflow-hidden">
+          <Card className="bg-white border border-gray-200">
             <div className="p-6">
-              <h3 className="font-medium text-gray-900 mb-6 flex items-center gap-2">
-                <Flame className="w-5 h-5 text-orange-500" />
-                Sentiment Heatmap ({market_intelligence.community_intelligence?.sentiment_evolution?.[0]?.period || 'Current Period'})
-              </h3>
-              
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">High-Value Opportunities</h3>
               <div className="space-y-4">
-                {(market_intelligence.community_intelligence?.sentiment_evolution || []).map((sentiment: any, idx: number) => {
-                  const trendValue = parseInt(sentiment.trend);
-                  const isHot = trendValue > 300;
-                  const isMedium = trendValue > 200;
-                  
-                  return (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.1 }}
-                      onMouseEnter={() => setHoveredSentiment(sentiment.topic)}
-                      onMouseLeave={() => setHoveredSentiment(null)}
-                      className="group"
-                    >
-                      <div className={`
-                        p-5 rounded-lg transition-all cursor-pointer
-                        ${hoveredSentiment === sentiment.topic 
-                          ? 'shadow-lg scale-[1.02]' 
-                          : 'shadow-sm'
-                        }
-                        ${isHot ? 'bg-gradient-to-r from-red-50 to-orange-50' :
-                          isMedium ? 'bg-gradient-to-r from-orange-50 to-yellow-50' :
-                          'bg-gradient-to-r from-green-50 to-blue-50'
-                        }
-                      `}>
-                        <div className="flex items-center justify-between mb-3">
-                          <h4 className="font-medium text-gray-900">{sentiment.topic}</h4>
-                          <div className="flex items-center gap-2">
-                            <Badge className={`
-                              ${isHot ? 'bg-red-100 text-red-700' :
-                                isMedium ? 'bg-orange-100 text-orange-700' :
-                                'bg-green-100 text-green-700'
-                              }
-                            `}>
-                              {sentiment.trend}
-                            </Badge>
-                            <ArrowUpRight className={`w-4 h-4 ${
-                              isHot ? 'text-red-600' :
-                              isMedium ? 'text-orange-600' :
-                              'text-green-600'
-                            }`} />
-                          </div>
-                        </div>
-                        
-                        {/* Progress Bar */}
-                        <div className="relative h-4 bg-white/50 rounded-full overflow-hidden">
-                          <motion.div 
-                            className={`absolute h-full ${
-                              isHot ? 'bg-gradient-to-r from-red-400 to-orange-500' :
-                              isMedium ? 'bg-gradient-to-r from-orange-400 to-yellow-500' :
-                              'bg-gradient-to-r from-green-400 to-blue-500'
-                            }`}
-                            initial={{ width: 0 }}
-                            animate={{ width: `${Math.min(trendValue / 6, 100)}%` }}
-                            transition={{ duration: 1, delay: idx * 0.2 }}
-                          />
-                        </div>
-                        
-                        {/* Hover Details */}
-                        <AnimatePresence>
-                          {hoveredSentiment === sentiment.topic && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: 'auto' }}
-                              exit={{ opacity: 0, height: 0 }}
-                              className="mt-3 pt-3 border-t border-gray-200"
-                            >
-                              <p className="text-sm text-gray-600">
-                                {sentiment.topic === 'AI integration interest' && 
-                                  'Massive growth opportunity - users actively seeking AI-enhanced automation'
-                                }
-                                {sentiment.topic === 'Frustration with pricing' && 
-                                  'Price sensitivity creates opening for value-based positioning'
-                                }
-                                {sentiment.topic === 'Seeking alternatives' && 
-                                  'Direct competitor dissatisfaction - prime conversion opportunity'
-                                }
-                                {sentiment.topic === 'Debugging questions' && 
-                                  'Technical pain points indicate need for better error handling content'
-                                }
-                              </p>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+                {[
+                  {
+                    opportunity: 'Technical Implementation Guides',
+                    searchVolume: '1.2M',
+                    growth: '+45%',
+                    competition: 'Low',
+                    description: 'Detailed technical guides for complex automation scenarios that AI assistants frequently cite'
+                  },
+                  {
+                    opportunity: 'Cost Comparison Content',
+                    searchVolume: '800K',
+                    growth: '+67%',
+                    competition: 'Medium',
+                    description: 'Transparent pricing comparisons and ROI calculators that rank high in AI search results'
+                  },
+                  {
+                    opportunity: 'Industry-Specific Use Cases',
+                    searchVolume: '600K',
+                    growth: '+89%',
+                    competition: 'Low',
+                    description: 'Vertical automation guides for healthcare, finance, and retail that build authority in specific domains'
+                  }
+                ].map((opp, idx) => (
+                  <div key={idx} className="border border-gray-100 rounded-lg p-4">
+                    <div className="flex items-start justify-between mb-2">
+                      <h4 className="font-semibold text-gray-900">{opp.opportunity}</h4>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs text-gray-500">Volume: {opp.searchVolume}</span>
+                        <span className="text-xs text-green-600 font-medium">{opp.growth}</span>
                       </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-              
-              {/* Sentiment Summary */}
-              <div className="mt-6 p-4 bg-indigo-50 rounded-lg">
-                <div className="flex items-start gap-3">
-                  <Lightbulb className="w-5 h-5 text-indigo-600 mt-0.5" />
-                  <div>
-                    <p className="text-sm font-medium text-indigo-900 mb-1">Key Insight</p>
-                    <p className="text-sm text-indigo-700">
-                      567% growth in AI automation interest is your biggest opportunity. 
-                      Position Gumloop as the AI-native alternative to legacy tools.
-                    </p>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-3">{opp.description}</p>
+                    <div className="flex items-center gap-4 text-xs">
+                      <span className="text-gray-500">Competition: <span className={`font-medium ${
+                        opp.competition === 'Low' ? 'text-green-600' : 
+                        opp.competition === 'Medium' ? 'text-yellow-600' : 'text-red-600'
+                      }`}>{opp.competition}</span></span>
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </Card>
-          
-          {/* Verbatim Quotes */}
-          <Card className="overflow-hidden">
+
+          <Card className="bg-white border border-gray-200">
             <div className="p-6">
-              <h3 className="font-medium text-gray-900 mb-6 flex items-center gap-2">
-                <Quote className="w-5 h-5 text-gray-400" />
-                Voice of the Customer
-              </h3>
-              
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Market Trends</h3>
               <div className="space-y-4">
-                {(market_intelligence.community_intelligence?.verbatim_quotes || []).map((quote: string, idx: number) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.1 }}
-                    whileHover={{ scale: 1.02 }}
-                    onClick={() => setExpandedQuote(expandedQuote === idx ? null : idx)}
-                    className="cursor-pointer"
-                  >
-                    <div className={`
-                      p-5 bg-white border-2 rounded-lg transition-all
-                      ${expandedQuote === idx 
-                        ? 'border-purple-400 shadow-lg' 
-                        : 'border-gray-200 hover:border-gray-300'
-                      }
-                    `}>
-                      <div className="flex items-start gap-3">
-                        <Quote className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
-                        <div className="flex-1">
-                          <p className="text-gray-700 italic leading-relaxed">
-                            "{quote}"
-                          </p>
-                          
-                          {/* Expanded Analysis */}
-                          <AnimatePresence>
-                            {expandedQuote === idx && (
-                              <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                className="mt-4 pt-4 border-t border-purple-200"
-                              >
-                                <div className="flex items-center gap-2 mb-2">
-                                  <Info className="w-4 h-4 text-purple-600" />
-                                  <span className="text-sm font-medium text-purple-900">Strategic Implication</span>
-                                </div>
-                                <p className="text-sm text-gray-600">
-                                  {quote.includes('expensive') && 
-                                    'Price sensitivity indicates market opportunity for transparent, value-based pricing model'
-                                  }
-                                  {quote.includes('failed') && 
-                                    'Debugging pain point - create content around error handling and troubleshooting'
-                                  }
-                                  {quote.includes('complex logic') && 
-                                    'Need for advanced features without coding - highlight your visual workflow builder'
-                                  }
-                                  {quote.includes('learns') && 
-                                    'AI/ML interest - position intelligent automation as key differentiator'
-                                  }
-                                </p>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
+                {[
+                  {
+                    trend: 'AI-First Automation',
+                    aiImpact: 'High',
+                    timeline: '6-12 months',
+                    description: 'Shift from rule-based to AI-powered automation - high citation potential in AI search results'
+                  },
+                  {
+                    trend: 'No-Code/Low-Code Adoption',
+                    aiImpact: 'Very High',
+                    timeline: '3-6 months',
+                    description: 'Business users want to build automations without coding - excellent for AI authority building'
+                  },
+                  {
+                    trend: 'Industry-Specific Solutions',
+                    aiImpact: 'Medium',
+                    timeline: '12-18 months',
+                    description: 'Vertical automation solutions gaining traction - niche authority opportunities'
+                  },
+                  {
+                    trend: 'Real-Time Processing',
+                    aiImpact: 'High',
+                    timeline: '6-9 months',
+                    description: 'Demand for instant automation responses - technical content that AI assistants frequently cite'
+                  }
+                ].map((trend, idx) => (
+                  <div key={idx} className="border border-gray-100 rounded-lg p-4">
+                    <div className="flex items-start justify-between mb-2">
+                      <h4 className="font-semibold text-gray-900">{trend.trend}</h4>
+                      <div className="flex items-center gap-2">
+                        <span className={`px-2 py-1 rounded text-xs font-medium ${
+                          trend.aiImpact === 'Very High' ? 'bg-red-100 text-red-700' :
+                          trend.aiImpact === 'High' ? 'bg-orange-100 text-orange-700' :
+                          'bg-yellow-100 text-yellow-700'
+                        }`}>
+                          {trend.aiImpact} AI Impact
+                        </span>
                       </div>
                     </div>
-                  </motion.div>
+                    <p className="text-sm text-gray-600 mb-2">{trend.description}</p>
+                    <div className="text-xs text-gray-500">Timeline: {trend.timeline}</div>
+                  </div>
                 ))}
               </div>
             </div>
           </Card>
         </div>
       </section>
-
-      {/* Search Query Evolution - Enhanced Timeline */}
-      <section>
-        <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">
-          <Search className="w-6 h-6 text-gray-400" />
-          Search Evolution: Market Maturity Signals
-        </h2>
-        
-        <Card className="overflow-hidden">
-          <div className="p-8">
-            {/* Timeline Visualization */}
-            <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute left-20 top-20 bottom-20 w-0.5 bg-gradient-to-b from-gray-300 via-blue-300 to-green-300" />
-              
-              {/* Timeline Points */}
-              <div className="space-y-12">
-                {/* 2023 - Historical */}
-                <motion.div 
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="relative flex items-start gap-8"
-                >
-                  <div className="relative z-10">
-                    <div className="w-20 h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center shadow-lg">
-                      <span className="font-semibold text-gray-700">2023</span>
-                    </div>
-                    <Calendar className="absolute -bottom-2 -right-2 w-5 h-5 text-gray-500" />
-                  </div>
-                  
-                  <div className="flex-1">
-                    <h4 className="text-lg font-medium text-gray-900 mb-3">Historical: Generic Discovery</h4>
-                    <div className="flex flex-wrap gap-3 mb-4">
-                      {(market_intelligence.search_query_evolution?.['2023_queries'] || []).map((query: string, idx: number) => (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: idx * 0.1 }}
-                        >
-                          <Badge className="bg-gray-100 text-gray-700 px-4 py-2 text-sm">
-                            {query}
-                          </Badge>
-                        </motion.div>
-                      ))}
-                    </div>
-                    <p className="text-sm text-gray-600 italic">
-                      Basic functionality searches - users didn't know what to ask for
-                    </p>
-                  </div>
-                </motion.div>
-                
-                {/* 2024 - Current */}
-                <motion.div 
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="relative flex items-start gap-8"
-                >
-                  <div className="relative z-10">
-                    <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-300 rounded-full flex items-center justify-center shadow-lg ring-4 ring-blue-100">
-                      <span className="font-semibold text-blue-700">2024</span>
-                    </div>
-                    <Activity className="absolute -bottom-2 -right-2 w-5 h-5 text-blue-500" />
-                  </div>
-                  
-                  <div className="flex-1">
-                    <h4 className="text-lg font-medium text-gray-900 mb-3">Current: Solution Awareness</h4>
-                    <div className="flex flex-wrap gap-3 mb-4">
-                      {(market_intelligence.search_query_evolution?.['2024_queries'] || []).map((query: string, idx: number) => (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.2 + idx * 0.1 }}
-                        >
-                          <Badge className="bg-blue-100 text-blue-700 px-4 py-2 text-sm font-medium">
-                            {query}
-                          </Badge>
-                        </motion.div>
-                      ))}
-                    </div>
-                    <p className="text-sm text-gray-600 italic">
-                      Category awareness growing - users comparing specific solutions
-                    </p>
-                  </div>
-                </motion.div>
-                
-                {/* 2025 - Emerging */}
-                <motion.div 
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  className="relative flex items-start gap-8"
-                >
-                  <div className="relative z-10">
-                    <div className="w-20 h-20 bg-gradient-to-br from-green-100 to-green-300 rounded-full flex items-center justify-center shadow-lg animate-pulse">
-                      <span className="font-semibold text-green-700">2025</span>
-                    </div>
-                    <Sparkles className="absolute -bottom-2 -right-2 w-5 h-5 text-green-500" />
-                  </div>
-                  
-                  <div className="flex-1">
-                    <h4 className="text-lg font-medium text-gray-900 mb-3">Emerging: AI-Native Demand</h4>
-                    <div className="flex flex-wrap gap-3 mb-4">
-                      {(market_intelligence.search_query_evolution?.['2025_emerging'] || []).map((query: string, idx: number) => (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.4 + idx * 0.1 }}
-                        >
-                          <Badge className="bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 px-4 py-2 text-sm font-medium border border-green-300">
-                            {query}
-                          </Badge>
-                        </motion.div>
-                      ))}
-                    </div>
-                    <p className="text-sm text-gray-600 italic">
-                      AI transformation underway - position for the future, not the past
-                    </p>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-            
-            {/* Predictive Intelligence Box */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="mt-12"
-            >
-              <Card className="bg-gradient-to-r from-indigo-50 to-purple-50 border-indigo-200">
-                <div className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 bg-white rounded-lg shadow-sm">
-                      <TrendingUp className="w-6 h-6 text-indigo-600" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-gray-900 mb-2">Predictive Market Intelligence</h4>
-                      <p className="text-gray-700 mb-3">
-                        {market_intelligence.search_query_evolution?.predictive_insight || 'Market trends show significant growth in AI automation adoption, with search queries shifting from basic automation to advanced AI-powered workflows.'}
-                      </p>
-                      <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-2">
-                          <ArrowUpRight className="w-4 h-4 text-green-600" />
-                          <span className="text-sm text-gray-600">AI queries: <span className="font-semibold">+567% YoY</span></span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <ArrowUpRight className="w-4 h-4 text-blue-600" />
-                          <span className="text-sm text-gray-600">Category maturity: <span className="font-semibold">Accelerating</span></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-          </div>
-        </Card>
-      </section>
-      
-      {/* Bottom CTA Section */}
-      <Card className="bg-gradient-to-r from-purple-900 to-indigo-800 text-white">
-        <div className="p-8">
-          <h3 className="text-xl font-medium mb-3">Transform Market Intelligence into Growth</h3>
-          <p className="text-purple-100 mb-6">
-            Your market shows clear signals: 567% growth in AI automation interest, strong developer community trust, 
-            and massive organic search opportunity. Time to convert insights into action.
-          </p>
-          <div className="flex gap-4">
-            <button className="bg-white text-purple-900 px-6 py-3 rounded-lg font-medium hover:bg-purple-50 transition-colors">
-              Build Content Strategy
-            </button>
-            <button className="bg-purple-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-600 transition-colors">
-              View Growth Playbook
-            </button>
-          </div>
-        </div>
-      </Card>
     </div>
   );
 }

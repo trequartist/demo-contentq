@@ -7,47 +7,72 @@
         "overall_score": "78.5/100",
         "score_level": "Good",
         "industry_position": "Behind leaders",
+        "what_this_means": "You have strong technical authority in AI automation but are missing out on the larger general automation market. Your content is excellent but not reaching the right audience at the right time in their buying journey.",
         "biggest_win": "#1 positions for RevOps automation guides with 207% ROI case studies driving 34.6% share in AI automation queries",
         "biggest_threat": "Only 2 purchase-stage posts vs competitors' 6-12, creating severe conversion bottleneck while Zapier captures 60% of evaluation searches",
-        "market_context": "Strong AI automation authority (78.5 visibility) trapped behind Zapier's 85% market dominance in general automation worth $50M+ annually"
+        "market_context": "Strong AI automation authority (78.5 visibility) trapped behind Zapier's 85% market dominance in general automation worth $50M+ annually",
+        "quick_win_opportunities": [
+          "Create 5 comparison guides targeting 'Zapier alternatives' (14,500 monthly searches)",
+          "Build migration content for 'Zapier too expensive' (8,100 monthly searches)", 
+          "Add pricing transparency content to capture cost-conscious buyers",
+          "Develop buyer journey content for evaluation stage"
+        ],
+        "immediate_actions": [
+          "Week 1: Publish 'Zapier vs Gumloop' comparison guide",
+          "Week 2: Create 'Migrate from Zapier' step-by-step guide",
+          "Week 3: Launch pricing calculator and TCO analysis",
+          "Week 4: Add FAQ sections to top 10 posts for featured snippets"
+        ]
       },
       "key_metrics": {
         "ai_search_presence": {
           "name": "AI Search Presence",
           "level": "Moderate",
           "score": "15%",
+          "what_this_means": "AI assistants only mention you in 15% of automation queries, mostly in technical contexts. This means you're invisible to most people looking for automation solutions.",
           "insight": "ChatGPT mentions you 15% of queries in 'AI automation' context only",
-          "benchmark_comparison": "90% below Zapier's mention rate for beginners"
+          "benchmark_comparison": "90% below Zapier's mention rate for beginners",
+          "action_required": "Create beginner-friendly content that answers common automation questions",
+          "priority": "P0 - Critical for market visibility"
         },
         "content_citation_rate": {
           "name": "Content Citation Rate",
           "level": "Low",
           "score": "10-20%",
+          "what_this_means": "When AI assistants do mention you, they only cite your content 10-20% of the time, indicating your content isn't authoritative enough for AI systems to trust.",
           "insight": "Limited citations across AI platforms, mainly in technical contexts",
           "top_cited_content": [
             "RevOps automation guides",
             "Enterprise security content",
             "AI workflow tutorials"
-          ]
+          ],
+          "action_required": "Improve content authority with more data, case studies, and expert insights",
+          "priority": "P1 - Important for credibility"
         },
         "query_coverage": {
           "name": "Query Coverage",
           "level": "Critical Gap",
           "score": "35%",
+          "what_this_means": "You're only capturing 35% of relevant search queries, missing 65% of potential customers. This is a massive opportunity loss.",
           "insight": "Missing 65% of user intent queries, especially purchase-stage content",
           "missing_query_types": [
-            "Zapier alternatives cheap",
-            "Zapier too expensive",
-            "Migrate from Zapier",
-            "Automation ROI calculator"
-          ]
+            "Zapier alternatives cheap (14,500/mo searches)",
+            "Zapier too expensive (8,100/mo searches)",
+            "Migrate from Zapier (4,200/mo searches)",
+            "Automation ROI calculator (3,100/mo searches)"
+          ],
+          "action_required": "Create content for high-volume, high-intent queries you're missing",
+          "priority": "P0 - Critical for lead generation"
         },
         "competitive_share_of_voice": {
           "name": "Competitive Share of Voice",
           "level": "Low",
           "score": "34.6%",
+          "what_this_means": "You own only 34.6% of the conversation in your niche, while competitors dominate the broader automation market. You need to expand beyond technical content.",
           "insight": "Strong in AI automation niche but invisible in general automation market",
-          "voice_share_percentage": "34.6%"
+          "voice_share_percentage": "34.6%",
+          "action_required": "Create content that bridges technical expertise with practical business value",
+          "priority": "P1 - Important for market expansion"
         }
       },
       "platform_performance": {

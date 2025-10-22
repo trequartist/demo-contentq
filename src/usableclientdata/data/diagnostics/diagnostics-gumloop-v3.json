@@ -7,48 +7,78 @@
         "overall_score": "82/100",
         "score_level": "Good",
         "industry_position": "Rapidly climbing",
+        "what_this_means": "You're in a strong position to capture market share during a unique opportunity window. Your AI visibility is above industry average, and you have a clear path to dominate a high-value, low-competition search space.",
         "biggest_win": "Quick-win strategy targeting 8,100 monthly 'Zapier too expensive' searches with ZERO competition, projected 150+ leads/month",
         "biggest_threat": "30-day window before competitors react to pricing backlash - must execute comparison content immediately",
-        "market_context": "Unprecedented switching window: 8,100 searches/month for 'Zapier too expensive' with zero competitive content. Quick-win focus can capture $75K+ MRR in 30 days."
+        "market_context": "Unprecedented switching window: 8,100 searches/month for 'Zapier too expensive' with zero competitive content. Quick-win focus can capture $75K+ MRR in 30 days.",
+        "next_7_days_action_plan": {
+          "day_1_2": "Launch 'Zapier too expensive' landing page with pricing comparison table",
+          "day_3_4": "Publish main Zapier vs Gumloop comparison guide with migration calculator",
+          "day_5_7": "Deploy TCO calculator and start social media campaign around pricing transparency"
+        },
+        "resource_requirements": {
+          "content_team": "1 writer (40 hours), 1 designer (16 hours)",
+          "development": "1 developer (24 hours) for calculators and landing pages",
+          "budget": "$8,000 for content creation and tools",
+          "timeline": "7 days for initial launch, 30 days for full impact"
+        },
+        "expected_impact": {
+          "traffic": "+2,500 monthly organic visitors",
+          "leads": "+150 qualified leads per month",
+          "conversions": "12.3% conversion rate (vs 2% industry average)",
+          "revenue": "$75K+ MRR within 30 days"
+        }
       },
       "key_metrics": {
         "ai_search_presence": {
           "name": "AI Search Presence",
           "level": "High",
           "score": "28%",
+          "what_this_means": "AI assistants mention you in 28% of automation-related queries, which is above the 15% industry average. This means you're becoming a recognized authority in the space.",
           "insight": "Quick-win comparison content drives 2x higher citation rates in purchase-intent queries",
-          "benchmark_comparison": "85% improvement over baseline with comparison content"
+          "benchmark_comparison": "85% improvement over baseline with comparison content",
+          "action_required": "Continue creating comparison content to maintain and improve this metric",
+          "priority": "P0 - Critical for maintaining market position"
         },
         "content_citation_rate": {
           "name": "Content Citation Rate",
           "level": "High",
           "score": "45-60%",
+          "what_this_means": "When AI assistants do mention you, they cite your content 45-60% of the time, indicating high-quality, authoritative content that AI systems trust.",
           "insight": "Comparison content shows 12.3% conversion vs 2% average - highest performing content type",
           "top_cited_content": [
             "Zapier comparison guides",
             "Migration tutorials", 
             "Pricing transparency content",
             "Quick-win calculators"
-          ]
+          ],
+          "action_required": "Double down on comparison content creation - it's your highest converting content type",
+          "priority": "P0 - Critical for revenue generation"
         },
         "query_coverage": {
           "name": "Query Coverage",
           "level": "High",
           "score": "78%",
+          "what_this_means": "You're capturing 78% of high-intent purchase queries, meaning most people looking to buy automation tools are finding your content.",
           "insight": "Quick-win strategy captures 78% of high-intent purchase queries within 30 days",
           "captured_query_types": [
             "Zapier too expensive (8,100/mo)",
             "Zapier alternatives cheap (14,500/mo)",
             "Migrate from Zapier (4,200/mo)",
             "Automation cost calculator (3,100/mo)"
-          ]
+          ],
+          "action_required": "Maintain this coverage by continuing to create content for these high-value queries",
+          "priority": "P1 - Important for lead generation"
         },
         "competitive_share_of_voice": {
           "name": "Competitive Share of Voice",
           "level": "High",
           "score": "67%",
+          "what_this_means": "You own 67% of the conversation around price-sensitive automation buyers - this is your competitive moat.",
           "insight": "Quick-win positioning captures 67% of price-sensitive switcher market",
-          "voice_share_percentage": "67%"
+          "voice_share_percentage": "67%",
+          "action_required": "Protect this advantage by staying ahead of competitor content",
+          "priority": "P1 - Important for competitive positioning"
         }
       },
       "platform_performance": {
@@ -210,7 +240,18 @@
             "Main Zapier comparison page",
             "Schema markup implementation"
           ],
-          "expected_lift": "+3-5 points"
+          "expected_lift": "+3-5 points",
+          "specific_actions": [
+            "Day 1-2: Create 'Zapier too expensive' landing page with pricing comparison table",
+            "Day 3-4: Publish comprehensive Zapier vs Gumloop comparison guide",
+            "Day 5-7: Implement Article schema markup on all comparison pages"
+          ],
+          "success_metrics": [
+            "Landing page live with pricing comparison",
+            "Comparison guide ranking in top 10 for target keywords",
+            "Schema markup implemented on 5+ pages"
+          ],
+          "resource_requirements": "1 writer (20 hours), 1 developer (8 hours), $2,000 budget"
         },
         "week_2": {
           "focus": "Migration content launch",
@@ -219,7 +260,18 @@
             "Make comparison page",
             "FAQ sections added"
           ],
-          "expected_lift": "+2-4 points"
+          "expected_lift": "+2-4 points",
+          "specific_actions": [
+            "Day 8-10: Create step-by-step Zapier migration guide with screenshots",
+            "Day 11-12: Publish Make vs Gumloop comparison with feature matrix",
+            "Day 13-14: Add FAQ sections to top 10 pages for featured snippets"
+          ],
+          "success_metrics": [
+            "Migration guide gets 100+ page views in first week",
+            "Make comparison ranks in top 5 for 'Make vs Gumloop'",
+            "FAQ sections appear in featured snippets for 3+ queries"
+          ],
+          "resource_requirements": "1 writer (16 hours), 1 designer (8 hours), $1,500 budget"
         },
         "week_3_4": {
           "focus": "Complete quick-win series",
@@ -228,7 +280,55 @@
             "Additional migration guides",
             "Technical SEO completion"
           ],
-          "expected_lift": "+2-3 points"
+          "expected_lift": "+2-3 points",
+          "specific_actions": [
+            "Day 15-18: Build interactive TCO calculator with real-time pricing",
+            "Day 19-21: Create migration guides for n8n and Microsoft Power Automate",
+            "Day 22-28: Complete technical SEO audit and fix all issues"
+          ],
+          "success_metrics": [
+            "TCO calculator generates 50+ leads in first week",
+            "Additional migration guides rank in top 10",
+            "Technical SEO score improves to 95+"
+          ],
+          "resource_requirements": "1 developer (24 hours), 1 writer (12 hours), $3,000 budget"
+        }
+      },
+      "next_7_days_action_plan": {
+        "priority_actions": [
+          {
+            "action": "Launch 'Zapier too expensive' landing page",
+            "priority": "P0",
+            "effort": "Medium",
+            "impact": "High",
+            "timeline": "2 days",
+            "resources": "1 writer, 1 developer",
+            "expected_result": "Capture 8,100 monthly searches with zero competition"
+          },
+          {
+            "action": "Create comprehensive Zapier vs Gumloop comparison",
+            "priority": "P0", 
+            "effort": "High",
+            "impact": "High",
+            "timeline": "3 days",
+            "resources": "1 writer, 1 designer",
+            "expected_result": "12.3% conversion rate, 150+ leads/month"
+          },
+          {
+            "action": "Implement Article schema markup",
+            "priority": "P1",
+            "effort": "Low",
+            "impact": "Medium",
+            "timeline": "1 day",
+            "resources": "1 developer",
+            "expected_result": "+40% CTR boost from rich snippets"
+          }
+        ],
+        "success_metrics_dashboard": {
+          "traffic": "Target: +2,500 monthly visitors",
+          "leads": "Target: +150 qualified leads/month", 
+          "conversions": "Target: 12.3% conversion rate",
+          "revenue": "Target: $75K+ MRR in 30 days"
         }
       }
     },

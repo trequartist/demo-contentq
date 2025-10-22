@@ -30,14 +30,62 @@ type DiagnosticsSection =
   | 'strategic';
 
 const sections = [
-  { id: 'executive', label: 'Executive Summary', icon: BarChart3 },
-  { id: 'ai-discoverability', label: 'AI Discoverability', icon: Brain },
-  { id: 'search', label: 'Search Intelligence', icon: Search },
-  { id: 'competitive', label: 'Competitive', icon: Trophy },
-  { id: 'market', label: 'Market Intelligence', icon: TrendingUp },
-  { id: 'data', label: 'Data Transparency', icon: Database },
-  { id: 'actionable', label: 'Actionable Intel', icon: Target },
-  { id: 'strategic', label: 'Strategic Leverage', icon: Zap },
+  { 
+    id: 'executive', 
+    label: 'Executive Summary', 
+    icon: BarChart3,
+    description: 'Key metrics and top priorities',
+    priority: 'high'
+  },
+  { 
+    id: 'ai-discoverability', 
+    label: 'AI Discoverability', 
+    icon: Brain,
+    description: 'How AI assistants find your content',
+    priority: 'high'
+  },
+  { 
+    id: 'search', 
+    label: 'Search Intelligence', 
+    icon: Search,
+    description: 'Query opportunities and competition',
+    priority: 'high'
+  },
+  { 
+    id: 'actionable', 
+    label: 'Actionable Intel', 
+    icon: Target,
+    description: 'Step-by-step action plans',
+    priority: 'high'
+  },
+  { 
+    id: 'competitive', 
+    label: 'Competitive', 
+    icon: Trophy,
+    description: 'Competitor analysis and positioning',
+    priority: 'medium'
+  },
+  { 
+    id: 'market', 
+    label: 'Market Intelligence', 
+    icon: TrendingUp,
+    description: 'Market trends and buyer insights',
+    priority: 'medium'
+  },
+  { 
+    id: 'strategic', 
+    label: 'Strategic Leverage', 
+    icon: Zap,
+    description: 'Long-term strategic opportunities',
+    priority: 'medium'
+  },
+  { 
+    id: 'data', 
+    label: 'Data Transparency', 
+    icon: Database,
+    description: 'Methodology and data sources',
+    priority: 'low'
+  },
 ] as const;
 
 export function DiagnosticsOutput({ data, variant = 'default' }: DiagnosticsOutputProps) {
@@ -125,10 +173,14 @@ export function DiagnosticsOutput({ data, variant = 'default' }: DiagnosticsOutp
       
       <div className="flex-shrink-0 sticky top-0 z-20 bg-[#F7F7F8]/95 backdrop-blur border-b border-white/40">
         <div className="px-6 pt-4 pb-3">
-          <div className="flex items-center gap-2 overflow-x-auto">
+          {/* Section Navigation */}
+          <div className="flex items-center gap-2 overflow-x-auto mb-3">
             {sections.map((section) => {
               const Icon = section.icon;
               const isActive = activeSection === section.id;
+              const priorityColor = section.priority === 'high' ? 'bg-red-100 text-red-700' : 
+                                  section.priority === 'medium' ? 'bg-yellow-100 text-yellow-700' : 
+                                  'bg-gray-100 text-gray-700';
               return (
                 <button
                   key={section.id}
@@ -141,9 +193,17 @@ export function DiagnosticsOutput({ data, variant = 'default' }: DiagnosticsOutp
                 >
                   <Icon className={`h-4 w-4 ${isActive ? 'text-white' : 'text-gray-500 group-hover:text-black'}`} />
                   <span className="whitespace-nowrap">{section.label}</span>
+                  {!isActive && (
+                    <div className={`w-2 h-2 rounded-full ${priorityColor}`} />
+                  )}
                 </button>
               );
             })}
+          </div>
+          
+          {/* Section Description */}
+          <div className="text-sm text-gray-600">
+            {sections.find(s => s.id === activeSection)?.description}
           </div>
         </div>
       </div>
