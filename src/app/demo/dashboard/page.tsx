@@ -68,8 +68,7 @@ export default function DashboardPage() {
       icon: FileText,
       color: "blue",
       action: () => {
-        contentStore.startWorkflow('blog-create');
-        router.push('/demo/content-studio/create');
+        router.push('/demo/creator?tab=posts');
       }
     },
     {
@@ -78,8 +77,7 @@ export default function DashboardPage() {
       icon: MessageSquare,
       color: "purple",
       action: () => {
-        contentStore.startWorkflow('linkedin-create');
-        router.push('/demo/content-studio/create');
+        router.push('/demo/creator?tab=posts');
       }
     },
     {
@@ -88,8 +86,7 @@ export default function DashboardPage() {
       icon: TrendingUp,
       color: "green",
       action: () => {
-        contentStore.startWorkflow('blog-improve');
-        router.push('/demo/content-studio/create');
+        router.push('/demo/creator?tab=posts');
       }
     }
   ];
@@ -144,15 +141,15 @@ export default function DashboardPage() {
             variants={staggerChildren}
             initial="initial"
             animate="animate"
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"
           >
             {/* Create New Content */}
             <motion.div variants={fadeInUp}>
               <Card 
                 className="bg-gradient-to-br from-gray-900 to-gray-800 text-white border-0 cursor-pointer hover:shadow-xl transition-all duration-300 group"
-                onClick={() => router.push('/demo/content-studio')}
+                onClick={() => router.push('/demo/creator?tab=posts')}
               >
-                <CardContent className="p-8 h-56 flex flex-col justify-between">
+                <CardContent className="p-8 h-64 flex flex-col justify-between">
                   <div className="flex items-center justify-between mb-6">
                     <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Plus className="w-7 h-7 text-white" />
@@ -175,9 +172,9 @@ export default function DashboardPage() {
             <motion.div variants={fadeInUp}>
               <Card 
                 className="bg-white border border-gray-200 cursor-pointer hover:shadow-lg hover:border-gray-300 transition-all duration-300 group"
-                onClick={() => router.push('/demo/content-studio/calendar')}
+                onClick={() => router.push('/demo/creator?tab=playbook')}
               >
-                <CardContent className="p-8 h-56 flex flex-col justify-between">
+                <CardContent className="p-8 h-64 flex flex-col justify-between">
                   <div className="flex items-center justify-between mb-6">
                     <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Calendar className="w-7 h-7 text-blue-600" />
@@ -200,9 +197,9 @@ export default function DashboardPage() {
             <motion.div variants={fadeInUp}>
               <Card 
                 className="bg-white border border-gray-200 cursor-pointer hover:shadow-lg hover:border-gray-300 transition-all duration-300 group"
-                onClick={() => router.push('/demo/content-studio?view=documents')}
+                onClick={() => router.push('/demo/creator?tab=diagnostics')}
               >
-                <CardContent className="p-8 h-56 flex flex-col justify-between">
+                <CardContent className="p-8 h-64 flex flex-col justify-between">
                   <div className="flex items-center justify-between mb-6">
                     <div className="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <FileText className="w-7 h-7 text-green-600" />
@@ -230,11 +227,11 @@ export default function DashboardPage() {
             className="grid grid-cols-1 lg:grid-cols-2 gap-8"
           >
             {/* Recent Activity */}
-            <div className="bg-white border border-gray-200 rounded-2xl p-8">
+            <div className="bg-white border border-gray-200 rounded-2xl p-8 h-fit">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold text-gray-900">Recent Activity</h2>
                 <button 
-                  onClick={() => router.push('/demo/content-studio?view=documents')}
+                  onClick={() => router.push('/demo/creator?tab=diagnostics')}
                   className="text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1"
                 >
                   View all
@@ -285,7 +282,7 @@ export default function DashboardPage() {
             </div>
 
             {/* Quick Actions */}
-            <div className="bg-white border border-gray-200 rounded-2xl p-8">
+            <div className="bg-white border border-gray-200 rounded-2xl p-8 h-fit">
               <h2 className="text-xl font-bold text-gray-900 mb-6">Quick Actions</h2>
               <div className="space-y-4">
                 {quickActions.map((action, idx) => (
