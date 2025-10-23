@@ -1,966 +1,478 @@
 import React, { useState } from 'react';
-import { Card, Badge, ProgressBar } from '@/components/ui';
+import { Card } from '@/components/ui';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Target,
+  AlertCircle,
   TrendingUp,
-  Users,
-  Clock,
-  DollarSign,
-  Award,
+  Target,
   CheckCircle,
-  ChevronRight,
-  Zap,
-  Sparkles,
+  ArrowRight,
+  Clock,
+  Users,
+  DollarSign,
   BarChart3,
   Lightbulb,
-  ArrowRight,
-  BookOpen,
-  Activity,
-  AlertCircle,
-  Gauge,
-  Info,
-  ArrowUpRight,
-  Calendar,
-  ExternalLink,
-  Search
+  Shield,
+  Zap,
+  FileText,
+  AlertTriangle,
+  Info
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 interface ActionableIntelligenceProps {
   data: any;
 }
 
 export default function ActionableIntelligence({ data }: ActionableIntelligenceProps) {
-  const [selectedPath, setSelectedPath] = useState<string>('depth_builder');
-  const [expandedKPI, setExpandedKPI] = useState<string | null>(null);
-  const [hoveredPath, setHoveredPath] = useState<string | null>(null);
-  const { actionable_intelligence = {} } = data;
+  const [expandedInsight, setExpandedInsight] = useState<string | null>(null);
 
-  const getPathIcon = (pathId: string) => {
-    const icons: { [key: string]: JSX.Element } = {
-      depth_builder: <Target className="w-6 h-6" />,
-      problem_solver: <Zap className="w-6 h-6" />,
-      category_creator: <Award className="w-6 h-6" />
-    };
-    return icons[pathId] || <Target className="w-6 h-6" />;
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: "easeOut" as const }
   };
 
-  const getPathColor = (pathId: string) => {
-    const colors: { [key: string]: string } = {
-      depth_builder: 'blue',
-      problem_solver: 'green',
-      category_creator: 'purple'
-    };
-    return colors[pathId] || 'gray';
+  const staggerChildren = {
+    animate: {
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  // Mock data for actionable insights - similar to the screenshots
+  const criticalInsights = [
+    {
+      id: 'reviews',
+      title: 'Get More Third-Party Reviews on Trusted Sites',
+      score: 9.5,
+      priority: 'Critical',
+      description: 'Your brand is only cited twice, and one of those is from Clutch.co. Competitors like ScienceSoft and BairesDev appear in third-party reviews 6-10 times more often.',
+      impact: 'Increase third-party review citations from 1 to at least 4 within 6 months, matching competitor visibility.',
+      actions: [
+        'Ask recent clients to leave honest reviews on Clutch.co and DesignRush.com',
+        'Feature a link to Clutch and other review sites on your website and in email signatures',
+        'Respond to all reviews, positive or negative, to show engagement',
+        'Update your Clutch profile with new case studies and testimonials'
+      ],
+      timeline: '6 months',
+      effort: 'Low',
+      icon: Shield
+    },
+    {
+      id: 'wikipedia',
+      title: 'Get a Wikipedia Page for Your Brand',
+      score: 8.9,
+      priority: 'Critical',
+      description: 'Competitors like Netguru, Endava, and Eleks are cited 3-6 times via Wikipedia, but your brand has none. A Wikipedia page can increase trust and citations by 30%.',
+      impact: 'Gain 1-2 Wikipedia citations in AI search results within 6 months, improving credibility.',
+      actions: [
+        'Gather third-party sources and news about your brand',
+        'Draft a neutral, fact-based Wikipedia page',
+        'Submit the page for review and monitor for updates',
+        'Encourage media coverage to support Wikipedia notability'
+      ],
+      timeline: '6 months',
+      effort: 'Medium',
+      icon: FileText
+    },
+    {
+      id: 'content',
+      title: 'Create More Content on Key Authentication Topics',
+      score: 8.8,
+      priority: 'Critical',
+      description: 'Your brand is missing from key authentication discussions. Competitors dominate this space with 3x more content coverage.',
+      impact: 'Capture 40% of authentication-related queries within 4 months.',
+      actions: [
+        'Create comprehensive guides on authentication best practices',
+        'Publish case studies showing successful implementations',
+        'Develop technical tutorials with code examples',
+        'Partner with industry experts for co-created content'
+      ],
+      timeline: '4 months',
+      effort: 'High',
+      icon: FileText
+    },
+    {
+      id: 'communities',
+      title: 'Increase Presence in Developer Communities',
+      score: 8.0,
+      priority: 'Critical',
+      description: 'Developer communities are a key source of AI citations. Your brand has minimal presence compared to competitors.',
+      impact: 'Achieve 25% increase in developer community mentions within 3 months.',
+      actions: [
+        'Actively participate in Stack Overflow discussions',
+        'Contribute to GitHub repositories and open source projects',
+        'Engage in Reddit developer communities',
+        'Host webinars and technical talks'
+      ],
+      timeline: '3 months',
+      effort: 'Medium',
+      icon: Users
+    }
+  ];
+
+  const highPriorityInsights = [
+    {
+      id: 'seo',
+      title: 'Optimize Technical SEO for AI Crawlers',
+      score: 7.5,
+      priority: 'High',
+      description: 'AI crawlers need structured data to understand your content better.',
+      impact: 'Improve AI understanding by 60% within 2 months.',
+      actions: [
+        'Implement JSON-LD structured data',
+        'Add FAQ schema markup',
+        'Optimize meta descriptions for AI context',
+        'Create clear content hierarchies'
+      ],
+      timeline: '2 months',
+      effort: 'Medium',
+      icon: Zap
+    },
+    {
+      id: 'partnerships',
+      title: 'Build Strategic Content Partnerships',
+      score: 7.0,
+      priority: 'High',
+      description: 'Partner with industry leaders to increase your content reach and authority.',
+      impact: 'Gain 50% more content citations through partnerships.',
+      actions: [
+        'Identify key industry influencers',
+        'Propose co-created content opportunities',
+        'Guest post on high-authority sites',
+        'Create joint research reports'
+      ],
+      timeline: '4 months',
+      effort: 'High',
+      icon: Users
+    },
+    {
+      id: 'thought-leadership',
+      title: 'Establish Thought Leadership Content',
+      score: 6.5,
+      priority: 'High',
+      description: 'Position your brand as an industry expert through original research and insights.',
+      impact: 'Become a go-to source for industry insights within 6 months.',
+      actions: [
+        'Conduct original industry research',
+        'Publish quarterly trend reports',
+        'Host industry roundtables',
+        'Create executive-level content'
+      ],
+      timeline: '6 months',
+      effort: 'High',
+      icon: Lightbulb
+    },
+    {
+      id: 'local-presence',
+      title: 'Strengthen Local Market Presence',
+      score: 6.0,
+      priority: 'High',
+      description: 'Improve local market visibility and community engagement.',
+      impact: 'Increase local market share by 30% within 5 months.',
+      actions: [
+        'Optimize for local search queries',
+        'Engage with local business communities',
+        'Create location-specific content',
+        'Build local media relationships'
+      ],
+      timeline: '5 months',
+      effort: 'Medium',
+      icon: Target
+    }
+  ];
+
+  const getPriorityColor = (priority: string) => {
+    if (priority === 'Critical') return 'bg-red-100 text-red-800 border-red-200';
+    if (priority === 'High') return 'bg-orange-100 text-orange-800 border-orange-200';
+    if (priority === 'Medium') return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+    return 'bg-gray-100 text-gray-800 border-gray-200';
+  };
+
+  const getScoreColor = (score: number) => {
+    if (score >= 9) return 'text-red-600';
+    if (score >= 8) return 'text-orange-600';
+    if (score >= 7) return 'text-yellow-600';
+    return 'text-gray-600';
+  };
+
+  const getEffortColor = (effort: string) => {
+    if (effort === 'Low') return 'bg-green-100 text-green-800';
+    if (effort === 'Medium') return 'bg-yellow-100 text-yellow-800';
+    if (effort === 'High') return 'bg-red-100 text-red-800';
+    return 'bg-gray-100 text-gray-800';
   };
 
   return (
     <div className="space-y-8">
-      {/* Section Header with Executive Briefing */}
-      <div className="mb-12">
-        <h1 className="text-4xl font-light text-gray-900 mb-3">
-          {actionable_intelligence.section_header || 'Actionable Intelligence'}
-        </h1>
-        <p className="text-xl text-gray-600 font-light mb-8">
-          {actionable_intelligence.section_subheader || 'Strategic paths to market authority'}
-        </p>
+      {/* Section Header - Matching other diagnostics components */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="bg-white border border-gray-200 rounded-xl p-10"
+      >
+        <div className="border-b border-gray-200 pb-6 mb-6">
+          <h1 className="text-3xl font-extralight text-gray-900 mb-2 tracking-tight">
+            ACTIONABLE INTELLIGENCE
+          </h1>
+          <p className="text-lg text-gray-600 font-light">
+            Prioritized recommendations for AI authority optimization
+          </p>
+        </div>
         
-        {/* Executive Insight Box */}
-        <Card className="bg-gradient-to-r from-indigo-50 to-blue-50 border-0">
-          <div className="p-8">
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-white rounded-lg shadow-sm">
-                <Target className="w-6 h-6 text-indigo-600" />
-              </div>
-              <div>
-                <h3 className="text-lg font-medium text-gray-900 mb-2">Strategic Decision Point</h3>
-                <p className="text-gray-700 leading-relaxed">
-                  Based on your current position - strong developer community trust (47% referral traffic) but 
-                  weak organic presence (10% search traffic) - each path below offers a different approach to 
-                  building market authority. Choose based on your resources and timeline.
-                </p>
-              </div>
-            </div>
-          </div>
-        </Card>
-      </div>
+        <div className="flex items-center gap-6 text-sm text-gray-500">
+          <span>Analysis period: January 20-27, 2025</span>
+          <span className="text-gray-300">•</span>
+          <span>4 Critical actions identified</span>
+          <span className="text-gray-300">•</span>
+          <span className="text-gray-700 font-medium">Confidence: High for current state, Medium for projections</span>
+        </div>
+      </motion.div>
 
-      {/* Start Here - Quick Win Section */}
-      <section className="mb-8">
-        <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-              <Zap className="w-5 h-5 text-green-600" />
+      {/* Critical Priority Section */}
+      <motion.div {...fadeInUp}>
+        <Card className="p-8 bg-white border border-gray-200 rounded-xl shadow-sm">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center">
+              <AlertTriangle className="w-6 h-6 text-red-600" />
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-gray-900">Start Here - Quick Wins</h2>
-              <p className="text-sm text-gray-600">These actions can be completed in 1-2 weeks with immediate impact</p>
+              <h2 className="text-2xl font-semibold text-gray-900">Critical Priority Actions</h2>
+              <p className="text-sm text-gray-600">Immediate high-impact opportunities</p>
             </div>
           </div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {[
-              { 
-                action: 'Create "Zapier too expensive" landing page', 
-                priority: 'P0', 
-                effort: 'Medium', 
-                impact: 'High',
-                timeline: '3 days',
-                resources: '1 writer, 1 developer',
-                expected_result: 'Capture 8,100 monthly searches with zero competition'
-              },
-              { 
-                action: 'Add FAQ sections to top 10 posts', 
-                priority: 'P1', 
-                effort: 'Low', 
-                impact: 'Medium',
-                timeline: '1 week',
-                resources: '1 writer',
-                expected_result: '+40% CTR boost from featured snippets'
-              },
-              { 
-                action: 'Implement Article schema markup', 
-                priority: 'P1', 
-                effort: 'Low', 
-                impact: 'Medium',
-                timeline: '2 days',
-                resources: '1 developer',
-                expected_result: 'Rich snippets in search results'
-              },
-              { 
-                action: 'Create pricing comparison calculator', 
-                priority: 'P0', 
-                effort: 'High', 
-                impact: 'High',
-                timeline: '1 week',
-                resources: '1 developer, 1 designer',
-                expected_result: '12.3% conversion rate, 150+ leads/month'
-              }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                <div className="flex items-start justify-between mb-4">
-                  <h4 className="text-base font-semibold text-gray-900 flex-1 leading-tight">{item.action}</h4>
-                  <div className="flex items-center gap-2 ml-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                      item.priority === 'P0' ? 'bg-red-100 text-red-700 border border-red-200' : 'bg-yellow-100 text-yellow-700 border border-yellow-200'
-                    }`}>
-                      {item.priority}
-                    </span>
-                  </div>
-                </div>
-                
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between text-sm text-gray-600">
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-gray-400" />
-                      <span>{item.timeline}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Users className="w-4 h-4 text-gray-400" />
-                      <span>{item.resources}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-6 text-sm">
-                    <div className="flex items-center gap-2">
-                      <span className="text-gray-500">Impact:</span>
-                      <span className={`font-semibold px-2 py-1 rounded text-xs ${
-                        item.impact === 'High' ? 'bg-red-100 text-red-700' : 
-                        item.impact === 'Medium' ? 'bg-yellow-100 text-yellow-700' : 'bg-green-100 text-green-700'
-                      }`}>
-                        {item.impact}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-gray-500">Effort:</span>
-                      <span className={`font-semibold px-2 py-1 rounded text-xs ${
-                        item.effort === 'High' ? 'bg-red-100 text-red-700' : 
-                        item.effort === 'Medium' ? 'bg-yellow-100 text-yellow-700' : 'bg-green-100 text-green-700'
-                      }`}>
-                        {item.effort}
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <div className="text-sm text-gray-700 bg-gray-50 rounded-lg p-3 border-l-4 border-blue-200">
-                    <div className="font-medium text-gray-900 mb-1">Expected Result:</div>
-                    <div>{item.expected_result}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Effort vs Impact Matrix */}
-      <section className="mb-8">
-        <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">
-          <Target className="w-6 h-6 text-gray-400" />
-          Effort vs Impact Matrix
-        </h2>
-        
-        <div className="bg-white border border-gray-200 rounded-xl p-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* High Impact, Low Effort - Quick Wins */}
-            <div className="bg-green-50 border border-green-200 rounded-lg p-5">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                <h3 className="text-sm font-semibold text-green-800">Quick Wins</h3>
-              </div>
-              <p className="text-xs text-green-700 mb-4">High Impact, Low Effort</p>
-              <div className="space-y-2">
-                <div className="text-xs text-green-600 flex items-center gap-2">
-                  <div className="w-1 h-1 bg-green-500 rounded-full"></div>
-                  FAQ sections
-                </div>
-                <div className="text-xs text-green-600 flex items-center gap-2">
-                  <div className="w-1 h-1 bg-green-500 rounded-full"></div>
-                  Schema markup
-                </div>
-                <div className="text-xs text-green-600 flex items-center gap-2">
-                  <div className="w-1 h-1 bg-green-500 rounded-full"></div>
-                  Meta descriptions
-                </div>
-              </div>
-            </div>
-            
-            {/* High Impact, High Effort - Major Projects */}
-            <div className="bg-red-50 border border-red-200 rounded-lg p-5">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                <h3 className="text-sm font-semibold text-red-800">Major Projects</h3>
-              </div>
-              <p className="text-xs text-red-700 mb-4">High Impact, High Effort</p>
-              <div className="space-y-2">
-                <div className="text-xs text-red-600 flex items-center gap-2">
-                  <div className="w-1 h-1 bg-red-500 rounded-full"></div>
-                  TCO calculator
-                </div>
-                <div className="text-xs text-red-600 flex items-center gap-2">
-                  <div className="w-1 h-1 bg-red-500 rounded-full"></div>
-                  Migration guides
-                </div>
-                <div className="text-xs text-red-600 flex items-center gap-2">
-                  <div className="w-1 h-1 bg-red-500 rounded-full"></div>
-                  Community program
-                </div>
-              </div>
-            </div>
-            
-            {/* Low Impact, Low Effort - Fill-ins */}
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-5">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                <h3 className="text-sm font-semibold text-yellow-800">Fill-ins</h3>
-              </div>
-              <p className="text-xs text-yellow-700 mb-4">Low Impact, Low Effort</p>
-              <div className="space-y-2">
-                <div className="text-xs text-yellow-600 flex items-center gap-2">
-                  <div className="w-1 h-1 bg-yellow-500 rounded-full"></div>
-                  Image optimization
-                </div>
-                <div className="text-xs text-yellow-600 flex items-center gap-2">
-                  <div className="w-1 h-1 bg-yellow-500 rounded-full"></div>
-                  Internal linking
-                </div>
-                <div className="text-xs text-yellow-600 flex items-center gap-2">
-                  <div className="w-1 h-1 bg-yellow-500 rounded-full"></div>
-                  Content updates
-                </div>
-              </div>
-            </div>
-            
-            {/* Low Impact, High Effort - Questionable */}
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
-                <h3 className="text-sm font-semibold text-gray-800">Questionable</h3>
-              </div>
-              <p className="text-xs text-gray-700 mb-4">Low Impact, High Effort</p>
-              <div className="space-y-2">
-                <div className="text-xs text-gray-600 flex items-center gap-2">
-                  <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
-                  Complex integrations
-                </div>
-                <div className="text-xs text-gray-600 flex items-center gap-2">
-                  <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
-                  Custom tools
-                </div>
-                <div className="text-xs text-gray-600 flex items-center gap-2">
-                  <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
-                  Over-engineering
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Strategic Path Cards - Enhanced Interactive Selection */}
-      <section>
-        <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">
-          <Sparkles className="w-6 h-6 text-gray-400" />
-          Three Strategic Paths to Authority
-        </h2>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {(actionable_intelligence.strategic_paths || []).map((path: any) => {
-            const color = getPathColor(path.id);
-            const isSelected = selectedPath === path.id;
-            const isHovered = hoveredPath === path.id;
-            
-            return (
+            {criticalInsights.map((insight, idx) => (
               <motion.div
-                key={path.id}
-                whileHover={{ y: -8 }}
-                onMouseEnter={() => setHoveredPath(path.id)}
-                onMouseLeave={() => setHoveredPath(null)}
-                className="relative"
+                key={insight.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + idx * 0.1 }}
+                className="p-6 bg-gray-50 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 cursor-pointer"
+                onClick={() => setExpandedInsight(expandedInsight === insight.id ? null : insight.id)}
               >
-                <div 
-                  className={`
-                    h-full cursor-pointer transition-all duration-300
-                    ${isSelected ? 'scale-[1.02]' : ''}
-                  `}
-                  onClick={() => setSelectedPath(path.id)}
-                >
-                  <Card className={`
-                    h-full overflow-hidden border-2 transition-all
-                    ${isSelected 
-                      ? `border-${color}-400 shadow-2xl` 
-                      : 'border-gray-200 hover:border-gray-300 hover:shadow-xl'
-                    }
-                  `}>
-                    {/* Colored Top Bar */}
-                    <div className={`h-2 bg-gradient-to-r ${
-                      color === 'blue' ? 'from-blue-400 to-blue-600' :
-                      color === 'green' ? 'from-green-400 to-green-600' :
-                      'from-purple-400 to-purple-600'
-                    }`} />
-                    
-                    <div className="p-6">
-                      {/* Icon and Title */}
-                      <div className="mb-4">
-                        <div className={`
-                          w-14 h-14 rounded-xl flex items-center justify-center mb-4
-                          ${isSelected || isHovered
-                            ? `bg-gradient-to-br ${
-                                color === 'blue' ? 'from-blue-100 to-blue-200' :
-                                color === 'green' ? 'from-green-100 to-green-200' :
-                                'from-purple-100 to-purple-200'
-                              }`
-                            : 'bg-gray-100'
-                          }
-                        `}>
-                          <div className={`${
-                            isSelected || isHovered 
-                              ? `text-${color}-600` 
-                              : 'text-gray-600'
-                          }`}>
-                            {getPathIcon(path.id)}
-                          </div>
-                        </div>
-                        <h3 className="text-xl font-medium text-gray-900">{path.name}</h3>
-                        <p className="text-sm text-gray-600 italic mt-1">{path.philosophy}</p>
-                      </div>
-                      
-                      {/* Metrics Preview */}
-                      <div className="space-y-4">
-                        {Object.entries(path.metrics_impact).map(([metric, data]: [string, any]) => {
-                          const value = parseInt(data.change || data.position || '0');
-                          
-                          return (
-                            <div key={metric} className="space-y-2">
-                              <div className="flex items-center justify-between">
-                                <span className="text-sm font-medium text-gray-700 capitalize">
-                                  {metric.replace(/_/g, ' ')}
-                                </span>
-                                <div className="flex items-center gap-2">
-                                  <Badge className={`
-                                    ${isSelected 
-                                      ? `bg-${color}-100 text-${color}-700` 
-                                      : 'bg-gray-100 text-gray-700'
-                                    }
-                                  `}>
-                                    {data.change || data.position || 'Yes'}
-                                  </Badge>
-                                  <ArrowUpRight className={`w-3 h-3 ${
-                                    isSelected ? `text-${color}-600` : 'text-gray-400'
-                                  }`} />
-                                </div>
-                              </div>
-                              
-                              {/* Progress Bar */}
-                              {data.change && (
-                                <div className="relative h-2 bg-gray-100 rounded-full overflow-hidden">
-                                  <motion.div
-                                    className={`absolute h-full bg-gradient-to-r ${
-                                      color === 'blue' ? 'from-blue-400 to-blue-600' :
-                                      color === 'green' ? 'from-green-400 to-green-600' :
-                                      'from-purple-400 to-purple-600'
-                                    }`}
-                                    initial={{ width: 0 }}
-                                    animate={{ width: isSelected || isHovered ? `${value}%` : 0 }}
-                                    transition={{ duration: 0.5, ease: "easeOut" }}
-                                  />
-                                </div>
-                              )}
-                              
-                              {/* Timeline */}
-                              <div className="flex items-center gap-2 text-xs text-gray-500">
-                                <Clock className="w-3 h-3" />
-                                <span>{data.timeline}</span>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                      
-                      {/* Selection State */}
-                      <AnimatePresence>
-                        {isSelected && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="mt-6 pt-6 border-t border-gray-200"
-                          >
-                            <div className={`
-                              text-center p-3 rounded-lg font-medium
-                              bg-${color}-600 text-white
-                            `}>
-                              Currently Selected
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                {/* Header */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                      <insight.icon className="w-5 h-5 text-gray-600" />
                     </div>
-                  </Card>
-                </div>
-                
-                {/* Selected Indicator */}
-                {isSelected && (
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className={`
-                      absolute -top-3 -right-3 w-8 h-8 rounded-full 
-                      bg-${color}-600 text-white
-                      flex items-center justify-center shadow-lg
-                    `}
-                  >
-                    <CheckCircle className="w-5 h-5" />
-                  </motion.div>
-                )}
-              </motion.div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Selected Path Details - Enhanced Deep Dive */}
-      <AnimatePresence mode="wait">
-        {selectedPath && (
-          <motion.section
-            key={selectedPath}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-            <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">
-              <BookOpen className="w-6 h-6 text-gray-400" />
-              Implementation Roadmap
-            </h2>
-            
-            {(actionable_intelligence.strategic_paths || []).map((path: any) => {
-              if (path.id !== selectedPath) return null;
-              const color = getPathColor(path.id);
-              
-              return (
-                <div key={path.id} className="space-y-6">
-                  {/* Strategy Overview Card */}
-                  <Card className="overflow-hidden">
-                    <div className={`h-3 bg-gradient-to-r ${
-                      color === 'blue' ? 'from-blue-400 to-blue-600' :
-                      color === 'green' ? 'from-green-400 to-green-600' :
-                      'from-purple-400 to-purple-600'
-                    }`} />
-                    
-                    <div className="p-8">
-                      <div className="flex items-start gap-4 mb-8">
-                        <div className={`
-                          p-4 rounded-xl shadow-sm
-                          bg-gradient-to-br ${
-                            color === 'blue' ? 'from-blue-100 to-blue-200' :
-                            color === 'green' ? 'from-green-100 to-green-200' :
-                            'from-purple-100 to-purple-200'
-                          }
-                        `}>
-                          <div className={`text-${color}-600`}>
-                            {getPathIcon(path.id)}
-                          </div>
-                        </div>
-                        <div>
-                          <h3 className="text-2xl font-medium text-gray-900">{path.name}</h3>
-                          <p className="text-lg text-gray-600 italic mt-1">{path.philosophy}</p>
-                        </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getPriorityColor(insight.priority)}`}>
+                          {insight.priority}
+                        </span>
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${getEffortColor(insight.effort)}`}>
+                          {insight.effort} Effort
+                        </span>
                       </div>
-                      
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        {/* Expected Outcomes */}
-                        <div>
-                          <h4 className="text-lg font-medium text-gray-900 mb-6 flex items-center gap-2">
-                            <Gauge className="w-5 h-5 text-gray-400" />
-                            Expected Outcomes
-                          </h4>
-                          
-                          <div className="space-y-4">
-                            {Object.entries(path.metrics_impact).map(([metric, data]: [string, any]) => {
-                              const value = parseInt(data.change || data.position || '0');
-                              
-                              return (
-                                <motion.div 
-                                  key={metric}
-                                  whileHover={{ scale: 1.02 }}
-                                  className={`
-                                    p-5 rounded-xl border-2 transition-all
-                                    bg-gradient-to-r ${
-                                      color === 'blue' ? 'from-blue-50 to-blue-100 border-blue-200' :
-                                      color === 'green' ? 'from-green-50 to-green-100 border-green-200' :
-                                      'from-purple-50 to-purple-100 border-purple-200'
-                                    }
-                                  `}
-                                >
-                                  <div className="flex items-center justify-between mb-3">
-                                    <span className="font-medium text-gray-900 capitalize">
-                                      {metric.replace(/_/g, ' ')}
-                                    </span>
-                                    <div className="flex items-center gap-2">
-                                      <Badge className={`bg-white text-${color}-700 font-semibold`}>
-                                        {data.change || data.position || 'Achieved'}
-                                      </Badge>
-                                      {data.change && (
-                                        <ArrowUpRight className={`w-4 h-4 text-${color}-600`} />
-                                      )}
-                                    </div>
-                                  </div>
-                                  
-                                  {/* Visual Progress */}
-                                  {data.change && (
-                                    <div className="mb-3">
-                                      <div className="h-3 bg-white/50 rounded-full overflow-hidden">
-                                        <motion.div
-                                          className={`h-full bg-gradient-to-r ${
-                                            color === 'blue' ? 'from-blue-400 to-blue-600' :
-                                            color === 'green' ? 'from-green-400 to-green-600' :
-                                            'from-purple-400 to-purple-600'
-                                          }`}
-                                          initial={{ width: 0 }}
-                                          animate={{ width: `${value}%` }}
-                                          transition={{ duration: 1, delay: 0.2 }}
-                                        />
-                                      </div>
-                                    </div>
-                                  )}
-                                  
-                                  <div className="flex items-center gap-4 text-sm">
-                                    <div className="flex items-center gap-1">
-                                      <Calendar className="w-4 h-4 text-gray-500" />
-                                      <span className="text-gray-600">{data.timeline}</span>
-                                    </div>
-                                    {data.achieved && (
-                                      <div className="flex items-center gap-1">
-                                        <CheckCircle className={`w-4 h-4 text-${color}-600`} />
-                                        <span className="text-gray-600">High confidence</span>
-                                      </div>
-                                    )}
-                                  </div>
-                                </motion.div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                        
-                        {/* Implementation Requirements */}
-                        <div>
-                          <h4 className="text-lg font-medium text-gray-900 mb-6 flex items-center gap-2">
-                            <Users className="w-5 h-5 text-gray-400" />
-                            Implementation Requirements
-                          </h4>
-                          
-                          <div className="space-y-4">
-                            {/* Resources */}
-                            <div className="p-5 bg-gray-50 rounded-xl">
-                              <h5 className="font-medium text-gray-900 mb-3">Resources Needed</h5>
-                              <div className="space-y-3">
-                                {path.resource_requirements.map((req: string, idx: number) => (
-                                  <motion.div 
-                                    key={idx}
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: idx * 0.1 }}
-                                    className="flex items-start gap-3"
-                                  >
-                                    <div className={`
-                                      w-2 h-2 rounded-full mt-1.5
-                                      bg-${color}-500
-                                    `} />
-                                    <span className="text-sm text-gray-700">{req}</span>
-                                  </motion.div>
-                                ))}
-                              </div>
-                            </div>
-                            
-                            {/* Success Metrics */}
-                            {path.success_indicators && (
-                              <div className="p-5 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl">
-                                <h5 className="font-medium text-gray-900 mb-3">Success Indicators</h5>
-                                <div className="grid grid-cols-2 gap-3">
-                                  {path.success_indicators.map((indicator: string, idx: number) => (
-                                    <motion.div 
-                                      key={idx}
-                                      initial={{ opacity: 0, scale: 0.9 }}
-                                      animate={{ opacity: 1, scale: 1 }}
-                                      transition={{ delay: idx * 0.1 }}
-                                      className="flex items-center gap-2"
-                                    >
-                                      <CheckCircle className={`w-4 h-4 text-${color}-600`} />
-                                      <span className="text-sm text-gray-700">{indicator}</span>
-                                    </motion.div>
-                                  ))}
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Action Button */}
-                      <div className="mt-8 flex justify-center">
-                        <button className={`
-                          px-8 py-4 rounded-lg font-medium text-white shadow-lg
-                          bg-gradient-to-r ${
-                            color === 'blue' ? 'from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700' :
-                            color === 'green' ? 'from-green-500 to-green-600 hover:from-green-600 hover:to-green-700' :
-                            'from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700'
-                          }
-                          transition-all hover:shadow-xl hover:scale-105
-                          flex items-center gap-2
-                        `}>
-                          Generate Detailed Implementation Plan
-                          <ArrowRight className="w-5 h-5" />
-                        </button>
-                      </div>
+                      <h3 className="text-sm font-semibold text-gray-900">{insight.title}</h3>
                     </div>
-                  </Card>
+                  </div>
+                  <div className="text-right">
+                    <div className={`text-2xl font-bold ${getScoreColor(insight.score)}`}>
+                      {insight.score}
+                    </div>
+                    <div className="text-xs text-gray-500">out of 10</div>
+                  </div>
                 </div>
-              );
-            })}
-          </motion.section>
-        )}
-      </AnimatePresence>
 
-      {/* Success Tracking Framework - Premium Redesign */}
-      <section>
-        <h2 className="text-2xl font-light text-gray-900 mb-6 flex items-center gap-3">
-          <BarChart3 className="w-6 h-6 text-gray-400" />
-          Success Tracking Framework
-        </h2>
-        
-        <Card className="overflow-hidden">
-          <div className="bg-gradient-to-r from-gray-50 to-slate-50 p-8">
-            <div className="max-w-5xl mx-auto">
-              {/* Dynamic KPI Dashboard */}
-              <div className="mb-8">
-                <h3 className="text-lg font-medium text-gray-900 mb-6 flex items-center gap-2">
-                  <Gauge className="w-5 h-5 text-gray-400" />
-                  Dynamic KPIs Based on Selected Path
-                </h3>
-                
-                <AnimatePresence mode="wait">
-                  {selectedPath && (
+                {/* Description */}
+                <p className="text-xs text-gray-600 mb-4 leading-relaxed">
+                  {insight.description}
+                </p>
+
+                {/* Impact */}
+                <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <h4 className="text-xs font-semibold text-gray-900 mb-1 flex items-center gap-1">
+                    <Target className="w-3 h-3 text-blue-600" />
+                    Goal
+                  </h4>
+                  <p className="text-xs text-gray-700">{insight.impact}</p>
+                </div>
+
+                {/* Timeline and Effort */}
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="flex items-center gap-1 bg-white px-2 py-1 rounded text-xs">
+                    <Clock className="w-3 h-3 text-gray-500" />
+                    <span className="text-gray-600">{insight.timeline}</span>
+                  </div>
+                  <div className="flex items-center gap-1 bg-white px-2 py-1 rounded text-xs">
+                    <Users className="w-3 h-3 text-gray-500" />
+                    <span className="text-gray-600">{insight.effort} effort</span>
+                  </div>
+                </div>
+
+                {/* Expand Button */}
+                <div className="flex items-center justify-between p-3 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                  <span className="text-xs font-medium text-gray-700">View detailed action steps</span>
+                  <ArrowRight className={`w-4 h-4 text-gray-500 transition-transform ${expandedInsight === insight.id ? 'rotate-90' : ''}`} />
+                </div>
+
+                {/* Expandable Actions */}
+                <AnimatePresence>
+                  {expandedInsight === insight.id && (
                     <motion.div
-                      key={selectedPath}
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
                     >
-                      {(actionable_intelligence.strategic_paths || []).map((path: any) => {
-                        if (path.id !== selectedPath) return null;
-                        const color = getPathColor(path.id);
-                        const kpis = actionable_intelligence.success_tracking?.primary_kpis?.[path.id] || [];
-                        
-                        return (
-                          <div key={path.id}>
-                            {/* Selected Path Header */}
-                            <div className={`
-                              p-6 rounded-xl mb-6
-                              bg-gradient-to-r ${
-                                color === 'blue' ? 'from-blue-100 to-blue-200' :
-                                color === 'green' ? 'from-green-100 to-green-200' :
-                                'from-purple-100 to-purple-200'
-                              }
-                            `}>
-                              <div className="flex items-center gap-4">
-                                <div className={`
-                                  p-3 bg-white rounded-lg shadow-sm
-                                `}>
-                                  <div className={`text-${color}-600`}>
-                                    {getPathIcon(path.id)}
-                                  </div>
-                                </div>
-                                <div>
-                                  <h4 className="text-xl font-medium text-gray-900">
-                                    Primary KPIs for {path.name}
-                                  </h4>
-                                  <p className="text-gray-600 mt-1">{path.philosophy}</p>
-                                </div>
+                      <div className="mt-4 pt-4 border-t border-gray-200">
+                        <h4 className="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                          <CheckCircle className="w-4 h-4 text-green-600" />
+                          Action Steps
+                        </h4>
+                        <div className="space-y-2">
+                          {insight.actions.map((action, actionIdx) => (
+                            <motion.div 
+                              key={actionIdx} 
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: actionIdx * 0.1 }}
+                              className="flex items-start gap-2 p-2 bg-green-50 border border-green-200 rounded-lg"
+                            >
+                              <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span className="text-xs font-bold text-green-700">{actionIdx + 1}</span>
                               </div>
-                            </div>
-                            
-                            {/* KPI Cards Grid */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                              {kpis.map((kpi: string, idx: number) => (
-                                <motion.div
-                                  key={idx}
-                                  initial={{ opacity: 0, y: 20 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  transition={{ delay: idx * 0.1 }}
-                                  whileHover={{ scale: 1.02 }}
-                                  onClick={() => setExpandedKPI(expandedKPI === kpi ? null : kpi)}
-                                  className="cursor-pointer"
-                                >
-                                  <div className={`
-                                    p-6 bg-white rounded-xl border-2 transition-all
-                                    ${expandedKPI === kpi 
-                                      ? `border-${color}-400 shadow-lg` 
-                                      : 'border-gray-200 hover:border-gray-300'
-                                    }
-                                  `}>
-                                    <div className="flex items-start justify-between mb-4">
-                                      <div className="flex items-center gap-3">
-                                        <div className={`
-                                          w-10 h-10 rounded-lg flex items-center justify-center
-                                          ${expandedKPI === kpi
-                                            ? `bg-${color}-100`
-                                            : 'bg-gray-100'
-                                          }
-                                        `}>
-                                          <Activity className={`w-5 h-5 ${
-                                            expandedKPI === kpi ? `text-${color}-600` : 'text-gray-600'
-                                          }`} />
-                                        </div>
-                                        <h5 className="font-medium text-gray-900 capitalize">
-                                          {kpi.replace(/_/g, ' ')}
-                                        </h5>
-                                      </div>
-                                      <ChevronRight className={`
-                                        w-5 h-5 text-gray-400 transition-transform
-                                        ${expandedKPI === kpi ? 'rotate-90' : ''}
-                                      `} />
-                                    </div>
-                                    
-                                    {/* KPI Preview Metric */}
-                                    <div className="flex items-baseline gap-2">
-                                      <span className={`text-3xl font-light ${
-                                        expandedKPI === kpi ? `text-${color}-600` : 'text-gray-900'
-                                      }`}>
-                                        {kpi.includes('word count') && '3,847'}
-                                        {kpi.includes('comprehensiveness') && '94%'}
-                                        {kpi.includes('query match') && '87%'}
-                                        {kpi.includes('pain point') && '12/15'}
-                                        {kpi.includes('new term') && '23'}
-                                        {kpi.includes('media') && '47'}
-                                      </span>
-                                      <span className="text-sm text-gray-500">
-                                        {kpi.includes('word count') && 'avg words'}
-                                        {kpi.includes('comprehensiveness') && 'score'}
-                                        {kpi.includes('query match') && 'relevance'}
-                                        {kpi.includes('pain point') && 'covered'}
-                                        {kpi.includes('new term') && 'rankings'}
-                                        {kpi.includes('media') && 'mentions'}
-                                      </span>
-                                    </div>
-                                    
-                                    {/* Expanded Details */}
-                                    <AnimatePresence>
-                                      {expandedKPI === kpi && (
-                                        <motion.div
-                                          initial={{ opacity: 0, height: 0 }}
-                                          animate={{ opacity: 1, height: 'auto' }}
-                                          exit={{ opacity: 0, height: 0 }}
-                                          className="mt-4 pt-4 border-t border-gray-200"
-                                        >
-                                          <div className="space-y-3">
-                                            <div className="flex items-center justify-between text-sm">
-                                              <span className="text-gray-600">Target</span>
-                                              <span className="font-medium text-gray-900">
-                                                {kpi.includes('word count') && '4,000+ words'}
-                                                {kpi.includes('comprehensiveness') && '>90%'}
-                                                {kpi.includes('query match') && '>85%'}
-                                                {kpi.includes('pain point') && '15/15'}
-                                                {kpi.includes('new term') && '50+ rankings'}
-                                                {kpi.includes('media') && '100+ mentions'}
-                                              </span>
-                                            </div>
-                                            <div className="flex items-center justify-between text-sm">
-                                              <span className="text-gray-600">Timeline</span>
-                                              <span className="font-medium text-gray-900">
-                                                {kpi.includes('word count') && '3 months'}
-                                                {kpi.includes('comprehensiveness') && '6 months'}
-                                                {kpi.includes('query match') && '2 months'}
-                                                {kpi.includes('pain point') && '4 months'}
-                                                {kpi.includes('new term') && '9 months'}
-                                                {kpi.includes('media') && '12 months'}
-                                              </span>
-                                            </div>
-                                            <div className="mt-3">
-                                              <div className="flex items-center gap-2 mb-2">
-                                                <Info className="w-4 h-4 text-gray-400" />
-                                                <span className="text-xs font-medium text-gray-700">How to measure</span>
-                                              </div>
-                                              <p className="text-xs text-gray-600">
-                                                {kpi.includes('word count') && 'Average word count across top 20 performing pages'}
-                                                {kpi.includes('comprehensiveness') && 'Topic coverage score from content audit tools'}
-                                                {kpi.includes('query match') && 'Search intent alignment from GSC data'}
-                                                {kpi.includes('pain point') && 'Customer problem coverage analysis'}
-                                                {kpi.includes('new term') && 'Track rankings for category-defining terms'}
-                                                {kpi.includes('media') && 'PR mentions and thought leadership coverage'}
-                                              </p>
-                                            </div>
-                                          </div>
-                                        </motion.div>
-                                      )}
-                                    </AnimatePresence>
-                                  </div>
-                                </motion.div>
-                              ))}
-                            </div>
-                          </div>
-                        );
-                      })}
+                              <span className="text-xs font-medium text-gray-800">{action}</span>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
-              
-              {/* Universal KPIs Section */}
-              <div className="mb-8">
-                <h3 className="text-lg font-medium text-gray-900 mb-4 flex items-center gap-2">
-                  <Target className="w-5 h-5 text-gray-400" />
-                  Universal Success Metrics
-                </h3>
-                <div className="p-6 bg-white rounded-xl">
-                  <p className="text-sm text-gray-600 mb-4">
-                    Track these regardless of your chosen strategy:
-                  </p>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {(actionable_intelligence.success_tracking?.secondary_kpis || []).map((kpi: string, idx: number) => (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: idx * 0.05 }}
-                        className="p-4 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg"
-                      >
-                        <div className="flex items-center gap-2 mb-2">
-                          {kpi.includes('AI') && <Sparkles className="w-4 h-4 text-purple-600" />}
-                          {kpi.includes('Search') && <Search className="w-4 h-4 text-blue-600" />}
-                          {kpi.includes('Engagement') && <Users className="w-4 h-4 text-green-600" />}
-                          {kpi.includes('Conversion') && <DollarSign className="w-4 h-4 text-orange-600" />}
-                          <span className="text-sm font-medium text-gray-900">{kpi}</span>
-                        </div>
-                        <div className="text-xs text-gray-500">
-                          {kpi.includes('AI') && 'Citations in LLM responses'}
-                          {kpi.includes('Search') && 'Organic ranking progress'}
-                          {kpi.includes('Engagement') && 'Time on page, scroll depth'}
-                          {kpi.includes('Conversion') && 'Sign-ups from content'}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              
-              {/* Leading Indicators Dashboard */}
-              <div>
-                <h3 className="text-lg font-medium text-gray-900 mb-4 flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-gray-400" />
-                  Leading Indicators Dashboard
-                </h3>
-                <Card className="bg-gradient-to-r from-indigo-50 to-purple-50 border-0">
-                  <div className="p-6">
-                    <p className="text-sm text-gray-700 mb-6">
-                      Weekly tracking metrics that predict future success:
-                    </p>
-                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                      {(actionable_intelligence.success_tracking?.leading_indicators || []).map((indicator: string, idx: number) => {
-                        const trends = ['+12%', '+23%', '-5%', '+34%', '+8%'];
-                        const isPositive = !trends[idx].includes('-');
-                        
-                        return (
-                          <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: idx * 0.1 }}
-                            whileHover={{ y: -4 }}
-                            className="bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer"
-                          >
-                            <div className="flex items-center justify-between mb-3">
-                              <Activity className="w-5 h-5 text-indigo-600" />
-                              <Badge className={`
-                                ${isPositive 
-                                  ? 'bg-green-100 text-green-700' 
-                                  : 'bg-red-100 text-red-700'
-                                }
-                              `}>
-                                {trends[idx]}
-                              </Badge>
-                            </div>
-                            <p className="text-sm font-medium text-gray-900 mb-1">
-                              {indicator}
-                            </p>
-                            <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
-                              <motion.div
-                                className={`h-full ${
-                                  isPositive 
-                                    ? 'bg-gradient-to-r from-green-400 to-green-600' 
-                                    : 'bg-gradient-to-r from-red-400 to-red-600'
-                                }`}
-                                initial={{ width: 0 }}
-                                animate={{ width: `${Math.abs(parseInt(trends[idx])) * 2}%` }}
-                                transition={{ duration: 1, delay: 0.5 + idx * 0.1 }}
-                              />
-                            </div>
-                          </motion.div>
-                        );
-                      })}
-                    </div>
-                    
-                    {/* Insights Box */}
-                    <div className="mt-6 p-4 bg-white/50 rounded-lg">
-                      <div className="flex items-start gap-3">
-                        <Lightbulb className="w-5 h-5 text-indigo-600 mt-0.5" />
-                        <div>
-                          <p className="text-sm font-medium text-gray-900 mb-1">Weekly Review Insight</p>
-                          <p className="text-sm text-gray-700">
-                            Your content velocity is up 23% but keyword movements are down 5%. 
-                            Consider focusing on quality over quantity for the next sprint.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-            </div>
+              </motion.div>
+            ))}
           </div>
         </Card>
-      </section>
+      </motion.div>
+
+      {/* High Priority Section */}
+      <motion.div {...fadeInUp}>
+        <Card className="p-8 bg-white border border-gray-200 rounded-xl shadow-sm">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center">
+              <Lightbulb className="w-6 h-6 text-orange-600" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-semibold text-gray-900">High Priority Actions</h2>
+              <p className="text-sm text-gray-600">Strategic growth opportunities</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {highPriorityInsights.map((insight, idx) => (
+              <motion.div
+                key={insight.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + idx * 0.1 }}
+                className="p-6 bg-gray-50 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 cursor-pointer"
+                onClick={() => setExpandedInsight(expandedInsight === insight.id ? null : insight.id)}
+              >
+                {/* Header */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                      <insight.icon className="w-5 h-5 text-gray-600" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getPriorityColor(insight.priority)}`}>
+                          {insight.priority}
+                        </span>
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${getEffortColor(insight.effort)}`}>
+                          {insight.effort} Effort
+                        </span>
+                      </div>
+                      <h3 className="text-sm font-semibold text-gray-900">{insight.title}</h3>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className={`text-2xl font-bold ${getScoreColor(insight.score)}`}>
+                      {insight.score}
+                    </div>
+                    <div className="text-xs text-gray-500">out of 10</div>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="text-xs text-gray-600 mb-4 leading-relaxed">
+                  {insight.description}
+                </p>
+
+                {/* Impact */}
+                <div className="mb-4 p-3 bg-orange-50 border border-orange-200 rounded-lg">
+                  <h4 className="text-xs font-semibold text-gray-900 mb-1 flex items-center gap-1">
+                    <Target className="w-3 h-3 text-orange-600" />
+                    Goal
+                  </h4>
+                  <p className="text-xs text-gray-700">{insight.impact}</p>
+                </div>
+
+                {/* Timeline and Effort */}
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="flex items-center gap-1 bg-white px-2 py-1 rounded text-xs">
+                    <Clock className="w-3 h-3 text-gray-500" />
+                    <span className="text-gray-600">{insight.timeline}</span>
+                  </div>
+                  <div className="flex items-center gap-1 bg-white px-2 py-1 rounded text-xs">
+                    <Users className="w-3 h-3 text-gray-500" />
+                    <span className="text-gray-600">{insight.effort} effort</span>
+                  </div>
+                </div>
+
+                {/* Expand Button */}
+                <div className="flex items-center justify-between p-3 bg-white rounded-lg hover:bg-gray-50 transition-colors">
+                  <span className="text-xs font-medium text-gray-700">View detailed action steps</span>
+                  <ArrowRight className={`w-4 h-4 text-gray-500 transition-transform ${expandedInsight === insight.id ? 'rotate-90' : ''}`} />
+                </div>
+
+                {/* Expandable Actions */}
+                <AnimatePresence>
+                  {expandedInsight === insight.id && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="mt-4 pt-4 border-t border-gray-200">
+                        <h4 className="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                          <CheckCircle className="w-4 h-4 text-green-600" />
+                          Action Steps
+                        </h4>
+                        <div className="space-y-2">
+                          {insight.actions.map((action, actionIdx) => (
+                            <motion.div 
+                              key={actionIdx} 
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: actionIdx * 0.1 }}
+                              className="flex items-start gap-2 p-2 bg-green-50 border border-green-200 rounded-lg"
+                            >
+                              <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span className="text-xs font-bold text-green-700">{actionIdx + 1}</span>
+                              </div>
+                              <span className="text-xs font-medium text-gray-800">{action}</span>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
+        </Card>
+      </motion.div>
     </div>
   );
 }

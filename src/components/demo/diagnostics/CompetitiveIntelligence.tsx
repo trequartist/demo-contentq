@@ -112,7 +112,7 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
                   <div className="text-sm text-gray-600">AI Visibility Score</div>
                 </div>
                 
-                <div>
+              <div>
                   <div className="text-lg font-semibold text-gray-900">{competitor.traffic}</div>
                   <div className="text-sm text-gray-600">Monthly Traffic</div>
                 </div>
@@ -127,10 +127,10 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
                     }`}
                     style={{ width: `${competitor.score}%` }}
                   />
-                </div>
               </div>
             </div>
-          </Card>
+          </div>
+        </Card>
         ))}
       </div>
 
@@ -145,7 +145,7 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
           <Card className="bg-white border border-gray-200">
             <div className="p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Strengths & Weaknesses</h3>
-              <div className="space-y-4">
+            <div className="space-y-4">
                 <div className="border-l-4 border-green-500 pl-4">
                   <h4 className="font-medium text-gray-900 mb-1">Strengths</h4>
                   <p className="text-sm text-gray-600">{competitors.find(c => c.id === selectedCompetitor)?.strength}</p>
@@ -157,10 +157,10 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
                 <div className="border-l-4 border-blue-500 pl-4">
                   <h4 className="font-medium text-gray-900 mb-1">Your Opportunity</h4>
                   <p className="text-sm text-gray-600">{competitors.find(c => c.id === selectedCompetitor)?.opportunity}</p>
-                </div>
               </div>
             </div>
-          </Card>
+          </div>
+        </Card>
 
           <Card className="bg-white border border-gray-200">
             <div className="p-6">
@@ -172,8 +172,8 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
                     {selectedCompetitor === 'zapier' ? '45%' : 
                      selectedCompetitor === 'make' ? '12%' :
                      selectedCompetitor === 'n8n' ? '8%' : '18%'}
-                  </span>
-                </div>
+                        </span>
+                      </div>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-600">Content Velocity</span>
                   <span className="text-sm font-semibold text-gray-900">
@@ -201,7 +201,7 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
               </div>
             </div>
           </Card>
-        </div>
+          </div>
       </section>
 
       {/* Opportunity Matrix */}
@@ -296,7 +296,7 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
                   <div key={idx} className="border border-gray-100 rounded-lg p-4">
                     <div className="flex items-start justify-between mb-2">
                       <h4 className="font-semibold text-gray-900">{item.strategy}</h4>
-                      <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-2">
                         <span className={`px-2 py-1 rounded text-xs font-medium ${
                           item.impact === 'Very High' ? 'bg-red-100 text-red-700' :
                           item.impact === 'High' ? 'bg-orange-100 text-orange-700' :
@@ -324,14 +324,14 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
         </h2>
         
         <Card className="bg-white border border-gray-200">
-          <div className="p-6">
+            <div className="p-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
                 <div className="text-3xl font-bold text-gray-900 mb-2">67/100</div>
                 <div className="text-sm text-gray-600 mb-4">Your AI Visibility Score</div>
                 <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
                   <div className="h-full bg-blue-500 rounded-full" style={{ width: '67%' }} />
-                </div>
+                      </div>
               </div>
               
               <div className="text-center">
@@ -348,21 +348,21 @@ export default function CompetitiveIntelligence({ data }: CompetitiveIntelligenc
                 <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
                   <div className="h-full bg-green-500 rounded-full" style={{ width: '72%' }} />
                 </div>
+                </div>
               </div>
-            </div>
-            
-            <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-              <h4 className="font-medium text-gray-900 mb-2 flex items-center gap-2">
-                <Lightbulb className="w-4 h-4 text-blue-600" />
+              
+              <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+                <h4 className="font-medium text-gray-900 mb-2 flex items-center gap-2">
+                  <Lightbulb className="w-4 h-4 text-blue-600" />
                 Competitive Advantage
-              </h4>
+                </h4>
               <p className="text-sm text-gray-700">
                 You're 18 points behind Zapier but only 5 points behind industry average. 
                 Focus on technical content and cost transparency to close the gap quickly.
               </p>
+              </div>
             </div>
-          </div>
-        </Card>
+          </Card>
       </section>
     </div>
   );

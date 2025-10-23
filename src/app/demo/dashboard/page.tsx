@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 import { 
   Calendar,
   FileText, 
@@ -9,7 +10,17 @@ import {
   ArrowRight,
   ChevronRight,
   Info,
-  Sparkles
+  Sparkles,
+  BarChart3,
+  TrendingUp,
+  Clock,
+  Users,
+  Target,
+  Activity,
+  Zap,
+  Brain,
+  Globe,
+  MessageSquare
 } from 'lucide-react';
 import { Card, CardContent, Button, Badge } from '@/components/ui';
 import { useContentStudioStore } from '@/lib/stores/content-studio-store';
@@ -36,255 +47,294 @@ export default function DashboardPage() {
     return `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()}`;
   };
 
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: "easeOut" }
+  };
+
+  const staggerChildren = {
+    animate: {
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const quickActions = [
+    {
+      title: "Blog Post",
+      description: "Create AI-optimized blog content",
+      icon: FileText,
+      color: "blue",
+      action: () => {
+        contentStore.startWorkflow('blog-create');
+        router.push('/demo/content-studio/create');
+      }
+    },
+    {
+      title: "LinkedIn Post",
+      description: "Professional social content",
+      icon: MessageSquare,
+      color: "purple",
+      action: () => {
+        contentStore.startWorkflow('linkedin-create');
+        router.push('/demo/content-studio/create');
+      }
+    },
+    {
+      title: "Improve Content",
+      description: "Enhance existing content",
+      icon: TrendingUp,
+      color: "green",
+      action: () => {
+        contentStore.startWorkflow('blog-improve');
+        router.push('/demo/content-studio/create');
+      }
+    }
+  ];
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'published': return 'bg-green-100 text-green-800 border-green-200';
+      case 'draft': return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'scheduled': return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'review': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+    }
+  };
+
+  const getContentIcon = (platform: string) => {
+    switch (platform.toLowerCase()) {
+      case 'blog': return FileText;
+      case 'linkedin': return MessageSquare;
+      case 'twitter': return MessageSquare;
+      default: return FileText;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="bg-white">
+      <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex items-start justify-between mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-start justify-between mb-8"
+          >
             <div>
-              <h1 className="text-2xl font-light text-black mb-1">
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">
                 {getGreeting()}, {data.overview.userName}
               </h1>
-              <p className="text-sm text-black/40">
+              <p className="text-gray-600">
                 {formatDate()}
               </p>
             </div>
-            <div className="flex items-center gap-2">
-              <p className="text-sm text-black/60">Available Assets</p>
-              <Badge className="bg-black/[0.02] text-black border border-black/10">Blog</Badge>
-              <Badge className="bg-black/[0.02] text-black border border-black/10">LinkedIn</Badge>
+            <div className="flex items-center gap-3">
+              <p className="text-sm text-gray-600">Available Assets</p>
+              <Badge className="bg-blue-50 text-blue-700 border-blue-200">Blog</Badge>
+              <Badge className="bg-purple-50 text-purple-700 border-purple-200">LinkedIn</Badge>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Key Metrics */}
-          {/* <div className="grid grid-cols-3 gap-8 mb-12">
-            <div>
-              <p className="text-5xl font-light text-black">{data.overview.stats.totalContent.value}</p>
-              <p className="text-sm text-black/60 mt-1">{data.overview.stats.totalContent.label}</p>
-              <p className="text-xs text-black/40 mt-1">{data.overview.stats.totalContent.breakdown}</p>
-            </div>
-            <div>
-              <p className="text-5xl font-light text-black">{data.overview.stats.published.value}</p>
-              <p className="text-sm text-black/60 mt-1">{data.overview.stats.published.label}</p>
-            </div>
-            <div>
-              <p className="text-5xl font-light text-black">{data.overview.stats.inProgress.value}</p>
-              <p className="text-sm text-black/60 mt-1">{data.overview.stats.inProgress.label}</p>
-            </div>
-          </div> */}
-
-          {/* Main Cards */}
-          <div className="grid grid-cols-3 gap-6 mb-12">
+          {/* Main Action Cards */}
+          <motion.div
+            variants={staggerChildren}
+            initial="initial"
+            animate="animate"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+          >
             {/* Create New Content */}
-            <Card className="text-black border-0 cursor-pointer hover:opacity-90 transition-opacity"  onClick={() => router.push('/demo/content-studio')}>
-              <CardContent className="p-6 h-48 flex flex-col justify-between">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-4">
-                  <Plus className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium mb-2">Create New Content</h3>
-                  <p className="text-sm text-white/60 mb-4">Start with AI assistance</p>
-                  <button className="flex items-center gap-2 text-sm">
-                    Get started
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Calendar */}
-            <Card className="bg-white border border-black/10 cursor-pointer hover:border-black/20 transition-colors"
-                  onClick={() => router.push('/demo/content-studio/calendar')}>
-              <CardContent className="p-6 h-48 flex flex-col justify-between">
-                <div className="w-12 h-12 bg-black/[0.02] rounded-full flex items-center justify-center mb-4">
-                  <Calendar className="w-6 h-6 text-black/60" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium text-black mb-2">Calendar</h3>
-                  <p className="text-sm text-black/60 mb-4">Plan your content</p>
-                  <button className="flex items-center gap-2 text-sm text-black/80 hover:text-black">
-                    View calendar
-                  </button>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Documents */}
-            <Card className="bg-white border border-black/10 cursor-pointer hover:border-black/20 transition-colors"
-                  onClick={() => router.push('/demo/content-studio?view=documents')}>
-              <CardContent className="p-6 h-48 flex flex-col justify-between">
-                <div className="w-12 h-12 bg-black/[0.02] rounded-full flex items-center justify-center mb-4">
-                  <FileText className="w-6 h-6 text-black/60" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium text-black mb-2">Documents</h3>
-                  <p className="text-sm text-black/60 mb-4">Browse all content</p>
-                  <button className="flex items-center gap-2 text-sm text-black/80 hover:text-black">
-                    View documents
-                  </button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Recent Activity and Quick Actions */}
-          <div className="grid grid-cols-2 gap-8">
-            {/* Recent Activity */}
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-sm font-medium text-black">Recent Activity</h2>
-                <button 
-                  onClick={() => router.push('/demo/content-studio?view=documents')}
-                  className="text-xs text-black/60 hover:text-black"
-                >
-                  View all →
-                </button>
-              </div>
-              <div className="space-y-3">
-                {data.recentActivity.slice(0, 6).map((item) => (
-                  <div key={item.id} className="flex items-start gap-3">
-                    <div className="flex-1">
-                      <p className="text-sm text-black line-clamp-1">{item.title}</p>
-                      <div className="flex items-center gap-2 mt-1">
-                        <Badge 
-                          variant="secondary" 
-                          className={`text-xs ${
-                            item.status === 'published' ? 'bg-black text-white' :
-                            item.status === 'draft' ? 'bg-black/5 text-black/60' :
-                            item.status === 'post' ? 'bg-black/10 text-black/70' :
-                            item.status === 'brief' ? 'bg-black/10 text-black/70' :
-                            item.status === 'scheduled' ? 'bg-black/20 text-black' :
-                            item.status === 'review' ? 'bg-black/10 text-black/60' :
-                            'bg-black/5 text-black/60'
-                          } border-0`}
-                        >
-                          {item.status === 'post' ? 'Post' : 
-                           item.status === 'brief' ? 'Brief' :
-                           item.status === 'published' ? 'Published' :
-                           item.status === 'scheduled' ? 'Scheduled' :
-                           item.status === 'review' ? 'In Review' :
-                           'Draft'}
-                        </Badge>
-                        <span className="text-xs text-black/40">
-                          {item.platform}
-                        </span>
-                        <span className="text-xs text-black/40">
-                          {item.time}
-                        </span>
-                      </div>
+            <motion.div variants={fadeInUp}>
+              <Card 
+                className="bg-gradient-to-br from-gray-900 to-gray-800 text-white border-0 cursor-pointer hover:shadow-xl transition-all duration-300 group"
+                onClick={() => router.push('/demo/content-studio')}
+              >
+                <CardContent className="p-8 h-56 flex flex-col justify-between">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Plus className="w-7 h-7 text-white" />
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-3">Create New Content</h3>
+                    <p className="text-white/80 mb-6 leading-relaxed">Start with AI assistance and expert guidance</p>
+                    <div className="flex items-center gap-2 text-sm font-medium text-white/90 group-hover:text-white transition-colors">
+                      <span>Get started</span>
+                      <ArrowRight className="w-4 h-4" />
                     </div>
                   </div>
-                ))}
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Calendar */}
+            <motion.div variants={fadeInUp}>
+              <Card 
+                className="bg-white border border-gray-200 cursor-pointer hover:shadow-lg hover:border-gray-300 transition-all duration-300 group"
+                onClick={() => router.push('/demo/content-studio/calendar')}
+              >
+                <CardContent className="p-8 h-56 flex flex-col justify-between">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Calendar className="w-7 h-7 text-blue-600" />
+                    </div>
+                    <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-gray-600 group-hover:translate-x-1 transition-all duration-300" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Calendar</h3>
+                    <p className="text-gray-600 mb-6 leading-relaxed">Plan and schedule your content strategy</p>
+                    <div className="flex items-center gap-2 text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors">
+                      <span>View calendar</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Documents */}
+            <motion.div variants={fadeInUp}>
+              <Card 
+                className="bg-white border border-gray-200 cursor-pointer hover:shadow-lg hover:border-gray-300 transition-all duration-300 group"
+                onClick={() => router.push('/demo/content-studio?view=documents')}
+              >
+                <CardContent className="p-8 h-56 flex flex-col justify-between">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <FileText className="w-7 h-7 text-green-600" />
+                    </div>
+                    <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-gray-600 group-hover:translate-x-1 transition-all duration-300" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Documents</h3>
+                    <p className="text-gray-600 mb-6 leading-relaxed">Browse and manage all your content</p>
+                    <div className="flex items-center gap-2 text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors">
+                      <span>View documents</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
+
+          {/* Recent Activity and Quick Actions */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+          >
+            {/* Recent Activity */}
+            <div className="bg-white border border-gray-200 rounded-2xl p-8">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-bold text-gray-900">Recent Activity</h2>
+                <button 
+                  onClick={() => router.push('/demo/content-studio?view=documents')}
+                  className="text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1"
+                >
+                  View all
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+              <div className="space-y-4">
+                {data.recentActivity.slice(0, 6).map((item, idx) => {
+                  const ContentIcon = getContentIcon(item.platform);
+                  return (
+                    <motion.div 
+                      key={item.id}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.4 + idx * 0.1 }}
+                      className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group cursor-pointer"
+                    >
+                      <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                        <ContentIcon className="w-5 h-5 text-gray-600" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-gray-900 line-clamp-1 group-hover:text-gray-700 transition-colors">
+                          {item.title}
+                        </p>
+                        <div className="flex items-center gap-3 mt-2">
+                          <Badge 
+                            className={`text-xs font-medium ${getStatusColor(item.status)}`}
+                          >
+                            {item.status === 'post' ? 'Post' : 
+                             item.status === 'brief' ? 'Brief' :
+                             item.status === 'published' ? 'Published' :
+                             item.status === 'scheduled' ? 'Scheduled' :
+                             item.status === 'review' ? 'In Review' :
+                             'Draft'}
+                          </Badge>
+                          <span className="text-xs text-gray-500">
+                            {item.platform}
+                          </span>
+                          <span className="text-xs text-gray-500">
+                            {item.time}
+                          </span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
 
             {/* Quick Actions */}
-            <div>
-              <h2 className="text-sm font-medium text-black mb-4">Quick Actions</h2>
-              <div className="space-y-3">
-                <button
-                  onClick={() => {
-                    contentStore.startWorkflow('blog-create');
-                    router.push('/demo/content-studio/create');
-                  }}
-                  className="w-full flex items-center justify-between p-3 bg-black/[0.02] hover:bg-black/[0.04] rounded-lg transition-colors group"
-                >
-                  <span className="text-sm text-black">Blog Post</span>
-                  <ChevronRight className="w-4 h-4 text-black/40 group-hover:text-black/60" />
-                </button>
-                <button
-                  onClick={() => {
-                    contentStore.startWorkflow('linkedin-create');
-                    router.push('/demo/content-studio/create');
-                  }}
-                  className="w-full flex items-center justify-between p-3 bg-black/[0.02] hover:bg-black/[0.04] rounded-lg transition-colors group"
-                >
-                  <span className="text-sm text-black">LinkedIn Post</span>
-                  <ChevronRight className="w-4 h-4 text-black/40 group-hover:text-black/60" />
-                </button>
-                <button
-                  onClick={() => {
-                    contentStore.startWorkflow('blog-improve');
-                    router.push('/demo/content-studio/create');
-                  }}
-                  className="w-full flex items-center justify-between p-3 bg-black/[0.02] hover:bg-black/[0.04] rounded-lg transition-colors group"
-                >
-                  <span className="text-sm text-black">Improve Content</span>
-                  <ChevronRight className="w-4 h-4 text-black/40 group-hover:text-black/60" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Playbook Progress */}
-          {/* {data.playbook && (
-            <div className="mt-8 p-6 border border-black/10 rounded-lg">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-sm font-medium text-black mb-1">{data.playbook.current}</h3>
-                  <p className="text-xs text-black/60">{data.playbook.focus}</p>
-                </div>
-                <Badge className="bg-black text-white border-0 text-xs">
-                  {data.playbook.postsPerWeek} posts/week
-                </Badge>
-              </div>
-              <div className="space-y-2">
-                {data.playbook.priorities.map((priority, idx) => (
-                  <div key={idx} className="flex items-center gap-2">
-                    <div className="w-4 h-4 border border-black/20 rounded" />
-                    <span className="text-sm text-black/80">{priority}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4 pt-4 border-t border-black/10">
-                <p className="text-xs text-black/60">
-                  Next week: <span className="text-black font-medium">{data.playbook.nextWeek}</span>
-                </p>
-              </div>
-            </div>
-          )} */}
-
-          {/* Competitor Watch */}
-          {/* {data.competitors && (
-            <div className="mt-8">
-              <h2 className="text-sm font-medium text-black mb-4">Competitor Watch</h2>
-              <div className="grid grid-cols-3 gap-4">
-                {data.competitors.map((competitor) => (
-                  <div key={competitor.name} className="p-4 border border-black/10 rounded-lg">
-                    <h3 className="text-sm font-medium text-black mb-2">{competitor.name}</h3>
-                    <div className="space-y-1">
-                      <div className="flex justify-between text-xs">
-                        <span className="text-black/60">Content/month</span>
-                        <span className="text-black">{competitor.contentVelocity}</span>
+            <div className="bg-white border border-gray-200 rounded-2xl p-8">
+              <h2 className="text-xl font-bold text-gray-900 mb-6">Quick Actions</h2>
+              <div className="space-y-4">
+                {quickActions.map((action, idx) => (
+                  <motion.button
+                    key={action.title}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4 + idx * 0.1 }}
+                    onClick={action.action}
+                    className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 rounded-xl transition-all duration-300 group"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className={`w-12 h-12 bg-${action.color}-50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                        <action.icon className={`w-6 h-6 text-${action.color}-600`} />
                       </div>
-                      <div className="flex justify-between text-xs">
-                        <span className="text-black/60">Market share</span>
-                        <span className="text-black">{competitor.marketShare}</span>
+                      <div className="text-left">
+                        <h3 className="font-semibold text-gray-900 group-hover:text-gray-700 transition-colors">
+                          {action.title}
+                        </h3>
+                        <p className="text-sm text-gray-600">
+                          {action.description}
+                        </p>
                       </div>
-                      <p className="text-xs text-black/40 mt-2 pt-2 border-t border-black/5">
-                        {competitor.weakness}
-                      </p>
                     </div>
-                  </div>
+                    <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-gray-600 group-hover:translate-x-1 transition-all duration-300" />
+                  </motion.button>
                 ))}
               </div>
             </div>
-          )} */}
+          </motion.div>
 
-          {/* Tip Section */}
-          <div className="mt-8 p-4 bg-black/[0.02] rounded-lg flex items-start gap-3">
-            <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center flex-shrink-0">
-              <Sparkles className="w-4 h-4 text-white" />
+          {/* AI Insights Tip */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-2xl flex items-start gap-4"
+          >
+            <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <Sparkles className="w-6 h-6 text-white" />
             </div>
             <div>
-              <p className="text-sm font-medium text-black">Tip</p>
-              <p className="text-sm text-black/60 mt-1">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">AI Insight</h3>
+              <p className="text-gray-700 leading-relaxed">
                 {data.tips && data.tips[1] ? data.tips[1].description : 
                  `Complete your ${data.overview.stats.inProgress.value} drafts before starting new content.`}
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

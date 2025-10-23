@@ -65,7 +65,7 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
         </Card>
 
         <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200">
-          <div className="p-6">
+            <div className="p-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center">
                 <Users className="w-5 h-5 text-white" />
@@ -77,15 +77,15 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
             </div>
             <div className="text-3xl font-bold text-green-700 mb-2">2.4M</div>
             <p className="text-sm text-gray-600">Monthly searches for automation-related queries</p>
-          </div>
-        </Card>
+            </div>
+          </Card>
 
         <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
-          <div className="p-6">
+            <div className="p-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center">
                 <Target className="w-5 h-5 text-white" />
-              </div>
+                      </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">Market Share</h3>
                 <p className="text-sm text-gray-600">Current Position</p>
@@ -93,9 +93,9 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
             </div>
             <div className="text-3xl font-bold text-purple-700 mb-2">2.3%</div>
             <p className="text-sm text-gray-600">Share of voice in automation discussions</p>
-          </div>
-        </Card>
-      </div>
+            </div>
+          </Card>
+        </div>
 
       {/* Buyer Personas */}
       <section className="mb-8">
@@ -160,15 +160,15 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
                 <p className="text-sm text-gray-600 mb-4">{persona.description}</p>
                 
                 <div className="space-y-3">
-                  <div>
+                              <div>
                     <div className="text-xs text-gray-500 mb-1">AI Impact Potential</div>
                     <div className={`text-sm font-medium ${
                       persona.aiImpact === 'Very High' ? 'text-red-600' :
                       persona.aiImpact === 'High' ? 'text-orange-600' :
                       'text-yellow-600'
                     }`}>{persona.aiImpact}</div>
-                  </div>
-                  
+                </div>
+                
                   <div>
                     <div className="text-xs text-gray-500 mb-1">Influence Level</div>
                     <div className="text-sm font-medium text-gray-900">{persona.influence}</div>
@@ -183,11 +183,11 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
                           {point}
                         </div>
                       ))}
-                    </div>
-                  </div>
                 </div>
-              </div>
-            </Card>
+                  </div>
+            </div>
+          </div>
+        </Card>
           ))}
         </div>
       </section>
@@ -230,7 +230,7 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
                   <div key={idx} className="border border-gray-100 rounded-lg p-4">
                     <div className="flex items-start justify-between mb-2">
                       <h4 className="font-semibold text-gray-900">{opp.opportunity}</h4>
-                      <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-2">
                         <span className="text-xs text-gray-500">Volume: {opp.searchVolume}</span>
                         <span className="text-xs text-green-600 font-medium">{opp.growth}</span>
                       </div>
@@ -241,13 +241,13 @@ export default function MarketIntelligence({ data }: MarketIntelligenceProps) {
                         opp.competition === 'Low' ? 'text-green-600' : 
                         opp.competition === 'Medium' ? 'text-yellow-600' : 'text-red-600'
                       }`}>{opp.competition}</span></span>
-                    </div>
+              </div>
                   </div>
                 ))}
               </div>
             </div>
           </Card>
-
+          
           <Card className="bg-white border border-gray-200">
             <div className="p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Market Trends</h3>

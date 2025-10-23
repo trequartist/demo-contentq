@@ -55,10 +55,10 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
     if (activeVersion === 1) {
       return allSections.filter((section: any) => {
         // Map strategy IDs to section titles for V1
-        const strategyMap: Record<string, string[]> = {
-          'migration-accelerator': ['The Migration Accelerator'],
-          'ai-native-authority': ['The AI-Native Authority'], 
-          'transparency-advantage': ['The Transparency Advantage'],
+      const strategyMap: Record<string, string[]> = {
+        'migration-accelerator': ['The Migration Accelerator'],
+        'ai-native-authority': ['The AI-Native Authority'], 
+        'transparency-advantage': ['The Transparency Advantage'],
           'use-case-accelerator': ['The Use Case Accelerator']
         };
         
@@ -562,7 +562,7 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
                         </ul>
                       </div>
                     )}
-                  </div>
+                </div>
                 ))}
               </div>
             </div>

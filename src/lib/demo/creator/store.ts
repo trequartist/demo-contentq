@@ -14,12 +14,16 @@ import type {
   DiagnosticsMode,
   PlaybookMode,
   ContentMode,
+  ChatMode,
+  UploadedFile,
 } from './types';
 
 const createEmptySession = () => ({
   messages: [] as ChatMessage[],
   outputState: 'empty' as OutputState,
   intermediateSteps: [] as IntermediateStep[],
+  chatMode: 'normal' as ChatMode,
+  uploadedFiles: [] as UploadedFile[],
   
   // Version management
   activeVersion: 1 as 1 | 2,
@@ -35,12 +39,37 @@ const createEmptySession = () => ({
   mode: undefined as DiagnosticsMode | PlaybookMode | ContentMode | undefined,
 });
 
+const createEmptyResearchSession = () => ({
+  messages: [] as ChatMessage[],
+  uploadedFiles: [] as UploadedFile[],
+  isActive: false,
+  researchNotes: [] as string[],
+  synthesisResults: undefined as any,
+});
+
 interface CreatorStore extends CreatorState {
   setActiveTab: (tab: CreatorTab) => void;
   setMode: (tab: CreatorTab, mode: DiagnosticsMode | PlaybookMode | ContentMode) => void;
   addMessage: (tab: CreatorTab, message: ChatMessage) => void;
+  updateMessage: (tab: CreatorTab, messageId: string, updatedMessage: ChatMessage) => void;
   setOutputState: (tab: CreatorTab, state: OutputState) => void;
   removeMessagesByRole: (tab: CreatorTab, role: ChatMessage['role']) => void;
+
+  // Chat mode and file management
+  setChatMode: (tab: CreatorTab, mode: ChatMode) => void;
+  addUploadedFile: (tab: CreatorTab, file: UploadedFile) => void;
+  removeUploadedFile: (tab: CreatorTab, fileId: string) => void;
+  clearUploadedFiles: (tab: CreatorTab) => void;
+
+  // Research Mode - Independent layer
+  researchSession: ReturnType<typeof createEmptyResearchSession>;
+  toggleResearchMode: () => void;
+  addResearchMessage: (message: ChatMessage) => void;
+  addResearchFile: (file: UploadedFile) => void;
+  removeResearchFile: (fileId: string) => void;
+  clearResearchFiles: () => void;
+  addResearchNote: (note: string) => void;
+  setSynthesisResults: (results: any) => void;
 
   // Version management
   setActiveVersion: (tab: CreatorTab, version: 1 | 2) => void;
@@ -75,6 +104,7 @@ const baseStore = create<CreatorStore>((set) => ({
     playbook: createEmptySession(),
     posts: createEmptySession(),
   },
+  researchSession: createEmptyResearchSession(),
 
   setActiveTab: (tab) => set({ activeTab: tab }),
 
@@ -108,6 +138,19 @@ const baseStore = create<CreatorStore>((set) => ({
         [tab]: {
           ...state.sessions[tab],
           messages: [...state.sessions[tab].messages, message],
+        },
+      },
+    })),
+
+  updateMessage: (tab, messageId, updatedMessage) =>
+    set((state) => ({
+      sessions: {
+        ...state.sessions,
+        [tab]: {
+          ...state.sessions[tab],
+          messages: state.sessions[tab].messages.map((msg) =>
+            msg.id === messageId ? updatedMessage : msg
+          ),
         },
       },
     })),
@@ -244,6 +287,108 @@ const baseStore = create<CreatorStore>((set) => ({
           ...state.sessions[tab],
           v1Data,
         },
+      },
+    })),
+
+  // Chat mode and file management actions
+  setChatMode: (tab, mode) =>
+    set((state) => ({
+      sessions: {
+        ...state.sessions,
+        [tab]: {
+          ...state.sessions[tab],
+          chatMode: mode,
+        },
+      },
+    })),
+
+  addUploadedFile: (tab, file) =>
+    set((state) => ({
+      sessions: {
+        ...state.sessions,
+        [tab]: {
+          ...state.sessions[tab],
+          uploadedFiles: [...(state.sessions[tab].uploadedFiles || []), file],
+        },
+      },
+    })),
+
+  removeUploadedFile: (tab, fileId) =>
+    set((state) => ({
+      sessions: {
+        ...state.sessions,
+        [tab]: {
+          ...state.sessions[tab],
+          uploadedFiles: (state.sessions[tab].uploadedFiles || []).filter(f => f.id !== fileId),
+        },
+      },
+    })),
+
+  clearUploadedFiles: (tab) =>
+    set((state) => ({
+      sessions: {
+        ...state.sessions,
+        [tab]: {
+          ...state.sessions[tab],
+          uploadedFiles: [],
+        },
+      },
+    })),
+
+  // Research Mode - Independent layer actions
+  toggleResearchMode: () =>
+    set((state) => ({
+      researchSession: {
+        ...state.researchSession,
+        isActive: !state.researchSession.isActive,
+      },
+    })),
+
+  addResearchMessage: (message) =>
+    set((state) => ({
+      researchSession: {
+        ...state.researchSession,
+        messages: [...state.researchSession.messages, message],
+      },
+    })),
+
+  addResearchFile: (file) =>
+    set((state) => ({
+      researchSession: {
+        ...state.researchSession,
+        uploadedFiles: [...state.researchSession.uploadedFiles, file],
+      },
+    })),
+
+  removeResearchFile: (fileId) =>
+    set((state) => ({
+      researchSession: {
+        ...state.researchSession,
+        uploadedFiles: state.researchSession.uploadedFiles.filter(f => f.id !== fileId),
+      },
+    })),
+
+  clearResearchFiles: () =>
+    set((state) => ({
+      researchSession: {
+        ...state.researchSession,
+        uploadedFiles: [],
+      },
+    })),
+
+  addResearchNote: (note) =>
+    set((state) => ({
+      researchSession: {
+        ...state.researchSession,
+        researchNotes: [...state.researchSession.researchNotes, note],
+      },
+    })),
+
+  setSynthesisResults: (results) =>
+    set((state) => ({
+      researchSession: {
+        ...state.researchSession,
+        synthesisResults: results,
       },
     })),
 }));

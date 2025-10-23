@@ -61,7 +61,7 @@ export function CreatorShell({ activeTab, onTabChange, chatPanel, previewPanel }
         className={`relative flex-shrink-0 transition-all duration-300 ease-in-out ${
           isChatOpen ? 'border-r border-gray-100' : ''
         }`}
-        style={{ width: isChatOpen ? 380 : 0 }}
+        style={{ width: isChatOpen ? 480 : 0 }}
       >
         <div
           className={`h-full bg-white transition-opacity duration-300 overflow-y-auto ${

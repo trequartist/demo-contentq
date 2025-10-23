@@ -5,6 +5,7 @@ export type CreatorTab = 'diagnostics' | 'playbook' | 'posts';
 export type DiagnosticsMode = 'diagnostics' | 'insights';
 export type PlaybookMode = 'playbook' | 'calendar';
 export type ContentMode = 'create' | 'optimize';
+export type ChatMode = 'normal' | 'research';
 
 export interface CreatorModes {
   diagnostics: DiagnosticsMode;
@@ -27,6 +28,15 @@ export interface ChatMessage {
   text: string;
   timestamp: string;
   component?: ReactNode; // For interactive components in chat
+}
+
+export interface UploadedFile {
+  id: string;
+  name: string;
+  size: number;
+  type: string;
+  uploadedAt: string;
+  preview?: string; // For images
 }
 
 export interface IntermediateStep {
@@ -113,6 +123,8 @@ export interface SessionData {
   messages: ChatMessage[];
   outputState: OutputState;
   mode?: DiagnosticsMode | PlaybookMode | ContentMode;
+  chatMode?: ChatMode;
+  uploadedFiles?: UploadedFile[];
   
   // Version management
   activeVersion: 1 | 2;

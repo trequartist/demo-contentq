@@ -14,11 +14,13 @@ import {
   PlaybookMode,
   ContentMode,
 } from '@/lib/demo/creator/types';
+import { synthesizeFiles } from '@/lib/demo/creator/file-processor';
 import diagnosticsData from '@/usableclientdata/data/diagnostics/diagnostics-gumloop.json';
 import playbookData from '@/usableclientdata/data/playbook/playbook-gumloop.json';
 import { CalendarModal } from '@/components/demo/creator/posts/CalendarModal';
 import { DocumentsPanel } from '@/components/demo/creator/posts/DocumentsPanel';
 import insightsHubData from '@/usableclientdata/data/insights/insights-hub.json';
+import triggerData from '@/usableclientdata/ai-assistant/v2-trigger-keywords.json';
 // Selection/editing components now render in the right preview panel only
 
 export default function CreatorPage() {
@@ -34,6 +36,7 @@ export default function CreatorPage() {
     setActiveTab,
     setMode,
     addMessage,
+    updateMessage,
     setOutputState,
     setDiagnosticsOutput,
     setPlaybookStrategies,
@@ -170,6 +173,49 @@ export default function CreatorPage() {
   // Helper functions for V2 generation
   const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
+  // Simulate live streaming of actual data generation
+  const simulateLiveDataGeneration = async (tab: CreatorTab, instruction: string) => {
+    const messageId = crypto.randomUUID();
+    
+    // Create initial streaming message
+    addMessage(tab, {
+      id: messageId,
+      role: 'assistant',
+      text: '## Live Data Processing\n\n**Status:** Initializing...',
+      timestamp: new Date().toISOString(),
+    });
+
+    const streamingSteps = [
+      { section: 'Data Analysis', text: 'Analyzing current data patterns and performance metrics...', delay: 400 },
+      { section: 'Insights Processing', text: 'Processing insights and identifying optimization opportunities...', delay: 500 },
+      { section: 'Customization', text: 'Applying your preferences and customizing recommendations...', delay: 400 },
+      { section: 'Strategy Generation', text: 'Generating enhanced strategies and actionable insights...', delay: 500 },
+      { section: 'Finalization', text: 'Finalizing optimized output with real-time data integration...', delay: 300 }
+    ];
+
+    let completedSteps = [];
+    
+    for (const step of streamingSteps) {
+      completedSteps.push(step);
+      
+      const sectionsText = completedSteps.map((s, index) => 
+        `**${s.section}:** ${s.text} ${index === completedSteps.length - 1 ? '⏳' : '✅'}`
+      ).join('\n\n');
+      
+      const fullText = `## Live Data Processing\n\n${sectionsText}`;
+      
+      // Update the same message with new content
+      updateMessage(tab, messageId, {
+        id: messageId,
+        role: 'assistant',
+        text: fullText,
+        timestamp: new Date().toISOString(),
+      });
+      
+      await delay(step.delay);
+    }
+  };
+
   const getDetailedProcessingMessage = (tab: CreatorTab, instruction: string, triggerData?: any): string => {
     const lower = instruction.toLowerCase();
     
@@ -272,7 +318,7 @@ export default function CreatorPage() {
     setOutputState(tab, 'processing');
     
     // Step 1: Understanding (800ms)
-    const initialMsg = triggerData?.initialMessages?.analyzing?.replace('{instruction}', instruction) || `🎯 Analyzing your request: "${instruction}"...`;
+    const initialMsg = triggerData?.initialMessages?.analyzing?.replace('{instruction}', instruction) || `Analyzing your request: "${instruction}"...`;
     addMessage(tab, {
       id: crypto.randomUUID(),
       role: 'assistant',
@@ -291,22 +337,24 @@ export default function CreatorPage() {
     });
     await delay(1200);
     
-    // Step 3: Generating (1500ms)
-    const generatingMsg = triggerData?.initialMessages?.generating || '✨ Generating optimized version with your preferences...';
+    // Step 3: Live streaming generation (1500ms)
+    const generatingMsg = triggerData?.initialMessages?.generating || 'Generating optimized version with your preferences...';
     addMessage(tab, {
       id: crypto.randomUUID(),
       role: 'assistant',
       text: generatingMsg,
       timestamp: new Date().toISOString(),
     });
-    await delay(1500);
+    
+    // Simulate live streaming of actual data generation
+    await simulateLiveDataGeneration(tab, instruction);
     
     // Step 4: Store V1 data before generating V2
     const currentSession = sessions[tab];
     let v1DataToStore = {};
     
     if (tab === 'diagnostics') {
-      v1DataToStore = data;
+      v1DataToStore = diagnosticsData;
     } else if (tab === 'playbook') {
       // Import calendar V1 data
       const calendarV1Data = await import('@/usableclientdata/content-studio/gumloop-calendar-topics.json');
@@ -375,6 +423,41 @@ export default function CreatorPage() {
     router.push(`/demo/creator?tab=${tab}`);
   };
 
+  const handleSynthesize = async () => {
+    const session = sessions[activeTab];
+    const uploadedFiles = session.uploadedFiles || [];
+    
+    if (uploadedFiles.length < 2) return;
+
+    // Add synthesis message
+    addMessage(activeTab, {
+      id: crypto.randomUUID(),
+      role: 'assistant',
+      text: 'Analyzing and synthesizing your uploaded files...',
+      timestamp: new Date().toISOString(),
+    });
+
+    try {
+      // Simulate synthesis processing
+      const synthesisResult = await synthesizeFiles(uploadedFiles);
+      
+      // Add synthesis result message
+      addMessage(activeTab, {
+        id: crypto.randomUUID(),
+        role: 'assistant',
+        text: `## Synthesis Complete\n\n**Combined Summary:**\n${synthesisResult.combinedSummary}\n\n**Key Insights:**\n${synthesisResult.keyInsights.map(insight => `• ${insight}`).join('\n')}\n\n**Common Themes:**\n${synthesisResult.commonThemes.map(theme => `• ${theme}`).join('\n')}\n\n**Recommendations:**\n${synthesisResult.recommendations.map(rec => `• ${rec}`).join('\n')}`,
+        timestamp: new Date().toISOString(),
+      });
+    } catch (error) {
+      addMessage(activeTab, {
+        id: crypto.randomUUID(),
+        role: 'assistant',
+        text: 'Error during synthesis. Please try again.',
+        timestamp: new Date().toISOString(),
+      });
+    }
+  };
+
   const handleSendMessage = async (text: string) => {
     const timestamp = new Date().toISOString();
 
@@ -386,8 +469,7 @@ export default function CreatorPage() {
       timestamp,
     });
 
-    // Load V2 trigger settings from JSON
-    const triggerData = await import('@/usableclientdata/ai-assistant/v2-trigger-keywords.json');
+    // Use V2 trigger settings from imported JSON
     const session = sessions[activeTab];
     
     // Check if V2 should be generated based on trigger mode
@@ -449,7 +531,7 @@ export default function CreatorPage() {
       addMessage('diagnostics', {
         id: crypto.randomUUID(),
         role: 'assistant',
-        text: 'Pulling key insights and narrative highlights...',
+        text: 'Pulling key insights and narrative highlights from your data...',
         timestamp: new Date().toISOString(),
       });
 
@@ -480,10 +562,11 @@ export default function CreatorPage() {
       timestamp: new Date().toISOString(),
     });
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    // Live streaming of diagnostics generation
+    await simulateLiveDataGeneration('diagnostics', userMessage);
 
     setOutputState('diagnostics', 'processing');
-    await new Promise((resolve) => setTimeout(resolve, 2500));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     // Use real diagnostics data - ONLY diagnostics, no insights
     setDiagnosticsOutput(diagnosticsData.data);
@@ -550,7 +633,8 @@ export default function CreatorPage() {
       timestamp: new Date().toISOString(),
     });
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    // Live streaming of playbook generation
+    await simulateLiveDataGeneration('playbook', userMessage);
 
     // Load strategies from JSON data if not already loaded
     if (!sessions.playbook.playbookStrategies) {
@@ -607,6 +691,7 @@ export default function CreatorPage() {
 
   // POSTS WORKFLOW
   const handlePostsFlow = async (userMessage: string) => {
+    console.log('handlePostsFlow called with:', userMessage);
     const session = sessions.posts;
 
     // If already complete, reset and regenerate
@@ -618,6 +703,7 @@ export default function CreatorPage() {
     }
 
     // Step 1: Generate topics based on user input
+    console.log('Setting posts output state to streaming');
     setOutputState('posts', 'streaming');
 
     const mode = modes.posts;
@@ -664,8 +750,26 @@ export default function CreatorPage() {
       },
     ];
 
+    console.log('Setting post output with topics:', topics);
     setPostOutput({ topics });
+    console.log('Setting posts output state to awaiting_topic');
     setOutputState('posts', 'awaiting_topic');
+    
+    // Debug: Check the state after setting
+    setTimeout(() => {
+      const currentSession = sessions.posts;
+      console.log('Posts session after setting:', {
+        outputState: currentSession.outputState,
+        postOutput: currentSession.postOutput
+      });
+    }, 100);
+    
+    // Also check the store directly
+    const storeState = useCreatorStore.getState();
+    console.log('Store state after setting:', {
+      postsOutputState: storeState.sessions.posts.outputState,
+      postsOutput: storeState.sessions.posts.postOutput
+    });
   };
 
   const handleTopicSelection = async (topic: PostTopic) => {
@@ -880,17 +984,18 @@ The most successful implementations we've seen treat AI adoption as a continuous
       activeTab={activeTab}
       onTabChange={handleTabChange}
       chatPanel={
-        <ChatPanel
-          activeTab={activeTab}
-          messages={currentSession.messages}
-          onSendMessage={handleSendMessage}
-        />
+      <ChatPanel
+        activeTab={activeTab}
+        messages={currentSession.messages}
+        onSendMessage={handleSendMessage}
+      />
       }
       previewPanel={
         <OutputPanel
           activeTab={activeTab}
           session={currentSession}
           onStartCreation={(text?: string) => {
+            console.log('onStartCreation called with:', text, 'activeTab:', activeTab);
             if (activeTab === 'diagnostics') {
               const mode = modes.diagnostics;
               const prompt =
@@ -907,8 +1012,11 @@ The most successful implementations we've seen treat AI adoption as a continuous
               handleSendMessage(prompt);
             } else if (activeTab === 'posts') {
               // For posts, process the user's input to generate topics
+              console.log('Posts tab - calling handleSendMessage with:', text);
               if (text && text.trim()) {
                 handleSendMessage(text);
+              } else {
+                console.log('No text provided for posts');
               }
             }
           }}

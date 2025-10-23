@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from 'react';
 import {
   CreatorTab,
   SessionData,
@@ -48,6 +49,7 @@ export function OutputPanel({
   onBrowseDocuments,
   onCalendarAngleSelect,
 }: OutputPanelProps) {
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { outputState, intermediateSteps } = session;
   const modes = useCreatorStore((state) => state.modes);
 
@@ -122,6 +124,7 @@ export function OutputPanel({
                 </div>
                 <div className="space-y-4">
                   <textarea
+                    ref={textareaRef}
                     placeholder="e.g., 'Write about AI automation for small businesses' or 'Create a guide on content marketing trends'"
                     className="w-full p-4 border border-gray-200 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     rows={4}
@@ -138,10 +141,12 @@ export function OutputPanel({
                   <div className="flex justify-end">
                     <button
                       onClick={() => {
-                        const textarea = document.querySelector('textarea') as HTMLTextAreaElement;
-                        const text = textarea?.value.trim();
+                        const text = textareaRef.current?.value.trim();
+                        console.log('Generate Topics clicked, text:', text);
                         if (text) {
                           onStartCreation?.(text);
+                        } else {
+                          console.log('No text provided');
                         }
                       }}
                       className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
