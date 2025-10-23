@@ -1,6 +1,6 @@
 # KiwiQ Demo 
 
-A  of the  content and management platform, built Next.js and TypeScript.
+A  of the  content and management platform, built Next.js.
 
 ## 🎯 Overview
 
