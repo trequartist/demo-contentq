@@ -13,7 +13,7 @@
 - ❌ Deleted `src/components/demo/content-studio/WorkflowCard.tsx`
 - ❌ Deleted `src/components/demo/content-studio/CreateContentView.tsx`
 
-### 2. **Removed Unused JSON Files**
+### 2. **Removed Unused JSON **
 - ❌ Deleted `src/usableclientdata/data/content-studio-data.json`
 - ❌ Deleted `src/usableclientdata/data/documents.json`
 
