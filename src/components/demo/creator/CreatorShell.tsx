@@ -20,7 +20,7 @@ type ModeDefinition<T extends string> = {
 
 const primaryTabs: Array<{ id: CreatorTab; label: string }> = [
   { id: 'diagnostics', label: 'Intelligence' },
-  { id: 'playbook', label: 'Playbook' },
+  { id: 'playbook', label: 'Plan' },
   { id: 'posts', label: 'Posts' },
 ];
 
@@ -30,7 +30,7 @@ const diagnosticsModes: ModeDefinition<DiagnosticsMode>[] = [
 ];
 
 const playbookModes: ModeDefinition<PlaybookMode>[] = [
-  { id: 'playbook', label: 'Playbook', tagline: 'Strategic blueprint' },
+  { id: 'playbook', label: 'Plan', tagline: 'Strategic blueprint' },
   { id: 'calendar', label: 'Calendar', tagline: 'Campaign cadence' },
 ];
 

@@ -29,8 +29,8 @@ const diagnosticsModeCopy: Record<DiagnosticsMode, string> = {
 };
 
 const playbookModeCopy: Record<PlaybookMode, string> = {
-  playbook: 'Get a proven strategic blueprint that accelerates your market authority.',
-  calendar: 'Build a content calendar that maximizes AI visibility and engagement.',
+  playbook: 'Build your strategic plan with defined content pillars and execution roadmap.',
+  calendar: 'Plan and schedule your content across all pillars and campaigns.',
 };
 
 const contentModeCopy: Record<ContentMode, string> = {
@@ -53,16 +53,16 @@ const diagnosticsActions: Record<DiagnosticsMode, QuickAction[]> = {
 
 const playbookActions: Record<PlaybookMode, QuickAction[]> = {
   playbook: [
-    { label: 'Adjust Timeline', prompt: 'Adjust the timeline for the AI-Native Content Strategy to 4 months' },
-    { label: 'Add More Strategies', prompt: 'Add a social media strategy to the playbook' },
-    { label: 'Focus on Specific Channel', prompt: 'Add more detail about email marketing in the competitive positioning section' },
-    { label: 'Export Playbook', prompt: 'Export this playbook as a PDF document' },
+    { label: 'Add Content Pillar', prompt: 'Add a social media content pillar to the plan' },
+    { label: 'Adjust Timeline', prompt: 'Adjust the timeline for the content strategy to 4 months' },
+    { label: 'Focus on Channel', prompt: 'Add more detail about email marketing in the plan' },
+    { label: 'Export Plan', prompt: 'Export this plan as a PDF document' },
   ],
   calendar: [
-    { label: 'Adjust Timeline', prompt: 'Adjust the timeline for the AI-Native Content Strategy to 4 months' },
-    { label: 'Add More Strategies', prompt: 'Add a social media strategy to the playbook' },
-    { label: 'Focus on Specific Channel', prompt: 'Add more detail about email marketing in the competitive positioning section' },
-    { label: 'Export Playbook', prompt: 'Export this playbook as a PDF document' },
+    { label: 'Add Topics', prompt: 'Add more blog topics to the calendar' },
+    { label: 'Adjust Schedule', prompt: 'Reschedule content to different dates' },
+    { label: 'Filter by Pillar', prompt: 'Show only Zapier Migration content' },
+    { label: 'Export Calendar', prompt: 'Export the calendar as a CSV file' },
   ],
 };
 
@@ -82,6 +82,7 @@ const contentActions: Record<ContentMode, QuickAction[]> = {
 export function ChatPanel({ activeTab, messages, onSendMessage }: ChatPanelProps) {
   const [input, setInput] = useState('');
   const [isResearchMode, setIsResearchMode] = useState(false);
+  const [isDragOver, setIsDragOver] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -200,6 +201,31 @@ export function ChatPanel({ activeTab, messages, onSendMessage }: ChatPanelProps
     }
   };
 
+  const handleInsightDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(false);
+    
+    try {
+      const data = JSON.parse(e.dataTransfer.getData('application/json'));
+      if (data.type === 'insight') {
+        const promptText = `Integrate this insight into our strategy: "${data.title}"\n\nDetails: ${data.description}\n\nExpected lift: ${data.expectedLift}\nPriority: ${data.priority}`;
+        setInput(promptText);
+      }
+    } catch (error) {
+      console.error('Error handling dropped insight:', error);
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(false);
+  };
+
   return (
     <>
       <div className="flex h-full flex-col bg-white">
@@ -209,7 +235,7 @@ export function ChatPanel({ activeTab, messages, onSendMessage }: ChatPanelProps
             <div>
               <h2 className="text-xl font-semibold text-gray-900">
                 {activeTab === 'diagnostics' && (activeMode === 'diagnostics' ? 'Diagnostics' : 'Insights')}
-                {activeTab === 'playbook' && (activeMode === 'playbook' ? 'Playbook' : 'Calendar')}
+                {activeTab === 'playbook' && (activeMode === 'playbook' ? 'Plan' : 'Calendar')}
                 {activeTab === 'posts' && (activeMode === 'create' ? 'Create' : 'Optimize')}
               </h2>
               <p className="text-base text-gray-500">
@@ -446,7 +472,17 @@ export function ChatPanel({ activeTab, messages, onSendMessage }: ChatPanelProps
         })()}
 
         {/* Input Area */}
-        <div className="flex-shrink-0 border-t border-gray-100 p-4">
+        <div 
+          className={`flex-shrink-0 border-t border-gray-100 p-4 transition-colors ${isDragOver ? 'bg-blue-50 border-blue-300' : ''}`}
+          onDrop={handleInsightDrop}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+        >
+          {isDragOver && (
+            <div className="mb-3 p-3 bg-blue-100 border-2 border-dashed border-blue-400 rounded-lg text-center">
+              <p className="text-sm font-medium text-blue-700">Drop insight here to integrate into strategy</p>
+            </div>
+          )}
           <DragDropHandler
             onFilesSelected={handleFileUpload}
             className="w-full"

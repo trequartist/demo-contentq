@@ -629,7 +629,7 @@ export default function CreatorPage() {
     addMessage('playbook', {
       id: crypto.randomUUID(),
       role: 'assistant',
-      text: 'Great! Let me suggest some strategies for your playbook...',
+      text: 'Great! Let me suggest content pillars for your plan...',
       timestamp: new Date().toISOString(),
     });
 
@@ -660,7 +660,7 @@ export default function CreatorPage() {
     addMessage('playbook', {
       id: crypto.randomUUID(),
       role: 'assistant',
-      text: `Perfect! Generating your playbook with ${selectedIds.length} ${selectedIds.length === 1 ? 'strategy' : 'strategies'}...`,
+      text: `Perfect! Generating your plan with ${selectedIds.length} content ${selectedIds.length === 1 ? 'pillar' : 'pillars'}...`,
       timestamp: new Date().toISOString(),
     });
 
@@ -678,8 +678,8 @@ export default function CreatorPage() {
 
     const completionText =
       mode === 'calendar'
-        ? 'Your campaign cadence is live! Review the calendar above.'
-        : 'Your playbook is ready! Review the steps above.';
+        ? 'Your content calendar is ready! Browse topics and schedule content.'
+        : 'Your strategic plan is ready! Review your content pillars above.';
 
     addMessage('playbook', {
       id: crypto.randomUUID(),
@@ -1007,8 +1007,8 @@ The most successful implementations we've seen treat AI adoption as a continuous
               const mode = modes.playbook;
               const prompt =
                 mode === 'calendar'
-                  ? 'Build a four-week campaign calendar for this launch'
-                  : 'I want to create a playbook for product launch';
+                  ? 'Show me the content calendar for October'
+                  : 'I want to create a strategic content plan';
               handleSendMessage(prompt);
             } else if (activeTab === 'posts') {
               // For posts, process the user's input to generate topics

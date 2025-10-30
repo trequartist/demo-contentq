@@ -568,8 +568,21 @@ export function InsightsDashboard({ data }: InsightsDashboardProps) {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.7 + idx * 0.1 }}
-                    className="p-6 bg-red-50 border border-red-200 rounded-xl"
                   >
+                    <div
+                      draggable
+                      onDragStart={(e: React.DragEvent) => {
+                        e.dataTransfer.setData('application/json', JSON.stringify({
+                          type: 'insight',
+                          title: insight.title,
+                          description: insight.description,
+                          priority: insight.priority,
+                          expectedLift: insight.expectedLift
+                        }));
+                        e.dataTransfer.effectAllowed = 'copy';
+                      }}
+                      className="p-6 bg-red-50 border border-red-200 rounded-xl cursor-move hover:shadow-lg transition-shadow"
+                    >
                     <div className="flex items-start justify-between mb-3">
                       <h4 className="text-sm font-bold text-gray-900">{insight.title}</h4>
                       <span className="px-3 py-1 bg-red-100 text-red-800 text-xs font-bold rounded-full">
@@ -591,6 +604,7 @@ export function InsightsDashboard({ data }: InsightsDashboardProps) {
                       <div className={`px-2 py-1 rounded-full text-xs font-bold ${getImpactColor(insight.impact)}`}>
                         {insight.impact.toUpperCase()}
                       </div>
+                    </div>
                     </div>
                   </motion.div>
                 ))}
@@ -618,8 +632,21 @@ export function InsightsDashboard({ data }: InsightsDashboardProps) {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.8 + idx * 0.1 }}
-                    className="p-6 bg-yellow-50 border border-yellow-200 rounded-xl"
                   >
+                    <div
+                      draggable
+                      onDragStart={(e: React.DragEvent) => {
+                        e.dataTransfer.setData('application/json', JSON.stringify({
+                          type: 'insight',
+                          title: insight.title,
+                          description: insight.description,
+                          priority: insight.priority,
+                          expectedLift: insight.expectedLift
+                        }));
+                        e.dataTransfer.effectAllowed = 'copy';
+                      }}
+                      className="p-6 bg-yellow-50 border border-yellow-200 rounded-xl cursor-move hover:shadow-lg transition-shadow"
+                    >
                     <div className="flex items-start justify-between mb-3">
                       <h4 className="text-sm font-bold text-gray-900">{insight.title}</h4>
                       <span className="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full">
@@ -641,6 +668,7 @@ export function InsightsDashboard({ data }: InsightsDashboardProps) {
                       <div className={`px-2 py-1 rounded-full text-xs font-bold ${getImpactColor(insight.impact)}`}>
                         {insight.impact.toUpperCase()}
                       </div>
+                    </div>
                     </div>
                   </motion.div>
                 ))}

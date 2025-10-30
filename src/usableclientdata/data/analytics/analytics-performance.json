@@ -40,6 +40,85 @@
     ]
   },
 
+  "contentPillarPerformance": [
+    {
+      "pillarName": "Zapier Migration",
+      "totalPosts": 12,
+      "traffic": 24387,
+      "trafficTrend": "+47%",
+      "trafficChange": 47,
+      "conversions": 89,
+      "conversionRate": 4.2,
+      "aiCitations": 45,
+      "aiCitationsTrend": "+32%",
+      "engagement": 4.7,
+      "engagementTrend": "+15%",
+      "topContent": [
+        "Complete Guide to Migrating from Zapier",
+        "Zapier vs Gumloop: Feature Comparison",
+        "5 Reasons to Switch from Zapier"
+      ],
+      "status": "high-performing"
+    },
+    {
+      "pillarName": "AI Automation",
+      "totalPosts": 18,
+      "traffic": 18920,
+      "trafficTrend": "+23%",
+      "trafficChange": 23,
+      "conversions": 67,
+      "conversionRate": 3.8,
+      "aiCitations": 34,
+      "aiCitationsTrend": "+28%",
+      "engagement": 4.3,
+      "engagementTrend": "+12%",
+      "topContent": [
+        "AI-Powered Workflow Automation",
+        "Building Smart Automation Systems",
+        "AI Integration Best Practices"
+      ],
+      "status": "high-performing"
+    },
+    {
+      "pillarName": "Enterprise Workflows",
+      "totalPosts": 9,
+      "traffic": 12450,
+      "trafficTrend": "+8%",
+      "trafficChange": 8,
+      "conversions": 42,
+      "conversionRate": 3.4,
+      "aiCitations": 21,
+      "aiCitationsTrend": "+5%",
+      "engagement": 3.9,
+      "engagementTrend": "+3%",
+      "topContent": [
+        "Enterprise Automation Architecture",
+        "Scaling Workflows for Large Teams",
+        "Security in Enterprise Automation"
+      ],
+      "status": "moderate"
+    },
+    {
+      "pillarName": "No-Code Development",
+      "totalPosts": 6,
+      "traffic": 8240,
+      "trafficTrend": "-2%",
+      "trafficChange": -2,
+      "conversions": 28,
+      "conversionRate": 3.1,
+      "aiCitations": 15,
+      "aiCitationsTrend": "+0%",
+      "engagement": 3.5,
+      "engagementTrend": "-5%",
+      "topContent": [
+        "No-Code Automation Tools",
+        "Building Without Code",
+        "No-Code Best Practices"
+      ],
+      "status": "needs-attention"
+    }
+  ],
+
   "contentPerformance": {
     "topPerformers": [
       {

@@ -6,6 +6,8 @@ import { FileText, Target, TrendingUp, Calendar, Clock, BarChart3, Flag, Zap, X,
 import calendarTopicsV1 from '@/usableclientdata/content-studio/gumloop-calendar-topics.json';
 import calendarTopicsV2 from '@/usableclientdata/content-studio/gumloop-calendar-topics-v2.json';
 import { useCreatorStore } from '@/lib/demo/creator/store';
+import { CalendarWeekView } from './CalendarWeekView';
+import { CalendarAgendaView } from './CalendarAgendaView';
 
 interface PlaybookOutputProps {
   data: PlaybookData;
@@ -17,7 +19,8 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
   const [activeSection, setActiveSection] = useState<number>(0);
   const [selectedCalendarTopic, setSelectedCalendarTopic] = useState<any>(null);
   const [showAnglesModal, setShowAnglesModal] = useState(false);
-  const [currentCalendarDate, setCurrentCalendarDate] = useState<Date>(new Date());
+  const [currentCalendarDate, setCurrentCalendarDate] = useState<Date>(new Date(2025, 9, 1)); // October 2025 (month is 0-indexed)
+  const [calendarView, setCalendarView] = useState<'month' | 'week' | 'agenda'>('month');
   
   // Get version state from store
   const session = useCreatorStore(state => state.sessions.playbook);
@@ -95,10 +98,20 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
   const navigateMonth = (direction: 'prev' | 'next') => {
     setCurrentCalendarDate((prev) => {
       const newDate = new Date(prev);
-      if (direction === 'prev') {
-        newDate.setMonth(newDate.getMonth() - 1);
+      if (calendarView === 'week') {
+        // Navigate by week
+        if (direction === 'prev') {
+          newDate.setDate(newDate.getDate() - 7);
+        } else {
+          newDate.setDate(newDate.getDate() + 7);
+        }
       } else {
-        newDate.setMonth(newDate.getMonth() + 1);
+        // Navigate by month
+        if (direction === 'prev') {
+          newDate.setMonth(newDate.getMonth() - 1);
+        } else {
+          newDate.setMonth(newDate.getMonth() + 1);
+        }
       }
       return newDate;
     });
@@ -129,6 +142,185 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
       });
     };
 
+    // Render agenda view (no sidebar)
+    if (calendarView === 'agenda') {
+      return (
+        <div className="h-full flex flex-col bg-white">
+          {/* View Switcher Header */}
+          <div className="border-b border-gray-200 p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900">Content Calendar</h2>
+                <p className="text-sm text-gray-500 mt-1">{scheduledTopics.length} topics planned</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setCalendarView('month')}
+                  className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all"
+                >
+                  Month
+                </button>
+                <button
+                  onClick={() => setCalendarView('week')}
+                  className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all"
+                >
+                  Week
+                </button>
+                <button
+                  onClick={() => setCalendarView('agenda')}
+                  className="px-4 py-2 text-sm font-medium rounded-lg bg-black text-white transition-all"
+                >
+                  Agenda
+                </button>
+              </div>
+            </div>
+          </div>
+          <CalendarAgendaView
+            scheduledTopics={scheduledTopics}
+            onTopicClick={(topic) => {
+              setSelectedCalendarTopic(topic);
+              setShowAnglesModal(true);
+            }}
+          />
+          {showAnglesModal && selectedCalendarTopic && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+              <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-gray-100 flex items-center justify-between">
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-900">{selectedCalendarTopic.title}</h2>
+                    <p className="text-sm text-gray-500 mt-1">{selectedCalendarTopic.hook}</p>
+                  </div>
+                  <button
+                    onClick={() => setShowAnglesModal(false)}
+                    className="p-2 rounded-lg hover:bg-gray-100 transition"
+                  >
+                    <X className="h-5 w-5 text-gray-500" />
+                  </button>
+                </div>
+
+                <div className="flex-1 overflow-y-auto p-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Choose an angle to explore</h3>
+                  <div className="space-y-3">
+                    {(selectedCalendarTopic.subtopics || []).map((subtopic: any) => (
+                      <button
+                        key={subtopic.id}
+                        onClick={() => {
+                          if (onAngleSelect) {
+                            onAngleSelect(selectedCalendarTopic, subtopic);
+                          }
+                        }}
+                        className="w-full text-left p-4 rounded-xl border border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all group"
+                      >
+                        <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 mb-2">{subtopic.title}</h4>
+                        <p className="text-sm text-gray-600">{subtopic.description}</p>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="border-t border-gray-100 p-6 bg-gray-50">
+                  <p className="text-xs text-gray-500 text-center">
+                    {selectedCalendarTopic.subtopics?.length || 0} angles available • Click to select and create content
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Render week view (no sidebar)
+    if (calendarView === 'week') {
+      return (
+        <div className="h-full flex flex-col bg-white">
+          {/* View Switcher Header */}
+          <div className="border-b border-gray-200 p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900">Content Calendar</h2>
+                <p className="text-sm text-gray-500 mt-1">{scheduledTopics.length} topics planned</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setCalendarView('month')}
+                  className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all"
+                >
+                  Month
+                </button>
+                <button
+                  onClick={() => setCalendarView('week')}
+                  className="px-4 py-2 text-sm font-medium rounded-lg bg-black text-white transition-all"
+                >
+                  Week
+                </button>
+                <button
+                  onClick={() => setCalendarView('agenda')}
+                  className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all"
+                >
+                  Agenda
+                </button>
+              </div>
+            </div>
+          </div>
+          <CalendarWeekView
+            currentDate={currentCalendarDate}
+            scheduledTopics={scheduledTopics}
+            onTopicClick={(topic) => {
+              setSelectedCalendarTopic(topic);
+              setShowAnglesModal(true);
+            }}
+            onNavigate={navigateMonth}
+          />
+          {showAnglesModal && selectedCalendarTopic && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+              <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col">
+                <div className="p-6 border-b border-gray-100 flex items-center justify-between">
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-900">{selectedCalendarTopic.title}</h2>
+                    <p className="text-sm text-gray-500 mt-1">{selectedCalendarTopic.hook}</p>
+                  </div>
+                  <button
+                    onClick={() => setShowAnglesModal(false)}
+                    className="p-2 rounded-lg hover:bg-gray-100 transition"
+                  >
+                    <X className="h-5 w-5 text-gray-500" />
+                  </button>
+                </div>
+
+                <div className="flex-1 overflow-y-auto p-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Choose an angle to explore</h3>
+                  <div className="space-y-3">
+                    {(selectedCalendarTopic.subtopics || []).map((subtopic: any) => (
+                      <button
+                        key={subtopic.id}
+                        onClick={() => {
+                          if (onAngleSelect) {
+                            onAngleSelect(selectedCalendarTopic, subtopic);
+                          }
+                        }}
+                        className="w-full text-left p-4 rounded-xl border border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all group"
+                      >
+                        <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 mb-2">{subtopic.title}</h4>
+                        <p className="text-sm text-gray-600">{subtopic.description}</p>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="border-t border-gray-100 p-6 bg-gray-50">
+                  <p className="text-xs text-gray-500 text-center">
+                    {selectedCalendarTopic.subtopics?.length || 0} angles available • Click to select and create content
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Month view (with sidebar)
     return (
       <div className="h-full flex bg-[#F7F7F8]">
         {/* Left: Topic Cards */}
@@ -237,12 +429,34 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
                 <ChevronRight className="h-5 w-5 text-gray-600" />
               </button>
             </div>
-            <button
-              onClick={() => setCurrentCalendarDate(new Date())}
-              className="px-3 py-1.5 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition"
-            >
-              Today
-            </button>
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setCalendarView('month')}
+                  className="px-4 py-2 text-sm font-medium rounded-lg bg-black text-white transition-all"
+                >
+                  Month
+                </button>
+                <button
+                  onClick={() => setCalendarView('week')}
+                  className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all"
+                >
+                  Week
+                </button>
+                <button
+                  onClick={() => setCalendarView('agenda')}
+                  className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all"
+                >
+                  Agenda
+                </button>
+              </div>
+              <button
+                onClick={() => setCurrentCalendarDate(new Date(2025, 9, 1))}
+                className="px-3 py-1.5 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition"
+              >
+                Today
+              </button>
+            </div>
           </div>
 
           <div className="rounded-3xl bg-white border border-gray-200 shadow-sm overflow-hidden">
@@ -433,7 +647,7 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
               }}
               className="px-3 py-1.5 text-xs font-medium text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition-all"
             >
-              Change Strategies
+              Change Pillars
             </button>
           </div>
         </div>
@@ -444,8 +658,8 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
         <div className="flex-shrink-0 bg-white border-b border-gray-100 px-6 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="text-xs text-gray-500 font-medium">Selected Strategies:</span>
-              <span className="text-sm font-medium text-gray-900">{selectedStrategies.length} strategies</span>
+              <span className="text-xs text-gray-500 font-medium">Selected Pillars:</span>
+              <span className="text-sm font-medium text-gray-900">{selectedStrategies.length} content {selectedStrategies.length === 1 ? 'pillar' : 'pillars'}</span>
             </div>
             <button
               onClick={() => {
@@ -454,7 +668,7 @@ export function PlaybookOutput({ data, mode = 'playbook', onAngleSelect }: Playb
               }}
               className="px-3 py-1.5 text-xs font-medium text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition-all"
             >
-              Change Strategies
+              Change Pillars
             </button>
           </div>
         </div>

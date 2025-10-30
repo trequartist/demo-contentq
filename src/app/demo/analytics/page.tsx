@@ -30,6 +30,7 @@ import analyticsData from '@/usableclientdata/data/analytics/analytics-performan
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import AiAssistant from '@/components/demo/AiAssistant';
+import ContentPillarPerformance from '@/components/demo/analytics/ContentPillarPerformance';
 
 export default function AnalyticsPage() {
   const router = useRouter();
@@ -149,6 +150,10 @@ export default function AnalyticsPage() {
       <div className="px-8 py-6">
         {activeTab === 'overview' && (
           <div className="space-y-8">
+            {/* Content Pillar Performance */}
+            {analyticsData.contentPillarPerformance && (
+              <ContentPillarPerformance pillars={analyticsData.contentPillarPerformance} />
+            )}
             {/* Traffic Sources */}
             <Card className="border border-black/10">
               <CardContent className="p-6">

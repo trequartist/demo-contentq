@@ -84,9 +84,9 @@ export function OutputPanel({
             <div className="mx-auto max-w-3xl space-y-6">
               <div className="rounded-3xl bg-white p-8 shadow-xl border border-gray-100">
                 <div className="mb-6">
-                  <h2 className="text-2xl font-bold text-gray-900">Choose Your Launch Strategies</h2>
+                  <h2 className="text-2xl font-bold text-gray-900">Choose Your Content Pillars</h2>
                   <p className="mt-2 text-sm text-gray-500">
-                    Pick the strategies that align with your launch goals. Your playbook will adapt to your selection.
+                    Select the content pillars that align with your strategy. Your plan will be built around these pillars.
                   </p>
                 </div>
                 <StrategySelector
