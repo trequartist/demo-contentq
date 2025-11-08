@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { ContentMode, PostOutput } from '@/lib/demo/creator/types';
 import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
@@ -30,7 +30,8 @@ import {
   AlignRight,
   TrendingUp,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
+  X
 } from 'lucide-react';
 
 interface PostsOutputProps {
@@ -67,14 +68,30 @@ export function PostsOutput({ data, mode = 'create' }: PostsOutputProps) {
   const [lastSaved, setLastSaved] = useState(new Date());
   const [isPublishing, setIsPublishing] = useState(false);
   const [isPublished, setIsPublished] = useState(false);
+  const [publishError, setPublishError] = useState<string | null>(null);
+  const publishTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isMountedRef = useRef(true);
 
   const wordCount = content.split(/\s+/).filter((w) => w.length > 0).length;
   const targetWords = 1500;
   const readingTime = Math.ceil(wordCount / 200);
 
+  useEffect(() => {
+    isMountedRef.current = true;
+
+    return () => {
+      isMountedRef.current = false;
+      if (publishTimeoutRef.current) {
+        clearTimeout(publishTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const formatText = (format: string) => {
-    const textarea = document.querySelector('textarea');
-    if (!textarea) return;
+    if (typeof document === 'undefined') return;
+
+    const textarea = document.querySelector('textarea') as HTMLTextAreaElement | null;
+    if (!textarea || !textarea.isConnected) return;
 
     const start = textarea.selectionStart;
     const end = textarea.selectionEnd;
@@ -125,6 +142,22 @@ export function PostsOutput({ data, mode = 'create' }: PostsOutputProps) {
             </div>
           </div>
         )}
+        {publishError && (
+          <div className="bg-red-50 border-b border-red-200 px-6 py-3">
+            <div className="flex items-center justify-between gap-2 text-red-700">
+              <div className="flex items-center gap-2">
+                <AlertCircle className="w-4 h-4" />
+                <span className="text-sm font-medium">{publishError}</span>
+              </div>
+              <button
+                onClick={() => setPublishError(null)}
+                className="text-red-500 hover:text-red-700"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        )}
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center gap-6">
             <h1 className="text-xl font-semibold text-gray-900">{data.draft?.title || 'Untitled Post'}</h1>
@@ -160,17 +193,42 @@ export function PostsOutput({ data, mode = 'create' }: PostsOutputProps) {
               {isSaving ? 'Saving...' : 'Save Draft'}
             </Button>
 
-            <Button 
-              className="bg-gray-900 text-white hover:bg-gray-800" 
+            <Button
+              className="bg-gray-900 text-white hover:bg-gray-800"
               disabled={isSaving || isPublishing}
               onClick={async () => {
-                setIsPublishing(true);
-                // Simulate publishing
-                await new Promise((resolve) => setTimeout(resolve, 2000));
-                setIsPublishing(false);
-                setIsPublished(true);
-                // Hide success message after 3 seconds
-                setTimeout(() => setIsPublished(false), 3000);
+                try {
+                  if (!isMountedRef.current) return;
+
+                  setPublishError(null);
+                  setIsPublishing(true);
+
+                  // Simulate publishing
+                  await new Promise((resolve) => setTimeout(resolve, 2000));
+
+                  if (!isMountedRef.current) return;
+
+                  setIsPublishing(false);
+                  setIsPublished(true);
+
+                  // Clear any existing timeout
+                  if (publishTimeoutRef.current) {
+                    clearTimeout(publishTimeoutRef.current);
+                  }
+
+                  // Hide success message after 3 seconds
+                  publishTimeoutRef.current = setTimeout(() => {
+                    if (isMountedRef.current) {
+                      setIsPublished(false);
+                    }
+                  }, 3000);
+                } catch (error) {
+                  console.error('Publishing error:', error);
+                  if (isMountedRef.current) {
+                    setIsPublishing(false);
+                    setPublishError('Failed to publish. Please try again.');
+                  }
+                }
               }}
             >
               <Send className="w-4 h-4 mr-2" />
@@ -264,18 +322,46 @@ export function PostsOutput({ data, mode = 'create' }: PostsOutputProps) {
           </div>
 
           <div className="flex items-center gap-2">
-            <button className="p-1.5 hover:bg-gray-100 rounded" onClick={() => navigator.clipboard.writeText(content)}>
+            <button
+              className="p-1.5 hover:bg-gray-100 rounded"
+              onClick={() => {
+                try {
+                  if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(content);
+                  }
+                } catch (error) {
+                  console.error('Copy error:', error);
+                }
+              }}
+            >
               <Copy className="w-4 h-4" />
             </button>
-            <button className="p-1.5 hover:bg-gray-100 rounded" onClick={() => {
-              const blob = new Blob([content], { type: 'text/markdown' });
-              const url = URL.createObjectURL(blob);
-              const a = document.createElement('a');
-              a.href = url;
-              a.download = 'draft-content.md';
-              a.click();
-              URL.revokeObjectURL(url);
-            }}>
+            <button
+              className="p-1.5 hover:bg-gray-100 rounded"
+              onClick={() => {
+                try {
+                  if (typeof document === 'undefined') return;
+
+                  const blob = new Blob([content], { type: 'text/markdown' });
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = 'draft-content.md';
+
+                  document.body.appendChild(a);
+                  a.click();
+
+                  setTimeout(() => {
+                    if (a.parentNode && a.isConnected) {
+                      document.body.removeChild(a);
+                    }
+                    URL.revokeObjectURL(url);
+                  }, 100);
+                } catch (error) {
+                  console.error('Download error:', error);
+                }
+              }}
+            >
               <Download className="w-4 h-4" />
             </button>
             <button className="p-1.5 hover:bg-gray-100 rounded">
