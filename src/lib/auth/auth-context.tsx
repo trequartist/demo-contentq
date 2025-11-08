@@ -26,34 +26,51 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   useEffect(() => {
+    let isMounted = true;
+
     // Check for existing session
     const checkSession = () => {
-      const storedSession = localStorage.getItem('demo-session');
-      if (storedSession) {
-        try {
-          const session = JSON.parse(storedSession);
-          const sessionAge = Date.now() - session.timestamp;
-          
-          // Check if session is still valid (1 hour)
-          if (sessionAge < 3600000) {
-            setUser(session.user);
-          } else {
-            localStorage.removeItem('demo-session');
-            if (pathname?.startsWith('/demo') && pathname !== '/demo/login') {
-              router.push('/demo/login');
+      try {
+        const storedSession = localStorage.getItem('demo-session');
+        if (storedSession) {
+          try {
+            const session = JSON.parse(storedSession);
+            const sessionAge = Date.now() - session.timestamp;
+
+            // Check if session is still valid (1 hour)
+            if (sessionAge < 3600000) {
+              if (isMounted) {
+                setUser(session.user);
+              }
+            } else {
+              localStorage.removeItem('demo-session');
+              if (isMounted && pathname?.startsWith('/demo') && pathname !== '/demo/login') {
+                router.push('/demo/login');
+              }
             }
+          } catch (error) {
+            console.error('Invalid session data');
+            localStorage.removeItem('demo-session');
           }
-        } catch (error) {
-          console.error('Invalid session data');
-          localStorage.removeItem('demo-session');
+        } else if (isMounted && pathname?.startsWith('/demo') && pathname !== '/demo/login') {
+          router.push('/demo/login');
         }
-      } else if (pathname?.startsWith('/demo') && pathname !== '/demo/login') {
-        router.push('/demo/login');
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      } catch (error) {
+        console.error('Session check error:', error);
+        if (isMounted) {
+          setIsLoading(false);
+        }
       }
-      setIsLoading(false);
     };
 
     checkSession();
+
+    return () => {
+      isMounted = false;
+    };
   }, [pathname, router]);
 
   const login = async (username: string, password: string): Promise<{ success: boolean; error?: string }> => {

@@ -346,8 +346,13 @@ export default function GlobalAiAssistant() {
   // Execute UI action directly on the frontend
   const executeUIAction = async (action: string, intent: string, entities: any) => {
     try {
+      // Safety check: ensure document is available
+      if (typeof document === 'undefined') {
+        return { success: false };
+      }
+
       const normalizedAction = action.toLowerCase();
-      
+
       // Navigation actions
       if (intent === 'navigate' || normalizedAction.includes('go to') || normalizedAction.includes('navigate')) {
         const pages = megaUIActions.uiActions.navigation.pages;
@@ -362,21 +367,24 @@ export default function GlobalAiAssistant() {
           }
         }
       }
-      
+
       // Button click actions
       if (intent === 'click' || normalizedAction.includes('click') || normalizedAction.includes('press')) {
         // Find button by data-button-id or text
         const buttonText = normalizedAction.replace(/click|press|tap|hit/g, '').trim();
-        const button = document.querySelector(`[data-button-id*="${buttonText}"]`) as HTMLButtonElement;
-        
-        if (button) {
+        const button = document.querySelector(`[data-button-id*="${buttonText}"]`) as HTMLButtonElement | null;
+
+        if (button && button.isConnected) {
           button.click();
           // Add visual feedback
           button.classList.add('ring-2', 'ring-black', 'ring-offset-2');
           setTimeout(() => {
-            button.classList.remove('ring-2', 'ring-black', 'ring-offset-2');
+            // Check if button still exists before removing classes
+            if (button.isConnected) {
+              button.classList.remove('ring-2', 'ring-black', 'ring-offset-2');
+            }
           }, 1000);
-          
+
           return {
             success: true,
             message: `Clicked ${buttonText} button`
@@ -390,8 +398,8 @@ export default function GlobalAiAssistant() {
         for (const modal of modalTypes) {
           if (normalizedAction.includes(modal.toLowerCase().replace('modal', ''))) {
             // Simulate modal opening via button click
-            const modalButton = document.querySelector(`[data-modal="${modal}"], [aria-controls="${modal}"]`) as HTMLButtonElement;
-            if (modalButton) {
+            const modalButton = document.querySelector(`[data-modal="${modal}"], [aria-controls="${modal}"]`) as HTMLButtonElement | null;
+            if (modalButton && modalButton.isConnected) {
               modalButton.click();
               return {
                 success: true,
@@ -407,20 +415,23 @@ export default function GlobalAiAssistant() {
         const inputText = normalizedAction.replace(/fill|enter|type|input/g, '').trim();
         const [fieldName, ...valueParts] = inputText.split(' with ');
         const value = valueParts.join(' with ');
-        
+
         if (fieldName && value) {
-          const input = document.querySelector(`[name*="${fieldName}"], [placeholder*="${fieldName}"], [id*="${fieldName}"]`) as HTMLInputElement;
-          if (input) {
+          const input = document.querySelector(`[name*="${fieldName}"], [placeholder*="${fieldName}"], [id*="${fieldName}"]`) as HTMLInputElement | null;
+          if (input && input.isConnected) {
             input.value = value;
             input.dispatchEvent(new Event('input', { bubbles: true }));
             input.dispatchEvent(new Event('change', { bubbles: true }));
-            
+
             // Visual feedback
             input.classList.add('border-2', 'border-green-500');
             setTimeout(() => {
-              input.classList.remove('border-2', 'border-green-500');
+              // Check if input still exists before removing classes
+              if (input.isConnected) {
+                input.classList.remove('border-2', 'border-green-500');
+              }
             }, 1000);
-            
+
             return {
               success: true,
               message: `Filled ${fieldName} with "${value}"`
@@ -433,8 +444,8 @@ export default function GlobalAiAssistant() {
       if (pathname.includes('content-studio')) {
         if (normalizedAction.includes('create blog') || normalizedAction.includes('new post')) {
           // Click create button or navigate to create view
-          const createButton = document.querySelector('[data-action="create"], [data-view="create"]') as HTMLButtonElement;
-          if (createButton) {
+          const createButton = document.querySelector('[data-action="create"], [data-view="create"]') as HTMLButtonElement | null;
+          if (createButton && createButton.isConnected) {
             createButton.click();
             return {
               success: true,
@@ -442,11 +453,11 @@ export default function GlobalAiAssistant() {
             };
           }
         }
-        
+
         if (normalizedAction.includes('improve content')) {
           // Click improve button or navigate to improve view
-          const improveButton = document.querySelector('[data-action="improve"], [data-view="improve"]') as HTMLButtonElement;
-          if (improveButton) {
+          const improveButton = document.querySelector('[data-action="improve"], [data-view="improve"]') as HTMLButtonElement | null;
+          if (improveButton && improveButton.isConnected) {
             improveButton.click();
             return {
               success: true,
@@ -468,13 +479,13 @@ export default function GlobalAiAssistant() {
       
       // Export actions
       if (normalizedAction.includes('export') || normalizedAction.includes('download')) {
-        const format = normalizedAction.includes('pdf') ? 'pdf' : 
-                      normalizedAction.includes('csv') ? 'csv' : 
+        const format = normalizedAction.includes('pdf') ? 'pdf' :
+                      normalizedAction.includes('csv') ? 'csv' :
                       normalizedAction.includes('json') ? 'json' : 'pdf';
-        
+
         // Trigger export
-        const exportButton = document.querySelector('[data-button-id*="export"]') as HTMLButtonElement;
-        if (exportButton) {
+        const exportButton = document.querySelector('[data-button-id*="export"]') as HTMLButtonElement | null;
+        if (exportButton && exportButton.isConnected) {
           exportButton.click();
           return {
             success: true,
@@ -637,21 +648,24 @@ export default function GlobalAiAssistant() {
   useEffect(() => {
     // Skip keyboard shortcuts on login page
     if (pathname === '/demo/login') return;
-    
+
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Safety check: ensure we're in a valid state
+      if (!e || !e.key) return;
+
       // Cmd/Ctrl + K to open assistant
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         setIsOpen(prev => !prev);
       }
-      
+
       // Escape to close
       if (e.key === 'Escape' && isOpen) {
         setIsOpen(false);
       }
-      
+
       // Up/Down arrows for command history
-      if (isOpen && inputRef.current === document.activeElement) {
+      if (isOpen && inputRef.current && inputRef.current === document.activeElement) {
         if (e.key === 'ArrowUp' && commandHistory.length > 0) {
           e.preventDefault();
           const newIndex = historyIndex < commandHistory.length - 1 ? historyIndex + 1 : historyIndex;
@@ -665,10 +679,10 @@ export default function GlobalAiAssistant() {
         }
       }
     };
-    
+
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, commandHistory, historyIndex]);
+  }, [isOpen, commandHistory, historyIndex, pathname]);
 
   // Auto-scroll to bottom of messages
   useEffect(() => {
@@ -677,8 +691,13 @@ export default function GlobalAiAssistant() {
 
   // Focus input when opening
   useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 100);
+    if (isOpen && inputRef.current) {
+      const timeoutId = setTimeout(() => {
+        if (inputRef.current && inputRef.current.isConnected) {
+          inputRef.current.focus();
+        }
+      }, 100);
+      return () => clearTimeout(timeoutId);
     }
   }, [isOpen]);
   

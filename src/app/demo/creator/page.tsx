@@ -21,9 +21,9 @@ import { CalendarModal } from '@/components/demo/creator/posts/CalendarModal';
 import { DocumentsPanel } from '@/components/demo/creator/posts/DocumentsPanel';
 import insightsHubData from '@/usableclientdata/data/insights/insights-hub.json';
 import triggerData from '@/usableclientdata/ai-assistant/v2-trigger-keywords.json';
-// Selection/editing components now render in the right preview panel only
+import { ErrorBoundary } from '@/components/ui';
 
-export default function CreatorPage() {
+function CreatorPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [showCalendarModal, setShowCalendarModal] = useState(false);
@@ -955,28 +955,32 @@ The most successful implementations we've seen treat AI adoption as a continuous
   return (
     <>
       {showCalendarModal && (
-        <CalendarModal
-          onSelectTopic={handleCalendarTopicSelect}
-          onClose={() => setShowCalendarModal(false)}
-        />
+        <ErrorBoundary>
+          <CalendarModal
+            onSelectTopic={handleCalendarTopicSelect}
+            onClose={() => setShowCalendarModal(false)}
+          />
+        </ErrorBoundary>
       )}
 
       {showDocumentsPanel && (
-        <div className="fixed inset-0 z-50 bg-white">
-          <DocumentsPanel
-            onSelectDocument={(doc) => {
-              setShowDocumentsPanel(false);
-              // Could use document data to pre-fill or inspire new content
-              addMessage('posts', {
-                id: crypto.randomUUID(),
-                role: 'assistant',
-                text: `Selected document: "${doc.title}". Would you like to create similar content or continue it?`,
-                timestamp: new Date().toISOString(),
-              });
-            }}
-            onClose={() => setShowDocumentsPanel(false)}
-          />
-        </div>
+        <ErrorBoundary>
+          <div className="fixed inset-0 z-50 bg-white">
+            <DocumentsPanel
+              onSelectDocument={(doc) => {
+                setShowDocumentsPanel(false);
+                // Could use document data to pre-fill or inspire new content
+                addMessage('posts', {
+                  id: crypto.randomUUID(),
+                  role: 'assistant',
+                  text: `Selected document: "${doc.title}". Would you like to create similar content or continue it?`,
+                  timestamp: new Date().toISOString(),
+                });
+              }}
+              onClose={() => setShowDocumentsPanel(false)}
+            />
+          </div>
+        </ErrorBoundary>
       )}
       
       
@@ -1030,5 +1034,13 @@ The most successful implementations we've seen treat AI adoption as a continuous
       }
     />
     </>
+  );
+}
+
+export default function CreatorPage() {
+  return (
+    <ErrorBoundary>
+      <CreatorPageContent />
+    </ErrorBoundary>
   );
 }

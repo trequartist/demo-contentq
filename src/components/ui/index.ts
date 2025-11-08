@@ -6,6 +6,7 @@ export { default as Input, Textarea } from './Input';
 export { default as ProgressBar } from './ProgressBar';
 export { default as StatCard } from './StatCard';
 export { default as LoadingState } from './LoadingState';
+export { ErrorBoundary } from './ErrorBoundary';
 
 // Re-export common types
 export type { LucideIcon } from 'lucide-react';
