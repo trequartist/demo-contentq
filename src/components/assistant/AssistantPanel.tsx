@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { MessageCircle, Search, FileText } from "lucide-react";
+import { Search, FileText } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { ChatTab } from "./ChatTab";
-import { ResearchTab } from "./ResearchTab";
-import { ContextTab } from "./ContextTab";
+import { ResearchDialog } from "./ResearchDialog";
+import { ContextDialog } from "./ContextDialog";
 
 interface AssistantPanelProps {
   currentInput?: string;
@@ -12,13 +13,86 @@ interface AssistantPanelProps {
   onUpdateInput?: (newValue: string) => void;
 }
 
+interface Message {
+  id: string;
+  role: "user" | "assistant";
+  content: string;
+  type?: "chat" | "research" | "context";
+  metadata?: {
+    sources?: any[];
+    documents?: any[];
+  };
+}
+
+interface ContextDocument {
+  id: string;
+  name: string;
+  type: "pdf" | "docx" | "txt" | "md" | "image";
+  size: string;
+  uploadDate: string;
+  active: boolean;
+  tags?: string[];
+}
+
 export function AssistantPanel({ 
   currentInput, 
   onInsertContent,
   onUpdateInput 
 }: AssistantPanelProps) {
-  const [activeTab, setActiveTab] = useState<"chat" | "research" | "context">("chat");
-  const [contextDocsCount, setContextDocsCount] = useState(0);
+  const [isResearchOpen, setIsResearchOpen] = useState(false);
+  const [isContextOpen, setIsContextOpen] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [contextDocs, setContextDocs] = useState<ContextDocument[]>([]);
+
+  const activeContextCount = contextDocs.filter((d) => d.active).length;
+
+  const handleAddResearch = (result: { answer: string; sources: any[] }) => {
+    const message: Message = {
+      id: Date.now().toString(),
+      role: "assistant",
+      type: "research",
+      content: result.answer,
+      metadata: { sources: result.sources },
+    };
+    setMessages((prev) => [...prev, message]);
+  };
+
+  const handleUploadDocuments = (files: File[]) => {
+    const newDocs: ContextDocument[] = files.map((file) => ({
+      id: Date.now().toString() + Math.random(),
+      name: file.name,
+      type: getFileType(file.name),
+      size: formatFileSize(file.size),
+      uploadDate: new Date().toLocaleDateString(),
+      active: true,
+      tags: ["recent"],
+    }));
+
+    setContextDocs((prev) => [...prev, ...newDocs]);
+
+    const message: Message = {
+      id: Date.now().toString(),
+      role: "assistant",
+      type: "context",
+      content: `Added ${newDocs.length} document${newDocs.length !== 1 ? "s" : ""} to context`,
+      metadata: { documents: newDocs },
+    };
+    setMessages((prev) => [...prev, message]);
+  };
+
+  const handleToggleDocument = (id: string) => {
+    setContextDocs((prev) =>
+      prev.map((doc) => (doc.id === id ? { ...doc, active: !doc.active } : doc))
+    );
+  };
+
+  const handleRemoveDocument = (id: string) => {
+    setContextDocs((prev) => prev.filter((doc) => doc.id !== id));
+  };
+
+  const handleClearAllDocuments = () => {
+    setContextDocs([]);
+  };
 
   return (
     <div className="flex h-full flex-col bg-background">
@@ -29,53 +103,95 @@ export function AssistantPanel({
         </div>
       </div>
 
-      {/* Tabs */}
-      <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)} className="flex flex-1 flex-col">
-        <div className="border-b border-border px-4 pt-2">
-          <TabsList className="w-full grid grid-cols-3">
-            <TabsTrigger value="chat" className="gap-2">
-              <MessageCircle className="h-4 w-4" />
-              Chat
-            </TabsTrigger>
-            <TabsTrigger value="research" className="gap-2">
-              <Search className="h-4 w-4" />
-              Research
-            </TabsTrigger>
-            <TabsTrigger value="context" className="gap-2 relative">
-              <FileText className="h-4 w-4" />
-              Context
-              {contextDocsCount > 0 && (
-                <Badge variant="secondary" className="absolute -top-1 -right-1 h-5 w-5 p-0 flex items-center justify-center text-xs">
-                  {contextDocsCount}
-                </Badge>
-              )}
-            </TabsTrigger>
-          </TabsList>
+      {/* Action Buttons */}
+      <div className="border-b border-border px-4 py-3 flex gap-2">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setIsResearchOpen(true)}
+          className="gap-2 rounded-full border border-border hover:bg-accent"
+        >
+          <Search className="h-4 w-4" />
+          Research
+        </Button>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setIsContextOpen(true)}
+          className="gap-2 rounded-full border border-border hover:bg-accent relative"
+        >
+          <FileText className="h-4 w-4" />
+          Context
+          {activeContextCount > 0 && (
+            <Badge variant="secondary" className="h-5 px-2 text-xs">
+              {activeContextCount}
+            </Badge>
+          )}
+        </Button>
+      </div>
+
+      {/* Context Indicator */}
+      {activeContextCount > 0 && (
+        <div className="px-4 py-2 bg-green-50 dark:bg-green-950/20 border-b border-green-200 dark:border-green-900">
+          <div className="flex items-center gap-2 text-sm text-green-700 dark:text-green-400">
+            <FileText className="h-4 w-4" />
+            <span className="font-medium">{activeContextCount} document{activeContextCount !== 1 ? "s" : ""} in context</span>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsContextOpen(true)}
+              className="ml-auto h-7 text-xs"
+            >
+              Manage
+            </Button>
+          </div>
         </div>
+      )}
 
-        {/* Tab Content */}
-        <div className="flex-1 overflow-hidden">
-          <TabsContent value="chat" className="h-full m-0 p-0">
-            <ChatTab 
-              currentInput={currentInput}
-              onInsertContent={onInsertContent}
-              onUpdateInput={onUpdateInput}
-            />
-          </TabsContent>
+      {/* Chat Interface */}
+      <div className="flex-1 overflow-hidden">
+        <ChatTab
+          currentInput={currentInput}
+          onInsertContent={onInsertContent}
+          onUpdateInput={onUpdateInput}
+          messages={messages}
+          onMessagesChange={setMessages}
+        />
+      </div>
 
-          <TabsContent value="research" className="h-full m-0 p-0">
-            <ResearchTab 
-              onInsertContent={onInsertContent}
-            />
-          </TabsContent>
-
-          <TabsContent value="context" className="h-full m-0 p-0">
-            <ContextTab 
-              onContextCountChange={setContextDocsCount}
-            />
-          </TabsContent>
-        </div>
-      </Tabs>
+      {/* Dialogs */}
+      <ResearchDialog
+        open={isResearchOpen}
+        onOpenChange={setIsResearchOpen}
+        onAddToChat={handleAddResearch}
+      />
+      <ContextDialog
+        open={isContextOpen}
+        onOpenChange={setIsContextOpen}
+        documents={contextDocs}
+        onUpload={handleUploadDocuments}
+        onToggle={handleToggleDocument}
+        onRemove={handleRemoveDocument}
+        onClearAll={handleClearAllDocuments}
+      />
     </div>
   );
+}
+
+function getFileType(filename: string): "pdf" | "docx" | "txt" | "md" | "image" {
+  const ext = filename.split(".").pop()?.toLowerCase();
+  if (["jpg", "jpeg", "png", "gif", "webp"].includes(ext || "")) return "image";
+  if (ext === "pdf") return "pdf";
+  if (ext === "docx" || ext === "doc") return "docx";
+  if (ext === "txt") return "txt";
+  if (ext === "md") return "md";
+  return "txt";
+}
+
+function formatFileSize(bytes: number): string {
+  if (bytes === 0) return "0 Bytes";
+  const k = 1024;
+  const sizes = ["Bytes", "KB", "MB", "GB"];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + " " + sizes[i];
 }
