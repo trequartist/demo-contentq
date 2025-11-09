@@ -10,6 +10,7 @@ import { VerticalTimeline } from "./VerticalTimeline";
 import { StageCard } from "./StageCard";
 import { FloatingActionButton } from "./FloatingActionButton";
 import { WorkflowHeader } from "./WorkflowHeader";
+import { AssistantPanel } from "../assistant/AssistantPanel";
 
 interface WorkflowContainerProps {
   children?: ReactNode;
@@ -51,14 +52,15 @@ export function WorkflowContainer({ children }: WorkflowContainerProps) {
       <VerticalTimeline steps={steps} currentIndex={currentStageIndex} />
 
       {/* Main Content Area - Offset for timeline */}
-      <div className="ml-[240px] flex-1 animate-fade-in p-8">
+      <div className="ml-[240px] flex flex-1 animate-fade-in">
+        <div className="flex-1 p-8">
         {/* Header */}
         {workflowType && (
           <WorkflowHeader workflowType={workflowType} onPause={pauseWorkflow} />
         )}
 
-        {/* Stage Content Card */}
-        <StageCard className="min-h-[500px]">
+          {/* Stage Content Card */}
+          <StageCard className="min-h-[500px]">
           <div className="space-y-6">
             {/* Stage Header */}
             <div className="space-y-3">
@@ -157,28 +159,36 @@ export function WorkflowContainer({ children }: WorkflowContainerProps) {
               </div>
             )}
 
-            {children}
+              {children}
+            </div>
+          </StageCard>
+
+          {/* Bottom Actions - Desktop Only */}
+          <div className="mt-6 flex items-center justify-between">
+            {currentStage.canGoBack ? (
+              <Button variant="ghost" onClick={previousStage} size="lg">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Previous
+              </Button>
+            ) : (
+              <div />
+            )}
+
+            {currentStage.type === "selection" && (
+              <Button variant="ghost" onClick={() => console.log("Regenerate")} size="lg">
+                <RefreshCw className="mr-2 h-4 w-4" />
+                Regenerate
+              </Button>
+            )}
           </div>
-        </StageCard>
-
-        {/* Bottom Actions - Desktop Only */}
-        <div className="mt-6 flex items-center justify-between">
-          {currentStage.canGoBack ? (
-            <Button variant="ghost" onClick={previousStage} size="lg">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Previous
-            </Button>
-          ) : (
-            <div />
-          )}
-
-          {currentStage.type === "selection" && (
-            <Button variant="ghost" onClick={() => console.log("Regenerate")} size="lg">
-              <RefreshCw className="mr-2 h-4 w-4" />
-              Regenerate
-            </Button>
-          )}
         </div>
+
+        {/* Assistant Panel - Fixed Right Sidebar */}
+        <aside className="hidden w-[400px] border-l border-border bg-background lg:block">
+          <div className="sticky top-0 h-[calc(100vh-60px)]">
+            <AssistantPanel />
+          </div>
+        </aside>
       </div>
 
       {/* Floating Action Button */}

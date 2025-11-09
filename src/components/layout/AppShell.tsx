@@ -1,9 +1,11 @@
 import { ReactNode, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Navigation } from "./Navigation";
 import { AssistantPanel } from "../assistant/AssistantPanel";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { MessageSquare } from "lucide-react";
+import { useWorkflowStore } from "@/stores/workflowStore";
 
 interface AppShellProps {
   children: ReactNode;
@@ -11,6 +13,11 @@ interface AppShellProps {
 
 export function AppShell({ children }: AppShellProps) {
   const [assistantOpen, setAssistantOpen] = useState(false);
+  const location = useLocation();
+  const { isActive } = useWorkflowStore();
+  
+  // Hide assistant panel when in workflow on /create
+  const hideAssistant = location.pathname === "/create" && isActive;
 
   return (
     <div className="flex h-screen w-full flex-col overflow-hidden bg-background">
@@ -23,32 +30,36 @@ export function AppShell({ children }: AppShellProps) {
       <div className="mt-[60px] flex flex-1 overflow-hidden">
         {/* Main Workspace - Flex 1 */}
         <main id="main-content" className="flex-1 overflow-y-auto" role="main">
-          <div className="mx-auto max-w-[1400px] p-4 sm:p-6 lg:p-8">
+          <div className={hideAssistant ? "" : "mx-auto max-w-[1400px] p-4 sm:p-6 lg:p-8"}>
             {children}
           </div>
         </main>
 
-        {/* Desktop Assistant Panel - Fixed 400px */}
-        <aside className="hidden w-[400px] border-l border-border bg-background lg:block">
-          <AssistantPanel />
-        </aside>
+        {/* Desktop Assistant Panel - Fixed 400px (hidden during workflow) */}
+        {!hideAssistant && (
+          <aside className="hidden w-[400px] border-l border-border bg-background lg:block">
+            <AssistantPanel />
+          </aside>
+        )}
       </div>
 
-      {/* Mobile Assistant FAB */}
-      <Sheet open={assistantOpen} onOpenChange={setAssistantOpen}>
-        <SheetTrigger asChild>
-          <Button
-            size="icon"
-            className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg lg:hidden z-50"
-            aria-label="Open assistant"
-          >
-            <MessageSquare className="h-6 w-6" />
-          </Button>
-        </SheetTrigger>
-        <SheetContent side="right" className="w-full sm:w-[400px] p-0">
-          <AssistantPanel />
-        </SheetContent>
-      </Sheet>
+      {/* Mobile Assistant FAB (hidden during workflow) */}
+      {!hideAssistant && (
+        <Sheet open={assistantOpen} onOpenChange={setAssistantOpen}>
+          <SheetTrigger asChild>
+            <Button
+              size="icon"
+              className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg lg:hidden z-50"
+              aria-label="Open assistant"
+            >
+              <MessageSquare className="h-6 w-6" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-full sm:w-[400px] p-0">
+            <AssistantPanel />
+          </SheetContent>
+        </Sheet>
+      )}
     </div>
   );
 }
