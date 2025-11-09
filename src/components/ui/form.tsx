@@ -65,12 +65,43 @@ const FormItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
 
     return (
       <FormItemContext.Provider value={{ id }}>
-        <div ref={ref} className={cn("space-y-2", className)} {...props} />
+        <FormItemInner ref={ref} className={className} {...props} />
       </FormItemContext.Provider>
     );
   },
 );
 FormItem.displayName = "FormItem";
+
+const FormItemInner = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => {
+    const fieldContext = React.useContext(FormFieldContext);
+    const { getFieldState, formState } = useFormContext();
+    const fieldState = fieldContext.name ? getFieldState(fieldContext.name, formState) : null;
+    const error = fieldState?.error;
+    const [shouldShake, setShouldShake] = React.useState(false);
+
+    React.useEffect(() => {
+      if (error) {
+        setShouldShake(true);
+        const timer = setTimeout(() => setShouldShake(false), 500);
+        return () => clearTimeout(timer);
+      }
+    }, [error]);
+
+    return (
+      <div 
+        ref={ref} 
+        className={cn(
+          "space-y-2", 
+          shouldShake && "animate-shake",
+          className
+        )} 
+        {...props} 
+      />
+    );
+  },
+);
+FormItemInner.displayName = "FormItemInner";
 
 const FormLabel = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
