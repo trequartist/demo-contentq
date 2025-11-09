@@ -137,31 +137,45 @@ export function ContentEditor() {
     });
   };
 
-  const handleImageInsert = (imageData: { url: string; alt: string; caption: string }) => {
+  const handleImageInsert = (imageData: { url: string; alt: string; caption: string; size: number; alignment: string }) => {
+    const alignmentStyles = {
+      left: "text-align: left;",
+      center: "text-align: center;",
+      right: "text-align: right;",
+      full: "text-align: center;",
+    };
+    
+    const imageWidth = imageData.alignment === "full" ? "100%" : `${imageData.size}%`;
+    const wrapperStyle = `margin: 24px 0; ${alignmentStyles[imageData.alignment as keyof typeof alignmentStyles] || alignmentStyles.center}`;
+    
     let html: string;
     
     if (imageData.caption) {
       // Use semantic figure element with caption
       html = `
-        <figure style="margin: 24px 0; text-align: center;">
-          <img 
-            src="${imageData.url}" 
-            alt="${imageData.alt}" 
-            style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" 
-          />
+        <figure style="${wrapperStyle}">
+          <div data-image-wrapper data-alignment="${imageData.alignment}">
+            <img 
+              src="${imageData.url}" 
+              alt="${imageData.alt}" 
+              style="width: ${imageWidth}; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: inline-block;" 
+            />
+          </div>
           <figcaption style="margin-top: 8px; font-size: 0.875rem; color: hsl(var(--muted-foreground)); font-style: italic;">
             ${imageData.caption}
           </figcaption>
         </figure>
       `;
     } else {
-      // Just the image with alt text
+      // Just the image with wrapper
       html = `
-        <img 
-          src="${imageData.url}" 
-          alt="${imageData.alt}" 
-          style="max-width: 100%; height: auto; border-radius: 8px; margin: 16px 0; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" 
-        />
+        <div data-image-wrapper data-alignment="${imageData.alignment}" style="${wrapperStyle}">
+          <img 
+            src="${imageData.url}" 
+            alt="${imageData.alt}" 
+            style="width: ${imageWidth}; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: inline-block;" 
+          />
+        </div>
       `;
     }
     
@@ -211,16 +225,44 @@ export function ContentEditor() {
     }
   };
 
-  const handleImageEdit = (alt: string, caption: string) => {
+  const handleImageEdit = (alt: string, caption: string, size: number, alignment: string) => {
     if (!selectedImage || !editorRef.current) return;
 
+    const wrapper = selectedImage.closest("div[data-image-wrapper]") as HTMLElement;
     const figure = selectedImage.closest("figure");
     
+    // Update image properties
+    selectedImage.alt = alt;
+    selectedImage.style.width = alignment === "full" ? "100%" : `${size}%`;
+    
+    // Update or create wrapper
+    if (wrapper) {
+      wrapper.setAttribute("data-alignment", alignment);
+      const alignmentStyles = {
+        left: "text-align: left;",
+        center: "text-align: center;",
+        right: "text-align: right;",
+        full: "text-align: center;",
+      };
+      const baseStyle = "margin: 24px 0;";
+      wrapper.style.cssText = baseStyle + (alignmentStyles[alignment as keyof typeof alignmentStyles] || alignmentStyles.center);
+    }
+    
+    // Update figure styling if exists
+    if (figure) {
+      const alignmentStyles = {
+        left: "text-align: left;",
+        center: "text-align: center;",
+        right: "text-align: right;",
+        full: "text-align: center;",
+      };
+      figure.style.cssText = "margin: 24px 0; " + (alignmentStyles[alignment as keyof typeof alignmentStyles] || alignmentStyles.center);
+    }
+    
+    // Handle caption
     if (caption) {
-      // Create or update figure with caption
       if (figure) {
-        // Update existing figure
-        selectedImage.alt = alt;
+        // Update existing caption
         const figcaption = figure.querySelector("figcaption");
         if (figcaption) {
           figcaption.textContent = caption;
@@ -230,37 +272,49 @@ export function ContentEditor() {
           newCaption.style.cssText = "margin-top: 8px; font-size: 0.875rem; color: hsl(var(--muted-foreground)); font-style: italic;";
           figure.appendChild(newCaption);
         }
-      } else {
-        // Wrap image in figure
+      } else if (wrapper) {
+        // Wrap in figure with caption
         const newFigure = document.createElement("figure");
-        newFigure.style.cssText = "margin: 24px 0; text-align: center;";
+        const alignmentStyles = {
+          left: "text-align: left;",
+          center: "text-align: center;",
+          right: "text-align: right;",
+          full: "text-align: center;",
+        };
+        newFigure.style.cssText = "margin: 24px 0; " + (alignmentStyles[alignment as keyof typeof alignmentStyles] || alignmentStyles.center);
         
-        const parent = selectedImage.parentNode;
+        const parent = wrapper.parentNode;
         if (parent) {
-          parent.insertBefore(newFigure, selectedImage);
-          newFigure.appendChild(selectedImage);
+          parent.insertBefore(newFigure, wrapper);
+          newFigure.appendChild(wrapper);
           
           const figcaption = document.createElement("figcaption");
           figcaption.textContent = caption;
           figcaption.style.cssText = "margin-top: 8px; font-size: 0.875rem; color: hsl(var(--muted-foreground)); font-style: italic;";
           newFigure.appendChild(figcaption);
         }
-        selectedImage.alt = alt;
       }
     } else {
       // Remove caption if exists
-      selectedImage.alt = alt;
       if (figure) {
-        const parent = figure.parentNode;
-        if (parent) {
-          parent.insertBefore(selectedImage, figure);
-          parent.removeChild(figure);
+        const figcaption = figure.querySelector("figcaption");
+        if (figcaption) {
+          figcaption.remove();
+          
+          // If figure now only has wrapper, unwrap it
+          if (figure.children.length === 1 && wrapper) {
+            const parent = figure.parentNode;
+            if (parent) {
+              parent.insertBefore(wrapper, figure);
+              parent.removeChild(figure);
+            }
+          }
         }
       }
     }
     
     handleContentChange(editorRef.current.innerHTML);
-    toast.success("Image details updated");
+    toast.success("Image updated");
   };
 
   const handleImageDelete = () => {

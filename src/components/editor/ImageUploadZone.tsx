@@ -1,18 +1,23 @@
 import { useState, useCallback } from "react";
-import { Upload, X, Image as ImageIcon, AlertCircle } from "lucide-react";
+import { Upload, X, Image as ImageIcon, AlertCircle, AlignLeft, AlignCenter, AlignRight, Maximize } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
+import { Slider } from "@/components/ui/slider";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { toast } from "sonner";
 import { optimizeImage, formatFileSize, isImageFile } from "@/utils/imageOptimizer";
+
+export type ImageAlignment = "left" | "center" | "right" | "full";
 
 interface ImageData {
   url: string;
   alt: string;
   caption: string;
+  size: number;
+  alignment: ImageAlignment;
 }
 
 interface ImageUploadZoneProps {
@@ -26,6 +31,8 @@ export function ImageUploadZone({ onImageInsert }: ImageUploadZoneProps) {
   const [preview, setPreview] = useState<string | null>(null);
   const [altText, setAltText] = useState("");
   const [caption, setCaption] = useState("");
+  const [size, setSize] = useState(100);
+  const [alignment, setAlignment] = useState<ImageAlignment>("center");
   const [showAccessibilityWarning, setShowAccessibilityWarning] = useState(false);
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
@@ -117,12 +124,16 @@ export function ImageUploadZone({ onImageInsert }: ImageUploadZoneProps) {
         url: preview,
         alt: altText.trim(),
         caption: caption.trim(),
+        size,
+        alignment,
       });
       
       // Reset state
       setPreview(null);
       setAltText("");
       setCaption("");
+      setSize(100);
+      setAlignment("center");
       setShowAccessibilityWarning(false);
       toast.success("Image inserted with accessibility details");
     }
@@ -132,7 +143,21 @@ export function ImageUploadZone({ onImageInsert }: ImageUploadZoneProps) {
     setPreview(null);
     setAltText("");
     setCaption("");
+    setSize(100);
+    setAlignment("center");
     setShowAccessibilityWarning(false);
+  };
+
+  const getAlignmentStyle = () => {
+    if (alignment === "full") return "width: 100%;";
+    
+    const alignMap = {
+      left: "margin-right: auto;",
+      center: "margin-left: auto; margin-right: auto;",
+      right: "margin-left: auto;",
+    };
+    
+    return alignMap[alignment] || alignMap.center;
   };
 
   if (preview) {
@@ -145,12 +170,20 @@ export function ImageUploadZone({ onImageInsert }: ImageUploadZoneProps) {
           </Button>
         </div>
         
-        <div className="relative rounded-lg overflow-hidden border border-border">
-          <img
-            src={preview}
-            alt={altText || "Preview"}
-            className="w-full h-auto max-h-64 object-contain bg-muted"
-          />
+        <div className="relative rounded-lg overflow-hidden border border-border bg-muted p-4">
+          <div style={{ display: "flex", justifyContent: alignment === "full" ? "stretch" : alignment }}>
+            <img
+              src={preview}
+              alt={altText || "Preview"}
+              style={{
+                width: alignment === "full" ? "100%" : `${size}%`,
+                height: "auto",
+                maxHeight: "16rem",
+                objectFit: "contain",
+                display: "block",
+              }}
+            />
+          </div>
         </div>
 
         {showAccessibilityWarning && (
@@ -162,7 +195,70 @@ export function ImageUploadZone({ onImageInsert }: ImageUploadZoneProps) {
           </Alert>
         )}
 
-        <div className="space-y-3">
+        <div className="space-y-4">
+          <div className="space-y-3">
+            <Label>Alignment</Label>
+            <div className="flex gap-2">
+              <Button
+                type="button"
+                variant={alignment === "left" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setAlignment("left")}
+                className="flex-1"
+              >
+                <AlignLeft className="h-4 w-4 mr-2" />
+                Left
+              </Button>
+              <Button
+                type="button"
+                variant={alignment === "center" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setAlignment("center")}
+                className="flex-1"
+              >
+                <AlignCenter className="h-4 w-4 mr-2" />
+                Center
+              </Button>
+              <Button
+                type="button"
+                variant={alignment === "right" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setAlignment("right")}
+                className="flex-1"
+              >
+                <AlignRight className="h-4 w-4 mr-2" />
+                Right
+              </Button>
+              <Button
+                type="button"
+                variant={alignment === "full" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setAlignment("full")}
+                className="flex-1"
+              >
+                <Maximize className="h-4 w-4 mr-2" />
+                Full
+              </Button>
+            </div>
+          </div>
+
+          {alignment !== "full" && (
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <Label>Size</Label>
+                <span className="text-xs text-muted-foreground">{size}%</span>
+              </div>
+              <Slider
+                value={[size]}
+                onValueChange={(value) => setSize(value[0])}
+                min={25}
+                max={100}
+                step={5}
+                className="w-full"
+              />
+            </div>
+          )}
+
           <div className="space-y-2">
             <Label htmlFor="alt-text" className="flex items-center gap-2">
               Alt Text <span className="text-xs text-destructive">*Required</span>

@@ -3,8 +3,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Slider } from "@/components/ui/slider";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { AlertCircle, Save, Trash2 } from "lucide-react";
+import { AlertCircle, Save, Trash2, AlignLeft, AlignCenter, AlignRight, Maximize } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -12,12 +13,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { ImageAlignment } from "./ImageUploadZone";
 
 interface ImageEditDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   imageElement: HTMLImageElement | null;
-  onSave: (alt: string, caption: string) => void;
+  onSave: (alt: string, caption: string, size: number, alignment: ImageAlignment) => void;
   onDelete: () => void;
 }
 
@@ -30,11 +32,30 @@ export function ImageEditDialog({
 }: ImageEditDialogProps) {
   const [altText, setAltText] = useState("");
   const [caption, setCaption] = useState("");
+  const [size, setSize] = useState(100);
+  const [alignment, setAlignment] = useState<ImageAlignment>("center");
   const [showWarning, setShowWarning] = useState(false);
 
   useEffect(() => {
     if (imageElement) {
       setAltText(imageElement.alt || "");
+      
+      // Get current size
+      const currentWidth = imageElement.style.width;
+      if (currentWidth && currentWidth.includes("%")) {
+        setSize(parseInt(currentWidth));
+      } else if (currentWidth === "100%" || !currentWidth) {
+        setSize(100);
+      }
+      
+      // Get current alignment
+      const wrapper = imageElement.closest("div[data-image-wrapper]") as HTMLElement;
+      if (wrapper) {
+        const align = wrapper.getAttribute("data-alignment") as ImageAlignment;
+        setAlignment(align || "center");
+      } else {
+        setAlignment("center");
+      }
       
       // Check if image is inside a figure with caption
       const figure = imageElement.closest("figure");
@@ -53,7 +74,7 @@ export function ImageEditDialog({
       return;
     }
     
-    onSave(altText.trim(), caption.trim());
+    onSave(altText.trim(), caption.trim(), size, alignment);
     onOpenChange(false);
   };
 
@@ -69,12 +90,20 @@ export function ImageEditDialog({
 
         <div className="space-y-4">
           {imageElement && (
-            <div className="relative rounded-lg overflow-hidden border border-border">
-              <img
-                src={imageElement.src}
-                alt={altText || "Preview"}
-                className="w-full h-auto max-h-48 object-contain bg-muted"
-              />
+            <div className="relative rounded-lg overflow-hidden border border-border bg-muted p-4">
+              <div style={{ display: "flex", justifyContent: alignment === "full" ? "stretch" : alignment }}>
+                <img
+                  src={imageElement.src}
+                  alt={altText || "Preview"}
+                  style={{
+                    width: alignment === "full" ? "100%" : `${size}%`,
+                    height: "auto",
+                    maxHeight: "12rem",
+                    objectFit: "contain",
+                    display: "block",
+                  }}
+                />
+              </div>
             </div>
           )}
 
@@ -85,6 +114,69 @@ export function ImageEditDialog({
                 Alt text is required for accessibility. Please describe what's in the image.
               </AlertDescription>
             </Alert>
+          )}
+
+          <div className="space-y-3">
+            <Label>Alignment</Label>
+            <div className="flex gap-2">
+              <Button
+                type="button"
+                variant={alignment === "left" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setAlignment("left")}
+                className="flex-1"
+              >
+                <AlignLeft className="h-4 w-4 mr-2" />
+                Left
+              </Button>
+              <Button
+                type="button"
+                variant={alignment === "center" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setAlignment("center")}
+                className="flex-1"
+              >
+                <AlignCenter className="h-4 w-4 mr-2" />
+                Center
+              </Button>
+              <Button
+                type="button"
+                variant={alignment === "right" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setAlignment("right")}
+                className="flex-1"
+              >
+                <AlignRight className="h-4 w-4 mr-2" />
+                Right
+              </Button>
+              <Button
+                type="button"
+                variant={alignment === "full" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setAlignment("full")}
+                className="flex-1"
+              >
+                <Maximize className="h-4 w-4 mr-2" />
+                Full
+              </Button>
+            </div>
+          </div>
+
+          {alignment !== "full" && (
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <Label>Size</Label>
+                <span className="text-xs text-muted-foreground">{size}%</span>
+              </div>
+              <Slider
+                value={[size]}
+                onValueChange={(value) => setSize(value[0])}
+                min={25}
+                max={100}
+                step={5}
+                className="w-full"
+              />
+            </div>
           )}
 
           <div className="space-y-2">
