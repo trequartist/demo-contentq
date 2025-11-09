@@ -2,12 +2,17 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => (
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  isLoading?: boolean;
+}
+
+const Card = React.forwardRef<HTMLDivElement, CardProps>(({ className, isLoading, ...props }, ref) => (
   <div 
     ref={ref} 
     className={cn(
       "rounded-lg border border-border-light bg-card text-card-foreground transition-all duration-200",
       "hover:border-border-hover hover:shadow-md",
+      isLoading && "animate-shimmer bg-gradient-to-r from-card via-muted/20 to-card bg-[length:200%_100%]",
       className
     )} 
     {...props} 

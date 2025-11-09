@@ -60,7 +60,7 @@ export function ProgressBar({ steps, showLabels = true, animated = true, classNa
                 )}
               >
                 {step.status === "completed" && (
-                  <Check className="h-2 w-2 animate-check-pop text-primary-foreground" />
+                  <Check className="h-2 w-2 text-primary-foreground animate-[check-pop_0.3s_ease-out]" />
                 )}
               </div>
 
