@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -13,6 +13,7 @@ import {
   FileCode,
   Hash,
   Check,
+  Image as ImageIcon,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -23,6 +24,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useWorkflowStore } from "@/stores/workflowStore";
 import { useToast } from "@/hooks/use-toast";
+import { ImageUploadZone } from "./ImageUploadZone";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export function ContentEditor() {
   const { editorTitle, editorContent, updateEditorTitle, updateEditorContent } = useWorkflowStore();
@@ -31,6 +41,8 @@ export function ContentEditor() {
   const [content, setContent] = useState(editorContent || "");
   const [wordCount, setWordCount] = useState(0);
   const [charCount, setCharCount] = useState(0);
+  const [showImageDialog, setShowImageDialog] = useState(false);
+  const editorRef = useRef<HTMLDivElement>(null);
 
   // Update word and character counts
   useEffect(() => {
@@ -119,6 +131,46 @@ export function ContentEditor() {
       title: "AI Feature",
       description: `${command} - Coming soon with AI integration`,
     });
+  };
+
+  const handleImageInsert = (imageUrl: string) => {
+    const img = `<img src="${imageUrl}" alt="Uploaded image" style="max-width: 100%; height: auto; border-radius: 8px; margin: 16px 0;" />`;
+    
+    if (editorRef.current) {
+      const selection = window.getSelection();
+      if (selection && selection.rangeCount > 0) {
+        const range = selection.getRangeAt(0);
+        const imgElement = document.createElement('div');
+        imgElement.innerHTML = img;
+        range.insertNode(imgElement.firstChild!);
+        range.collapse(false);
+        selection.removeAllRanges();
+        selection.addRange(range);
+      } else {
+        editorRef.current.innerHTML += img;
+      }
+      
+      handleContentChange(editorRef.current.innerHTML);
+    }
+    
+    setShowImageDialog(false);
+  };
+
+  const handleEditorDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleEditorDrop = async (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const files = Array.from(e.dataTransfer.files);
+    const imageFile = files.find(file => file.type.startsWith('image/'));
+    
+    if (imageFile) {
+      setShowImageDialog(true);
+    }
   };
 
   return (
@@ -232,6 +284,27 @@ export function ContentEditor() {
 
         <Separator orientation="vertical" className="mx-2 h-6" />
 
+        {/* Image Upload */}
+        <Dialog open={showImageDialog} onOpenChange={setShowImageDialog}>
+          <DialogTrigger asChild>
+            <Button variant="ghost" size="sm" className="gap-1">
+              <ImageIcon className="h-4 w-4" />
+              Image
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle>Upload Image</DialogTitle>
+              <DialogDescription>
+                Drag and drop an image or click to browse. Images will be automatically optimized.
+              </DialogDescription>
+            </DialogHeader>
+            <ImageUploadZone onImageInsert={handleImageInsert} />
+          </DialogContent>
+        </Dialog>
+
+        <Separator orientation="vertical" className="mx-2 h-6" />
+
         {/* AI Commands */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -277,11 +350,14 @@ export function ContentEditor() {
       {/* Rich Text Editor */}
       <div className="rounded-lg border border-border bg-card p-6">
         <div
+          ref={editorRef}
           id="rich-editor"
           contentEditable
           className="prose prose-sm max-w-none min-h-[500px] focus:outline-none"
           dangerouslySetInnerHTML={{ __html: content }}
           onInput={(e) => handleContentChange(e.currentTarget.innerHTML)}
+          onDragOver={handleEditorDragOver}
+          onDrop={handleEditorDrop}
           suppressContentEditableWarning
         />
       </div>
