@@ -8,7 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { FileText, TrendingUp, Lightbulb, FolderOpen, Menu, Command } from "lucide-react";
+import { FileText, TrendingUp, Lightbulb, FolderOpen, Menu, Command, BookOpen, Search } from "lucide-react";
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,6 +18,8 @@ export function Navigation() {
     { to: "/strategy", icon: TrendingUp, label: "Strategy", shortcut: "Ctrl+2" },
     { to: "/intelligence", icon: Lightbulb, label: "Intelligence", shortcut: "Ctrl+3" },
     { to: "/hub", icon: FolderOpen, label: "Hub", shortcut: "Ctrl+4" },
+    { to: "/playbooks", icon: BookOpen, label: "Playbooks", shortcut: "Ctrl+5" },
+    { to: "/research", icon: Search, label: "Research", shortcut: "Ctrl+6" },
   ];
 
   return (

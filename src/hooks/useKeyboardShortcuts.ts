@@ -6,7 +6,7 @@ export function useKeyboardShortcuts() {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Workspace navigation (Ctrl+1-4)
+      // Workspace navigation (Ctrl+1-6)
       if (e.ctrlKey || e.metaKey) {
         switch (e.key) {
           case "1":
@@ -24,6 +24,14 @@ export function useKeyboardShortcuts() {
           case "4":
             e.preventDefault();
             navigate("/hub");
+            break;
+          case "5":
+            e.preventDefault();
+            navigate("/playbooks");
+            break;
+          case "6":
+            e.preventDefault();
+            navigate("/research");
             break;
           case "s":
             e.preventDefault();
