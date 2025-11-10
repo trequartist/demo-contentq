@@ -59,6 +59,7 @@ const mockDrafts = [
 
 export default function Studio() {
   const { isActive, startWorkflow, currentStageIndex, stages } = useWorkflowStore();
+  const { crossModuleContext, clearContext } = useDemoStore();
 
   // Check if we're in editor mode (last stage)
   const isEditorMode = isActive && currentStageIndex === stages.length - 1;
@@ -76,6 +77,16 @@ export default function Studio() {
   // Otherwise show workflow selection screen
   return (
     <div className="space-y-12 animate-fade-in">
+      {/* Context Indicator */}
+      {crossModuleContext && (
+        <ContextIndicator
+          source={crossModuleContext.source}
+          title={crossModuleContext.title}
+          description={crossModuleContext.description}
+          onRemove={clearContext}
+        />
+      )}
+      
       {/* Header */}
       <div className="space-y-3">
         <h1 className="text-display">Create Content</h1>
