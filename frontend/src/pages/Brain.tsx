@@ -149,12 +149,85 @@ export default function Brain() {
           <Input
             placeholder="Search documents..."
             className="pl-9"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        <Button className="gap-2">
+        <Button className="gap-2" onClick={() => setShowUploadModal(true)}>
           <Upload className="h-4 w-4" />
           Upload Documents
         </Button>
+      </div>
+
+      {/* Filters */}
+      <div className="flex flex-wrap items-center gap-2">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <Filter className="h-4 w-4" />
+          <span>Filter:</span>
+        </div>
+        
+        {/* Active/Inactive Filter */}
+        <div className="flex gap-2">
+          <Button
+            variant={activeFilter === "all" ? "default" : "outline"}
+            size="sm"
+            onClick={() => setActiveFilter("all")}
+          >
+            All
+          </Button>
+          <Button
+            variant={activeFilter === "active" ? "default" : "outline"}
+            size="sm"
+            onClick={() => setActiveFilter("active")}
+          >
+            <Power className="mr-1 h-3 w-3" />
+            Active
+          </Button>
+          <Button
+            variant={activeFilter === "inactive" ? "default" : "outline"}
+            size="sm"
+            onClick={() => setActiveFilter("inactive")}
+          >
+            Inactive
+          </Button>
+        </div>
+
+        {/* Category Filter */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" size="sm" className="gap-2">
+              <FileText className="h-3 w-3" />
+              {categoryFilter === "all" ? "All Categories" : categoryFilter}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem onClick={() => setCategoryFilter("all")}>
+              All Categories
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            {categories.map((cat) => (
+              <DropdownMenuItem key={cat} onClick={() => setCategoryFilter(cat)}>
+                {cat}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        {hasActiveFilters && (
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={clearFilters}
+            className="gap-1"
+          >
+            <X className="h-3 w-3" />
+            Clear
+          </Button>
+        )}
+
+        <div className="ml-auto text-sm text-muted-foreground">
+          {filteredDocuments.length} of {brainDocuments.length} documents
+        </div>
       </div>
       
       {/* Document Categories */}
