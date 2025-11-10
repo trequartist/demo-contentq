@@ -99,22 +99,23 @@ export default function ResearchDesk() {
   const conversationFindings = getFindingsByStream('conversations');
 
   return (
-    <div className="space-y-8 animate-fade-in pb-16">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-4xl font-bold mb-2">Research Desk</h1>
-          <p className="text-muted-foreground">
-            Always-on intelligence and on-demand research reports
-          </p>
+    <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 pb-16">
+      <div className="lg:col-span-3 space-y-8 animate-fade-in">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-bold mb-2">Research Desk</h1>
+            <p className="text-muted-foreground">
+              Always-on intelligence and on-demand research reports
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <Button variant="outline" className="gap-2">
+              <TrendingUp className="h-4 w-4" />
+              Analytics
+            </Button>
+          </div>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline" className="gap-2">
-            <TrendingUp className="h-4 w-4" />
-            Analytics
-          </Button>
-        </div>
-      </div>
 
       {/* Always-On Intelligence */}
       <div className="space-y-4">
