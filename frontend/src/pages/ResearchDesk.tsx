@@ -196,12 +196,26 @@ export default function ResearchDesk() {
         )}
       </div>
 
-      {/* Report Builder Dialog */}
-      <Dialog open={isBuilderOpen} onOpenChange={setIsBuilderOpen}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-          <ReportBuilder onClose={() => setIsBuilderOpen(false)} />
-        </DialogContent>
-      </Dialog>
+        {/* Report Builder Dialog */}
+        <Dialog open={isBuilderOpen} onOpenChange={setIsBuilderOpen}>
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+            <ReportBuilder onClose={() => setIsBuilderOpen(false)} />
+          </DialogContent>
+        </Dialog>
+      </div>
+
+      {/* Sidebar - Related Documents */}
+      <div className="lg:col-span-1">
+        {researchDocs.length > 0 && (
+          <div className="sticky top-6">
+            <RelatedDocuments 
+              documents={researchDocs}
+              title="Research Context"
+              maxItems={8}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
