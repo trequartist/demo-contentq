@@ -303,35 +303,16 @@ export const useWorkflowStore = create<WorkflowState>((set, get) => ({
   brief: null,
 
   startWorkflow: (type) => {
-    let stages: WorkflowStage[] = [];
-    let steps: WorkflowStep[] = [];
-
-    if (type === "blog") {
-      stages = blogWorkflowStages;
-      steps = [
-        { id: "input", name: "Input", status: "in-progress" },
-        { id: "research", name: "Research", status: "pending" },
-        { id: "topics", name: "Topics", status: "pending" },
-        { id: "brief", name: "Brief", status: "pending" },
-        { id: "content", name: "Content", status: "pending" },
-      ];
-    } else if (type === "linkedin") {
-      stages = linkedinWorkflowStages;
-      steps = [
-        { id: "input", name: "Input", status: "in-progress" },
-        { id: "enhance", name: "Enhance", status: "pending" },
-        { id: "tone", name: "Tone", status: "pending" },
-        { id: "generate", name: "Generate", status: "pending" },
-      ];
-    } else if (type === "calendar") {
-      stages = calendarWorkflowStages;
-      steps = [
-        { id: "select", name: "Select", status: "in-progress" },
-        { id: "prepare", name: "Prepare", status: "pending" },
-        { id: "input", name: "Input", status: "pending" },
-        { id: "brief", name: "Brief", status: "pending" },
-      ];
-    }
+    // Get workflow from new data file
+    const stages = getWorkflowByType(type);
+    
+    // Generate steps from stages
+    const uniqueStepIds = [...new Set(stages.map(s => s.stepId))];
+    const steps: WorkflowStep[] = uniqueStepIds.map((stepId, index) => ({
+      id: stepId,
+      name: stepId.charAt(0).toUpperCase() + stepId.slice(1),
+      status: index === 0 ? "in-progress" : "pending",
+    }));
 
     set({
       isActive: true,
@@ -339,6 +320,9 @@ export const useWorkflowStore = create<WorkflowState>((set, get) => ({
       currentStageIndex: 0,
       steps,
       stages,
+      editorContent: "",
+      editorTitle: "",
+      brief: null,
     });
   },
 
