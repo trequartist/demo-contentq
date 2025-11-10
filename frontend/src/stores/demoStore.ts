@@ -53,6 +53,10 @@ interface DemoState {
   updateWorkflowProgress: (id: string, progress: number, stage?: string) => void;
   removeWorkflow: (id: string) => void;
   
+  // Cross-Module Context Actions
+  setContext: (context: CrossModuleContext | null) => void;
+  clearContext: () => void;
+  
   // Demo Control Actions
   toggleAgentDetails: () => void;
   setSimulationSpeed: (speed: number) => void;
