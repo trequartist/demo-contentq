@@ -198,13 +198,69 @@
     -webkit-backdrop-filter: blur(20px);
   }
   
-  /* Hover Scale Animation */
+  /* Micro-interactions */
   .hover-scale {
     transition: transform 200ms ease-out;
   }
   
   .hover-scale:hover {
     transform: scale(1.02);
+  }
+  
+  .hover-lift {
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .hover-glow {
+    transition: box-shadow 200ms ease-out;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2);
+  }
+  
+  .click-feedback {
+    transition: transform 100ms ease-out;
+  }
+  
+  .click-feedback:active {
+    transform: scale(0.98);
+  }
+  
+  /* Gradients */
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+  }
+  
+  .gradient-accent {
+    background: linear-gradient(135deg, hsl(82 80% 45%) 0%, hsl(82 70% 40%) 100%);
+  }
+  
+  .gradient-subtle {
+    background: linear-gradient(180deg, transparent 0%, hsl(var(--primary) / 0.03) 100%);
+  }
+  
+  /* Focus states */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+  
+  /* Animations */
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+  
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+  }
+  
+  .animate-pulse-subtle {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }
 
