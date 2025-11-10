@@ -1,7 +1,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Target, TrendingUp, Radio, CheckCircle2 } from "lucide-react";
+import { Target, TrendingUp, Radio, CheckCircle2, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useDemoStore } from "@/stores/demoStore";
+import { toast } from "sonner";
 import type { GeneratedPlaybook } from "@/data/strategyData";
 
 interface PlaybookDisplayProps {
@@ -9,6 +13,24 @@ interface PlaybookDisplayProps {
 }
 
 export function PlaybookDisplay({ playbook }: PlaybookDisplayProps) {
+  const navigate = useNavigate();
+  const setContext = useDemoStore(s => s.setContext);
+
+  const handleCreateContent = (pillar: any, topic?: string) => {
+    setContext({
+      source: 'strategy',
+      sourceId: playbook.id || 'playbook-1',
+      title: topic || pillar.name,
+      description: `From ${playbook.name} - ${pillar.name} pillar`,
+      data: { playbook, pillar, topic }
+    });
+    
+    toast.success('Context loaded from playbook', {
+      description: `Creating content for: ${pillar.name}`
+    });
+    
+    navigate('/studio');
+  };
   return (
     <div className="space-y-6">
       {/* Header */}
