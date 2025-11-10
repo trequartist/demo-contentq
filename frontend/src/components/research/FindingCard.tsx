@@ -76,7 +76,11 @@ export function FindingCard({ finding }: FindingCardProps) {
         )}
         
         <div className="flex gap-2 pt-2">
-          <Button size="sm" variant="outline" onClick={handleCreateContent} className="gap-1">
+          <Button 
+            size="sm" 
+            onClick={handleCreateContent} 
+            className="gap-1 bg-primary hover:bg-primary/90 text-primary-foreground click-feedback hover-glow"
+          >
             <Sparkles className="h-3 w-3" />
             Create Content
           </Button>
