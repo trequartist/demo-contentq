@@ -27,7 +27,7 @@ import { useToast } from "@/hooks/use-toast";
 import { toast } from "sonner";
 import { ImageUploadZone } from "./ImageUploadZone";
 import { ImageEditDialog } from "./ImageEditDialog";
-import { ContentScoring } from "@/components/studio/ContentScoring";
+import { EditorSidebar } from "./EditorSidebar";
 import {
   Dialog,
   DialogContent,
