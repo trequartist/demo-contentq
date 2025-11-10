@@ -474,9 +474,9 @@ export default function Strategy() {
         </div>
         </TabsContent>
       </Tabs>
-
-      {/* Removed Pipeline and Audience views - they can be added back as separate tabs if needed */}
-      {false && (
+    </div>
+  );
+}
         <div className="space-y-4 animate-fade-in">
           <div className="mb-4">
             <h2 className="text-2xl font-bold">Content Pipeline</h2>
