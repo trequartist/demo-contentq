@@ -74,8 +74,6 @@ export interface WorkflowState {
 
 // Note: Workflow definitions moved to src/data/workflows.ts
 
-];
-
 export const useWorkflowStore = create<WorkflowState>((set, get) => ({
   isActive: false,
   workflowType: null,
