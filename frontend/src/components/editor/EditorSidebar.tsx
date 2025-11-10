@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Sparkles, MessageSquare } from "lucide-react";
+import { Sparkles, MessageSquare, Brain } from "lucide-react";
 import { ContentScoring } from "@/components/studio/ContentScoring";
 import { AssistantPanel } from "@/components/assistant/AssistantPanel";
+import { RelatedDocuments } from "@/components/brain/RelatedDocuments";
 import { useWorkflowStore } from "@/stores/workflowStore";
+import { useDemoStore } from "@/stores/demoStore";
 
 interface EditorSidebarProps {
   content: string;
