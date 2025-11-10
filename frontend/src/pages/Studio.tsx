@@ -55,7 +55,7 @@ const mockDrafts = [
   },
 ];
 
-export default function Create() {
+export default function Studio() {
   const { isActive, startWorkflow, currentStageIndex, stages } = useWorkflowStore();
 
   // Check if we're in editor mode (last stage)
