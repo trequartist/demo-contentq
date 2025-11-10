@@ -5,6 +5,8 @@ import { ExternalLink, Sparkles } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import type { ResearchFinding } from "@/data/mockData";
 import { useNavigate } from "react-router-dom";
+import { useDemoStore } from "@/stores/demoStore";
+import { toast } from "sonner";
 
 interface FindingCardProps {
   finding: ResearchFinding;
@@ -18,9 +20,25 @@ const importanceColors = {
 
 export function FindingCard({ finding }: FindingCardProps) {
   const navigate = useNavigate();
+  const setContext = useDemoStore(s => s.setContext);
   
   const handleCreateContent = () => {
-    navigate('/studio', { state: { topic: finding.title, context: finding } });
+    // Set cross-module context
+    setContext({
+      source: 'research',
+      sourceId: finding.id,
+      title: finding.title,
+      description: finding.summary,
+      data: finding
+    });
+    
+    // Show success toast
+    toast.success('Context loaded from research', {
+      description: 'Creating content with research insights'
+    });
+    
+    // Navigate to Studio
+    navigate('/studio');
   };
   
   return (
