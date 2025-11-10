@@ -97,8 +97,8 @@ export default function Studio() {
 
       {/* Start New Section */}
       <section className="space-y-4">
-        <h2 className="text-label text-muted-foreground">START NEW</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 animate-stagger">
+        <h2 className="text-xs font-medium text-gray-500 uppercase tracking-wide">START NEW</h2>
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 animate-stagger">
           {workflows.map((workflow, index) => {
             const Icon = workflow.icon;
             return (
