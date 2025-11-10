@@ -224,6 +224,17 @@ export const useDemoStore = create<DemoState>((set, get) => ({
     get().saveToStorage();
   },
   
+  // Cross-Module Context Actions
+  setContext: (context) => {
+    set({ crossModuleContext: context });
+    get().saveToStorage();
+  },
+  
+  clearContext: () => {
+    set({ crossModuleContext: null });
+    get().saveToStorage();
+  },
+  
   // Demo Control Actions
   toggleAgentDetails: () => {
     set(state => ({
