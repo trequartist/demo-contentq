@@ -455,6 +455,13 @@ export const mockDocuments: BrainDocument[] = [
     active: false,
     summary: "Logos, colors, typography, and design elements",
     fileType: "ZIP",
+    insights: [
+      "Logo variants: 5 different formats",
+      "Color palette: Primary, secondary, and accent colors",
+      "Typography: Inter (headings), System fonts (body)"
+    ],
+    usedIn: [],
+    relevanceScore: 85,
   },
   {
     id: "doc-12",
@@ -465,6 +472,13 @@ export const mockDocuments: BrainDocument[] = [
     active: false,
     summary: "Examples of on-brand vs off-brand content",
     fileType: "PDF",
+    insights: [
+      "Do: Use active voice, focus on outcomes",
+      "Don't: Use jargon, make unsubstantiated claims",
+      "Examples: 10+ before/after content samples"
+    ],
+    usedIn: [],
+    relevanceScore: 82,
   },
 ];
 
