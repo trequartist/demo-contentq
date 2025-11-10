@@ -145,6 +145,36 @@ export function ContentEditor() {
     });
   };
 
+  const handleSendToBrain = () => {
+    if (!editorTitle || !content) {
+      toast.error('Cannot save to Brain', {
+        description: 'Title and content are required'
+      });
+      return;
+    }
+
+    const newDoc = {
+      name: editorTitle,
+      category: 'Content Strategy' as const,
+      type: 'content' as const,
+      content: content,
+      isActive: false,
+      uploadedAt: new Date(),
+      summary: content.replace(/<[^>]*>/g, '').trim().substring(0, 150) + '...',
+      tags: [workflowType || 'content'],
+    };
+
+    addDocument(newDoc);
+    
+    toast.success('Saved to Marketing Brain', {
+      description: 'Your content is now in the Brain',
+      action: {
+        label: 'View Brain',
+        onClick: () => window.location.href = '/brain'
+      }
+    });
+  };
+
   const handleImageInsert = (imageData: { url: string; alt: string; caption: string; size: number; alignment: string }) => {
     const alignmentStyles = {
       left: "text-align: left;",
