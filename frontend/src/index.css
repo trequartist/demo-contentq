@@ -6,20 +6,20 @@
 
 @layer base {
   :root {
-    /* Deep Blue/Indigo - Primary (Premium) */
-    --primary: 231 48% 48%;       /* Deep blue #4F46E5 */
+    /* Black Primary - Authority & Premium */
+    --primary: 0 0% 0%;           /* Pure black #000000 */
     --primary-foreground: 0 0% 100%;
     
     /* Layered Surfaces - Light Mode */
-    --background: 220 20% 99%;    /* Warm white base */
+    --background: 0 0% 97%;       /* Subtle gray #F7F7F8 */
     --foreground: 0 0% 9%;        /* Near black text */
-    --muted: 220 20% 96%;         /* Surface layer 2 */
+    --muted: 0 0% 96%;            /* Surface layer */
     --muted-foreground: 0 0% 45%; /* Mid gray */
     
     /* Borders & Dividers */
-    --border: 220 13% 91%;        /* Subtle border */
-    --border-light: 220 13% 94%;
-    --border-hover: 231 48% 48%;  /* Blue on hover */
+    --border: 0 0% 89%;           /* Gray border */
+    --border-light: 0 0% 93%;
+    --border-hover: 0 0% 0%;      /* Black on hover */
     
     /* Card Backgrounds - Elevated */
     --card: 0 0% 100%;            /* White cards */
