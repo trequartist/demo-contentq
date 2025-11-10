@@ -37,7 +37,8 @@ interface ContentItem {
 export default function Strategy() {
   const navigate = useNavigate();
   const { brainDocuments, setContext } = useDemoStore();
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
+  const today = new Date();
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(today);
   const [activeTab, setActiveTab] = useState("foundation");
   
   // Get strategy-related documents
