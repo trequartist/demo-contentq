@@ -76,7 +76,7 @@ export default function Studio() {
 
   // Otherwise show workflow selection screen
   return (
-    <div className="space-y-12 animate-fade-in">
+    <div className="px-8 py-12 space-y-16 animate-fade-in">
       {/* Context Indicator */}
       {crossModuleContext && (
         <ContextIndicator
@@ -87,10 +87,10 @@ export default function Studio() {
         />
       )}
       
-      {/* Header with Gradient */}
-      <div className="space-y-3 pb-8 gradient-subtle rounded-lg -mx-2 px-2 pt-2">
-        <h1 className="text-display">Create Content</h1>
-        <p className="text-body text-muted-foreground">
+      {/* Header - Clean & Simple */}
+      <div className="space-y-4">
+        <h1 className="text-3xl font-bold text-gray-900">Create Content</h1>
+        <p className="text-sm text-gray-600">
           Start a new piece of content or continue where you left off
         </p>
       </div>
