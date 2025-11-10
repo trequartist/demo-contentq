@@ -338,9 +338,11 @@ export function ContentEditor() {
   };
 
   return (
-    <div className="space-y-4 animate-fade-in">
-      {/* Brief Header */}
-      <div className="flex items-center gap-3 rounded-lg border border-border bg-card p-4 shadow-sm">
+    <div className="flex gap-6 animate-fade-in">
+      {/* Main Editor Area */}
+      <div className="flex-1 space-y-4">
+        {/* Brief Header */}
+        <div className="flex items-center gap-3 rounded-lg border border-border bg-card p-4 shadow-sm">
         <Badge variant="outline" className="gap-1">
           <FileText className="h-3 w-3" />
           Brief
