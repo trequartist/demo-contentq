@@ -41,13 +41,16 @@ function AppContent() {
       <Sonner />
       <CommandPalette />
       <Routes>
-        <Route path="/" element={<Navigate to="/create" replace />} />
+        {/* Redirect root to Content Studio */}
+        <Route path="/" element={<Navigate to="/studio" replace />} />
+        
+        {/* New Routes */}
         <Route
-          path="/create"
+          path="/studio"
           element={
             <AppShell>
               <Suspense fallback={<LoadingScreen />}>
-                <Create />
+                <Studio />
               </Suspense>
             </AppShell>
           }
@@ -63,36 +66,6 @@ function AppContent() {
           }
         />
         <Route
-          path="/intelligence"
-          element={
-            <AppShell>
-              <Suspense fallback={<LoadingScreen />}>
-                <Intelligence />
-              </Suspense>
-            </AppShell>
-          }
-        />
-        <Route
-          path="/hub"
-          element={
-            <AppShell>
-              <Suspense fallback={<LoadingScreen />}>
-                <Hub />
-              </Suspense>
-            </AppShell>
-          }
-        />
-        <Route
-          path="/playbooks"
-          element={
-            <AppShell>
-              <Suspense fallback={<LoadingScreen />}>
-                <Playbooks />
-              </Suspense>
-            </AppShell>
-          }
-        />
-        <Route
           path="/research"
           element={
             <AppShell>
@@ -102,6 +75,24 @@ function AppContent() {
             </AppShell>
           }
         />
+        <Route
+          path="/brain"
+          element={
+            <AppShell>
+              <Suspense fallback={<LoadingScreen />}>
+                <Brain />
+              </Suspense>
+            </AppShell>
+          }
+        />
+        
+        {/* Legacy Route Redirects */}
+        <Route path="/create" element={<Navigate to="/studio" replace />} />
+        <Route path="/intelligence" element={<Navigate to="/research" replace />} />
+        <Route path="/hub" element={<Navigate to="/brain" replace />} />
+        <Route path="/playbooks" element={<Navigate to="/strategy" replace />} />
+        
+        {/* 404 Not Found */}
         <Route
           path="*"
           element={
