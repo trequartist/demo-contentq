@@ -281,10 +281,7 @@ export default function Strategy() {
 
         {/* Calendar Tab */}
         <TabsContent value="calendar" className="space-y-6 mt-6">
-
-      {/* Calendar View */}
-      {activeView === "calendar" && (
-        <div className="space-y-4 animate-fade-in">
+        <div className="space-y-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <Card className="lg:col-span-2 p-6 hover:shadow-lg transition-shadow">
               <Calendar
