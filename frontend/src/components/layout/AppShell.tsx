@@ -65,6 +65,9 @@ export function AppShell({ children }: AppShellProps) {
       
       {/* ContentQ Status Bar */}
       <ContentQStatus />
+      
+      {/* Command Palette (Ctrl+K) */}
+      <CommandPalette />
     </div>
   );
 }
