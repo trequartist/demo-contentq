@@ -61,6 +61,9 @@ export function AppShell({ children }: AppShellProps) {
           </SheetContent>
         </Sheet>
       )}
+      
+      {/* ContentQ Status Bar */}
+      <ContentQStatus />
     </div>
   );
 }
