@@ -19,7 +19,7 @@ export interface WorkflowStage {
   canGoBack: boolean;
   primaryAction: string;
   // For selection stages
-  options?: Array<{ id: string; title: string; description: string }>;
+  options?: Array<{ id: string; title: string; description: string; reasoning?: string }>;
   multiSelect?: boolean;
   selectedOptions?: string[];
   // For input stages
@@ -29,10 +29,16 @@ export interface WorkflowStage {
   allowFileUpload?: boolean;
   acceptedFiles?: string;
   uploadedFiles?: File[];
+  calendarEvent?: any;
   // For processing stages
   processingStage?: string;
   progress?: number;
   message?: string;
+  agent?: 'Research' | 'Strategist' | 'Copywriter' | 'Editor' | 'Analyst';
+  agentReasoning?: string;
+  mockOutput?: any;
+  // For editor stage
+  showScoring?: boolean;
 }
 
 export interface WorkflowState {
