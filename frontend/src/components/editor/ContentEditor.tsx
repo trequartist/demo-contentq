@@ -602,5 +602,6 @@ export function ContentEditor() {
         </div>
       )}
     </div>
+    </div>
   );
 }
