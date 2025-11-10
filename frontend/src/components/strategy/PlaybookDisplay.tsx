@@ -64,14 +64,27 @@ export function PlaybookDisplay({ playbook }: PlaybookDisplayProps) {
                 </CardHeader>
                 <CardContent>
                   <p className="text-xs font-medium text-muted-foreground mb-2">Topics:</p>
-                  <div className="space-y-1">
+                  <div className="space-y-1 mb-3">
                     {pillar.topics.map((topic, topicIdx) => (
-                      <div key={topicIdx} className="flex items-start gap-2">
+                      <div 
+                        key={topicIdx} 
+                        className="flex items-start gap-2 hover-lift cursor-pointer p-1.5 -ml-1.5 rounded click-feedback"
+                        onClick={() => handleCreateContent(pillar, topic)}
+                      >
                         <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0 mt-0.5" />
                         <span className="text-sm">{topic}</span>
                       </div>
                     ))}
                   </div>
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    className="w-full gap-2 click-feedback hover-glow"
+                    onClick={() => handleCreateContent(pillar)}
+                  >
+                    <Sparkles className="h-3 w-3" />
+                    Create Content
+                  </Button>
                 </CardContent>
               </Card>
             ))}
