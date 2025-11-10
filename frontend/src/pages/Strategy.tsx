@@ -192,13 +192,6 @@ export default function Strategy() {
     );
   };
 
-  const navItems = [
-    { id: "calendar", label: "Calendar", icon: CalendarIcon },
-    { id: "campaigns", label: "Campaigns", icon: Megaphone },
-    { id: "pipeline", label: "Pipeline", icon: TrendingUp },
-    { id: "audience", label: "Audience", icon: Target },
-  ];
-
   return (
     <div className="space-y-6 animate-fade-in pb-16">
       {/* Header */}
