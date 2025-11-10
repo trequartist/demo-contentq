@@ -246,11 +246,11 @@ export default function Strategy() {
   };
 
   return (
-    <div className="space-y-6 animate-fade-in pb-16">
-      {/* Header - Simplified */}
-      <div className="pb-8 gradient-subtle rounded-lg -mx-2 px-2 pt-2">
-        <h1 className="text-4xl font-bold mb-2">Strategy Room</h1>
-        <p className="text-muted-foreground">
+    <div className="px-8 py-12 space-y-12 animate-fade-in pb-16">
+      {/* Header - Clean */}
+      <div className="space-y-4">
+        <h1 className="text-3xl font-bold text-gray-900">Strategy Room</h1>
+        <p className="text-sm text-gray-600">
           Build your strategic foundation and create content playbooks
         </p>
       </div>
