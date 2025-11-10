@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Dialog,
   DialogContent,
@@ -35,9 +35,15 @@ import {
   Circle,
   AlertCircle,
   Megaphone,
+  BookOpen,
+  Building,
 } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
+import { FoundationStrategy } from "@/components/strategy/FoundationStrategy";
+import { PlaybookWizard } from "@/components/strategy/PlaybookWizard";
+import { QuickOnboard } from "@/components/strategy/QuickOnboard";
+import { useDemoStore } from "@/stores/demoStore";
 
 interface ContentItem {
   id: string;
