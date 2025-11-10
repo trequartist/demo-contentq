@@ -10,13 +10,17 @@ import { ErrorBoundary } from "./components/ErrorBoundary";
 import { useKeyboardShortcuts } from "./hooks/useKeyboardShortcuts";
 
 // Lazy load pages for better performance
-const Create = lazy(() => import("./pages/Create"));
+const Studio = lazy(() => import("./pages/Studio"));
 const Strategy = lazy(() => import("./pages/Strategy"));
+const Research = lazy(() => import("./pages/Research"));
+const Brain = lazy(() => import("./pages/Brain"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+// Legacy pages for backwards compatibility
+const Create = lazy(() => import("./pages/Create"));
 const Intelligence = lazy(() => import("./pages/Intelligence"));
 const Hub = lazy(() => import("./pages/Hub"));
 const Playbooks = lazy(() => import("./pages/Playbooks"));
-const Research = lazy(() => import("./pages/Research"));
-const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
