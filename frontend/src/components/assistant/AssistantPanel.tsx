@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Search, FileText } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Search, FileText, Brain } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { ChatTab } from "./ChatTab";
 import { ResearchDialog } from "./ResearchDialog";
 import { ContextDialog } from "./ContextDialog";
+import { useDemoStore } from "@/stores/demoStore";
 
 interface AssistantPanelProps {
   currentInput?: string;
