@@ -10,6 +10,13 @@ export interface AgentActivity {
   completedAt?: Date;
 }
 
+export interface DocumentUsage {
+  module: 'Studio' | 'Strategy' | 'Research' | 'Campaigns';
+  itemName: string;
+  itemId: string;
+  lastUsed: Date;
+}
+
 export interface BrainDocument {
   id: string;
   name: string;
@@ -19,6 +26,9 @@ export interface BrainDocument {
   active: boolean;
   summary?: string;
   fileType?: string;
+  insights?: string[];
+  usedIn?: DocumentUsage[];
+  relevanceScore?: number;
 }
 
 export interface FoundationStrategy {
