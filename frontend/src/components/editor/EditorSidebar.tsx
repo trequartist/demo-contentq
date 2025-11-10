@@ -17,17 +17,25 @@ interface EditorSidebarProps {
 export function EditorSidebar({ content, title, showScoring, workflowType }: EditorSidebarProps) {
   const [activeTab, setActiveTab] = useState<string>("scoring");
   const { insertIntoInput, updateStageData, currentStageIndex, stages } = useWorkflowStore();
+  const { brainDocuments } = useDemoStore();
   
   const currentStage = stages[currentStageIndex];
+  
+  // Get relevant active documents (filter by active status)
+  const activeDocuments = brainDocuments.filter(doc => doc.active);
 
   return (
     <div className="w-[400px] shrink-0 border-l border-border bg-background">
       <div className="sticky top-0 h-[calc(100vh-60px)]">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full flex flex-col">
-          <TabsList className="w-full grid grid-cols-2 rounded-none border-b">
+          <TabsList className="w-full grid grid-cols-3 rounded-none border-b">
             <TabsTrigger value="scoring" className="gap-2">
               <Sparkles className="h-4 w-4" />
               Score
+            </TabsTrigger>
+            <TabsTrigger value="brain" className="gap-2">
+              <Brain className="h-4 w-4" />
+              Brain
             </TabsTrigger>
             <TabsTrigger value="assistant" className="gap-2">
               <MessageSquare className="h-4 w-4" />
@@ -43,6 +51,14 @@ export function EditorSidebar({ content, title, showScoring, workflowType }: Edi
                 title={title}
               />
             )}
+          </TabsContent>
+          
+          <TabsContent value="brain" className="flex-1 overflow-y-auto m-0 p-4">
+            <RelatedDocuments 
+              documents={activeDocuments}
+              title="Active Context"
+              maxItems={10}
+            />
           </TabsContent>
           
           <TabsContent value="assistant" className="flex-1 overflow-hidden m-0">
