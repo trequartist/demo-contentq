@@ -87,8 +87,8 @@ export default function Studio() {
         />
       )}
       
-      {/* Header */}
-      <div className="space-y-3">
+      {/* Header with Gradient */}
+      <div className="space-y-3 pb-8 gradient-subtle rounded-lg -mx-2 px-2 pt-2">
         <h1 className="text-display">Create Content</h1>
         <p className="text-body text-muted-foreground">
           Start a new piece of content or continue where you left off
