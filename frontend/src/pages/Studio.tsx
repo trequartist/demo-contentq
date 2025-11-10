@@ -98,14 +98,13 @@ export default function Studio() {
       {/* Start New Section */}
       <section className="space-y-4">
         <h2 className="text-label text-muted-foreground">START NEW</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 animate-stagger">
           {workflows.map((workflow, index) => {
             const Icon = workflow.icon;
             return (
               <Card
                 key={workflow.id}
-                className="group cursor-pointer hover-lift click-feedback animate-scale-in"
-                style={{ animationDelay: `${index * 50}ms` }}
+                className="group cursor-pointer hover-lift click-feedback"
                 onClick={() => startWorkflow(workflow.id as "blog" | "linkedin" | "calendar")}
               >
                 <CardHeader className="space-y-3">
