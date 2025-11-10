@@ -14,6 +14,7 @@ import {
   Hash,
   Check,
   Image as ImageIcon,
+  Brain,
 } from "lucide-react";
 import {
   DropdownMenu,
