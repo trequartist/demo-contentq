@@ -257,7 +257,22 @@ export default function Strategy() {
               </div>
             </Card>
           ) : (
-            <FoundationStrategy />
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2">
+                <FoundationStrategy />
+              </div>
+              <div className="lg:col-span-1">
+                {strategyDocs.length > 0 && (
+                  <div className="sticky top-6">
+                    <RelatedDocuments 
+                      documents={strategyDocs}
+                      title="Strategy Context"
+                      maxItems={8}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
           )}
         </TabsContent>
 
