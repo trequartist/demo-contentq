@@ -186,7 +186,7 @@ export function WorkflowContainer({ children }: WorkflowContainerProps) {
         </div>
 
         {/* Assistant Panel - Fixed Right Sidebar */}
-        <aside className="hidden w-[400px] border-l border-border bg-background lg:block">
+        <aside className="hidden w-[400px] border-l border-gray-200 bg-white lg:block">
           <div className="sticky top-0 h-[calc(100vh-60px)]">
             <AssistantPanel 
               currentInput={currentStage.type === "input" ? currentStage.inputValue : undefined}
