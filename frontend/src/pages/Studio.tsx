@@ -104,7 +104,7 @@ export default function Studio() {
             return (
               <Card
                 key={workflow.id}
-                className="group cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-lg animate-scale-in"
+                className="group cursor-pointer hover-lift click-feedback animate-scale-in"
                 style={{ animationDelay: `${index * 50}ms` }}
                 onClick={() => startWorkflow(workflow.id as "blog" | "linkedin" | "calendar")}
               >
