@@ -313,6 +313,16 @@ export const mockDocuments: BrainDocument[] = [
     active: true,
     summary: "Annual content strategy, goals, and key initiatives",
     fileType: "PDF",
+    insights: [
+      "Goal: 150% increase in organic traffic",
+      "Focus: Thought leadership + product-led content",
+      "Target: 50 pieces of content per month"
+    ],
+    usedIn: [
+      { module: "Strategy", itemName: "All Playbooks", itemId: "playbooks", lastUsed: new Date(Date.now() - 2 * 60 * 60 * 1000) },
+      { module: "Studio", itemName: "Content Workflows", itemId: "workflows", lastUsed: new Date(Date.now() - 30 * 60 * 1000) }
+    ],
+    relevanceScore: 96,
   },
   {
     id: "doc-5",
@@ -323,6 +333,16 @@ export const mockDocuments: BrainDocument[] = [
     active: true,
     summary: "Target keywords, search volumes, and ranking opportunities",
     fileType: "XLSX",
+    insights: [
+      "500+ target keywords identified",
+      "Focus on long-tail keywords with high intent",
+      "Opportunity: 'AI content marketing' cluster"
+    ],
+    usedIn: [
+      { module: "Studio", itemName: "Blog Posts", itemId: "blog-content", lastUsed: new Date(Date.now() - 1 * 60 * 60 * 1000) },
+      { module: "Research", itemName: "SEO Trends Stream", itemId: "stream-2", lastUsed: new Date(Date.now() - 8 * 60 * 60 * 1000) }
+    ],
+    relevanceScore: 89,
   },
   
   // Product Knowledge
