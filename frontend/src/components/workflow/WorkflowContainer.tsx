@@ -78,8 +78,8 @@ export function WorkflowContainer({ children }: WorkflowContainerProps) {
               <div className="pt-20 pb-12 flex flex-col items-center justify-center min-h-[400px]">
                 <div className="max-w-md text-center space-y-8">
                   <div className="relative inline-flex">
-                    <div className="absolute inset-0 animate-pulse rounded-full bg-primary/20 blur-xl" />
-                    <div className="relative bg-primary/10 p-8 rounded-full">
+                    <div className="absolute inset-0 animate-pulse rounded-full bg-gray-100 blur-xl" />
+                    <div className="relative bg-gray-50 p-8 rounded-full">
                       <svg
                         className="h-20 w-20 text-primary"
                         fill="none"
