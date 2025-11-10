@@ -51,7 +51,13 @@ const categoryColors = {
 };
 
 export default function Brain() {
-  const { brainDocuments, toggleDocumentActive } = useDemoStore();
+  const { brainDocuments, toggleDocumentActive, addDocument } = useDemoStore();
+  const [selectedDocument, setSelectedDocument] = useState<BrainDocument | null>(null);
+  const [showDetailModal, setShowDetailModal] = useState(false);
+  const [showUploadModal, setShowUploadModal] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeFilter, setActiveFilter] = useState<"all" | "active" | "inactive">("all");
+  const [categoryFilter, setCategoryFilter] = useState<BrainDocument["category"] | "all">("all");
   
   const activeCount = brainDocuments.filter(doc => doc.active).length;
   const lastUpdate = brainDocuments.length > 0 
@@ -65,6 +71,40 @@ export default function Brain() {
     'Market Intelligence',
     'Brand Assets',
   ] as const;
+
+  // Filter documents based on search and filters
+  const filteredDocuments = brainDocuments.filter((doc) => {
+    // Search filter
+    if (searchQuery && !doc.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+      return false;
+    }
+    
+    // Active/Inactive filter
+    if (activeFilter === "active" && !doc.active) return false;
+    if (activeFilter === "inactive" && doc.active) return false;
+    
+    // Category filter
+    if (categoryFilter !== "all" && doc.category !== categoryFilter) return false;
+    
+    return true;
+  });
+
+  const handleViewDocument = (doc: BrainDocument) => {
+    setSelectedDocument(doc);
+    setShowDetailModal(true);
+  };
+
+  const handleUploadComplete = (newDoc: BrainDocument) => {
+    addDocument(newDoc);
+  };
+
+  const hasActiveFilters = searchQuery || activeFilter !== "all" || categoryFilter !== "all";
+
+  const clearFilters = () => {
+    setSearchQuery("");
+    setActiveFilter("all");
+    setCategoryFilter("all");
+  };
 
   return (
     <div className="space-y-8 animate-fade-in pb-16">
