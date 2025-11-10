@@ -89,7 +89,7 @@
   }
 
   .dark {
-    /* Monochrome Palette - Dark Mode */
+    /* Layered Surfaces - Dark Mode */
     --background: 0 0% 6%;        /* Deep black #0f0f0f */
     --foreground: 0 0% 98%;       /* Off-white text */
     --muted: 0 0% 9%;             /* Elevated surfaces #171717 */
@@ -97,14 +97,14 @@
     
     --border: 0 0% 15%;           /* Subtle border #262626 */
     --border-light: 0 0% 12%;
-    --border-hover: 82 80% 45%;   /* Kiwi green on hover */
+    --border-hover: 231 48% 58%;  /* Lighter blue on hover */
     
     --card: 0 0% 9%;              /* Card surface */
     --card-hover: 0 0% 11%;
     --card-foreground: 0 0% 98%;
     
-    --primary: 82 80% 50%;        /* Brighter kiwi green for dark mode */
-    --primary-foreground: 0 0% 6%;
+    --primary: 231 48% 58%;       /* Lighter blue for dark mode */
+    --primary-foreground: 0 0% 100%;
     
     --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 98%;
