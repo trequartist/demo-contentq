@@ -255,9 +255,9 @@ export default function Strategy() {
         </p>
       </div>
 
-      {/* Tabs - Cleaner */}
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <TabsList className="grid w-full grid-cols-4 bg-muted/50">
+      {/* Tabs - Pill Style */}
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-12">
+        <TabsList className="inline-flex items-center gap-2 p-1 bg-gray-50 rounded-full border border-gray-200">
           <TabsTrigger value="foundation" className="gap-2">
             <Building className="h-4 w-4" />
             <span className="hidden sm:inline">Foundation</span>
