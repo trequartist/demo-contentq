@@ -1,6 +1,8 @@
 import { useWorkflowStore } from "@/stores/workflowStore";
+import { useDemoStore } from "@/stores/demoStore";
 import { WorkflowContainer } from "@/components/workflow/WorkflowContainer";
 import { ContentEditor } from "@/components/editor/ContentEditor";
+import { ContextIndicator } from "@/components/contentq/ContextIndicator";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
