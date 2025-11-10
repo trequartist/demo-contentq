@@ -232,103 +232,198 @@ export default function Brain() {
       
       {/* Document Categories */}
       <div className="space-y-6">
-        {categories.map((category) => {
-          const Icon = categoryIcons[category];
-          const docs = getDocumentsByCategory(category);
-          
-          if (docs.length === 0) return null;
-          
-          return (
-            <div key={category} className="space-y-3">
-              <div className="flex items-center gap-2">
-                <Icon className={cn("h-5 w-5", categoryColors[category])} />
-                <h2 className="text-lg font-semibold">{category}</h2>
-                <Badge variant="secondary" className="ml-2">
-                  {docs.length}
-                </Badge>
-              </div>
-              
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {docs.map((doc) => (
-                  <Card key={doc.id} className={cn(
-                    "transition-all duration-200 hover:shadow-md",
-                    doc.active && "border-primary/50 bg-primary/5"
-                  )}>
-                    <CardHeader className="pb-3">
-                      <div className="flex items-start justify-between gap-2">
-                        <div className="flex-1 min-w-0">
-                          <CardTitle className="text-sm font-medium truncate flex items-center gap-2">
-                            <FileText className="h-4 w-4 flex-shrink-0" />
-                            {doc.name}
-                          </CardTitle>
-                          <CardDescription className="text-xs mt-1">
-                            {doc.fileType} • {formatDistanceToNow(doc.uploadedAt, { addSuffix: true })}
-                          </CardDescription>
-                        </div>
-                        
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" size="icon" className="h-8 w-8">
-                              <MoreVertical className="h-4 w-4" />
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuItem>
-                              <Eye className="mr-2 h-4 w-4" />
-                              View Summary
-                            </DropdownMenuItem>
-                            <DropdownMenuItem onClick={() => toggleDocumentActive(doc.id)}>
-                              <Power className="mr-2 h-4 w-4" />
-                              {doc.active ? 'Deactivate' : 'Activate'}
-                            </DropdownMenuItem>
-                            <DropdownMenuItem>
-                              <Sparkles className="mr-2 h-4 w-4" />
-                              Use in Content
-                            </DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem className="text-destructive">
-                              Remove
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                      </div>
-                    </CardHeader>
-                    
-                    <CardContent>
-                      {doc.summary && (
-                        <p className="text-xs text-muted-foreground line-clamp-2 mb-3">
-                          {doc.summary}
-                        </p>
+        {categoryFilter === "all" ? (
+          // Show by category when no category filter is active
+          categories.map((category) => {
+            const Icon = categoryIcons[category];
+            const docs = filteredDocuments.filter(doc => doc.category === category);
+            
+            if (docs.length === 0) return null;
+            
+            return (
+              <div key={category} className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <Icon className={cn("h-5 w-5", categoryColors[category])} />
+                  <h2 className="text-lg font-semibold">{category}</h2>
+                  <Badge variant="secondary" className="ml-2">
+                    {docs.length}
+                  </Badge>
+                </div>
+                
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {docs.map((doc) => (
+                    <Card 
+                      key={doc.id} 
+                      className={cn(
+                        "transition-all duration-200 hover:shadow-md cursor-pointer",
+                        doc.active && "border-primary/50 bg-primary/5"
                       )}
+                      onClick={() => handleViewDocument(doc)}
+                    >
+                      <CardHeader className="pb-3">
+                        <div className="flex items-start justify-between gap-2">
+                          <div className="flex-1 min-w-0">
+                            <CardTitle className="text-sm font-medium truncate flex items-center gap-2">
+                              <FileText className="h-4 w-4 flex-shrink-0" />
+                              {doc.name}
+                            </CardTitle>
+                            <CardDescription className="text-xs mt-1">
+                              {doc.fileType} • {formatDistanceToNow(doc.uploadedAt, { addSuffix: true })}
+                            </CardDescription>
+                          </div>
+                          
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
+                              <Button variant="ghost" size="icon" className="h-8 w-8">
+                                <MoreVertical className="h-4 w-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuItem onClick={(e) => {
+                                e.stopPropagation();
+                                handleViewDocument(doc);
+                              }}>
+                                <Eye className="mr-2 h-4 w-4" />
+                                View Details
+                              </DropdownMenuItem>
+                              <DropdownMenuItem onClick={(e) => {
+                                e.stopPropagation();
+                                toggleDocumentActive(doc.id);
+                              }}>
+                                <Power className="mr-2 h-4 w-4" />
+                                {doc.active ? 'Deactivate' : 'Activate'}
+                              </DropdownMenuItem>
+                              <DropdownMenuItem onClick={(e) => e.stopPropagation()}>
+                                <Sparkles className="mr-2 h-4 w-4" />
+                                Use in Content
+                              </DropdownMenuItem>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem className="text-destructive" onClick={(e) => e.stopPropagation()}>
+                                Remove
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </div>
+                      </CardHeader>
                       
-                      <div className="flex items-center justify-between">
-                        <Badge 
-                          variant={doc.active ? "default" : "outline"} 
-                          className="text-xs"
-                        >
-                          {doc.active ? (
-                            <>
-                              <Power className="mr-1 h-3 w-3" />
-                              Active
-                            </>
-                          ) : (
-                            'Inactive'
-                          )}
-                        </Badge>
-                        
-                        {doc.processed && (
-                          <Badge variant="secondary" className="text-xs">
-                            Processed
-                          </Badge>
+                      <CardContent>
+                        {doc.summary && (
+                          <p className="text-xs text-muted-foreground line-clamp-2 mb-3">
+                            {doc.summary}
+                          </p>
                         )}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                        
+                        <div className="flex items-center justify-between">
+                          <Badge 
+                            variant={doc.active ? "default" : "outline"} 
+                            className="text-xs"
+                          >
+                            {doc.active ? (
+                              <>
+                                <Power className="mr-1 h-3 w-3" />
+                                Active
+                              </>
+                            ) : (
+                              'Inactive'
+                            )}
+                          </Badge>
+                          
+                          {doc.usedIn && doc.usedIn.length > 0 && (
+                            <Badge variant="secondary" className="text-xs">
+                              Used in {doc.usedIn.length}
+                            </Badge>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        ) : (
+          // Show all filtered documents in a single grid when category filter is active
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredDocuments.map((doc) => (
+              <Card 
+                key={doc.id} 
+                className={cn(
+                  "transition-all duration-200 hover:shadow-md cursor-pointer",
+                  doc.active && "border-primary/50 bg-primary/5"
+                )}
+                onClick={() => handleViewDocument(doc)}
+              >
+                <CardHeader className="pb-3">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <CardTitle className="text-sm font-medium truncate flex items-center gap-2">
+                        <FileText className="h-4 w-4 flex-shrink-0" />
+                        {doc.name}
+                      </CardTitle>
+                      <CardDescription className="text-xs mt-1">
+                        {doc.category}
+                      </CardDescription>
+                    </div>
+                    
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
+                        <Button variant="ghost" size="icon" className="h-8 w-8">
+                          <MoreVertical className="h-4 w-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem onClick={(e) => {
+                          e.stopPropagation();
+                          handleViewDocument(doc);
+                        }}>
+                          <Eye className="mr-2 h-4 w-4" />
+                          View Details
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onClick={(e) => {
+                          e.stopPropagation();
+                          toggleDocumentActive(doc.id);
+                        }}>
+                          <Power className="mr-2 h-4 w-4" />
+                          {doc.active ? 'Deactivate' : 'Activate'}
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
+                </CardHeader>
+                
+                <CardContent>
+                  {doc.summary && (
+                    <p className="text-xs text-muted-foreground line-clamp-2 mb-3">
+                      {doc.summary}
+                    </p>
+                  )}
+                  
+                  <div className="flex items-center justify-between">
+                    <Badge 
+                      variant={doc.active ? "default" : "outline"} 
+                      className="text-xs"
+                    >
+                      {doc.active ? (
+                        <>
+                          <Power className="mr-1 h-3 w-3" />
+                          Active
+                        </>
+                      ) : (
+                        'Inactive'
+                      )}
+                    </Badge>
+                    
+                    {doc.usedIn && doc.usedIn.length > 0 && (
+                      <Badge variant="secondary" className="text-xs">
+                        Used in {doc.usedIn.length}
+                      </Badge>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
       </div>
       
       {/* Empty State */}
