@@ -601,6 +601,6 @@ export function ContentEditor() {
           </div>
         </div>
       )}
-    </div>
+    </div> {/* Close outer flex container */}
   );
 }
