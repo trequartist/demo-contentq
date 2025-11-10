@@ -64,7 +64,7 @@ function AppContent() {
           element={
             <AppShell>
               <Suspense fallback={<LoadingScreen />}>
-                <Research />
+                <ResearchDesk />
               </Suspense>
             </AppShell>
           }
