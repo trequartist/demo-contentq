@@ -68,7 +68,7 @@ export function ContentQStatus() {
           "transition-all duration-300 animate-slide-in"
         )}
       >
-        <div className="container mx-auto flex items-center justify-between px-4 py-2">
+        <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-3">
             <div className={cn(
               "flex items-center gap-2",
