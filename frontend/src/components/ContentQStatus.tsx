@@ -33,10 +33,18 @@ const agentIcons = {
   Analyst: Brain,
 };
 
+const agentDots = {
+  Research: "bg-blue-500",
+  Strategist: "bg-purple-500",
+  Copywriter: "bg-primary",
+  Editor: "bg-orange-500",
+  Analyst: "bg-pink-500",
+};
+
 const agentColors = {
   Research: "text-blue-500",
   Strategist: "text-purple-500",
-  Copywriter: "text-green-500",
+  Copywriter: "text-primary",
   Editor: "text-orange-500",
   Analyst: "text-pink-500",
 };
