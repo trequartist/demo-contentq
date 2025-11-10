@@ -581,11 +581,21 @@ export function ContentEditor() {
               setIsSaved(true);
               showToast({ title: "Draft saved" });
             }}
+            className="click-feedback"
           >
             <Save className="mr-2 h-4 w-4" />
             Save Draft
           </Button>
-          <Button variant="outline" size="sm">
+          <Button 
+            variant="outline" 
+            size="sm"
+            onClick={handleSendToBrain}
+            className="click-feedback hover-glow"
+          >
+            <Brain className="mr-2 h-4 w-4" />
+            Send to Brain
+          </Button>
+          <Button variant="outline" size="sm" className="click-feedback">
             <Eye className="mr-2 h-4 w-4" />
             Preview
           </Button>
