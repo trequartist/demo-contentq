@@ -38,8 +38,12 @@ import {
 } from "@/components/ui/dialog";
 
 export function ContentEditor() {
-  const { editorTitle, editorContent, updateEditorTitle, updateEditorContent } = useWorkflowStore();
+  const { editorTitle, editorContent, updateEditorTitle, updateEditorContent, workflowType, stages, currentStageIndex } = useWorkflowStore();
   const { toast: showToast } = useToast();
+  
+  // Check if current stage should show scoring
+  const currentStage = stages[currentStageIndex];
+  const showScoring = currentStage?.showScoring || false;
   const [isSaved, setIsSaved] = useState(true);
   const [content, setContent] = useState(editorContent || "");
   const [wordCount, setWordCount] = useState(0);
