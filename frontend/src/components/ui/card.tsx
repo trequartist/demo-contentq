@@ -10,8 +10,8 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(({ className, isLoading
   <div 
     ref={ref} 
     className={cn(
-      "rounded-lg border border-border-light bg-card text-card-foreground transition-all duration-200",
-      "hover:border-border-hover hover:shadow-md",
+      "rounded-lg border border-border-light gradient-card text-card-foreground transition-all duration-200",
+      "shadow-sm hover:border-border-hover hover:shadow-md",
       isLoading && "animate-shimmer bg-gradient-to-r from-card via-muted/20 to-card bg-[length:200%_100%]",
       className
     )} 
