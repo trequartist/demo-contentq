@@ -434,12 +434,40 @@ export default function Brain() {
           <p className="text-sm text-muted-foreground mb-6">
             Upload documents to build your Marketing Brain and empower ContentQ agents
           </p>
-          <Button className="gap-2">
+          <Button className="gap-2" onClick={() => setShowUploadModal(true)}>
             <Upload className="h-4 w-4" />
             Upload Your First Document
           </Button>
         </div>
       )}
+
+      {/* No Results State */}
+      {brainDocuments.length > 0 && filteredDocuments.length === 0 && (
+        <div className="text-center py-12">
+          <Search className="h-16 w-16 text-muted-foreground/50 mx-auto mb-4" />
+          <h3 className="text-lg font-semibold mb-2">No documents found</h3>
+          <p className="text-sm text-muted-foreground mb-6">
+            Try adjusting your search or filters
+          </p>
+          <Button variant="outline" onClick={clearFilters}>
+            Clear Filters
+          </Button>
+        </div>
+      )}
+
+      {/* Modals */}
+      <DocumentDetailModal
+        document={selectedDocument}
+        open={showDetailModal}
+        onOpenChange={setShowDetailModal}
+        onToggleActive={toggleDocumentActive}
+      />
+
+      <DocumentUploadModal
+        open={showUploadModal}
+        onOpenChange={setShowUploadModal}
+        onUploadComplete={handleUploadComplete}
+      />
     </div>
   );
 }
