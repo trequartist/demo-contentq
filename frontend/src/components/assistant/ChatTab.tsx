@@ -345,7 +345,13 @@ export function ChatTab({
         <div className="flex gap-2">
           <Textarea
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => {
+              setInput(e.target.value);
+              // Update workflow input in real-time when in input stage
+              if (isInputStage && onUpdateInput) {
+                onUpdateInput(e.target.value);
+              }
+            }}
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
