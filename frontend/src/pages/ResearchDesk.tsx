@@ -16,10 +16,19 @@ type View = 'main' | 'stream' | 'report';
 type StreamType = 'competitors' | 'trends' | 'conversations' | null;
 
 export default function ResearchDesk() {
+  const { brainDocuments } = useDemoStore();
   const [currentView, setCurrentView] = useState<View>('main');
   const [activeStream, setActiveStream] = useState<StreamType>(null);
   const [selectedReport, setSelectedReport] = useState<typeof mockSavedReports[0] | null>(null);
   const [isBuilderOpen, setIsBuilderOpen] = useState(false);
+  
+  // Get research-related documents
+  const researchDocs = brainDocuments.filter(
+    doc => doc.active && (
+      doc.category === 'Market Intelligence' || 
+      doc.category === 'Product Knowledge'
+    )
+  );
 
   const handleExploreStream = (stream: StreamType) => {
     setActiveStream(stream);
