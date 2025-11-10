@@ -8,18 +8,16 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { FileText, TrendingUp, Lightbulb, FolderOpen, Menu, Command, BookOpen, Search } from "lucide-react";
+import { FileText, TrendingUp, Brain, Menu, Command, Search } from "lucide-react";
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { to: "/create", icon: FileText, label: "Create", shortcut: "Ctrl+1" },
-    { to: "/strategy", icon: TrendingUp, label: "Strategy", shortcut: "Ctrl+2" },
-    { to: "/intelligence", icon: Lightbulb, label: "Intelligence", shortcut: "Ctrl+3" },
-    { to: "/hub", icon: FolderOpen, label: "Hub", shortcut: "Ctrl+4" },
-    { to: "/playbooks", icon: BookOpen, label: "Playbooks", shortcut: "Ctrl+5" },
-    { to: "/research", icon: Search, label: "Research", shortcut: "Ctrl+6" },
+    { to: "/studio", icon: FileText, label: "Content Studio", shortcut: "Ctrl+1" },
+    { to: "/strategy", icon: TrendingUp, label: "Strategy Room", shortcut: "Ctrl+2" },
+    { to: "/research", icon: Search, label: "Research Desk", shortcut: "Ctrl+3" },
+    { to: "/brain", icon: Brain, label: "Marketing Brain", shortcut: "Ctrl+4" },
   ];
 
   return (
