@@ -250,6 +250,17 @@ export const mockDocuments: BrainDocument[] = [
     active: true,
     summary: "Core company information, mission, vision, and values",
     fileType: "PDF",
+    insights: [
+      "Primary market: B2B SaaS companies",
+      "Focus on mid-market segment (50-500 employees)",
+      "Mission: Democratize AI-powered content marketing"
+    ],
+    usedIn: [
+      { module: "Strategy", itemName: "Foundation Strategy", itemId: "foundation-1", lastUsed: new Date(Date.now() - 2 * 60 * 60 * 1000) },
+      { module: "Studio", itemName: "Blog: Company Announcement", itemId: "content-1", lastUsed: new Date(Date.now() - 5 * 60 * 60 * 1000) },
+      { module: "Research", itemName: "Competitive Analysis Report", itemId: "report-1", lastUsed: new Date(Date.now() - 24 * 60 * 60 * 1000) }
+    ],
+    relevanceScore: 98,
   },
   {
     id: "doc-2",
