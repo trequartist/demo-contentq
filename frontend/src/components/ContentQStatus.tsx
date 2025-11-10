@@ -86,18 +86,21 @@ export function ContentQStatus() {
             {hasActiveWork && (
               <>
                 <Separator orientation="vertical" className="h-6" />
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   {activeAgents.map((agent) => {
-                    const Icon = agentIcons[agent.agent];
+                    const dotColor = agentDots[agent.agent];
                     return (
-                      <Badge
+                      <div 
                         key={agent.agent}
-                        variant="secondary"
                         className="flex items-center gap-1.5"
+                        title={`${agent.agent}: ${agent.task}`}
                       >
-                        <Icon className={cn("h-3 w-3", agentColors[agent.agent])} />
-                        <span className="text-xs">{agent.agent}</span>
-                      </Badge>
+                        <div className={cn(
+                          "h-2 w-2 rounded-full animate-pulse-subtle",
+                          dotColor
+                        )} />
+                        <span className="text-xs text-muted-foreground">{agent.agent}</span>
+                      </div>
                     );
                   })}
                 </div>
