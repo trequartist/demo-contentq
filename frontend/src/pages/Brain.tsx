@@ -250,12 +250,12 @@ export default function Brain() {
                   </Badge>
                 </div>
                 
-                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 animate-stagger">
                   {docs.map((doc) => (
                     <Card 
                       key={doc.id} 
                       className={cn(
-                        "transition-all duration-200 hover:shadow-md cursor-pointer",
+                        "hover:shadow-md cursor-pointer hover-lift click-feedback",
                         doc.active && "border-primary/50 bg-primary/5"
                       )}
                       onClick={() => handleViewDocument(doc)}
