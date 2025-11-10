@@ -6,20 +6,20 @@
 
 @layer base {
   :root {
-    /* Kiwi Green Accent - Primary */
-    --primary: 82 80% 45%;        /* Kiwi green #84CC16 */
+    /* Deep Blue/Indigo - Primary (Premium) */
+    --primary: 231 48% 48%;       /* Deep blue #4F46E5 */
     --primary-foreground: 0 0% 100%;
     
-    /* Monochrome Palette - Light Mode */
-    --background: 0 0% 100%;      /* Pure white */
+    /* Layered Surfaces - Light Mode */
+    --background: 220 20% 99%;    /* Warm white base */
     --foreground: 0 0% 9%;        /* Near black text */
-    --muted: 0 0% 97%;            /* Very light gray */
+    --muted: 220 20% 96%;         /* Surface layer 2 */
     --muted-foreground: 0 0% 45%; /* Mid gray */
     
     /* Borders & Dividers */
-    --border: 0 0% 92%;           /* Light border */
-    --border-light: 0 0% 94%;
-    --border-hover: 82 80% 45%;   /* Kiwi green on hover */
+    --border: 220 13% 91%;        /* Subtle border */
+    --border-light: 220 13% 94%;
+    --border-hover: 231 48% 48%;  /* Blue on hover */
     
     /* Card Backgrounds */
     --card: 0 0% 100%;
