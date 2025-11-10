@@ -180,20 +180,23 @@ export function DocumentDetailModal({
 
           {/* Actions */}
           <div className="flex gap-3">
+            <Button
+              onClick={handleUseInContent}
+              className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground click-feedback hover-glow"
+            >
+              <Sparkles className="mr-2 h-4 w-4" />
+              Use in Content
+            </Button>
             {onToggleActive && (
               <Button
                 onClick={() => onToggleActive(document.id)}
-                variant={document.active ? "outline" : "default"}
-                className="flex-1"
+                variant="outline"
+                className="flex-1 click-feedback"
               >
                 <Power className="mr-2 h-4 w-4" />
                 {document.active ? "Deactivate" : "Activate"}
               </Button>
             )}
-            <Button variant="outline" className="flex-1">
-              <ExternalLink className="mr-2 h-4 w-4" />
-              Use in Content
-            </Button>
           </div>
         </div>
       </DialogContent>
