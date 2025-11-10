@@ -81,6 +81,7 @@ export const useDemoStore = create<DemoState>((set, get) => ({
   brainDocuments: mockDocuments,
   activeBrainDocuments: mockDocuments.filter(doc => doc.active).map(doc => doc.id),
   workflowsInProgress: [],
+  crossModuleContext: null,
   showAgentDetails: false,
   simulationSpeed: 1,
   
