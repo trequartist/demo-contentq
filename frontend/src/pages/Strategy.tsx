@@ -54,14 +54,19 @@ export default function Strategy() {
     doc.category === 'Strategic Foundation' && (doc.name === 'Foundation Strategy' || doc.name.includes('Profile'))
   );
   
-  // Simple mock calendar content
+  // Rich mock calendar content - spread across the current month
+  const today = new Date();
+  const currentMonth = today.getMonth();
+  const currentYear = today.getFullYear();
+  
   const contentItems: ContentItem[] = [
+    // This week
     {
       id: "1",
       title: "AI in Healthcare Blog Post",
       type: "Blog",
       status: "scheduled",
-      date: new Date(2025, 10, 15), // Nov 15, 2025
+      date: new Date(currentYear, currentMonth, today.getDate()),
       campaign: "Healthcare Series",
     },
     {
@@ -69,22 +74,131 @@ export default function Strategy() {
       title: "Product Launch LinkedIn Post",
       type: "LinkedIn",
       status: "scheduled",
-      date: new Date(2025, 10, 15),
+      date: new Date(currentYear, currentMonth, today.getDate()),
       campaign: "Q4 Launch",
     },
     {
       id: "3",
-      title: "Customer Success Story",
-      type: "Blog",
+      title: "Weekly Newsletter",
+      type: "Email",
       status: "scheduled",
-      date: new Date(2025, 10, 18),
+      date: new Date(currentYear, currentMonth, today.getDate() + 1),
     },
     {
       id: "4",
-      title: "Industry Trends Analysis",
+      title: "Customer Success Story",
       type: "Blog",
       status: "scheduled",
-      date: new Date(2025, 10, 20),
+      date: new Date(currentYear, currentMonth, today.getDate() + 2),
+      campaign: "Customer Stories",
+    },
+    {
+      id: "5",
+      title: "Industry Trends LinkedIn",
+      type: "LinkedIn",
+      status: "scheduled",
+      date: new Date(currentYear, currentMonth, today.getDate() + 3),
+    },
+    {
+      id: "6",
+      title: "How-to Guide: Getting Started",
+      type: "Blog",
+      status: "scheduled",
+      date: new Date(currentYear, currentMonth, today.getDate() + 4),
+      campaign: "Educational Series",
+    },
+    // Next week
+    {
+      id: "7",
+      title: "Product Update Announcement",
+      type: "Blog",
+      status: "scheduled",
+      date: new Date(currentYear, currentMonth, today.getDate() + 7),
+      campaign: "Product Updates",
+    },
+    {
+      id: "8",
+      title: "Thought Leadership Piece",
+      type: "LinkedIn",
+      status: "scheduled",
+      date: new Date(currentYear, currentMonth, today.getDate() + 7),
+    },
+    {
+      id: "9",
+      title: "Case Study: Enterprise Client",
+      type: "Blog",
+      status: "scheduled",
+      date: new Date(currentYear, currentMonth, today.getDate() + 9),
+      campaign: "Customer Stories",
+    },
+    {
+      id: "10",
+      title: "Webinar Promotion",
+      type: "LinkedIn",
+      status: "scheduled",
+      date: new Date(currentYear, currentMonth, today.getDate() + 10),
+      campaign: "Events",
+    },
+    {
+      id: "11",
+      title: "Competitive Analysis Post",
+      type: "Blog",
+      status: "scheduled",
+      date: new Date(currentYear, currentMonth, today.getDate() + 11),
+    },
+    // Week after
+    {
+      id: "12",
+      title: "Feature Deep Dive",
+      type: "Blog",
+      status: "scheduled",
+      date: new Date(currentYear, currentMonth, today.getDate() + 14),
+      campaign: "Product Education",
+    },
+    {
+      id: "13",
+      title: "Industry Report Summary",
+      type: "LinkedIn",
+      status: "scheduled",
+      date: new Date(currentYear, currentMonth, today.getDate() + 14),
+    },
+    {
+      id: "14",
+      title: "Customer Interview Blog",
+      type: "Blog",
+      status: "scheduled",
+      date: new Date(currentYear, currentMonth, today.getDate() + 16),
+      campaign: "Customer Stories",
+    },
+    {
+      id: "15",
+      title: "Best Practices Guide",
+      type: "Blog",
+      status: "scheduled",
+      date: new Date(currentYear, currentMonth, today.getDate() + 18),
+    },
+    // Later in month
+    {
+      id: "16",
+      title: "Monthly Roundup",
+      type: "Blog",
+      status: "scheduled",
+      date: new Date(currentYear, currentMonth, today.getDate() + 21),
+      campaign: "Monthly Series",
+    },
+    {
+      id: "17",
+      title: "Team Spotlight",
+      type: "LinkedIn",
+      status: "scheduled",
+      date: new Date(currentYear, currentMonth, today.getDate() + 23),
+    },
+    {
+      id: "18",
+      title: "Year-End Planning Guide",
+      type: "Blog",
+      status: "scheduled",
+      date: new Date(currentYear, currentMonth, today.getDate() + 25),
     },
   ];
 
