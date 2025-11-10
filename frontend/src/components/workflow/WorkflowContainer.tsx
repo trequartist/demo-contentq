@@ -66,8 +66,8 @@ export function WorkflowContainer({ children }: WorkflowContainerProps) {
             {/* Stage Header - Hide for input stages */}
             {currentStage.type !== "input" && (
               <div className="space-y-3">
-                <h2 className="text-display font-bold">{currentStage.title}</h2>
-                <p className="text-body text-muted-foreground">
+                <h2 className="text-2xl font-bold text-gray-900">{currentStage.title}</h2>
+                <p className="text-sm text-gray-600">
                   {currentStage.description}
                 </p>
               </div>
