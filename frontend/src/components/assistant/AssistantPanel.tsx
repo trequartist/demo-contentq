@@ -41,11 +41,16 @@ export function AssistantPanel({
   onInsertContent,
   onUpdateInput 
 }: AssistantPanelProps) {
+  const navigate = useNavigate();
   const [isResearchOpen, setIsResearchOpen] = useState(false);
   const [isContextOpen, setIsContextOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [contextDocs, setContextDocs] = useState<ContextDocument[]>([]);
 
+  // Get active brain documents from demo store
+  const { brainDocuments, activeBrainDocuments } = useDemoStore();
+  const activeDocs = brainDocuments.filter(doc => activeBrainDocuments.includes(doc.id));
+  
   const activeContextCount = contextDocs.filter((d) => d.active).length;
 
   const handleAddResearch = (result: { answer: string; sources: any[] }) => {
