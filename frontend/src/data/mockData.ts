@@ -413,6 +413,16 @@ export const mockDocuments: BrainDocument[] = [
     active: true,
     summary: "Competitor positioning, features, and market share",
     fileType: "PDF",
+    insights: [
+      "3 main competitors identified",
+      "Our differentiation: Strategic AI vs. writing assistance",
+      "Market gap: End-to-end content intelligence"
+    ],
+    usedIn: [
+      { module: "Strategy", itemName: "Foundation Strategy", itemId: "foundation-1", lastUsed: new Date(Date.now() - 6 * 60 * 60 * 1000) },
+      { module: "Research", itemName: "Competitor Monitoring Stream", itemId: "stream-comp", lastUsed: new Date(Date.now() - 2 * 60 * 60 * 1000) }
+    ],
+    relevanceScore: 93,
   },
   {
     id: "doc-10",
@@ -423,6 +433,16 @@ export const mockDocuments: BrainDocument[] = [
     active: true,
     summary: "Key trends shaping the industry this year",
     fileType: "PDF",
+    insights: [
+      "AI adoption in marketing: 78% of companies",
+      "Content quality over quantity emerging as priority",
+      "Personalization at scale becoming table stakes"
+    ],
+    usedIn: [
+      { module: "Strategy", itemName: "Thought Leadership Playbook", itemId: "playbook-1", lastUsed: new Date(Date.now() - 4 * 60 * 60 * 1000) },
+      { module: "Studio", itemName: "Trend Analysis Posts", itemId: "trend-content", lastUsed: new Date(Date.now() - 10 * 60 * 60 * 1000) }
+    ],
+    relevanceScore: 90,
   },
   
   // Brand Assets
