@@ -6,20 +6,20 @@
 
 @layer base {
   :root {
-    /* Primary Palette - Teal accent for CTAs */
-    --primary: 186 100% 25%;
+    /* Kiwi Green Accent - Primary */
+    --primary: 82 80% 45%;        /* Kiwi green #84CC16 */
     --primary-foreground: 0 0% 100%;
     
-    /* Neutral Palette - 95% of UI */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 9%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    /* Monochrome Palette - Light Mode */
+    --background: 0 0% 100%;      /* Pure white */
+    --foreground: 0 0% 9%;        /* Near black text */
+    --muted: 0 0% 97%;            /* Very light gray */
+    --muted-foreground: 0 0% 45%; /* Mid gray */
     
     /* Borders & Dividers */
-    --border: 0 0% 90%;
-    --border-light: 0 0% 90%;
-    --border-hover: 0 0% 85%;
+    --border: 0 0% 92%;           /* Light border */
+    --border-light: 0 0% 94%;
+    --border-hover: 82 80% 45%;   /* Kiwi green on hover */
     
     /* Card Backgrounds */
     --card: 0 0% 100%;
@@ -27,10 +27,10 @@
     --card-foreground: 0 0% 9%;
     
     /* Status Colors */
-    --success: 142 76% 36%;
+    --success: 82 80% 45%;        /* Kiwi green for success */
     --warning: 38 92% 50%;
     --error: 0 84% 60%;
-    --info: 199 89% 48%;
+    --info: 0 0% 45%;
     
     /* Secondary & Accent */
     --secondary: 0 0% 96%;
