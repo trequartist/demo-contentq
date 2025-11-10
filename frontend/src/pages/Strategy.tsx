@@ -331,19 +331,14 @@ export default function Strategy() {
                   mode="single"
                   selected={selectedDate}
                   onSelect={setSelectedDate}
-                  className="rounded-md border"
+                  className="rounded-md border w-full"
                   modifiers={{
                     scheduled: contentItems
                       .filter(item => item.date)
                       .map(item => item.date!),
                   }}
-                  modifiersStyles={{
-                    scheduled: {
-                      fontWeight: 'bold',
-                      textDecoration: 'underline',
-                      textDecorationColor: 'hsl(var(--primary))',
-                      textDecorationThickness: '2px',
-                    }
+                  modifiersClassNames={{
+                    scheduled: 'bg-primary/10 font-semibold text-primary relative after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-primary after:rounded-full'
                   }}
                 />
               </CardContent>
