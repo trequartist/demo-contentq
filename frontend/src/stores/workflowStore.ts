@@ -407,14 +407,61 @@ export const useWorkflowStore = create<WorkflowState>((set, get) => ({
     const { currentStageIndex, stages } = get();
     const currentStage = stages[currentStageIndex];
 
-    // Simulate processing for processing stages
+    // Simulate processing for processing stages with agent work
     if (currentStage.type === "processing") {
+      // Start agent work in demo store if agent is specified
+      if (currentStage.agent && typeof window !== 'undefined') {
+        // Import and use demo store dynamically
+        import('@/stores/demoStore').then(({ useDemoStore }) => {
+          const demoStore = useDemoStore.getState();
+          demoStore.startAgentWork(
+            currentStage.agent!,
+            currentStage.title,
+            currentStage.agentReasoning
+          );
+        });
+      }
+      
       const interval = setInterval(() => {
         const stage = get().stages[currentStageIndex];
         const progress = stage.progress || 0;
         
         if (progress >= 100) {
           clearInterval(interval);
+          
+          // Complete agent work in demo store
+          if (currentStage.agent && typeof window !== 'undefined') {
+            import('@/stores/demoStore').then(({ useDemoStore }) => {
+              const demoStore = useDemoStore.getState();
+              demoStore.completeAgentWork(currentStage.agent!);
+            });
+          }
+          
+          // Store mock output if available
+          if (currentStage.mockOutput) {
+            // Store the output based on stage type
+            if (currentStage.id === 'brief-generation' || currentStage.id === 'brief') {
+              get().updateStageData({ mockOutput: currentStage.mockOutput });
+              // Set brief data
+              if (currentStage.mockOutput.title) {
+                set({ 
+                  brief: {
+                    title: currentStage.mockOutput.title,
+                    wordCount: currentStage.mockOutput.targetWordCount,
+                    readingTime: currentStage.mockOutput.estimatedReadTime,
+                    keywords: currentStage.mockOutput.keywords,
+                  }
+                });
+              }
+            } else if (currentStage.id === 'content-generation' || currentStage.id === 'post-generation') {
+              // Set editor content
+              set({ 
+                editorContent: currentStage.mockOutput,
+                editorTitle: get().brief?.title || "Untitled",
+              });
+            }
+          }
+          
           get().nextStage();
         } else {
           get().updateStageData({ progress: progress + 10 });
