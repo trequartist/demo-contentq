@@ -89,22 +89,22 @@
   }
 
   .dark {
-    /* Layered Surfaces - Dark Mode */
-    --background: 0 0% 6%;        /* Deep black #0f0f0f */
+    /* Dark Mode - Black Primary */
+    --background: 0 0% 6%;        /* Deep black */
     --foreground: 0 0% 98%;       /* Off-white text */
-    --muted: 0 0% 9%;             /* Elevated surfaces #171717 */
+    --muted: 0 0% 9%;             /* Elevated surfaces */
     --muted-foreground: 0 0% 60%; /* Mid gray */
     
-    --border: 0 0% 15%;           /* Subtle border #262626 */
+    --border: 0 0% 15%;           /* Subtle border */
     --border-light: 0 0% 12%;
-    --border-hover: 231 48% 58%;  /* Lighter blue on hover */
+    --border-hover: 0 0% 100%;    /* White on hover */
     
     --card: 0 0% 9%;              /* Card surface */
     --card-hover: 0 0% 11%;
     --card-foreground: 0 0% 98%;
     
-    --primary: 231 48% 58%;       /* Lighter blue for dark mode */
-    --primary-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;         /* White for dark mode */
+    --primary-foreground: 0 0% 0%;
     
     --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 98%;
