@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { useDemoStore } from "@/stores/demoStore";
-import { getDocumentsByCategory } from "@/data/mockData";
+import { getDocumentsByCategory, BrainDocument } from "@/data/mockData";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { DocumentDetailModal } from "@/components/brain/DocumentDetailModal";
+import { DocumentUploadModal } from "@/components/brain/DocumentUploadModal";
 import {
   Brain as BrainIcon,
   Target,
@@ -18,6 +21,8 @@ import {
   Eye,
   Power,
   Sparkles,
+  Filter,
+  X,
 } from "lucide-react";
 import {
   DropdownMenu,
