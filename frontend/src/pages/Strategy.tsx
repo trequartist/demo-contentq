@@ -89,7 +89,6 @@ export default function Strategy() {
       doc.category === 'Market Intelligence'
     )
   );
-  const { brainDocuments } = useDemoStore();
   
   // Check if foundation strategy exists
   const hasFoundation = brainDocuments.some(doc => 
