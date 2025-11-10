@@ -341,11 +341,11 @@ export default function Strategy() {
             </div>
           </div>
         </div>
-      )}
+        </TabsContent>
 
-      {/* Campaigns View */}
-      {activeView === "campaigns" && (
-        <div className="space-y-4 animate-fade-in">
+        {/* Campaigns Tab */}
+        <TabsContent value="campaigns" className="space-y-6 mt-6">
+        <div className="space-y-4">
           <div className="flex items-center justify-between mb-4">
             <div>
               <h2 className="text-2xl font-bold">Campaigns</h2>
