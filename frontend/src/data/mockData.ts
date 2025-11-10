@@ -271,6 +271,16 @@ export const mockDocuments: BrainDocument[] = [
     active: true,
     summary: "Brand voice, tone, visual identity, and messaging guidelines",
     fileType: "PDF",
+    insights: [
+      "Brand voice: Intelligent, strategic, empowering",
+      "Primary colors: Purple (#8B5CF6), Blue (#3B82F6)",
+      "Tone: Professional yet approachable"
+    ],
+    usedIn: [
+      { module: "Studio", itemName: "All Content", itemId: "all-content", lastUsed: new Date(Date.now() - 1 * 60 * 60 * 1000) },
+      { module: "Strategy", itemName: "Foundation Strategy", itemId: "foundation-1", lastUsed: new Date(Date.now() - 3 * 60 * 60 * 1000) }
+    ],
+    relevanceScore: 95,
   },
   {
     id: "doc-3",
