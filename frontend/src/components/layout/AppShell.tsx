@@ -2,6 +2,7 @@ import { ReactNode, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Navigation } from "./Navigation";
 import { AssistantPanel } from "../assistant/AssistantPanel";
+import { ContentQStatus } from "../ContentQStatus";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { MessageSquare } from "lucide-react";
