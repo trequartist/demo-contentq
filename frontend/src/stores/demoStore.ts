@@ -9,6 +9,14 @@ interface WorkflowProgress {
   progress: number;
 }
 
+export interface CrossModuleContext {
+  source: 'research' | 'calendar' | 'brain' | 'strategy';
+  sourceId: string;
+  title: string;
+  description?: string;
+  data?: any;
+}
+
 interface DemoState {
   // Agent Activity
   activeAgents: AgentActivity[];
@@ -20,6 +28,9 @@ interface DemoState {
   
   // Workflows
   workflowsInProgress: WorkflowProgress[];
+  
+  // Cross-Module Context
+  crossModuleContext: CrossModuleContext | null;
   
   // Demo Settings
   showAgentDetails: boolean;
