@@ -317,6 +317,36 @@ export default function Strategy() {
 
         {/* Calendar Tab - Simplified */}
         <TabsContent value="calendar" className="space-y-6 mt-6">
+          {/* Stats Summary */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <Card>
+              <CardHeader className="pb-3">
+                <CardDescription>Total Scheduled</CardDescription>
+                <CardTitle className="text-3xl">{contentItems.length}</CardTitle>
+              </CardHeader>
+            </Card>
+            <Card>
+              <CardHeader className="pb-3">
+                <CardDescription>This Week</CardDescription>
+                <CardTitle className="text-3xl">
+                  {contentItems.filter(item => {
+                    if (!item.date) return false;
+                    const diff = item.date.getTime() - today.getTime();
+                    return diff >= 0 && diff <= 7 * 24 * 60 * 60 * 1000;
+                  }).length}
+                </CardTitle>
+              </CardHeader>
+            </Card>
+            <Card>
+              <CardHeader className="pb-3">
+                <CardDescription>Active Campaigns</CardDescription>
+                <CardTitle className="text-3xl">
+                  {[...new Set(contentItems.filter(item => item.campaign).map(item => item.campaign))].length}
+                </CardTitle>
+              </CardHeader>
+            </Card>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
             {/* Calendar - Clean Design */}
             <Card className="lg:col-span-3 p-6">
