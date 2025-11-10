@@ -581,16 +581,26 @@ export function ContentEditor() {
         </div>
 
         <div className="flex gap-2">
-          <Button variant="outline" size="sm">
-            <Sparkles className="mr-2 h-4 w-4" />
-            SEO Check
-          </Button>
           <Button variant="default" size="sm">
             <Share2 className="mr-2 h-4 w-4" />
             Publish
           </Button>
         </div>
       </div>
+      </div>
+      
+      {/* Scoring Sidebar */}
+      {showScoring && workflowType && (
+        <div className="w-[380px] shrink-0">
+          <div className="sticky top-4">
+            <ContentScoring 
+              type={workflowType as 'blog' | 'linkedin'}
+              content={content}
+              title={editorTitle}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
