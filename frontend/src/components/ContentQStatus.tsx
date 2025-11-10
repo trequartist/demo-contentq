@@ -92,14 +92,14 @@ export function ContentQStatus() {
                     return (
                       <div 
                         key={agent.agent}
-                        className="flex items-center gap-1.5"
+                        className="flex items-center gap-2"
                         title={`${agent.agent}: ${agent.task}`}
                       >
                         <div className={cn(
-                          "h-2 w-2 rounded-full animate-pulse-subtle",
+                          "h-2.5 w-2.5 rounded-full animate-pulse-subtle ring-2 ring-background",
                           dotColor
                         )} />
-                        <span className="text-xs text-muted-foreground">{agent.agent}</span>
+                        <span className="text-xs font-medium">{agent.agent}</span>
                       </div>
                     );
                   })}
