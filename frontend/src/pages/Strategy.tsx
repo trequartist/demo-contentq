@@ -1,42 +1,19 @@
 import { useState } from "react";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
-import {
   Calendar as CalendarIcon,
   Plus,
-  Target,
-  TrendingUp,
-  Users,
-  BarChart3,
+  Building,
+  BookOpen,
+  Megaphone,
   Clock,
   CheckCircle2,
   Circle,
   AlertCircle,
-  Megaphone,
-  BookOpen,
-  Building,
 } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
@@ -45,6 +22,8 @@ import { PlaybookWizard } from "@/components/strategy/PlaybookWizard";
 import { QuickOnboard } from "@/components/strategy/QuickOnboard";
 import { RelatedDocuments } from "@/components/brain/RelatedDocuments";
 import { useDemoStore } from "@/stores/demoStore";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 interface ContentItem {
   id: string;
@@ -55,30 +34,10 @@ interface ContentItem {
   campaign?: string;
 }
 
-interface Campaign {
-  id: string;
-  name: string;
-  goal: string;
-  audience: string;
-  startDate: Date;
-  endDate: Date;
-  status: "planning" | "active" | "completed";
-  contentCount: number;
-}
-
-interface Audience {
-  id: string;
-  name: string;
-  demographics: string;
-  interests: string[];
-  size: string;
-}
-
 export default function Strategy() {
-  const { brainDocuments } = useDemoStore();
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
-  const [isAddingCampaign, setIsAddingCampaign] = useState(false);
-  const [isAddingAudience, setIsAddingAudience] = useState(false);
+  const navigate = useNavigate();
+  const { brainDocuments, setContext } = useDemoStore();
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [activeTab, setActiveTab] = useState("foundation");
   
   // Get strategy-related documents
@@ -95,165 +54,124 @@ export default function Strategy() {
     doc.category === 'Strategic Foundation' && (doc.name === 'Foundation Strategy' || doc.name.includes('Profile'))
   );
   
-  // Check if playbooks exist
-  const hasPlaybooks = brainDocuments.some(doc => 
-    doc.category === 'Content Strategy' && doc.fileType === 'Playbook'
-  );
-
-  // Mock data
-  const [contentItems] = useState<ContentItem[]>([
+  // Simple mock calendar content
+  const contentItems: ContentItem[] = [
     {
       id: "1",
       title: "AI in Healthcare Blog Post",
       type: "Blog",
       status: "scheduled",
-      date: new Date(2025, 10, 15),
+      date: new Date(2025, 10, 15), // Nov 15, 2025
       campaign: "Healthcare Series",
     },
     {
       id: "2",
-      title: "Product Launch Announcement",
-      type: "Social",
-      status: "review",
+      title: "Product Launch LinkedIn Post",
+      type: "LinkedIn",
+      status: "scheduled",
+      date: new Date(2025, 10, 15),
       campaign: "Q4 Launch",
     },
     {
       id: "3",
       title: "Customer Success Story",
-      type: "Case Study",
-      status: "draft",
+      type: "Blog",
+      status: "scheduled",
+      date: new Date(2025, 10, 18),
     },
     {
       id: "4",
-      title: "Industry Trends Report",
-      type: "Report",
-      status: "ideation",
+      title: "Industry Trends Analysis",
+      type: "Blog",
+      status: "scheduled",
+      date: new Date(2025, 10, 20),
     },
-  ]);
-
-  const [campaigns] = useState<Campaign[]>([
-    {
-      id: "1",
-      name: "Healthcare Series",
-      goal: "Establish thought leadership in healthcare AI",
-      audience: "Healthcare Professionals",
-      startDate: new Date(2025, 10, 1),
-      endDate: new Date(2025, 11, 31),
-      status: "active",
-      contentCount: 12,
-    },
-    {
-      id: "2",
-      name: "Q4 Launch",
-      goal: "Generate awareness for new product",
-      audience: "Tech Decision Makers",
-      startDate: new Date(2025, 9, 15),
-      endDate: new Date(2025, 10, 30),
-      status: "active",
-      contentCount: 8,
-    },
-  ]);
-
-  const [audiences] = useState<Audience[]>([
-    {
-      id: "1",
-      name: "Healthcare Professionals",
-      demographics: "Ages 30-55, Healthcare Industry",
-      interests: ["Medical Technology", "AI", "Healthcare Innovation"],
-      size: "50K-100K",
-    },
-    {
-      id: "2",
-      name: "Tech Decision Makers",
-      demographics: "Ages 35-60, C-Level & Directors",
-      interests: ["Technology", "Innovation", "Business Strategy"],
-      size: "100K-250K",
-    },
-  ]);
+  ];
 
   const getStatusIcon = (status: ContentItem["status"]) => {
     switch (status) {
       case "ideation":
         return <Circle className="h-4 w-4 text-muted-foreground" />;
       case "draft":
-        return <Clock className="h-4 w-4 text-warning" />;
+        return <Clock className="h-4 w-4 text-orange-500" />;
       case "review":
-        return <AlertCircle className="h-4 w-4 text-info" />;
+        return <AlertCircle className="h-4 w-4 text-blue-500" />;
       case "scheduled":
         return <CalendarIcon className="h-4 w-4 text-primary" />;
       case "published":
-        return <CheckCircle2 className="h-4 w-4 text-success" />;
+        return <CheckCircle2 className="h-4 w-4 text-primary" />;
     }
   };
 
   const getStatusBadge = (status: ContentItem["status"]) => {
-    const variants: Record<ContentItem["status"], any> = {
-      ideation: "secondary",
-      draft: "warning",
-      review: "info",
-      scheduled: "default",
-      published: "success",
-    };
     return (
-      <Badge variant={variants[status]} className="gap-1">
+      <Badge variant="outline" className="gap-1">
         {getStatusIcon(status)}
-        {status.charAt(0).toUpperCase() + status.slice(1)}
+        <span className="capitalize">{status}</span>
       </Badge>
     );
   };
 
+  const handleCreateContent = (item: ContentItem) => {
+    setContext({
+      source: 'calendar',
+      sourceId: item.id,
+      title: item.title,
+      description: `Scheduled ${item.type} for ${item.date ? format(item.date, 'MMMM d, yyyy') : 'today'}`,
+      data: item
+    });
+    
+    toast.success('Loading scheduled content', {
+      description: 'Creating content from calendar'
+    });
+    
+    navigate('/studio');
+  };
+
   return (
     <div className="space-y-6 animate-fade-in pb-16">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-4xl font-bold mb-2">Strategy Room</h1>
-          <p className="text-muted-foreground">
-            Build your strategic foundation, create playbooks, and plan your content
-          </p>
-        </div>
+      {/* Header - Simplified */}
+      <div className="pb-8 gradient-subtle rounded-lg -mx-2 px-2 pt-2">
+        <h1 className="text-4xl font-bold mb-2">Strategy Room</h1>
+        <p className="text-muted-foreground">
+          Build your strategic foundation and create content playbooks
+        </p>
       </div>
 
-      {/* Tabs */}
-      <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="grid w-full grid-cols-4">
+      {/* Tabs - Cleaner */}
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+        <TabsList className="grid w-full grid-cols-4 bg-muted/50">
           <TabsTrigger value="foundation" className="gap-2">
             <Building className="h-4 w-4" />
-            Foundation
+            <span className="hidden sm:inline">Foundation</span>
             {!hasFoundation && (
-              <Badge variant="secondary" className="ml-1 h-5 px-1.5">New</Badge>
+              <Badge variant="secondary" className="ml-1 h-5 px-1.5 text-xs">New</Badge>
             )}
           </TabsTrigger>
           <TabsTrigger value="playbooks" className="gap-2">
             <BookOpen className="h-4 w-4" />
-            Playbooks
+            <span className="hidden sm:inline">Playbooks</span>
           </TabsTrigger>
           <TabsTrigger value="calendar" className="gap-2">
             <CalendarIcon className="h-4 w-4" />
-            Calendar
+            <span className="hidden sm:inline">Calendar</span>
           </TabsTrigger>
           <TabsTrigger value="campaigns" className="gap-2">
             <Megaphone className="h-4 w-4" />
-            Campaigns
+            <span className="hidden sm:inline">Campaigns</span>
           </TabsTrigger>
         </TabsList>
 
         {/* Foundation Tab */}
         <TabsContent value="foundation" className="space-y-6 mt-6">
           {!hasFoundation ? (
-            <Card className="p-6 text-center">
-              <div className="max-w-md mx-auto space-y-4">
-                <Building className="h-12 w-12 text-primary mx-auto" />
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Start with Your Foundation</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Build your strategic foundation first, or use Quick Onboarding to get started in minutes.
-                  </p>
-                </div>
-                <div className="flex gap-3 justify-center">
-                  <QuickOnboard />
-                </div>
-              </div>
+            <Card className="p-8 text-center">
+              <Building className="h-12 w-12 text-primary mx-auto mb-4" />
+              <h3 className="text-lg font-semibold mb-2">Start with Your Foundation</h3>
+              <p className="text-sm text-muted-foreground mb-6 max-w-md mx-auto">
+                Build your strategic foundation first, or use Quick Onboarding to get started in minutes.
+              </p>
+              <QuickOnboard />
             </Card>
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -277,226 +195,115 @@ export default function Strategy() {
 
         {/* Playbooks Tab */}
         <TabsContent value="playbooks" className="space-y-6 mt-6">
-          {!hasPlaybooks && !hasFoundation ? (
-            <Card className="p-6 text-center">
-              <div className="max-w-md mx-auto space-y-4">
-                <BookOpen className="h-12 w-12 text-muted-foreground mx-auto" />
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Foundation Required</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Create your strategic foundation first to generate outcome-focused playbooks.
-                  </p>
-                </div>
-                <Button onClick={() => setActiveTab("foundation")}>
-                  Go to Foundation
-                </Button>
-              </div>
-            </Card>
-          ) : (
-            <PlaybookWizard />
-          )}
+          <PlaybookWizard />
         </TabsContent>
 
-        {/* Calendar Tab */}
+        {/* Calendar Tab - Simplified */}
         <TabsContent value="calendar" className="space-y-6 mt-6">
-        <div className="space-y-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <Card className="lg:col-span-2 p-6 hover:shadow-lg transition-shadow">
-              <Calendar
-                mode="single"
-                selected={selectedDate}
-                onSelect={(date) => date && setSelectedDate(date)}
-                className={cn("rounded-md border-0 pointer-events-auto")}
-              />
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+            {/* Calendar - Clean Design */}
+            <Card className="lg:col-span-3 p-6">
+              <CardHeader className="px-0 pt-0">
+                <CardTitle>Content Calendar</CardTitle>
+                <CardDescription>
+                  View and manage your scheduled content
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="px-0 pb-0">
+                <Calendar
+                  mode="single"
+                  selected={selectedDate}
+                  onSelect={setSelectedDate}
+                  className="rounded-md border"
+                  modifiers={{
+                    scheduled: contentItems
+                      .filter(item => item.date)
+                      .map(item => item.date!),
+                  }}
+                  modifiersStyles={{
+                    scheduled: {
+                      fontWeight: 'bold',
+                      textDecoration: 'underline',
+                      textDecorationColor: 'hsl(var(--primary))',
+                      textDecorationThickness: '2px',
+                    }
+                  }}
+                />
+              </CardContent>
             </Card>
 
-            <div className="space-y-4">
-              <Card className="p-4 hover:shadow-lg transition-shadow">
-                <h3 className="font-semibold mb-3">
-                  {format(selectedDate, "MMMM d, yyyy")}
-                </h3>
-                <div className="space-y-2">
-                  {contentItems
-                    .filter(
-                      (item) =>
-                        item.date &&
-                        format(item.date, "yyyy-MM-dd") ===
-                          format(selectedDate, "yyyy-MM-dd")
-                    )
+            {/* Scheduled Content - Cleaner */}
+            <div className="lg:col-span-2 space-y-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base">
+                    {selectedDate ? format(selectedDate, "MMMM d, yyyy") : "Select a date"}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  {selectedDate && contentItems
+                    .filter(item => item.date && format(item.date, "yyyy-MM-dd") === format(selectedDate, "yyyy-MM-dd"))
                     .map((item) => (
                       <div
                         key={item.id}
-                        className="p-3 rounded-lg border border-border hover:border-primary hover:shadow-md transition-all cursor-pointer animate-scale-in"
+                        className="p-3 rounded-lg border hover-lift cursor-pointer click-feedback"
+                        onClick={() => handleCreateContent(item)}
                       >
-                        <div className="flex items-start justify-between gap-2 mb-1">
+                        <div className="flex items-start justify-between gap-2 mb-2">
                           <p className="font-medium text-sm">{item.title}</p>
                           {getStatusBadge(item.status)}
                         </div>
                         <p className="text-xs text-muted-foreground">{item.type}</p>
                         {item.campaign && (
-                          <Badge variant="outline" className="mt-2">
+                          <Badge variant="secondary" className="mt-2 text-xs">
                             {item.campaign}
                           </Badge>
                         )}
                       </div>
                     ))}
-                  {contentItems.filter(
-                    (item) =>
-                      item.date &&
-                      format(item.date, "yyyy-MM-dd") ===
-                        format(selectedDate, "yyyy-MM-dd")
+                  
+                  {selectedDate && contentItems.filter(
+                    item => item.date && format(item.date, "yyyy-MM-dd") === format(selectedDate, "yyyy-MM-dd")
                   ).length === 0 && (
-                    <p className="text-sm text-muted-foreground text-center py-8">
-                      No content scheduled for this date
-                    </p>
+                    <div className="text-center py-8">
+                      <CalendarIcon className="h-12 w-12 text-muted-foreground/30 mx-auto mb-3" />
+                      <p className="text-sm text-muted-foreground">
+                        No content scheduled for this date
+                      </p>
+                    </div>
                   )}
-                </div>
-                <Button variant="outline" className="w-full mt-4 gap-2 hover-scale">
-                  <Plus className="h-4 w-4" />
-                  Schedule Content
-                </Button>
+
+                  <Button 
+                    variant="outline" 
+                    className="w-full mt-4 click-feedback"
+                    onClick={() => {
+                      toast.info('Schedule Content', {
+                        description: 'This would open the content scheduler'
+                      });
+                    }}
+                  >
+                    <Plus className="h-4 w-4 mr-2" />
+                    Schedule Content
+                  </Button>
+                </CardContent>
               </Card>
             </div>
           </div>
-        </div>
         </TabsContent>
 
-        {/* Campaigns Tab */}
+        {/* Campaigns Tab - Simplified Placeholder */}
         <TabsContent value="campaigns" className="space-y-6 mt-6">
-        <div className="space-y-4">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h2 className="text-2xl font-bold">Campaigns</h2>
-              <p className="text-sm text-muted-foreground">
-                Manage your content campaigns
-              </p>
-            </div>
-            <Dialog open={isAddingCampaign} onOpenChange={setIsAddingCampaign}>
-              <DialogTrigger asChild>
-                <Button className="gap-2 hover-scale">
-                  <Plus className="h-4 w-4" />
-                  New Campaign
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="animate-scale-in">
-                <DialogHeader>
-                  <DialogTitle>Create New Campaign</DialogTitle>
-                  <DialogDescription>
-                    Set up a new content campaign with goals and timeline
-                  </DialogDescription>
-                </DialogHeader>
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <Label>Campaign Name</Label>
-                    <Input placeholder="e.g., Q1 Product Launch" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label>Goal</Label>
-                    <Textarea
-                      placeholder="What do you want to achieve with this campaign?"
-                      rows={3}
-                    />
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label>Start Date</Label>
-                      <Input type="date" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label>End Date</Label>
-                      <Input type="date" />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label>Target Audience</Label>
-                    <Select>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select audience" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {audiences.map((aud) => (
-                          <SelectItem key={aud.id} value={aud.id}>
-                            {aud.name}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-                <DialogFooter>
-                  <Button variant="outline" onClick={() => setIsAddingCampaign(false)}>
-                    Cancel
-                  </Button>
-                  <Button onClick={() => setIsAddingCampaign(false)}>
-                    Create Campaign
-                  </Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            {campaigns.map((campaign) => (
-              <Card key={campaign.id} className="p-6 hover:shadow-lg transition-all hover-scale cursor-pointer">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                      <Megaphone className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">{campaign.name}</h3>
-                      <Badge
-                        variant={
-                          campaign.status === "active"
-                            ? "success"
-                            : campaign.status === "planning"
-                            ? "warning"
-                            : "secondary"
-                        }
-                      >
-                        {campaign.status}
-                      </Badge>
-                    </div>
-                  </div>
-                </div>
-
-                <p className="text-sm text-muted-foreground mb-4">
-                  {campaign.goal}
-                </p>
-
-                <div className="space-y-3 mb-4">
-                  <div className="flex items-center gap-2 text-sm">
-                    <Users className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-muted-foreground">Audience:</span>
-                    <span className="font-medium">{campaign.audience}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <CalendarIcon className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-muted-foreground">Duration:</span>
-                    <span className="font-medium">
-                      {format(campaign.startDate, "MMM d")} -{" "}
-                      {format(campaign.endDate, "MMM d, yyyy")}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <BarChart3 className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-muted-foreground">Content:</span>
-                    <span className="font-medium">{campaign.contentCount} pieces</span>
-                  </div>
-                </div>
-
-                <div className="flex gap-2">
-                  <Button variant="outline" size="sm" className="flex-1 hover-scale">
-                    View Details
-                  </Button>
-                  <Button variant="outline" size="sm" className="flex-1 hover-scale">
-                    Add Content
-                  </Button>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
+          <Card className="p-8 text-center">
+            <Megaphone className="h-12 w-12 text-primary mx-auto mb-4" />
+            <h3 className="text-lg font-semibold mb-2">Campaigns</h3>
+            <p className="text-sm text-muted-foreground mb-6 max-w-md mx-auto">
+              Campaign management feature coming soon. Organize content into campaigns with shared goals.
+            </p>
+            <Button variant="outline" disabled>
+              <Plus className="h-4 w-4 mr-2" />
+              Create Campaign
+            </Button>
+          </Card>
         </TabsContent>
       </Tabs>
     </div>
