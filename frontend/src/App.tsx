@@ -86,6 +86,8 @@ function AppContent() {
         <Route path="/hub" element={<Navigate to="/brain" replace />} />
         <Route path="/playbooks" element={<Navigate to="/strategy" replace />} />
         
+        {/* Remove old pages - they're now merged into new structure */}
+        
         {/* 404 Not Found */}
         <Route
           path="*"
