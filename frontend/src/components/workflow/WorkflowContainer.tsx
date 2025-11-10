@@ -131,23 +131,23 @@ export function WorkflowContainer({ children }: WorkflowContainerProps) {
             {/* Approval Stage */}
             {currentStage.type === "approval" && (
               <div className="pt-4">
-                <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 p-8">
+                <Card className="border-gray-200 bg-white p-8">
                   <div className="space-y-6">
-                    <h3 className="text-heading font-semibold">Content Brief</h3>
-                    <div className="space-y-4 text-body">
-                      <div className="rounded-lg bg-background/80 p-4">
-                        <strong className="text-foreground">Title:</strong>
-                        <p className="mt-1 text-muted-foreground">
+                    <h3 className="text-xl font-semibold text-gray-900">Content Brief</h3>
+                    <div className="space-y-4">
+                      <div className="rounded-lg bg-gray-50 p-4">
+                        <strong className="text-gray-900 text-sm">Title:</strong>
+                        <p className="mt-1 text-sm text-gray-600">
                           AI in Healthcare: The Transformation Story
                         </p>
                       </div>
-                      <div className="rounded-lg bg-background/80 p-4">
-                        <strong className="text-foreground">Word Count:</strong>
-                        <p className="mt-1 text-muted-foreground">1,500-2,000 words</p>
+                      <div className="rounded-lg bg-gray-50 p-4">
+                        <strong className="text-gray-900 text-sm">Word Count:</strong>
+                        <p className="mt-1 text-sm text-gray-600">1,500-2,000 words</p>
                       </div>
-                      <div className="rounded-lg bg-background/80 p-4">
-                        <strong className="text-foreground">Key Sections:</strong>
-                        <ul className="ml-4 mt-3 list-disc space-y-2 text-muted-foreground">
+                      <div className="rounded-lg bg-gray-50 p-4">
+                        <strong className="text-gray-900 text-sm">Key Sections:</strong>
+                        <ul className="ml-4 mt-3 list-disc space-y-2 text-sm text-gray-600">
                           <li>Introduction: The current state of healthcare</li>
                           <li>The AI revolution in diagnostics</li>
                           <li>Patient care improvements</li>
