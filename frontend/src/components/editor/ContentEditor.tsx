@@ -601,6 +601,12 @@ export function ContentEditor() {
           </div>
         </div>
       )}
+      
+      {/* Image Upload Dialog */}
+      <ImageUploadZone 
+        open={showImageDialog}
+        onOpenChange={setShowImageDialog}
+      />
     </div>
   );
 }
