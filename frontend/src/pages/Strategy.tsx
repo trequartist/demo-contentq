@@ -200,47 +200,87 @@ export default function Strategy() {
   ];
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-6 animate-fade-in pb-16">
       {/* Header */}
-      <div className="flex items-center justify-between animate-scale-in">
+      <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-4xl font-bold mb-2">Strategy</h1>
+          <h1 className="text-4xl font-bold mb-2">Strategy Room</h1>
           <p className="text-muted-foreground">
-            Plan campaigns, manage your content pipeline, and target your audience
+            Build your strategic foundation, create playbooks, and plan your content
           </p>
-        </div>
-        <div className="flex gap-2">
-          <Button variant="outline" className="gap-2 hover-scale">
-            <BarChart3 className="h-4 w-4" />
-            Analytics
-          </Button>
-          <Button className="gap-2 hover-scale">
-            <Plus className="h-4 w-4" />
-            New Campaign
-          </Button>
         </div>
       </div>
 
-      {/* Navigation Tabs */}
-      <div className="flex gap-2 border-b border-border">
-        {navItems.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => setActiveView(item.id)}
-            className={cn(
-              "flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all",
-              "hover:bg-accent hover:text-accent-foreground",
-              "border-b-2 -mb-px",
-              activeView === item.id
-                ? "border-primary text-primary"
-                : "border-transparent text-muted-foreground"
+      {/* Tabs */}
+      <Tabs value={activeTab} onValueChange={setActiveTab}>
+        <TabsList className="grid w-full grid-cols-4">
+          <TabsTrigger value="foundation" className="gap-2">
+            <Building className="h-4 w-4" />
+            Foundation
+            {!hasFoundation && (
+              <Badge variant="secondary" className="ml-1 h-5 px-1.5">New</Badge>
             )}
-          >
-            <item.icon className="h-4 w-4" />
-            {item.label}
-          </button>
-        ))}
-      </div>
+          </TabsTrigger>
+          <TabsTrigger value="playbooks" className="gap-2">
+            <BookOpen className="h-4 w-4" />
+            Playbooks
+          </TabsTrigger>
+          <TabsTrigger value="calendar" className="gap-2">
+            <CalendarIcon className="h-4 w-4" />
+            Calendar
+          </TabsTrigger>
+          <TabsTrigger value="campaigns" className="gap-2">
+            <Megaphone className="h-4 w-4" />
+            Campaigns
+          </TabsTrigger>
+        </TabsList>
+
+        {/* Foundation Tab */}
+        <TabsContent value="foundation" className="space-y-6 mt-6">
+          {!hasFoundation ? (
+            <Card className="p-6 text-center">
+              <div className="max-w-md mx-auto space-y-4">
+                <Building className="h-12 w-12 text-primary mx-auto" />
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Start with Your Foundation</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Build your strategic foundation first, or use Quick Onboarding to get started in minutes.
+                  </p>
+                </div>
+                <div className="flex gap-3 justify-center">
+                  <QuickOnboard />
+                </div>
+              </div>
+            </Card>
+          ) : (
+            <FoundationStrategy />
+          )}
+        </TabsContent>
+
+        {/* Playbooks Tab */}
+        <TabsContent value="playbooks" className="space-y-6 mt-6">
+          {!hasPlaybooks && !hasFoundation ? (
+            <Card className="p-6 text-center">
+              <div className="max-w-md mx-auto space-y-4">
+                <BookOpen className="h-12 w-12 text-muted-foreground mx-auto" />
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Foundation Required</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Create your strategic foundation first to generate outcome-focused playbooks.
+                  </p>
+                </div>
+                <Button onClick={() => setActiveTab("foundation")}>
+                  Go to Foundation
+                </Button>
+              </div>
+            </Card>
+          ) : (
+            <PlaybookWizard />
+          )}
+        </TabsContent>
+
+        {/* Calendar Tab */}
+        <TabsContent value="calendar" className="space-y-6 mt-6">
 
       {/* Calendar View */}
       {activeView === "calendar" && (
