@@ -381,6 +381,9 @@ export default function Strategy() {
                   <CardTitle className="text-base">
                     {selectedDate ? format(selectedDate, "MMMM d, yyyy") : "Select a date"}
                   </CardTitle>
+                  <CardDescription className="text-xs">
+                    Click content to create in Studio
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   {selectedDate && contentItems
@@ -388,7 +391,7 @@ export default function Strategy() {
                     .map((item) => (
                       <div
                         key={item.id}
-                        className="p-3 rounded-lg border hover-lift cursor-pointer click-feedback"
+                        className="p-3 rounded-lg border hover-lift cursor-pointer click-feedback transition-all"
                         onClick={() => handleCreateContent(item)}
                       >
                         <div className="flex items-start justify-between gap-2 mb-2">
@@ -412,12 +415,15 @@ export default function Strategy() {
                       <p className="text-sm text-muted-foreground">
                         No content scheduled for this date
                       </p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Select a highlighted date to see scheduled content
+                      </p>
                     </div>
                   )}
 
                   <Button 
                     variant="outline" 
-                    className="w-full mt-4 click-feedback"
+                    className="w-full mt-4 click-feedback hover-glow"
                     onClick={() => {
                       toast.info('Schedule Content', {
                         description: 'This would open the content scheduler'
@@ -427,6 +433,40 @@ export default function Strategy() {
                     <Plus className="h-4 w-4 mr-2" />
                     Schedule Content
                   </Button>
+                </CardContent>
+              </Card>
+
+              {/* Upcoming Content */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base">Upcoming This Week</CardTitle>
+                  <CardDescription className="text-xs">
+                    Next 7 days
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  {contentItems
+                    .filter(item => {
+                      if (!item.date) return false;
+                      const diff = item.date.getTime() - today.getTime();
+                      return diff >= 0 && diff <= 7 * 24 * 60 * 60 * 1000;
+                    })
+                    .sort((a, b) => (a.date?.getTime() || 0) - (b.date?.getTime() || 0))
+                    .slice(0, 5)
+                    .map((item) => (
+                      <div
+                        key={item.id}
+                        className="p-2 rounded border-l-2 border-primary bg-primary/5 hover-lift cursor-pointer click-feedback text-xs"
+                        onClick={() => handleCreateContent(item)}
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-medium truncate">{item.title}</span>
+                          <span className="text-muted-foreground shrink-0">
+                            {item.date && format(item.date, "MMM d")}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
                 </CardContent>
               </Card>
             </div>
