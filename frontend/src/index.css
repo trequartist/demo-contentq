@@ -21,16 +21,16 @@
     --border-light: 220 13% 94%;
     --border-hover: 231 48% 48%;  /* Blue on hover */
     
-    /* Card Backgrounds */
-    --card: 0 0% 100%;
-    --card-hover: 0 0% 98%;
+    /* Card Backgrounds - Elevated */
+    --card: 0 0% 100%;            /* White cards */
+    --card-hover: 220 20% 98%;    /* Subtle warm hover */
     --card-foreground: 0 0% 9%;
     
     /* Status Colors */
-    --success: 82 80% 45%;        /* Kiwi green for success */
+    --success: 142 76% 36%;       /* Professional green */
     --warning: 38 92% 50%;
     --error: 0 84% 60%;
-    --info: 0 0% 45%;
+    --info: 231 48% 48%;          /* Match primary */
     
     /* Secondary & Accent */
     --secondary: 0 0% 96%;
