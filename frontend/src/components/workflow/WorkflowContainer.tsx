@@ -48,13 +48,13 @@ export function WorkflowContainer({ children }: WorkflowContainerProps) {
   };
 
   return (
-    <div className="flex min-h-[calc(100vh-60px)]">
+    <div className="flex min-h-[calc(100vh-60px)] bg-white">
       {/* Vertical Timeline - Fixed Left Sidebar */}
       <VerticalTimeline steps={steps} />
 
       {/* Main Content Area - Offset for timeline */}
       <div className="ml-[240px] flex flex-1 animate-fade-in">
-        <div className="flex-1 p-8">
+        <div className="flex-1 px-8 py-12">
         {/* Header */}
         {workflowType && (
           <WorkflowHeader workflowType={workflowType} onPause={pauseWorkflow} />
