@@ -24,6 +24,7 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { useWorkflowStore } from "@/stores/workflowStore";
+import { useDemoStore } from "@/stores/demoStore";
 import { useToast } from "@/hooks/use-toast";
 import { toast } from "sonner";
 import { ImageUploadZone } from "./ImageUploadZone";
