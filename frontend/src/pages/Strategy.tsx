@@ -75,10 +75,20 @@ interface Audience {
 }
 
 export default function Strategy() {
+  const { brainDocuments } = useDemoStore();
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [isAddingCampaign, setIsAddingCampaign] = useState(false);
   const [isAddingAudience, setIsAddingAudience] = useState(false);
   const [activeTab, setActiveTab] = useState("foundation");
+  
+  // Get strategy-related documents
+  const strategyDocs = brainDocuments.filter(
+    doc => doc.active && (
+      doc.category === 'Strategic Foundation' || 
+      doc.category === 'Content Strategy' ||
+      doc.category === 'Market Intelligence'
+    )
+  );
   const { brainDocuments } = useDemoStore();
   
   // Check if foundation strategy exists
