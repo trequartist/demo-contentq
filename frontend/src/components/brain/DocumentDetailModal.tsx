@@ -37,7 +37,27 @@ export function DocumentDetailModal({
   onOpenChange,
   onToggleActive,
 }: DocumentDetailModalProps) {
+  const navigate = useNavigate();
+  const setContext = useDemoStore(s => s.setContext);
+  
   if (!document) return null;
+
+  const handleUseInContent = () => {
+    setContext({
+      source: 'brain',
+      sourceId: document.id,
+      title: document.name,
+      description: document.summary,
+      data: document
+    });
+    
+    toast.success('Context loaded from Brain', {
+      description: 'Creating content with document context'
+    });
+    
+    onOpenChange(false);
+    navigate('/studio');
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
