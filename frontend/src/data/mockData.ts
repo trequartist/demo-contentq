@@ -291,6 +291,16 @@ export const mockDocuments: BrainDocument[] = [
     active: true,
     summary: "Detailed audience personas, pain points, and buying journey",
     fileType: "DOCX",
+    insights: [
+      "Primary persona: Marketing Director, 35-45 years old",
+      "Key pain point: Scaling content without scaling headcount",
+      "Buying journey: 3-6 months, multiple stakeholders"
+    ],
+    usedIn: [
+      { module: "Strategy", itemName: "Thought Leadership Playbook", itemId: "playbook-1", lastUsed: new Date(Date.now() - 4 * 60 * 60 * 1000) },
+      { module: "Research", itemName: "Customer Insights Stream", itemId: "stream-1", lastUsed: new Date(Date.now() - 6 * 60 * 60 * 1000) }
+    ],
+    relevanceScore: 92,
   },
   
   // Content Strategy
