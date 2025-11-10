@@ -34,11 +34,11 @@ const agentIcons = {
 };
 
 const agentDots = {
-  Research: "bg-blue-500",
-  Strategist: "bg-purple-500",
-  Copywriter: "bg-primary",
-  Editor: "bg-orange-500",
-  Analyst: "bg-pink-500",
+  Research: "bg-gradient-to-br from-blue-500 to-blue-600 shadow-sm",
+  Strategist: "bg-gradient-to-br from-purple-500 to-purple-600 shadow-sm",
+  Copywriter: "bg-gradient-to-br from-primary to-indigo-600 shadow-sm",
+  Editor: "bg-gradient-to-br from-orange-500 to-orange-600 shadow-sm",
+  Analyst: "bg-gradient-to-br from-pink-500 to-pink-600 shadow-sm",
 };
 
 const agentColors = {
