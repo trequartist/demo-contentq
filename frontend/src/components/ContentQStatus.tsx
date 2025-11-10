@@ -55,9 +55,7 @@ export function ContentQStatus() {
   
   const hasActiveWork = activeAgents.length > 0;
   
-  if (!hasActiveWork && agentHistory.length === 0) {
-    return null; // Don't show if no activity
-  }
+  if (!hasActiveWork) return null;
   
   return (
     <>
