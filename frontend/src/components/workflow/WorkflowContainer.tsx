@@ -81,7 +81,7 @@ export function WorkflowContainer({ children }: WorkflowContainerProps) {
                     <div className="absolute inset-0 animate-pulse rounded-full bg-gray-100 blur-xl" />
                     <div className="relative bg-gray-50 p-8 rounded-full">
                       <svg
-                        className="h-20 w-20 text-primary"
+                        className="h-20 w-20 text-black"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
