@@ -71,7 +71,9 @@ export interface WorkflowState {
   insertIntoInput: (content: string, position: "replace" | "append" | "prepend") => void;
 }
 
-const blogWorkflowStages: WorkflowStage[] = [
+// Note: Workflow definitions moved to src/data/workflows.ts
+
+export const useWorkflowStore = create<WorkflowState>((set, get) => ({
   {
     id: "input",
     stepId: "input",
