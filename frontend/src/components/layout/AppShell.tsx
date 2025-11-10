@@ -18,7 +18,7 @@ export function AppShell({ children }: AppShellProps) {
   const { isActive } = useWorkflowStore();
   
   // Hide assistant panel when in workflow on /create
-  const hideAssistant = location.pathname === "/create" && isActive;
+  const hideAssistant = location.pathname === "/studio" && isActive;
 
   return (
     <div className="flex h-screen w-full flex-col overflow-hidden bg-background">
