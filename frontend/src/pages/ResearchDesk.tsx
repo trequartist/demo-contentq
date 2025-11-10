@@ -9,6 +9,8 @@ import { StreamCard } from "@/components/research/StreamCard";
 import { StreamExplorer } from "@/components/research/StreamExplorer";
 import { ReportCard } from "@/components/research/ReportCard";
 import { ReportBuilder } from "@/components/research/ReportBuilder";
+import { RelatedDocuments } from "@/components/brain/RelatedDocuments";
+import { useDemoStore } from "@/stores/demoStore";
 
 type View = 'main' | 'stream' | 'report';
 type StreamType = 'competitors' | 'trends' | 'conversations' | null;
