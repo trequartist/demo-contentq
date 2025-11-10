@@ -74,17 +74,21 @@ interface Audience {
 }
 
 export default function Strategy() {
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const activeView = searchParams.get("view") || "calendar";
-  
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [isAddingCampaign, setIsAddingCampaign] = useState(false);
   const [isAddingAudience, setIsAddingAudience] = useState(false);
-
-  const setActiveView = (view: string) => {
-    navigate(`/strategy?view=${view}`, { replace: true });
-  };
+  const [activeTab, setActiveTab] = useState("foundation");
+  const { brainDocuments } = useDemoStore();
+  
+  // Check if foundation strategy exists
+  const hasFoundation = brainDocuments.some(doc => 
+    doc.category === 'Strategic Foundation' && (doc.name === 'Foundation Strategy' || doc.name.includes('Profile'))
+  );
+  
+  // Check if playbooks exist
+  const hasPlaybooks = brainDocuments.some(doc => 
+    doc.category === 'Content Strategy' && doc.fileType === 'Playbook'
+  );
 
   // Mock data
   const [contentItems] = useState<ContentItem[]>([
