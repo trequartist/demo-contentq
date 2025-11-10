@@ -587,6 +587,7 @@ export function ContentEditor() {
           </Button>
         </div>
       </div>
+      </div>
       
       {/* Scoring Sidebar */}
       {showScoring && workflowType && (
