@@ -16,9 +16,13 @@ import {
   TrendingUp,
   ExternalLink,
   Lightbulb,
+  Sparkles,
 } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
+import { useDemoStore } from "@/stores/demoStore";
+import { toast } from "sonner";
 
 interface DocumentDetailModalProps {
   document: BrainDocument | null;
