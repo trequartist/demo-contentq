@@ -355,6 +355,16 @@ export const mockDocuments: BrainDocument[] = [
     active: true,
     summary: "Complete product features, capabilities, and use cases",
     fileType: "PDF",
+    insights: [
+      "5 core modules: Studio, Strategy, Research, Brain, Analytics",
+      "20+ specialized AI agents",
+      "Integrates with 50+ marketing tools"
+    ],
+    usedIn: [
+      { module: "Studio", itemName: "Product-Led Content", itemId: "product-content", lastUsed: new Date(Date.now() - 3 * 60 * 60 * 1000) },
+      { module: "Strategy", itemName: "Product-Led Playbook", itemId: "playbook-2", lastUsed: new Date(Date.now() - 12 * 60 * 60 * 1000) }
+    ],
+    relevanceScore: 94,
   },
   {
     id: "doc-7",
@@ -365,6 +375,13 @@ export const mockDocuments: BrainDocument[] = [
     active: false,
     summary: "Success stories and results from key customers",
     fileType: "PDF",
+    insights: [
+      "Average ROI: 3.5x in first 6 months",
+      "Content production increased by 250%",
+      "Time saved: 15-20 hours per week"
+    ],
+    usedIn: [],
+    relevanceScore: 87,
   },
   {
     id: "doc-8",
@@ -375,6 +392,15 @@ export const mockDocuments: BrainDocument[] = [
     active: true,
     summary: "Upcoming features and product development plans",
     fileType: "PDF",
+    insights: [
+      "Q1: Multi-language support",
+      "Q2: Advanced collaboration features",
+      "Future: Video content generation"
+    ],
+    usedIn: [
+      { module: "Strategy", itemName: "Product Launch Campaign", itemId: "campaign-1", lastUsed: new Date(Date.now() - 24 * 60 * 60 * 1000) }
+    ],
+    relevanceScore: 91,
   },
   
   // Market Intelligence
