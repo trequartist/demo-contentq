@@ -37,7 +37,12 @@ interface ContentItem {
 export default function Strategy() {
   const navigate = useNavigate();
   const { brainDocuments, setContext } = useDemoStore();
+  
+  // Date setup
   const today = new Date();
+  const currentMonth = today.getMonth();
+  const currentYear = today.getFullYear();
+  
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(today);
   const [activeTab, setActiveTab] = useState("foundation");
   
@@ -56,9 +61,6 @@ export default function Strategy() {
   );
   
   // Rich mock calendar content - spread across the current month
-  const today = new Date();
-  const currentMonth = today.getMonth();
-  const currentYear = today.getFullYear();
   
   const contentItems: ContentItem[] = [
     // This week
