@@ -589,17 +589,14 @@ export function ContentEditor() {
       </div>
       </div>
       
-      {/* Scoring Sidebar */}
+      {/* Editor Sidebar with Tabs */}
       {showScoring && workflowType && (
-        <div className="w-[380px] shrink-0">
-          <div className="sticky top-4">
-            <ContentScoring 
-              type={workflowType as 'blog' | 'linkedin'}
-              content={content}
-              title={editorTitle}
-            />
-          </div>
-        </div>
+        <EditorSidebar 
+          content={content}
+          title={editorTitle}
+          showScoring={showScoring}
+          workflowType={workflowType as 'blog' | 'linkedin'}
+        />
       )}
     </div>
   );
