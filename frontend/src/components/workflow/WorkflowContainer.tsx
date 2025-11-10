@@ -97,8 +97,8 @@ export function WorkflowContainer({ children }: WorkflowContainerProps) {
                   </div>
                   
                   <div className="space-y-2">
-                    <p className="text-lg text-muted-foreground">
-                      Use the <span className="font-semibold text-foreground">AI Assistant →</span>
+                    <p className="text-lg text-gray-600">
+                      Use the <span className="font-semibold text-gray-900">AI Assistant →</span>
                     </p>
                   </div>
                 </div>
