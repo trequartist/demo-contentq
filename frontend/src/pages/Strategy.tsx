@@ -43,6 +43,7 @@ import { cn } from "@/lib/utils";
 import { FoundationStrategy } from "@/components/strategy/FoundationStrategy";
 import { PlaybookWizard } from "@/components/strategy/PlaybookWizard";
 import { QuickOnboard } from "@/components/strategy/QuickOnboard";
+import { RelatedDocuments } from "@/components/brain/RelatedDocuments";
 import { useDemoStore } from "@/stores/demoStore";
 
 interface ContentItem {
