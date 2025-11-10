@@ -109,6 +109,38 @@ export function AssistantPanel({
           <h2 className="text-lg font-semibold">ContentQ AI Assistant</h2>
         </div>
       </div>
+      
+      {/* Marketing Brain Indicator */}
+      {activeDocs.length > 0 && (
+        <div className="border-b border-border px-4 py-3 bg-primary/5">
+          <div className="flex items-center gap-2 mb-2">
+            <Brain className="h-4 w-4 text-primary" />
+            <Badge variant="secondary" className="text-xs">
+              🧠 {activeDocs.length} active
+            </Badge>
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {activeDocs.slice(0, 3).map(doc => (
+              <Badge key={doc.id} variant="outline" className="text-xs">
+                {doc.name}
+              </Badge>
+            ))}
+            {activeDocs.length > 3 && (
+              <Badge variant="outline" className="text-xs">
+                +{activeDocs.length - 3} more
+              </Badge>
+            )}
+          </div>
+          <Button
+            variant="link"
+            size="sm"
+            onClick={() => navigate('/brain')}
+            className="h-auto p-0 text-xs mt-2"
+          >
+            Manage Marketing Brain →
+          </Button>
+        </div>
+      )}
 
       {/* Action Buttons */}
       <div className="border-b border-border px-4 py-3 flex gap-2">
