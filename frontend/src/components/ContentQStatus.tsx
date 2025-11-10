@@ -59,11 +59,13 @@ export function ContentQStatus() {
   
   return (
     <>
-      {/* Status Bar - Fixed at bottom */}
+      {/* Status Card - Floating */}
       <div
         className={cn(
-          "fixed bottom-0 left-0 right-0 z-40 border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300",
-          hasActiveWork ? "border-primary/50" : "border-border"
+          "fixed bottom-6 right-6 z-50",
+          "flex items-center gap-4 px-5 py-3",
+          "rounded-xl border border-border bg-card/95 backdrop-blur-md shadow-lg",
+          "transition-all duration-300 animate-slide-in"
         )}
       >
         <div className="container mx-auto flex items-center justify-between px-4 py-2">
